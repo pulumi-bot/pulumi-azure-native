@@ -969,7 +969,7 @@ func (m *moduleGenerator) genTypeSpec(propertyName string, schema *spec.Schema, 
 					return nil, err
 				}
 
-				m.pkg.Types[tok] = enumSpec
+				m.pkg.Types[tok] = *enumSpec
 			} else {
 				props, err := m.genProperties(resolvedSchema, isOutput, true /* isType */)
 				if err != nil {
@@ -982,11 +982,13 @@ func (m *moduleGenerator) genTypeSpec(propertyName string, schema *spec.Schema, 
 					return nil, nil
 				}
 
-				m.pkg.Types[tok] = &pschema.ObjectTypeSpec{
-					Description: resolvedSchema.Description,
-					Type:        "object",
-					Properties:  props.specs,
-					Required:    props.requiredSpecs.SortedValues(),
+				m.pkg.Types[tok] = pschema.ComplexTypeSpec{
+					ObjectTypeSpec: pschema.ObjectTypeSpec{
+						Description: resolvedSchema.Description,
+						Type:        "object",
+						Properties:  props.specs,
+						Required:    props.requiredSpecs.SortedValues(),
+					},
 				}
 
 				m.metadata.Types[tok] = provider.AzureAPIType{
@@ -1059,7 +1061,7 @@ func (m *moduleGenerator) genTypeSpec(propertyName string, schema *spec.Schema, 
 }
 
 // genEnumType generates the enum type.
-func (m *moduleGenerator) genEnumType(schema *spec.Schema, context *openapi.ReferenceContext, enumName string, enumExtension map[string]interface{}) (*pschema.EnumTypeSpec, error) {
+func (m *moduleGenerator) genEnumType(schema *spec.Schema, context *openapi.ReferenceContext, enumName string, enumExtension map[string]interface{}) (*pschema.ComplexTypeSpec, error) {
 	resolvedSchema, err := context.ResolveSchema(schema)
 	if err != nil {
 		return nil, err
@@ -1070,10 +1072,12 @@ func (m *moduleGenerator) genEnumType(schema *spec.Schema, context *openapi.Refe
 		return nil, err
 	}
 
-	enumSpec := &pschema.EnumTypeSpec{
-		Enum:        []*pschema.EnumValueSpec{},
-		Description: description,
-		Type:        "string", // This provider only has string enums
+	enumSpec := &pschema.ComplexTypeSpec{
+		Enum: []*pschema.EnumValueSpec{},
+		ObjectTypeSpec: pschema.ObjectTypeSpec{
+			Description: description,
+			Type:        "string", // This provider only has string enums
+		},
 	}
 	if name, ok := enumExtension["name"].(string); ok {
 		enumName = toUpperCamel(name)
