@@ -24,3 +24,7 @@ require (
 	github.com/zclconf/go-cty v1.3.1
 	google.golang.org/grpc v1.29.1
 )
+
+replace github.com/pulumi/pulumi/pkg/v2 => ../../pulumi/pkg
+
+replace github.com/pulumi/pulumi/sdk/v2 => ../../pulumi/sdk
