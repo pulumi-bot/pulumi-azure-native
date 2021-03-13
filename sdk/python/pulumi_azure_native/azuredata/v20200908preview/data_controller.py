@@ -5,15 +5,142 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DataController']
+__all__ = ['DataControllerArgs', 'DataController']
+
+@pulumi.input_type
+class DataControllerArgs:
+    def __init__(__self__, *,
+                 on_premise_property: pulumi.Input['OnPremisePropertyArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 data_controller_name: Optional[pulumi.Input[str]] = None,
+                 k8s_raw: Optional[Any] = None,
+                 last_uploaded_date: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DataController resource.
+        :param pulumi.Input['OnPremisePropertyArgs'] on_premise_property: Properties from the on premise data controller
+        :param pulumi.Input[str] resource_group_name: The name of the Azure resource group
+        :param Any k8s_raw: The raw kubernetes information
+        :param pulumi.Input[str] last_uploaded_date: Last uploaded date from on premise cluster. Defaults to current date time
+        :param pulumi.Input[str] location: The geo-location where the resource lives
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "on_premise_property", on_premise_property)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if data_controller_name is not None:
+            pulumi.set(__self__, "data_controller_name", data_controller_name)
+        if k8s_raw is not None:
+            pulumi.set(__self__, "k8s_raw", k8s_raw)
+        if last_uploaded_date is not None:
+            pulumi.set(__self__, "last_uploaded_date", last_uploaded_date)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="onPremiseProperty")
+    def on_premise_property(self) -> pulumi.Input['OnPremisePropertyArgs']:
+        """
+        Properties from the on premise data controller
+        """
+        return pulumi.get(self, "on_premise_property")
+
+    @on_premise_property.setter
+    def on_premise_property(self, value: pulumi.Input['OnPremisePropertyArgs']):
+        pulumi.set(self, "on_premise_property", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Azure resource group
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="dataControllerName")
+    def data_controller_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "data_controller_name")
+
+    @data_controller_name.setter
+    def data_controller_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_controller_name", value)
+
+    @property
+    @pulumi.getter(name="k8sRaw")
+    def k8s_raw(self) -> Optional[Any]:
+        """
+        The raw kubernetes information
+        """
+        return pulumi.get(self, "k8s_raw")
+
+    @k8s_raw.setter
+    def k8s_raw(self, value: Optional[Any]):
+        pulumi.set(self, "k8s_raw", value)
+
+    @property
+    @pulumi.getter(name="lastUploadedDate")
+    def last_uploaded_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last uploaded date from on premise cluster. Defaults to current date time
+        """
+        return pulumi.get(self, "last_uploaded_date")
+
+    @last_uploaded_date.setter
+    def last_uploaded_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_uploaded_date", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class DataController(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[DataControllerArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Data controller resource
+
+        :param str resource_name: The name of the resource.
+        :param DataControllerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +166,27 @@ class DataController(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the Azure resource group
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DataControllerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+        	__self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+        	__self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 data_controller_name: Optional[pulumi.Input[str]] = None,
+                 k8s_raw: Optional[Any] = None,
+                 last_uploaded_date: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 on_premise_property: Optional[pulumi.Input[pulumi.InputType['OnPremisePropertyArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

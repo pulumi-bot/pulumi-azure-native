@@ -5,10 +5,79 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 
-__all__ = ['ContentItem']
+__all__ = ['ContentItemArgs', 'ContentItem']
+
+@pulumi.input_type
+class ContentItemArgs:
+    def __init__(__self__, *,
+                 content_type_id: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 content_item_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ContentItem resource.
+        :param pulumi.Input[str] content_type_id: Content type identifier.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] service_name: The name of the API Management service.
+        :param pulumi.Input[str] content_item_id: Content item identifier.
+        """
+        pulumi.set(__self__, "content_type_id", content_type_id)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "service_name", service_name)
+        if content_item_id is not None:
+            pulumi.set(__self__, "content_item_id", content_item_id)
+
+    @property
+    @pulumi.getter(name="contentTypeId")
+    def content_type_id(self) -> pulumi.Input[str]:
+        """
+        Content type identifier.
+        """
+        return pulumi.get(self, "content_type_id")
+
+    @content_type_id.setter
+    def content_type_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content_type_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        The name of the API Management service.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="contentItemId")
+    def content_item_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content item identifier.
+        """
+        return pulumi.get(self, "content_item_id")
+
+    @content_item_id.setter
+    def content_item_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_item_id", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:apimanagement:ContentItem'.""", DeprecationWarning)
 
@@ -16,6 +85,21 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class ContentItem(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:apimanagement:ContentItem'.""", DeprecationWarning)
 
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ContentItemArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Content type contract details.
+        Latest API Version: 2019-12-01.
+
+        :param str resource_name: The name of the resource.
+        :param ContentItemArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +121,24 @@ class ContentItem(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         :param pulumi.Input[str] service_name: The name of the API Management service.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ContentItemArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+        	__self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+        	__self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 content_item_id: Optional[pulumi.Input[str]] = None,
+                 content_type_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""ContentItem is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:apimanagement:ContentItem'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

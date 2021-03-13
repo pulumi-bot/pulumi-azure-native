@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from ._enums import *
 
@@ -3898,24 +3898,24 @@ class KeyVaultKeyReferenceKeyVaultArgs:
 @pulumi.input_type
 class KeyVaultReferenceArgs:
     def __init__(__self__, *,
-                 name: Optional[str] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The key vault reference.
-        :param str name: The key vault name.
+        :param pulumi.Input[str] name: The key vault name.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> Optional[pulumi.Input[str]]:
         """
         The key vault name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[str]):
+    def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
 

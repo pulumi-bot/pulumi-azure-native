@@ -5,11 +5,110 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from ._enums import *
 
-__all__ = ['LinkedServer']
+__all__ = ['LinkedServerArgs', 'LinkedServer']
+
+@pulumi.input_type
+class LinkedServerArgs:
+    def __init__(__self__, *,
+                 linked_redis_cache_id: pulumi.Input[str],
+                 linked_redis_cache_location: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 server_role: pulumi.Input['ReplicationRole'],
+                 linked_server_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LinkedServer resource.
+        :param pulumi.Input[str] linked_redis_cache_id: Fully qualified resourceId of the linked redis cache.
+        :param pulumi.Input[str] linked_redis_cache_location: Location of the linked redis cache.
+        :param pulumi.Input[str] name: The name of the Redis cache.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input['ReplicationRole'] server_role: Role of the linked server.
+        :param pulumi.Input[str] linked_server_name: The name of the linked server that is being added to the Redis cache.
+        """
+        pulumi.set(__self__, "linked_redis_cache_id", linked_redis_cache_id)
+        pulumi.set(__self__, "linked_redis_cache_location", linked_redis_cache_location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "server_role", server_role)
+        if linked_server_name is not None:
+            pulumi.set(__self__, "linked_server_name", linked_server_name)
+
+    @property
+    @pulumi.getter(name="linkedRedisCacheId")
+    def linked_redis_cache_id(self) -> pulumi.Input[str]:
+        """
+        Fully qualified resourceId of the linked redis cache.
+        """
+        return pulumi.get(self, "linked_redis_cache_id")
+
+    @linked_redis_cache_id.setter
+    def linked_redis_cache_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "linked_redis_cache_id", value)
+
+    @property
+    @pulumi.getter(name="linkedRedisCacheLocation")
+    def linked_redis_cache_location(self) -> pulumi.Input[str]:
+        """
+        Location of the linked redis cache.
+        """
+        return pulumi.get(self, "linked_redis_cache_location")
+
+    @linked_redis_cache_location.setter
+    def linked_redis_cache_location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "linked_redis_cache_location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Redis cache.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="serverRole")
+    def server_role(self) -> pulumi.Input['ReplicationRole']:
+        """
+        Role of the linked server.
+        """
+        return pulumi.get(self, "server_role")
+
+    @server_role.setter
+    def server_role(self, value: pulumi.Input['ReplicationRole']):
+        pulumi.set(self, "server_role", value)
+
+    @property
+    @pulumi.getter(name="linkedServerName")
+    def linked_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the linked server that is being added to the Redis cache.
+        """
+        return pulumi.get(self, "linked_server_name")
+
+    @linked_server_name.setter
+    def linked_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linked_server_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:cache:LinkedServer'.""", DeprecationWarning)
 
@@ -17,6 +116,21 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class LinkedServer(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:cache:LinkedServer'.""", DeprecationWarning)
 
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[LinkedServerArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Response to put/get linked server (with properties) for Redis cache.
+        Latest API Version: 2020-06-01.
+
+        :param str resource_name: The name of the resource.
+        :param LinkedServerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +156,26 @@ class LinkedServer(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         :param pulumi.Input['ReplicationRole'] server_role: Role of the linked server.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LinkedServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+        	__self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+        	__self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 linked_redis_cache_id: Optional[pulumi.Input[str]] = None,
+                 linked_redis_cache_location: Optional[pulumi.Input[str]] = None,
+                 linked_server_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_role: Optional[pulumi.Input['ReplicationRole']] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""LinkedServer is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:cache:LinkedServer'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

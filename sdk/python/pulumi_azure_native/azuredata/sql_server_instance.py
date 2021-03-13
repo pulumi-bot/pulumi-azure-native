@@ -5,14 +5,174 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 
-__all__ = ['SqlServerInstance']
+__all__ = ['SqlServerInstanceArgs', 'SqlServerInstance']
+
+@pulumi.input_type
+class SqlServerInstanceArgs:
+    def __init__(__self__, *,
+                 container_resource_id: pulumi.Input[str],
+                 edition: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 status: pulumi.Input[str],
+                 v_core: pulumi.Input[str],
+                 version: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
+                 sql_server_instance_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a SqlServerInstance resource.
+        :param pulumi.Input[str] container_resource_id: ARM Resource id of the container resource (Azure Arc for Servers)
+        :param pulumi.Input[str] edition: SQL Server edition.
+        :param pulumi.Input[str] resource_group_name: The name of the Azure resource group
+        :param pulumi.Input[str] status: The cloud connectivity status.
+        :param pulumi.Input[str] v_core: The number of logical processors used by the SQL Server instance.
+        :param pulumi.Input[str] version: SQL Server version.
+        :param pulumi.Input[str] location: The geo-location where the resource lives
+        :param pulumi.Input[str] sql_server_instance_name: The name of SQL Server Instance
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "container_resource_id", container_resource_id)
+        pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "v_core", v_core)
+        pulumi.set(__self__, "version", version)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if sql_server_instance_name is not None:
+            pulumi.set(__self__, "sql_server_instance_name", sql_server_instance_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="containerResourceId")
+    def container_resource_id(self) -> pulumi.Input[str]:
+        """
+        ARM Resource id of the container resource (Azure Arc for Servers)
+        """
+        return pulumi.get(self, "container_resource_id")
+
+    @container_resource_id.setter
+    def container_resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container_resource_id", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> pulumi.Input[str]:
+        """
+        SQL Server edition.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: pulumi.Input[str]):
+        pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Azure resource group
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[str]:
+        """
+        The cloud connectivity status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[str]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="vCore")
+    def v_core(self) -> pulumi.Input[str]:
+        """
+        The number of logical processors used by the SQL Server instance.
+        """
+        return pulumi.get(self, "v_core")
+
+    @v_core.setter
+    def v_core(self, value: pulumi.Input[str]):
+        pulumi.set(self, "v_core", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        SQL Server version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="sqlServerInstanceName")
+    def sql_server_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of SQL Server Instance
+        """
+        return pulumi.get(self, "sql_server_instance_name")
+
+    @sql_server_instance_name.setter
+    def sql_server_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_server_instance_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class SqlServerInstance(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[SqlServerInstanceArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A SqlServerInstance.
+        API Version: 2020-09-08-preview.
+
+        :param str resource_name: The name of the resource.
+        :param SqlServerInstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +204,29 @@ class SqlServerInstance(pulumi.CustomResource):
         :param pulumi.Input[str] v_core: The number of logical processors used by the SQL Server instance.
         :param pulumi.Input[str] version: SQL Server version.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SqlServerInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+        	__self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+        	__self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container_resource_id: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sql_server_instance_name: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 v_core: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

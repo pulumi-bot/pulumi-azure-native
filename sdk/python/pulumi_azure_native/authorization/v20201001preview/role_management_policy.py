@@ -5,16 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['RoleManagementPolicy']
+__all__ = ['RoleManagementPolicyArgs', 'RoleManagementPolicy']
+
+@pulumi.input_type
+class RoleManagementPolicyArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 is_organization_default: Optional[pulumi.Input[bool]] = None,
+                 role_management_policy_name: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleManagementPolicyApprovalRuleArgs', 'RoleManagementPolicyAuthenticationContextRuleArgs', 'RoleManagementPolicyEnablementRuleArgs', 'RoleManagementPolicyExpirationRuleArgs', 'RoleManagementPolicyNotificationRuleArgs']]]]] = None):
+        """
+        The set of arguments for constructing a RoleManagementPolicy resource.
+        :param pulumi.Input[str] scope: The role management policy scope.
+        :param pulumi.Input[str] description: The role management policy description.
+        :param pulumi.Input[str] display_name: The role management policy display name.
+        :param pulumi.Input[bool] is_organization_default: The role management policy is default policy.
+        :param pulumi.Input[str] role_management_policy_name: The name (guid) of the role management policy to upsert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleManagementPolicyApprovalRuleArgs', 'RoleManagementPolicyAuthenticationContextRuleArgs', 'RoleManagementPolicyEnablementRuleArgs', 'RoleManagementPolicyExpirationRuleArgs', 'RoleManagementPolicyNotificationRuleArgs']]]] rules: The rule applied to the policy.
+        """
+        pulumi.set(__self__, "scope", scope)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if is_organization_default is not None:
+            pulumi.set(__self__, "is_organization_default", is_organization_default)
+        if role_management_policy_name is not None:
+            pulumi.set(__self__, "role_management_policy_name", role_management_policy_name)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The role management policy scope.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role management policy description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role management policy display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="isOrganizationDefault")
+    def is_organization_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The role management policy is default policy.
+        """
+        return pulumi.get(self, "is_organization_default")
+
+    @is_organization_default.setter
+    def is_organization_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_organization_default", value)
+
+    @property
+    @pulumi.getter(name="roleManagementPolicyName")
+    def role_management_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name (guid) of the role management policy to upsert.
+        """
+        return pulumi.get(self, "role_management_policy_name")
+
+    @role_management_policy_name.setter
+    def role_management_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_management_policy_name", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleManagementPolicyApprovalRuleArgs', 'RoleManagementPolicyAuthenticationContextRuleArgs', 'RoleManagementPolicyEnablementRuleArgs', 'RoleManagementPolicyExpirationRuleArgs', 'RoleManagementPolicyNotificationRuleArgs']]]]]:
+        """
+        The rule applied to the policy.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleManagementPolicyApprovalRuleArgs', 'RoleManagementPolicyAuthenticationContextRuleArgs', 'RoleManagementPolicyEnablementRuleArgs', 'RoleManagementPolicyExpirationRuleArgs', 'RoleManagementPolicyNotificationRuleArgs']]]]]):
+        pulumi.set(self, "rules", value)
 
 
 class RoleManagementPolicy(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[RoleManagementPolicyArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Role management policy
+
+        :param str resource_name: The name of the resource.
+        :param RoleManagementPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +155,26 @@ class RoleManagementPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['RoleManagementPolicyApprovalRuleArgs'], pulumi.InputType['RoleManagementPolicyAuthenticationContextRuleArgs'], pulumi.InputType['RoleManagementPolicyEnablementRuleArgs'], pulumi.InputType['RoleManagementPolicyExpirationRuleArgs'], pulumi.InputType['RoleManagementPolicyNotificationRuleArgs']]]]] rules: The rule applied to the policy.
         :param pulumi.Input[str] scope: The role management policy scope.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleManagementPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+        	__self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+        	__self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 is_organization_default: Optional[pulumi.Input[bool]] = None,
+                 role_management_policy_name: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['RoleManagementPolicyApprovalRuleArgs'], pulumi.InputType['RoleManagementPolicyAuthenticationContextRuleArgs'], pulumi.InputType['RoleManagementPolicyEnablementRuleArgs'], pulumi.InputType['RoleManagementPolicyExpirationRuleArgs'], pulumi.InputType['RoleManagementPolicyNotificationRuleArgs']]]]]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
