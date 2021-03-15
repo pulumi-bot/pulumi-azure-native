@@ -5,15 +5,193 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DenyAssignment']
+__all__ = ['DenyAssignmentArgs', 'DenyAssignment']
+
+@pulumi.input_type
+class DenyAssignmentArgs:
+    def __init__(__self__, *,
+                 permissions: pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]],
+                 principals: pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]],
+                 scope: pulumi.Input[str],
+                 condition: Optional[pulumi.Input[str]] = None,
+                 condition_version: Optional[pulumi.Input[str]] = None,
+                 deny_assignment_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 do_not_apply_to_child_scopes: Optional[pulumi.Input[bool]] = None,
+                 exclude_principals: Optional[pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]] = None,
+                 is_system_protected: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a DenyAssignment resource.
+        :param pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]] permissions: An array of permissions that are denied by the deny assignment.
+        :param pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]] principals: Array of principals to which the deny assignment applies.
+        :param pulumi.Input[str] scope: The deny assignment scope.
+        :param pulumi.Input[str] condition: The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
+        :param pulumi.Input[str] condition_version: Version of the condition. Currently accepted value is '2.0'
+        :param pulumi.Input[str] deny_assignment_name: The display name of the deny assignment.
+        :param pulumi.Input[str] description: The description of the deny assignment.
+        :param pulumi.Input[bool] do_not_apply_to_child_scopes: Determines if the deny assignment applies to child scopes. Default value is false.
+        :param pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]] exclude_principals: Array of principals to which the deny assignment does not apply.
+        :param pulumi.Input[bool] is_system_protected: Specifies whether this deny assignment was created by Azure and cannot be edited or deleted.
+        """
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "principals", principals)
+        pulumi.set(__self__, "scope", scope)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if condition_version is not None:
+            pulumi.set(__self__, "condition_version", condition_version)
+        if deny_assignment_name is not None:
+            pulumi.set(__self__, "deny_assignment_name", deny_assignment_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if do_not_apply_to_child_scopes is not None:
+            pulumi.set(__self__, "do_not_apply_to_child_scopes", do_not_apply_to_child_scopes)
+        if exclude_principals is not None:
+            pulumi.set(__self__, "exclude_principals", exclude_principals)
+        if is_system_protected is not None:
+            pulumi.set(__self__, "is_system_protected", is_system_protected)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]:
+        """
+        An array of permissions that are denied by the deny assignment.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]):
+        pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]:
+        """
+        Array of principals to which the deny assignment applies.
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]):
+        pulumi.set(self, "principals", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The deny assignment scope.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="conditionVersion")
+    def condition_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the condition. Currently accepted value is '2.0'
+        """
+        return pulumi.get(self, "condition_version")
+
+    @condition_version.setter
+    def condition_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition_version", value)
+
+    @property
+    @pulumi.getter(name="denyAssignmentName")
+    def deny_assignment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the deny assignment.
+        """
+        return pulumi.get(self, "deny_assignment_name")
+
+    @deny_assignment_name.setter
+    def deny_assignment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deny_assignment_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the deny assignment.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="doNotApplyToChildScopes")
+    def do_not_apply_to_child_scopes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the deny assignment applies to child scopes. Default value is false.
+        """
+        return pulumi.get(self, "do_not_apply_to_child_scopes")
+
+    @do_not_apply_to_child_scopes.setter
+    def do_not_apply_to_child_scopes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "do_not_apply_to_child_scopes", value)
+
+    @property
+    @pulumi.getter(name="excludePrincipals")
+    def exclude_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]]:
+        """
+        Array of principals to which the deny assignment does not apply.
+        """
+        return pulumi.get(self, "exclude_principals")
+
+    @exclude_principals.setter
+    def exclude_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]]):
+        pulumi.set(self, "exclude_principals", value)
+
+    @property
+    @pulumi.getter(name="isSystemProtected")
+    def is_system_protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether this deny assignment was created by Azure and cannot be edited or deleted.
+        """
+        return pulumi.get(self, "is_system_protected")
+
+    @is_system_protected.setter
+    def is_system_protected(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_system_protected", value)
 
 
 class DenyAssignment(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DenyAssignmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Deny Assignment
+
+        :param str resource_name: The name of the resource.
+        :param DenyAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +224,30 @@ class DenyAssignment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrincipalArgs']]]] principals: Array of principals to which the deny assignment applies.
         :param pulumi.Input[str] scope: The deny assignment scope.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DenyAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[str]] = None,
+                 condition_version: Optional[pulumi.Input[str]] = None,
+                 deny_assignment_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 do_not_apply_to_child_scopes: Optional[pulumi.Input[bool]] = None,
+                 exclude_principals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrincipalArgs']]]]] = None,
+                 is_system_protected: Optional[pulumi.Input[bool]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PermissionArgs']]]]] = None,
+                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrincipalArgs']]]]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

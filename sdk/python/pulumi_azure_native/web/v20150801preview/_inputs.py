@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from ._enums import *
 
@@ -1203,18 +1203,18 @@ class ConnectionStatusArgs:
 @pulumi.input_type
 class ConsentLinkInputParameterArgs:
     def __init__(__self__, *,
-                 object_id: Optional[str] = None,
-                 parameter_name: Optional[str] = None,
-                 principal_type: Optional['PrincipalType'] = None,
-                 redirect_url: Optional[str] = None,
-                 tenant_id: Optional[str] = None):
+                 object_id: Optional[pulumi.Input[str]] = None,
+                 parameter_name: Optional[pulumi.Input[str]] = None,
+                 principal_type: Optional[pulumi.Input['PrincipalType']] = None,
+                 redirect_url: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
         """
-        :param str object_id: AAD OID (user or group) if the principal type is ActiveDirectory.
+        :param pulumi.Input[str] object_id: AAD OID (user or group) if the principal type is ActiveDirectory.
                            MSA PUID if the principal type is MicrosoftAccount.
-        :param str parameter_name: Name of the parameter in the connection provider's oauthSettings
-        :param 'PrincipalType' principal_type: Principal type
-        :param str redirect_url: Name of the parameter in the connection provider's oauthSettings
-        :param str tenant_id: Tenant Id
+        :param pulumi.Input[str] parameter_name: Name of the parameter in the connection provider's oauthSettings
+        :param pulumi.Input['PrincipalType'] principal_type: Principal type
+        :param pulumi.Input[str] redirect_url: Name of the parameter in the connection provider's oauthSettings
+        :param pulumi.Input[str] tenant_id: Tenant Id
         """
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
@@ -1229,7 +1229,7 @@ class ConsentLinkInputParameterArgs:
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[str]:
+    def object_id(self) -> Optional[pulumi.Input[str]]:
         """
         AAD OID (user or group) if the principal type is ActiveDirectory.
                     MSA PUID if the principal type is MicrosoftAccount.
@@ -1237,55 +1237,55 @@ class ConsentLinkInputParameterArgs:
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[str]):
+    def object_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_id", value)
 
     @property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> Optional[str]:
+    def parameter_name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the parameter in the connection provider's oauthSettings
         """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
-    def parameter_name(self, value: Optional[str]):
+    def parameter_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_name", value)
 
     @property
     @pulumi.getter(name="principalType")
-    def principal_type(self) -> Optional['PrincipalType']:
+    def principal_type(self) -> Optional[pulumi.Input['PrincipalType']]:
         """
         Principal type
         """
         return pulumi.get(self, "principal_type")
 
     @principal_type.setter
-    def principal_type(self, value: Optional['PrincipalType']):
+    def principal_type(self, value: Optional[pulumi.Input['PrincipalType']]):
         pulumi.set(self, "principal_type", value)
 
     @property
     @pulumi.getter(name="redirectUrl")
-    def redirect_url(self) -> Optional[str]:
+    def redirect_url(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the parameter in the connection provider's oauthSettings
         """
         return pulumi.get(self, "redirect_url")
 
     @redirect_url.setter
-    def redirect_url(self, value: Optional[str]):
+    def redirect_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redirect_url", value)
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[str]:
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
         Tenant Id
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[str]):
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tenant_id", value)
 
 

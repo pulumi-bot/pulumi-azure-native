@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from ._enums import *
 
@@ -18,24 +18,24 @@ __all__ = [
 @pulumi.input_type
 class AuthenticationDetailsValueArgs:
     def __init__(__self__, *,
-                 token: Optional[str] = None):
+                 token: Optional[pulumi.Input[str]] = None):
         """
         Authentication token value.
-        :param str token: Authentication token.
+        :param pulumi.Input[str] token: Authentication token.
         """
         if token is not None:
             pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> Optional[pulumi.Input[str]]:
         """
         Authentication token.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[str]):
+    def token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token", value)
 
 

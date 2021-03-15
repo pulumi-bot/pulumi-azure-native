@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from ._enums import *
 
@@ -2515,16 +2515,16 @@ class ConnectionStatusDefinitionArgs:
 @pulumi.input_type
 class ConsentLinkParameterDefinitionArgs:
     def __init__(__self__, *,
-                 object_id: Optional[str] = None,
-                 parameter_name: Optional[str] = None,
-                 redirect_url: Optional[str] = None,
-                 tenant_id: Optional[str] = None):
+                 object_id: Optional[pulumi.Input[str]] = None,
+                 parameter_name: Optional[pulumi.Input[str]] = None,
+                 redirect_url: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Consent link definition
-        :param str object_id: AAD OID (user or group) if the principal type is ActiveDirectory. MSA PUID if the principal type is MicrosoftAccount
-        :param str parameter_name: Name of the parameter in the connection provider's OAuth settings
-        :param str redirect_url: Name of the parameter in the connection provider's OAuth settings
-        :param str tenant_id: The tenant id
+        :param pulumi.Input[str] object_id: AAD OID (user or group) if the principal type is ActiveDirectory. MSA PUID if the principal type is MicrosoftAccount
+        :param pulumi.Input[str] parameter_name: Name of the parameter in the connection provider's OAuth settings
+        :param pulumi.Input[str] redirect_url: Name of the parameter in the connection provider's OAuth settings
+        :param pulumi.Input[str] tenant_id: The tenant id
         """
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
@@ -2537,50 +2537,50 @@ class ConsentLinkParameterDefinitionArgs:
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[str]:
+    def object_id(self) -> Optional[pulumi.Input[str]]:
         """
         AAD OID (user or group) if the principal type is ActiveDirectory. MSA PUID if the principal type is MicrosoftAccount
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[str]):
+    def object_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_id", value)
 
     @property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> Optional[str]:
+    def parameter_name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the parameter in the connection provider's OAuth settings
         """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
-    def parameter_name(self, value: Optional[str]):
+    def parameter_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_name", value)
 
     @property
     @pulumi.getter(name="redirectUrl")
-    def redirect_url(self) -> Optional[str]:
+    def redirect_url(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the parameter in the connection provider's OAuth settings
         """
         return pulumi.get(self, "redirect_url")
 
     @redirect_url.setter
-    def redirect_url(self, value: Optional[str]):
+    def redirect_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redirect_url", value)
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[str]:
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
         The tenant id
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[str]):
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tenant_id", value)
 
 

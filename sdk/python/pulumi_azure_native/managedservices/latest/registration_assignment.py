@@ -5,12 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegistrationAssignment']
+__all__ = ['RegistrationAssignmentArgs', 'RegistrationAssignment']
+
+@pulumi.input_type
+class RegistrationAssignmentArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str],
+                 properties: Optional[pulumi.Input['RegistrationAssignmentPropertiesArgs']] = None,
+                 registration_assignment_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RegistrationAssignment resource.
+        :param pulumi.Input[str] scope: Scope of the resource.
+        :param pulumi.Input['RegistrationAssignmentPropertiesArgs'] properties: Properties of a registration assignment.
+        :param pulumi.Input[str] registration_assignment_id: Guid of the registration assignment.
+        """
+        pulumi.set(__self__, "scope", scope)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if registration_assignment_id is not None:
+            pulumi.set(__self__, "registration_assignment_id", registration_assignment_id)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        Scope of the resource.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['RegistrationAssignmentPropertiesArgs']]:
+        """
+        Properties of a registration assignment.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['RegistrationAssignmentPropertiesArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="registrationAssignmentId")
+    def registration_assignment_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Guid of the registration assignment.
+        """
+        return pulumi.get(self, "registration_assignment_id")
+
+    @registration_assignment_id.setter
+    def registration_assignment_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registration_assignment_id", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:managedservices:RegistrationAssignment'.""", DeprecationWarning)
 
@@ -18,6 +73,21 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class RegistrationAssignment(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:managedservices:RegistrationAssignment'.""", DeprecationWarning)
 
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegistrationAssignmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Registration assignment.
+        Latest API Version: 2019-09-01.
+
+        :param str resource_name: The name of the resource.
+        :param RegistrationAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +107,23 @@ class RegistrationAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] registration_assignment_id: Guid of the registration assignment.
         :param pulumi.Input[str] scope: Scope of the resource.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegistrationAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['RegistrationAssignmentPropertiesArgs']]] = None,
+                 registration_assignment_id: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""RegistrationAssignment is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:managedservices:RegistrationAssignment'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

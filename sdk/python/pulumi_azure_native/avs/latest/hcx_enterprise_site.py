@@ -5,10 +5,64 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 
-__all__ = ['HcxEnterpriseSite']
+__all__ = ['HcxEnterpriseSiteArgs', 'HcxEnterpriseSite']
+
+@pulumi.input_type
+class HcxEnterpriseSiteArgs:
+    def __init__(__self__, *,
+                 private_cloud_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 hcx_enterprise_site_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a HcxEnterpriseSite resource.
+        :param pulumi.Input[str] private_cloud_name: The name of the private cloud.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] hcx_enterprise_site_name: Name of the HCX Enterprise Site in the private cloud
+        """
+        pulumi.set(__self__, "private_cloud_name", private_cloud_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if hcx_enterprise_site_name is not None:
+            pulumi.set(__self__, "hcx_enterprise_site_name", hcx_enterprise_site_name)
+
+    @property
+    @pulumi.getter(name="privateCloudName")
+    def private_cloud_name(self) -> pulumi.Input[str]:
+        """
+        The name of the private cloud.
+        """
+        return pulumi.get(self, "private_cloud_name")
+
+    @private_cloud_name.setter
+    def private_cloud_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_cloud_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="hcxEnterpriseSiteName")
+    def hcx_enterprise_site_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the HCX Enterprise Site in the private cloud
+        """
+        return pulumi.get(self, "hcx_enterprise_site_name")
+
+    @hcx_enterprise_site_name.setter
+    def hcx_enterprise_site_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hcx_enterprise_site_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:avs:HcxEnterpriseSite'.""", DeprecationWarning)
 
@@ -16,6 +70,21 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class HcxEnterpriseSite(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:avs:HcxEnterpriseSite'.""", DeprecationWarning)
 
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HcxEnterpriseSiteArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An HCX Enterprise Site resource
+        Latest API Version: 2020-03-20.
+
+        :param str resource_name: The name of the resource.
+        :param HcxEnterpriseSiteArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +104,23 @@ class HcxEnterpriseSite(pulumi.CustomResource):
         :param pulumi.Input[str] private_cloud_name: The name of the private cloud.
         :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HcxEnterpriseSiteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 hcx_enterprise_site_name: Optional[pulumi.Input[str]] = None,
+                 private_cloud_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""HcxEnterpriseSite is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:avs:HcxEnterpriseSite'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

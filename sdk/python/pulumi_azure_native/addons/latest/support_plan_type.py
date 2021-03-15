@@ -5,10 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 
-__all__ = ['SupportPlanType']
+__all__ = ['SupportPlanTypeArgs', 'SupportPlanType']
+
+@pulumi.input_type
+class SupportPlanTypeArgs:
+    def __init__(__self__, *,
+                 provider_name: pulumi.Input[str],
+                 plan_type_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SupportPlanType resource.
+        :param pulumi.Input[str] provider_name: The support plan type. For now the only valid type is "canonical".
+        :param pulumi.Input[str] plan_type_name: The Canonical support plan type.
+        """
+        pulumi.set(__self__, "provider_name", provider_name)
+        if plan_type_name is not None:
+            pulumi.set(__self__, "plan_type_name", plan_type_name)
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> pulumi.Input[str]:
+        """
+        The support plan type. For now the only valid type is "canonical".
+        """
+        return pulumi.get(self, "provider_name")
+
+    @provider_name.setter
+    def provider_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "provider_name", value)
+
+    @property
+    @pulumi.getter(name="planTypeName")
+    def plan_type_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Canonical support plan type.
+        """
+        return pulumi.get(self, "plan_type_name")
+
+    @plan_type_name.setter
+    def plan_type_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_type_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:addons:SupportPlanType'.""", DeprecationWarning)
 
@@ -16,6 +55,21 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class SupportPlanType(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:addons:SupportPlanType'.""", DeprecationWarning)
 
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SupportPlanTypeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The status of the Canonical support plan.
+        Latest API Version: 2018-03-01.
+
+        :param str resource_name: The name of the resource.
+        :param SupportPlanTypeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +87,22 @@ class SupportPlanType(pulumi.CustomResource):
         :param pulumi.Input[str] plan_type_name: The Canonical support plan type.
         :param pulumi.Input[str] provider_name: The support plan type. For now the only valid type is "canonical".
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SupportPlanTypeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 plan_type_name: Optional[pulumi.Input[str]] = None,
+                 provider_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""SupportPlanType is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:addons:SupportPlanType'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
