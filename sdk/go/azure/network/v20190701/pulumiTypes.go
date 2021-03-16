@@ -9720,7 +9720,7 @@ func (i ApplicationGatewayUrlPathMapArgs) ToApplicationGatewayUrlPathMapOutputWi
 // ApplicationGatewayUrlPathMapArrayInput is an input type that accepts ApplicationGatewayUrlPathMapArray and ApplicationGatewayUrlPathMapArrayOutput values.
 // You can construct a concrete instance of `ApplicationGatewayUrlPathMapArrayInput` via:
 //
-//          ApplicationGatewayUrlPathMapArray{ ApplicationGatewayUrlPathMapArgs{...} }
+//          ApplicationGatewayUrlPathMapArray{ ApplicationGatewayUrlPathMap{ "key": ApplicationGatewayUrlPathArgs{...} } }
 type ApplicationGatewayUrlPathMapArrayInput interface {
 	pulumi.Input
 
