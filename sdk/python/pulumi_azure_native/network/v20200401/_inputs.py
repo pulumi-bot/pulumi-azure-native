@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 from ._enums import *
 
@@ -4490,23 +4490,23 @@ class BastionHostIPConfigurationArgs:
 @pulumi.input_type
 class BastionShareableLinkArgs:
     def __init__(__self__, *,
-                 vm: 'VMArgs'):
+                 vm: pulumi.Input['VMArgs']):
         """
         Bastion Shareable Link.
-        :param 'VMArgs' vm: Reference of the virtual machine resource.
+        :param pulumi.Input['VMArgs'] vm: Reference of the virtual machine resource.
         """
         pulumi.set(__self__, "vm", vm)
 
     @property
     @pulumi.getter
-    def vm(self) -> 'VMArgs':
+    def vm(self) -> pulumi.Input['VMArgs']:
         """
         Reference of the virtual machine resource.
         """
         return pulumi.get(self, "vm")
 
     @vm.setter
-    def vm(self, value: 'VMArgs'):
+    def vm(self, value: pulumi.Input['VMArgs']):
         pulumi.set(self, "vm", value)
 
 
@@ -13495,14 +13495,14 @@ class TrafficSelectorPolicyArgs:
 @pulumi.input_type
 class VMArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 location: Optional[str] = None,
-                 tags: Optional[Mapping[str, str]] = None):
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Describes a Virtual Machine.
-        :param str id: Resource ID.
-        :param str location: Resource location.
-        :param Mapping[str, str] tags: Resource tags.
+        :param pulumi.Input[str] id: Resource ID.
+        :param pulumi.Input[str] location: Resource location.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -13513,38 +13513,38 @@ class VMArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> Optional[pulumi.Input[str]]:
         """
         Resource ID.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> Optional[pulumi.Input[str]]:
         """
         Resource location.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[str]):
+    def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[Mapping[str, str]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
