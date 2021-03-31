@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:devices/latest:Certificate":
-		r, err = NewCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &Certificate{}
 	case "azure-native:devices/latest:DpsCertificate":
-		r, err = NewDpsCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &DpsCertificate{}
 	case "azure-native:devices/latest:IotDpsResource":
-		r, err = NewIotDpsResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &IotDpsResource{}
 	case "azure-native:devices/latest:IotDpsResourcePrivateEndpointConnection":
-		r, err = NewIotDpsResourcePrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &IotDpsResourcePrivateEndpointConnection{}
 	case "azure-native:devices/latest:IotHubResource":
-		r, err = NewIotHubResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &IotHubResource{}
 	case "azure-native:devices/latest:IotHubResourceEventHubConsumerGroup":
-		r, err = NewIotHubResourceEventHubConsumerGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &IotHubResourceEventHubConsumerGroup{}
 	case "azure-native:devices/latest:PrivateEndpointConnection":
-		r, err = NewPrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &PrivateEndpointConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

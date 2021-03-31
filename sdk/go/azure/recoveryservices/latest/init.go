@@ -22,41 +22,42 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:recoveryservices/latest:PrivateEndpointConnection":
-		r, err = NewPrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &PrivateEndpointConnection{}
 	case "azure-native:recoveryservices/latest:ProtectedItem":
-		r, err = NewProtectedItem(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProtectedItem{}
 	case "azure-native:recoveryservices/latest:ProtectionContainer":
-		r, err = NewProtectionContainer(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProtectionContainer{}
 	case "azure-native:recoveryservices/latest:ProtectionIntent":
-		r, err = NewProtectionIntent(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProtectionIntent{}
 	case "azure-native:recoveryservices/latest:ProtectionPolicy":
-		r, err = NewProtectionPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProtectionPolicy{}
 	case "azure-native:recoveryservices/latest:ReplicationFabric":
-		r, err = NewReplicationFabric(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationFabric{}
 	case "azure-native:recoveryservices/latest:ReplicationMigrationItem":
-		r, err = NewReplicationMigrationItem(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationMigrationItem{}
 	case "azure-native:recoveryservices/latest:ReplicationNetworkMapping":
-		r, err = NewReplicationNetworkMapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationNetworkMapping{}
 	case "azure-native:recoveryservices/latest:ReplicationPolicy":
-		r, err = NewReplicationPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationPolicy{}
 	case "azure-native:recoveryservices/latest:ReplicationProtectedItem":
-		r, err = NewReplicationProtectedItem(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationProtectedItem{}
 	case "azure-native:recoveryservices/latest:ReplicationProtectionContainerMapping":
-		r, err = NewReplicationProtectionContainerMapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationProtectionContainerMapping{}
 	case "azure-native:recoveryservices/latest:ReplicationRecoveryPlan":
-		r, err = NewReplicationRecoveryPlan(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationRecoveryPlan{}
 	case "azure-native:recoveryservices/latest:ReplicationRecoveryServicesProvider":
-		r, err = NewReplicationRecoveryServicesProvider(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationRecoveryServicesProvider{}
 	case "azure-native:recoveryservices/latest:ReplicationStorageClassificationMapping":
-		r, err = NewReplicationStorageClassificationMapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationStorageClassificationMapping{}
 	case "azure-native:recoveryservices/latest:ReplicationvCenter":
-		r, err = NewReplicationvCenter(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReplicationvCenter{}
 	case "azure-native:recoveryservices/latest:Vault":
-		r, err = NewVault(ctx, name, nil, pulumi.URN_(urn))
+		r = &Vault{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

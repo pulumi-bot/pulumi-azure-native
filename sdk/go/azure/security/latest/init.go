@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:security/latest:AdaptiveApplicationControl":
-		r, err = NewAdaptiveApplicationControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &AdaptiveApplicationControl{}
 	case "azure-native:security/latest:Assessment":
-		r, err = NewAssessment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Assessment{}
 	case "azure-native:security/latest:AssessmentMetadataInSubscription":
-		r, err = NewAssessmentMetadataInSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &AssessmentMetadataInSubscription{}
 	case "azure-native:security/latest:DeviceSecurityGroup":
-		r, err = NewDeviceSecurityGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeviceSecurityGroup{}
 	case "azure-native:security/latest:IotSecuritySolution":
-		r, err = NewIotSecuritySolution(ctx, name, nil, pulumi.URN_(urn))
+		r = &IotSecuritySolution{}
 	case "azure-native:security/latest:JitNetworkAccessPolicy":
-		r, err = NewJitNetworkAccessPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &JitNetworkAccessPolicy{}
 	case "azure-native:security/latest:ServerVulnerabilityAssessment":
-		r, err = NewServerVulnerabilityAssessment(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerVulnerabilityAssessment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -22,31 +22,32 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:servicebus/latest:DisasterRecoveryConfig":
-		r, err = NewDisasterRecoveryConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &DisasterRecoveryConfig{}
 	case "azure-native:servicebus/latest:MigrationConfig":
-		r, err = NewMigrationConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &MigrationConfig{}
 	case "azure-native:servicebus/latest:Namespace":
-		r, err = NewNamespace(ctx, name, nil, pulumi.URN_(urn))
+		r = &Namespace{}
 	case "azure-native:servicebus/latest:NamespaceAuthorizationRule":
-		r, err = NewNamespaceAuthorizationRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceAuthorizationRule{}
 	case "azure-native:servicebus/latest:NamespaceNetworkRuleSet":
-		r, err = NewNamespaceNetworkRuleSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceNetworkRuleSet{}
 	case "azure-native:servicebus/latest:Queue":
-		r, err = NewQueue(ctx, name, nil, pulumi.URN_(urn))
+		r = &Queue{}
 	case "azure-native:servicebus/latest:QueueAuthorizationRule":
-		r, err = NewQueueAuthorizationRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &QueueAuthorizationRule{}
 	case "azure-native:servicebus/latest:Rule":
-		r, err = NewRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &Rule{}
 	case "azure-native:servicebus/latest:Subscription":
-		r, err = NewSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subscription{}
 	case "azure-native:servicebus/latest:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &Topic{}
 	case "azure-native:servicebus/latest:TopicAuthorizationRule":
-		r, err = NewTopicAuthorizationRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &TopicAuthorizationRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
