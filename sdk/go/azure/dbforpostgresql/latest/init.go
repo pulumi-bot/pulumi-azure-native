@@ -22,25 +22,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:dbforpostgresql/latest:Configuration":
-		r, err = NewConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &Configuration{}
 	case "azure-native:dbforpostgresql/latest:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "azure-native:dbforpostgresql/latest:FirewallRule":
-		r, err = NewFirewallRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &FirewallRule{}
 	case "azure-native:dbforpostgresql/latest:PrivateEndpointConnection":
-		r, err = NewPrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &PrivateEndpointConnection{}
 	case "azure-native:dbforpostgresql/latest:Server":
-		r, err = NewServer(ctx, name, nil, pulumi.URN_(urn))
+		r = &Server{}
 	case "azure-native:dbforpostgresql/latest:ServerAdministrator":
-		r, err = NewServerAdministrator(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerAdministrator{}
 	case "azure-native:dbforpostgresql/latest:ServerKey":
-		r, err = NewServerKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerKey{}
 	case "azure-native:dbforpostgresql/latest:VirtualNetworkRule":
-		r, err = NewVirtualNetworkRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualNetworkRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

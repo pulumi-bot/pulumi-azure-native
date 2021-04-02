@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:migrate/latest:Assessment":
-		r, err = NewAssessment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Assessment{}
 	case "azure-native:migrate/latest:Group":
-		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Group{}
 	case "azure-native:migrate/latest:HyperVCollector":
-		r, err = NewHyperVCollector(ctx, name, nil, pulumi.URN_(urn))
+		r = &HyperVCollector{}
 	case "azure-native:migrate/latest:MoveCollection":
-		r, err = NewMoveCollection(ctx, name, nil, pulumi.URN_(urn))
+		r = &MoveCollection{}
 	case "azure-native:migrate/latest:MoveResource":
-		r, err = NewMoveResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &MoveResource{}
 	case "azure-native:migrate/latest:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "azure-native:migrate/latest:VMwareCollector":
-		r, err = NewVMwareCollector(ctx, name, nil, pulumi.URN_(urn))
+		r = &VMwareCollector{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

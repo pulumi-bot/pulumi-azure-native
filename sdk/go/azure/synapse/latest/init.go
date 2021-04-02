@@ -22,43 +22,44 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:synapse/latest:BigDataPool":
-		r, err = NewBigDataPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &BigDataPool{}
 	case "azure-native:synapse/latest:IntegrationRuntime":
-		r, err = NewIntegrationRuntime(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationRuntime{}
 	case "azure-native:synapse/latest:IpFirewallRule":
-		r, err = NewIpFirewallRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &IpFirewallRule{}
 	case "azure-native:synapse/latest:Key":
-		r, err = NewKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &Key{}
 	case "azure-native:synapse/latest:PrivateEndpointConnection":
-		r, err = NewPrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &PrivateEndpointConnection{}
 	case "azure-native:synapse/latest:PrivateLinkHub":
-		r, err = NewPrivateLinkHub(ctx, name, nil, pulumi.URN_(urn))
+		r = &PrivateLinkHub{}
 	case "azure-native:synapse/latest:SqlPool":
-		r, err = NewSqlPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &SqlPool{}
 	case "azure-native:synapse/latest:SqlPoolSensitivityLabel":
-		r, err = NewSqlPoolSensitivityLabel(ctx, name, nil, pulumi.URN_(urn))
+		r = &SqlPoolSensitivityLabel{}
 	case "azure-native:synapse/latest:SqlPoolTransparentDataEncryption":
-		r, err = NewSqlPoolTransparentDataEncryption(ctx, name, nil, pulumi.URN_(urn))
+		r = &SqlPoolTransparentDataEncryption{}
 	case "azure-native:synapse/latest:SqlPoolVulnerabilityAssessment":
-		r, err = NewSqlPoolVulnerabilityAssessment(ctx, name, nil, pulumi.URN_(urn))
+		r = &SqlPoolVulnerabilityAssessment{}
 	case "azure-native:synapse/latest:SqlPoolVulnerabilityAssessmentRuleBaseline":
-		r, err = NewSqlPoolVulnerabilityAssessmentRuleBaseline(ctx, name, nil, pulumi.URN_(urn))
+		r = &SqlPoolVulnerabilityAssessmentRuleBaseline{}
 	case "azure-native:synapse/latest:SqlPoolWorkloadClassifier":
-		r, err = NewSqlPoolWorkloadClassifier(ctx, name, nil, pulumi.URN_(urn))
+		r = &SqlPoolWorkloadClassifier{}
 	case "azure-native:synapse/latest:SqlPoolWorkloadGroup":
-		r, err = NewSqlPoolWorkloadGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &SqlPoolWorkloadGroup{}
 	case "azure-native:synapse/latest:Workspace":
-		r, err = NewWorkspace(ctx, name, nil, pulumi.URN_(urn))
+		r = &Workspace{}
 	case "azure-native:synapse/latest:WorkspaceAadAdmin":
-		r, err = NewWorkspaceAadAdmin(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkspaceAadAdmin{}
 	case "azure-native:synapse/latest:WorkspaceManagedSqlServerVulnerabilityAssessment":
-		r, err = NewWorkspaceManagedSqlServerVulnerabilityAssessment(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkspaceManagedSqlServerVulnerabilityAssessment{}
 	case "azure-native:synapse/latest:WorkspaceSqlAadAdmin":
-		r, err = NewWorkspaceSqlAadAdmin(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkspaceSqlAadAdmin{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

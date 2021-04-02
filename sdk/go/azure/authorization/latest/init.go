@@ -22,31 +22,32 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:authorization/latest:ManagementLockAtResourceGroupLevel":
-		r, err = NewManagementLockAtResourceGroupLevel(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagementLockAtResourceGroupLevel{}
 	case "azure-native:authorization/latest:ManagementLockAtResourceLevel":
-		r, err = NewManagementLockAtResourceLevel(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagementLockAtResourceLevel{}
 	case "azure-native:authorization/latest:ManagementLockAtSubscriptionLevel":
-		r, err = NewManagementLockAtSubscriptionLevel(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagementLockAtSubscriptionLevel{}
 	case "azure-native:authorization/latest:ManagementLockByScope":
-		r, err = NewManagementLockByScope(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagementLockByScope{}
 	case "azure-native:authorization/latest:PolicyAssignment":
-		r, err = NewPolicyAssignment(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyAssignment{}
 	case "azure-native:authorization/latest:PolicyDefinition":
-		r, err = NewPolicyDefinition(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyDefinition{}
 	case "azure-native:authorization/latest:PolicyDefinitionAtManagementGroup":
-		r, err = NewPolicyDefinitionAtManagementGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyDefinitionAtManagementGroup{}
 	case "azure-native:authorization/latest:PolicySetDefinition":
-		r, err = NewPolicySetDefinition(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicySetDefinition{}
 	case "azure-native:authorization/latest:PolicySetDefinitionAtManagementGroup":
-		r, err = NewPolicySetDefinitionAtManagementGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicySetDefinitionAtManagementGroup{}
 	case "azure-native:authorization/latest:RoleAssignment":
-		r, err = NewRoleAssignment(ctx, name, nil, pulumi.URN_(urn))
+		r = &RoleAssignment{}
 	case "azure-native:authorization/latest:RoleDefinition":
-		r, err = NewRoleDefinition(ctx, name, nil, pulumi.URN_(urn))
+		r = &RoleDefinition{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

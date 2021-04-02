@@ -5,10 +5,80 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities, _tables
 
-__all__ = ['RegisteredPrefix']
+__all__ = ['RegisteredPrefixArgs', 'RegisteredPrefix']
+
+@pulumi.input_type
+class RegisteredPrefixArgs:
+    def __init__(__self__, *,
+                 peering_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 registered_prefix_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RegisteredPrefix resource.
+        :param pulumi.Input[str] peering_name: The name of the peering.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] prefix: The customer's prefix from which traffic originates.
+        :param pulumi.Input[str] registered_prefix_name: The name of the registered prefix.
+        """
+        pulumi.set(__self__, "peering_name", peering_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if registered_prefix_name is not None:
+            pulumi.set(__self__, "registered_prefix_name", registered_prefix_name)
+
+    @property
+    @pulumi.getter(name="peeringName")
+    def peering_name(self) -> pulumi.Input[str]:
+        """
+        The name of the peering.
+        """
+        return pulumi.get(self, "peering_name")
+
+    @peering_name.setter
+    def peering_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peering_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The customer's prefix from which traffic originates.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter(name="registeredPrefixName")
+    def registered_prefix_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the registered prefix.
+        """
+        return pulumi.get(self, "registered_prefix_name")
+
+    @registered_prefix_name.setter
+    def registered_prefix_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registered_prefix_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:peering:RegisteredPrefix'.""", DeprecationWarning)
 
@@ -16,6 +86,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class RegisteredPrefix(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:peering:RegisteredPrefix'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +108,38 @@ class RegisteredPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] registered_prefix_name: The name of the registered prefix.
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegisteredPrefixArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The customer's prefix that is registered by the peering service provider.
+        Latest API Version: 2021-01-01.
+
+        :param str resource_name: The name of the resource.
+        :param RegisteredPrefixArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegisteredPrefixArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 peering_name: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 registered_prefix_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""RegisteredPrefix is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:peering:RegisteredPrefix'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:dataprotection/latest:BackupInstance":
-		r, err = NewBackupInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackupInstance{}
 	case "azure-native:dataprotection/latest:BackupPolicy":
-		r, err = NewBackupPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackupPolicy{}
 	case "azure-native:dataprotection/latest:BackupVault":
-		r, err = NewBackupVault(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackupVault{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

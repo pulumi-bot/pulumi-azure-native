@@ -22,35 +22,36 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:logic/latest:IntegrationAccount":
-		r, err = NewIntegrationAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccount{}
 	case "azure-native:logic/latest:IntegrationAccountAgreement":
-		r, err = NewIntegrationAccountAgreement(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountAgreement{}
 	case "azure-native:logic/latest:IntegrationAccountAssembly":
-		r, err = NewIntegrationAccountAssembly(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountAssembly{}
 	case "azure-native:logic/latest:IntegrationAccountBatchConfiguration":
-		r, err = NewIntegrationAccountBatchConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountBatchConfiguration{}
 	case "azure-native:logic/latest:IntegrationAccountCertificate":
-		r, err = NewIntegrationAccountCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountCertificate{}
 	case "azure-native:logic/latest:IntegrationAccountMap":
-		r, err = NewIntegrationAccountMap(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountMap{}
 	case "azure-native:logic/latest:IntegrationAccountPartner":
-		r, err = NewIntegrationAccountPartner(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountPartner{}
 	case "azure-native:logic/latest:IntegrationAccountSchema":
-		r, err = NewIntegrationAccountSchema(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountSchema{}
 	case "azure-native:logic/latest:IntegrationAccountSession":
-		r, err = NewIntegrationAccountSession(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationAccountSession{}
 	case "azure-native:logic/latest:IntegrationServiceEnvironment":
-		r, err = NewIntegrationServiceEnvironment(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationServiceEnvironment{}
 	case "azure-native:logic/latest:IntegrationServiceEnvironmentManagedApi":
-		r, err = NewIntegrationServiceEnvironmentManagedApi(ctx, name, nil, pulumi.URN_(urn))
+		r = &IntegrationServiceEnvironmentManagedApi{}
 	case "azure-native:logic/latest:RosettaNetProcessConfiguration":
-		r, err = NewRosettaNetProcessConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &RosettaNetProcessConfiguration{}
 	case "azure-native:logic/latest:Workflow":
-		r, err = NewWorkflow(ctx, name, nil, pulumi.URN_(urn))
+		r = &Workflow{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
