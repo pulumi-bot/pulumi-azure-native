@@ -5,15 +5,229 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
-__all__ = ['IntegrationAccountSchema']
+__all__ = ['IntegrationAccountSchemaArgs', 'IntegrationAccountSchema']
+
+@pulumi.input_type
+class IntegrationAccountSchemaArgs:
+    def __init__(__self__, *,
+                 integration_account_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 content: Optional[Any] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 schema_name: Optional[pulumi.Input[str]] = None,
+                 schema_type: Optional[pulumi.Input['SchemaType']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 target_namespace: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a IntegrationAccountSchema resource.
+        :param pulumi.Input[str] integration_account_name: The integration account name.
+        :param pulumi.Input[str] resource_group_name: The resource group name.
+        :param Any content: The content.
+        :param pulumi.Input[str] content_type: The content type.
+        :param pulumi.Input[str] id: The resource id.
+        :param pulumi.Input[str] location: The resource location.
+        :param Any metadata: The metadata.
+        :param pulumi.Input[str] name: The resource name.
+        :param pulumi.Input[str] schema_name: The integration account schema name.
+        :param pulumi.Input['SchemaType'] schema_type: The schema type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
+        :param pulumi.Input[str] target_namespace: The target namespace.
+        :param pulumi.Input[str] type: The resource type.
+        """
+        pulumi.set(__self__, "integration_account_name", integration_account_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if schema_type is not None:
+            pulumi.set(__self__, "schema_type", schema_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if target_namespace is not None:
+            pulumi.set(__self__, "target_namespace", target_namespace)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="integrationAccountName")
+    def integration_account_name(self) -> pulumi.Input[str]:
+        """
+        The integration account name.
+        """
+        return pulumi.get(self, "integration_account_name")
+
+    @integration_account_name.setter
+    def integration_account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_account_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The resource group name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[Any]:
+        """
+        The content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[Any]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content type.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Any]:
+        """
+        The metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[Any]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The integration account schema name.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_name", value)
+
+    @property
+    @pulumi.getter(name="schemaType")
+    def schema_type(self) -> Optional[pulumi.Input['SchemaType']]:
+        """
+        The schema type.
+        """
+        return pulumi.get(self, "schema_type")
+
+    @schema_type.setter
+    def schema_type(self, value: Optional[pulumi.Input['SchemaType']]):
+        pulumi.set(self, "schema_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="targetNamespace")
+    def target_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target namespace.
+        """
+        return pulumi.get(self, "target_namespace")
+
+    @target_namespace.setter
+    def target_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_namespace", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class IntegrationAccountSchema(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -51,6 +265,45 @@ class IntegrationAccountSchema(pulumi.CustomResource):
         :param pulumi.Input[str] target_namespace: The target namespace.
         :param pulumi.Input[str] type: The resource type.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntegrationAccountSchemaArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a IntegrationAccountSchema resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param IntegrationAccountSchemaArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntegrationAccountSchemaArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 content: Optional[Any] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 integration_account_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 schema_name: Optional[pulumi.Input[str]] = None,
+                 schema_type: Optional[pulumi.Input['SchemaType']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 target_namespace: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -66,28 +319,28 @@ class IntegrationAccountSchema(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IntegrationAccountSchemaArgs.__new__(IntegrationAccountSchemaArgs)
 
-            __props__['content'] = content
-            __props__['content_type'] = content_type
-            __props__['id'] = id
+            __props__.__dict__['content'] = content
+            __props__.__dict__['content_type'] = content_type
+            __props__.__dict__['id'] = id
             if integration_account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_account_name'")
-            __props__['integration_account_name'] = integration_account_name
-            __props__['location'] = location
-            __props__['metadata'] = metadata
-            __props__['name'] = name
+            __props__.__dict__['integration_account_name'] = integration_account_name
+            __props__.__dict__['location'] = location
+            __props__.__dict__['metadata'] = metadata
+            __props__.__dict__['name'] = name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['schema_name'] = schema_name
-            __props__['schema_type'] = schema_type
-            __props__['tags'] = tags
-            __props__['target_namespace'] = target_namespace
-            __props__['type'] = type
-            __props__['changed_time'] = None
-            __props__['content_link'] = None
-            __props__['created_time'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['schema_name'] = schema_name
+            __props__.__dict__['schema_type'] = schema_type
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['target_namespace'] = target_namespace
+            __props__.__dict__['type'] = type
+            __props__.__dict__['changed_time'] = None
+            __props__.__dict__['content_link'] = None
+            __props__.__dict__['created_time'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:logic/v20150801preview:IntegrationAccountSchema"), pulumi.Alias(type_="azure-native:logic:IntegrationAccountSchema"), pulumi.Alias(type_="azure-nextgen:logic:IntegrationAccountSchema"), pulumi.Alias(type_="azure-native:logic/latest:IntegrationAccountSchema"), pulumi.Alias(type_="azure-nextgen:logic/latest:IntegrationAccountSchema"), pulumi.Alias(type_="azure-native:logic/v20160601:IntegrationAccountSchema"), pulumi.Alias(type_="azure-nextgen:logic/v20160601:IntegrationAccountSchema"), pulumi.Alias(type_="azure-native:logic/v20180701preview:IntegrationAccountSchema"), pulumi.Alias(type_="azure-nextgen:logic/v20180701preview:IntegrationAccountSchema"), pulumi.Alias(type_="azure-native:logic/v20190501:IntegrationAccountSchema"), pulumi.Alias(type_="azure-nextgen:logic/v20190501:IntegrationAccountSchema")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(IntegrationAccountSchema, __self__).__init__(
@@ -112,18 +365,18 @@ class IntegrationAccountSchema(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["changed_time"] = None
-        __props__["content"] = None
-        __props__["content_link"] = None
-        __props__["content_type"] = None
-        __props__["created_time"] = None
-        __props__["location"] = None
-        __props__["metadata"] = None
-        __props__["name"] = None
-        __props__["schema_type"] = None
-        __props__["tags"] = None
-        __props__["target_namespace"] = None
-        __props__["type"] = None
+        __props__['changed_time'] = None
+        __props__['content'] = None
+        __props__['content_link'] = None
+        __props__['content_type'] = None
+        __props__['created_time'] = None
+        __props__['location'] = None
+        __props__['metadata'] = None
+        __props__['name'] = None
+        __props__['schema_type'] = None
+        __props__['tags'] = None
+        __props__['target_namespace'] = None
+        __props__['type'] = None
         return IntegrationAccountSchema(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -221,10 +474,4 @@ class IntegrationAccountSchema(pulumi.CustomResource):
         The resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

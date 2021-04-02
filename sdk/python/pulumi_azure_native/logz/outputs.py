@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -69,12 +69,28 @@ class FilteringTagResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IdentityPropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdentityPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdentityPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -109,15 +125,35 @@ class IdentityPropertiesResponse(dict):
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogRulesResponse(dict):
     """
     Set of rules for sending logs for the Monitor resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filteringTags":
+            suggest = "filtering_tags"
+        elif key == "sendAadLogs":
+            suggest = "send_aad_logs"
+        elif key == "sendActivityLogs":
+            suggest = "send_activity_logs"
+        elif key == "sendSubscriptionLogs":
+            suggest = "send_subscription_logs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogRulesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogRulesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogRulesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  filtering_tags: Optional[Sequence['outputs.FilteringTagResponse']] = None,
                  send_aad_logs: Optional[bool] = None,
@@ -171,12 +207,28 @@ class LogRulesResponse(dict):
         """
         return pulumi.get(self, "send_subscription_logs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogzOrganizationPropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "companyName":
+            suggest = "company_name"
+        elif key == "enterpriseAppId":
+            suggest = "enterprise_app_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogzOrganizationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogzOrganizationPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogzOrganizationPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  company_name: Optional[str] = None,
@@ -216,15 +268,43 @@ class LogzOrganizationPropertiesResponse(dict):
         """
         return pulumi.get(self, "enterprise_app_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MonitorPropertiesResponse(dict):
     """
     Properties specific to the monitor resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "liftrResourceCategory":
+            suggest = "liftr_resource_category"
+        elif key == "liftrResourcePreference":
+            suggest = "liftr_resource_preference"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "logzOrganizationProperties":
+            suggest = "logz_organization_properties"
+        elif key == "marketplaceSubscriptionStatus":
+            suggest = "marketplace_subscription_status"
+        elif key == "monitoringStatus":
+            suggest = "monitoring_status"
+        elif key == "planData":
+            suggest = "plan_data"
+        elif key == "userInfo":
+            suggest = "user_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  liftr_resource_category: str,
                  liftr_resource_preference: int,
@@ -302,9 +382,6 @@ class MonitorPropertiesResponse(dict):
     @pulumi.getter(name="userInfo")
     def user_info(self) -> Optional['outputs.UserInfoResponse']:
         return pulumi.get(self, "user_info")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -394,6 +471,25 @@ class MonitoringTagRulesPropertiesResponse(dict):
     """
     Definition of the properties for a TagRules resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "systemData":
+            suggest = "system_data"
+        elif key == "logRules":
+            suggest = "log_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitoringTagRulesPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitoringTagRulesPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitoringTagRulesPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  system_data: 'outputs.SystemDataResponse',
                  log_rules: Optional['outputs.LogRulesResponse'] = None):
@@ -422,12 +518,32 @@ class MonitoringTagRulesPropertiesResponse(dict):
         """
         return pulumi.get(self, "log_rules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PlanDataResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "billingCycle":
+            suggest = "billing_cycle"
+        elif key == "effectiveDate":
+            suggest = "effective_date"
+        elif key == "planDetails":
+            suggest = "plan_details"
+        elif key == "usageType":
+            suggest = "usage_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PlanDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PlanDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PlanDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  billing_cycle: Optional[str] = None,
                  effective_date: Optional[str] = None,
@@ -480,15 +596,39 @@ class PlanDataResponse(dict):
         """
         return pulumi.get(self, "usage_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByType":
+            suggest = "created_by_type"
+        elif key == "lastModifiedAt":
+            suggest = "last_modified_at"
+        elif key == "lastModifiedBy":
+            suggest = "last_modified_by"
+        elif key == "lastModifiedByType":
+            suggest = "last_modified_by_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -566,12 +706,32 @@ class SystemDataResponse(dict):
         """
         return pulumi.get(self, "last_modified_by_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddress":
+            suggest = "email_address"
+        elif key == "firstName":
+            suggest = "first_name"
+        elif key == "lastName":
+            suggest = "last_name"
+        elif key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email_address: Optional[str] = None,
                  first_name: Optional[str] = None,
@@ -623,8 +783,5 @@ class UserInfoResponse(dict):
         Phone number of the user used by Logz for contacting them if needed
         """
         return pulumi.get(self, "phone_number")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

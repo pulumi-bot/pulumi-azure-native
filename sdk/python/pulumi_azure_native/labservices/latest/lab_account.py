@@ -5,11 +5,130 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['LabAccount']
+__all__ = ['LabAccountArgs', 'LabAccount']
+
+@pulumi.input_type
+class LabAccountArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 enabled_region_selection: Optional[pulumi.Input[bool]] = None,
+                 lab_account_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 unique_identifier: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LabAccount resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[bool] enabled_region_selection: Represents if region selection is enabled
+        :param pulumi.Input[str] lab_account_name: The name of the lab Account.
+        :param pulumi.Input[str] location: The location of the resource.
+        :param pulumi.Input[str] provisioning_state: The provisioning status of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
+        :param pulumi.Input[str] unique_identifier: The unique immutable identifier of a resource (Guid).
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if enabled_region_selection is not None:
+            pulumi.set(__self__, "enabled_region_selection", enabled_region_selection)
+        if lab_account_name is not None:
+            pulumi.set(__self__, "lab_account_name", lab_account_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if provisioning_state is not None:
+            pulumi.set(__self__, "provisioning_state", provisioning_state)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if unique_identifier is not None:
+            pulumi.set(__self__, "unique_identifier", unique_identifier)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="enabledRegionSelection")
+    def enabled_region_selection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Represents if region selection is enabled
+        """
+        return pulumi.get(self, "enabled_region_selection")
+
+    @enabled_region_selection.setter
+    def enabled_region_selection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_region_selection", value)
+
+    @property
+    @pulumi.getter(name="labAccountName")
+    def lab_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the lab Account.
+        """
+        return pulumi.get(self, "lab_account_name")
+
+    @lab_account_name.setter
+    def lab_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lab_account_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the resource.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provisioning status of the resource.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @provisioning_state.setter
+    def provisioning_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_state", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="uniqueIdentifier")
+    def unique_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique immutable identifier of a resource (Guid).
+        """
+        return pulumi.get(self, "unique_identifier")
+
+    @unique_identifier.setter
+    def unique_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unique_identifier", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:labservices:LabAccount'.""", DeprecationWarning)
 
@@ -17,6 +136,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class LabAccount(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:labservices:LabAccount'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +164,41 @@ class LabAccount(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] unique_identifier: The unique immutable identifier of a resource (Guid).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LabAccountArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a lab account.
+        Latest API Version: 2018-10-15.
+
+        :param str resource_name: The name of the resource.
+        :param LabAccountArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LabAccountArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled_region_selection: Optional[pulumi.Input[bool]] = None,
+                 lab_account_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 unique_identifier: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""LabAccount is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:labservices:LabAccount'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -60,21 +215,21 @@ class LabAccount(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LabAccountArgs.__new__(LabAccountArgs)
 
-            __props__['enabled_region_selection'] = enabled_region_selection
-            __props__['lab_account_name'] = lab_account_name
-            __props__['location'] = location
-            __props__['provisioning_state'] = provisioning_state
+            __props__.__dict__['enabled_region_selection'] = enabled_region_selection
+            __props__.__dict__['lab_account_name'] = lab_account_name
+            __props__.__dict__['location'] = location
+            __props__.__dict__['provisioning_state'] = provisioning_state
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['unique_identifier'] = unique_identifier
-            __props__['latest_operation_result'] = None
-            __props__['name'] = None
-            __props__['size_configuration'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['unique_identifier'] = unique_identifier
+            __props__.__dict__['latest_operation_result'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['size_configuration'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:labservices/latest:LabAccount"), pulumi.Alias(type_="azure-native:labservices:LabAccount"), pulumi.Alias(type_="azure-nextgen:labservices:LabAccount"), pulumi.Alias(type_="azure-native:labservices/v20181015:LabAccount"), pulumi.Alias(type_="azure-nextgen:labservices/v20181015:LabAccount")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(LabAccount, __self__).__init__(
@@ -99,15 +254,15 @@ class LabAccount(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["enabled_region_selection"] = None
-        __props__["latest_operation_result"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["size_configuration"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["unique_identifier"] = None
+        __props__['enabled_region_selection'] = None
+        __props__['latest_operation_result'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['size_configuration'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['unique_identifier'] = None
         return LabAccount(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -181,10 +336,4 @@ class LabAccount(pulumi.CustomResource):
         The unique immutable identifier of a resource (Guid).
         """
         return pulumi.get(self, "unique_identifier")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

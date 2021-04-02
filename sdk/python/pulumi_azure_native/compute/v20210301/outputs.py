@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -52,15 +52,41 @@ class CloudServiceExtensionProfileResponse(dict):
         """
         return pulumi.get(self, "extensions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceExtensionPropertiesResponse(dict):
     """
     Extension Properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "autoUpgradeMinorVersion":
+            suggest = "auto_upgrade_minor_version"
+        elif key == "forceUpdateTag":
+            suggest = "force_update_tag"
+        elif key == "protectedSettings":
+            suggest = "protected_settings"
+        elif key == "protectedSettingsFromKeyVault":
+            suggest = "protected_settings_from_key_vault"
+        elif key == "rolesAppliedTo":
+            suggest = "roles_applied_to"
+        elif key == "typeHandlerVersion":
+            suggest = "type_handler_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudServiceExtensionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudServiceExtensionPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudServiceExtensionPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  provisioning_state: str,
                  auto_upgrade_minor_version: Optional[bool] = None,
@@ -189,15 +215,31 @@ class CloudServiceExtensionPropertiesResponse(dict):
         """
         return pulumi.get(self, "type_handler_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceNetworkProfileResponse(dict):
     """
     Network Profile for the cloud service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loadBalancerConfigurations":
+            suggest = "load_balancer_configurations"
+        elif key == "swappableCloudService":
+            suggest = "swappable_cloud_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudServiceNetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudServiceNetworkProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudServiceNetworkProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  load_balancer_configurations: Optional[Sequence['outputs.LoadBalancerConfigurationResponse']] = None,
                  swappable_cloud_service: Optional['outputs.SubResourceResponse'] = None):
@@ -227,9 +269,6 @@ class CloudServiceNetworkProfileResponse(dict):
         """
         return pulumi.get(self, "swappable_cloud_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceOsProfileResponse(dict):
@@ -253,15 +292,49 @@ class CloudServiceOsProfileResponse(dict):
         """
         return pulumi.get(self, "secrets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServicePropertiesResponse(dict):
     """
     Cloud service properties
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "uniqueId":
+            suggest = "unique_id"
+        elif key == "allowModelOverride":
+            suggest = "allow_model_override"
+        elif key == "configurationUrl":
+            suggest = "configuration_url"
+        elif key == "extensionProfile":
+            suggest = "extension_profile"
+        elif key == "networkProfile":
+            suggest = "network_profile"
+        elif key == "osProfile":
+            suggest = "os_profile"
+        elif key == "packageUrl":
+            suggest = "package_url"
+        elif key == "roleProfile":
+            suggest = "role_profile"
+        elif key == "startCloudService":
+            suggest = "start_cloud_service"
+        elif key == "upgradeMode":
+            suggest = "upgrade_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudServicePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudServicePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudServicePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  provisioning_state: str,
                  unique_id: str,
@@ -421,9 +494,6 @@ class CloudServicePropertiesResponse(dict):
         """
         return pulumi.get(self, "upgrade_mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceRoleProfilePropertiesResponse(dict):
@@ -459,9 +529,6 @@ class CloudServiceRoleProfilePropertiesResponse(dict):
         """
         return pulumi.get(self, "sku")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceRoleProfileResponse(dict):
@@ -484,9 +551,6 @@ class CloudServiceRoleProfileResponse(dict):
         List of roles for the cloud service.
         """
         return pulumi.get(self, "roles")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -535,12 +599,28 @@ class CloudServiceRoleSkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceVaultAndSecretReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretUrl":
+            suggest = "secret_url"
+        elif key == "sourceVault":
+            suggest = "source_vault"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudServiceVaultAndSecretReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudServiceVaultAndSecretReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudServiceVaultAndSecretReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  secret_url: Optional[str] = None,
                  source_vault: Optional['outputs.SubResourceResponse'] = None):
@@ -559,15 +639,29 @@ class CloudServiceVaultAndSecretReferenceResponse(dict):
     def source_vault(self) -> Optional['outputs.SubResourceResponse']:
         return pulumi.get(self, "source_vault")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceVaultCertificateResponse(dict):
     """
     Describes a single certificate reference in a Key Vault, and where the certificate should reside on the role instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateUrl":
+            suggest = "certificate_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudServiceVaultCertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudServiceVaultCertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudServiceVaultCertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate_url: Optional[str] = None):
         """
@@ -585,15 +679,31 @@ class CloudServiceVaultCertificateResponse(dict):
         """
         return pulumi.get(self, "certificate_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceVaultSecretGroupResponse(dict):
     """
     Describes a set of certificates which are all in the same Key Vault.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceVault":
+            suggest = "source_vault"
+        elif key == "vaultCertificates":
+            suggest = "vault_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudServiceVaultSecretGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudServiceVaultSecretGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudServiceVaultSecretGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_vault: Optional['outputs.SubResourceResponse'] = None,
                  vault_certificates: Optional[Sequence['outputs.CloudServiceVaultCertificateResponse']] = None):
@@ -622,9 +732,6 @@ class CloudServiceVaultSecretGroupResponse(dict):
         The list of key vault references in SourceVault which contain certificates.
         """
         return pulumi.get(self, "vault_certificates")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -661,12 +768,26 @@ class ExtensionResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerConfigurationPropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "frontendIPConfigurations":
+            suggest = "frontend_ip_configurations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerConfigurationPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerConfigurationPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  frontend_ip_configurations: Sequence['outputs.LoadBalancerFrontendIPConfigurationResponse']):
         """
@@ -681,9 +802,6 @@ class LoadBalancerConfigurationPropertiesResponse(dict):
         Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
         """
         return pulumi.get(self, "frontend_ip_configurations")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -730,15 +848,31 @@ class LoadBalancerConfigurationResponse(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerFrontendIPConfigurationPropertiesResponse(dict):
     """
     Describes a cloud service IP Configuration
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateIPAddress":
+            suggest = "private_ip_address"
+        elif key == "publicIPAddress":
+            suggest = "public_ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerFrontendIPConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerFrontendIPConfigurationPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerFrontendIPConfigurationPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_ip_address: Optional[str] = None,
                  public_ip_address: Optional['outputs.SubResourceResponse'] = None,
@@ -780,9 +914,6 @@ class LoadBalancerFrontendIPConfigurationPropertiesResponse(dict):
         """
         return pulumi.get(self, "subnet")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerFrontendIPConfigurationResponse(dict):
@@ -812,9 +943,6 @@ class LoadBalancerFrontendIPConfigurationResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubResourceResponse(dict):
@@ -833,8 +961,5 @@ class SubResourceResponse(dict):
         Resource Id
         """
         return pulumi.get(self, "id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -5,16 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Console']
+__all__ = ['ConsoleArgs', 'Console']
+
+@pulumi.input_type
+class ConsoleArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input['ConsoleCreatePropertiesArgs'],
+                 console_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Console resource.
+        :param pulumi.Input['ConsoleCreatePropertiesArgs'] properties: Cloud shell properties for creating a console.
+        :param pulumi.Input[str] console_name: The name of the console
+        """
+        pulumi.set(__self__, "properties", properties)
+        if console_name is not None:
+            pulumi.set(__self__, "console_name", console_name)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input['ConsoleCreatePropertiesArgs']:
+        """
+        Cloud shell properties for creating a console.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input['ConsoleCreatePropertiesArgs']):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="consoleName")
+    def console_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the console
+        """
+        return pulumi.get(self, "console_name")
+
+    @console_name.setter
+    def console_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "console_name", value)
 
 
 class Console(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,6 +70,35 @@ class Console(pulumi.CustomResource):
         :param pulumi.Input[str] console_name: The name of the console
         :param pulumi.Input[pulumi.InputType['ConsoleCreatePropertiesArgs']] properties: Cloud shell properties for creating a console.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConsoleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Cloud shell console
+
+        :param str resource_name: The name of the resource.
+        :param ConsoleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConsoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 console_name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['ConsoleCreatePropertiesArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -46,12 +114,12 @@ class Console(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConsoleArgs.__new__(ConsoleArgs)
 
-            __props__['console_name'] = console_name
+            __props__.__dict__['console_name'] = console_name
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
+            __props__.__dict__['properties'] = properties
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:portal/v20181001:Console"), pulumi.Alias(type_="azure-native:portal:Console"), pulumi.Alias(type_="azure-nextgen:portal:Console"), pulumi.Alias(type_="azure-native:portal/latest:Console"), pulumi.Alias(type_="azure-nextgen:portal/latest:Console")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Console, __self__).__init__(
@@ -76,7 +144,7 @@ class Console(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["properties"] = None
+        __props__['properties'] = None
         return Console(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -86,10 +154,4 @@ class Console(pulumi.CustomResource):
         Cloud shell console properties.
         """
         return pulumi.get(self, "properties")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

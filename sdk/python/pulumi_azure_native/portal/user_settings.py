@@ -5,16 +5,55 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['UserSettings']
+__all__ = ['UserSettingsArgs', 'UserSettings']
+
+@pulumi.input_type
+class UserSettingsArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input['UserPropertiesArgs'],
+                 user_settings_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a UserSettings resource.
+        :param pulumi.Input['UserPropertiesArgs'] properties: The cloud shell user settings properties.
+        :param pulumi.Input[str] user_settings_name: The name of the user settings
+        """
+        pulumi.set(__self__, "properties", properties)
+        if user_settings_name is not None:
+            pulumi.set(__self__, "user_settings_name", user_settings_name)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input['UserPropertiesArgs']:
+        """
+        The cloud shell user settings properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input['UserPropertiesArgs']):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="userSettingsName")
+    def user_settings_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the user settings
+        """
+        return pulumi.get(self, "user_settings_name")
+
+    @user_settings_name.setter
+    def user_settings_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_settings_name", value)
 
 
 class UserSettings(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -32,6 +71,36 @@ class UserSettings(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['UserPropertiesArgs']] properties: The cloud shell user settings properties.
         :param pulumi.Input[str] user_settings_name: The name of the user settings
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: UserSettingsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Response to get user settings
+        API Version: 2018-10-01.
+
+        :param str resource_name: The name of the resource.
+        :param UserSettingsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['UserPropertiesArgs']]] = None,
+                 user_settings_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -47,12 +116,12 @@ class UserSettings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = UserSettingsArgs.__new__(UserSettingsArgs)
 
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
-            __props__['user_settings_name'] = user_settings_name
+            __props__.__dict__['properties'] = properties
+            __props__.__dict__['user_settings_name'] = user_settings_name
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:portal:UserSettings"), pulumi.Alias(type_="azure-native:portal/latest:UserSettings"), pulumi.Alias(type_="azure-nextgen:portal/latest:UserSettings"), pulumi.Alias(type_="azure-native:portal/v20181001:UserSettings"), pulumi.Alias(type_="azure-nextgen:portal/v20181001:UserSettings")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(UserSettings, __self__).__init__(
@@ -77,7 +146,7 @@ class UserSettings(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["properties"] = None
+        __props__['properties'] = None
         return UserSettings(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -87,10 +156,4 @@ class UserSettings(pulumi.CustomResource):
         The cloud shell user settings properties.
         """
         return pulumi.get(self, "properties")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

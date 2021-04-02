@@ -5,14 +5,149 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['Project']
+__all__ = ['ProjectArgs', 'Project']
+
+@pulumi.input_type
+class ProjectArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 customer_workspace_id: Optional[pulumi.Input[str]] = None,
+                 customer_workspace_location: Optional[pulumi.Input[str]] = None,
+                 e_tag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[Union[str, 'ProvisioningState']]] = None,
+                 tags: Optional[Any] = None):
+        """
+        The set of arguments for constructing a Project resource.
+        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group that project is part of.
+        :param pulumi.Input[str] customer_workspace_id: ARM ID of the Service Map workspace created by user.
+        :param pulumi.Input[str] customer_workspace_location: Location of the Service Map workspace created by user.
+        :param pulumi.Input[str] e_tag: For optimistic concurrency control.
+        :param pulumi.Input[str] location: Azure location in which project is created.
+        :param pulumi.Input[str] project_name: Name of the Azure Migrate project.
+        :param pulumi.Input[Union[str, 'ProvisioningState']] provisioning_state: Provisioning state of the project.
+        :param Any tags: Tags provided by Azure Tagging service.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if customer_workspace_id is not None:
+            pulumi.set(__self__, "customer_workspace_id", customer_workspace_id)
+        if customer_workspace_location is not None:
+            pulumi.set(__self__, "customer_workspace_location", customer_workspace_location)
+        if e_tag is not None:
+            pulumi.set(__self__, "e_tag", e_tag)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+        if provisioning_state is not None:
+            pulumi.set(__self__, "provisioning_state", provisioning_state)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the Azure Resource Group that project is part of.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="customerWorkspaceId")
+    def customer_workspace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARM ID of the Service Map workspace created by user.
+        """
+        return pulumi.get(self, "customer_workspace_id")
+
+    @customer_workspace_id.setter
+    def customer_workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_workspace_id", value)
+
+    @property
+    @pulumi.getter(name="customerWorkspaceLocation")
+    def customer_workspace_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the Service Map workspace created by user.
+        """
+        return pulumi.get(self, "customer_workspace_location")
+
+    @customer_workspace_location.setter
+    def customer_workspace_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_workspace_location", value)
+
+    @property
+    @pulumi.getter(name="eTag")
+    def e_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        For optimistic concurrency control.
+        """
+        return pulumi.get(self, "e_tag")
+
+    @e_tag.setter
+    def e_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "e_tag", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure location in which project is created.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Azure Migrate project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> Optional[pulumi.Input[Union[str, 'ProvisioningState']]]:
+        """
+        Provisioning state of the project.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @provisioning_state.setter
+    def provisioning_state(self, value: Optional[pulumi.Input[Union[str, 'ProvisioningState']]]):
+        pulumi.set(self, "provisioning_state", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Any]:
+        """
+        Tags provided by Azure Tagging service.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[Any]):
+        pulumi.set(self, "tags", value)
 
 
 class Project(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -41,6 +176,41 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group that project is part of.
         :param Any tags: Tags provided by Azure Tagging service.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Azure Migrate Project.
+
+        :param str resource_name: The name of the resource.
+        :param ProjectArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 customer_workspace_id: Optional[pulumi.Input[str]] = None,
+                 customer_workspace_location: Optional[pulumi.Input[str]] = None,
+                 e_tag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[Union[str, 'ProvisioningState']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[Any] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -56,29 +226,29 @@ class Project(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__['customer_workspace_id'] = customer_workspace_id
-            __props__['customer_workspace_location'] = customer_workspace_location
-            __props__['e_tag'] = e_tag
-            __props__['location'] = location
-            __props__['project_name'] = project_name
-            __props__['provisioning_state'] = provisioning_state
+            __props__.__dict__['customer_workspace_id'] = customer_workspace_id
+            __props__.__dict__['customer_workspace_location'] = customer_workspace_location
+            __props__.__dict__['e_tag'] = e_tag
+            __props__.__dict__['location'] = location
+            __props__.__dict__['project_name'] = project_name
+            __props__.__dict__['provisioning_state'] = provisioning_state
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['created_timestamp'] = None
-            __props__['discovery_status'] = None
-            __props__['last_assessment_timestamp'] = None
-            __props__['last_discovery_session_id'] = None
-            __props__['last_discovery_timestamp'] = None
-            __props__['name'] = None
-            __props__['number_of_assessments'] = None
-            __props__['number_of_groups'] = None
-            __props__['number_of_machines'] = None
-            __props__['type'] = None
-            __props__['updated_timestamp'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['created_timestamp'] = None
+            __props__.__dict__['discovery_status'] = None
+            __props__.__dict__['last_assessment_timestamp'] = None
+            __props__.__dict__['last_discovery_session_id'] = None
+            __props__.__dict__['last_discovery_timestamp'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['number_of_assessments'] = None
+            __props__.__dict__['number_of_groups'] = None
+            __props__.__dict__['number_of_machines'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['updated_timestamp'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:migrate/v20180202:Project"), pulumi.Alias(type_="azure-native:migrate/v20171111preview:Project"), pulumi.Alias(type_="azure-nextgen:migrate/v20171111preview:Project")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Project, __self__).__init__(
@@ -103,23 +273,23 @@ class Project(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["created_timestamp"] = None
-        __props__["customer_workspace_id"] = None
-        __props__["customer_workspace_location"] = None
-        __props__["discovery_status"] = None
-        __props__["e_tag"] = None
-        __props__["last_assessment_timestamp"] = None
-        __props__["last_discovery_session_id"] = None
-        __props__["last_discovery_timestamp"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["number_of_assessments"] = None
-        __props__["number_of_groups"] = None
-        __props__["number_of_machines"] = None
-        __props__["provisioning_state"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["updated_timestamp"] = None
+        __props__['created_timestamp'] = None
+        __props__['customer_workspace_id'] = None
+        __props__['customer_workspace_location'] = None
+        __props__['discovery_status'] = None
+        __props__['e_tag'] = None
+        __props__['last_assessment_timestamp'] = None
+        __props__['last_discovery_session_id'] = None
+        __props__['last_discovery_timestamp'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['number_of_assessments'] = None
+        __props__['number_of_groups'] = None
+        __props__['number_of_machines'] = None
+        __props__['provisioning_state'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['updated_timestamp'] = None
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -257,10 +427,4 @@ class Project(pulumi.CustomResource):
         Time when this project was last updated. Date-Time represented in ISO-8601 format.
         """
         return pulumi.get(self, "updated_timestamp")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

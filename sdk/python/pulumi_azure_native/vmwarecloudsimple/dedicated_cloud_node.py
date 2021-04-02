@@ -5,15 +5,192 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DedicatedCloudNode']
+__all__ = ['DedicatedCloudNodeArgs', 'DedicatedCloudNode']
+
+@pulumi.input_type
+class DedicatedCloudNodeArgs:
+    def __init__(__self__, *,
+                 availability_zone_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 nodes_count: pulumi.Input[int],
+                 placement_group_id: pulumi.Input[str],
+                 purchase_id: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 dedicated_cloud_node_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input['SkuArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DedicatedCloudNode resource.
+        :param pulumi.Input[str] availability_zone_id: Availability Zone id, e.g. "az1"
+        :param pulumi.Input[str] id: SKU's id
+        :param pulumi.Input[str] name: SKU's name
+        :param pulumi.Input[int] nodes_count: count of nodes to create
+        :param pulumi.Input[str] placement_group_id: Placement Group id, e.g. "n1"
+        :param pulumi.Input[str] purchase_id: purchase id
+        :param pulumi.Input[str] resource_group_name: The name of the resource group
+        :param pulumi.Input[str] dedicated_cloud_node_name: dedicated cloud node name
+        :param pulumi.Input[str] location: Azure region
+        :param pulumi.Input['SkuArgs'] sku: Dedicated Cloud Nodes SKU
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Dedicated Cloud Nodes tags
+        """
+        pulumi.set(__self__, "availability_zone_id", availability_zone_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nodes_count", nodes_count)
+        pulumi.set(__self__, "placement_group_id", placement_group_id)
+        pulumi.set(__self__, "purchase_id", purchase_id)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if dedicated_cloud_node_name is not None:
+            pulumi.set(__self__, "dedicated_cloud_node_name", dedicated_cloud_node_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="availabilityZoneId")
+    def availability_zone_id(self) -> pulumi.Input[str]:
+        """
+        Availability Zone id, e.g. "az1"
+        """
+        return pulumi.get(self, "availability_zone_id")
+
+    @availability_zone_id.setter
+    def availability_zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "availability_zone_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        SKU's id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        SKU's name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodesCount")
+    def nodes_count(self) -> pulumi.Input[int]:
+        """
+        count of nodes to create
+        """
+        return pulumi.get(self, "nodes_count")
+
+    @nodes_count.setter
+    def nodes_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "nodes_count", value)
+
+    @property
+    @pulumi.getter(name="placementGroupId")
+    def placement_group_id(self) -> pulumi.Input[str]:
+        """
+        Placement Group id, e.g. "n1"
+        """
+        return pulumi.get(self, "placement_group_id")
+
+    @placement_group_id.setter
+    def placement_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "placement_group_id", value)
+
+    @property
+    @pulumi.getter(name="purchaseId")
+    def purchase_id(self) -> pulumi.Input[str]:
+        """
+        purchase id
+        """
+        return pulumi.get(self, "purchase_id")
+
+    @purchase_id.setter
+    def purchase_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "purchase_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="dedicatedCloudNodeName")
+    def dedicated_cloud_node_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        dedicated cloud node name
+        """
+        return pulumi.get(self, "dedicated_cloud_node_name")
+
+    @dedicated_cloud_node_name.setter
+    def dedicated_cloud_node_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_cloud_node_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure region
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input['SkuArgs']]:
+        """
+        Dedicated Cloud Nodes SKU
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input['SkuArgs']]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Dedicated Cloud Nodes tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class DedicatedCloudNode(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +226,45 @@ class DedicatedCloudNode(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SkuArgs']] sku: Dedicated Cloud Nodes SKU
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Dedicated Cloud Nodes tags
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DedicatedCloudNodeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Dedicated cloud node model
+        API Version: 2019-04-01.
+
+        :param str resource_name: The name of the resource.
+        :param DedicatedCloudNodeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DedicatedCloudNodeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone_id: Optional[pulumi.Input[str]] = None,
+                 dedicated_cloud_node_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nodes_count: Optional[pulumi.Input[int]] = None,
+                 placement_group_id: Optional[pulumi.Input[str]] = None,
+                 purchase_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['SkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -64,43 +280,43 @@ class DedicatedCloudNode(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DedicatedCloudNodeArgs.__new__(DedicatedCloudNodeArgs)
 
             if availability_zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'availability_zone_id'")
-            __props__['availability_zone_id'] = availability_zone_id
-            __props__['dedicated_cloud_node_name'] = dedicated_cloud_node_name
+            __props__.__dict__['availability_zone_id'] = availability_zone_id
+            __props__.__dict__['dedicated_cloud_node_name'] = dedicated_cloud_node_name
             if id is None and not opts.urn:
                 raise TypeError("Missing required property 'id'")
-            __props__['id'] = id
-            __props__['location'] = location
+            __props__.__dict__['id'] = id
+            __props__.__dict__['location'] = location
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            __props__.__dict__['name'] = name
             if nodes_count is None and not opts.urn:
                 raise TypeError("Missing required property 'nodes_count'")
-            __props__['nodes_count'] = nodes_count
+            __props__.__dict__['nodes_count'] = nodes_count
             if placement_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'placement_group_id'")
-            __props__['placement_group_id'] = placement_group_id
+            __props__.__dict__['placement_group_id'] = placement_group_id
             if purchase_id is None and not opts.urn:
                 raise TypeError("Missing required property 'purchase_id'")
-            __props__['purchase_id'] = purchase_id
+            __props__.__dict__['purchase_id'] = purchase_id
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['availability_zone_name'] = None
-            __props__['cloud_rack_name'] = None
-            __props__['created'] = None
-            __props__['placement_group_name'] = None
-            __props__['private_cloud_id'] = None
-            __props__['private_cloud_name'] = None
-            __props__['provisioning_state'] = None
-            __props__['status'] = None
-            __props__['type'] = None
-            __props__['vmware_cluster_name'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['availability_zone_name'] = None
+            __props__.__dict__['cloud_rack_name'] = None
+            __props__.__dict__['created'] = None
+            __props__.__dict__['placement_group_name'] = None
+            __props__.__dict__['private_cloud_id'] = None
+            __props__.__dict__['private_cloud_name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['status'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['vmware_cluster_name'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:vmwarecloudsimple:DedicatedCloudNode"), pulumi.Alias(type_="azure-native:vmwarecloudsimple/latest:DedicatedCloudNode"), pulumi.Alias(type_="azure-nextgen:vmwarecloudsimple/latest:DedicatedCloudNode"), pulumi.Alias(type_="azure-native:vmwarecloudsimple/v20190401:DedicatedCloudNode"), pulumi.Alias(type_="azure-nextgen:vmwarecloudsimple/v20190401:DedicatedCloudNode")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DedicatedCloudNode, __self__).__init__(
@@ -125,24 +341,24 @@ class DedicatedCloudNode(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["availability_zone_id"] = None
-        __props__["availability_zone_name"] = None
-        __props__["cloud_rack_name"] = None
-        __props__["created"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["nodes_count"] = None
-        __props__["placement_group_id"] = None
-        __props__["placement_group_name"] = None
-        __props__["private_cloud_id"] = None
-        __props__["private_cloud_name"] = None
-        __props__["provisioning_state"] = None
-        __props__["purchase_id"] = None
-        __props__["sku"] = None
-        __props__["status"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["vmware_cluster_name"] = None
+        __props__['availability_zone_id'] = None
+        __props__['availability_zone_name'] = None
+        __props__['cloud_rack_name'] = None
+        __props__['created'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['nodes_count'] = None
+        __props__['placement_group_id'] = None
+        __props__['placement_group_name'] = None
+        __props__['private_cloud_id'] = None
+        __props__['private_cloud_name'] = None
+        __props__['provisioning_state'] = None
+        __props__['purchase_id'] = None
+        __props__['sku'] = None
+        __props__['status'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['vmware_cluster_name'] = None
         return DedicatedCloudNode(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -288,10 +504,4 @@ class DedicatedCloudNode(pulumi.CustomResource):
         VMWare Cluster Name
         """
         return pulumi.get(self, "vmware_cluster_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

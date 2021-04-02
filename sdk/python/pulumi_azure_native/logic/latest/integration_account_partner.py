@@ -5,13 +5,145 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['IntegrationAccountPartner']
+__all__ = ['IntegrationAccountPartnerArgs', 'IntegrationAccountPartner']
+
+@pulumi.input_type
+class IntegrationAccountPartnerArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input['PartnerContentArgs'],
+                 integration_account_name: pulumi.Input[str],
+                 partner_type: pulumi.Input[Union[str, 'PartnerType']],
+                 resource_group_name: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 partner_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a IntegrationAccountPartner resource.
+        :param pulumi.Input['PartnerContentArgs'] content: The partner content.
+        :param pulumi.Input[str] integration_account_name: The integration account name.
+        :param pulumi.Input[Union[str, 'PartnerType']] partner_type: The partner type.
+        :param pulumi.Input[str] resource_group_name: The resource group name.
+        :param pulumi.Input[str] location: The resource location.
+        :param Any metadata: The metadata.
+        :param pulumi.Input[str] partner_name: The integration account partner name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "integration_account_name", integration_account_name)
+        pulumi.set(__self__, "partner_type", partner_type)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if partner_name is not None:
+            pulumi.set(__self__, "partner_name", partner_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input['PartnerContentArgs']:
+        """
+        The partner content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input['PartnerContentArgs']):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="integrationAccountName")
+    def integration_account_name(self) -> pulumi.Input[str]:
+        """
+        The integration account name.
+        """
+        return pulumi.get(self, "integration_account_name")
+
+    @integration_account_name.setter
+    def integration_account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_account_name", value)
+
+    @property
+    @pulumi.getter(name="partnerType")
+    def partner_type(self) -> pulumi.Input[Union[str, 'PartnerType']]:
+        """
+        The partner type.
+        """
+        return pulumi.get(self, "partner_type")
+
+    @partner_type.setter
+    def partner_type(self, value: pulumi.Input[Union[str, 'PartnerType']]):
+        pulumi.set(self, "partner_type", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The resource group name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Any]:
+        """
+        The metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[Any]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="partnerName")
+    def partner_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The integration account partner name.
+        """
+        return pulumi.get(self, "partner_name")
+
+    @partner_name.setter
+    def partner_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partner_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:logic:IntegrationAccountPartner'.""", DeprecationWarning)
 
@@ -19,6 +151,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class IntegrationAccountPartner(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:logic:IntegrationAccountPartner'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +181,42 @@ class IntegrationAccountPartner(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The resource group name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntegrationAccountPartnerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The integration account partner.
+        Latest API Version: 2019-05-01.
+
+        :param str resource_name: The name of the resource.
+        :param IntegrationAccountPartnerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntegrationAccountPartnerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 content: Optional[pulumi.Input[pulumi.InputType['PartnerContentArgs']]] = None,
+                 integration_account_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 partner_name: Optional[pulumi.Input[str]] = None,
+                 partner_type: Optional[pulumi.Input[Union[str, 'PartnerType']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""IntegrationAccountPartner is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:logic:IntegrationAccountPartner'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,28 +233,28 @@ class IntegrationAccountPartner(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IntegrationAccountPartnerArgs.__new__(IntegrationAccountPartnerArgs)
 
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
-            __props__['content'] = content
+            __props__.__dict__['content'] = content
             if integration_account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_account_name'")
-            __props__['integration_account_name'] = integration_account_name
-            __props__['location'] = location
-            __props__['metadata'] = metadata
-            __props__['partner_name'] = partner_name
+            __props__.__dict__['integration_account_name'] = integration_account_name
+            __props__.__dict__['location'] = location
+            __props__.__dict__['metadata'] = metadata
+            __props__.__dict__['partner_name'] = partner_name
             if partner_type is None and not opts.urn:
                 raise TypeError("Missing required property 'partner_type'")
-            __props__['partner_type'] = partner_type
+            __props__.__dict__['partner_type'] = partner_type
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['changed_time'] = None
-            __props__['created_time'] = None
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['changed_time'] = None
+            __props__.__dict__['created_time'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:logic/latest:IntegrationAccountPartner"), pulumi.Alias(type_="azure-native:logic:IntegrationAccountPartner"), pulumi.Alias(type_="azure-nextgen:logic:IntegrationAccountPartner"), pulumi.Alias(type_="azure-native:logic/v20150801preview:IntegrationAccountPartner"), pulumi.Alias(type_="azure-nextgen:logic/v20150801preview:IntegrationAccountPartner"), pulumi.Alias(type_="azure-native:logic/v20160601:IntegrationAccountPartner"), pulumi.Alias(type_="azure-nextgen:logic/v20160601:IntegrationAccountPartner"), pulumi.Alias(type_="azure-native:logic/v20180701preview:IntegrationAccountPartner"), pulumi.Alias(type_="azure-nextgen:logic/v20180701preview:IntegrationAccountPartner"), pulumi.Alias(type_="azure-native:logic/v20190501:IntegrationAccountPartner"), pulumi.Alias(type_="azure-nextgen:logic/v20190501:IntegrationAccountPartner")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(IntegrationAccountPartner, __self__).__init__(
@@ -110,15 +279,15 @@ class IntegrationAccountPartner(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["changed_time"] = None
-        __props__["content"] = None
-        __props__["created_time"] = None
-        __props__["location"] = None
-        __props__["metadata"] = None
-        __props__["name"] = None
-        __props__["partner_type"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['changed_time'] = None
+        __props__['content'] = None
+        __props__['created_time'] = None
+        __props__['location'] = None
+        __props__['metadata'] = None
+        __props__['name'] = None
+        __props__['partner_type'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return IntegrationAccountPartner(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -192,10 +361,4 @@ class IntegrationAccountPartner(pulumi.CustomResource):
         Gets the resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

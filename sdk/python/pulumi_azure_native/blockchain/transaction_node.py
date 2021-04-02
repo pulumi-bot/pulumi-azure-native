@@ -5,15 +5,117 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TransactionNode']
+__all__ = ['TransactionNodeArgs', 'TransactionNode']
+
+@pulumi.input_type
+class TransactionNodeArgs:
+    def __init__(__self__, *,
+                 blockchain_member_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 firewall_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallRuleArgs']]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 transaction_node_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TransactionNode resource.
+        :param pulumi.Input[str] blockchain_member_name: Blockchain member name.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallRuleArgs']]] firewall_rules: Gets or sets the firewall rules.
+        :param pulumi.Input[str] location: Gets or sets the transaction node location.
+        :param pulumi.Input[str] password: Sets the transaction node dns endpoint basic auth password.
+        :param pulumi.Input[str] transaction_node_name: Transaction node name.
+        """
+        pulumi.set(__self__, "blockchain_member_name", blockchain_member_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if firewall_rules is not None:
+            pulumi.set(__self__, "firewall_rules", firewall_rules)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if transaction_node_name is not None:
+            pulumi.set(__self__, "transaction_node_name", transaction_node_name)
+
+    @property
+    @pulumi.getter(name="blockchainMemberName")
+    def blockchain_member_name(self) -> pulumi.Input[str]:
+        """
+        Blockchain member name.
+        """
+        return pulumi.get(self, "blockchain_member_name")
+
+    @blockchain_member_name.setter
+    def blockchain_member_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blockchain_member_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="firewallRules")
+    def firewall_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallRuleArgs']]]]:
+        """
+        Gets or sets the firewall rules.
+        """
+        return pulumi.get(self, "firewall_rules")
+
+    @firewall_rules.setter
+    def firewall_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallRuleArgs']]]]):
+        pulumi.set(self, "firewall_rules", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Gets or sets the transaction node location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the transaction node dns endpoint basic auth password.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="transactionNodeName")
+    def transaction_node_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Transaction node name.
+        """
+        return pulumi.get(self, "transaction_node_name")
+
+    @transaction_node_name.setter
+    def transaction_node_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transaction_node_name", value)
 
 
 class TransactionNode(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +141,40 @@ class TransactionNode(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
         :param pulumi.Input[str] transaction_node_name: Transaction node name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TransactionNodeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Payload of the transaction node which is the request/response of the resource provider.
+        API Version: 2018-06-01-preview.
+
+        :param str resource_name: The name of the resource.
+        :param TransactionNodeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TransactionNodeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 blockchain_member_name: Optional[pulumi.Input[str]] = None,
+                 firewall_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallRuleArgs']]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 transaction_node_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -54,24 +190,24 @@ class TransactionNode(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TransactionNodeArgs.__new__(TransactionNodeArgs)
 
             if blockchain_member_name is None and not opts.urn:
                 raise TypeError("Missing required property 'blockchain_member_name'")
-            __props__['blockchain_member_name'] = blockchain_member_name
-            __props__['firewall_rules'] = firewall_rules
-            __props__['location'] = location
-            __props__['password'] = password
+            __props__.__dict__['blockchain_member_name'] = blockchain_member_name
+            __props__.__dict__['firewall_rules'] = firewall_rules
+            __props__.__dict__['location'] = location
+            __props__.__dict__['password'] = password
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['transaction_node_name'] = transaction_node_name
-            __props__['dns'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['public_key'] = None
-            __props__['type'] = None
-            __props__['user_name'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['transaction_node_name'] = transaction_node_name
+            __props__.__dict__['dns'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['public_key'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['user_name'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:blockchain:TransactionNode"), pulumi.Alias(type_="azure-native:blockchain/v20180601preview:TransactionNode"), pulumi.Alias(type_="azure-nextgen:blockchain/v20180601preview:TransactionNode")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TransactionNode, __self__).__init__(
@@ -96,15 +232,15 @@ class TransactionNode(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["dns"] = None
-        __props__["firewall_rules"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["password"] = None
-        __props__["provisioning_state"] = None
-        __props__["public_key"] = None
-        __props__["type"] = None
-        __props__["user_name"] = None
+        __props__['dns'] = None
+        __props__['firewall_rules'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['password'] = None
+        __props__['provisioning_state'] = None
+        __props__['public_key'] = None
+        __props__['type'] = None
+        __props__['user_name'] = None
         return TransactionNode(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -178,10 +314,4 @@ class TransactionNode(pulumi.CustomResource):
         Gets or sets the transaction node dns endpoint basic auth user name.
         """
         return pulumi.get(self, "user_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

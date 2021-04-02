@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -26,6 +26,43 @@ class BgpSessionResponse(dict):
     """
     The properties that define a BGP session.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "microsoftSessionIPv4Address":
+            suggest = "microsoft_session_i_pv4_address"
+        elif key == "microsoftSessionIPv6Address":
+            suggest = "microsoft_session_i_pv6_address"
+        elif key == "sessionStateV4":
+            suggest = "session_state_v4"
+        elif key == "sessionStateV6":
+            suggest = "session_state_v6"
+        elif key == "maxPrefixesAdvertisedV4":
+            suggest = "max_prefixes_advertised_v4"
+        elif key == "maxPrefixesAdvertisedV6":
+            suggest = "max_prefixes_advertised_v6"
+        elif key == "md5AuthenticationKey":
+            suggest = "md5_authentication_key"
+        elif key == "peerSessionIPv4Address":
+            suggest = "peer_session_i_pv4_address"
+        elif key == "peerSessionIPv6Address":
+            suggest = "peer_session_i_pv6_address"
+        elif key == "sessionPrefixV4":
+            suggest = "session_prefix_v4"
+        elif key == "sessionPrefixV6":
+            suggest = "session_prefix_v6"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpSessionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpSessionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpSessionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  microsoft_session_i_pv4_address: str,
                  microsoft_session_i_pv6_address: str,
@@ -159,9 +196,6 @@ class BgpSessionResponse(dict):
         """
         return pulumi.get(self, "session_prefix_v6")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContactInfoResponse(dict):
@@ -197,15 +231,43 @@ class ContactInfoResponse(dict):
         """
         return pulumi.get(self, "phone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DirectConnectionResponse(dict):
     """
     The properties that define a direct connection.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionState":
+            suggest = "connection_state"
+        elif key == "bandwidthInMbps":
+            suggest = "bandwidth_in_mbps"
+        elif key == "bgpSession":
+            suggest = "bgp_session"
+        elif key == "connectionIdentifier":
+            suggest = "connection_identifier"
+        elif key == "peeringDBFacilityId":
+            suggest = "peering_db_facility_id"
+        elif key == "provisionedBandwidthInMbps":
+            suggest = "provisioned_bandwidth_in_mbps"
+        elif key == "sessionAddressProvider":
+            suggest = "session_address_provider"
+        elif key == "useForPeeringService":
+            suggest = "use_for_peering_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectConnectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectConnectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectConnectionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_state: str,
                  bandwidth_in_mbps: Optional[int] = None,
@@ -306,15 +368,35 @@ class DirectConnectionResponse(dict):
         """
         return pulumi.get(self, "use_for_peering_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExchangeConnectionResponse(dict):
     """
     The properties that define an exchange connection.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionState":
+            suggest = "connection_state"
+        elif key == "bgpSession":
+            suggest = "bgp_session"
+        elif key == "connectionIdentifier":
+            suggest = "connection_identifier"
+        elif key == "peeringDBFacilityId":
+            suggest = "peering_db_facility_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExchangeConnectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExchangeConnectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExchangeConnectionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_state: str,
                  bgp_session: Optional['outputs.BgpSessionResponse'] = None,
@@ -367,15 +449,33 @@ class ExchangeConnectionResponse(dict):
         """
         return pulumi.get(self, "peering_db_facility_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PeeringPropertiesDirectResponse(dict):
     """
     The properties that define a direct peering.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "directPeeringType":
+            suggest = "direct_peering_type"
+        elif key == "peerAsn":
+            suggest = "peer_asn"
+        elif key == "useForPeeringService":
+            suggest = "use_for_peering_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PeeringPropertiesDirectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PeeringPropertiesDirectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PeeringPropertiesDirectResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connections: Optional[Sequence['outputs.DirectConnectionResponse']] = None,
                  direct_peering_type: Optional[str] = None,
@@ -429,15 +529,29 @@ class PeeringPropertiesDirectResponse(dict):
         """
         return pulumi.get(self, "use_for_peering_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PeeringPropertiesExchangeResponse(dict):
     """
     The properties that define an exchange peering.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "peerAsn":
+            suggest = "peer_asn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PeeringPropertiesExchangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PeeringPropertiesExchangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PeeringPropertiesExchangeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connections: Optional[Sequence['outputs.ExchangeConnectionResponse']] = None,
                  peer_asn: Optional['outputs.SubResourceResponse'] = None):
@@ -466,9 +580,6 @@ class PeeringPropertiesExchangeResponse(dict):
         The reference of the peer ASN.
         """
         return pulumi.get(self, "peer_asn")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -529,9 +640,6 @@ class PeeringSkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubResourceResponse(dict):
@@ -554,8 +662,5 @@ class SubResourceResponse(dict):
         The identifier of the referenced resource.
         """
         return pulumi.get(self, "id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -112,6 +112,29 @@ class AS2AcknowledgementConnectionSettingsResponse(dict):
     """
     The AS2 agreement acknowledgement connection settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreCertificateNameMismatch":
+            suggest = "ignore_certificate_name_mismatch"
+        elif key == "keepHttpConnectionAlive":
+            suggest = "keep_http_connection_alive"
+        elif key == "supportHttpStatusCodeContinue":
+            suggest = "support_http_status_code_continue"
+        elif key == "unfoldHttpHeaders":
+            suggest = "unfold_http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2AcknowledgementConnectionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2AcknowledgementConnectionSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2AcknowledgementConnectionSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ignore_certificate_name_mismatch: bool,
                  keep_http_connection_alive: bool,
@@ -161,15 +184,31 @@ class AS2AcknowledgementConnectionSettingsResponse(dict):
         """
         return pulumi.get(self, "unfold_http_headers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2AgreementContentResponse(dict):
     """
     The integration account AS2 agreement content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "receiveAgreement":
+            suggest = "receive_agreement"
+        elif key == "sendAgreement":
+            suggest = "send_agreement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2AgreementContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2AgreementContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2AgreementContentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  receive_agreement: 'outputs.AS2OneWayAgreementResponse',
                  send_agreement: 'outputs.AS2OneWayAgreementResponse'):
@@ -197,15 +236,37 @@ class AS2AgreementContentResponse(dict):
         """
         return pulumi.get(self, "send_agreement")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2EnvelopeSettingsResponse(dict):
     """
     The AS2 agreement envelope settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autogenerateFileName":
+            suggest = "autogenerate_file_name"
+        elif key == "fileNameTemplate":
+            suggest = "file_name_template"
+        elif key == "messageContentType":
+            suggest = "message_content_type"
+        elif key == "suspendMessageOnFileNameGenerationError":
+            suggest = "suspend_message_on_file_name_generation_error"
+        elif key == "transmitFileNameInMimeHeader":
+            suggest = "transmit_file_name_in_mime_header"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2EnvelopeSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2EnvelopeSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2EnvelopeSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autogenerate_file_name: bool,
                  file_name_template: str,
@@ -266,15 +327,31 @@ class AS2EnvelopeSettingsResponse(dict):
         """
         return pulumi.get(self, "transmit_file_name_in_mime_header")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2ErrorSettingsResponse(dict):
     """
     The AS2 agreement error settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resendIfMDNNotReceived":
+            suggest = "resend_if_mdn_not_received"
+        elif key == "suspendDuplicateMessage":
+            suggest = "suspend_duplicate_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2ErrorSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2ErrorSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2ErrorSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resend_if_mdn_not_received: bool,
                  suspend_duplicate_message: bool):
@@ -302,15 +379,45 @@ class AS2ErrorSettingsResponse(dict):
         """
         return pulumi.get(self, "suspend_duplicate_message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2MdnSettingsResponse(dict):
     """
     The AS2 agreement mdn settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "micHashingAlgorithm":
+            suggest = "mic_hashing_algorithm"
+        elif key == "needMDN":
+            suggest = "need_mdn"
+        elif key == "sendInboundMDNToMessageBox":
+            suggest = "send_inbound_mdn_to_message_box"
+        elif key == "sendMDNAsynchronously":
+            suggest = "send_mdnasynchronously"
+        elif key == "signMDN":
+            suggest = "sign_mdn"
+        elif key == "signOutboundMDNIfOptional":
+            suggest = "sign_outbound_mdn_if_optional"
+        elif key == "dispositionNotificationTo":
+            suggest = "disposition_notification_to"
+        elif key == "mdnText":
+            suggest = "mdn_text"
+        elif key == "receiptDeliveryUrl":
+            suggest = "receipt_delivery_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2MdnSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2MdnSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2MdnSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mic_hashing_algorithm: str,
                  need_mdn: bool,
@@ -418,15 +525,35 @@ class AS2MdnSettingsResponse(dict):
         """
         return pulumi.get(self, "receipt_delivery_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2MessageConnectionSettingsResponse(dict):
     """
     The AS2 agreement message connection settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreCertificateNameMismatch":
+            suggest = "ignore_certificate_name_mismatch"
+        elif key == "keepHttpConnectionAlive":
+            suggest = "keep_http_connection_alive"
+        elif key == "supportHttpStatusCodeContinue":
+            suggest = "support_http_status_code_continue"
+        elif key == "unfoldHttpHeaders":
+            suggest = "unfold_http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2MessageConnectionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2MessageConnectionSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2MessageConnectionSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ignore_certificate_name_mismatch: bool,
                  keep_http_connection_alive: bool,
@@ -476,15 +603,33 @@ class AS2MessageConnectionSettingsResponse(dict):
         """
         return pulumi.get(self, "unfold_http_headers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2OneWayAgreementResponse(dict):
     """
     The integration account AS2 one-way agreement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protocolSettings":
+            suggest = "protocol_settings"
+        elif key == "receiverBusinessIdentity":
+            suggest = "receiver_business_identity"
+        elif key == "senderBusinessIdentity":
+            suggest = "sender_business_identity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2OneWayAgreementResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2OneWayAgreementResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2OneWayAgreementResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  protocol_settings: 'outputs.AS2ProtocolSettingsResponse',
                  receiver_business_identity: 'outputs.BusinessIdentityResponse',
@@ -523,15 +668,41 @@ class AS2OneWayAgreementResponse(dict):
         """
         return pulumi.get(self, "sender_business_identity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2ProtocolSettingsResponse(dict):
     """
     The AS2 agreement protocol settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgementConnectionSettings":
+            suggest = "acknowledgement_connection_settings"
+        elif key == "envelopeSettings":
+            suggest = "envelope_settings"
+        elif key == "errorSettings":
+            suggest = "error_settings"
+        elif key == "mdnSettings":
+            suggest = "mdn_settings"
+        elif key == "messageConnectionSettings":
+            suggest = "message_connection_settings"
+        elif key == "securitySettings":
+            suggest = "security_settings"
+        elif key == "validationSettings":
+            suggest = "validation_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2ProtocolSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2ProtocolSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2ProtocolSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  acknowledgement_connection_settings: 'outputs.AS2AcknowledgementConnectionSettingsResponse',
                  envelope_settings: 'outputs.AS2EnvelopeSettingsResponse',
@@ -614,15 +785,47 @@ class AS2ProtocolSettingsResponse(dict):
         """
         return pulumi.get(self, "validation_settings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2SecuritySettingsResponse(dict):
     """
     The AS2 agreement security settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableNRRForInboundDecodedMessages":
+            suggest = "enable_nrr_for_inbound_decoded_messages"
+        elif key == "enableNRRForInboundEncodedMessages":
+            suggest = "enable_nrr_for_inbound_encoded_messages"
+        elif key == "enableNRRForInboundMDN":
+            suggest = "enable_nrr_for_inbound_mdn"
+        elif key == "enableNRRForOutboundDecodedMessages":
+            suggest = "enable_nrr_for_outbound_decoded_messages"
+        elif key == "enableNRRForOutboundEncodedMessages":
+            suggest = "enable_nrr_for_outbound_encoded_messages"
+        elif key == "enableNRRForOutboundMDN":
+            suggest = "enable_nrr_for_outbound_mdn"
+        elif key == "overrideGroupSigningCertificate":
+            suggest = "override_group_signing_certificate"
+        elif key == "encryptionCertificateName":
+            suggest = "encryption_certificate_name"
+        elif key == "sha2AlgorithmFormat":
+            suggest = "sha2_algorithm_format"
+        elif key == "signingCertificateName":
+            suggest = "signing_certificate_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2SecuritySettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2SecuritySettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2SecuritySettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_nrr_for_inbound_decoded_messages: bool,
                  enable_nrr_for_inbound_encoded_messages: bool,
@@ -741,15 +944,47 @@ class AS2SecuritySettingsResponse(dict):
         """
         return pulumi.get(self, "signing_certificate_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AS2ValidationSettingsResponse(dict):
     """
     The AS2 agreement validation settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkCertificateRevocationListOnReceive":
+            suggest = "check_certificate_revocation_list_on_receive"
+        elif key == "checkCertificateRevocationListOnSend":
+            suggest = "check_certificate_revocation_list_on_send"
+        elif key == "checkDuplicateMessage":
+            suggest = "check_duplicate_message"
+        elif key == "compressMessage":
+            suggest = "compress_message"
+        elif key == "encryptMessage":
+            suggest = "encrypt_message"
+        elif key == "encryptionAlgorithm":
+            suggest = "encryption_algorithm"
+        elif key == "interchangeDuplicatesValidityDays":
+            suggest = "interchange_duplicates_validity_days"
+        elif key == "overrideMessageProperties":
+            suggest = "override_message_properties"
+        elif key == "signMessage":
+            suggest = "sign_message"
+        elif key == "signingAlgorithm":
+            suggest = "signing_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AS2ValidationSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AS2ValidationSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AS2ValidationSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  check_certificate_revocation_list_on_receive: bool,
                  check_certificate_revocation_list_on_send: bool,
@@ -866,15 +1101,29 @@ class AS2ValidationSettingsResponse(dict):
         """
         return pulumi.get(self, "signing_algorithm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AgreementContentResponse(dict):
     """
     The integration account agreement content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aS2":
+            suggest = "a_s2"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgreementContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgreementContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgreementContentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  a_s2: Optional['outputs.AS2AgreementContentResponse'] = None,
                  edifact: Optional['outputs.EdifactAgreementContentResponse'] = None,
@@ -916,15 +1165,31 @@ class AgreementContentResponse(dict):
         """
         return pulumi.get(self, "x12")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiDeploymentParameterMetadataResponse(dict):
     """
     The API deployment parameter metadata.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "isRequired":
+            suggest = "is_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiDeploymentParameterMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiDeploymentParameterMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiDeploymentParameterMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  display_name: Optional[str] = None,
@@ -990,15 +1255,31 @@ class ApiDeploymentParameterMetadataResponse(dict):
         """
         return pulumi.get(self, "visibility")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiDeploymentParameterMetadataSetResponse(dict):
     """
     The API deployment parameters metadata.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packageContentLink":
+            suggest = "package_content_link"
+        elif key == "redisCacheConnectionString":
+            suggest = "redis_cache_connection_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiDeploymentParameterMetadataSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiDeploymentParameterMetadataSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiDeploymentParameterMetadataSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  package_content_link: Optional['outputs.ApiDeploymentParameterMetadataResponse'] = None,
                  redis_cache_connection_string: Optional['outputs.ApiDeploymentParameterMetadataResponse'] = None):
@@ -1028,15 +1309,29 @@ class ApiDeploymentParameterMetadataSetResponse(dict):
         """
         return pulumi.get(self, "redis_cache_connection_string")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiResourceBackendServiceResponse(dict):
     """
     The API backend service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceUrl":
+            suggest = "service_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiResourceBackendServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiResourceBackendServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiResourceBackendServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service_url: Optional[str] = None):
         """
@@ -1054,15 +1349,31 @@ class ApiResourceBackendServiceResponse(dict):
         """
         return pulumi.get(self, "service_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiResourceDefinitionsResponse(dict):
     """
     The Api resource definition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modifiedSwaggerUrl":
+            suggest = "modified_swagger_url"
+        elif key == "originalSwaggerUrl":
+            suggest = "original_swagger_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiResourceDefinitionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiResourceDefinitionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiResourceDefinitionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  modified_swagger_url: Optional[str] = None,
                  original_swagger_url: Optional[str] = None):
@@ -1092,15 +1403,35 @@ class ApiResourceDefinitionsResponse(dict):
         """
         return pulumi.get(self, "original_swagger_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiResourceGeneralInformationResponse(dict):
     """
     The API general information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "iconUrl":
+            suggest = "icon_url"
+        elif key == "releaseTag":
+            suggest = "release_tag"
+        elif key == "termsOfUseUrl":
+            suggest = "terms_of_use_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiResourceGeneralInformationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiResourceGeneralInformationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiResourceGeneralInformationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  display_name: Optional[str] = None,
@@ -1178,15 +1509,43 @@ class ApiResourceGeneralInformationResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiResourceMetadataResponse(dict):
     """
     The api resource metadata.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiType":
+            suggest = "api_type"
+        elif key == "brandColor":
+            suggest = "brand_color"
+        elif key == "connectionType":
+            suggest = "connection_type"
+        elif key == "deploymentParameters":
+            suggest = "deployment_parameters"
+        elif key == "hideKey":
+            suggest = "hide_key"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "wsdlImportMethod":
+            suggest = "wsdl_import_method"
+        elif key == "wsdlService":
+            suggest = "wsdl_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiResourceMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiResourceMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiResourceMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_type: Optional[str] = None,
                  brand_color: Optional[str] = None,
@@ -1312,15 +1671,29 @@ class ApiResourceMetadataResponse(dict):
         """
         return pulumi.get(self, "wsdl_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiResourcePoliciesResponse(dict):
     """
     The API resource policies.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentLink":
+            suggest = "content_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiResourcePoliciesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiResourcePoliciesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiResourcePoliciesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  content_link: Optional[str] = None):
@@ -1350,15 +1723,43 @@ class ApiResourcePoliciesResponse(dict):
         """
         return pulumi.get(self, "content_link")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiResourcePropertiesResponse(dict):
     """
     The API resource properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiDefinitionUrl":
+            suggest = "api_definition_url"
+        elif key == "apiDefinitions":
+            suggest = "api_definitions"
+        elif key == "backendService":
+            suggest = "backend_service"
+        elif key == "connectionParameters":
+            suggest = "connection_parameters"
+        elif key == "generalInformation":
+            suggest = "general_information"
+        elif key == "integrationServiceEnvironment":
+            suggest = "integration_service_environment"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "runtimeUrls":
+            suggest = "runtime_urls"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiResourcePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiResourcePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiResourcePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_definition_url: Optional[str] = None,
                  api_definitions: Optional['outputs.ApiResourceDefinitionsResponse'] = None,
@@ -1520,15 +1921,43 @@ class ApiResourcePropertiesResponse(dict):
         """
         return pulumi.get(self, "runtime_urls")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AssemblyPropertiesResponse(dict):
     """
     The assembly properties definition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assemblyName":
+            suggest = "assembly_name"
+        elif key == "assemblyCulture":
+            suggest = "assembly_culture"
+        elif key == "assemblyPublicKeyToken":
+            suggest = "assembly_public_key_token"
+        elif key == "assemblyVersion":
+            suggest = "assembly_version"
+        elif key == "changedTime":
+            suggest = "changed_time"
+        elif key == "contentLink":
+            suggest = "content_link"
+        elif key == "contentType":
+            suggest = "content_type"
+        elif key == "createdTime":
+            suggest = "created_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssemblyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssemblyPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssemblyPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  assembly_name: str,
                  assembly_culture: Optional[str] = None,
@@ -1645,9 +2074,6 @@ class AssemblyPropertiesResponse(dict):
     def metadata(self) -> Optional[Any]:
         return pulumi.get(self, "metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureResourceErrorInfoResponseResult(dict):
@@ -1699,6 +2125,23 @@ class B2BPartnerContentResponse(dict):
     """
     The B2B partner content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "businessIdentities":
+            suggest = "business_identities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in B2BPartnerContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        B2BPartnerContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        B2BPartnerContentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  business_identities: Optional[Sequence['outputs.BusinessIdentityResponse']] = None):
         """
@@ -1716,15 +2159,35 @@ class B2BPartnerContentResponse(dict):
         """
         return pulumi.get(self, "business_identities")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BatchConfigurationPropertiesResponse(dict):
     """
     The batch configuration properties definition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchGroupName":
+            suggest = "batch_group_name"
+        elif key == "releaseCriteria":
+            suggest = "release_criteria"
+        elif key == "changedTime":
+            suggest = "changed_time"
+        elif key == "createdTime":
+            suggest = "created_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchConfigurationPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchConfigurationPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  batch_group_name: str,
                  release_criteria: 'outputs.BatchReleaseCriteriaResponse',
@@ -1784,15 +2247,31 @@ class BatchConfigurationPropertiesResponse(dict):
     def metadata(self) -> Optional[Any]:
         return pulumi.get(self, "metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BatchReleaseCriteriaResponse(dict):
     """
     The batch release criteria.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSize":
+            suggest = "batch_size"
+        elif key == "messageCount":
+            suggest = "message_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchReleaseCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchReleaseCriteriaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchReleaseCriteriaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  batch_size: Optional[int] = None,
                  message_count: Optional[int] = None,
@@ -1834,9 +2313,6 @@ class BatchReleaseCriteriaResponse(dict):
         """
         return pulumi.get(self, "recurrence")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BusinessIdentityResponse(dict):
@@ -1869,9 +2345,6 @@ class BusinessIdentityResponse(dict):
         The user defined business identity value.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1908,15 +2381,33 @@ class ContentHashResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContentLinkResponse(dict):
     """
     The content link.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentHash":
+            suggest = "content_hash"
+        elif key == "contentSize":
+            suggest = "content_size"
+        elif key == "contentVersion":
+            suggest = "content_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContentLinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContentLinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContentLinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_hash: Optional['outputs.ContentHashResponse'] = None,
                  content_size: Optional[float] = None,
@@ -1982,15 +2473,49 @@ class ContentLinkResponse(dict):
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactAcknowledgementSettingsResponse(dict):
     """
     The Edifact agreement acknowledgement settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgementControlNumberLowerBound":
+            suggest = "acknowledgement_control_number_lower_bound"
+        elif key == "acknowledgementControlNumberUpperBound":
+            suggest = "acknowledgement_control_number_upper_bound"
+        elif key == "batchFunctionalAcknowledgements":
+            suggest = "batch_functional_acknowledgements"
+        elif key == "batchTechnicalAcknowledgements":
+            suggest = "batch_technical_acknowledgements"
+        elif key == "needFunctionalAcknowledgement":
+            suggest = "need_functional_acknowledgement"
+        elif key == "needLoopForValidMessages":
+            suggest = "need_loop_for_valid_messages"
+        elif key == "needTechnicalAcknowledgement":
+            suggest = "need_technical_acknowledgement"
+        elif key == "rolloverAcknowledgementControlNumber":
+            suggest = "rollover_acknowledgement_control_number"
+        elif key == "sendSynchronousAcknowledgement":
+            suggest = "send_synchronous_acknowledgement"
+        elif key == "acknowledgementControlNumberPrefix":
+            suggest = "acknowledgement_control_number_prefix"
+        elif key == "acknowledgementControlNumberSuffix":
+            suggest = "acknowledgement_control_number_suffix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactAcknowledgementSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactAcknowledgementSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactAcknowledgementSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  acknowledgement_control_number_lower_bound: int,
                  acknowledgement_control_number_upper_bound: int,
@@ -2119,15 +2644,31 @@ class EdifactAcknowledgementSettingsResponse(dict):
         """
         return pulumi.get(self, "acknowledgement_control_number_suffix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactAgreementContentResponse(dict):
     """
     The Edifact agreement content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "receiveAgreement":
+            suggest = "receive_agreement"
+        elif key == "sendAgreement":
+            suggest = "send_agreement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactAgreementContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactAgreementContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactAgreementContentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  receive_agreement: 'outputs.EdifactOneWayAgreementResponse',
                  send_agreement: 'outputs.EdifactOneWayAgreementResponse'):
@@ -2155,15 +2696,51 @@ class EdifactAgreementContentResponse(dict):
         """
         return pulumi.get(self, "send_agreement")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactDelimiterOverrideResponse(dict):
     """
     The Edifact delimiter override settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentSeparator":
+            suggest = "component_separator"
+        elif key == "dataElementSeparator":
+            suggest = "data_element_separator"
+        elif key == "decimalPointIndicator":
+            suggest = "decimal_point_indicator"
+        elif key == "releaseIndicator":
+            suggest = "release_indicator"
+        elif key == "repetitionSeparator":
+            suggest = "repetition_separator"
+        elif key == "segmentTerminator":
+            suggest = "segment_terminator"
+        elif key == "segmentTerminatorSuffix":
+            suggest = "segment_terminator_suffix"
+        elif key == "messageAssociationAssignedCode":
+            suggest = "message_association_assigned_code"
+        elif key == "messageId":
+            suggest = "message_id"
+        elif key == "messageRelease":
+            suggest = "message_release"
+        elif key == "messageVersion":
+            suggest = "message_version"
+        elif key == "targetNamespace":
+            suggest = "target_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactDelimiterOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactDelimiterOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactDelimiterOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component_separator: int,
                  data_element_separator: int,
@@ -2306,15 +2883,57 @@ class EdifactDelimiterOverrideResponse(dict):
         """
         return pulumi.get(self, "target_namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactEnvelopeOverrideResponse(dict):
     """
     The Edifact envelope override settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationPassword":
+            suggest = "application_password"
+        elif key == "associationAssignedCode":
+            suggest = "association_assigned_code"
+        elif key == "controllingAgencyCode":
+            suggest = "controlling_agency_code"
+        elif key == "functionalGroupId":
+            suggest = "functional_group_id"
+        elif key == "groupHeaderMessageRelease":
+            suggest = "group_header_message_release"
+        elif key == "groupHeaderMessageVersion":
+            suggest = "group_header_message_version"
+        elif key == "messageAssociationAssignedCode":
+            suggest = "message_association_assigned_code"
+        elif key == "messageId":
+            suggest = "message_id"
+        elif key == "messageRelease":
+            suggest = "message_release"
+        elif key == "messageVersion":
+            suggest = "message_version"
+        elif key == "receiverApplicationId":
+            suggest = "receiver_application_id"
+        elif key == "receiverApplicationQualifier":
+            suggest = "receiver_application_qualifier"
+        elif key == "senderApplicationId":
+            suggest = "sender_application_id"
+        elif key == "senderApplicationQualifier":
+            suggest = "sender_application_qualifier"
+        elif key == "targetNamespace":
+            suggest = "target_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactEnvelopeOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactEnvelopeOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactEnvelopeOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  application_password: Optional[str] = None,
                  association_assigned_code: Optional[str] = None,
@@ -2500,15 +3119,109 @@ class EdifactEnvelopeOverrideResponse(dict):
         """
         return pulumi.get(self, "target_namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactEnvelopeSettingsResponse(dict):
     """
     The Edifact agreement envelope settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applyDelimiterStringAdvice":
+            suggest = "apply_delimiter_string_advice"
+        elif key == "createGroupingSegments":
+            suggest = "create_grouping_segments"
+        elif key == "enableDefaultGroupHeaders":
+            suggest = "enable_default_group_headers"
+        elif key == "groupControlNumberLowerBound":
+            suggest = "group_control_number_lower_bound"
+        elif key == "groupControlNumberUpperBound":
+            suggest = "group_control_number_upper_bound"
+        elif key == "interchangeControlNumberLowerBound":
+            suggest = "interchange_control_number_lower_bound"
+        elif key == "interchangeControlNumberUpperBound":
+            suggest = "interchange_control_number_upper_bound"
+        elif key == "isTestInterchange":
+            suggest = "is_test_interchange"
+        elif key == "overwriteExistingTransactionSetControlNumber":
+            suggest = "overwrite_existing_transaction_set_control_number"
+        elif key == "rolloverGroupControlNumber":
+            suggest = "rollover_group_control_number"
+        elif key == "rolloverInterchangeControlNumber":
+            suggest = "rollover_interchange_control_number"
+        elif key == "rolloverTransactionSetControlNumber":
+            suggest = "rollover_transaction_set_control_number"
+        elif key == "transactionSetControlNumberLowerBound":
+            suggest = "transaction_set_control_number_lower_bound"
+        elif key == "transactionSetControlNumberUpperBound":
+            suggest = "transaction_set_control_number_upper_bound"
+        elif key == "applicationReferenceId":
+            suggest = "application_reference_id"
+        elif key == "communicationAgreementId":
+            suggest = "communication_agreement_id"
+        elif key == "functionalGroupId":
+            suggest = "functional_group_id"
+        elif key == "groupApplicationPassword":
+            suggest = "group_application_password"
+        elif key == "groupApplicationReceiverId":
+            suggest = "group_application_receiver_id"
+        elif key == "groupApplicationReceiverQualifier":
+            suggest = "group_application_receiver_qualifier"
+        elif key == "groupApplicationSenderId":
+            suggest = "group_application_sender_id"
+        elif key == "groupApplicationSenderQualifier":
+            suggest = "group_application_sender_qualifier"
+        elif key == "groupAssociationAssignedCode":
+            suggest = "group_association_assigned_code"
+        elif key == "groupControlNumberPrefix":
+            suggest = "group_control_number_prefix"
+        elif key == "groupControlNumberSuffix":
+            suggest = "group_control_number_suffix"
+        elif key == "groupControllingAgencyCode":
+            suggest = "group_controlling_agency_code"
+        elif key == "groupMessageRelease":
+            suggest = "group_message_release"
+        elif key == "groupMessageVersion":
+            suggest = "group_message_version"
+        elif key == "interchangeControlNumberPrefix":
+            suggest = "interchange_control_number_prefix"
+        elif key == "interchangeControlNumberSuffix":
+            suggest = "interchange_control_number_suffix"
+        elif key == "processingPriorityCode":
+            suggest = "processing_priority_code"
+        elif key == "receiverInternalIdentification":
+            suggest = "receiver_internal_identification"
+        elif key == "receiverInternalSubIdentification":
+            suggest = "receiver_internal_sub_identification"
+        elif key == "receiverReverseRoutingAddress":
+            suggest = "receiver_reverse_routing_address"
+        elif key == "recipientReferencePasswordQualifier":
+            suggest = "recipient_reference_password_qualifier"
+        elif key == "recipientReferencePasswordValue":
+            suggest = "recipient_reference_password_value"
+        elif key == "senderInternalIdentification":
+            suggest = "sender_internal_identification"
+        elif key == "senderInternalSubIdentification":
+            suggest = "sender_internal_sub_identification"
+        elif key == "senderReverseRoutingAddress":
+            suggest = "sender_reverse_routing_address"
+        elif key == "transactionSetControlNumberPrefix":
+            suggest = "transaction_set_control_number_prefix"
+        elif key == "transactionSetControlNumberSuffix":
+            suggest = "transaction_set_control_number_suffix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactEnvelopeSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactEnvelopeSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactEnvelopeSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  apply_delimiter_string_advice: bool,
                  create_grouping_segments: bool,
@@ -2992,15 +3705,49 @@ class EdifactEnvelopeSettingsResponse(dict):
         """
         return pulumi.get(self, "transaction_set_control_number_suffix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactFramingSettingsResponse(dict):
     """
     The Edifact agreement framing settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterSet":
+            suggest = "character_set"
+        elif key == "componentSeparator":
+            suggest = "component_separator"
+        elif key == "dataElementSeparator":
+            suggest = "data_element_separator"
+        elif key == "decimalPointIndicator":
+            suggest = "decimal_point_indicator"
+        elif key == "protocolVersion":
+            suggest = "protocol_version"
+        elif key == "releaseIndicator":
+            suggest = "release_indicator"
+        elif key == "repetitionSeparator":
+            suggest = "repetition_separator"
+        elif key == "segmentTerminator":
+            suggest = "segment_terminator"
+        elif key == "segmentTerminatorSuffix":
+            suggest = "segment_terminator_suffix"
+        elif key == "characterEncoding":
+            suggest = "character_encoding"
+        elif key == "serviceCodeListDirectoryVersion":
+            suggest = "service_code_list_directory_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactFramingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactFramingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactFramingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  character_set: str,
                  component_separator: int,
@@ -3129,15 +3876,29 @@ class EdifactFramingSettingsResponse(dict):
         """
         return pulumi.get(self, "service_code_list_directory_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactMessageFilterResponse(dict):
     """
     The Edifact message filter for odata query.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageFilterType":
+            suggest = "message_filter_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactMessageFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactMessageFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactMessageFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_filter_type: str):
         """
@@ -3154,15 +3915,29 @@ class EdifactMessageFilterResponse(dict):
         """
         return pulumi.get(self, "message_filter_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactMessageIdentifierResponse(dict):
     """
     The Edifact message identifier.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageId":
+            suggest = "message_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactMessageIdentifierResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactMessageIdentifierResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactMessageIdentifierResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_id: str):
         """
@@ -3179,15 +3954,33 @@ class EdifactMessageIdentifierResponse(dict):
         """
         return pulumi.get(self, "message_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactOneWayAgreementResponse(dict):
     """
     The Edifact one way agreement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protocolSettings":
+            suggest = "protocol_settings"
+        elif key == "receiverBusinessIdentity":
+            suggest = "receiver_business_identity"
+        elif key == "senderBusinessIdentity":
+            suggest = "sender_business_identity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactOneWayAgreementResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactOneWayAgreementResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactOneWayAgreementResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  protocol_settings: 'outputs.EdifactProtocolSettingsResponse',
                  receiver_business_identity: 'outputs.BusinessIdentityResponse',
@@ -3226,15 +4019,37 @@ class EdifactOneWayAgreementResponse(dict):
         """
         return pulumi.get(self, "sender_business_identity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactProcessingSettingsResponse(dict):
     """
     The Edifact agreement protocol settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createEmptyXmlTagsForTrailingSeparators":
+            suggest = "create_empty_xml_tags_for_trailing_separators"
+        elif key == "maskSecurityInfo":
+            suggest = "mask_security_info"
+        elif key == "preserveInterchange":
+            suggest = "preserve_interchange"
+        elif key == "suspendInterchangeOnError":
+            suggest = "suspend_interchange_on_error"
+        elif key == "useDotAsDecimalSeparator":
+            suggest = "use_dot_as_decimal_separator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactProcessingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactProcessingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactProcessingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_empty_xml_tags_for_trailing_separators: bool,
                  mask_security_info: bool,
@@ -3295,15 +4110,49 @@ class EdifactProcessingSettingsResponse(dict):
         """
         return pulumi.get(self, "use_dot_as_decimal_separator")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactProtocolSettingsResponse(dict):
     """
     The Edifact agreement protocol settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgementSettings":
+            suggest = "acknowledgement_settings"
+        elif key == "envelopeSettings":
+            suggest = "envelope_settings"
+        elif key == "framingSettings":
+            suggest = "framing_settings"
+        elif key == "messageFilter":
+            suggest = "message_filter"
+        elif key == "processingSettings":
+            suggest = "processing_settings"
+        elif key == "schemaReferences":
+            suggest = "schema_references"
+        elif key == "validationSettings":
+            suggest = "validation_settings"
+        elif key == "edifactDelimiterOverrides":
+            suggest = "edifact_delimiter_overrides"
+        elif key == "envelopeOverrides":
+            suggest = "envelope_overrides"
+        elif key == "messageFilterList":
+            suggest = "message_filter_list"
+        elif key == "validationOverrides":
+            suggest = "validation_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactProtocolSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactProtocolSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactProtocolSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  acknowledgement_settings: 'outputs.EdifactAcknowledgementSettingsResponse',
                  envelope_settings: 'outputs.EdifactEnvelopeSettingsResponse',
@@ -3434,15 +4283,41 @@ class EdifactProtocolSettingsResponse(dict):
         """
         return pulumi.get(self, "validation_overrides")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactSchemaReferenceResponse(dict):
     """
     The Edifact schema reference.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageId":
+            suggest = "message_id"
+        elif key == "messageRelease":
+            suggest = "message_release"
+        elif key == "messageVersion":
+            suggest = "message_version"
+        elif key == "schemaName":
+            suggest = "schema_name"
+        elif key == "associationAssignedCode":
+            suggest = "association_assigned_code"
+        elif key == "senderApplicationId":
+            suggest = "sender_application_id"
+        elif key == "senderApplicationQualifier":
+            suggest = "sender_application_qualifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactSchemaReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactSchemaReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactSchemaReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_id: str,
                  message_release: str,
@@ -3528,15 +4403,41 @@ class EdifactSchemaReferenceResponse(dict):
         """
         return pulumi.get(self, "sender_application_qualifier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactValidationOverrideResponse(dict):
     """
     The Edifact validation override settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowLeadingAndTrailingSpacesAndZeroes":
+            suggest = "allow_leading_and_trailing_spaces_and_zeroes"
+        elif key == "enforceCharacterSet":
+            suggest = "enforce_character_set"
+        elif key == "messageId":
+            suggest = "message_id"
+        elif key == "trailingSeparatorPolicy":
+            suggest = "trailing_separator_policy"
+        elif key == "trimLeadingAndTrailingSpacesAndZeroes":
+            suggest = "trim_leading_and_trailing_spaces_and_zeroes"
+        elif key == "validateEDITypes":
+            suggest = "validate_edi_types"
+        elif key == "validateXSDTypes":
+            suggest = "validate_xsd_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactValidationOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactValidationOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactValidationOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_leading_and_trailing_spaces_and_zeroes: bool,
                  enforce_character_set: bool,
@@ -3619,15 +4520,47 @@ class EdifactValidationOverrideResponse(dict):
         """
         return pulumi.get(self, "validate_xsd_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdifactValidationSettingsResponse(dict):
     """
     The Edifact agreement validation settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowLeadingAndTrailingSpacesAndZeroes":
+            suggest = "allow_leading_and_trailing_spaces_and_zeroes"
+        elif key == "checkDuplicateGroupControlNumber":
+            suggest = "check_duplicate_group_control_number"
+        elif key == "checkDuplicateInterchangeControlNumber":
+            suggest = "check_duplicate_interchange_control_number"
+        elif key == "checkDuplicateTransactionSetControlNumber":
+            suggest = "check_duplicate_transaction_set_control_number"
+        elif key == "interchangeControlNumberValidityDays":
+            suggest = "interchange_control_number_validity_days"
+        elif key == "trailingSeparatorPolicy":
+            suggest = "trailing_separator_policy"
+        elif key == "trimLeadingAndTrailingSpacesAndZeroes":
+            suggest = "trim_leading_and_trailing_spaces_and_zeroes"
+        elif key == "validateCharacterSet":
+            suggest = "validate_character_set"
+        elif key == "validateEDITypes":
+            suggest = "validate_edi_types"
+        elif key == "validateXSDTypes":
+            suggest = "validate_xsd_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdifactValidationSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdifactValidationSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdifactValidationSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_leading_and_trailing_spaces_and_zeroes: bool,
                  check_duplicate_group_control_number: bool,
@@ -3742,9 +4675,6 @@ class EdifactValidationSettingsResponse(dict):
         The value indicating whether to Whether to validate XSD types.
         """
         return pulumi.get(self, "validate_xsd_types")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3874,6 +4804,25 @@ class FlowAccessControlConfigurationPolicyResponse(dict):
     """
     The access control configuration policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedCallerIpAddresses":
+            suggest = "allowed_caller_ip_addresses"
+        elif key == "openAuthenticationPolicies":
+            suggest = "open_authentication_policies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlowAccessControlConfigurationPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlowAccessControlConfigurationPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlowAccessControlConfigurationPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_caller_ip_addresses: Optional[Sequence['outputs.IpAddressRangeResponse']] = None,
                  open_authentication_policies: Optional['outputs.OpenAuthenticationAccessPoliciesResponse'] = None):
@@ -3903,15 +4852,29 @@ class FlowAccessControlConfigurationPolicyResponse(dict):
         """
         return pulumi.get(self, "open_authentication_policies")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlowAccessControlConfigurationResponse(dict):
     """
     The access control configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workflowManagement":
+            suggest = "workflow_management"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlowAccessControlConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlowAccessControlConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlowAccessControlConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  actions: Optional['outputs.FlowAccessControlConfigurationPolicyResponse'] = None,
                  contents: Optional['outputs.FlowAccessControlConfigurationPolicyResponse'] = None,
@@ -3965,9 +4928,6 @@ class FlowAccessControlConfigurationResponse(dict):
         """
         return pulumi.get(self, "workflow_management")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlowEndpointsConfigurationResponse(dict):
@@ -4003,15 +4963,31 @@ class FlowEndpointsConfigurationResponse(dict):
         """
         return pulumi.get(self, "workflow")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FlowEndpointsResponse(dict):
     """
     The flow endpoints configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessEndpointIpAddresses":
+            suggest = "access_endpoint_ip_addresses"
+        elif key == "outgoingIpAddresses":
+            suggest = "outgoing_ip_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlowEndpointsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlowEndpointsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlowEndpointsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_endpoint_ip_addresses: Optional[Sequence['outputs.IpAddressResponse']] = None,
                  outgoing_ip_addresses: Optional[Sequence['outputs.IpAddressResponse']] = None):
@@ -4041,9 +5017,6 @@ class FlowEndpointsResponse(dict):
         """
         return pulumi.get(self, "outgoing_ip_addresses")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationAccountMapPropertiesResponseParametersSchema(dict):
@@ -4067,9 +5040,6 @@ class IntegrationAccountMapPropertiesResponseParametersSchema(dict):
         """
         return pulumi.get(self, "ref")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationAccountSkuResponse(dict):
@@ -4092,15 +5062,29 @@ class IntegrationAccountSkuResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationServiceEnvironmenEncryptionConfigurationResponse(dict):
     """
     The encryption configuration for the integration service environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionKeyReference":
+            suggest = "encryption_key_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationServiceEnvironmenEncryptionConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationServiceEnvironmenEncryptionConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationServiceEnvironmenEncryptionConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  encryption_key_reference: Optional['outputs.IntegrationServiceEnvironmenEncryptionKeyReferenceResponse'] = None):
         """
@@ -4118,15 +5102,33 @@ class IntegrationServiceEnvironmenEncryptionConfigurationResponse(dict):
         """
         return pulumi.get(self, "encryption_key_reference")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationServiceEnvironmenEncryptionKeyReferenceResponse(dict):
     """
     The encryption key details for the integration service environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyName":
+            suggest = "key_name"
+        elif key == "keyVault":
+            suggest = "key_vault"
+        elif key == "keyVersion":
+            suggest = "key_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationServiceEnvironmenEncryptionKeyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationServiceEnvironmenEncryptionKeyReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationServiceEnvironmenEncryptionKeyReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_name: Optional[str] = None,
                  key_vault: Optional['outputs.ResourceReferenceResponse'] = None,
@@ -4168,9 +5170,6 @@ class IntegrationServiceEnvironmenEncryptionKeyReferenceResponse(dict):
         """
         return pulumi.get(self, "key_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationServiceEnvironmentAccessEndpointResponse(dict):
@@ -4194,15 +5193,37 @@ class IntegrationServiceEnvironmentAccessEndpointResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationServiceEnvironmentPropertiesResponse(dict):
     """
     The integration service environment properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionConfiguration":
+            suggest = "encryption_configuration"
+        elif key == "endpointsConfiguration":
+            suggest = "endpoints_configuration"
+        elif key == "integrationServiceEnvironmentId":
+            suggest = "integration_service_environment_id"
+        elif key == "networkConfiguration":
+            suggest = "network_configuration"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationServiceEnvironmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationServiceEnvironmentPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationServiceEnvironmentPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  encryption_configuration: Optional['outputs.IntegrationServiceEnvironmenEncryptionConfigurationResponse'] = None,
                  endpoints_configuration: Optional['outputs.FlowEndpointsConfigurationResponse'] = None,
@@ -4279,9 +5300,6 @@ class IntegrationServiceEnvironmentPropertiesResponse(dict):
         The integration service environment state.
         """
         return pulumi.get(self, "state")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4375,9 +5393,6 @@ class IntegrationServiceEnvironmentResponse(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationServiceEnvironmentSkuResponse(dict):
@@ -4413,15 +5428,29 @@ class IntegrationServiceEnvironmentSkuResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IpAddressRangeResponse(dict):
     """
     The ip address range.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressRange":
+            suggest = "address_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpAddressRangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpAddressRangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpAddressRangeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address_range: Optional[str] = None):
         """
@@ -4438,9 +5467,6 @@ class IpAddressRangeResponse(dict):
         The IP address range.
         """
         return pulumi.get(self, "address_range")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4465,15 +5491,33 @@ class IpAddressResponse(dict):
         """
         return pulumi.get(self, "address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyVaultKeyReferenceResponse(dict):
     """
     The reference to the key vault key.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyName":
+            suggest = "key_name"
+        elif key == "keyVault":
+            suggest = "key_vault"
+        elif key == "keyVersion":
+            suggest = "key_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyVaultKeyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyVaultKeyReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyVaultKeyReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_name: str,
                  key_vault: 'outputs.KeyVaultKeyReferenceResponseKeyVault',
@@ -4512,9 +5556,6 @@ class KeyVaultKeyReferenceResponse(dict):
         The private key version in key vault.
         """
         return pulumi.get(self, "key_version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4560,9 +5601,6 @@ class KeyVaultKeyReferenceResponseKeyVault(dict):
         The resource id.
         """
         return pulumi.get(self, "id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4652,6 +5690,25 @@ class NetworkConfigurationResponse(dict):
     """
     The network configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessEndpoint":
+            suggest = "access_endpoint"
+        elif key == "virtualNetworkAddressSpace":
+            suggest = "virtual_network_address_space"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_endpoint: Optional['outputs.IntegrationServiceEnvironmentAccessEndpointResponse'] = None,
                  subnets: Optional[Sequence['outputs.ResourceReferenceResponse']] = None,
@@ -4693,9 +5750,6 @@ class NetworkConfigurationResponse(dict):
         """
         return pulumi.get(self, "virtual_network_address_space")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OpenAuthenticationAccessPoliciesResponse(dict):
@@ -4718,9 +5772,6 @@ class OpenAuthenticationAccessPoliciesResponse(dict):
         Open authentication policies.
         """
         return pulumi.get(self, "policies")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4755,9 +5806,6 @@ class OpenAuthenticationAccessPolicyResponse(dict):
         The access policy claims.
         """
         return pulumi.get(self, "claims")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4794,9 +5842,6 @@ class OpenAuthenticationPolicyClaimResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PartnerContentResponse(dict):
@@ -4819,9 +5864,6 @@ class PartnerContentResponse(dict):
         The B2B partner content.
         """
         return pulumi.get(self, "b2b")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4858,15 +5900,33 @@ class RecurrenceScheduleOccurrenceResponse(dict):
         """
         return pulumi.get(self, "occurrence")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RecurrenceScheduleResponse(dict):
     """
     The recurrence schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "monthDays":
+            suggest = "month_days"
+        elif key == "monthlyOccurrences":
+            suggest = "monthly_occurrences"
+        elif key == "weekDays":
+            suggest = "week_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecurrenceScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecurrenceScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecurrenceScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hours: Optional[Sequence[int]] = None,
                  minutes: Optional[Sequence[int]] = None,
@@ -4932,9 +5992,6 @@ class RecurrenceScheduleResponse(dict):
         """
         return pulumi.get(self, "week_days")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceReferenceResponse(dict):
@@ -4980,15 +6037,31 @@ class ResourceReferenceResponse(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RosettaNetPipAcknowledgmentOfReceiptSettingsResponse(dict):
     """
     The integration account RosettaNet ProcessConfiguration Acknowledgement settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isNonRepudiationRequired":
+            suggest = "is_non_repudiation_required"
+        elif key == "timeToAcknowledgeInSeconds":
+            suggest = "time_to_acknowledge_in_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RosettaNetPipAcknowledgmentOfReceiptSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_non_repudiation_required: bool,
                  time_to_acknowledge_in_seconds: int):
@@ -5016,15 +6089,43 @@ class RosettaNetPipAcknowledgmentOfReceiptSettingsResponse(dict):
         """
         return pulumi.get(self, "time_to_acknowledge_in_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RosettaNetPipActivityBehaviorResponse(dict):
     """
     The integration account RosettaNet ProcessConfiguration activity behavior.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionType":
+            suggest = "action_type"
+        elif key == "isAuthorizationRequired":
+            suggest = "is_authorization_required"
+        elif key == "isSecuredTransportRequired":
+            suggest = "is_secured_transport_required"
+        elif key == "nonRepudiationOfOriginAndContent":
+            suggest = "non_repudiation_of_origin_and_content"
+        elif key == "persistentConfidentialityScope":
+            suggest = "persistent_confidentiality_scope"
+        elif key == "responseType":
+            suggest = "response_type"
+        elif key == "retryCount":
+            suggest = "retry_count"
+        elif key == "timeToPerformInSeconds":
+            suggest = "time_to_perform_in_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RosettaNetPipActivityBehaviorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RosettaNetPipActivityBehaviorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RosettaNetPipActivityBehaviorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_type: str,
                  is_authorization_required: bool,
@@ -5118,15 +6219,33 @@ class RosettaNetPipActivityBehaviorResponse(dict):
         """
         return pulumi.get(self, "time_to_perform_in_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RosettaNetPipActivitySettingsResponse(dict):
     """
     The integration account RosettaNet ProcessConfiguration activity settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgmentOfReceiptSettings":
+            suggest = "acknowledgment_of_receipt_settings"
+        elif key == "activityBehavior":
+            suggest = "activity_behavior"
+        elif key == "activityType":
+            suggest = "activity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RosettaNetPipActivitySettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RosettaNetPipActivitySettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RosettaNetPipActivitySettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  acknowledgment_of_receipt_settings: 'outputs.RosettaNetPipAcknowledgmentOfReceiptSettingsResponse',
                  activity_behavior: 'outputs.RosettaNetPipActivityBehaviorResponse',
@@ -5164,9 +6283,6 @@ class RosettaNetPipActivitySettingsResponse(dict):
         The RosettaNet ProcessConfiguration activity type.
         """
         return pulumi.get(self, "activity_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -5213,15 +6329,33 @@ class RosettaNetPipBusinessDocumentResponse(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RosettaNetPipRoleSettingsResponse(dict):
     """
     The integration account RosettaNet ProcessConfiguration role settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "businessDocument":
+            suggest = "business_document"
+        elif key == "roleType":
+            suggest = "role_type"
+        elif key == "serviceClassification":
+            suggest = "service_classification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RosettaNetPipRoleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RosettaNetPipRoleSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RosettaNetPipRoleSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: str,
                  business_document: 'outputs.RosettaNetPipBusinessDocumentResponse',
@@ -5305,9 +6439,6 @@ class RosettaNetPipRoleSettingsResponse(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
@@ -5341,9 +6472,6 @@ class SkuResponse(dict):
         The reference to plan.
         """
         return pulumi.get(self, "plan")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -5403,9 +6531,6 @@ class WorkflowParameterResponse(dict):
         The value.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -5484,6 +6609,27 @@ class WorkflowTriggerRecurrenceResponse(dict):
     """
     The workflow trigger recurrence.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTriggerRecurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTriggerRecurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTriggerRecurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: Optional[str] = None,
                  frequency: Optional[str] = None,
@@ -5561,15 +6707,31 @@ class WorkflowTriggerRecurrenceResponse(dict):
         """
         return pulumi.get(self, "time_zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WsdlServiceResponse(dict):
     """
     The WSDL service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointQualifiedNames":
+            suggest = "endpoint_qualified_names"
+        elif key == "qualifiedName":
+            suggest = "qualified_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WsdlServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WsdlServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WsdlServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint_qualified_names: Optional[Sequence[str]] = None,
                  qualified_name: Optional[str] = None):
@@ -5599,15 +6761,57 @@ class WsdlServiceResponse(dict):
         """
         return pulumi.get(self, "qualified_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12AcknowledgementSettingsResponse(dict):
     """
     The X12 agreement acknowledgement settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgementControlNumberLowerBound":
+            suggest = "acknowledgement_control_number_lower_bound"
+        elif key == "acknowledgementControlNumberUpperBound":
+            suggest = "acknowledgement_control_number_upper_bound"
+        elif key == "batchFunctionalAcknowledgements":
+            suggest = "batch_functional_acknowledgements"
+        elif key == "batchImplementationAcknowledgements":
+            suggest = "batch_implementation_acknowledgements"
+        elif key == "batchTechnicalAcknowledgements":
+            suggest = "batch_technical_acknowledgements"
+        elif key == "needFunctionalAcknowledgement":
+            suggest = "need_functional_acknowledgement"
+        elif key == "needImplementationAcknowledgement":
+            suggest = "need_implementation_acknowledgement"
+        elif key == "needLoopForValidMessages":
+            suggest = "need_loop_for_valid_messages"
+        elif key == "needTechnicalAcknowledgement":
+            suggest = "need_technical_acknowledgement"
+        elif key == "rolloverAcknowledgementControlNumber":
+            suggest = "rollover_acknowledgement_control_number"
+        elif key == "sendSynchronousAcknowledgement":
+            suggest = "send_synchronous_acknowledgement"
+        elif key == "acknowledgementControlNumberPrefix":
+            suggest = "acknowledgement_control_number_prefix"
+        elif key == "acknowledgementControlNumberSuffix":
+            suggest = "acknowledgement_control_number_suffix"
+        elif key == "functionalAcknowledgementVersion":
+            suggest = "functional_acknowledgement_version"
+        elif key == "implementationAcknowledgementVersion":
+            suggest = "implementation_acknowledgement_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12AcknowledgementSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12AcknowledgementSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12AcknowledgementSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  acknowledgement_control_number_lower_bound: int,
                  acknowledgement_control_number_upper_bound: int,
@@ -5782,15 +6986,31 @@ class X12AcknowledgementSettingsResponse(dict):
         """
         return pulumi.get(self, "implementation_acknowledgement_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12AgreementContentResponse(dict):
     """
     The X12 agreement content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "receiveAgreement":
+            suggest = "receive_agreement"
+        elif key == "sendAgreement":
+            suggest = "send_agreement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12AgreementContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12AgreementContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12AgreementContentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  receive_agreement: 'outputs.X12OneWayAgreementResponse',
                  send_agreement: 'outputs.X12OneWayAgreementResponse'):
@@ -5818,15 +7038,45 @@ class X12AgreementContentResponse(dict):
         """
         return pulumi.get(self, "send_agreement")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12DelimiterOverridesResponse(dict):
     """
     The X12 delimiter override settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentSeparator":
+            suggest = "component_separator"
+        elif key == "dataElementSeparator":
+            suggest = "data_element_separator"
+        elif key == "replaceCharacter":
+            suggest = "replace_character"
+        elif key == "replaceSeparatorsInPayload":
+            suggest = "replace_separators_in_payload"
+        elif key == "segmentTerminator":
+            suggest = "segment_terminator"
+        elif key == "segmentTerminatorSuffix":
+            suggest = "segment_terminator_suffix"
+        elif key == "messageId":
+            suggest = "message_id"
+        elif key == "protocolVersion":
+            suggest = "protocol_version"
+        elif key == "targetNamespace":
+            suggest = "target_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12DelimiterOverridesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12DelimiterOverridesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12DelimiterOverridesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component_separator: int,
                  data_element_separator: int,
@@ -5934,15 +7184,47 @@ class X12DelimiterOverridesResponse(dict):
         """
         return pulumi.get(self, "target_namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12EnvelopeOverrideResponse(dict):
     """
     The X12 envelope override settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dateFormat":
+            suggest = "date_format"
+        elif key == "headerVersion":
+            suggest = "header_version"
+        elif key == "messageId":
+            suggest = "message_id"
+        elif key == "protocolVersion":
+            suggest = "protocol_version"
+        elif key == "receiverApplicationId":
+            suggest = "receiver_application_id"
+        elif key == "responsibleAgencyCode":
+            suggest = "responsible_agency_code"
+        elif key == "senderApplicationId":
+            suggest = "sender_application_id"
+        elif key == "targetNamespace":
+            suggest = "target_namespace"
+        elif key == "timeFormat":
+            suggest = "time_format"
+        elif key == "functionalIdentifierCode":
+            suggest = "functional_identifier_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12EnvelopeOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12EnvelopeOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12EnvelopeOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  date_format: str,
                  header_version: str,
@@ -6059,15 +7341,75 @@ class X12EnvelopeOverrideResponse(dict):
         """
         return pulumi.get(self, "functional_identifier_code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12EnvelopeSettingsResponse(dict):
     """
     The X12 agreement envelope settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlStandardsId":
+            suggest = "control_standards_id"
+        elif key == "controlVersionNumber":
+            suggest = "control_version_number"
+        elif key == "enableDefaultGroupHeaders":
+            suggest = "enable_default_group_headers"
+        elif key == "groupControlNumberLowerBound":
+            suggest = "group_control_number_lower_bound"
+        elif key == "groupControlNumberUpperBound":
+            suggest = "group_control_number_upper_bound"
+        elif key == "groupHeaderAgencyCode":
+            suggest = "group_header_agency_code"
+        elif key == "groupHeaderDateFormat":
+            suggest = "group_header_date_format"
+        elif key == "groupHeaderTimeFormat":
+            suggest = "group_header_time_format"
+        elif key == "groupHeaderVersion":
+            suggest = "group_header_version"
+        elif key == "interchangeControlNumberLowerBound":
+            suggest = "interchange_control_number_lower_bound"
+        elif key == "interchangeControlNumberUpperBound":
+            suggest = "interchange_control_number_upper_bound"
+        elif key == "overwriteExistingTransactionSetControlNumber":
+            suggest = "overwrite_existing_transaction_set_control_number"
+        elif key == "receiverApplicationId":
+            suggest = "receiver_application_id"
+        elif key == "rolloverGroupControlNumber":
+            suggest = "rollover_group_control_number"
+        elif key == "rolloverInterchangeControlNumber":
+            suggest = "rollover_interchange_control_number"
+        elif key == "rolloverTransactionSetControlNumber":
+            suggest = "rollover_transaction_set_control_number"
+        elif key == "senderApplicationId":
+            suggest = "sender_application_id"
+        elif key == "transactionSetControlNumberLowerBound":
+            suggest = "transaction_set_control_number_lower_bound"
+        elif key == "transactionSetControlNumberUpperBound":
+            suggest = "transaction_set_control_number_upper_bound"
+        elif key == "usageIndicator":
+            suggest = "usage_indicator"
+        elif key == "useControlStandardsIdAsRepetitionCharacter":
+            suggest = "use_control_standards_id_as_repetition_character"
+        elif key == "functionalGroupId":
+            suggest = "functional_group_id"
+        elif key == "transactionSetControlNumberPrefix":
+            suggest = "transaction_set_control_number_prefix"
+        elif key == "transactionSetControlNumberSuffix":
+            suggest = "transaction_set_control_number_suffix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12EnvelopeSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12EnvelopeSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12EnvelopeSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  control_standards_id: int,
                  control_version_number: str,
@@ -6340,15 +7682,41 @@ class X12EnvelopeSettingsResponse(dict):
         """
         return pulumi.get(self, "transaction_set_control_number_suffix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12FramingSettingsResponse(dict):
     """
     The X12 agreement framing settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterSet":
+            suggest = "character_set"
+        elif key == "componentSeparator":
+            suggest = "component_separator"
+        elif key == "dataElementSeparator":
+            suggest = "data_element_separator"
+        elif key == "replaceCharacter":
+            suggest = "replace_character"
+        elif key == "replaceSeparatorsInPayload":
+            suggest = "replace_separators_in_payload"
+        elif key == "segmentTerminator":
+            suggest = "segment_terminator"
+        elif key == "segmentTerminatorSuffix":
+            suggest = "segment_terminator_suffix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12FramingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12FramingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12FramingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  character_set: str,
                  component_separator: int,
@@ -6431,15 +7799,29 @@ class X12FramingSettingsResponse(dict):
         """
         return pulumi.get(self, "segment_terminator_suffix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12MessageFilterResponse(dict):
     """
     The X12 message filter for odata query.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageFilterType":
+            suggest = "message_filter_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12MessageFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12MessageFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12MessageFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_filter_type: str):
         """
@@ -6456,15 +7838,29 @@ class X12MessageFilterResponse(dict):
         """
         return pulumi.get(self, "message_filter_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12MessageIdentifierResponse(dict):
     """
     The X12 message identifier.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageId":
+            suggest = "message_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12MessageIdentifierResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12MessageIdentifierResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12MessageIdentifierResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_id: str):
         """
@@ -6481,15 +7877,33 @@ class X12MessageIdentifierResponse(dict):
         """
         return pulumi.get(self, "message_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12OneWayAgreementResponse(dict):
     """
     The X12 one-way agreement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protocolSettings":
+            suggest = "protocol_settings"
+        elif key == "receiverBusinessIdentity":
+            suggest = "receiver_business_identity"
+        elif key == "senderBusinessIdentity":
+            suggest = "sender_business_identity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12OneWayAgreementResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12OneWayAgreementResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12OneWayAgreementResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  protocol_settings: 'outputs.X12ProtocolSettingsResponse',
                  receiver_business_identity: 'outputs.BusinessIdentityResponse',
@@ -6528,15 +7942,39 @@ class X12OneWayAgreementResponse(dict):
         """
         return pulumi.get(self, "sender_business_identity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12ProcessingSettingsResponse(dict):
     """
     The X12 processing settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "convertImpliedDecimal":
+            suggest = "convert_implied_decimal"
+        elif key == "createEmptyXmlTagsForTrailingSeparators":
+            suggest = "create_empty_xml_tags_for_trailing_separators"
+        elif key == "maskSecurityInfo":
+            suggest = "mask_security_info"
+        elif key == "preserveInterchange":
+            suggest = "preserve_interchange"
+        elif key == "suspendInterchangeOnError":
+            suggest = "suspend_interchange_on_error"
+        elif key == "useDotAsDecimalSeparator":
+            suggest = "use_dot_as_decimal_separator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12ProcessingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12ProcessingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12ProcessingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  convert_implied_decimal: bool,
                  create_empty_xml_tags_for_trailing_separators: bool,
@@ -6608,15 +8046,51 @@ class X12ProcessingSettingsResponse(dict):
         """
         return pulumi.get(self, "use_dot_as_decimal_separator")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12ProtocolSettingsResponse(dict):
     """
     The X12 agreement protocol settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgementSettings":
+            suggest = "acknowledgement_settings"
+        elif key == "envelopeSettings":
+            suggest = "envelope_settings"
+        elif key == "framingSettings":
+            suggest = "framing_settings"
+        elif key == "messageFilter":
+            suggest = "message_filter"
+        elif key == "processingSettings":
+            suggest = "processing_settings"
+        elif key == "schemaReferences":
+            suggest = "schema_references"
+        elif key == "securitySettings":
+            suggest = "security_settings"
+        elif key == "validationSettings":
+            suggest = "validation_settings"
+        elif key == "envelopeOverrides":
+            suggest = "envelope_overrides"
+        elif key == "messageFilterList":
+            suggest = "message_filter_list"
+        elif key == "validationOverrides":
+            suggest = "validation_overrides"
+        elif key == "x12DelimiterOverrides":
+            suggest = "x12_delimiter_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12ProtocolSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12ProtocolSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12ProtocolSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  acknowledgement_settings: 'outputs.X12AcknowledgementSettingsResponse',
                  envelope_settings: 'outputs.X12EnvelopeSettingsResponse',
@@ -6758,15 +8232,35 @@ class X12ProtocolSettingsResponse(dict):
         """
         return pulumi.get(self, "x12_delimiter_overrides")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12SchemaReferenceResponse(dict):
     """
     The X12 schema reference.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageId":
+            suggest = "message_id"
+        elif key == "schemaName":
+            suggest = "schema_name"
+        elif key == "schemaVersion":
+            suggest = "schema_version"
+        elif key == "senderApplicationId":
+            suggest = "sender_application_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12SchemaReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12SchemaReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12SchemaReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_id: str,
                  schema_name: str,
@@ -6817,15 +8311,35 @@ class X12SchemaReferenceResponse(dict):
         """
         return pulumi.get(self, "sender_application_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12SecuritySettingsResponse(dict):
     """
     The X12 agreement security settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationQualifier":
+            suggest = "authorization_qualifier"
+        elif key == "securityQualifier":
+            suggest = "security_qualifier"
+        elif key == "authorizationValue":
+            suggest = "authorization_value"
+        elif key == "passwordValue":
+            suggest = "password_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12SecuritySettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12SecuritySettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12SecuritySettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization_qualifier: str,
                  security_qualifier: str,
@@ -6877,15 +8391,41 @@ class X12SecuritySettingsResponse(dict):
         """
         return pulumi.get(self, "password_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12ValidationOverrideResponse(dict):
     """
     The X12 validation override settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowLeadingAndTrailingSpacesAndZeroes":
+            suggest = "allow_leading_and_trailing_spaces_and_zeroes"
+        elif key == "messageId":
+            suggest = "message_id"
+        elif key == "trailingSeparatorPolicy":
+            suggest = "trailing_separator_policy"
+        elif key == "trimLeadingAndTrailingSpacesAndZeroes":
+            suggest = "trim_leading_and_trailing_spaces_and_zeroes"
+        elif key == "validateCharacterSet":
+            suggest = "validate_character_set"
+        elif key == "validateEDITypes":
+            suggest = "validate_edi_types"
+        elif key == "validateXSDTypes":
+            suggest = "validate_xsd_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12ValidationOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12ValidationOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12ValidationOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_leading_and_trailing_spaces_and_zeroes: bool,
                  message_id: str,
@@ -6968,15 +8508,47 @@ class X12ValidationOverrideResponse(dict):
         """
         return pulumi.get(self, "validate_xsd_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X12ValidationSettingsResponse(dict):
     """
     The X12 agreement validation settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowLeadingAndTrailingSpacesAndZeroes":
+            suggest = "allow_leading_and_trailing_spaces_and_zeroes"
+        elif key == "checkDuplicateGroupControlNumber":
+            suggest = "check_duplicate_group_control_number"
+        elif key == "checkDuplicateInterchangeControlNumber":
+            suggest = "check_duplicate_interchange_control_number"
+        elif key == "checkDuplicateTransactionSetControlNumber":
+            suggest = "check_duplicate_transaction_set_control_number"
+        elif key == "interchangeControlNumberValidityDays":
+            suggest = "interchange_control_number_validity_days"
+        elif key == "trailingSeparatorPolicy":
+            suggest = "trailing_separator_policy"
+        elif key == "trimLeadingAndTrailingSpacesAndZeroes":
+            suggest = "trim_leading_and_trailing_spaces_and_zeroes"
+        elif key == "validateCharacterSet":
+            suggest = "validate_character_set"
+        elif key == "validateEDITypes":
+            suggest = "validate_edi_types"
+        elif key == "validateXSDTypes":
+            suggest = "validate_xsd_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X12ValidationSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X12ValidationSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X12ValidationSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_leading_and_trailing_spaces_and_zeroes: bool,
                  check_duplicate_group_control_number: bool,
@@ -7091,8 +8663,5 @@ class X12ValidationSettingsResponse(dict):
         The value indicating whether to Whether to validate XSD types.
         """
         return pulumi.get(self, "validate_xsd_types")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

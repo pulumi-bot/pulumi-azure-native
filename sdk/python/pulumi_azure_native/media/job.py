@@ -5,16 +5,163 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Job']
+__all__ = ['JobArgs', 'Job']
+
+@pulumi.input_type
+class JobArgs:
+    def __init__(__self__, *,
+                 account_name: pulumi.Input[str],
+                 input: pulumi.Input[Union['JobInputAssetArgs', 'JobInputClipArgs', 'JobInputHttpArgs', 'JobInputSequenceArgs', 'JobInputsArgs']],
+                 outputs: pulumi.Input[Sequence[pulumi.Input['JobOutputAssetArgs']]],
+                 resource_group_name: pulumi.Input[str],
+                 transform_name: pulumi.Input[str],
+                 correlation_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[Union[str, 'Priority']]] = None):
+        """
+        The set of arguments for constructing a Job resource.
+        :param pulumi.Input[str] account_name: The Media Services account name.
+        :param pulumi.Input[Union['JobInputAssetArgs', 'JobInputClipArgs', 'JobInputHttpArgs', 'JobInputSequenceArgs', 'JobInputsArgs']] input: The inputs for the Job.
+        :param pulumi.Input[Sequence[pulumi.Input['JobOutputAssetArgs']]] outputs: The outputs for the Job.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the Azure subscription.
+        :param pulumi.Input[str] transform_name: The Transform name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] correlation_data: Customer provided key, value pairs that will be returned in Job and JobOutput state events.
+        :param pulumi.Input[str] description: Optional customer supplied description of the Job.
+        :param pulumi.Input[str] job_name: The Job name.
+        :param pulumi.Input[Union[str, 'Priority']] priority: Priority with which the job should be processed. Higher priority jobs are processed before lower priority jobs. If not set, the default is normal.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "input", input)
+        pulumi.set(__self__, "outputs", outputs)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "transform_name", transform_name)
+        if correlation_data is not None:
+            pulumi.set(__self__, "correlation_data", correlation_data)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if job_name is not None:
+            pulumi.set(__self__, "job_name", job_name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[str]:
+        """
+        The Media Services account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter
+    def input(self) -> pulumi.Input[Union['JobInputAssetArgs', 'JobInputClipArgs', 'JobInputHttpArgs', 'JobInputSequenceArgs', 'JobInputsArgs']]:
+        """
+        The inputs for the Job.
+        """
+        return pulumi.get(self, "input")
+
+    @input.setter
+    def input(self, value: pulumi.Input[Union['JobInputAssetArgs', 'JobInputClipArgs', 'JobInputHttpArgs', 'JobInputSequenceArgs', 'JobInputsArgs']]):
+        pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter
+    def outputs(self) -> pulumi.Input[Sequence[pulumi.Input['JobOutputAssetArgs']]]:
+        """
+        The outputs for the Job.
+        """
+        return pulumi.get(self, "outputs")
+
+    @outputs.setter
+    def outputs(self, value: pulumi.Input[Sequence[pulumi.Input['JobOutputAssetArgs']]]):
+        pulumi.set(self, "outputs", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the Azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="transformName")
+    def transform_name(self) -> pulumi.Input[str]:
+        """
+        The Transform name.
+        """
+        return pulumi.get(self, "transform_name")
+
+    @transform_name.setter
+    def transform_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "transform_name", value)
+
+    @property
+    @pulumi.getter(name="correlationData")
+    def correlation_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Customer provided key, value pairs that will be returned in Job and JobOutput state events.
+        """
+        return pulumi.get(self, "correlation_data")
+
+    @correlation_data.setter
+    def correlation_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "correlation_data", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional customer supplied description of the Job.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="jobName")
+    def job_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Job name.
+        """
+        return pulumi.get(self, "job_name")
+
+    @job_name.setter
+    def job_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[Union[str, 'Priority']]]:
+        """
+        Priority with which the job should be processed. Higher priority jobs are processed before lower priority jobs. If not set, the default is normal.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[Union[str, 'Priority']]]):
+        pulumi.set(self, "priority", value)
 
 
 class Job(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +193,43 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group within the Azure subscription.
         :param pulumi.Input[str] transform_name: The Transform name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: JobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Job resource type. The progress and state can be obtained by polling a Job or subscribing to events using EventGrid.
+        API Version: 2020-05-01.
+
+        :param str resource_name: The name of the resource.
+        :param JobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(JobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 correlation_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 input: Optional[pulumi.Input[Union[pulumi.InputType['JobInputAssetArgs'], pulumi.InputType['JobInputClipArgs'], pulumi.InputType['JobInputHttpArgs'], pulumi.InputType['JobInputSequenceArgs'], pulumi.InputType['JobInputsArgs']]]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobOutputAssetArgs']]]]] = None,
+                 priority: Optional[pulumi.Input[Union[str, 'Priority']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 transform_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -61,35 +245,35 @@ class Job(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = JobArgs.__new__(JobArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['correlation_data'] = correlation_data
-            __props__['description'] = description
+            __props__.__dict__['account_name'] = account_name
+            __props__.__dict__['correlation_data'] = correlation_data
+            __props__.__dict__['description'] = description
             if input is None and not opts.urn:
                 raise TypeError("Missing required property 'input'")
-            __props__['input'] = input
-            __props__['job_name'] = job_name
+            __props__.__dict__['input'] = input
+            __props__.__dict__['job_name'] = job_name
             if outputs is None and not opts.urn:
                 raise TypeError("Missing required property 'outputs'")
-            __props__['outputs'] = outputs
-            __props__['priority'] = priority
+            __props__.__dict__['outputs'] = outputs
+            __props__.__dict__['priority'] = priority
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if transform_name is None and not opts.urn:
                 raise TypeError("Missing required property 'transform_name'")
-            __props__['transform_name'] = transform_name
-            __props__['created'] = None
-            __props__['end_time'] = None
-            __props__['last_modified'] = None
-            __props__['name'] = None
-            __props__['start_time'] = None
-            __props__['state'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
+            __props__.__dict__['transform_name'] = transform_name
+            __props__.__dict__['created'] = None
+            __props__.__dict__['end_time'] = None
+            __props__.__dict__['last_modified'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['start_time'] = None
+            __props__.__dict__['state'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:media:Job"), pulumi.Alias(type_="azure-native:media/latest:Job"), pulumi.Alias(type_="azure-nextgen:media/latest:Job"), pulumi.Alias(type_="azure-native:media/v20180330preview:Job"), pulumi.Alias(type_="azure-nextgen:media/v20180330preview:Job"), pulumi.Alias(type_="azure-native:media/v20180601preview:Job"), pulumi.Alias(type_="azure-nextgen:media/v20180601preview:Job"), pulumi.Alias(type_="azure-native:media/v20180701:Job"), pulumi.Alias(type_="azure-nextgen:media/v20180701:Job"), pulumi.Alias(type_="azure-native:media/v20200501:Job"), pulumi.Alias(type_="azure-nextgen:media/v20200501:Job")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Job, __self__).__init__(
@@ -114,19 +298,19 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["correlation_data"] = None
-        __props__["created"] = None
-        __props__["description"] = None
-        __props__["end_time"] = None
-        __props__["input"] = None
-        __props__["last_modified"] = None
-        __props__["name"] = None
-        __props__["outputs"] = None
-        __props__["priority"] = None
-        __props__["start_time"] = None
-        __props__["state"] = None
-        __props__["system_data"] = None
-        __props__["type"] = None
+        __props__['correlation_data'] = None
+        __props__['created'] = None
+        __props__['description'] = None
+        __props__['end_time'] = None
+        __props__['input'] = None
+        __props__['last_modified'] = None
+        __props__['name'] = None
+        __props__['outputs'] = None
+        __props__['priority'] = None
+        __props__['start_time'] = None
+        __props__['state'] = None
+        __props__['system_data'] = None
+        __props__['type'] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -232,10 +416,4 @@ class Job(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

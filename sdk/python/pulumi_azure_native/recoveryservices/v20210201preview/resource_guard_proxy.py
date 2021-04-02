@@ -5,14 +5,64 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['ResourceGuardProxy']
+__all__ = ['ResourceGuardProxyArgs', 'ResourceGuardProxy']
+
+@pulumi.input_type
+class ResourceGuardProxyArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 vault_name: pulumi.Input[str],
+                 resource_guard_proxy_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ResourceGuardProxy resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group where the recovery services vault is present.
+        :param pulumi.Input[str] vault_name: The name of the recovery services vault.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "vault_name", vault_name)
+        if resource_guard_proxy_name is not None:
+            pulumi.set(__self__, "resource_guard_proxy_name", resource_guard_proxy_name)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group where the recovery services vault is present.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="vaultName")
+    def vault_name(self) -> pulumi.Input[str]:
+        """
+        The name of the recovery services vault.
+        """
+        return pulumi.get(self, "vault_name")
+
+    @vault_name.setter
+    def vault_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vault_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGuardProxyName")
+    def resource_guard_proxy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_guard_proxy_name")
+
+    @resource_guard_proxy_name.setter
+    def resource_guard_proxy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_guard_proxy_name", value)
 
 
 class ResourceGuardProxy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -29,6 +79,35 @@ class ResourceGuardProxy(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group where the recovery services vault is present.
         :param pulumi.Input[str] vault_name: The name of the recovery services vault.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ResourceGuardProxyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ResourceGuardProxy resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ResourceGuardProxyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ResourceGuardProxyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 resource_guard_proxy_name: Optional[pulumi.Input[str]] = None,
+                 vault_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -44,21 +123,21 @@ class ResourceGuardProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ResourceGuardProxyArgs.__new__(ResourceGuardProxyArgs)
 
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['resource_guard_proxy_name'] = resource_guard_proxy_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_guard_proxy_name'] = resource_guard_proxy_name
             if vault_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_name'")
-            __props__['vault_name'] = vault_name
-            __props__['e_tag'] = None
-            __props__['location'] = None
-            __props__['name'] = None
-            __props__['properties'] = None
-            __props__['tags'] = None
-            __props__['type'] = None
+            __props__.__dict__['vault_name'] = vault_name
+            __props__.__dict__['e_tag'] = None
+            __props__.__dict__['location'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['properties'] = None
+            __props__.__dict__['tags'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:recoveryservices/v20210201preview:ResourceGuardProxy"), pulumi.Alias(type_="azure-native:recoveryservices:ResourceGuardProxy"), pulumi.Alias(type_="azure-nextgen:recoveryservices:ResourceGuardProxy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ResourceGuardProxy, __self__).__init__(
@@ -83,12 +162,12 @@ class ResourceGuardProxy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["e_tag"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['e_tag'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['properties'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return ResourceGuardProxy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -138,10 +217,4 @@ class ResourceGuardProxy(pulumi.CustomResource):
         Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

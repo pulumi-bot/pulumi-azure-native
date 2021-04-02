@@ -5,14 +5,148 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['WorkloadNetworkPortMirroring']
+__all__ = ['WorkloadNetworkPortMirroringArgs', 'WorkloadNetworkPortMirroring']
+
+@pulumi.input_type
+class WorkloadNetworkPortMirroringArgs:
+    def __init__(__self__, *,
+                 private_cloud_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 destination: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[Union[str, 'PortMirroringDirectionEnum']]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 port_mirroring_id: Optional[pulumi.Input[str]] = None,
+                 revision: Optional[pulumi.Input[float]] = None,
+                 source: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WorkloadNetworkPortMirroring resource.
+        :param pulumi.Input[str] private_cloud_name: Name of the private cloud
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] destination: Destination VM Group.
+        :param pulumi.Input[Union[str, 'PortMirroringDirectionEnum']] direction: Direction of port mirroring profile.
+        :param pulumi.Input[str] display_name: Display name of the port mirroring profile.
+        :param pulumi.Input[str] port_mirroring_id: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+        :param pulumi.Input[float] revision: NSX revision number.
+        :param pulumi.Input[str] source: Source VM Group.
+        """
+        pulumi.set(__self__, "private_cloud_name", private_cloud_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if port_mirroring_id is not None:
+            pulumi.set(__self__, "port_mirroring_id", port_mirroring_id)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="privateCloudName")
+    def private_cloud_name(self) -> pulumi.Input[str]:
+        """
+        Name of the private cloud
+        """
+        return pulumi.get(self, "private_cloud_name")
+
+    @private_cloud_name.setter
+    def private_cloud_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_cloud_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        Destination VM Group.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[Union[str, 'PortMirroringDirectionEnum']]]:
+        """
+        Direction of port mirroring profile.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[Union[str, 'PortMirroringDirectionEnum']]]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the port mirroring profile.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="portMirroringId")
+    def port_mirroring_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+        """
+        return pulumi.get(self, "port_mirroring_id")
+
+    @port_mirroring_id.setter
+    def port_mirroring_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port_mirroring_id", value)
+
+    @property
+    @pulumi.getter
+    def revision(self) -> Optional[pulumi.Input[float]]:
+        """
+        NSX revision number.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "revision", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source VM Group.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
 
 
 class WorkloadNetworkPortMirroring(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -41,6 +175,41 @@ class WorkloadNetworkPortMirroring(pulumi.CustomResource):
         :param pulumi.Input[float] revision: NSX revision number.
         :param pulumi.Input[str] source: Source VM Group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkloadNetworkPortMirroringArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        NSX Port Mirroring
+
+        :param str resource_name: The name of the resource.
+        :param WorkloadNetworkPortMirroringArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkloadNetworkPortMirroringArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[Union[str, 'PortMirroringDirectionEnum']]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 port_mirroring_id: Optional[pulumi.Input[str]] = None,
+                 private_cloud_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 revision: Optional[pulumi.Input[float]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -56,24 +225,24 @@ class WorkloadNetworkPortMirroring(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkloadNetworkPortMirroringArgs.__new__(WorkloadNetworkPortMirroringArgs)
 
-            __props__['destination'] = destination
-            __props__['direction'] = direction
-            __props__['display_name'] = display_name
-            __props__['port_mirroring_id'] = port_mirroring_id
+            __props__.__dict__['destination'] = destination
+            __props__.__dict__['direction'] = direction
+            __props__.__dict__['display_name'] = display_name
+            __props__.__dict__['port_mirroring_id'] = port_mirroring_id
             if private_cloud_name is None and not opts.urn:
                 raise TypeError("Missing required property 'private_cloud_name'")
-            __props__['private_cloud_name'] = private_cloud_name
+            __props__.__dict__['private_cloud_name'] = private_cloud_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['revision'] = revision
-            __props__['source'] = source
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['status'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['revision'] = revision
+            __props__.__dict__['source'] = source
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['status'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:avs/v20200717preview:WorkloadNetworkPortMirroring"), pulumi.Alias(type_="azure-native:avs:WorkloadNetworkPortMirroring"), pulumi.Alias(type_="azure-nextgen:avs:WorkloadNetworkPortMirroring"), pulumi.Alias(type_="azure-native:avs/v20210101preview:WorkloadNetworkPortMirroring"), pulumi.Alias(type_="azure-nextgen:avs/v20210101preview:WorkloadNetworkPortMirroring")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkloadNetworkPortMirroring, __self__).__init__(
@@ -98,15 +267,15 @@ class WorkloadNetworkPortMirroring(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["destination"] = None
-        __props__["direction"] = None
-        __props__["display_name"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["revision"] = None
-        __props__["source"] = None
-        __props__["status"] = None
-        __props__["type"] = None
+        __props__['destination'] = None
+        __props__['direction'] = None
+        __props__['display_name'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['revision'] = None
+        __props__['source'] = None
+        __props__['status'] = None
+        __props__['type'] = None
         return WorkloadNetworkPortMirroring(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -180,10 +349,4 @@ class WorkloadNetworkPortMirroring(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

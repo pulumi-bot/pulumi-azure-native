@@ -5,16 +5,228 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ApplianceDefinition']
+__all__ = ['ApplianceDefinitionArgs', 'ApplianceDefinition']
+
+@pulumi.input_type
+class ApplianceDefinitionArgs:
+    def __init__(__self__, *,
+                 authorizations: pulumi.Input[Sequence[pulumi.Input['ApplianceProviderAuthorizationArgs']]],
+                 lock_level: pulumi.Input['ApplianceLockLevel'],
+                 package_file_uri: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 appliance_definition_name: Optional[pulumi.Input[str]] = None,
+                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['ApplianceArtifactArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 identity: Optional[pulumi.Input['IdentityArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 managed_by: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input['SkuArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ApplianceDefinition resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplianceProviderAuthorizationArgs']]] authorizations: The appliance provider authorizations.
+        :param pulumi.Input['ApplianceLockLevel'] lock_level: The appliance lock level.
+        :param pulumi.Input[str] package_file_uri: The appliance definition package file Uri.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] appliance_definition_name: The name of the appliance definition.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplianceArtifactArgs']]] artifacts: The collection of appliance artifacts. The portal will use the files specified as artifacts to construct the user experience of creating an appliance from an appliance definition.
+        :param pulumi.Input[str] description: The appliance definition description.
+        :param pulumi.Input[str] display_name: The appliance definition display name.
+        :param pulumi.Input['IdentityArgs'] identity: The identity of the resource.
+        :param pulumi.Input[str] location: Resource location
+        :param pulumi.Input[str] managed_by: ID of the resource that manages this resource.
+        :param pulumi.Input['SkuArgs'] sku: The SKU of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
+        """
+        pulumi.set(__self__, "authorizations", authorizations)
+        pulumi.set(__self__, "lock_level", lock_level)
+        pulumi.set(__self__, "package_file_uri", package_file_uri)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if appliance_definition_name is not None:
+            pulumi.set(__self__, "appliance_definition_name", appliance_definition_name)
+        if artifacts is not None:
+            pulumi.set(__self__, "artifacts", artifacts)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if managed_by is not None:
+            pulumi.set(__self__, "managed_by", managed_by)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def authorizations(self) -> pulumi.Input[Sequence[pulumi.Input['ApplianceProviderAuthorizationArgs']]]:
+        """
+        The appliance provider authorizations.
+        """
+        return pulumi.get(self, "authorizations")
+
+    @authorizations.setter
+    def authorizations(self, value: pulumi.Input[Sequence[pulumi.Input['ApplianceProviderAuthorizationArgs']]]):
+        pulumi.set(self, "authorizations", value)
+
+    @property
+    @pulumi.getter(name="lockLevel")
+    def lock_level(self) -> pulumi.Input['ApplianceLockLevel']:
+        """
+        The appliance lock level.
+        """
+        return pulumi.get(self, "lock_level")
+
+    @lock_level.setter
+    def lock_level(self, value: pulumi.Input['ApplianceLockLevel']):
+        pulumi.set(self, "lock_level", value)
+
+    @property
+    @pulumi.getter(name="packageFileUri")
+    def package_file_uri(self) -> pulumi.Input[str]:
+        """
+        The appliance definition package file Uri.
+        """
+        return pulumi.get(self, "package_file_uri")
+
+    @package_file_uri.setter
+    def package_file_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_file_uri", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="applianceDefinitionName")
+    def appliance_definition_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the appliance definition.
+        """
+        return pulumi.get(self, "appliance_definition_name")
+
+    @appliance_definition_name.setter
+    def appliance_definition_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "appliance_definition_name", value)
+
+    @property
+    @pulumi.getter
+    def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplianceArtifactArgs']]]]:
+        """
+        The collection of appliance artifacts. The portal will use the files specified as artifacts to construct the user experience of creating an appliance from an appliance definition.
+        """
+        return pulumi.get(self, "artifacts")
+
+    @artifacts.setter
+    def artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplianceArtifactArgs']]]]):
+        pulumi.set(self, "artifacts", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The appliance definition description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The appliance definition display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input['IdentityArgs']]:
+        """
+        The identity of the resource.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input['IdentityArgs']]):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the resource that manages this resource.
+        """
+        return pulumi.get(self, "managed_by")
+
+    @managed_by.setter
+    def managed_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_by", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input['SkuArgs']]:
+        """
+        The SKU of the resource.
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input['SkuArgs']]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ApplianceDefinition(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -53,6 +265,46 @@ class ApplianceDefinition(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SkuArgs']] sku: The SKU of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplianceDefinitionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Information about appliance definition.
+
+        :param str resource_name: The name of the resource.
+        :param ApplianceDefinitionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplianceDefinitionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 appliance_definition_name: Optional[pulumi.Input[str]] = None,
+                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplianceArtifactArgs']]]]] = None,
+                 authorizations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplianceProviderAuthorizationArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['IdentityArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 lock_level: Optional[pulumi.Input['ApplianceLockLevel']] = None,
+                 managed_by: Optional[pulumi.Input[str]] = None,
+                 package_file_uri: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['SkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -68,31 +320,31 @@ class ApplianceDefinition(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplianceDefinitionArgs.__new__(ApplianceDefinitionArgs)
 
-            __props__['appliance_definition_name'] = appliance_definition_name
-            __props__['artifacts'] = artifacts
+            __props__.__dict__['appliance_definition_name'] = appliance_definition_name
+            __props__.__dict__['artifacts'] = artifacts
             if authorizations is None and not opts.urn:
                 raise TypeError("Missing required property 'authorizations'")
-            __props__['authorizations'] = authorizations
-            __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['identity'] = identity
-            __props__['location'] = location
+            __props__.__dict__['authorizations'] = authorizations
+            __props__.__dict__['description'] = description
+            __props__.__dict__['display_name'] = display_name
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['location'] = location
             if lock_level is None and not opts.urn:
                 raise TypeError("Missing required property 'lock_level'")
-            __props__['lock_level'] = lock_level
-            __props__['managed_by'] = managed_by
+            __props__.__dict__['lock_level'] = lock_level
+            __props__.__dict__['managed_by'] = managed_by
             if package_file_uri is None and not opts.urn:
                 raise TypeError("Missing required property 'package_file_uri'")
-            __props__['package_file_uri'] = package_file_uri
+            __props__.__dict__['package_file_uri'] = package_file_uri
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:solutions/v20160901preview:ApplianceDefinition"), pulumi.Alias(type_="azure-native:solutions:ApplianceDefinition"), pulumi.Alias(type_="azure-nextgen:solutions:ApplianceDefinition"), pulumi.Alias(type_="azure-native:solutions/latest:ApplianceDefinition"), pulumi.Alias(type_="azure-nextgen:solutions/latest:ApplianceDefinition"), pulumi.Alias(type_="azure-native:solutions/v20170901:ApplianceDefinition"), pulumi.Alias(type_="azure-nextgen:solutions/v20170901:ApplianceDefinition"), pulumi.Alias(type_="azure-native:solutions/v20180601:ApplianceDefinition"), pulumi.Alias(type_="azure-nextgen:solutions/v20180601:ApplianceDefinition"), pulumi.Alias(type_="azure-native:solutions/v20190701:ApplianceDefinition"), pulumi.Alias(type_="azure-nextgen:solutions/v20190701:ApplianceDefinition"), pulumi.Alias(type_="azure-native:solutions/v20200821preview:ApplianceDefinition"), pulumi.Alias(type_="azure-nextgen:solutions/v20200821preview:ApplianceDefinition")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ApplianceDefinition, __self__).__init__(
@@ -117,19 +369,19 @@ class ApplianceDefinition(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["artifacts"] = None
-        __props__["authorizations"] = None
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["identity"] = None
-        __props__["location"] = None
-        __props__["lock_level"] = None
-        __props__["managed_by"] = None
-        __props__["name"] = None
-        __props__["package_file_uri"] = None
-        __props__["sku"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['artifacts'] = None
+        __props__['authorizations'] = None
+        __props__['description'] = None
+        __props__['display_name'] = None
+        __props__['identity'] = None
+        __props__['location'] = None
+        __props__['lock_level'] = None
+        __props__['managed_by'] = None
+        __props__['name'] = None
+        __props__['package_file_uri'] = None
+        __props__['sku'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return ApplianceDefinition(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -235,10 +487,4 @@ class ApplianceDefinition(pulumi.CustomResource):
         Resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

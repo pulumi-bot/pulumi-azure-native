@@ -5,15 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['JitRequest']
+__all__ = ['JitRequestArgs', 'JitRequest']
+
+@pulumi.input_type
+class JitRequestArgs:
+    def __init__(__self__, *,
+                 application_resource_id: pulumi.Input[str],
+                 jit_authorization_policies: pulumi.Input[Sequence[pulumi.Input['JitAuthorizationPoliciesArgs']]],
+                 jit_scheduling_policy: pulumi.Input['JitSchedulingPolicyArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 jit_request_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a JitRequest resource.
+        :param pulumi.Input[str] application_resource_id: The parent application id.
+        :param pulumi.Input[Sequence[pulumi.Input['JitAuthorizationPoliciesArgs']]] jit_authorization_policies: The JIT authorization policies.
+        :param pulumi.Input['JitSchedulingPolicyArgs'] jit_scheduling_policy: The JIT request properties.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] jit_request_name: The name of the JIT request.
+        :param pulumi.Input[str] location: Resource location
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
+        """
+        pulumi.set(__self__, "application_resource_id", application_resource_id)
+        pulumi.set(__self__, "jit_authorization_policies", jit_authorization_policies)
+        pulumi.set(__self__, "jit_scheduling_policy", jit_scheduling_policy)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if jit_request_name is not None:
+            pulumi.set(__self__, "jit_request_name", jit_request_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="applicationResourceId")
+    def application_resource_id(self) -> pulumi.Input[str]:
+        """
+        The parent application id.
+        """
+        return pulumi.get(self, "application_resource_id")
+
+    @application_resource_id.setter
+    def application_resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_resource_id", value)
+
+    @property
+    @pulumi.getter(name="jitAuthorizationPolicies")
+    def jit_authorization_policies(self) -> pulumi.Input[Sequence[pulumi.Input['JitAuthorizationPoliciesArgs']]]:
+        """
+        The JIT authorization policies.
+        """
+        return pulumi.get(self, "jit_authorization_policies")
+
+    @jit_authorization_policies.setter
+    def jit_authorization_policies(self, value: pulumi.Input[Sequence[pulumi.Input['JitAuthorizationPoliciesArgs']]]):
+        pulumi.set(self, "jit_authorization_policies", value)
+
+    @property
+    @pulumi.getter(name="jitSchedulingPolicy")
+    def jit_scheduling_policy(self) -> pulumi.Input['JitSchedulingPolicyArgs']:
+        """
+        The JIT request properties.
+        """
+        return pulumi.get(self, "jit_scheduling_policy")
+
+    @jit_scheduling_policy.setter
+    def jit_scheduling_policy(self, value: pulumi.Input['JitSchedulingPolicyArgs']):
+        pulumi.set(self, "jit_scheduling_policy", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="jitRequestName")
+    def jit_request_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the JIT request.
+        """
+        return pulumi.get(self, "jit_request_name")
+
+    @jit_request_name.setter
+    def jit_request_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jit_request_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class JitRequest(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +156,40 @@ class JitRequest(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: JitRequestArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Information about JIT request definition.
+
+        :param str resource_name: The name of the resource.
+        :param JitRequestArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(JitRequestArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 application_resource_id: Optional[pulumi.Input[str]] = None,
+                 jit_authorization_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JitAuthorizationPoliciesArgs']]]]] = None,
+                 jit_request_name: Optional[pulumi.Input[str]] = None,
+                 jit_scheduling_policy: Optional[pulumi.Input[pulumi.InputType['JitSchedulingPolicyArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,30 +205,30 @@ class JitRequest(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = JitRequestArgs.__new__(JitRequestArgs)
 
             if application_resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_resource_id'")
-            __props__['application_resource_id'] = application_resource_id
+            __props__.__dict__['application_resource_id'] = application_resource_id
             if jit_authorization_policies is None and not opts.urn:
                 raise TypeError("Missing required property 'jit_authorization_policies'")
-            __props__['jit_authorization_policies'] = jit_authorization_policies
-            __props__['jit_request_name'] = jit_request_name
+            __props__.__dict__['jit_authorization_policies'] = jit_authorization_policies
+            __props__.__dict__['jit_request_name'] = jit_request_name
             if jit_scheduling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'jit_scheduling_policy'")
-            __props__['jit_scheduling_policy'] = jit_scheduling_policy
-            __props__['location'] = location
+            __props__.__dict__['jit_scheduling_policy'] = jit_scheduling_policy
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['created_by'] = None
-            __props__['jit_request_state'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['publisher_tenant_id'] = None
-            __props__['type'] = None
-            __props__['updated_by'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['created_by'] = None
+            __props__.__dict__['jit_request_state'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['publisher_tenant_id'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['updated_by'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:solutions/v20190701:JitRequest"), pulumi.Alias(type_="azure-native:solutions:JitRequest"), pulumi.Alias(type_="azure-nextgen:solutions:JitRequest"), pulumi.Alias(type_="azure-native:solutions/latest:JitRequest"), pulumi.Alias(type_="azure-nextgen:solutions/latest:JitRequest"), pulumi.Alias(type_="azure-native:solutions/v20200821preview:JitRequest"), pulumi.Alias(type_="azure-nextgen:solutions/v20200821preview:JitRequest")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(JitRequest, __self__).__init__(
@@ -103,18 +253,18 @@ class JitRequest(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["application_resource_id"] = None
-        __props__["created_by"] = None
-        __props__["jit_authorization_policies"] = None
-        __props__["jit_request_state"] = None
-        __props__["jit_scheduling_policy"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["publisher_tenant_id"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["updated_by"] = None
+        __props__['application_resource_id'] = None
+        __props__['created_by'] = None
+        __props__['jit_authorization_policies'] = None
+        __props__['jit_request_state'] = None
+        __props__['jit_scheduling_policy'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['publisher_tenant_id'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['updated_by'] = None
         return JitRequest(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -212,10 +362,4 @@ class JitRequest(pulumi.CustomResource):
         The client entity that last updated the JIT request.
         """
         return pulumi.get(self, "updated_by")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

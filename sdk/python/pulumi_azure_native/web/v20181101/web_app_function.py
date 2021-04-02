@@ -5,13 +5,227 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['WebAppFunction']
+__all__ = ['WebAppFunctionArgs', 'WebAppFunction']
+
+@pulumi.input_type
+class WebAppFunctionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 config: Optional[Any] = None,
+                 config_href: Optional[pulumi.Input[str]] = None,
+                 files: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 function_app_id: Optional[pulumi.Input[str]] = None,
+                 function_name: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 script_href: Optional[pulumi.Input[str]] = None,
+                 script_root_path_href: Optional[pulumi.Input[str]] = None,
+                 secrets_file_href: Optional[pulumi.Input[str]] = None,
+                 test_data: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WebAppFunction resource.
+        :param pulumi.Input[str] name: Site name.
+        :param pulumi.Input[str] resource_group_name: Name of the resource group to which the resource belongs.
+        :param Any config: Config information.
+        :param pulumi.Input[str] config_href: Config URI.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] files: File list.
+        :param pulumi.Input[str] function_app_id: Function App ID.
+        :param pulumi.Input[str] function_name: Function name.
+        :param pulumi.Input[str] href: Function URI.
+        :param pulumi.Input[str] kind: Kind of resource.
+        :param pulumi.Input[str] script_href: Script URI.
+        :param pulumi.Input[str] script_root_path_href: Script root path URI.
+        :param pulumi.Input[str] secrets_file_href: Secrets file URI.
+        :param pulumi.Input[str] test_data: Test data used when testing via the Azure Portal.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if config_href is not None:
+            pulumi.set(__self__, "config_href", config_href)
+        if files is not None:
+            pulumi.set(__self__, "files", files)
+        if function_app_id is not None:
+            pulumi.set(__self__, "function_app_id", function_app_id)
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if script_href is not None:
+            pulumi.set(__self__, "script_href", script_href)
+        if script_root_path_href is not None:
+            pulumi.set(__self__, "script_root_path_href", script_root_path_href)
+        if secrets_file_href is not None:
+            pulumi.set(__self__, "secrets_file_href", secrets_file_href)
+        if test_data is not None:
+            pulumi.set(__self__, "test_data", test_data)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Site name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group to which the resource belongs.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[Any]:
+        """
+        Config information.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[Any]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="configHref")
+    def config_href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Config URI.
+        """
+        return pulumi.get(self, "config_href")
+
+    @config_href.setter
+    def config_href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_href", value)
+
+    @property
+    @pulumi.getter
+    def files(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        File list.
+        """
+        return pulumi.get(self, "files")
+
+    @files.setter
+    def files(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "files", value)
+
+    @property
+    @pulumi.getter(name="functionAppId")
+    def function_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Function App ID.
+        """
+        return pulumi.get(self, "function_app_id")
+
+    @function_app_id.setter
+    def function_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_app_id", value)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Function name.
+        """
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Function URI.
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of resource.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="scriptHref")
+    def script_href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Script URI.
+        """
+        return pulumi.get(self, "script_href")
+
+    @script_href.setter
+    def script_href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script_href", value)
+
+    @property
+    @pulumi.getter(name="scriptRootPathHref")
+    def script_root_path_href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Script root path URI.
+        """
+        return pulumi.get(self, "script_root_path_href")
+
+    @script_root_path_href.setter
+    def script_root_path_href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script_root_path_href", value)
+
+    @property
+    @pulumi.getter(name="secretsFileHref")
+    def secrets_file_href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secrets file URI.
+        """
+        return pulumi.get(self, "secrets_file_href")
+
+    @secrets_file_href.setter
+    def secrets_file_href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secrets_file_href", value)
+
+    @property
+    @pulumi.getter(name="testData")
+    def test_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Test data used when testing via the Azure Portal.
+        """
+        return pulumi.get(self, "test_data")
+
+    @test_data.setter
+    def test_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "test_data", value)
 
 
 class WebAppFunction(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -50,6 +264,46 @@ class WebAppFunction(pulumi.CustomResource):
         :param pulumi.Input[str] secrets_file_href: Secrets file URI.
         :param pulumi.Input[str] test_data: Test data used when testing via the Azure Portal.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WebAppFunctionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Web Job Information.
+
+        :param str resource_name: The name of the resource.
+        :param WebAppFunctionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WebAppFunctionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config: Optional[Any] = None,
+                 config_href: Optional[pulumi.Input[str]] = None,
+                 files: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 function_app_id: Optional[pulumi.Input[str]] = None,
+                 function_name: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 script_href: Optional[pulumi.Input[str]] = None,
+                 script_root_path_href: Optional[pulumi.Input[str]] = None,
+                 secrets_file_href: Optional[pulumi.Input[str]] = None,
+                 test_data: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -65,26 +319,26 @@ class WebAppFunction(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WebAppFunctionArgs.__new__(WebAppFunctionArgs)
 
-            __props__['config'] = config
-            __props__['config_href'] = config_href
-            __props__['files'] = files
-            __props__['function_app_id'] = function_app_id
-            __props__['function_name'] = function_name
-            __props__['href'] = href
-            __props__['kind'] = kind
+            __props__.__dict__['config'] = config
+            __props__.__dict__['config_href'] = config_href
+            __props__.__dict__['files'] = files
+            __props__.__dict__['function_app_id'] = function_app_id
+            __props__.__dict__['function_name'] = function_name
+            __props__.__dict__['href'] = href
+            __props__.__dict__['kind'] = kind
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            __props__.__dict__['name'] = name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['script_href'] = script_href
-            __props__['script_root_path_href'] = script_root_path_href
-            __props__['secrets_file_href'] = secrets_file_href
-            __props__['test_data'] = test_data
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['script_href'] = script_href
+            __props__.__dict__['script_root_path_href'] = script_root_path_href
+            __props__.__dict__['secrets_file_href'] = secrets_file_href
+            __props__.__dict__['test_data'] = test_data
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:web/v20181101:WebAppFunction"), pulumi.Alias(type_="azure-native:web:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web:WebAppFunction"), pulumi.Alias(type_="azure-native:web/latest:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/latest:WebAppFunction"), pulumi.Alias(type_="azure-native:web/v20160801:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/v20160801:WebAppFunction"), pulumi.Alias(type_="azure-native:web/v20180201:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/v20180201:WebAppFunction"), pulumi.Alias(type_="azure-native:web/v20190801:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/v20190801:WebAppFunction"), pulumi.Alias(type_="azure-native:web/v20200601:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/v20200601:WebAppFunction"), pulumi.Alias(type_="azure-native:web/v20200901:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/v20200901:WebAppFunction"), pulumi.Alias(type_="azure-native:web/v20201001:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/v20201001:WebAppFunction"), pulumi.Alias(type_="azure-native:web/v20201201:WebAppFunction"), pulumi.Alias(type_="azure-nextgen:web/v20201201:WebAppFunction")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WebAppFunction, __self__).__init__(
@@ -109,18 +363,18 @@ class WebAppFunction(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["config"] = None
-        __props__["config_href"] = None
-        __props__["files"] = None
-        __props__["function_app_id"] = None
-        __props__["href"] = None
-        __props__["kind"] = None
-        __props__["name"] = None
-        __props__["script_href"] = None
-        __props__["script_root_path_href"] = None
-        __props__["secrets_file_href"] = None
-        __props__["test_data"] = None
-        __props__["type"] = None
+        __props__['config'] = None
+        __props__['config_href'] = None
+        __props__['files'] = None
+        __props__['function_app_id'] = None
+        __props__['href'] = None
+        __props__['kind'] = None
+        __props__['name'] = None
+        __props__['script_href'] = None
+        __props__['script_root_path_href'] = None
+        __props__['secrets_file_href'] = None
+        __props__['test_data'] = None
+        __props__['type'] = None
         return WebAppFunction(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -218,10 +472,4 @@ class WebAppFunction(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

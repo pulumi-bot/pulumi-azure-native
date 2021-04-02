@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['ApplicationPackage']
+__all__ = ['ApplicationPackageArgs', 'ApplicationPackage']
+
+@pulumi.input_type
+class ApplicationPackageArgs:
+    def __init__(__self__, *,
+                 account_name: pulumi.Input[str],
+                 application_id: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApplicationPackage resource.
+        :param pulumi.Input[str] account_name: The name of the Batch account.
+        :param pulumi.Input[str] application_id: The ID of the application.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the Batch account.
+        :param pulumi.Input[str] version: The version of the application.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Batch account.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the application.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group that contains the Batch account.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the application.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class ApplicationPackage(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -32,6 +101,37 @@ class ApplicationPackage(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the Batch account.
         :param pulumi.Input[str] version: The version of the application.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationPackageArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An application package which represents a particular version of an application.
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationPackageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationPackageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -47,23 +147,23 @@ class ApplicationPackage(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationPackageArgs.__new__(ApplicationPackageArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
+            __props__.__dict__['account_name'] = account_name
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
-            __props__['application_id'] = application_id
+            __props__.__dict__['application_id'] = application_id
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['version'] = version
-            __props__['format'] = None
-            __props__['last_activation_time'] = None
-            __props__['state'] = None
-            __props__['storage_url'] = None
-            __props__['storage_url_expiry'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['version'] = version
+            __props__.__dict__['format'] = None
+            __props__.__dict__['last_activation_time'] = None
+            __props__.__dict__['state'] = None
+            __props__.__dict__['storage_url'] = None
+            __props__.__dict__['storage_url_expiry'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:batch/v20170901:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/latest:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/latest:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20151201:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20151201:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20170101:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20170101:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20170501:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20170501:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20181201:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20181201:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20190401:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20190401:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20190801:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20190801:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20200301:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20200301:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20200501:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20200501:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20200901:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20200901:ApplicationPackage"), pulumi.Alias(type_="azure-native:batch/v20210101:ApplicationPackage"), pulumi.Alias(type_="azure-nextgen:batch/v20210101:ApplicationPackage")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ApplicationPackage, __self__).__init__(
@@ -88,12 +188,12 @@ class ApplicationPackage(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["format"] = None
-        __props__["last_activation_time"] = None
-        __props__["state"] = None
-        __props__["storage_url"] = None
-        __props__["storage_url_expiry"] = None
-        __props__["version"] = None
+        __props__['format'] = None
+        __props__['last_activation_time'] = None
+        __props__['state'] = None
+        __props__['storage_url'] = None
+        __props__['storage_url_expiry'] = None
+        __props__['version'] = None
         return ApplicationPackage(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -143,10 +243,4 @@ class ApplicationPackage(pulumi.CustomResource):
         The version of the application package.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

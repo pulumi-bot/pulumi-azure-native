@@ -5,16 +5,72 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Connector']
+__all__ = ['ConnectorArgs', 'Connector']
+
+@pulumi.input_type
+class ConnectorArgs:
+    def __init__(__self__, *,
+                 authentication_details: Optional[pulumi.Input[Union['AwAssumeRoleAuthenticationDetailsPropertiesArgs', 'AwsCredsAuthenticationDetailsPropertiesArgs', 'GcpCredentialsDetailsPropertiesArgs']]] = None,
+                 connector_name: Optional[pulumi.Input[str]] = None,
+                 hybrid_compute_settings: Optional[pulumi.Input['HybridComputeSettingsPropertiesArgs']] = None):
+        """
+        The set of arguments for constructing a Connector resource.
+        :param pulumi.Input[Union['AwAssumeRoleAuthenticationDetailsPropertiesArgs', 'AwsCredsAuthenticationDetailsPropertiesArgs', 'GcpCredentialsDetailsPropertiesArgs']] authentication_details: Settings for authentication management, these settings are relevant only for the cloud connector.
+        :param pulumi.Input[str] connector_name: Name of the cloud account connector
+        :param pulumi.Input['HybridComputeSettingsPropertiesArgs'] hybrid_compute_settings: Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
+        """
+        if authentication_details is not None:
+            pulumi.set(__self__, "authentication_details", authentication_details)
+        if connector_name is not None:
+            pulumi.set(__self__, "connector_name", connector_name)
+        if hybrid_compute_settings is not None:
+            pulumi.set(__self__, "hybrid_compute_settings", hybrid_compute_settings)
+
+    @property
+    @pulumi.getter(name="authenticationDetails")
+    def authentication_details(self) -> Optional[pulumi.Input[Union['AwAssumeRoleAuthenticationDetailsPropertiesArgs', 'AwsCredsAuthenticationDetailsPropertiesArgs', 'GcpCredentialsDetailsPropertiesArgs']]]:
+        """
+        Settings for authentication management, these settings are relevant only for the cloud connector.
+        """
+        return pulumi.get(self, "authentication_details")
+
+    @authentication_details.setter
+    def authentication_details(self, value: Optional[pulumi.Input[Union['AwAssumeRoleAuthenticationDetailsPropertiesArgs', 'AwsCredsAuthenticationDetailsPropertiesArgs', 'GcpCredentialsDetailsPropertiesArgs']]]):
+        pulumi.set(self, "authentication_details", value)
+
+    @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the cloud account connector
+        """
+        return pulumi.get(self, "connector_name")
+
+    @connector_name.setter
+    def connector_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connector_name", value)
+
+    @property
+    @pulumi.getter(name="hybridComputeSettings")
+    def hybrid_compute_settings(self) -> Optional[pulumi.Input['HybridComputeSettingsPropertiesArgs']]:
+        """
+        Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
+        """
+        return pulumi.get(self, "hybrid_compute_settings")
+
+    @hybrid_compute_settings.setter
+    def hybrid_compute_settings(self, value: Optional[pulumi.Input['HybridComputeSettingsPropertiesArgs']]):
+        pulumi.set(self, "hybrid_compute_settings", value)
 
 
 class Connector(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +90,37 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] connector_name: Name of the cloud account connector
         :param pulumi.Input[pulumi.InputType['HybridComputeSettingsPropertiesArgs']] hybrid_compute_settings: Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ConnectorArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The connector setting
+        API Version: 2020-01-01-preview.
+
+        :param str resource_name: The name of the resource.
+        :param ConnectorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authentication_details: Optional[pulumi.Input[Union[pulumi.InputType['AwAssumeRoleAuthenticationDetailsPropertiesArgs'], pulumi.InputType['AwsCredsAuthenticationDetailsPropertiesArgs'], pulumi.InputType['GcpCredentialsDetailsPropertiesArgs']]]] = None,
+                 connector_name: Optional[pulumi.Input[str]] = None,
+                 hybrid_compute_settings: Optional[pulumi.Input[pulumi.InputType['HybridComputeSettingsPropertiesArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -49,13 +136,13 @@ class Connector(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
-            __props__['authentication_details'] = authentication_details
-            __props__['connector_name'] = connector_name
-            __props__['hybrid_compute_settings'] = hybrid_compute_settings
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['authentication_details'] = authentication_details
+            __props__.__dict__['connector_name'] = connector_name
+            __props__.__dict__['hybrid_compute_settings'] = hybrid_compute_settings
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:security:Connector"), pulumi.Alias(type_="azure-native:security/v20200101preview:Connector"), pulumi.Alias(type_="azure-nextgen:security/v20200101preview:Connector")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Connector, __self__).__init__(
@@ -80,10 +167,10 @@ class Connector(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["authentication_details"] = None
-        __props__["hybrid_compute_settings"] = None
-        __props__["name"] = None
-        __props__["type"] = None
+        __props__['authentication_details'] = None
+        __props__['hybrid_compute_settings'] = None
+        __props__['name'] = None
+        __props__['type'] = None
         return Connector(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -117,10 +204,4 @@ class Connector(pulumi.CustomResource):
         Resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

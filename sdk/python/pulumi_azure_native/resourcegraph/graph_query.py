@@ -5,13 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['GraphQuery']
+__all__ = ['GraphQueryArgs', 'GraphQuery']
+
+@pulumi.input_type
+class GraphQueryArgs:
+    def __init__(__self__, *,
+                 query: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a GraphQuery resource.
+        :param pulumi.Input[str] query: KQL query that will be graph.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] description: The description of a graph query.
+        :param pulumi.Input[str] etag: This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
+        :param pulumi.Input[str] location: The location of the resource
+        :param pulumi.Input[str] resource_name: The name of the Graph Query resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        KQL query that will be graph.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of a graph query.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the resource
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Graph Query resource.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class GraphQuery(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +157,41 @@ class GraphQuery(pulumi.CustomResource):
         :param pulumi.Input[str] resource_name_: The name of the Graph Query resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GraphQueryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Graph Query entity definition.
+        API Version: 2018-09-01-preview.
+
+        :param str resource_name: The name of the resource.
+        :param GraphQueryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GraphQueryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 query: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -54,23 +207,23 @@ class GraphQuery(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GraphQueryArgs.__new__(GraphQueryArgs)
 
-            __props__['description'] = description
-            __props__['etag'] = etag
-            __props__['location'] = location
+            __props__.__dict__['description'] = description
+            __props__.__dict__['etag'] = etag
+            __props__.__dict__['location'] = location
             if query is None and not opts.urn:
                 raise TypeError("Missing required property 'query'")
-            __props__['query'] = query
+            __props__.__dict__['query'] = query
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['resource_name'] = resource_name_
-            __props__['tags'] = tags
-            __props__['name'] = None
-            __props__['result_kind'] = None
-            __props__['time_modified'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_name'] = resource_name_
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['name'] = None
+            __props__.__dict__['result_kind'] = None
+            __props__.__dict__['time_modified'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:resourcegraph:GraphQuery"), pulumi.Alias(type_="azure-native:resourcegraph/v20180901preview:GraphQuery"), pulumi.Alias(type_="azure-nextgen:resourcegraph/v20180901preview:GraphQuery"), pulumi.Alias(type_="azure-native:resourcegraph/v20200401preview:GraphQuery"), pulumi.Alias(type_="azure-nextgen:resourcegraph/v20200401preview:GraphQuery")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GraphQuery, __self__).__init__(
@@ -95,15 +248,15 @@ class GraphQuery(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["description"] = None
-        __props__["etag"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["query"] = None
-        __props__["result_kind"] = None
-        __props__["tags"] = None
-        __props__["time_modified"] = None
-        __props__["type"] = None
+        __props__['description'] = None
+        __props__['etag'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['query'] = None
+        __props__['result_kind'] = None
+        __props__['tags'] = None
+        __props__['time_modified'] = None
+        __props__['type'] = None
         return GraphQuery(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -177,10 +330,4 @@ class GraphQuery(pulumi.CustomResource):
         Azure resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

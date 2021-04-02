@@ -5,14 +5,85 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['Sensor']
+__all__ = ['SensorArgs', 'Sensor']
+
+@pulumi.input_type
+class SensorArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str],
+                 sensor_name: Optional[pulumi.Input[str]] = None,
+                 ti_automatic_updates: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Sensor resource.
+        :param pulumi.Input[str] scope: Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
+        :param pulumi.Input[str] sensor_name: Name of the IoT sensor
+        :param pulumi.Input[bool] ti_automatic_updates: TI Automatic mode status of the IoT sensor
+        :param pulumi.Input[str] zone: Zone of the IoT sensor
+        """
+        pulumi.set(__self__, "scope", scope)
+        if sensor_name is not None:
+            pulumi.set(__self__, "sensor_name", sensor_name)
+        if ti_automatic_updates is not None:
+            pulumi.set(__self__, "ti_automatic_updates", ti_automatic_updates)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        Scope of the query (IoT Hub, /providers/Microsoft.Devices/iotHubs/myHub)
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="sensorName")
+    def sensor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the IoT sensor
+        """
+        return pulumi.get(self, "sensor_name")
+
+    @sensor_name.setter
+    def sensor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sensor_name", value)
+
+    @property
+    @pulumi.getter(name="tiAutomaticUpdates")
+    def ti_automatic_updates(self) -> Optional[pulumi.Input[bool]]:
+        """
+        TI Automatic mode status of the IoT sensor
+        """
+        return pulumi.get(self, "ti_automatic_updates")
+
+    @ti_automatic_updates.setter
+    def ti_automatic_updates(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ti_automatic_updates", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone of the IoT sensor
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class Sensor(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +104,37 @@ class Sensor(pulumi.CustomResource):
         :param pulumi.Input[bool] ti_automatic_updates: TI Automatic mode status of the IoT sensor
         :param pulumi.Input[str] zone: Zone of the IoT sensor
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SensorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        IoT sensor model
+
+        :param str resource_name: The name of the resource.
+        :param SensorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SensorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 sensor_name: Optional[pulumi.Input[str]] = None,
+                 ti_automatic_updates: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -48,24 +150,24 @@ class Sensor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SensorArgs.__new__(SensorArgs)
 
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
-            __props__['scope'] = scope
-            __props__['sensor_name'] = sensor_name
-            __props__['ti_automatic_updates'] = ti_automatic_updates
-            __props__['zone'] = zone
-            __props__['connectivity_time'] = None
-            __props__['dynamic_learning'] = None
-            __props__['learning_mode'] = None
-            __props__['name'] = None
-            __props__['sensor_status'] = None
-            __props__['sensor_version'] = None
-            __props__['system_data'] = None
-            __props__['ti_status'] = None
-            __props__['ti_version'] = None
-            __props__['type'] = None
+            __props__.__dict__['scope'] = scope
+            __props__.__dict__['sensor_name'] = sensor_name
+            __props__.__dict__['ti_automatic_updates'] = ti_automatic_updates
+            __props__.__dict__['zone'] = zone
+            __props__.__dict__['connectivity_time'] = None
+            __props__.__dict__['dynamic_learning'] = None
+            __props__.__dict__['learning_mode'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['sensor_status'] = None
+            __props__.__dict__['sensor_version'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['ti_status'] = None
+            __props__.__dict__['ti_version'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:iotsecurity/v20210201preview:Sensor"), pulumi.Alias(type_="azure-native:iotsecurity:Sensor"), pulumi.Alias(type_="azure-nextgen:iotsecurity:Sensor")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Sensor, __self__).__init__(
@@ -90,18 +192,18 @@ class Sensor(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["connectivity_time"] = None
-        __props__["dynamic_learning"] = None
-        __props__["learning_mode"] = None
-        __props__["name"] = None
-        __props__["sensor_status"] = None
-        __props__["sensor_version"] = None
-        __props__["system_data"] = None
-        __props__["ti_automatic_updates"] = None
-        __props__["ti_status"] = None
-        __props__["ti_version"] = None
-        __props__["type"] = None
-        __props__["zone"] = None
+        __props__['connectivity_time'] = None
+        __props__['dynamic_learning'] = None
+        __props__['learning_mode'] = None
+        __props__['name'] = None
+        __props__['sensor_status'] = None
+        __props__['sensor_version'] = None
+        __props__['system_data'] = None
+        __props__['ti_automatic_updates'] = None
+        __props__['ti_status'] = None
+        __props__['ti_version'] = None
+        __props__['type'] = None
+        __props__['zone'] = None
         return Sensor(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -199,10 +301,4 @@ class Sensor(pulumi.CustomResource):
         Zone of the IoT sensor
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

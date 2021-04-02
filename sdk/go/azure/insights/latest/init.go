@@ -22,41 +22,42 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:insights/latest:ActionGroup":
-		r, err = NewActionGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ActionGroup{}
 	case "azure-native:insights/latest:ActivityLogAlert":
-		r, err = NewActivityLogAlert(ctx, name, nil, pulumi.URN_(urn))
+		r = &ActivityLogAlert{}
 	case "azure-native:insights/latest:AlertRule":
-		r, err = NewAlertRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlertRule{}
 	case "azure-native:insights/latest:AnalyticsItem":
-		r, err = NewAnalyticsItem(ctx, name, nil, pulumi.URN_(urn))
+		r = &AnalyticsItem{}
 	case "azure-native:insights/latest:AutoscaleSetting":
-		r, err = NewAutoscaleSetting(ctx, name, nil, pulumi.URN_(urn))
+		r = &AutoscaleSetting{}
 	case "azure-native:insights/latest:Component":
-		r, err = NewComponent(ctx, name, nil, pulumi.URN_(urn))
+		r = &Component{}
 	case "azure-native:insights/latest:ComponentCurrentBillingFeature":
-		r, err = NewComponentCurrentBillingFeature(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComponentCurrentBillingFeature{}
 	case "azure-native:insights/latest:ExportConfiguration":
-		r, err = NewExportConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &ExportConfiguration{}
 	case "azure-native:insights/latest:Favorite":
-		r, err = NewFavorite(ctx, name, nil, pulumi.URN_(urn))
+		r = &Favorite{}
 	case "azure-native:insights/latest:LogProfile":
-		r, err = NewLogProfile(ctx, name, nil, pulumi.URN_(urn))
+		r = &LogProfile{}
 	case "azure-native:insights/latest:MetricAlert":
-		r, err = NewMetricAlert(ctx, name, nil, pulumi.URN_(urn))
+		r = &MetricAlert{}
 	case "azure-native:insights/latest:MyWorkbook":
-		r, err = NewMyWorkbook(ctx, name, nil, pulumi.URN_(urn))
+		r = &MyWorkbook{}
 	case "azure-native:insights/latest:ProactiveDetectionConfiguration":
-		r, err = NewProactiveDetectionConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProactiveDetectionConfiguration{}
 	case "azure-native:insights/latest:ScheduledQueryRule":
-		r, err = NewScheduledQueryRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ScheduledQueryRule{}
 	case "azure-native:insights/latest:WebTest":
-		r, err = NewWebTest(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebTest{}
 	case "azure-native:insights/latest:Workbook":
-		r, err = NewWorkbook(ctx, name, nil, pulumi.URN_(urn))
+		r = &Workbook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,15 +5,149 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Certificate']
+__all__ = ['CertificateArgs', 'Certificate']
+
+@pulumi.input_type
+class CertificateArgs:
+    def __init__(__self__, *,
+                 integration_account_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 certificate_name: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input['KeyVaultKeyReferenceArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 public_certificate: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[str] integration_account_name: The integration account name.
+        :param pulumi.Input[str] resource_group_name: The resource group name.
+        :param pulumi.Input[str] certificate_name: The integration account certificate name.
+        :param pulumi.Input['KeyVaultKeyReferenceArgs'] key: The key details in the key vault.
+        :param pulumi.Input[str] location: The resource location.
+        :param Any metadata: The metadata.
+        :param pulumi.Input[str] public_certificate: The public certificate.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
+        """
+        pulumi.set(__self__, "integration_account_name", integration_account_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if public_certificate is not None:
+            pulumi.set(__self__, "public_certificate", public_certificate)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="integrationAccountName")
+    def integration_account_name(self) -> pulumi.Input[str]:
+        """
+        The integration account name.
+        """
+        return pulumi.get(self, "integration_account_name")
+
+    @integration_account_name.setter
+    def integration_account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_account_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The resource group name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The integration account certificate name.
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @certificate_name.setter
+    def certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_name", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input['KeyVaultKeyReferenceArgs']]:
+        """
+        The key details in the key vault.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input['KeyVaultKeyReferenceArgs']]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Any]:
+        """
+        The metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[Any]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="publicCertificate")
+    def public_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public certificate.
+        """
+        return pulumi.get(self, "public_certificate")
+
+    @public_certificate.setter
+    def public_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_certificate", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Certificate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +176,41 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The resource group name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CertificateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The integration account certificate.
+
+        :param str resource_name: The name of the resource.
+        :param CertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_name: Optional[pulumi.Input[str]] = None,
+                 integration_account_name: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[pulumi.InputType['KeyVaultKeyReferenceArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 public_certificate: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -57,24 +226,24 @@ class Certificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CertificateArgs.__new__(CertificateArgs)
 
-            __props__['certificate_name'] = certificate_name
+            __props__.__dict__['certificate_name'] = certificate_name
             if integration_account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_account_name'")
-            __props__['integration_account_name'] = integration_account_name
-            __props__['key'] = key
-            __props__['location'] = location
-            __props__['metadata'] = metadata
-            __props__['public_certificate'] = public_certificate
+            __props__.__dict__['integration_account_name'] = integration_account_name
+            __props__.__dict__['key'] = key
+            __props__.__dict__['location'] = location
+            __props__.__dict__['metadata'] = metadata
+            __props__.__dict__['public_certificate'] = public_certificate
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['changed_time'] = None
-            __props__['created_time'] = None
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['changed_time'] = None
+            __props__.__dict__['created_time'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:logic/v20160601:Certificate"), pulumi.Alias(type_="azure-native:logic:Certificate"), pulumi.Alias(type_="azure-nextgen:logic:Certificate"), pulumi.Alias(type_="azure-native:logic/latest:Certificate"), pulumi.Alias(type_="azure-nextgen:logic/latest:Certificate"), pulumi.Alias(type_="azure-native:logic/v20150801preview:Certificate"), pulumi.Alias(type_="azure-nextgen:logic/v20150801preview:Certificate"), pulumi.Alias(type_="azure-native:logic/v20180701preview:Certificate"), pulumi.Alias(type_="azure-nextgen:logic/v20180701preview:Certificate"), pulumi.Alias(type_="azure-native:logic/v20190501:Certificate"), pulumi.Alias(type_="azure-nextgen:logic/v20190501:Certificate")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Certificate, __self__).__init__(
@@ -99,15 +268,15 @@ class Certificate(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["changed_time"] = None
-        __props__["created_time"] = None
-        __props__["key"] = None
-        __props__["location"] = None
-        __props__["metadata"] = None
-        __props__["name"] = None
-        __props__["public_certificate"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['changed_time'] = None
+        __props__['created_time'] = None
+        __props__['key'] = None
+        __props__['location'] = None
+        __props__['metadata'] = None
+        __props__['name'] = None
+        __props__['public_certificate'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -181,10 +350,4 @@ class Certificate(pulumi.CustomResource):
         Gets the resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

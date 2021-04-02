@@ -5,16 +5,169 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['PolicyDefinitionAtManagementGroup']
+__all__ = ['PolicyDefinitionAtManagementGroupArgs', 'PolicyDefinitionAtManagementGroup']
+
+@pulumi.input_type
+class PolicyDefinitionAtManagementGroupArgs:
+    def __init__(__self__, *,
+                 management_group_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input['ParameterDefinitionsValueArgs']]]] = None,
+                 policy_definition_name: Optional[pulumi.Input[str]] = None,
+                 policy_rule: Optional[Any] = None,
+                 policy_type: Optional[pulumi.Input[Union[str, 'PolicyType']]] = None):
+        """
+        The set of arguments for constructing a PolicyDefinitionAtManagementGroup resource.
+        :param pulumi.Input[str] management_group_id: The ID of the management group.
+        :param pulumi.Input[str] description: The policy definition description.
+        :param pulumi.Input[str] display_name: The display name of the policy definition.
+        :param Any metadata: The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+        :param pulumi.Input[str] mode: The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ParameterDefinitionsValueArgs']]] parameters: The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+        :param pulumi.Input[str] policy_definition_name: The name of the policy definition to create.
+        :param Any policy_rule: The policy rule.
+        :param pulumi.Input[Union[str, 'PolicyType']] policy_type: The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+        """
+        pulumi.set(__self__, "management_group_id", management_group_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if mode is None:
+            mode = 'Indexed'
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if policy_definition_name is not None:
+            pulumi.set(__self__, "policy_definition_name", policy_definition_name)
+        if policy_rule is not None:
+            pulumi.set(__self__, "policy_rule", policy_rule)
+        if policy_type is not None:
+            pulumi.set(__self__, "policy_type", policy_type)
+
+    @property
+    @pulumi.getter(name="managementGroupId")
+    def management_group_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the management group.
+        """
+        return pulumi.get(self, "management_group_id")
+
+    @management_group_id.setter
+    def management_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "management_group_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy definition description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the policy definition.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Any]:
+        """
+        The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[Any]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ParameterDefinitionsValueArgs']]]]:
+        """
+        The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ParameterDefinitionsValueArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="policyDefinitionName")
+    def policy_definition_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the policy definition to create.
+        """
+        return pulumi.get(self, "policy_definition_name")
+
+    @policy_definition_name.setter
+    def policy_definition_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_definition_name", value)
+
+    @property
+    @pulumi.getter(name="policyRule")
+    def policy_rule(self) -> Optional[Any]:
+        """
+        The policy rule.
+        """
+        return pulumi.get(self, "policy_rule")
+
+    @policy_rule.setter
+    def policy_rule(self, value: Optional[Any]):
+        pulumi.set(self, "policy_rule", value)
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> Optional[pulumi.Input[Union[str, 'PolicyType']]]:
+        """
+        The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: Optional[pulumi.Input[Union[str, 'PolicyType']]]):
+        pulumi.set(self, "policy_type", value)
 
 
 class PolicyDefinitionAtManagementGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +199,43 @@ class PolicyDefinitionAtManagementGroup(pulumi.CustomResource):
         :param Any policy_rule: The policy rule.
         :param pulumi.Input[Union[str, 'PolicyType']] policy_type: The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PolicyDefinitionAtManagementGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The policy definition.
+        API Version: 2020-09-01.
+
+        :param str resource_name: The name of the resource.
+        :param PolicyDefinitionAtManagementGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyDefinitionAtManagementGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 management_group_id: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[Any] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ParameterDefinitionsValueArgs']]]]] = None,
+                 policy_definition_name: Optional[pulumi.Input[str]] = None,
+                 policy_rule: Optional[Any] = None,
+                 policy_type: Optional[pulumi.Input[Union[str, 'PolicyType']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -61,23 +251,23 @@ class PolicyDefinitionAtManagementGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PolicyDefinitionAtManagementGroupArgs.__new__(PolicyDefinitionAtManagementGroupArgs)
 
-            __props__['description'] = description
-            __props__['display_name'] = display_name
+            __props__.__dict__['description'] = description
+            __props__.__dict__['display_name'] = display_name
             if management_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'management_group_id'")
-            __props__['management_group_id'] = management_group_id
-            __props__['metadata'] = metadata
+            __props__.__dict__['management_group_id'] = management_group_id
+            __props__.__dict__['metadata'] = metadata
             if mode is None:
                 mode = 'Indexed'
-            __props__['mode'] = mode
-            __props__['parameters'] = parameters
-            __props__['policy_definition_name'] = policy_definition_name
-            __props__['policy_rule'] = policy_rule
-            __props__['policy_type'] = policy_type
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['mode'] = mode
+            __props__.__dict__['parameters'] = parameters
+            __props__.__dict__['policy_definition_name'] = policy_definition_name
+            __props__.__dict__['policy_rule'] = policy_rule
+            __props__.__dict__['policy_type'] = policy_type
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/latest:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/latest:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20161201:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20161201:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20180301:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20180301:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20180501:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20180501:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20190101:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20190101:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20190601:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20190601:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20190901:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20190901:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20200301:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20200301:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-native:authorization/v20200901:PolicyDefinitionAtManagementGroup"), pulumi.Alias(type_="azure-nextgen:authorization/v20200901:PolicyDefinitionAtManagementGroup")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PolicyDefinitionAtManagementGroup, __self__).__init__(
@@ -102,15 +292,15 @@ class PolicyDefinitionAtManagementGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["metadata"] = None
-        __props__["mode"] = None
-        __props__["name"] = None
-        __props__["parameters"] = None
-        __props__["policy_rule"] = None
-        __props__["policy_type"] = None
-        __props__["type"] = None
+        __props__['description'] = None
+        __props__['display_name'] = None
+        __props__['metadata'] = None
+        __props__['mode'] = None
+        __props__['name'] = None
+        __props__['parameters'] = None
+        __props__['policy_rule'] = None
+        __props__['policy_type'] = None
+        __props__['type'] = None
         return PolicyDefinitionAtManagementGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -184,10 +374,4 @@ class PolicyDefinitionAtManagementGroup(pulumi.CustomResource):
         The type of the resource (Microsoft.Authorization/policyDefinitions).
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

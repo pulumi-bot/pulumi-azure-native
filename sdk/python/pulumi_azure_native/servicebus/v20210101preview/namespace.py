@@ -5,16 +5,167 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Namespace']
+__all__ = ['NamespaceArgs', 'Namespace']
+
+@pulumi.input_type
+class NamespaceArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 encryption: Optional[pulumi.Input['EncryptionArgs']] = None,
+                 identity: Optional[pulumi.Input['IdentityArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 private_endpoint_connections: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]]] = None,
+                 sku: Optional[pulumi.Input['SBSkuArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 zone_redundant: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Namespace resource.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource group within the Azure subscription.
+        :param pulumi.Input['EncryptionArgs'] encryption: Properties of BYOK Encryption description
+        :param pulumi.Input['IdentityArgs'] identity: Properties of BYOK Identity description
+        :param pulumi.Input[str] location: The Geo-location where the resource lives
+        :param pulumi.Input[str] namespace_name: The namespace name.
+        :param pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]] private_endpoint_connections: List of private endpoint connections.
+        :param pulumi.Input['SBSkuArgs'] sku: Properties of SKU
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
+        :param pulumi.Input[bool] zone_redundant: Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if namespace_name is not None:
+            pulumi.set(__self__, "namespace_name", namespace_name)
+        if private_endpoint_connections is not None:
+            pulumi.set(__self__, "private_endpoint_connections", private_endpoint_connections)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if zone_redundant is not None:
+            pulumi.set(__self__, "zone_redundant", zone_redundant)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the Resource group within the Azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['EncryptionArgs']]:
+        """
+        Properties of BYOK Encryption description
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['EncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input['IdentityArgs']]:
+        """
+        Properties of BYOK Identity description
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input['IdentityArgs']]):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace name.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="privateEndpointConnections")
+    def private_endpoint_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]]]:
+        """
+        List of private endpoint connections.
+        """
+        return pulumi.get(self, "private_endpoint_connections")
+
+    @private_endpoint_connections.setter
+    def private_endpoint_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateEndpointConnectionArgs']]]]):
+        pulumi.set(self, "private_endpoint_connections", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input['SBSkuArgs']]:
+        """
+        Properties of SKU
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input['SBSkuArgs']]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="zoneRedundant")
+    def zone_redundant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+        """
+        return pulumi.get(self, "zone_redundant")
+
+    @zone_redundant.setter
+    def zone_redundant(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zone_redundant", value)
 
 
 class Namespace(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -45,6 +196,42 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         :param pulumi.Input[bool] zone_redundant: Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NamespaceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Description of a namespace resource.
+
+        :param str resource_name: The name of the resource.
+        :param NamespaceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NamespaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption: Optional[pulumi.Input[pulumi.InputType['EncryptionArgs']]] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['IdentityArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 private_endpoint_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateEndpointConnectionArgs']]]]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['SBSkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 zone_redundant: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -60,27 +247,27 @@ class Namespace(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
-            __props__['encryption'] = encryption
-            __props__['identity'] = identity
-            __props__['location'] = location
-            __props__['namespace_name'] = namespace_name
-            __props__['private_endpoint_connections'] = private_endpoint_connections
+            __props__.__dict__['encryption'] = encryption
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['location'] = location
+            __props__.__dict__['namespace_name'] = namespace_name
+            __props__.__dict__['private_endpoint_connections'] = private_endpoint_connections
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['zone_redundant'] = zone_redundant
-            __props__['created_at'] = None
-            __props__['metric_id'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['service_bus_endpoint'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
-            __props__['updated_at'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['zone_redundant'] = zone_redundant
+            __props__.__dict__['created_at'] = None
+            __props__.__dict__['metric_id'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['service_bus_endpoint'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['updated_at'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20210101preview:Namespace"), pulumi.Alias(type_="azure-native:servicebus:Namespace"), pulumi.Alias(type_="azure-nextgen:servicebus:Namespace"), pulumi.Alias(type_="azure-native:servicebus/latest:Namespace"), pulumi.Alias(type_="azure-nextgen:servicebus/latest:Namespace"), pulumi.Alias(type_="azure-native:servicebus/v20140901:Namespace"), pulumi.Alias(type_="azure-nextgen:servicebus/v20140901:Namespace"), pulumi.Alias(type_="azure-native:servicebus/v20150801:Namespace"), pulumi.Alias(type_="azure-nextgen:servicebus/v20150801:Namespace"), pulumi.Alias(type_="azure-native:servicebus/v20170401:Namespace"), pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:Namespace"), pulumi.Alias(type_="azure-native:servicebus/v20180101preview:Namespace"), pulumi.Alias(type_="azure-nextgen:servicebus/v20180101preview:Namespace")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Namespace, __self__).__init__(
@@ -105,21 +292,21 @@ class Namespace(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["created_at"] = None
-        __props__["encryption"] = None
-        __props__["identity"] = None
-        __props__["location"] = None
-        __props__["metric_id"] = None
-        __props__["name"] = None
-        __props__["private_endpoint_connections"] = None
-        __props__["provisioning_state"] = None
-        __props__["service_bus_endpoint"] = None
-        __props__["sku"] = None
-        __props__["system_data"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["updated_at"] = None
-        __props__["zone_redundant"] = None
+        __props__['created_at'] = None
+        __props__['encryption'] = None
+        __props__['identity'] = None
+        __props__['location'] = None
+        __props__['metric_id'] = None
+        __props__['name'] = None
+        __props__['private_endpoint_connections'] = None
+        __props__['provisioning_state'] = None
+        __props__['service_bus_endpoint'] = None
+        __props__['sku'] = None
+        __props__['system_data'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['updated_at'] = None
+        __props__['zone_redundant'] = None
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -241,10 +428,4 @@ class Namespace(pulumi.CustomResource):
         Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
         """
         return pulumi.get(self, "zone_redundant")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

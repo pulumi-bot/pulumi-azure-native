@@ -5,13 +5,134 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Invitation']
+__all__ = ['InvitationArgs', 'Invitation']
+
+@pulumi.input_type
+class InvitationArgs:
+    def __init__(__self__, *,
+                 account_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 share_name: pulumi.Input[str],
+                 invitation_name: Optional[pulumi.Input[str]] = None,
+                 target_active_directory_id: Optional[pulumi.Input[str]] = None,
+                 target_email: Optional[pulumi.Input[str]] = None,
+                 target_object_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Invitation resource.
+        :param pulumi.Input[str] account_name: The name of the share account.
+        :param pulumi.Input[str] resource_group_name: The resource group name.
+        :param pulumi.Input[str] share_name: The name of the share to send the invitation for.
+        :param pulumi.Input[str] invitation_name: The name of the invitation.
+        :param pulumi.Input[str] target_active_directory_id: The target Azure AD Id. Can't be combined with email.
+        :param pulumi.Input[str] target_email: The email the invitation is directed to.
+        :param pulumi.Input[str] target_object_id: The target user or application Id that invitation is being sent to.
+               Must be specified along TargetActiveDirectoryId. This enables sending
+               invitations to specific users or applications in an AD tenant.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "share_name", share_name)
+        if invitation_name is not None:
+            pulumi.set(__self__, "invitation_name", invitation_name)
+        if target_active_directory_id is not None:
+            pulumi.set(__self__, "target_active_directory_id", target_active_directory_id)
+        if target_email is not None:
+            pulumi.set(__self__, "target_email", target_email)
+        if target_object_id is not None:
+            pulumi.set(__self__, "target_object_id", target_object_id)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[str]:
+        """
+        The name of the share account.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The resource group name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="shareName")
+    def share_name(self) -> pulumi.Input[str]:
+        """
+        The name of the share to send the invitation for.
+        """
+        return pulumi.get(self, "share_name")
+
+    @share_name.setter
+    def share_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "share_name", value)
+
+    @property
+    @pulumi.getter(name="invitationName")
+    def invitation_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the invitation.
+        """
+        return pulumi.get(self, "invitation_name")
+
+    @invitation_name.setter
+    def invitation_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "invitation_name", value)
+
+    @property
+    @pulumi.getter(name="targetActiveDirectoryId")
+    def target_active_directory_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target Azure AD Id. Can't be combined with email.
+        """
+        return pulumi.get(self, "target_active_directory_id")
+
+    @target_active_directory_id.setter
+    def target_active_directory_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_active_directory_id", value)
+
+    @property
+    @pulumi.getter(name="targetEmail")
+    def target_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email the invitation is directed to.
+        """
+        return pulumi.get(self, "target_email")
+
+    @target_email.setter
+    def target_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_email", value)
+
+    @property
+    @pulumi.getter(name="targetObjectId")
+    def target_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target user or application Id that invitation is being sent to.
+        Must be specified along TargetActiveDirectoryId. This enables sending
+        invitations to specific users or applications in an AD tenant.
+        """
+        return pulumi.get(self, "target_object_id")
+
+    @target_object_id.setter
+    def target_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_object_id", value)
 
 
 class Invitation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +161,40 @@ class Invitation(pulumi.CustomResource):
                Must be specified along TargetActiveDirectoryId. This enables sending
                invitations to specific users or applications in an AD tenant.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InvitationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Invitation data transfer object.
+
+        :param str resource_name: The name of the resource.
+        :param InvitationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InvitationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 invitation_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 share_name: Optional[pulumi.Input[str]] = None,
+                 target_active_directory_id: Optional[pulumi.Input[str]] = None,
+                 target_email: Optional[pulumi.Input[str]] = None,
+                 target_object_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,29 +210,29 @@ class Invitation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InvitationArgs.__new__(InvitationArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['invitation_name'] = invitation_name
+            __props__.__dict__['account_name'] = account_name
+            __props__.__dict__['invitation_name'] = invitation_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if share_name is None and not opts.urn:
                 raise TypeError("Missing required property 'share_name'")
-            __props__['share_name'] = share_name
-            __props__['target_active_directory_id'] = target_active_directory_id
-            __props__['target_email'] = target_email
-            __props__['target_object_id'] = target_object_id
-            __props__['invitation_id'] = None
-            __props__['invitation_status'] = None
-            __props__['name'] = None
-            __props__['responded_at'] = None
-            __props__['sent_at'] = None
-            __props__['type'] = None
-            __props__['user_email'] = None
-            __props__['user_name'] = None
+            __props__.__dict__['share_name'] = share_name
+            __props__.__dict__['target_active_directory_id'] = target_active_directory_id
+            __props__.__dict__['target_email'] = target_email
+            __props__.__dict__['target_object_id'] = target_object_id
+            __props__.__dict__['invitation_id'] = None
+            __props__.__dict__['invitation_status'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['responded_at'] = None
+            __props__.__dict__['sent_at'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['user_email'] = None
+            __props__.__dict__['user_name'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:datashare/v20181101preview:Invitation"), pulumi.Alias(type_="azure-native:datashare:Invitation"), pulumi.Alias(type_="azure-nextgen:datashare:Invitation"), pulumi.Alias(type_="azure-native:datashare/latest:Invitation"), pulumi.Alias(type_="azure-nextgen:datashare/latest:Invitation"), pulumi.Alias(type_="azure-native:datashare/v20191101:Invitation"), pulumi.Alias(type_="azure-nextgen:datashare/v20191101:Invitation"), pulumi.Alias(type_="azure-native:datashare/v20200901:Invitation"), pulumi.Alias(type_="azure-nextgen:datashare/v20200901:Invitation"), pulumi.Alias(type_="azure-native:datashare/v20201001preview:Invitation"), pulumi.Alias(type_="azure-nextgen:datashare/v20201001preview:Invitation")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Invitation, __self__).__init__(
@@ -102,17 +257,17 @@ class Invitation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["invitation_id"] = None
-        __props__["invitation_status"] = None
-        __props__["name"] = None
-        __props__["responded_at"] = None
-        __props__["sent_at"] = None
-        __props__["target_active_directory_id"] = None
-        __props__["target_email"] = None
-        __props__["target_object_id"] = None
-        __props__["type"] = None
-        __props__["user_email"] = None
-        __props__["user_name"] = None
+        __props__['invitation_id'] = None
+        __props__['invitation_status'] = None
+        __props__['name'] = None
+        __props__['responded_at'] = None
+        __props__['sent_at'] = None
+        __props__['target_active_directory_id'] = None
+        __props__['target_email'] = None
+        __props__['target_object_id'] = None
+        __props__['type'] = None
+        __props__['user_email'] = None
+        __props__['user_name'] = None
         return Invitation(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -204,10 +359,4 @@ class Invitation(pulumi.CustomResource):
         Name of the user who created the resource
         """
         return pulumi.get(self, "user_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

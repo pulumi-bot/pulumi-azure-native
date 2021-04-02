@@ -5,13 +5,114 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['AFDCustomDomain']
+__all__ = ['AFDCustomDomainArgs', 'AFDCustomDomain']
+
+@pulumi.input_type
+class AFDCustomDomainArgs:
+    def __init__(__self__, *,
+                 host_name: pulumi.Input[str],
+                 profile_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 azure_dns_zone: Optional[pulumi.Input['ResourceReferenceArgs']] = None,
+                 custom_domain_name: Optional[pulumi.Input[str]] = None,
+                 tls_settings: Optional[pulumi.Input['AFDDomainHttpsParametersArgs']] = None):
+        """
+        The set of arguments for constructing a AFDCustomDomain resource.
+        :param pulumi.Input[str] host_name: The host name of the domain. Must be a domain name.
+        :param pulumi.Input[str] profile_name: Name of the CDN profile which is unique within the resource group.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource group within the Azure subscription.
+        :param pulumi.Input['ResourceReferenceArgs'] azure_dns_zone: Resource reference to the Azure DNS zone
+        :param pulumi.Input[str] custom_domain_name: Name of the domain under the profile which is unique globally
+        :param pulumi.Input['AFDDomainHttpsParametersArgs'] tls_settings: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
+        """
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "profile_name", profile_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if custom_domain_name is not None:
+            pulumi.set(__self__, "custom_domain_name", custom_domain_name)
+        if tls_settings is not None:
+            pulumi.set(__self__, "tls_settings", tls_settings)
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> pulumi.Input[str]:
+        """
+        The host name of the domain. Must be a domain name.
+        """
+        return pulumi.get(self, "host_name")
+
+    @host_name.setter
+    def host_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="profileName")
+    def profile_name(self) -> pulumi.Input[str]:
+        """
+        Name of the CDN profile which is unique within the resource group.
+        """
+        return pulumi.get(self, "profile_name")
+
+    @profile_name.setter
+    def profile_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "profile_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the Resource group within the Azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[pulumi.Input['ResourceReferenceArgs']]:
+        """
+        Resource reference to the Azure DNS zone
+        """
+        return pulumi.get(self, "azure_dns_zone")
+
+    @azure_dns_zone.setter
+    def azure_dns_zone(self, value: Optional[pulumi.Input['ResourceReferenceArgs']]):
+        pulumi.set(self, "azure_dns_zone", value)
+
+    @property
+    @pulumi.getter(name="customDomainName")
+    def custom_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the domain under the profile which is unique globally
+        """
+        return pulumi.get(self, "custom_domain_name")
+
+    @custom_domain_name.setter
+    def custom_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_domain_name", value)
+
+    @property
+    @pulumi.getter(name="tlsSettings")
+    def tls_settings(self) -> Optional[pulumi.Input['AFDDomainHttpsParametersArgs']]:
+        """
+        The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
+        """
+        return pulumi.get(self, "tls_settings")
+
+    @tls_settings.setter
+    def tls_settings(self, value: Optional[pulumi.Input['AFDDomainHttpsParametersArgs']]):
+        pulumi.set(self, "tls_settings", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:cdn:AFDCustomDomain'.""", DeprecationWarning)
 
@@ -19,6 +120,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class AFDCustomDomain(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:cdn:AFDCustomDomain'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +146,40 @@ class AFDCustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: Name of the Resource group within the Azure subscription.
         :param pulumi.Input[pulumi.InputType['AFDDomainHttpsParametersArgs']] tls_settings: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AFDCustomDomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
+        Latest API Version: 2020-09-01.
+
+        :param str resource_name: The name of the resource.
+        :param AFDCustomDomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AFDCustomDomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 azure_dns_zone: Optional[pulumi.Input[pulumi.InputType['ResourceReferenceArgs']]] = None,
+                 custom_domain_name: Optional[pulumi.Input[str]] = None,
+                 host_name: Optional[pulumi.Input[str]] = None,
+                 profile_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tls_settings: Optional[pulumi.Input[pulumi.InputType['AFDDomainHttpsParametersArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""AFDCustomDomain is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:cdn:AFDCustomDomain'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -60,27 +196,27 @@ class AFDCustomDomain(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AFDCustomDomainArgs.__new__(AFDCustomDomainArgs)
 
-            __props__['azure_dns_zone'] = azure_dns_zone
-            __props__['custom_domain_name'] = custom_domain_name
+            __props__.__dict__['azure_dns_zone'] = azure_dns_zone
+            __props__.__dict__['custom_domain_name'] = custom_domain_name
             if host_name is None and not opts.urn:
                 raise TypeError("Missing required property 'host_name'")
-            __props__['host_name'] = host_name
+            __props__.__dict__['host_name'] = host_name
             if profile_name is None and not opts.urn:
                 raise TypeError("Missing required property 'profile_name'")
-            __props__['profile_name'] = profile_name
+            __props__.__dict__['profile_name'] = profile_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tls_settings'] = tls_settings
-            __props__['deployment_status'] = None
-            __props__['domain_validation_state'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
-            __props__['validation_properties'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tls_settings'] = tls_settings
+            __props__.__dict__['deployment_status'] = None
+            __props__.__dict__['domain_validation_state'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['validation_properties'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:cdn/latest:AFDCustomDomain"), pulumi.Alias(type_="azure-native:cdn:AFDCustomDomain"), pulumi.Alias(type_="azure-nextgen:cdn:AFDCustomDomain"), pulumi.Alias(type_="azure-native:cdn/v20200901:AFDCustomDomain"), pulumi.Alias(type_="azure-nextgen:cdn/v20200901:AFDCustomDomain")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AFDCustomDomain, __self__).__init__(
@@ -105,16 +241,16 @@ class AFDCustomDomain(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["azure_dns_zone"] = None
-        __props__["deployment_status"] = None
-        __props__["domain_validation_state"] = None
-        __props__["host_name"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["system_data"] = None
-        __props__["tls_settings"] = None
-        __props__["type"] = None
-        __props__["validation_properties"] = None
+        __props__['azure_dns_zone'] = None
+        __props__['deployment_status'] = None
+        __props__['domain_validation_state'] = None
+        __props__['host_name'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['system_data'] = None
+        __props__['tls_settings'] = None
+        __props__['type'] = None
+        __props__['validation_properties'] = None
         return AFDCustomDomain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -193,10 +329,4 @@ class AFDCustomDomain(pulumi.CustomResource):
         Values the customer needs to validate domain ownership
         """
         return pulumi.get(self, "validation_properties")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

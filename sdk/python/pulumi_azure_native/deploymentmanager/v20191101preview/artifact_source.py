@@ -5,15 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ArtifactSource']
+__all__ = ['ArtifactSourceArgs', 'ArtifactSource']
+
+@pulumi.input_type
+class ArtifactSourceArgs:
+    def __init__(__self__, *,
+                 authentication: pulumi.Input['SasAuthenticationArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 source_type: pulumi.Input[str],
+                 artifact_root: Optional[pulumi.Input[str]] = None,
+                 artifact_source_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ArtifactSource resource.
+        :param pulumi.Input['SasAuthenticationArgs'] authentication: The authentication method to use to access the artifact source.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] source_type: The type of artifact source used.
+        :param pulumi.Input[str] artifact_root: The path from the location that the 'authentication' property [say, a SAS URI to the blob container] refers to, to the location of the artifacts. This can be used to differentiate different versions of the artifacts. Or, different types of artifacts like binaries or templates. The location referenced by the authentication property concatenated with this optional artifactRoot path forms the artifact source location where the artifacts are expected to be found.
+        :param pulumi.Input[str] artifact_source_name: The name of the artifact source.
+        :param pulumi.Input[str] location: The geo-location where the resource lives
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "source_type", source_type)
+        if artifact_root is not None:
+            pulumi.set(__self__, "artifact_root", artifact_root)
+        if artifact_source_name is not None:
+            pulumi.set(__self__, "artifact_source_name", artifact_source_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> pulumi.Input['SasAuthenticationArgs']:
+        """
+        The authentication method to use to access the artifact source.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: pulumi.Input['SasAuthenticationArgs']):
+        pulumi.set(self, "authentication", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> pulumi.Input[str]:
+        """
+        The type of artifact source used.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_type", value)
+
+    @property
+    @pulumi.getter(name="artifactRoot")
+    def artifact_root(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path from the location that the 'authentication' property [say, a SAS URI to the blob container] refers to, to the location of the artifacts. This can be used to differentiate different versions of the artifacts. Or, different types of artifacts like binaries or templates. The location referenced by the authentication property concatenated with this optional artifactRoot path forms the artifact source location where the artifacts are expected to be found.
+        """
+        return pulumi.get(self, "artifact_root")
+
+    @artifact_root.setter
+    def artifact_root(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_root", value)
+
+    @property
+    @pulumi.getter(name="artifactSourceName")
+    def artifact_source_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the artifact source.
+        """
+        return pulumi.get(self, "artifact_source_name")
+
+    @artifact_source_name.setter
+    def artifact_source_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_source_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ArtifactSource(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +157,40 @@ class ArtifactSource(pulumi.CustomResource):
         :param pulumi.Input[str] source_type: The type of artifact source used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ArtifactSourceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The resource that defines the source location where the artifacts are located.
+
+        :param str resource_name: The name of the resource.
+        :param ArtifactSourceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ArtifactSourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 artifact_root: Optional[pulumi.Input[str]] = None,
+                 artifact_source_name: Optional[pulumi.Input[str]] = None,
+                 authentication: Optional[pulumi.Input[pulumi.InputType['SasAuthenticationArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 source_type: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,23 +206,23 @@ class ArtifactSource(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ArtifactSourceArgs.__new__(ArtifactSourceArgs)
 
-            __props__['artifact_root'] = artifact_root
-            __props__['artifact_source_name'] = artifact_source_name
+            __props__.__dict__['artifact_root'] = artifact_root
+            __props__.__dict__['artifact_source_name'] = artifact_source_name
             if authentication is None and not opts.urn:
                 raise TypeError("Missing required property 'authentication'")
-            __props__['authentication'] = authentication
-            __props__['location'] = location
+            __props__.__dict__['authentication'] = authentication
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if source_type is None and not opts.urn:
                 raise TypeError("Missing required property 'source_type'")
-            __props__['source_type'] = source_type
-            __props__['tags'] = tags
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['source_type'] = source_type
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:deploymentmanager/v20191101preview:ArtifactSource"), pulumi.Alias(type_="azure-native:deploymentmanager:ArtifactSource"), pulumi.Alias(type_="azure-nextgen:deploymentmanager:ArtifactSource"), pulumi.Alias(type_="azure-native:deploymentmanager/v20180901preview:ArtifactSource"), pulumi.Alias(type_="azure-nextgen:deploymentmanager/v20180901preview:ArtifactSource")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ArtifactSource, __self__).__init__(
@@ -96,13 +247,13 @@ class ArtifactSource(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["artifact_root"] = None
-        __props__["authentication"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["source_type"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['artifact_root'] = None
+        __props__['authentication'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['source_type'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return ArtifactSource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -160,10 +311,4 @@ class ArtifactSource(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

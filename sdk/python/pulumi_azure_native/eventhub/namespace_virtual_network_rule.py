@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['NamespaceVirtualNetworkRule']
+__all__ = ['NamespaceVirtualNetworkRuleArgs', 'NamespaceVirtualNetworkRule']
+
+@pulumi.input_type
+class NamespaceVirtualNetworkRuleArgs:
+    def __init__(__self__, *,
+                 namespace_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 virtual_network_rule_name: Optional[pulumi.Input[str]] = None,
+                 virtual_network_subnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NamespaceVirtualNetworkRule resource.
+        :param pulumi.Input[str] namespace_name: The Namespace name
+        :param pulumi.Input[str] resource_group_name: Name of the resource group within the azure subscription.
+        :param pulumi.Input[str] virtual_network_rule_name: The Virtual Network Rule name.
+        :param pulumi.Input[str] virtual_network_subnet_id: ARM ID of Virtual Network Subnet
+        """
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if virtual_network_rule_name is not None:
+            pulumi.set(__self__, "virtual_network_rule_name", virtual_network_rule_name)
+        if virtual_network_subnet_id is not None:
+            pulumi.set(__self__, "virtual_network_subnet_id", virtual_network_subnet_id)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> pulumi.Input[str]:
+        """
+        The Namespace name
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group within the azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="virtualNetworkRuleName")
+    def virtual_network_rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Virtual Network Rule name.
+        """
+        return pulumi.get(self, "virtual_network_rule_name")
+
+    @virtual_network_rule_name.setter
+    def virtual_network_rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtual_network_rule_name", value)
+
+    @property
+    @pulumi.getter(name="virtualNetworkSubnetId")
+    def virtual_network_subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARM ID of Virtual Network Subnet
+        """
+        return pulumi.get(self, "virtual_network_subnet_id")
+
+    @virtual_network_subnet_id.setter
+    def virtual_network_subnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtual_network_subnet_id", value)
 
 
 class NamespaceVirtualNetworkRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +103,38 @@ class NamespaceVirtualNetworkRule(pulumi.CustomResource):
         :param pulumi.Input[str] virtual_network_rule_name: The Virtual Network Rule name.
         :param pulumi.Input[str] virtual_network_subnet_id: ARM ID of Virtual Network Subnet
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NamespaceVirtualNetworkRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Single item in a List or Get VirtualNetworkRules operation
+        API Version: 2018-01-01-preview.
+
+        :param str resource_name: The name of the resource.
+        :param NamespaceVirtualNetworkRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NamespaceVirtualNetworkRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 virtual_network_rule_name: Optional[pulumi.Input[str]] = None,
+                 virtual_network_subnet_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -48,18 +150,18 @@ class NamespaceVirtualNetworkRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NamespaceVirtualNetworkRuleArgs.__new__(NamespaceVirtualNetworkRuleArgs)
 
             if namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_name'")
-            __props__['namespace_name'] = namespace_name
+            __props__.__dict__['namespace_name'] = namespace_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['virtual_network_rule_name'] = virtual_network_rule_name
-            __props__['virtual_network_subnet_id'] = virtual_network_subnet_id
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['virtual_network_rule_name'] = virtual_network_rule_name
+            __props__.__dict__['virtual_network_subnet_id'] = virtual_network_subnet_id
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:eventhub:NamespaceVirtualNetworkRule"), pulumi.Alias(type_="azure-native:eventhub/v20180101preview:NamespaceVirtualNetworkRule"), pulumi.Alias(type_="azure-nextgen:eventhub/v20180101preview:NamespaceVirtualNetworkRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(NamespaceVirtualNetworkRule, __self__).__init__(
@@ -84,9 +186,9 @@ class NamespaceVirtualNetworkRule(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["name"] = None
-        __props__["type"] = None
-        __props__["virtual_network_subnet_id"] = None
+        __props__['name'] = None
+        __props__['type'] = None
+        __props__['virtual_network_subnet_id'] = None
         return NamespaceVirtualNetworkRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -112,10 +214,4 @@ class NamespaceVirtualNetworkRule(pulumi.CustomResource):
         ARM ID of Virtual Network Subnet
         """
         return pulumi.get(self, "virtual_network_subnet_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

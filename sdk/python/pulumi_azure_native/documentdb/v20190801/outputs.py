@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -70,9 +70,6 @@ class CapabilityResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraKeyspaceGetPropertiesResponseResource(dict):
@@ -124,9 +121,6 @@ class CassandraKeyspaceGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "ts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraPartitionKeyResponse(dict):
@@ -150,15 +144,31 @@ class CassandraPartitionKeyResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraSchemaResponse(dict):
     """
     Cosmos DB Cassandra table schema
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterKeys":
+            suggest = "cluster_keys"
+        elif key == "partitionKeys":
+            suggest = "partition_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraSchemaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraSchemaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraSchemaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_keys: Optional[Sequence['outputs.ClusterKeyResponse']] = None,
                  columns: Optional[Sequence['outputs.ColumnResponse']] = None,
@@ -200,12 +210,26 @@ class CassandraSchemaResponse(dict):
         """
         return pulumi.get(self, "partition_keys")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraTableGetPropertiesResponseResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultTtl":
+            suggest = "default_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraTableGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraTableGetPropertiesResponseResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraTableGetPropertiesResponseResource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -278,15 +302,29 @@ class CassandraTableGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "schema")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterKeyResponse(dict):
     """
     Cosmos DB Cassandra table cluster key
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "orderBy":
+            suggest = "order_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  order_by: Optional[str] = None):
@@ -315,9 +353,6 @@ class ClusterKeyResponse(dict):
         Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
         """
         return pulumi.get(self, "order_by")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -354,9 +389,6 @@ class ColumnResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CompositePathResponse(dict):
@@ -388,15 +420,31 @@ class CompositePathResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConflictResolutionPolicyResponse(dict):
     """
     The conflict resolution policy for the container.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conflictResolutionPath":
+            suggest = "conflict_resolution_path"
+        elif key == "conflictResolutionProcedure":
+            suggest = "conflict_resolution_procedure"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConflictResolutionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConflictResolutionPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConflictResolutionPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conflict_resolution_path: Optional[str] = None,
                  conflict_resolution_procedure: Optional[str] = None,
@@ -440,15 +488,33 @@ class ConflictResolutionPolicyResponse(dict):
         """
         return pulumi.get(self, "mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConsistencyPolicyResponse(dict):
     """
     The consistency policy for the Cosmos DB database account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultConsistencyLevel":
+            suggest = "default_consistency_level"
+        elif key == "maxIntervalInSeconds":
+            suggest = "max_interval_in_seconds"
+        elif key == "maxStalenessPrefix":
+            suggest = "max_staleness_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConsistencyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConsistencyPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConsistencyPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_consistency_level: str,
                  max_interval_in_seconds: Optional[int] = None,
@@ -488,9 +554,6 @@ class ConsistencyPolicyResponse(dict):
         When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
         """
         return pulumi.get(self, "max_staleness_prefix")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -540,9 +603,6 @@ class ContainerPartitionKeyResponse(dict):
         Indicates the version of the partition key definition
         """
         return pulumi.get(self, "version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -596,15 +656,31 @@ class ExcludedPathResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FailoverPolicyResponse(dict):
     """
     The failover policy for a given region of a database account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failoverPriority":
+            suggest = "failover_priority"
+        elif key == "locationName":
+            suggest = "location_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FailoverPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FailoverPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FailoverPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  failover_priority: Optional[int] = None,
@@ -644,9 +720,6 @@ class FailoverPolicyResponse(dict):
         The name of the region in which the database account exists.
         """
         return pulumi.get(self, "location_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -699,12 +772,34 @@ class GremlinDatabaseGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "ts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GremlinGraphGetPropertiesResponseResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conflictResolutionPolicy":
+            suggest = "conflict_resolution_policy"
+        elif key == "defaultTtl":
+            suggest = "default_ttl"
+        elif key == "indexingPolicy":
+            suggest = "indexing_policy"
+        elif key == "partitionKey":
+            suggest = "partition_key"
+        elif key == "uniqueKeyPolicy":
+            suggest = "unique_key_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GremlinGraphGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GremlinGraphGetPropertiesResponseResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GremlinGraphGetPropertiesResponseResource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -813,9 +908,6 @@ class GremlinGraphGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "unique_key_policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IncludedPathResponse(dict):
@@ -851,15 +943,29 @@ class IncludedPathResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IndexesResponse(dict):
     """
     The indexes for the path.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  data_type: Optional[str] = None,
                  kind: Optional[str] = None,
@@ -905,15 +1011,37 @@ class IndexesResponse(dict):
         """
         return pulumi.get(self, "precision")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IndexingPolicyResponse(dict):
     """
     Cosmos DB indexing policy
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compositeIndexes":
+            suggest = "composite_indexes"
+        elif key == "excludedPaths":
+            suggest = "excluded_paths"
+        elif key == "includedPaths":
+            suggest = "included_paths"
+        elif key == "indexingMode":
+            suggest = "indexing_mode"
+        elif key == "spatialIndexes":
+            suggest = "spatial_indexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  automatic: Optional[bool] = None,
                  composite_indexes: Optional[Sequence[Sequence['outputs.CompositePathResponse']]] = None,
@@ -993,15 +1121,37 @@ class IndexingPolicyResponse(dict):
         """
         return pulumi.get(self, "spatial_indexes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocationResponse(dict):
     """
     A region in which the Azure Cosmos DB database account is deployed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "documentEndpoint":
+            suggest = "document_endpoint"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "failoverPriority":
+            suggest = "failover_priority"
+        elif key == "isZoneRedundant":
+            suggest = "is_zone_redundant"
+        elif key == "locationName":
+            suggest = "location_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  document_endpoint: str,
                  id: str,
@@ -1076,12 +1226,26 @@ class LocationResponse(dict):
         """
         return pulumi.get(self, "location_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MongoDBCollectionGetPropertiesResponseResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shardKey":
+            suggest = "shard_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MongoDBCollectionGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MongoDBCollectionGetPropertiesResponseResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MongoDBCollectionGetPropertiesResponseResource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -1154,9 +1318,6 @@ class MongoDBCollectionGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "shard_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MongoDBDatabaseGetPropertiesResponseResource(dict):
@@ -1208,9 +1369,6 @@ class MongoDBDatabaseGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "ts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MongoIndexKeysResponse(dict):
@@ -1234,15 +1392,29 @@ class MongoIndexKeysResponse(dict):
         """
         return pulumi.get(self, "keys")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MongoIndexOptionsResponse(dict):
     """
     Cosmos DB MongoDB collection index options
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireAfterSeconds":
+            suggest = "expire_after_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MongoIndexOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MongoIndexOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MongoIndexOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expire_after_seconds: Optional[int] = None,
                  unique: Optional[bool] = None):
@@ -1271,9 +1443,6 @@ class MongoIndexOptionsResponse(dict):
         Is unique or not
         """
         return pulumi.get(self, "unique")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1310,9 +1479,6 @@ class MongoIndexResponse(dict):
         """
         return pulumi.get(self, "options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpatialSpecResponse(dict):
@@ -1344,12 +1510,34 @@ class SpatialSpecResponse(dict):
         """
         return pulumi.get(self, "types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlContainerGetPropertiesResponseResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conflictResolutionPolicy":
+            suggest = "conflict_resolution_policy"
+        elif key == "defaultTtl":
+            suggest = "default_ttl"
+        elif key == "indexingPolicy":
+            suggest = "indexing_policy"
+        elif key == "partitionKey":
+            suggest = "partition_key"
+        elif key == "uniqueKeyPolicy":
+            suggest = "unique_key_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlContainerGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlContainerGetPropertiesResponseResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlContainerGetPropertiesResponseResource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -1458,9 +1646,6 @@ class SqlContainerGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "unique_key_policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlDatabaseGetPropertiesResponseResource(dict):
@@ -1536,9 +1721,6 @@ class SqlDatabaseGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "users")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlStoredProcedureGetPropertiesResponseResource(dict):
@@ -1602,12 +1784,28 @@ class SqlStoredProcedureGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "body")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlTriggerGetPropertiesResponseResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "triggerOperation":
+            suggest = "trigger_operation"
+        elif key == "triggerType":
+            suggest = "trigger_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlTriggerGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlTriggerGetPropertiesResponseResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlTriggerGetPropertiesResponseResource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -1692,9 +1890,6 @@ class SqlTriggerGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "trigger_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlUserDefinedFunctionGetPropertiesResponseResource(dict):
@@ -1758,9 +1953,6 @@ class SqlUserDefinedFunctionGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "body")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TableGetPropertiesResponseResource(dict):
@@ -1812,15 +2004,29 @@ class TableGetPropertiesResponseResource(dict):
         """
         return pulumi.get(self, "ts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UniqueKeyPolicyResponse(dict):
     """
     The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "uniqueKeys":
+            suggest = "unique_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UniqueKeyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UniqueKeyPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UniqueKeyPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  unique_keys: Optional[Sequence['outputs.UniqueKeyResponse']] = None):
         """
@@ -1837,9 +2043,6 @@ class UniqueKeyPolicyResponse(dict):
         List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
         """
         return pulumi.get(self, "unique_keys")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1864,15 +2067,29 @@ class UniqueKeyResponse(dict):
         """
         return pulumi.get(self, "paths")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualNetworkRuleResponse(dict):
     """
     Virtual Network ACL Rule object
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreMissingVNetServiceEndpoint":
+            suggest = "ignore_missing_v_net_service_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualNetworkRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualNetworkRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  ignore_missing_v_net_service_endpoint: Optional[bool] = None):
@@ -1901,8 +2118,5 @@ class VirtualNetworkRuleResponse(dict):
         Create firewall rule before the virtual network has vnet service endpoint enabled.
         """
         return pulumi.get(self, "ignore_missing_v_net_service_endpoint")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

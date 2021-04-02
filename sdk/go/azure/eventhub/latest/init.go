@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:eventhub/latest:ConsumerGroup":
-		r, err = NewConsumerGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConsumerGroup{}
 	case "azure-native:eventhub/latest:DisasterRecoveryConfig":
-		r, err = NewDisasterRecoveryConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &DisasterRecoveryConfig{}
 	case "azure-native:eventhub/latest:EventHub":
-		r, err = NewEventHub(ctx, name, nil, pulumi.URN_(urn))
+		r = &EventHub{}
 	case "azure-native:eventhub/latest:EventHubAuthorizationRule":
-		r, err = NewEventHubAuthorizationRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &EventHubAuthorizationRule{}
 	case "azure-native:eventhub/latest:Namespace":
-		r, err = NewNamespace(ctx, name, nil, pulumi.URN_(urn))
+		r = &Namespace{}
 	case "azure-native:eventhub/latest:NamespaceAuthorizationRule":
-		r, err = NewNamespaceAuthorizationRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceAuthorizationRule{}
 	case "azure-native:eventhub/latest:NamespaceNetworkRuleSet":
-		r, err = NewNamespaceNetworkRuleSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceNetworkRuleSet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

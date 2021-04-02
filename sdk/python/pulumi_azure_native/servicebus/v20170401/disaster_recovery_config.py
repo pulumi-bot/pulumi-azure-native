@@ -5,13 +5,99 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['DisasterRecoveryConfig']
+__all__ = ['DisasterRecoveryConfigArgs', 'DisasterRecoveryConfig']
+
+@pulumi.input_type
+class DisasterRecoveryConfigArgs:
+    def __init__(__self__, *,
+                 namespace_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 alias: Optional[pulumi.Input[str]] = None,
+                 alternate_name: Optional[pulumi.Input[str]] = None,
+                 partner_namespace: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DisasterRecoveryConfig resource.
+        :param pulumi.Input[str] namespace_name: The namespace name
+        :param pulumi.Input[str] resource_group_name: Name of the Resource group within the Azure subscription.
+        :param pulumi.Input[str] alias: The Disaster Recovery configuration name
+        :param pulumi.Input[str] alternate_name: Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+        :param pulumi.Input[str] partner_namespace: ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+        """
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if alternate_name is not None:
+            pulumi.set(__self__, "alternate_name", alternate_name)
+        if partner_namespace is not None:
+            pulumi.set(__self__, "partner_namespace", partner_namespace)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> pulumi.Input[str]:
+        """
+        The namespace name
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the Resource group within the Azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Disaster Recovery configuration name
+        """
+        return pulumi.get(self, "alias")
+
+    @alias.setter
+    def alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alias", value)
+
+    @property
+    @pulumi.getter(name="alternateName")
+    def alternate_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+        """
+        return pulumi.get(self, "alternate_name")
+
+    @alternate_name.setter
+    def alternate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alternate_name", value)
+
+    @property
+    @pulumi.getter(name="partnerNamespace")
+    def partner_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+        """
+        return pulumi.get(self, "partner_namespace")
+
+    @partner_namespace.setter
+    def partner_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partner_namespace", value)
 
 
 class DisasterRecoveryConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +120,38 @@ class DisasterRecoveryConfig(pulumi.CustomResource):
         :param pulumi.Input[str] partner_namespace: ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
         :param pulumi.Input[str] resource_group_name: Name of the Resource group within the Azure subscription.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DisasterRecoveryConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Single item in List or Get Alias(Disaster Recovery configuration) operation
+
+        :param str resource_name: The name of the resource.
+        :param DisasterRecoveryConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DisasterRecoveryConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alias: Optional[pulumi.Input[str]] = None,
+                 alternate_name: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 partner_namespace: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -49,22 +167,22 @@ class DisasterRecoveryConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DisasterRecoveryConfigArgs.__new__(DisasterRecoveryConfigArgs)
 
-            __props__['alias'] = alias
-            __props__['alternate_name'] = alternate_name
+            __props__.__dict__['alias'] = alias
+            __props__.__dict__['alternate_name'] = alternate_name
             if namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_name'")
-            __props__['namespace_name'] = namespace_name
-            __props__['partner_namespace'] = partner_namespace
+            __props__.__dict__['namespace_name'] = namespace_name
+            __props__.__dict__['partner_namespace'] = partner_namespace
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['name'] = None
-            __props__['pending_replication_operations_count'] = None
-            __props__['provisioning_state'] = None
-            __props__['role'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['pending_replication_operations_count'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['role'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicebus/v20170401:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-native:servicebus:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-nextgen:servicebus:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-native:servicebus/latest:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-nextgen:servicebus/latest:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-native:servicebus/v20180101preview:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-nextgen:servicebus/v20180101preview:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-native:servicebus/v20210101preview:DisasterRecoveryConfig"), pulumi.Alias(type_="azure-nextgen:servicebus/v20210101preview:DisasterRecoveryConfig")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DisasterRecoveryConfig, __self__).__init__(
@@ -89,13 +207,13 @@ class DisasterRecoveryConfig(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["alternate_name"] = None
-        __props__["name"] = None
-        __props__["partner_namespace"] = None
-        __props__["pending_replication_operations_count"] = None
-        __props__["provisioning_state"] = None
-        __props__["role"] = None
-        __props__["type"] = None
+        __props__['alternate_name'] = None
+        __props__['name'] = None
+        __props__['partner_namespace'] = None
+        __props__['pending_replication_operations_count'] = None
+        __props__['provisioning_state'] = None
+        __props__['role'] = None
+        __props__['type'] = None
         return DisasterRecoveryConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -153,10 +271,4 @@ class DisasterRecoveryConfig(pulumi.CustomResource):
         Resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

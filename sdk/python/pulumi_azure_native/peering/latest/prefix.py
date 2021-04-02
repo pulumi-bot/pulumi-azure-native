@@ -5,11 +5,97 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['Prefix']
+__all__ = ['PrefixArgs', 'Prefix']
+
+@pulumi.input_type
+class PrefixArgs:
+    def __init__(__self__, *,
+                 peering_service_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 peering_service_prefix_key: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 prefix_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Prefix resource.
+        :param pulumi.Input[str] peering_service_name: The name of the peering service.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] peering_service_prefix_key: The peering service prefix key
+        :param pulumi.Input[str] prefix: The prefix from which your traffic originates.
+        :param pulumi.Input[str] prefix_name: The name of the prefix.
+        """
+        pulumi.set(__self__, "peering_service_name", peering_service_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if peering_service_prefix_key is not None:
+            pulumi.set(__self__, "peering_service_prefix_key", peering_service_prefix_key)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if prefix_name is not None:
+            pulumi.set(__self__, "prefix_name", prefix_name)
+
+    @property
+    @pulumi.getter(name="peeringServiceName")
+    def peering_service_name(self) -> pulumi.Input[str]:
+        """
+        The name of the peering service.
+        """
+        return pulumi.get(self, "peering_service_name")
+
+    @peering_service_name.setter
+    def peering_service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peering_service_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="peeringServicePrefixKey")
+    def peering_service_prefix_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The peering service prefix key
+        """
+        return pulumi.get(self, "peering_service_prefix_key")
+
+    @peering_service_prefix_key.setter
+    def peering_service_prefix_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peering_service_prefix_key", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix from which your traffic originates.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter(name="prefixName")
+    def prefix_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the prefix.
+        """
+        return pulumi.get(self, "prefix_name")
+
+    @prefix_name.setter
+    def prefix_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:peering:Prefix'.""", DeprecationWarning)
 
@@ -17,6 +103,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class Prefix(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:peering:Prefix'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +127,39 @@ class Prefix(pulumi.CustomResource):
         :param pulumi.Input[str] prefix_name: The name of the prefix.
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PrefixArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The peering service prefix class.
+        Latest API Version: 2021-01-01.
+
+        :param str resource_name: The name of the resource.
+        :param PrefixArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PrefixArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 peering_service_name: Optional[pulumi.Input[str]] = None,
+                 peering_service_prefix_key: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 prefix_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""Prefix is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:peering:Prefix'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -56,24 +176,24 @@ class Prefix(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PrefixArgs.__new__(PrefixArgs)
 
             if peering_service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'peering_service_name'")
-            __props__['peering_service_name'] = peering_service_name
-            __props__['peering_service_prefix_key'] = peering_service_prefix_key
-            __props__['prefix'] = prefix
-            __props__['prefix_name'] = prefix_name
+            __props__.__dict__['peering_service_name'] = peering_service_name
+            __props__.__dict__['peering_service_prefix_key'] = peering_service_prefix_key
+            __props__.__dict__['prefix'] = prefix
+            __props__.__dict__['prefix_name'] = prefix_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['error_message'] = None
-            __props__['events'] = None
-            __props__['learned_type'] = None
-            __props__['name'] = None
-            __props__['prefix_validation_state'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['error_message'] = None
+            __props__.__dict__['events'] = None
+            __props__.__dict__['learned_type'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['prefix_validation_state'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:peering/latest:Prefix"), pulumi.Alias(type_="azure-native:peering:Prefix"), pulumi.Alias(type_="azure-nextgen:peering:Prefix"), pulumi.Alias(type_="azure-native:peering/v20190801preview:Prefix"), pulumi.Alias(type_="azure-nextgen:peering/v20190801preview:Prefix"), pulumi.Alias(type_="azure-native:peering/v20190901preview:Prefix"), pulumi.Alias(type_="azure-nextgen:peering/v20190901preview:Prefix"), pulumi.Alias(type_="azure-native:peering/v20200101preview:Prefix"), pulumi.Alias(type_="azure-nextgen:peering/v20200101preview:Prefix"), pulumi.Alias(type_="azure-native:peering/v20200401:Prefix"), pulumi.Alias(type_="azure-nextgen:peering/v20200401:Prefix"), pulumi.Alias(type_="azure-native:peering/v20201001:Prefix"), pulumi.Alias(type_="azure-nextgen:peering/v20201001:Prefix"), pulumi.Alias(type_="azure-native:peering/v20210101:Prefix"), pulumi.Alias(type_="azure-nextgen:peering/v20210101:Prefix")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Prefix, __self__).__init__(
@@ -98,15 +218,15 @@ class Prefix(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["error_message"] = None
-        __props__["events"] = None
-        __props__["learned_type"] = None
-        __props__["name"] = None
-        __props__["peering_service_prefix_key"] = None
-        __props__["prefix"] = None
-        __props__["prefix_validation_state"] = None
-        __props__["provisioning_state"] = None
-        __props__["type"] = None
+        __props__['error_message'] = None
+        __props__['events'] = None
+        __props__['learned_type'] = None
+        __props__['name'] = None
+        __props__['peering_service_prefix_key'] = None
+        __props__['prefix'] = None
+        __props__['prefix_validation_state'] = None
+        __props__['provisioning_state'] = None
+        __props__['type'] = None
         return Prefix(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -180,10 +300,4 @@ class Prefix(pulumi.CustomResource):
         The type of the resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,15 +5,134 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RoleDefinition']
+__all__ = ['RoleDefinitionArgs', 'RoleDefinition']
+
+@pulumi.input_type
+class RoleDefinitionArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str],
+                 assignable_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]] = None,
+                 role_definition_name: Optional[pulumi.Input[str]] = None,
+                 role_name: Optional[pulumi.Input[str]] = None,
+                 role_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RoleDefinition resource.
+        :param pulumi.Input[str] scope: The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] assignable_scopes: Role definition assignable scopes.
+        :param pulumi.Input[str] description: The role definition description.
+        :param pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]] permissions: Role definition permissions.
+        :param pulumi.Input[str] role_definition_name: The name of the role definition to delete.
+        :param pulumi.Input[str] role_name: The role name.
+        :param pulumi.Input[str] role_type: The role type.
+        """
+        pulumi.set(__self__, "scope", scope)
+        if assignable_scopes is not None:
+            pulumi.set(__self__, "assignable_scopes", assignable_scopes)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if role_definition_name is not None:
+            pulumi.set(__self__, "role_definition_name", role_definition_name)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+        if role_type is not None:
+            pulumi.set(__self__, "role_type", role_type)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="assignableScopes")
+    def assignable_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Role definition assignable scopes.
+        """
+        return pulumi.get(self, "assignable_scopes")
+
+    @assignable_scopes.setter
+    def assignable_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "assignable_scopes", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role definition description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]]:
+        """
+        Role definition permissions.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter(name="roleDefinitionName")
+    def role_definition_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role definition to delete.
+        """
+        return pulumi.get(self, "role_definition_name")
+
+    @role_definition_name.setter
+    def role_definition_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_definition_name", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name.
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_name", value)
+
+    @property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role type.
+        """
+        return pulumi.get(self, "role_type")
+
+    @role_type.setter
+    def role_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_type", value)
 
 
 class RoleDefinition(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +159,40 @@ class RoleDefinition(pulumi.CustomResource):
         :param pulumi.Input[str] role_type: The role type.
         :param pulumi.Input[str] scope: The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RoleDefinitionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Role definition.
+
+        :param str resource_name: The name of the resource.
+        :param RoleDefinitionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleDefinitionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 assignable_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PermissionArgs']]]]] = None,
+                 role_definition_name: Optional[pulumi.Input[str]] = None,
+                 role_name: Optional[pulumi.Input[str]] = None,
+                 role_type: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,19 +208,19 @@ class RoleDefinition(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RoleDefinitionArgs.__new__(RoleDefinitionArgs)
 
-            __props__['assignable_scopes'] = assignable_scopes
-            __props__['description'] = description
-            __props__['permissions'] = permissions
-            __props__['role_definition_name'] = role_definition_name
-            __props__['role_name'] = role_name
-            __props__['role_type'] = role_type
+            __props__.__dict__['assignable_scopes'] = assignable_scopes
+            __props__.__dict__['description'] = description
+            __props__.__dict__['permissions'] = permissions
+            __props__.__dict__['role_definition_name'] = role_definition_name
+            __props__.__dict__['role_name'] = role_name
+            __props__.__dict__['role_type'] = role_type
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
-            __props__['scope'] = scope
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['scope'] = scope
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization/v20200301preview:RoleDefinition"), pulumi.Alias(type_="azure-native:authorization:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization:RoleDefinition"), pulumi.Alias(type_="azure-native:authorization/latest:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/latest:RoleDefinition"), pulumi.Alias(type_="azure-native:authorization/v20150701:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/v20150701:RoleDefinition"), pulumi.Alias(type_="azure-native:authorization/v20180101preview:RoleDefinition"), pulumi.Alias(type_="azure-nextgen:authorization/v20180101preview:RoleDefinition")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RoleDefinition, __self__).__init__(
@@ -92,13 +245,13 @@ class RoleDefinition(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["assignable_scopes"] = None
-        __props__["description"] = None
-        __props__["name"] = None
-        __props__["permissions"] = None
-        __props__["role_name"] = None
-        __props__["role_type"] = None
-        __props__["type"] = None
+        __props__['assignable_scopes'] = None
+        __props__['description'] = None
+        __props__['name'] = None
+        __props__['permissions'] = None
+        __props__['role_name'] = None
+        __props__['role_type'] = None
+        __props__['type'] = None
         return RoleDefinition(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -156,10 +309,4 @@ class RoleDefinition(pulumi.CustomResource):
         The role definition type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

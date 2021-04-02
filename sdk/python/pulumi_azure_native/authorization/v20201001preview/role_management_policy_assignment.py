@@ -5,14 +5,85 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['RoleManagementPolicyAssignment']
+__all__ = ['RoleManagementPolicyAssignmentArgs', 'RoleManagementPolicyAssignment']
+
+@pulumi.input_type
+class RoleManagementPolicyAssignmentArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str],
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 role_definition_id: Optional[pulumi.Input[str]] = None,
+                 role_management_policy_assignment_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RoleManagementPolicyAssignment resource.
+        :param pulumi.Input[str] scope: The role management policy scope.
+        :param pulumi.Input[str] policy_id: The policy id role management policy assignment.
+        :param pulumi.Input[str] role_definition_id: The role definition of management policy assignment.
+        :param pulumi.Input[str] role_management_policy_assignment_name: The name of format {guid_guid} the role management policy assignment to upsert.
+        """
+        pulumi.set(__self__, "scope", scope)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if role_definition_id is not None:
+            pulumi.set(__self__, "role_definition_id", role_definition_id)
+        if role_management_policy_assignment_name is not None:
+            pulumi.set(__self__, "role_management_policy_assignment_name", role_management_policy_assignment_name)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The role management policy scope.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy id role management policy assignment.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="roleDefinitionId")
+    def role_definition_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role definition of management policy assignment.
+        """
+        return pulumi.get(self, "role_definition_id")
+
+    @role_definition_id.setter
+    def role_definition_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_definition_id", value)
+
+    @property
+    @pulumi.getter(name="roleManagementPolicyAssignmentName")
+    def role_management_policy_assignment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of format {guid_guid} the role management policy assignment to upsert.
+        """
+        return pulumi.get(self, "role_management_policy_assignment_name")
+
+    @role_management_policy_assignment_name.setter
+    def role_management_policy_assignment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_management_policy_assignment_name", value)
 
 
 class RoleManagementPolicyAssignment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +104,37 @@ class RoleManagementPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] role_management_policy_assignment_name: The name of format {guid_guid} the role management policy assignment to upsert.
         :param pulumi.Input[str] scope: The role management policy scope.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RoleManagementPolicyAssignmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Role management policy
+
+        :param str resource_name: The name of the resource.
+        :param RoleManagementPolicyAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleManagementPolicyAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 role_definition_id: Optional[pulumi.Input[str]] = None,
+                 role_management_policy_assignment_name: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -48,17 +150,17 @@ class RoleManagementPolicyAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RoleManagementPolicyAssignmentArgs.__new__(RoleManagementPolicyAssignmentArgs)
 
-            __props__['policy_id'] = policy_id
-            __props__['role_definition_id'] = role_definition_id
-            __props__['role_management_policy_assignment_name'] = role_management_policy_assignment_name
+            __props__.__dict__['policy_id'] = policy_id
+            __props__.__dict__['role_definition_id'] = role_definition_id
+            __props__.__dict__['role_management_policy_assignment_name'] = role_management_policy_assignment_name
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
-            __props__['scope'] = scope
-            __props__['name'] = None
-            __props__['policy_assignment_properties'] = None
-            __props__['type'] = None
+            __props__.__dict__['scope'] = scope
+            __props__.__dict__['name'] = None
+            __props__.__dict__['policy_assignment_properties'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization/v20201001preview:RoleManagementPolicyAssignment"), pulumi.Alias(type_="azure-native:authorization:RoleManagementPolicyAssignment"), pulumi.Alias(type_="azure-nextgen:authorization:RoleManagementPolicyAssignment")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RoleManagementPolicyAssignment, __self__).__init__(
@@ -83,12 +185,12 @@ class RoleManagementPolicyAssignment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["name"] = None
-        __props__["policy_assignment_properties"] = None
-        __props__["policy_id"] = None
-        __props__["role_definition_id"] = None
-        __props__["scope"] = None
-        __props__["type"] = None
+        __props__['name'] = None
+        __props__['policy_assignment_properties'] = None
+        __props__['policy_id'] = None
+        __props__['role_definition_id'] = None
+        __props__['scope'] = None
+        __props__['type'] = None
         return RoleManagementPolicyAssignment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -138,10 +240,4 @@ class RoleManagementPolicyAssignment(pulumi.CustomResource):
         The role management policy type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

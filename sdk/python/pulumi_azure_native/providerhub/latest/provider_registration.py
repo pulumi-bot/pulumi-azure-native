@@ -5,13 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ProviderRegistration']
+__all__ = ['ProviderRegistrationArgs', 'ProviderRegistration']
+
+@pulumi.input_type
+class ProviderRegistrationArgs:
+    def __init__(__self__, *,
+                 properties: Optional[pulumi.Input['ProviderRegistrationPropertiesArgs']] = None,
+                 provider_namespace: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ProviderRegistration resource.
+        :param pulumi.Input[str] provider_namespace: The name of the resource provider hosted within ProviderHub.
+        """
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if provider_namespace is not None:
+            pulumi.set(__self__, "provider_namespace", provider_namespace)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['ProviderRegistrationPropertiesArgs']]:
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['ProviderRegistrationPropertiesArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="providerNamespace")
+    def provider_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource provider hosted within ProviderHub.
+        """
+        return pulumi.get(self, "provider_namespace")
+
+    @provider_namespace.setter
+    def provider_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provider_namespace", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:providerhub:ProviderRegistration'.""", DeprecationWarning)
 
@@ -19,6 +55,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class ProviderRegistration(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:providerhub:ProviderRegistration'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +71,35 @@ class ProviderRegistration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] provider_namespace: The name of the resource provider hosted within ProviderHub.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ProviderRegistrationArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Latest API Version: 2020-11-20.
+
+        :param str resource_name: The name of the resource.
+        :param ProviderRegistrationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProviderRegistrationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['ProviderRegistrationPropertiesArgs']]] = None,
+                 provider_namespace: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""ProviderRegistration is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:providerhub:ProviderRegistration'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,12 +116,12 @@ class ProviderRegistration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderRegistrationArgs.__new__(ProviderRegistrationArgs)
 
-            __props__['properties'] = properties
-            __props__['provider_namespace'] = provider_namespace
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['properties'] = properties
+            __props__.__dict__['provider_namespace'] = provider_namespace
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:providerhub/latest:ProviderRegistration"), pulumi.Alias(type_="azure-native:providerhub:ProviderRegistration"), pulumi.Alias(type_="azure-nextgen:providerhub:ProviderRegistration"), pulumi.Alias(type_="azure-native:providerhub/v20201120:ProviderRegistration"), pulumi.Alias(type_="azure-nextgen:providerhub/v20201120:ProviderRegistration")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ProviderRegistration, __self__).__init__(
@@ -80,9 +146,9 @@ class ProviderRegistration(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["type"] = None
+        __props__['name'] = None
+        __props__['properties'] = None
+        __props__['type'] = None
         return ProviderRegistration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -105,10 +171,4 @@ class ProviderRegistration(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

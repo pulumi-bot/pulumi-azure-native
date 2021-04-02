@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -41,6 +41,23 @@ class ApiKeyAuthenticationResponse(dict):
     """
     ApiKey authentication gives a name and a value that can be included in either the request header or query parameters.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "in":
+            suggest = "in_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiKeyAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiKeyAuthenticationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiKeyAuthenticationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  in_: str,
                  name: str,
@@ -91,9 +108,6 @@ class ApiKeyAuthenticationResponse(dict):
         The value of the authentication key/value pair.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -158,6 +172,23 @@ class HealthCheckStepPropertiesResponse(dict):
     """
     Defines the properties of a health check step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stepType":
+            suggest = "step_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HealthCheckStepPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HealthCheckStepPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HealthCheckStepPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attributes: 'outputs.RestHealthCheckStepAttributesResponse',
                  step_type: str):
@@ -187,15 +218,29 @@ class HealthCheckStepPropertiesResponse(dict):
         """
         return pulumi.get(self, "step_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IdentityResponse(dict):
     """
     Identity for the resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityIds":
+            suggest = "identity_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_ids: Sequence[str],
                  type: str):
@@ -222,9 +267,6 @@ class IdentityResponse(dict):
         The identity type.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -265,6 +307,23 @@ class PrePostStepResponse(dict):
     """
     The properties that define a step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stepId":
+            suggest = "step_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrePostStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrePostStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrePostStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  step_id: str):
         """
@@ -280,9 +339,6 @@ class PrePostStepResponse(dict):
         The resource Id of the step to be run.
         """
         return pulumi.get(self, "step_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -408,15 +464,35 @@ class RestHealthCheckResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RestHealthCheckStepAttributesResponse(dict):
     """
     Defines the REST health check step properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthChecks":
+            suggest = "health_checks"
+        elif key == "healthyStateDuration":
+            suggest = "healthy_state_duration"
+        elif key == "maxElasticDuration":
+            suggest = "max_elastic_duration"
+        elif key == "waitDuration":
+            suggest = "wait_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestHealthCheckStepAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestHealthCheckStepAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestHealthCheckStepAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  health_checks: Sequence['outputs.RestHealthCheckResponse'],
                  healthy_state_duration: str,
@@ -481,9 +557,6 @@ class RestHealthCheckStepAttributesResponse(dict):
         """
         return pulumi.get(self, "wait_duration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RestRequestResponse(dict):
@@ -528,15 +601,29 @@ class RestRequestResponse(dict):
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RestResponseResponse(dict):
     """
     The properties that make up the expected REST response
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "successStatusCodes":
+            suggest = "success_status_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestResponseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestResponseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestResponseResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  regex: Optional['outputs.RestResponseResponseRegex'] = None,
                  success_status_codes: Optional[Sequence[str]] = None):
@@ -566,15 +653,29 @@ class RestResponseResponse(dict):
         """
         return pulumi.get(self, "success_status_codes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RestResponseResponseRegex(dict):
     """
     The regular expressions to match the response content with.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchQuantifier":
+            suggest = "match_quantifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestResponseResponseRegex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestResponseResponseRegex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestResponseResponseRegex.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  match_quantifier: Optional[str] = None,
                  matches: Optional[Sequence[str]] = None):
@@ -604,9 +705,6 @@ class RestResponseResponseRegex(dict):
         """
         return pulumi.get(self, "matches")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RolloutIdentityAuthenticationResponse(dict):
@@ -630,9 +728,6 @@ class RolloutIdentityAuthenticationResponse(dict):
         Expected value is 'RolloutIdentity'.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -784,6 +879,23 @@ class SasAuthenticationResponse(dict):
     """
     Defines the properties to access the artifacts using an Azure Storage SAS URI.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sasUri":
+            suggest = "sas_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SasAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SasAuthenticationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SasAuthenticationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sas_uri: str,
                  type: str):
@@ -812,9 +924,6 @@ class SasAuthenticationResponse(dict):
         Expected value is 'Sas'.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -879,6 +988,29 @@ class ServiceUnitArtifactsResponse(dict):
     """
     Defines the artifacts of a service unit.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parametersArtifactSourceRelativePath":
+            suggest = "parameters_artifact_source_relative_path"
+        elif key == "parametersUri":
+            suggest = "parameters_uri"
+        elif key == "templateArtifactSourceRelativePath":
+            suggest = "template_artifact_source_relative_path"
+        elif key == "templateUri":
+            suggest = "template_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceUnitArtifactsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceUnitArtifactsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceUnitArtifactsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  parameters_artifact_source_relative_path: Optional[str] = None,
                  parameters_uri: Optional[str] = None,
@@ -931,9 +1063,6 @@ class ServiceUnitArtifactsResponse(dict):
         The full URI of the ARM template file with the SAS token.
         """
         return pulumi.get(self, "template_uri")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1010,6 +1139,29 @@ class StepGroupResponse(dict):
     """
     The properties that define a Step group in a rollout.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentTargetId":
+            suggest = "deployment_target_id"
+        elif key == "dependsOnStepGroups":
+            suggest = "depends_on_step_groups"
+        elif key == "postDeploymentSteps":
+            suggest = "post_deployment_steps"
+        elif key == "preDeploymentSteps":
+            suggest = "pre_deployment_steps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StepGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StepGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StepGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  deployment_target_id: str,
                  name: str,
@@ -1072,9 +1224,6 @@ class StepGroupResponse(dict):
         The list of steps to be run before deploying the target.
         """
         return pulumi.get(self, "pre_deployment_steps")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1176,15 +1325,29 @@ class WaitStepAttributesResponse(dict):
         """
         return pulumi.get(self, "duration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WaitStepPropertiesResponse(dict):
     """
     Defines the properties of a Wait step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stepType":
+            suggest = "step_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WaitStepPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WaitStepPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WaitStepPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attributes: 'outputs.WaitStepAttributesResponse',
                  step_type: str):
@@ -1213,8 +1376,5 @@ class WaitStepPropertiesResponse(dict):
         Expected value is 'Wait'.
         """
         return pulumi.get(self, "step_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

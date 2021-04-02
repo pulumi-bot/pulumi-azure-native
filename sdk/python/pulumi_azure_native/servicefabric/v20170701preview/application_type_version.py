@@ -5,13 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['ApplicationTypeVersion']
+__all__ = ['ApplicationTypeVersionArgs', 'ApplicationTypeVersion']
+
+@pulumi.input_type
+class ApplicationTypeVersionArgs:
+    def __init__(__self__, *,
+                 app_package_url: pulumi.Input[str],
+                 application_type_name: pulumi.Input[str],
+                 cluster_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApplicationTypeVersion resource.
+        :param pulumi.Input[str] app_package_url: The URL to the application package
+        :param pulumi.Input[str] application_type_name: The name of the application type name resource.
+        :param pulumi.Input[str] cluster_name: The name of the cluster resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] location: Azure resource location.
+        :param pulumi.Input[str] version: The application type version.
+        """
+        pulumi.set(__self__, "app_package_url", app_package_url)
+        pulumi.set(__self__, "application_type_name", application_type_name)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="appPackageUrl")
+    def app_package_url(self) -> pulumi.Input[str]:
+        """
+        The URL to the application package
+        """
+        return pulumi.get(self, "app_package_url")
+
+    @app_package_url.setter
+    def app_package_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_package_url", value)
+
+    @property
+    @pulumi.getter(name="applicationTypeName")
+    def application_type_name(self) -> pulumi.Input[str]:
+        """
+        The name of the application type name resource.
+        """
+        return pulumi.get(self, "application_type_name")
+
+    @application_type_name.setter
+    def application_type_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_type_name", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> pulumi.Input[str]:
+        """
+        The name of the cluster resource.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application type version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class ApplicationTypeVersion(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +136,39 @@ class ApplicationTypeVersion(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         :param pulumi.Input[str] version: The application type version.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationTypeVersionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An application type version resource for the specified application type name resource.
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationTypeVersionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationTypeVersionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_package_url: Optional[pulumi.Input[str]] = None,
+                 application_type_name: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,26 +184,26 @@ class ApplicationTypeVersion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationTypeVersionArgs.__new__(ApplicationTypeVersionArgs)
 
             if app_package_url is None and not opts.urn:
                 raise TypeError("Missing required property 'app_package_url'")
-            __props__['app_package_url'] = app_package_url
+            __props__.__dict__['app_package_url'] = app_package_url
             if application_type_name is None and not opts.urn:
                 raise TypeError("Missing required property 'application_type_name'")
-            __props__['application_type_name'] = application_type_name
+            __props__.__dict__['application_type_name'] = application_type_name
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
-            __props__['location'] = location
+            __props__.__dict__['cluster_name'] = cluster_name
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['version'] = version
-            __props__['default_parameter_list'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['version'] = version
+            __props__.__dict__['default_parameter_list'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicefabric/v20170701preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric/latest:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric/latest:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric/v20190301:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20190301:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric/v20190301preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20190301preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric/v20190601preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20190601preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric/v20191101preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20191101preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric/v20200301:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20200301:ApplicationTypeVersion"), pulumi.Alias(type_="azure-native:servicefabric/v20201201preview:ApplicationTypeVersion"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20201201preview:ApplicationTypeVersion")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ApplicationTypeVersion, __self__).__init__(
@@ -95,12 +228,12 @@ class ApplicationTypeVersion(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["app_package_url"] = None
-        __props__["default_parameter_list"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["type"] = None
+        __props__['app_package_url'] = None
+        __props__['default_parameter_list'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['type'] = None
         return ApplicationTypeVersion(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -150,10 +283,4 @@ class ApplicationTypeVersion(pulumi.CustomResource):
         Azure resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

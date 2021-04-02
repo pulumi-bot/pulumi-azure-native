@@ -5,16 +5,70 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Deployment']
+__all__ = ['DeploymentArgs', 'Deployment']
+
+@pulumi.input_type
+class DeploymentArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input['DeploymentPropertiesArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 deployment_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Deployment resource.
+        :param pulumi.Input['DeploymentPropertiesArgs'] properties: The deployment properties.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group to deploy the resources to. The name is case insensitive. The resource group must already exist.
+        :param pulumi.Input[str] deployment_name: The name of the deployment.
+        """
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if deployment_name is not None:
+            pulumi.set(__self__, "deployment_name", deployment_name)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input['DeploymentPropertiesArgs']:
+        """
+        The deployment properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input['DeploymentPropertiesArgs']):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group to deploy the resources to. The name is case insensitive. The resource group must already exist.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="deploymentName")
+    def deployment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the deployment.
+        """
+        return pulumi.get(self, "deployment_name")
+
+    @deployment_name.setter
+    def deployment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_name", value)
 
 
 class Deployment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +87,36 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeploymentPropertiesArgs']] properties: The deployment properties.
         :param pulumi.Input[str] resource_group_name: The name of the resource group to deploy the resources to. The name is case insensitive. The resource group must already exist.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeploymentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Deployment information.
+
+        :param str resource_name: The name of the resource.
+        :param DeploymentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeploymentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 deployment_name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['DeploymentPropertiesArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -48,16 +132,16 @@ class Deployment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DeploymentArgs.__new__(DeploymentArgs)
 
-            __props__['deployment_name'] = deployment_name
+            __props__.__dict__['deployment_name'] = deployment_name
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
+            __props__.__dict__['properties'] = properties
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['name'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['name'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:resources/v20180201:Deployment"), pulumi.Alias(type_="azure-native:resources:Deployment"), pulumi.Alias(type_="azure-nextgen:resources:Deployment"), pulumi.Alias(type_="azure-native:resources/latest:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/latest:Deployment"), pulumi.Alias(type_="azure-native:resources/v20151101:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20151101:Deployment"), pulumi.Alias(type_="azure-native:resources/v20160201:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20160201:Deployment"), pulumi.Alias(type_="azure-native:resources/v20160701:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20160701:Deployment"), pulumi.Alias(type_="azure-native:resources/v20160901:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20160901:Deployment"), pulumi.Alias(type_="azure-native:resources/v20170510:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20170510:Deployment"), pulumi.Alias(type_="azure-native:resources/v20180501:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20180501:Deployment"), pulumi.Alias(type_="azure-native:resources/v20190301:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20190301:Deployment"), pulumi.Alias(type_="azure-native:resources/v20190501:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20190501:Deployment"), pulumi.Alias(type_="azure-native:resources/v20190510:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20190510:Deployment"), pulumi.Alias(type_="azure-native:resources/v20190701:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20190701:Deployment"), pulumi.Alias(type_="azure-native:resources/v20190801:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20190801:Deployment"), pulumi.Alias(type_="azure-native:resources/v20191001:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20191001:Deployment"), pulumi.Alias(type_="azure-native:resources/v20200601:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20200601:Deployment"), pulumi.Alias(type_="azure-native:resources/v20200801:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20200801:Deployment"), pulumi.Alias(type_="azure-native:resources/v20201001:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20201001:Deployment"), pulumi.Alias(type_="azure-native:resources/v20210101:Deployment"), pulumi.Alias(type_="azure-nextgen:resources/v20210101:Deployment")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Deployment, __self__).__init__(
@@ -82,8 +166,8 @@ class Deployment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["name"] = None
-        __props__["properties"] = None
+        __props__['name'] = None
+        __props__['properties'] = None
         return Deployment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -101,10 +185,4 @@ class Deployment(pulumi.CustomResource):
         Deployment properties.
         """
         return pulumi.get(self, "properties")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

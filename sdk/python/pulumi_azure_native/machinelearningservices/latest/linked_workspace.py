@@ -5,12 +5,98 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LinkedWorkspace']
+__all__ = ['LinkedWorkspaceArgs', 'LinkedWorkspace']
+
+@pulumi.input_type
+class LinkedWorkspaceArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 workspace_name: pulumi.Input[str],
+                 link_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input['LinkedWorkspacePropsArgs']] = None):
+        """
+        The set of arguments for constructing a LinkedWorkspace resource.
+        :param pulumi.Input[str] resource_group_name: Name of the resource group in which workspace is located.
+        :param pulumi.Input[str] workspace_name: Name of Azure Machine Learning workspace.
+        :param pulumi.Input[str] link_name: Friendly name of the linked workspace
+        :param pulumi.Input[str] name: Friendly name of the linked workspace
+        :param pulumi.Input['LinkedWorkspacePropsArgs'] properties: LinkedWorkspace specific properties.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "workspace_name", workspace_name)
+        if link_name is not None:
+            pulumi.set(__self__, "link_name", link_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group in which workspace is located.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> pulumi.Input[str]:
+        """
+        Name of Azure Machine Learning workspace.
+        """
+        return pulumi.get(self, "workspace_name")
+
+    @workspace_name.setter
+    def workspace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workspace_name", value)
+
+    @property
+    @pulumi.getter(name="linkName")
+    def link_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly name of the linked workspace
+        """
+        return pulumi.get(self, "link_name")
+
+    @link_name.setter
+    def link_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly name of the linked workspace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['LinkedWorkspacePropsArgs']]:
+        """
+        LinkedWorkspace specific properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['LinkedWorkspacePropsArgs']]):
+        pulumi.set(self, "properties", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:machinelearningservices:LinkedWorkspace'.""", DeprecationWarning)
 
@@ -18,6 +104,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class LinkedWorkspace(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:machinelearningservices:LinkedWorkspace'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -41,6 +128,39 @@ class LinkedWorkspace(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: Name of the resource group in which workspace is located.
         :param pulumi.Input[str] workspace_name: Name of Azure Machine Learning workspace.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LinkedWorkspaceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Linked workspace.
+        Latest API Version: 2020-03-01.
+
+        :param str resource_name: The name of the resource.
+        :param LinkedWorkspaceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LinkedWorkspaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 link_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['LinkedWorkspacePropsArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 workspace_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""LinkedWorkspace is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:machinelearningservices:LinkedWorkspace'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -57,18 +177,18 @@ class LinkedWorkspace(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LinkedWorkspaceArgs.__new__(LinkedWorkspaceArgs)
 
-            __props__['link_name'] = link_name
-            __props__['name'] = name
-            __props__['properties'] = properties
+            __props__.__dict__['link_name'] = link_name
+            __props__.__dict__['name'] = name
+            __props__.__dict__['properties'] = properties
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if workspace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'workspace_name'")
-            __props__['workspace_name'] = workspace_name
-            __props__['type'] = None
+            __props__.__dict__['workspace_name'] = workspace_name
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:machinelearningservices/latest:LinkedWorkspace"), pulumi.Alias(type_="azure-native:machinelearningservices:LinkedWorkspace"), pulumi.Alias(type_="azure-nextgen:machinelearningservices:LinkedWorkspace"), pulumi.Alias(type_="azure-native:machinelearningservices/v20200301:LinkedWorkspace"), pulumi.Alias(type_="azure-nextgen:machinelearningservices/v20200301:LinkedWorkspace")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(LinkedWorkspace, __self__).__init__(
@@ -93,9 +213,9 @@ class LinkedWorkspace(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["type"] = None
+        __props__['name'] = None
+        __props__['properties'] = None
+        __props__['type'] = None
         return LinkedWorkspace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -121,10 +241,4 @@ class LinkedWorkspace(pulumi.CustomResource):
         Resource type of linked workspace.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,14 +5,212 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['Certificate']
+__all__ = ['CertificateArgs', 'Certificate']
+
+@pulumi.input_type
+class CertificateArgs:
+    def __init__(__self__, *,
+                 password: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 canonical_name: Optional[pulumi.Input[str]] = None,
+                 host_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 key_vault_id: Optional[pulumi.Input[str]] = None,
+                 key_vault_secret_name: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pfx_blob: Optional[pulumi.Input[str]] = None,
+                 server_farm_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[str] password: Certificate password.
+        :param pulumi.Input[str] resource_group_name: Name of the resource group to which the resource belongs.
+        :param pulumi.Input[str] canonical_name: CNAME of the certificate to be issued via free certificate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_names: Host names the certificate applies to.
+        :param pulumi.Input[str] key_vault_id: Key Vault Csm resource Id.
+        :param pulumi.Input[str] key_vault_secret_name: Key Vault secret name.
+        :param pulumi.Input[str] kind: Kind of resource.
+        :param pulumi.Input[str] location: Resource Location.
+        :param pulumi.Input[str] name: Name of the certificate.
+        :param pulumi.Input[str] pfx_blob: Pfx blob.
+        :param pulumi.Input[str] server_farm_id: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if canonical_name is not None:
+            pulumi.set(__self__, "canonical_name", canonical_name)
+        if host_names is not None:
+            pulumi.set(__self__, "host_names", host_names)
+        if key_vault_id is not None:
+            pulumi.set(__self__, "key_vault_id", key_vault_id)
+        if key_vault_secret_name is not None:
+            pulumi.set(__self__, "key_vault_secret_name", key_vault_secret_name)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pfx_blob is not None:
+            pulumi.set(__self__, "pfx_blob", pfx_blob)
+        if server_farm_id is not None:
+            pulumi.set(__self__, "server_farm_id", server_farm_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        Certificate password.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group to which the resource belongs.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="canonicalName")
+    def canonical_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        CNAME of the certificate to be issued via free certificate
+        """
+        return pulumi.get(self, "canonical_name")
+
+    @canonical_name.setter
+    def canonical_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "canonical_name", value)
+
+    @property
+    @pulumi.getter(name="hostNames")
+    def host_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Host names the certificate applies to.
+        """
+        return pulumi.get(self, "host_names")
+
+    @host_names.setter
+    def host_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_names", value)
+
+    @property
+    @pulumi.getter(name="keyVaultId")
+    def key_vault_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key Vault Csm resource Id.
+        """
+        return pulumi.get(self, "key_vault_id")
+
+    @key_vault_id.setter
+    def key_vault_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_vault_id", value)
+
+    @property
+    @pulumi.getter(name="keyVaultSecretName")
+    def key_vault_secret_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key Vault secret name.
+        """
+        return pulumi.get(self, "key_vault_secret_name")
+
+    @key_vault_secret_name.setter
+    def key_vault_secret_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_vault_secret_name", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of resource.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the certificate.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pfxBlob")
+    def pfx_blob(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pfx blob.
+        """
+        return pulumi.get(self, "pfx_blob")
+
+    @pfx_blob.setter
+    def pfx_blob(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pfx_blob", value)
+
+    @property
+    @pulumi.getter(name="serverFarmId")
+    def server_farm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+        """
+        return pulumi.get(self, "server_farm_id")
+
+    @server_farm_id.setter
+    def server_farm_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_farm_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Certificate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +247,45 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] server_farm_id: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CertificateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        SSL certificate for an app.
+
+        :param str resource_name: The name of the resource.
+        :param CertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 canonical_name: Optional[pulumi.Input[str]] = None,
+                 host_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 key_vault_id: Optional[pulumi.Input[str]] = None,
+                 key_vault_secret_name: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pfx_blob: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_farm_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -64,38 +301,38 @@ class Certificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CertificateArgs.__new__(CertificateArgs)
 
-            __props__['canonical_name'] = canonical_name
-            __props__['host_names'] = host_names
-            __props__['key_vault_id'] = key_vault_id
-            __props__['key_vault_secret_name'] = key_vault_secret_name
-            __props__['kind'] = kind
-            __props__['location'] = location
-            __props__['name'] = name
+            __props__.__dict__['canonical_name'] = canonical_name
+            __props__.__dict__['host_names'] = host_names
+            __props__.__dict__['key_vault_id'] = key_vault_id
+            __props__.__dict__['key_vault_secret_name'] = key_vault_secret_name
+            __props__.__dict__['kind'] = kind
+            __props__.__dict__['location'] = location
+            __props__.__dict__['name'] = name
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__['password'] = password
-            __props__['pfx_blob'] = pfx_blob
+            __props__.__dict__['password'] = password
+            __props__.__dict__['pfx_blob'] = pfx_blob
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['server_farm_id'] = server_farm_id
-            __props__['tags'] = tags
-            __props__['cer_blob'] = None
-            __props__['expiration_date'] = None
-            __props__['friendly_name'] = None
-            __props__['hosting_environment_profile'] = None
-            __props__['issue_date'] = None
-            __props__['issuer'] = None
-            __props__['key_vault_secret_status'] = None
-            __props__['public_key_hash'] = None
-            __props__['self_link'] = None
-            __props__['site_name'] = None
-            __props__['subject_name'] = None
-            __props__['thumbprint'] = None
-            __props__['type'] = None
-            __props__['valid'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['server_farm_id'] = server_farm_id
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['cer_blob'] = None
+            __props__.__dict__['expiration_date'] = None
+            __props__.__dict__['friendly_name'] = None
+            __props__.__dict__['hosting_environment_profile'] = None
+            __props__.__dict__['issue_date'] = None
+            __props__.__dict__['issuer'] = None
+            __props__.__dict__['key_vault_secret_status'] = None
+            __props__.__dict__['public_key_hash'] = None
+            __props__.__dict__['self_link'] = None
+            __props__.__dict__['site_name'] = None
+            __props__.__dict__['subject_name'] = None
+            __props__.__dict__['thumbprint'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['valid'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:web/v20190801:Certificate"), pulumi.Alias(type_="azure-native:web:Certificate"), pulumi.Alias(type_="azure-nextgen:web:Certificate"), pulumi.Alias(type_="azure-native:web/latest:Certificate"), pulumi.Alias(type_="azure-nextgen:web/latest:Certificate"), pulumi.Alias(type_="azure-native:web/v20150801:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20150801:Certificate"), pulumi.Alias(type_="azure-native:web/v20160301:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20160301:Certificate"), pulumi.Alias(type_="azure-native:web/v20180201:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20180201:Certificate"), pulumi.Alias(type_="azure-native:web/v20181101:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20181101:Certificate"), pulumi.Alias(type_="azure-native:web/v20200601:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20200601:Certificate"), pulumi.Alias(type_="azure-native:web/v20200901:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20200901:Certificate"), pulumi.Alias(type_="azure-native:web/v20201001:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20201001:Certificate"), pulumi.Alias(type_="azure-native:web/v20201201:Certificate"), pulumi.Alias(type_="azure-nextgen:web/v20201201:Certificate")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Certificate, __self__).__init__(
@@ -120,30 +357,30 @@ class Certificate(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["canonical_name"] = None
-        __props__["cer_blob"] = None
-        __props__["expiration_date"] = None
-        __props__["friendly_name"] = None
-        __props__["host_names"] = None
-        __props__["hosting_environment_profile"] = None
-        __props__["issue_date"] = None
-        __props__["issuer"] = None
-        __props__["key_vault_id"] = None
-        __props__["key_vault_secret_name"] = None
-        __props__["key_vault_secret_status"] = None
-        __props__["kind"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["pfx_blob"] = None
-        __props__["public_key_hash"] = None
-        __props__["self_link"] = None
-        __props__["server_farm_id"] = None
-        __props__["site_name"] = None
-        __props__["subject_name"] = None
-        __props__["tags"] = None
-        __props__["thumbprint"] = None
-        __props__["type"] = None
-        __props__["valid"] = None
+        __props__['canonical_name'] = None
+        __props__['cer_blob'] = None
+        __props__['expiration_date'] = None
+        __props__['friendly_name'] = None
+        __props__['host_names'] = None
+        __props__['hosting_environment_profile'] = None
+        __props__['issue_date'] = None
+        __props__['issuer'] = None
+        __props__['key_vault_id'] = None
+        __props__['key_vault_secret_name'] = None
+        __props__['key_vault_secret_status'] = None
+        __props__['kind'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['pfx_blob'] = None
+        __props__['public_key_hash'] = None
+        __props__['self_link'] = None
+        __props__['server_farm_id'] = None
+        __props__['site_name'] = None
+        __props__['subject_name'] = None
+        __props__['tags'] = None
+        __props__['thumbprint'] = None
+        __props__['type'] = None
+        __props__['valid'] = None
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -337,10 +574,4 @@ class Certificate(pulumi.CustomResource):
         Is the certificate valid?.
         """
         return pulumi.get(self, "valid")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

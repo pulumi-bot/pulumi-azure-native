@@ -5,16 +5,118 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ConfigurationStore']
+__all__ = ['ConfigurationStoreArgs', 'ConfigurationStore']
+
+@pulumi.input_type
+class ConfigurationStoreArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 sku: pulumi.Input['SkuArgs'],
+                 config_store_name: Optional[pulumi.Input[str]] = None,
+                 identity: Optional[pulumi.Input['ResourceIdentityArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ConfigurationStore resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group to which the container registry belongs.
+        :param pulumi.Input['SkuArgs'] sku: The sku of the configuration store.
+        :param pulumi.Input[str] config_store_name: The name of the configuration store.
+        :param pulumi.Input['ResourceIdentityArgs'] identity: The managed identity information, if configured.
+        :param pulumi.Input[str] location: The location of the resource. This cannot be changed after the resource is created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "sku", sku)
+        if config_store_name is not None:
+            pulumi.set(__self__, "config_store_name", config_store_name)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group to which the container registry belongs.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> pulumi.Input['SkuArgs']:
+        """
+        The sku of the configuration store.
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: pulumi.Input['SkuArgs']):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter(name="configStoreName")
+    def config_store_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the configuration store.
+        """
+        return pulumi.get(self, "config_store_name")
+
+    @config_store_name.setter
+    def config_store_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_store_name", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input['ResourceIdentityArgs']]:
+        """
+        The managed identity information, if configured.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input['ResourceIdentityArgs']]):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the resource. This cannot be changed after the resource is created.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ConfigurationStore(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +141,39 @@ class ConfigurationStore(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SkuArgs']] sku: The sku of the configuration store.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConfigurationStoreArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
+
+        :param str resource_name: The name of the resource.
+        :param ConfigurationStoreArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigurationStoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config_store_name: Optional[pulumi.Input[str]] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['ResourceIdentityArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['SkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -54,23 +189,23 @@ class ConfigurationStore(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConfigurationStoreArgs.__new__(ConfigurationStoreArgs)
 
-            __props__['config_store_name'] = config_store_name
-            __props__['identity'] = identity
-            __props__['location'] = location
+            __props__.__dict__['config_store_name'] = config_store_name
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if sku is None and not opts.urn:
                 raise TypeError("Missing required property 'sku'")
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['creation_date'] = None
-            __props__['endpoint'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['creation_date'] = None
+            __props__.__dict__['endpoint'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:appconfiguration/v20191001:ConfigurationStore"), pulumi.Alias(type_="azure-native:appconfiguration:ConfigurationStore"), pulumi.Alias(type_="azure-nextgen:appconfiguration:ConfigurationStore"), pulumi.Alias(type_="azure-native:appconfiguration/latest:ConfigurationStore"), pulumi.Alias(type_="azure-nextgen:appconfiguration/latest:ConfigurationStore"), pulumi.Alias(type_="azure-native:appconfiguration/v20190201preview:ConfigurationStore"), pulumi.Alias(type_="azure-nextgen:appconfiguration/v20190201preview:ConfigurationStore"), pulumi.Alias(type_="azure-native:appconfiguration/v20191101preview:ConfigurationStore"), pulumi.Alias(type_="azure-nextgen:appconfiguration/v20191101preview:ConfigurationStore"), pulumi.Alias(type_="azure-native:appconfiguration/v20200601:ConfigurationStore"), pulumi.Alias(type_="azure-nextgen:appconfiguration/v20200601:ConfigurationStore"), pulumi.Alias(type_="azure-native:appconfiguration/v20200701preview:ConfigurationStore"), pulumi.Alias(type_="azure-nextgen:appconfiguration/v20200701preview:ConfigurationStore")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ConfigurationStore, __self__).__init__(
@@ -95,15 +230,15 @@ class ConfigurationStore(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["creation_date"] = None
-        __props__["endpoint"] = None
-        __props__["identity"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["sku"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['creation_date'] = None
+        __props__['endpoint'] = None
+        __props__['identity'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['sku'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return ConfigurationStore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -177,10 +312,4 @@ class ConfigurationStore(pulumi.CustomResource):
         The type of the resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

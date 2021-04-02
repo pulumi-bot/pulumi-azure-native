@@ -5,13 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Server']
+__all__ = ['ServerArgs', 'Server']
+
+@pulumi.input_type
+class ServerArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input[Union['ServerPropertiesForDefaultCreateArgs', 'ServerPropertiesForGeoRestoreArgs', 'ServerPropertiesForReplicaArgs', 'ServerPropertiesForRestoreArgs']],
+                 resource_group_name: pulumi.Input[str],
+                 identity: Optional[pulumi.Input['ResourceIdentityArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input['SkuArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Server resource.
+        :param pulumi.Input[Union['ServerPropertiesForDefaultCreateArgs', 'ServerPropertiesForGeoRestoreArgs', 'ServerPropertiesForReplicaArgs', 'ServerPropertiesForRestoreArgs']] properties: Properties of the server.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input['ResourceIdentityArgs'] identity: The Azure Active Directory identity of the server.
+        :param pulumi.Input[str] location: The location the resource resides in.
+        :param pulumi.Input[str] server_name: The name of the server.
+        :param pulumi.Input['SkuArgs'] sku: The SKU (pricing tier) of the server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Application-specific metadata in the form of key-value pairs.
+        """
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if server_name is not None:
+            pulumi.set(__self__, "server_name", server_name)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input[Union['ServerPropertiesForDefaultCreateArgs', 'ServerPropertiesForGeoRestoreArgs', 'ServerPropertiesForReplicaArgs', 'ServerPropertiesForRestoreArgs']]:
+        """
+        Properties of the server.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input[Union['ServerPropertiesForDefaultCreateArgs', 'ServerPropertiesForGeoRestoreArgs', 'ServerPropertiesForReplicaArgs', 'ServerPropertiesForRestoreArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input['ResourceIdentityArgs']]:
+        """
+        The Azure Active Directory identity of the server.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input['ResourceIdentityArgs']]):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location the resource resides in.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the server.
+        """
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_name", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input['SkuArgs']]:
+        """
+        The SKU (pricing tier) of the server.
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input['SkuArgs']]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Application-specific metadata in the form of key-value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:dbformysql:Server'.""", DeprecationWarning)
 
@@ -19,6 +137,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class Server(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:dbformysql:Server'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +165,41 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SkuArgs']] sku: The SKU (pricing tier) of the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Application-specific metadata in the form of key-value pairs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a server.
+        Latest API Version: 2017-12-01.
+
+        :param str resource_name: The name of the resource.
+        :param ServerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['ResourceIdentityArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Union[pulumi.InputType['ServerPropertiesForDefaultCreateArgs'], pulumi.InputType['ServerPropertiesForGeoRestoreArgs'], pulumi.InputType['ServerPropertiesForReplicaArgs'], pulumi.InputType['ServerPropertiesForRestoreArgs']]]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['SkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""Server is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:dbformysql:Server'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,36 +216,36 @@ class Server(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServerArgs.__new__(ServerArgs)
 
-            __props__['identity'] = identity
-            __props__['location'] = location
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['location'] = location
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
+            __props__.__dict__['properties'] = properties
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['server_name'] = server_name
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['administrator_login'] = None
-            __props__['byok_enforcement'] = None
-            __props__['earliest_restore_date'] = None
-            __props__['fully_qualified_domain_name'] = None
-            __props__['infrastructure_encryption'] = None
-            __props__['master_server_id'] = None
-            __props__['minimal_tls_version'] = None
-            __props__['name'] = None
-            __props__['private_endpoint_connections'] = None
-            __props__['public_network_access'] = None
-            __props__['replica_capacity'] = None
-            __props__['replication_role'] = None
-            __props__['ssl_enforcement'] = None
-            __props__['storage_profile'] = None
-            __props__['type'] = None
-            __props__['user_visible_state'] = None
-            __props__['version'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['server_name'] = server_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['administrator_login'] = None
+            __props__.__dict__['byok_enforcement'] = None
+            __props__.__dict__['earliest_restore_date'] = None
+            __props__.__dict__['fully_qualified_domain_name'] = None
+            __props__.__dict__['infrastructure_encryption'] = None
+            __props__.__dict__['master_server_id'] = None
+            __props__.__dict__['minimal_tls_version'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['private_endpoint_connections'] = None
+            __props__.__dict__['public_network_access'] = None
+            __props__.__dict__['replica_capacity'] = None
+            __props__.__dict__['replication_role'] = None
+            __props__.__dict__['ssl_enforcement'] = None
+            __props__.__dict__['storage_profile'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['user_visible_state'] = None
+            __props__.__dict__['version'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:dbformysql/latest:Server"), pulumi.Alias(type_="azure-native:dbformysql:Server"), pulumi.Alias(type_="azure-nextgen:dbformysql:Server"), pulumi.Alias(type_="azure-native:dbformysql/v20171201:Server"), pulumi.Alias(type_="azure-nextgen:dbformysql/v20171201:Server"), pulumi.Alias(type_="azure-native:dbformysql/v20171201preview:Server"), pulumi.Alias(type_="azure-nextgen:dbformysql/v20171201preview:Server")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Server, __self__).__init__(
@@ -116,27 +270,27 @@ class Server(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["administrator_login"] = None
-        __props__["byok_enforcement"] = None
-        __props__["earliest_restore_date"] = None
-        __props__["fully_qualified_domain_name"] = None
-        __props__["identity"] = None
-        __props__["infrastructure_encryption"] = None
-        __props__["location"] = None
-        __props__["master_server_id"] = None
-        __props__["minimal_tls_version"] = None
-        __props__["name"] = None
-        __props__["private_endpoint_connections"] = None
-        __props__["public_network_access"] = None
-        __props__["replica_capacity"] = None
-        __props__["replication_role"] = None
-        __props__["sku"] = None
-        __props__["ssl_enforcement"] = None
-        __props__["storage_profile"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["user_visible_state"] = None
-        __props__["version"] = None
+        __props__['administrator_login'] = None
+        __props__['byok_enforcement'] = None
+        __props__['earliest_restore_date'] = None
+        __props__['fully_qualified_domain_name'] = None
+        __props__['identity'] = None
+        __props__['infrastructure_encryption'] = None
+        __props__['location'] = None
+        __props__['master_server_id'] = None
+        __props__['minimal_tls_version'] = None
+        __props__['name'] = None
+        __props__['private_endpoint_connections'] = None
+        __props__['public_network_access'] = None
+        __props__['replica_capacity'] = None
+        __props__['replication_role'] = None
+        __props__['sku'] = None
+        __props__['ssl_enforcement'] = None
+        __props__['storage_profile'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['user_visible_state'] = None
+        __props__['version'] = None
         return Server(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -306,10 +460,4 @@ class Server(pulumi.CustomResource):
         Server version.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

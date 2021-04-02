@@ -5,13 +5,296 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ContainerGroup']
+__all__ = ['ContainerGroupArgs', 'ContainerGroup']
+
+@pulumi.input_type
+class ContainerGroupArgs:
+    def __init__(__self__, *,
+                 containers: pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]],
+                 os_type: pulumi.Input[Union[str, 'OperatingSystemTypes']],
+                 resource_group_name: pulumi.Input[str],
+                 container_group_name: Optional[pulumi.Input[str]] = None,
+                 diagnostics: Optional[pulumi.Input['ContainerGroupDiagnosticsArgs']] = None,
+                 dns_config: Optional[pulumi.Input['DnsConfigurationArgs']] = None,
+                 encryption_properties: Optional[pulumi.Input['EncryptionPropertiesArgs']] = None,
+                 identity: Optional[pulumi.Input['ContainerGroupIdentityArgs']] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCredentialArgs']]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['InitContainerDefinitionArgs']]]] = None,
+                 ip_address: Optional[pulumi.Input['IpAddressArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 network_profile: Optional[pulumi.Input['ContainerGroupNetworkProfileArgs']] = None,
+                 restart_policy: Optional[pulumi.Input[Union[str, 'ContainerGroupRestartPolicy']]] = None,
+                 sku: Optional[pulumi.Input[Union[str, 'ContainerGroupSku']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None):
+        """
+        The set of arguments for constructing a ContainerGroup resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]] containers: The containers within the container group.
+        :param pulumi.Input[Union[str, 'OperatingSystemTypes']] os_type: The operating system type required by the containers in the container group.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] container_group_name: The name of the container group.
+        :param pulumi.Input['ContainerGroupDiagnosticsArgs'] diagnostics: The diagnostic information for a container group.
+        :param pulumi.Input['DnsConfigurationArgs'] dns_config: The DNS config information for a container group.
+        :param pulumi.Input['EncryptionPropertiesArgs'] encryption_properties: The encryption properties for a container group.
+        :param pulumi.Input['ContainerGroupIdentityArgs'] identity: The identity of the container group, if configured.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credentials by which the container group is created from.
+        :param pulumi.Input[Sequence[pulumi.Input['InitContainerDefinitionArgs']]] init_containers: The init containers for a container group.
+        :param pulumi.Input['IpAddressArgs'] ip_address: The IP address type of the container group.
+        :param pulumi.Input[str] location: The resource location.
+        :param pulumi.Input['ContainerGroupNetworkProfileArgs'] network_profile: The network profile information for a container group.
+        :param pulumi.Input[Union[str, 'ContainerGroupRestartPolicy']] restart_policy: Restart policy for all containers within the container group. 
+               - `Always` Always restart
+               - `OnFailure` Restart on failure
+               - `Never` Never restart
+        :param pulumi.Input[Union[str, 'ContainerGroupSku']] sku: The SKU for a container group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: The list of volumes that can be mounted by containers in this container group.
+        """
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "os_type", os_type)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if container_group_name is not None:
+            pulumi.set(__self__, "container_group_name", container_group_name)
+        if diagnostics is not None:
+            pulumi.set(__self__, "diagnostics", diagnostics)
+        if dns_config is not None:
+            pulumi.set(__self__, "dns_config", dns_config)
+        if encryption_properties is not None:
+            pulumi.set(__self__, "encryption_properties", encryption_properties)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if image_registry_credentials is not None:
+            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
+        if init_containers is not None:
+            pulumi.set(__self__, "init_containers", init_containers)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if network_profile is not None:
+            pulumi.set(__self__, "network_profile", network_profile)
+        if restart_policy is not None:
+            pulumi.set(__self__, "restart_policy", restart_policy)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]]:
+        """
+        The containers within the container group.
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]]):
+        pulumi.set(self, "containers", value)
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> pulumi.Input[Union[str, 'OperatingSystemTypes']]:
+        """
+        The operating system type required by the containers in the container group.
+        """
+        return pulumi.get(self, "os_type")
+
+    @os_type.setter
+    def os_type(self, value: pulumi.Input[Union[str, 'OperatingSystemTypes']]):
+        pulumi.set(self, "os_type", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="containerGroupName")
+    def container_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the container group.
+        """
+        return pulumi.get(self, "container_group_name")
+
+    @container_group_name.setter
+    def container_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_group_name", value)
+
+    @property
+    @pulumi.getter
+    def diagnostics(self) -> Optional[pulumi.Input['ContainerGroupDiagnosticsArgs']]:
+        """
+        The diagnostic information for a container group.
+        """
+        return pulumi.get(self, "diagnostics")
+
+    @diagnostics.setter
+    def diagnostics(self, value: Optional[pulumi.Input['ContainerGroupDiagnosticsArgs']]):
+        pulumi.set(self, "diagnostics", value)
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> Optional[pulumi.Input['DnsConfigurationArgs']]:
+        """
+        The DNS config information for a container group.
+        """
+        return pulumi.get(self, "dns_config")
+
+    @dns_config.setter
+    def dns_config(self, value: Optional[pulumi.Input['DnsConfigurationArgs']]):
+        pulumi.set(self, "dns_config", value)
+
+    @property
+    @pulumi.getter(name="encryptionProperties")
+    def encryption_properties(self) -> Optional[pulumi.Input['EncryptionPropertiesArgs']]:
+        """
+        The encryption properties for a container group.
+        """
+        return pulumi.get(self, "encryption_properties")
+
+    @encryption_properties.setter
+    def encryption_properties(self, value: Optional[pulumi.Input['EncryptionPropertiesArgs']]):
+        pulumi.set(self, "encryption_properties", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input['ContainerGroupIdentityArgs']]:
+        """
+        The identity of the container group, if configured.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input['ContainerGroupIdentityArgs']]):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter(name="imageRegistryCredentials")
+    def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCredentialArgs']]]]:
+        """
+        The image registry credentials by which the container group is created from.
+        """
+        return pulumi.get(self, "image_registry_credentials")
+
+    @image_registry_credentials.setter
+    def image_registry_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageRegistryCredentialArgs']]]]):
+        pulumi.set(self, "image_registry_credentials", value)
+
+    @property
+    @pulumi.getter(name="initContainers")
+    def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InitContainerDefinitionArgs']]]]:
+        """
+        The init containers for a container group.
+        """
+        return pulumi.get(self, "init_containers")
+
+    @init_containers.setter
+    def init_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InitContainerDefinitionArgs']]]]):
+        pulumi.set(self, "init_containers", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input['IpAddressArgs']]:
+        """
+        The IP address type of the container group.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input['IpAddressArgs']]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="networkProfile")
+    def network_profile(self) -> Optional[pulumi.Input['ContainerGroupNetworkProfileArgs']]:
+        """
+        The network profile information for a container group.
+        """
+        return pulumi.get(self, "network_profile")
+
+    @network_profile.setter
+    def network_profile(self, value: Optional[pulumi.Input['ContainerGroupNetworkProfileArgs']]):
+        pulumi.set(self, "network_profile", value)
+
+    @property
+    @pulumi.getter(name="restartPolicy")
+    def restart_policy(self) -> Optional[pulumi.Input[Union[str, 'ContainerGroupRestartPolicy']]]:
+        """
+        Restart policy for all containers within the container group. 
+        - `Always` Always restart
+        - `OnFailure` Restart on failure
+        - `Never` Never restart
+        """
+        return pulumi.get(self, "restart_policy")
+
+    @restart_policy.setter
+    def restart_policy(self, value: Optional[pulumi.Input[Union[str, 'ContainerGroupRestartPolicy']]]):
+        pulumi.set(self, "restart_policy", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input[Union[str, 'ContainerGroupSku']]]:
+        """
+        The SKU for a container group.
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input[Union[str, 'ContainerGroupSku']]]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]]:
+        """
+        The list of volumes that can be mounted by containers in this container group.
+        """
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:containerinstance:ContainerGroup'.""", DeprecationWarning)
 
@@ -19,6 +302,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class ContainerGroup(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:containerinstance:ContainerGroup'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -69,6 +353,51 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeArgs']]]] volumes: The list of volumes that can be mounted by containers in this container group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ContainerGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A container group.
+        Latest API Version: 2021-03-01.
+
+        :param str resource_name: The name of the resource.
+        :param ContainerGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ContainerGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container_group_name: Optional[pulumi.Input[str]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerArgs']]]]] = None,
+                 diagnostics: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDiagnosticsArgs']]] = None,
+                 dns_config: Optional[pulumi.Input[pulumi.InputType['DnsConfigurationArgs']]] = None,
+                 encryption_properties: Optional[pulumi.Input[pulumi.InputType['EncryptionPropertiesArgs']]] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['ContainerGroupIdentityArgs']]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageRegistryCredentialArgs']]]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InitContainerDefinitionArgs']]]]] = None,
+                 ip_address: Optional[pulumi.Input[pulumi.InputType['IpAddressArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 network_profile: Optional[pulumi.Input[pulumi.InputType['ContainerGroupNetworkProfileArgs']]] = None,
+                 os_type: Optional[pulumi.Input[Union[str, 'OperatingSystemTypes']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 restart_policy: Optional[pulumi.Input[Union[str, 'ContainerGroupRestartPolicy']]] = None,
+                 sku: Optional[pulumi.Input[Union[str, 'ContainerGroupSku']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""ContainerGroup is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:containerinstance:ContainerGroup'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,35 +414,35 @@ class ContainerGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ContainerGroupArgs.__new__(ContainerGroupArgs)
 
-            __props__['container_group_name'] = container_group_name
+            __props__.__dict__['container_group_name'] = container_group_name
             if containers is None and not opts.urn:
                 raise TypeError("Missing required property 'containers'")
-            __props__['containers'] = containers
-            __props__['diagnostics'] = diagnostics
-            __props__['dns_config'] = dns_config
-            __props__['encryption_properties'] = encryption_properties
-            __props__['identity'] = identity
-            __props__['image_registry_credentials'] = image_registry_credentials
-            __props__['init_containers'] = init_containers
-            __props__['ip_address'] = ip_address
-            __props__['location'] = location
-            __props__['network_profile'] = network_profile
+            __props__.__dict__['containers'] = containers
+            __props__.__dict__['diagnostics'] = diagnostics
+            __props__.__dict__['dns_config'] = dns_config
+            __props__.__dict__['encryption_properties'] = encryption_properties
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['image_registry_credentials'] = image_registry_credentials
+            __props__.__dict__['init_containers'] = init_containers
+            __props__.__dict__['ip_address'] = ip_address
+            __props__.__dict__['location'] = location
+            __props__.__dict__['network_profile'] = network_profile
             if os_type is None and not opts.urn:
                 raise TypeError("Missing required property 'os_type'")
-            __props__['os_type'] = os_type
+            __props__.__dict__['os_type'] = os_type
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['restart_policy'] = restart_policy
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['volumes'] = volumes
-            __props__['instance_view'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['restart_policy'] = restart_policy
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['volumes'] = volumes
+            __props__.__dict__['instance_view'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:containerinstance/latest:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20170801preview:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20170801preview:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20171001preview:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20171001preview:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20171201preview:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20171201preview:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20180201preview:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20180201preview:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20180401:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20180401:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20180601:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20180601:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20180901:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20180901:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20181001:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20181001:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20191201:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20191201:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20201101:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20201101:ContainerGroup"), pulumi.Alias(type_="azure-native:containerinstance/v20210301:ContainerGroup"), pulumi.Alias(type_="azure-nextgen:containerinstance/v20210301:ContainerGroup")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ContainerGroup, __self__).__init__(
@@ -138,25 +467,25 @@ class ContainerGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["containers"] = None
-        __props__["diagnostics"] = None
-        __props__["dns_config"] = None
-        __props__["encryption_properties"] = None
-        __props__["identity"] = None
-        __props__["image_registry_credentials"] = None
-        __props__["init_containers"] = None
-        __props__["instance_view"] = None
-        __props__["ip_address"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["network_profile"] = None
-        __props__["os_type"] = None
-        __props__["provisioning_state"] = None
-        __props__["restart_policy"] = None
-        __props__["sku"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["volumes"] = None
+        __props__['containers'] = None
+        __props__['diagnostics'] = None
+        __props__['dns_config'] = None
+        __props__['encryption_properties'] = None
+        __props__['identity'] = None
+        __props__['image_registry_credentials'] = None
+        __props__['init_containers'] = None
+        __props__['instance_view'] = None
+        __props__['ip_address'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['network_profile'] = None
+        __props__['os_type'] = None
+        __props__['provisioning_state'] = None
+        __props__['restart_policy'] = None
+        __props__['sku'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['volumes'] = None
         return ContainerGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -313,10 +642,4 @@ class ContainerGroup(pulumi.CustomResource):
         The list of volumes that can be mounted by containers in this container group.
         """
         return pulumi.get(self, "volumes")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,16 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Job']
+__all__ = ['JobArgs', 'Job']
+
+@pulumi.input_type
+class JobArgs:
+    def __init__(__self__, *,
+                 job_agent_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 server_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input['JobScheduleArgs']] = None):
+        """
+        The set of arguments for constructing a Job resource.
+        :param pulumi.Input[str] job_agent_name: The name of the job agent.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        :param pulumi.Input[str] server_name: The name of the server.
+        :param pulumi.Input[str] description: User-defined description of the job.
+        :param pulumi.Input[str] job_name: The name of the job to get.
+        :param pulumi.Input['JobScheduleArgs'] schedule: Schedule properties of the job.
+        """
+        pulumi.set(__self__, "job_agent_name", job_agent_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "server_name", server_name)
+        if description is None:
+            description = ''
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if job_name is not None:
+            pulumi.set(__self__, "job_name", job_name)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter(name="jobAgentName")
+    def job_agent_name(self) -> pulumi.Input[str]:
+        """
+        The name of the job agent.
+        """
+        return pulumi.get(self, "job_agent_name")
+
+    @job_agent_name.setter
+    def job_agent_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_agent_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> pulumi.Input[str]:
+        """
+        The name of the server.
+        """
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined description of the job.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="jobName")
+    def job_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the job to get.
+        """
+        return pulumi.get(self, "job_name")
+
+    @job_name.setter
+    def job_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_name", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['JobScheduleArgs']]:
+        """
+        Schedule properties of the job.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['JobScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
 
 
 class Job(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +142,39 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: Schedule properties of the job.
         :param pulumi.Input[str] server_name: The name of the server.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: JobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A job.
+
+        :param str resource_name: The name of the resource.
+        :param JobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(JobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 job_agent_name: Optional[pulumi.Input[str]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -54,25 +190,25 @@ class Job(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = JobArgs.__new__(JobArgs)
 
             if description is None:
                 description = ''
-            __props__['description'] = description
+            __props__.__dict__['description'] = description
             if job_agent_name is None and not opts.urn:
                 raise TypeError("Missing required property 'job_agent_name'")
-            __props__['job_agent_name'] = job_agent_name
-            __props__['job_name'] = job_name
+            __props__.__dict__['job_agent_name'] = job_agent_name
+            __props__.__dict__['job_name'] = job_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['schedule'] = schedule
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['schedule'] = schedule
             if server_name is None and not opts.urn:
                 raise TypeError("Missing required property 'server_name'")
-            __props__['server_name'] = server_name
-            __props__['name'] = None
-            __props__['type'] = None
-            __props__['version'] = None
+            __props__.__dict__['server_name'] = server_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['version'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:Job"), pulumi.Alias(type_="azure-native:sql:Job"), pulumi.Alias(type_="azure-nextgen:sql:Job"), pulumi.Alias(type_="azure-native:sql/v20170301preview:Job"), pulumi.Alias(type_="azure-nextgen:sql/v20170301preview:Job"), pulumi.Alias(type_="azure-native:sql/v20200801preview:Job"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:Job"), pulumi.Alias(type_="azure-native:sql/v20201101preview:Job"), pulumi.Alias(type_="azure-nextgen:sql/v20201101preview:Job")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Job, __self__).__init__(
@@ -97,11 +233,11 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["description"] = None
-        __props__["name"] = None
-        __props__["schedule"] = None
-        __props__["type"] = None
-        __props__["version"] = None
+        __props__['description'] = None
+        __props__['name'] = None
+        __props__['schedule'] = None
+        __props__['type'] = None
+        __props__['version'] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -143,10 +279,4 @@ class Job(pulumi.CustomResource):
         The job version number.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

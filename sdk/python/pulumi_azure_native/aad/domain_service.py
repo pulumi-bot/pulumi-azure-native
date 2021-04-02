@@ -5,16 +5,247 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['DomainService']
+__all__ = ['DomainServiceArgs', 'DomainService']
+
+@pulumi.input_type
+class DomainServiceArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 domain_configuration_type: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 domain_security_settings: Optional[pulumi.Input['DomainSecuritySettingsArgs']] = None,
+                 domain_service_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 filtered_sync: Optional[pulumi.Input[Union[str, 'FilteredSync']]] = None,
+                 ldaps_settings: Optional[pulumi.Input['LdapsSettingsArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 notification_settings: Optional[pulumi.Input['NotificationSettingsArgs']] = None,
+                 replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaSetArgs']]]] = None,
+                 resource_forest_settings: Optional[pulumi.Input['ResourceForestSettingsArgs']] = None,
+                 sku: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DomainService resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription. The name is case insensitive.
+        :param pulumi.Input[str] domain_configuration_type: Domain Configuration Type
+        :param pulumi.Input[str] domain_name: The name of the Azure domain that the user would like to deploy Domain Services to.
+        :param pulumi.Input['DomainSecuritySettingsArgs'] domain_security_settings: DomainSecurity Settings
+        :param pulumi.Input[str] domain_service_name: The name of the domain service.
+        :param pulumi.Input[str] etag: Resource etag
+        :param pulumi.Input[Union[str, 'FilteredSync']] filtered_sync: Enabled or Disabled flag to turn on Group-based filtered sync
+        :param pulumi.Input['LdapsSettingsArgs'] ldaps_settings: Secure LDAP Settings
+        :param pulumi.Input[str] location: Resource location
+        :param pulumi.Input['NotificationSettingsArgs'] notification_settings: Notification Settings
+        :param pulumi.Input[Sequence[pulumi.Input['ReplicaSetArgs']]] replica_sets: List of ReplicaSets
+        :param pulumi.Input['ResourceForestSettingsArgs'] resource_forest_settings: Resource Forest Settings
+        :param pulumi.Input[str] sku: Sku Type
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if domain_configuration_type is not None:
+            pulumi.set(__self__, "domain_configuration_type", domain_configuration_type)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if domain_security_settings is not None:
+            pulumi.set(__self__, "domain_security_settings", domain_security_settings)
+        if domain_service_name is not None:
+            pulumi.set(__self__, "domain_service_name", domain_service_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if filtered_sync is not None:
+            pulumi.set(__self__, "filtered_sync", filtered_sync)
+        if ldaps_settings is not None:
+            pulumi.set(__self__, "ldaps_settings", ldaps_settings)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
+        if replica_sets is not None:
+            pulumi.set(__self__, "replica_sets", replica_sets)
+        if resource_forest_settings is not None:
+            pulumi.set(__self__, "resource_forest_settings", resource_forest_settings)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the user's subscription. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="domainConfigurationType")
+    def domain_configuration_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain Configuration Type
+        """
+        return pulumi.get(self, "domain_configuration_type")
+
+    @domain_configuration_type.setter
+    def domain_configuration_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_configuration_type", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Azure domain that the user would like to deploy Domain Services to.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="domainSecuritySettings")
+    def domain_security_settings(self) -> Optional[pulumi.Input['DomainSecuritySettingsArgs']]:
+        """
+        DomainSecurity Settings
+        """
+        return pulumi.get(self, "domain_security_settings")
+
+    @domain_security_settings.setter
+    def domain_security_settings(self, value: Optional[pulumi.Input['DomainSecuritySettingsArgs']]):
+        pulumi.set(self, "domain_security_settings", value)
+
+    @property
+    @pulumi.getter(name="domainServiceName")
+    def domain_service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the domain service.
+        """
+        return pulumi.get(self, "domain_service_name")
+
+    @domain_service_name.setter
+    def domain_service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_service_name", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource etag
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="filteredSync")
+    def filtered_sync(self) -> Optional[pulumi.Input[Union[str, 'FilteredSync']]]:
+        """
+        Enabled or Disabled flag to turn on Group-based filtered sync
+        """
+        return pulumi.get(self, "filtered_sync")
+
+    @filtered_sync.setter
+    def filtered_sync(self, value: Optional[pulumi.Input[Union[str, 'FilteredSync']]]):
+        pulumi.set(self, "filtered_sync", value)
+
+    @property
+    @pulumi.getter(name="ldapsSettings")
+    def ldaps_settings(self) -> Optional[pulumi.Input['LdapsSettingsArgs']]:
+        """
+        Secure LDAP Settings
+        """
+        return pulumi.get(self, "ldaps_settings")
+
+    @ldaps_settings.setter
+    def ldaps_settings(self, value: Optional[pulumi.Input['LdapsSettingsArgs']]):
+        pulumi.set(self, "ldaps_settings", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional[pulumi.Input['NotificationSettingsArgs']]:
+        """
+        Notification Settings
+        """
+        return pulumi.get(self, "notification_settings")
+
+    @notification_settings.setter
+    def notification_settings(self, value: Optional[pulumi.Input['NotificationSettingsArgs']]):
+        pulumi.set(self, "notification_settings", value)
+
+    @property
+    @pulumi.getter(name="replicaSets")
+    def replica_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaSetArgs']]]]:
+        """
+        List of ReplicaSets
+        """
+        return pulumi.get(self, "replica_sets")
+
+    @replica_sets.setter
+    def replica_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaSetArgs']]]]):
+        pulumi.set(self, "replica_sets", value)
+
+    @property
+    @pulumi.getter(name="resourceForestSettings")
+    def resource_forest_settings(self) -> Optional[pulumi.Input['ResourceForestSettingsArgs']]:
+        """
+        Resource Forest Settings
+        """
+        return pulumi.get(self, "resource_forest_settings")
+
+    @resource_forest_settings.setter
+    def resource_forest_settings(self, value: Optional[pulumi.Input['ResourceForestSettingsArgs']]):
+        pulumi.set(self, "resource_forest_settings", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sku Type
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class DomainService(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -56,6 +287,48 @@ class DomainService(pulumi.CustomResource):
         :param pulumi.Input[str] sku: Sku Type
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DomainServiceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Domain service.
+        API Version: 2021-03-01.
+
+        :param str resource_name: The name of the resource.
+        :param DomainServiceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_configuration_type: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 domain_security_settings: Optional[pulumi.Input[pulumi.InputType['DomainSecuritySettingsArgs']]] = None,
+                 domain_service_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 filtered_sync: Optional[pulumi.Input[Union[str, 'FilteredSync']]] = None,
+                 ldaps_settings: Optional[pulumi.Input[pulumi.InputType['LdapsSettingsArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 notification_settings: Optional[pulumi.Input[pulumi.InputType['NotificationSettingsArgs']]] = None,
+                 replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReplicaSetArgs']]]]] = None,
+                 resource_forest_settings: Optional[pulumi.Input[pulumi.InputType['ResourceForestSettingsArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -71,33 +344,33 @@ class DomainService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DomainServiceArgs.__new__(DomainServiceArgs)
 
-            __props__['domain_configuration_type'] = domain_configuration_type
-            __props__['domain_name'] = domain_name
-            __props__['domain_security_settings'] = domain_security_settings
-            __props__['domain_service_name'] = domain_service_name
-            __props__['etag'] = etag
-            __props__['filtered_sync'] = filtered_sync
-            __props__['ldaps_settings'] = ldaps_settings
-            __props__['location'] = location
-            __props__['notification_settings'] = notification_settings
-            __props__['replica_sets'] = replica_sets
-            __props__['resource_forest_settings'] = resource_forest_settings
+            __props__.__dict__['domain_configuration_type'] = domain_configuration_type
+            __props__.__dict__['domain_name'] = domain_name
+            __props__.__dict__['domain_security_settings'] = domain_security_settings
+            __props__.__dict__['domain_service_name'] = domain_service_name
+            __props__.__dict__['etag'] = etag
+            __props__.__dict__['filtered_sync'] = filtered_sync
+            __props__.__dict__['ldaps_settings'] = ldaps_settings
+            __props__.__dict__['location'] = location
+            __props__.__dict__['notification_settings'] = notification_settings
+            __props__.__dict__['replica_sets'] = replica_sets
+            __props__.__dict__['resource_forest_settings'] = resource_forest_settings
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['deployment_id'] = None
-            __props__['migration_properties'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['sync_owner'] = None
-            __props__['system_data'] = None
-            __props__['tenant_id'] = None
-            __props__['type'] = None
-            __props__['version'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['deployment_id'] = None
+            __props__.__dict__['migration_properties'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['sync_owner'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['tenant_id'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['version'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:aad:DomainService"), pulumi.Alias(type_="azure-native:aad/latest:DomainService"), pulumi.Alias(type_="azure-nextgen:aad/latest:DomainService"), pulumi.Alias(type_="azure-native:aad/v20170101:DomainService"), pulumi.Alias(type_="azure-nextgen:aad/v20170101:DomainService"), pulumi.Alias(type_="azure-native:aad/v20170601:DomainService"), pulumi.Alias(type_="azure-nextgen:aad/v20170601:DomainService"), pulumi.Alias(type_="azure-native:aad/v20200101:DomainService"), pulumi.Alias(type_="azure-nextgen:aad/v20200101:DomainService"), pulumi.Alias(type_="azure-native:aad/v20210301:DomainService"), pulumi.Alias(type_="azure-nextgen:aad/v20210301:DomainService")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DomainService, __self__).__init__(
@@ -122,27 +395,27 @@ class DomainService(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["deployment_id"] = None
-        __props__["domain_configuration_type"] = None
-        __props__["domain_name"] = None
-        __props__["domain_security_settings"] = None
-        __props__["etag"] = None
-        __props__["filtered_sync"] = None
-        __props__["ldaps_settings"] = None
-        __props__["location"] = None
-        __props__["migration_properties"] = None
-        __props__["name"] = None
-        __props__["notification_settings"] = None
-        __props__["provisioning_state"] = None
-        __props__["replica_sets"] = None
-        __props__["resource_forest_settings"] = None
-        __props__["sku"] = None
-        __props__["sync_owner"] = None
-        __props__["system_data"] = None
-        __props__["tags"] = None
-        __props__["tenant_id"] = None
-        __props__["type"] = None
-        __props__["version"] = None
+        __props__['deployment_id'] = None
+        __props__['domain_configuration_type'] = None
+        __props__['domain_name'] = None
+        __props__['domain_security_settings'] = None
+        __props__['etag'] = None
+        __props__['filtered_sync'] = None
+        __props__['ldaps_settings'] = None
+        __props__['location'] = None
+        __props__['migration_properties'] = None
+        __props__['name'] = None
+        __props__['notification_settings'] = None
+        __props__['provisioning_state'] = None
+        __props__['replica_sets'] = None
+        __props__['resource_forest_settings'] = None
+        __props__['sku'] = None
+        __props__['sync_owner'] = None
+        __props__['system_data'] = None
+        __props__['tags'] = None
+        __props__['tenant_id'] = None
+        __props__['type'] = None
+        __props__['version'] = None
         return DomainService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -312,10 +585,4 @@ class DomainService(pulumi.CustomResource):
         Data Model Version
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

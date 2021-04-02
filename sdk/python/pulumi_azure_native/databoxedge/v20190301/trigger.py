@@ -5,14 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['Trigger']
+__all__ = ['TriggerArgs', 'Trigger']
+
+@pulumi.input_type
+class TriggerArgs:
+    def __init__(__self__, *,
+                 device_name: pulumi.Input[str],
+                 kind: pulumi.Input[Union[str, 'TriggerEventType']],
+                 resource_group_name: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Trigger resource.
+        :param pulumi.Input[str] device_name: Creates or updates a trigger
+        :param pulumi.Input[Union[str, 'TriggerEventType']] kind: Trigger Kind.
+        :param pulumi.Input[str] resource_group_name: The resource group name.
+        :param pulumi.Input[str] name: The trigger name.
+        """
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> pulumi.Input[str]:
+        """
+        Creates or updates a trigger
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[Union[str, 'TriggerEventType']]:
+        """
+        Trigger Kind.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[Union[str, 'TriggerEventType']]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The resource group name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Trigger(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +102,37 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] name: The trigger name.
         :param pulumi.Input[str] resource_group_name: The resource group name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TriggerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Trigger details.
+
+        :param str resource_name: The name of the resource.
+        :param TriggerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TriggerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[Union[str, 'TriggerEventType']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -48,19 +148,19 @@ class Trigger(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TriggerArgs.__new__(TriggerArgs)
 
             if device_name is None and not opts.urn:
                 raise TypeError("Missing required property 'device_name'")
-            __props__['device_name'] = device_name
+            __props__.__dict__['device_name'] = device_name
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
-            __props__['kind'] = kind
-            __props__['name'] = name
+            __props__.__dict__['kind'] = kind
+            __props__.__dict__['name'] = name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:databoxedge/v20190301:Trigger"), pulumi.Alias(type_="azure-native:databoxedge:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge:Trigger"), pulumi.Alias(type_="azure-native:databoxedge/latest:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge/latest:Trigger"), pulumi.Alias(type_="azure-native:databoxedge/v20190701:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge/v20190701:Trigger"), pulumi.Alias(type_="azure-native:databoxedge/v20190801:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge/v20190801:Trigger"), pulumi.Alias(type_="azure-native:databoxedge/v20200501preview:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge/v20200501preview:Trigger"), pulumi.Alias(type_="azure-native:databoxedge/v20200901:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge/v20200901:Trigger"), pulumi.Alias(type_="azure-native:databoxedge/v20200901preview:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge/v20200901preview:Trigger"), pulumi.Alias(type_="azure-native:databoxedge/v20201201:Trigger"), pulumi.Alias(type_="azure-nextgen:databoxedge/v20201201:Trigger")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Trigger, __self__).__init__(
@@ -85,9 +185,9 @@ class Trigger(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["kind"] = None
-        __props__["name"] = None
-        __props__["type"] = None
+        __props__['kind'] = None
+        __props__['name'] = None
+        __props__['type'] = None
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -113,10 +213,4 @@ class Trigger(pulumi.CustomResource):
         The hierarchical type of the object.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,13 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['OnPremiseIotSensor']
+__all__ = ['OnPremiseIotSensorArgs', 'OnPremiseIotSensor']
+
+@pulumi.input_type
+class OnPremiseIotSensorArgs:
+    def __init__(__self__, *,
+                 on_premise_iot_sensor_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OnPremiseIotSensor resource.
+        :param pulumi.Input[str] on_premise_iot_sensor_name: Name of the on-premise IoT sensor
+        """
+        if on_premise_iot_sensor_name is not None:
+            pulumi.set(__self__, "on_premise_iot_sensor_name", on_premise_iot_sensor_name)
+
+    @property
+    @pulumi.getter(name="onPremiseIotSensorName")
+    def on_premise_iot_sensor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the on-premise IoT sensor
+        """
+        return pulumi.get(self, "on_premise_iot_sensor_name")
+
+    @on_premise_iot_sensor_name.setter
+    def on_premise_iot_sensor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_premise_iot_sensor_name", value)
 
 
 class OnPremiseIotSensor(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -26,6 +50,34 @@ class OnPremiseIotSensor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] on_premise_iot_sensor_name: Name of the on-premise IoT sensor
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[OnPremiseIotSensorArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        On-premise IoT sensor
+
+        :param str resource_name: The name of the resource.
+        :param OnPremiseIotSensorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OnPremiseIotSensorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 on_premise_iot_sensor_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -41,11 +93,11 @@ class OnPremiseIotSensor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OnPremiseIotSensorArgs.__new__(OnPremiseIotSensorArgs)
 
-            __props__['on_premise_iot_sensor_name'] = on_premise_iot_sensor_name
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['on_premise_iot_sensor_name'] = on_premise_iot_sensor_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:security/v20200806preview:OnPremiseIotSensor"), pulumi.Alias(type_="azure-native:security:OnPremiseIotSensor"), pulumi.Alias(type_="azure-nextgen:security:OnPremiseIotSensor")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(OnPremiseIotSensor, __self__).__init__(
@@ -70,8 +122,8 @@ class OnPremiseIotSensor(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["name"] = None
-        __props__["type"] = None
+        __props__['name'] = None
+        __props__['type'] = None
         return OnPremiseIotSensor(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -89,10 +141,4 @@ class OnPremiseIotSensor(pulumi.CustomResource):
         Resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

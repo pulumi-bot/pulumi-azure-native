@@ -5,11 +5,50 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['ManagementGroupSubscription']
+__all__ = ['ManagementGroupSubscriptionArgs', 'ManagementGroupSubscription']
+
+@pulumi.input_type
+class ManagementGroupSubscriptionArgs:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[str],
+                 subscription_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ManagementGroupSubscription resource.
+        :param pulumi.Input[str] group_id: Management Group ID.
+        :param pulumi.Input[str] subscription_id: Subscription ID.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        Management Group ID.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subscription ID.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_id", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:management:ManagementGroupSubscription'.""", DeprecationWarning)
 
@@ -17,6 +56,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class ManagementGroupSubscription(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:management:ManagementGroupSubscription'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +74,36 @@ class ManagementGroupSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: Management Group ID.
         :param pulumi.Input[str] subscription_id: Subscription ID.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ManagementGroupSubscriptionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The details of subscription under management group.
+        Latest API Version: 2020-05-01.
+
+        :param str resource_name: The name of the resource.
+        :param ManagementGroupSubscriptionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ManagementGroupSubscriptionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 subscription_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""ManagementGroupSubscription is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:management:ManagementGroupSubscription'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,18 +120,18 @@ class ManagementGroupSubscription(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ManagementGroupSubscriptionArgs.__new__(ManagementGroupSubscriptionArgs)
 
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
-            __props__['subscription_id'] = subscription_id
-            __props__['display_name'] = None
-            __props__['name'] = None
-            __props__['parent'] = None
-            __props__['state'] = None
-            __props__['tenant'] = None
-            __props__['type'] = None
+            __props__.__dict__['group_id'] = group_id
+            __props__.__dict__['subscription_id'] = subscription_id
+            __props__.__dict__['display_name'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['parent'] = None
+            __props__.__dict__['state'] = None
+            __props__.__dict__['tenant'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:management/latest:ManagementGroupSubscription"), pulumi.Alias(type_="azure-native:management:ManagementGroupSubscription"), pulumi.Alias(type_="azure-nextgen:management:ManagementGroupSubscription"), pulumi.Alias(type_="azure-native:management/v20200501:ManagementGroupSubscription"), pulumi.Alias(type_="azure-nextgen:management/v20200501:ManagementGroupSubscription")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ManagementGroupSubscription, __self__).__init__(
@@ -86,12 +156,12 @@ class ManagementGroupSubscription(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["display_name"] = None
-        __props__["name"] = None
-        __props__["parent"] = None
-        __props__["state"] = None
-        __props__["tenant"] = None
-        __props__["type"] = None
+        __props__['display_name'] = None
+        __props__['name'] = None
+        __props__['parent'] = None
+        __props__['state'] = None
+        __props__['tenant'] = None
+        __props__['type'] = None
         return ManagementGroupSubscription(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -141,10 +211,4 @@ class ManagementGroupSubscription(pulumi.CustomResource):
         The type of the resource.  For example, Microsoft.Management/managementGroups/subscriptions
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

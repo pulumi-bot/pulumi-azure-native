@@ -5,16 +5,197 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['SiteBackupConfiguration']
+__all__ = ['SiteBackupConfigurationArgs', 'SiteBackupConfiguration']
+
+@pulumi.input_type
+class SiteBackupConfigurationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 backup_schedule: Optional[pulumi.Input['BackupScheduleArgs']] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseBackupSettingArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 storage_account_url: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a SiteBackupConfiguration resource.
+        :param pulumi.Input[str] name: Resource Name
+        :param pulumi.Input[str] resource_group_name: Name of resource group
+        :param pulumi.Input[str] type: Resource type
+        :param pulumi.Input['BackupScheduleArgs'] backup_schedule: Schedule for the backup if it is executed periodically
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseBackupSettingArgs']]] databases: Databases included in the backup
+        :param pulumi.Input[bool] enabled: True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled
+        :param pulumi.Input[str] id: Resource Id
+        :param pulumi.Input[str] kind: Kind of resource
+        :param pulumi.Input[str] location: Resource Location
+        :param pulumi.Input[str] storage_account_url: SAS URL to the container
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "type", type)
+        if backup_schedule is not None:
+            pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if databases is not None:
+            pulumi.set(__self__, "databases", databases)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if storage_account_url is not None:
+            pulumi.set(__self__, "storage_account_url", storage_account_url)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Resource Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of resource group
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Resource type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="backupSchedule")
+    def backup_schedule(self) -> Optional[pulumi.Input['BackupScheduleArgs']]:
+        """
+        Schedule for the backup if it is executed periodically
+        """
+        return pulumi.get(self, "backup_schedule")
+
+    @backup_schedule.setter
+    def backup_schedule(self, value: Optional[pulumi.Input['BackupScheduleArgs']]):
+        pulumi.set(self, "backup_schedule", value)
+
+    @property
+    @pulumi.getter
+    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseBackupSettingArgs']]]]:
+        """
+        Databases included in the backup
+        """
+        return pulumi.get(self, "databases")
+
+    @databases.setter
+    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseBackupSettingArgs']]]]):
+        pulumi.set(self, "databases", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Id
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of resource
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Location
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="storageAccountUrl")
+    def storage_account_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        SAS URL to the container
+        """
+        return pulumi.get(self, "storage_account_url")
+
+    @storage_account_url.setter
+    def storage_account_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_account_url", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class SiteBackupConfiguration(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +230,44 @@ class SiteBackupConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         :param pulumi.Input[str] type: Resource type
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SiteBackupConfigurationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Description of a backup which will be performed
+
+        :param str resource_name: The name of the resource.
+        :param SiteBackupConfigurationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SiteBackupConfigurationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['BackupScheduleArgs']]] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseBackupSettingArgs']]]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 storage_account_url: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -64,25 +283,25 @@ class SiteBackupConfiguration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SiteBackupConfigurationArgs.__new__(SiteBackupConfigurationArgs)
 
-            __props__['backup_schedule'] = backup_schedule
-            __props__['databases'] = databases
-            __props__['enabled'] = enabled
-            __props__['id'] = id
-            __props__['kind'] = kind
-            __props__['location'] = location
+            __props__.__dict__['backup_schedule'] = backup_schedule
+            __props__.__dict__['databases'] = databases
+            __props__.__dict__['enabled'] = enabled
+            __props__.__dict__['id'] = id
+            __props__.__dict__['kind'] = kind
+            __props__.__dict__['location'] = location
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            __props__.__dict__['name'] = name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['storage_account_url'] = storage_account_url
-            __props__['tags'] = tags
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['storage_account_url'] = storage_account_url
+            __props__.__dict__['tags'] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__['type'] = type
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:web/v20150801:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/latest:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/latest:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20160801:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20160801:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20180201:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20180201:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20181101:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20181101:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20190801:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20190801:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20200601:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20200601:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20200901:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20200901:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20201001:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20201001:SiteBackupConfiguration"), pulumi.Alias(type_="azure-native:web/v20201201:SiteBackupConfiguration"), pulumi.Alias(type_="azure-nextgen:web/v20201201:SiteBackupConfiguration")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SiteBackupConfiguration, __self__).__init__(
@@ -107,15 +326,15 @@ class SiteBackupConfiguration(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["backup_schedule"] = None
-        __props__["databases"] = None
-        __props__["enabled"] = None
-        __props__["kind"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["storage_account_url"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['backup_schedule'] = None
+        __props__['databases'] = None
+        __props__['enabled'] = None
+        __props__['kind'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['storage_account_url'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return SiteBackupConfiguration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -189,10 +408,4 @@ class SiteBackupConfiguration(pulumi.CustomResource):
         Resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

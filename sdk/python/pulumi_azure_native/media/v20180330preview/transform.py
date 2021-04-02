@@ -5,16 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Transform']
+__all__ = ['TransformArgs', 'Transform']
+
+@pulumi.input_type
+class TransformArgs:
+    def __init__(__self__, *,
+                 account_name: pulumi.Input[str],
+                 outputs: pulumi.Input[Sequence[pulumi.Input['TransformOutputArgs']]],
+                 resource_group_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 transform_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Transform resource.
+        :param pulumi.Input[str] account_name: The Media Services account name.
+        :param pulumi.Input[Sequence[pulumi.Input['TransformOutputArgs']]] outputs: An array of one or more TransformOutputs that the Transform should generate.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the Azure subscription.
+        :param pulumi.Input[str] description: An optional verbose description of the Transform.
+        :param pulumi.Input[str] transform_name: The Transform name.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "outputs", outputs)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if transform_name is not None:
+            pulumi.set(__self__, "transform_name", transform_name)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[str]:
+        """
+        The Media Services account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter
+    def outputs(self) -> pulumi.Input[Sequence[pulumi.Input['TransformOutputArgs']]]:
+        """
+        An array of one or more TransformOutputs that the Transform should generate.
+        """
+        return pulumi.get(self, "outputs")
+
+    @outputs.setter
+    def outputs(self, value: pulumi.Input[Sequence[pulumi.Input['TransformOutputArgs']]]):
+        pulumi.set(self, "outputs", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the Azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional verbose description of the Transform.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="transformName")
+    def transform_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Transform name.
+        """
+        return pulumi.get(self, "transform_name")
+
+    @transform_name.setter
+    def transform_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transform_name", value)
 
 
 class Transform(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +122,38 @@ class Transform(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group within the Azure subscription.
         :param pulumi.Input[str] transform_name: The Transform name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TransformArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
+
+        :param str resource_name: The name of the resource.
+        :param TransformArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TransformArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransformOutputArgs']]]]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 transform_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,23 +169,23 @@ class Transform(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TransformArgs.__new__(TransformArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['description'] = description
+            __props__.__dict__['account_name'] = account_name
+            __props__.__dict__['description'] = description
             if outputs is None and not opts.urn:
                 raise TypeError("Missing required property 'outputs'")
-            __props__['outputs'] = outputs
+            __props__.__dict__['outputs'] = outputs
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['transform_name'] = transform_name
-            __props__['created'] = None
-            __props__['last_modified'] = None
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['transform_name'] = transform_name
+            __props__.__dict__['created'] = None
+            __props__.__dict__['last_modified'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:media/v20180330preview:Transform"), pulumi.Alias(type_="azure-native:media:Transform"), pulumi.Alias(type_="azure-nextgen:media:Transform"), pulumi.Alias(type_="azure-native:media/latest:Transform"), pulumi.Alias(type_="azure-nextgen:media/latest:Transform"), pulumi.Alias(type_="azure-native:media/v20180601preview:Transform"), pulumi.Alias(type_="azure-nextgen:media/v20180601preview:Transform"), pulumi.Alias(type_="azure-native:media/v20180701:Transform"), pulumi.Alias(type_="azure-nextgen:media/v20180701:Transform"), pulumi.Alias(type_="azure-native:media/v20200501:Transform"), pulumi.Alias(type_="azure-nextgen:media/v20200501:Transform")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Transform, __self__).__init__(
@@ -93,12 +210,12 @@ class Transform(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["created"] = None
-        __props__["description"] = None
-        __props__["last_modified"] = None
-        __props__["name"] = None
-        __props__["outputs"] = None
-        __props__["type"] = None
+        __props__['created'] = None
+        __props__['description'] = None
+        __props__['last_modified'] = None
+        __props__['name'] = None
+        __props__['outputs'] = None
+        __props__['type'] = None
         return Transform(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -148,10 +265,4 @@ class Transform(pulumi.CustomResource):
         The type of the resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,16 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['OrderItemByName']
+__all__ = ['OrderItemByNameArgs', 'OrderItemByName']
+
+@pulumi.input_type
+class OrderItemByNameArgs:
+    def __init__(__self__, *,
+                 address_details: pulumi.Input['AddressDetailsArgs'],
+                 order_id: pulumi.Input[str],
+                 order_item_details: pulumi.Input['OrderItemDetailsArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
+                 order_item_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a OrderItemByName resource.
+        :param pulumi.Input['AddressDetailsArgs'] address_details: Represents shipping and return address for order
+        :param pulumi.Input[str] order_id: Id of the order to which order items belongs to
+        :param pulumi.Input['OrderItemDetailsArgs'] order_item_details: Represents order item details.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] location: The geo-location where the resource lives
+        :param pulumi.Input[str] order_item_name: The name of the order item
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "address_details", address_details)
+        pulumi.set(__self__, "order_id", order_id)
+        pulumi.set(__self__, "order_item_details", order_item_details)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if order_item_name is not None:
+            pulumi.set(__self__, "order_item_name", order_item_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="addressDetails")
+    def address_details(self) -> pulumi.Input['AddressDetailsArgs']:
+        """
+        Represents shipping and return address for order
+        """
+        return pulumi.get(self, "address_details")
+
+    @address_details.setter
+    def address_details(self, value: pulumi.Input['AddressDetailsArgs']):
+        pulumi.set(self, "address_details", value)
+
+    @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> pulumi.Input[str]:
+        """
+        Id of the order to which order items belongs to
+        """
+        return pulumi.get(self, "order_id")
+
+    @order_id.setter
+    def order_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "order_id", value)
+
+    @property
+    @pulumi.getter(name="orderItemDetails")
+    def order_item_details(self) -> pulumi.Input['OrderItemDetailsArgs']:
+        """
+        Represents order item details.
+        """
+        return pulumi.get(self, "order_item_details")
+
+    @order_item_details.setter
+    def order_item_details(self, value: pulumi.Input['OrderItemDetailsArgs']):
+        pulumi.set(self, "order_item_details", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="orderItemName")
+    def order_item_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the order item
+        """
+        return pulumi.get(self, "order_item_name")
+
+    @order_item_name.setter
+    def order_item_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_item_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class OrderItemByName(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -41,6 +157,40 @@ class OrderItemByName(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrderItemByNameArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents order item contract
+
+        :param str resource_name: The name of the resource.
+        :param OrderItemByNameArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrderItemByNameArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address_details: Optional[pulumi.Input[pulumi.InputType['AddressDetailsArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 order_id: Optional[pulumi.Input[str]] = None,
+                 order_item_details: Optional[pulumi.Input[pulumi.InputType['OrderItemDetailsArgs']]] = None,
+                 order_item_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -56,27 +206,27 @@ class OrderItemByName(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrderItemByNameArgs.__new__(OrderItemByNameArgs)
 
             if address_details is None and not opts.urn:
                 raise TypeError("Missing required property 'address_details'")
-            __props__['address_details'] = address_details
-            __props__['location'] = location
+            __props__.__dict__['address_details'] = address_details
+            __props__.__dict__['location'] = location
             if order_id is None and not opts.urn:
                 raise TypeError("Missing required property 'order_id'")
-            __props__['order_id'] = order_id
+            __props__.__dict__['order_id'] = order_id
             if order_item_details is None and not opts.urn:
                 raise TypeError("Missing required property 'order_item_details'")
-            __props__['order_item_details'] = order_item_details
-            __props__['order_item_name'] = order_item_name
+            __props__.__dict__['order_item_details'] = order_item_details
+            __props__.__dict__['order_item_name'] = order_item_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['name'] = None
-            __props__['start_time'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['name'] = None
+            __props__.__dict__['start_time'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:edgeorder/v20201201preview:OrderItemByName"), pulumi.Alias(type_="azure-native:edgeorder:OrderItemByName"), pulumi.Alias(type_="azure-nextgen:edgeorder:OrderItemByName")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(OrderItemByName, __self__).__init__(
@@ -101,15 +251,15 @@ class OrderItemByName(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["address_details"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["order_id"] = None
-        __props__["order_item_details"] = None
-        __props__["start_time"] = None
-        __props__["system_data"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['address_details'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['order_id'] = None
+        __props__['order_item_details'] = None
+        __props__['start_time'] = None
+        __props__['system_data'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return OrderItemByName(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -183,10 +333,4 @@ class OrderItemByName(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

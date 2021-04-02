@@ -5,11 +5,143 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['Connector']
+__all__ = ['ConnectorArgs', 'Connector']
+
+@pulumi.input_type
+class ConnectorArgs:
+    def __init__(__self__, *,
+                 connector_properties: pulumi.Input[Mapping[str, Any]],
+                 connector_type: pulumi.Input[Union[str, 'ConnectorTypes']],
+                 hub_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 connector_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 is_internal: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Connector resource.
+        :param pulumi.Input[Mapping[str, Any]] connector_properties: The connector properties.
+        :param pulumi.Input[Union[str, 'ConnectorTypes']] connector_type: Type of connector.
+        :param pulumi.Input[str] hub_name: The name of the hub.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] connector_name: Name of the connector.
+        :param pulumi.Input[str] description: Description of the connector.
+        :param pulumi.Input[str] display_name: Display name of the connector.
+        :param pulumi.Input[bool] is_internal: If this is an internal connector.
+        """
+        pulumi.set(__self__, "connector_properties", connector_properties)
+        pulumi.set(__self__, "connector_type", connector_type)
+        pulumi.set(__self__, "hub_name", hub_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if connector_name is not None:
+            pulumi.set(__self__, "connector_name", connector_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if is_internal is not None:
+            pulumi.set(__self__, "is_internal", is_internal)
+
+    @property
+    @pulumi.getter(name="connectorProperties")
+    def connector_properties(self) -> pulumi.Input[Mapping[str, Any]]:
+        """
+        The connector properties.
+        """
+        return pulumi.get(self, "connector_properties")
+
+    @connector_properties.setter
+    def connector_properties(self, value: pulumi.Input[Mapping[str, Any]]):
+        pulumi.set(self, "connector_properties", value)
+
+    @property
+    @pulumi.getter(name="connectorType")
+    def connector_type(self) -> pulumi.Input[Union[str, 'ConnectorTypes']]:
+        """
+        Type of connector.
+        """
+        return pulumi.get(self, "connector_type")
+
+    @connector_type.setter
+    def connector_type(self, value: pulumi.Input[Union[str, 'ConnectorTypes']]):
+        pulumi.set(self, "connector_type", value)
+
+    @property
+    @pulumi.getter(name="hubName")
+    def hub_name(self) -> pulumi.Input[str]:
+        """
+        The name of the hub.
+        """
+        return pulumi.get(self, "hub_name")
+
+    @hub_name.setter
+    def hub_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hub_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the connector.
+        """
+        return pulumi.get(self, "connector_name")
+
+    @connector_name.setter
+    def connector_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connector_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the connector.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the connector.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="isInternal")
+    def is_internal(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this is an internal connector.
+        """
+        return pulumi.get(self, "is_internal")
+
+    @is_internal.setter
+    def is_internal(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_internal", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:customerinsights:Connector'.""", DeprecationWarning)
 
@@ -17,6 +149,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class Connector(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:customerinsights:Connector'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +179,42 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[bool] is_internal: If this is an internal connector.
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The connector resource format.
+        Latest API Version: 2017-04-26.
+
+        :param str resource_name: The name of the resource.
+        :param ConnectorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 connector_name: Optional[pulumi.Input[str]] = None,
+                 connector_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 connector_type: Optional[pulumi.Input[Union[str, 'ConnectorTypes']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 hub_name: Optional[pulumi.Input[str]] = None,
+                 is_internal: Optional[pulumi.Input[bool]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""Connector is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:customerinsights:Connector'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,31 +231,31 @@ class Connector(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
-            __props__['connector_name'] = connector_name
+            __props__.__dict__['connector_name'] = connector_name
             if connector_properties is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_properties'")
-            __props__['connector_properties'] = connector_properties
+            __props__.__dict__['connector_properties'] = connector_properties
             if connector_type is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_type'")
-            __props__['connector_type'] = connector_type
-            __props__['description'] = description
-            __props__['display_name'] = display_name
+            __props__.__dict__['connector_type'] = connector_type
+            __props__.__dict__['description'] = description
+            __props__.__dict__['display_name'] = display_name
             if hub_name is None and not opts.urn:
                 raise TypeError("Missing required property 'hub_name'")
-            __props__['hub_name'] = hub_name
-            __props__['is_internal'] = is_internal
+            __props__.__dict__['hub_name'] = hub_name
+            __props__.__dict__['is_internal'] = is_internal
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['connector_id'] = None
-            __props__['created'] = None
-            __props__['last_modified'] = None
-            __props__['name'] = None
-            __props__['state'] = None
-            __props__['tenant_id'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['connector_id'] = None
+            __props__.__dict__['created'] = None
+            __props__.__dict__['last_modified'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['state'] = None
+            __props__.__dict__['tenant_id'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:customerinsights/latest:Connector"), pulumi.Alias(type_="azure-native:customerinsights:Connector"), pulumi.Alias(type_="azure-nextgen:customerinsights:Connector"), pulumi.Alias(type_="azure-native:customerinsights/v20170101:Connector"), pulumi.Alias(type_="azure-nextgen:customerinsights/v20170101:Connector"), pulumi.Alias(type_="azure-native:customerinsights/v20170426:Connector"), pulumi.Alias(type_="azure-nextgen:customerinsights/v20170426:Connector")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Connector, __self__).__init__(
@@ -111,19 +280,19 @@ class Connector(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["connector_id"] = None
-        __props__["connector_name"] = None
-        __props__["connector_properties"] = None
-        __props__["connector_type"] = None
-        __props__["created"] = None
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["is_internal"] = None
-        __props__["last_modified"] = None
-        __props__["name"] = None
-        __props__["state"] = None
-        __props__["tenant_id"] = None
-        __props__["type"] = None
+        __props__['connector_id'] = None
+        __props__['connector_name'] = None
+        __props__['connector_properties'] = None
+        __props__['connector_type'] = None
+        __props__['created'] = None
+        __props__['description'] = None
+        __props__['display_name'] = None
+        __props__['is_internal'] = None
+        __props__['last_modified'] = None
+        __props__['name'] = None
+        __props__['state'] = None
+        __props__['tenant_id'] = None
+        __props__['type'] = None
         return Connector(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -229,10 +398,4 @@ class Connector(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

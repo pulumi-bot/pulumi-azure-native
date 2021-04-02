@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -51,15 +51,33 @@ class ConnectivityCollectionResponse(dict):
         """
         return pulumi.get(self, "peerings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedNetworkGroupResponse(dict):
     """
     The Managed Network Group resource
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "managementGroups":
+            suggest = "management_groups"
+        elif key == "virtualNetworks":
+            suggest = "virtual_networks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedNetworkGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedNetworkGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedNetworkGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -192,15 +210,29 @@ class ManagedNetworkGroupResponse(dict):
         """
         return pulumi.get(self, "virtual_networks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedNetworkPeeringPolicyPropertiesResponse(dict):
     """
     Properties of a Managed Network Peering Policy
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedNetworkPeeringPolicyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedNetworkPeeringPolicyPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedNetworkPeeringPolicyPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -275,9 +307,6 @@ class ManagedNetworkPeeringPolicyPropertiesResponse(dict):
         """
         return pulumi.get(self, "spokes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedNetworkPeeringPolicyResponse(dict):
@@ -346,9 +375,6 @@ class ManagedNetworkPeeringPolicyResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceIdResponse(dict):
@@ -372,15 +398,31 @@ class ResourceIdResponse(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScopeResponse(dict):
     """
     Scope of a Managed Network
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managementGroups":
+            suggest = "management_groups"
+        elif key == "virtualNetworks":
+            suggest = "virtual_networks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScopeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScopeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScopeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  management_groups: Optional[Sequence['outputs.ResourceIdResponse']] = None,
                  subnets: Optional[Sequence['outputs.ResourceIdResponse']] = None,
@@ -433,8 +475,5 @@ class ScopeResponse(dict):
         The collection of virtual nets covered by the Managed Network
         """
         return pulumi.get(self, "virtual_networks")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

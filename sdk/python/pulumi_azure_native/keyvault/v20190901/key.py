@@ -5,16 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Key']
+__all__ = ['KeyArgs', 'Key']
+
+@pulumi.input_type
+class KeyArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input['KeyPropertiesArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 vault_name: pulumi.Input[str],
+                 key_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Key resource.
+        :param pulumi.Input['KeyPropertiesArgs'] properties: The properties of the key to be created.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group which contains the specified key vault.
+        :param pulumi.Input[str] vault_name: The name of the key vault which contains the key to be created.
+        :param pulumi.Input[str] key_name: The name of the key to be created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags that will be assigned to the key.
+        """
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "vault_name", vault_name)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input['KeyPropertiesArgs']:
+        """
+        The properties of the key to be created.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input['KeyPropertiesArgs']):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group which contains the specified key vault.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="vaultName")
+    def vault_name(self) -> pulumi.Input[str]:
+        """
+        The name of the key vault which contains the key to be created.
+        """
+        return pulumi.get(self, "vault_name")
+
+    @vault_name.setter
+    def vault_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vault_name", value)
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the key to be created.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags that will be assigned to the key.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Key(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +122,38 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags that will be assigned to the key.
         :param pulumi.Input[str] vault_name: The name of the key vault which contains the key to be created.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The key resource.
+
+        :param str resource_name: The name of the resource.
+        :param KeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 key_name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['KeyPropertiesArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 vault_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,29 +169,29 @@ class Key(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyArgs.__new__(KeyArgs)
 
-            __props__['key_name'] = key_name
+            __props__.__dict__['key_name'] = key_name
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
+            __props__.__dict__['properties'] = properties
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
             if vault_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_name'")
-            __props__['vault_name'] = vault_name
-            __props__['attributes'] = None
-            __props__['curve_name'] = None
-            __props__['key_ops'] = None
-            __props__['key_size'] = None
-            __props__['key_uri'] = None
-            __props__['key_uri_with_version'] = None
-            __props__['kty'] = None
-            __props__['location'] = None
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['vault_name'] = vault_name
+            __props__.__dict__['attributes'] = None
+            __props__.__dict__['curve_name'] = None
+            __props__.__dict__['key_ops'] = None
+            __props__.__dict__['key_size'] = None
+            __props__.__dict__['key_uri'] = None
+            __props__.__dict__['key_uri_with_version'] = None
+            __props__.__dict__['kty'] = None
+            __props__.__dict__['location'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:keyvault/v20190901:Key"), pulumi.Alias(type_="azure-native:keyvault:Key"), pulumi.Alias(type_="azure-nextgen:keyvault:Key"), pulumi.Alias(type_="azure-native:keyvault/latest:Key"), pulumi.Alias(type_="azure-nextgen:keyvault/latest:Key")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Key, __self__).__init__(
@@ -99,17 +216,17 @@ class Key(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["attributes"] = None
-        __props__["curve_name"] = None
-        __props__["key_ops"] = None
-        __props__["key_size"] = None
-        __props__["key_uri"] = None
-        __props__["key_uri_with_version"] = None
-        __props__["kty"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['attributes'] = None
+        __props__['curve_name'] = None
+        __props__['key_ops'] = None
+        __props__['key_size'] = None
+        __props__['key_uri'] = None
+        __props__['key_uri_with_version'] = None
+        __props__['kty'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return Key(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -196,10 +313,4 @@ class Key(pulumi.CustomResource):
         Resource type of the key vault resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,14 +5,103 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['PartnerNamespace']
+__all__ = ['PartnerNamespaceArgs', 'PartnerNamespace']
+
+@pulumi.input_type
+class PartnerNamespaceArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
+                 partner_namespace_name: Optional[pulumi.Input[str]] = None,
+                 partner_registration_fully_qualified_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a PartnerNamespace resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription.
+        :param pulumi.Input[str] location: Location of the resource.
+        :param pulumi.Input[str] partner_namespace_name: Name of the partner namespace.
+        :param pulumi.Input[str] partner_registration_fully_qualified_id: The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
+               /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the resource.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if partner_namespace_name is not None:
+            pulumi.set(__self__, "partner_namespace_name", partner_namespace_name)
+        if partner_registration_fully_qualified_id is not None:
+            pulumi.set(__self__, "partner_registration_fully_qualified_id", partner_registration_fully_qualified_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the user's subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the resource.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="partnerNamespaceName")
+    def partner_namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the partner namespace.
+        """
+        return pulumi.get(self, "partner_namespace_name")
+
+    @partner_namespace_name.setter
+    def partner_namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partner_namespace_name", value)
+
+    @property
+    @pulumi.getter(name="partnerRegistrationFullyQualifiedId")
+    def partner_registration_fully_qualified_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
+        /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
+        """
+        return pulumi.get(self, "partner_registration_fully_qualified_id")
+
+    @partner_registration_fully_qualified_id.setter
+    def partner_registration_fully_qualified_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partner_registration_fully_qualified_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class PartnerNamespace(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +125,38 @@ class PartnerNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PartnerNamespaceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        EventGrid Partner Namespace.
+
+        :param str resource_name: The name of the resource.
+        :param PartnerNamespaceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PartnerNamespaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 partner_namespace_name: Optional[pulumi.Input[str]] = None,
+                 partner_registration_fully_qualified_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,20 +172,20 @@ class PartnerNamespace(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PartnerNamespaceArgs.__new__(PartnerNamespaceArgs)
 
-            __props__['location'] = location
-            __props__['partner_namespace_name'] = partner_namespace_name
-            __props__['partner_registration_fully_qualified_id'] = partner_registration_fully_qualified_id
+            __props__.__dict__['location'] = location
+            __props__.__dict__['partner_namespace_name'] = partner_namespace_name
+            __props__.__dict__['partner_registration_fully_qualified_id'] = partner_registration_fully_qualified_id
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['endpoint'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['endpoint'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:eventgrid/v20200401preview:PartnerNamespace"), pulumi.Alias(type_="azure-native:eventgrid:PartnerNamespace"), pulumi.Alias(type_="azure-nextgen:eventgrid:PartnerNamespace"), pulumi.Alias(type_="azure-native:eventgrid/v20201015preview:PartnerNamespace"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20201015preview:PartnerNamespace")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PartnerNamespace, __self__).__init__(
@@ -89,14 +210,14 @@ class PartnerNamespace(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["endpoint"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["partner_registration_fully_qualified_id"] = None
-        __props__["provisioning_state"] = None
-        __props__["system_data"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['endpoint'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['partner_registration_fully_qualified_id'] = None
+        __props__['provisioning_state'] = None
+        __props__['system_data'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return PartnerNamespace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -163,10 +284,4 @@ class PartnerNamespace(pulumi.CustomResource):
         Type of the resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

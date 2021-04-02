@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -42,6 +42,29 @@ class AddressResponse(dict):
     """
     The shipping address of the customer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressLine1":
+            suggest = "address_line1"
+        elif key == "addressLine2":
+            suggest = "address_line2"
+        elif key == "addressLine3":
+            suggest = "address_line3"
+        elif key == "postalCode":
+            suggest = "postal_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddressResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  country: str,
                  address_line1: Optional[str] = None,
@@ -130,15 +153,31 @@ class AddressResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AsymmetricEncryptedSecretResponse(dict):
     """
     Represent the secrets intended for encryption with asymmetric key pair.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionAlgorithm":
+            suggest = "encryption_algorithm"
+        elif key == "encryptionCertThumbprint":
+            suggest = "encryption_cert_thumbprint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AsymmetricEncryptedSecretResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AsymmetricEncryptedSecretResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AsymmetricEncryptedSecretResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  value: str,
@@ -178,15 +217,33 @@ class AsymmetricEncryptedSecretResponse(dict):
         """
         return pulumi.get(self, "encryption_cert_thumbprint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureContainerInfoResponse(dict):
     """
     Azure container mapping of the endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerName":
+            suggest = "container_name"
+        elif key == "dataFormat":
+            suggest = "data_format"
+        elif key == "storageAccountCredentialId":
+            suggest = "storage_account_credential_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureContainerInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureContainerInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureContainerInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_name: str,
                  data_format: str,
@@ -225,15 +282,29 @@ class AzureContainerInfoResponse(dict):
         """
         return pulumi.get(self, "storage_account_credential_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClientAccessRightResponse(dict):
     """
     The mapping between a particular client IP and the type of access client has on the NFS share.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessPermission":
+            suggest = "access_permission"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientAccessRightResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientAccessRightResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientAccessRightResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_permission: str,
                  client: str):
@@ -261,15 +332,33 @@ class ClientAccessRightResponse(dict):
         """
         return pulumi.get(self, "client")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContactDetailsResponse(dict):
     """
     Contains all the contact details of the customer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "companyName":
+            suggest = "company_name"
+        elif key == "contactPerson":
+            suggest = "contact_person"
+        elif key == "emailList":
+            suggest = "email_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContactDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContactDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContactDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  company_name: str,
                  contact_person: str,
@@ -318,9 +407,6 @@ class ContactDetailsResponse(dict):
         The phone number.
         """
         return pulumi.get(self, "phone")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -452,15 +538,43 @@ class EdgeProfileResponse(dict):
         """
         return pulumi.get(self, "subscription")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EdgeProfileSubscriptionResponse(dict):
     """
     Subscription details for the Edge Profile
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "locationPlacementId":
+            suggest = "location_placement_id"
+        elif key == "quotaId":
+            suggest = "quota_id"
+        elif key == "registeredFeatures":
+            suggest = "registered_features"
+        elif key == "registrationDate":
+            suggest = "registration_date"
+        elif key == "registrationId":
+            suggest = "registration_id"
+        elif key == "serializedDetails":
+            suggest = "serialized_details"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeProfileSubscriptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeProfileSubscriptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeProfileSubscriptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  location_placement_id: Optional[str] = None,
@@ -554,15 +668,35 @@ class EdgeProfileSubscriptionResponse(dict):
     def tenant_id(self) -> Optional[str]:
         return pulumi.get(self, "tenant_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricConfigurationResponse(dict):
     """
     Metric configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "counterSets":
+            suggest = "counter_sets"
+        elif key == "resourceId":
+            suggest = "resource_id"
+        elif key == "mdmAccount":
+            suggest = "mdm_account"
+        elif key == "metricNameSpace":
+            suggest = "metric_name_space"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  counter_sets: Sequence['outputs.MetricCounterSetResponse'],
                  resource_id: str,
@@ -614,15 +748,31 @@ class MetricConfigurationResponse(dict):
         """
         return pulumi.get(self, "metric_name_space")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricCounterResponse(dict):
     """
     The metric counter
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalDimensions":
+            suggest = "additional_dimensions"
+        elif key == "dimensionFilter":
+            suggest = "dimension_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricCounterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricCounterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricCounterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  additional_dimensions: Optional[Sequence['outputs.MetricDimensionResponse']] = None,
@@ -675,9 +825,6 @@ class MetricCounterResponse(dict):
         """
         return pulumi.get(self, "instance")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricCounterSetResponse(dict):
@@ -700,15 +847,31 @@ class MetricCounterSetResponse(dict):
         """
         return pulumi.get(self, "counters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricDimensionResponse(dict):
     """
     The metric dimension
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceName":
+            suggest = "source_name"
+        elif key == "sourceType":
+            suggest = "source_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricDimensionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricDimensionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricDimensionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_name: str,
                  source_type: str):
@@ -736,15 +899,37 @@ class MetricDimensionResponse(dict):
         """
         return pulumi.get(self, "source_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MountPointMapResponse(dict):
     """
     The share mount point.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPoint":
+            suggest = "mount_point"
+        elif key == "mountType":
+            suggest = "mount_type"
+        elif key == "roleId":
+            suggest = "role_id"
+        elif key == "roleType":
+            suggest = "role_type"
+        elif key == "shareId":
+            suggest = "share_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MountPointMapResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MountPointMapResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MountPointMapResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mount_point: str,
                  mount_type: str,
@@ -805,15 +990,33 @@ class MountPointMapResponse(dict):
         """
         return pulumi.get(self, "share_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrderStatusResponse(dict):
     """
     Represents a single status change.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalOrderDetails":
+            suggest = "additional_order_details"
+        elif key == "trackingInformation":
+            suggest = "tracking_information"
+        elif key == "updateDateTime":
+            suggest = "update_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrderStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrderStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrderStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_order_details: Mapping[str, str],
                  status: str,
@@ -877,15 +1080,35 @@ class OrderStatusResponse(dict):
         """
         return pulumi.get(self, "comments")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RefreshDetailsResponse(dict):
     """
     Fields for tracking refresh job on the share or container.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorManifestFile":
+            suggest = "error_manifest_file"
+        elif key == "inProgressRefreshJobId":
+            suggest = "in_progress_refresh_job_id"
+        elif key == "lastCompletedRefreshJobTimeInUTC":
+            suggest = "last_completed_refresh_job_time_in_utc"
+        elif key == "lastJob":
+            suggest = "last_job"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RefreshDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RefreshDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RefreshDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_manifest_file: Optional[str] = None,
                  in_progress_refresh_job_id: Optional[str] = None,
@@ -939,15 +1162,31 @@ class RefreshDetailsResponse(dict):
         """
         return pulumi.get(self, "last_job")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceIdentityResponse(dict):
     """
     Msi identity details of the resource
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceIdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceIdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -987,15 +1226,31 @@ class ResourceIdentityResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceMoveDetailsResponse(dict):
     """
     Fields for tracking resource move
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operationInProgress":
+            suggest = "operation_in_progress"
+        elif key == "operationInProgressLockTimeoutInUTC":
+            suggest = "operation_in_progress_lock_timeout_in_utc"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceMoveDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceMoveDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceMoveDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operation_in_progress: Optional[str] = None,
                  operation_in_progress_lock_timeout_in_utc: Optional[str] = None):
@@ -1024,9 +1279,6 @@ class ResourceMoveDetailsResponse(dict):
         Denotes the timeout of the operation to finish
         """
         return pulumi.get(self, "operation_in_progress_lock_timeout_in_utc")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1069,6 +1321,25 @@ class ShareAccessRightResponse(dict):
     """
     Specifies the mapping between this particular user and the type of access he has on shares on this device.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessType":
+            suggest = "access_type"
+        elif key == "shareId":
+            suggest = "share_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShareAccessRightResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShareAccessRightResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShareAccessRightResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_type: str,
                  share_id: str):
@@ -1095,9 +1366,6 @@ class ShareAccessRightResponse(dict):
         The share ID.
         """
         return pulumi.get(self, "share_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1134,9 +1402,6 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubscriptionRegisteredFeaturesResponse(dict):
@@ -1158,15 +1423,39 @@ class SubscriptionRegisteredFeaturesResponse(dict):
     def state(self) -> Optional[str]:
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByType":
+            suggest = "created_by_type"
+        elif key == "lastModifiedAt":
+            suggest = "last_modified_at"
+        elif key == "lastModifiedBy":
+            suggest = "last_modified_by"
+        elif key == "lastModifiedByType":
+            suggest = "last_modified_by_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -1244,15 +1533,35 @@ class SystemDataResponse(dict):
         """
         return pulumi.get(self, "last_modified_by_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TrackingInfoResponse(dict):
     """
     Tracking courier information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "carrierName":
+            suggest = "carrier_name"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "trackingId":
+            suggest = "tracking_id"
+        elif key == "trackingUrl":
+            suggest = "tracking_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrackingInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrackingInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrackingInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  carrier_name: Optional[str] = None,
                  serial_number: Optional[str] = None,
@@ -1306,15 +1615,31 @@ class TrackingInfoResponse(dict):
         """
         return pulumi.get(self, "tracking_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserAccessRightResponse(dict):
     """
     The mapping between a particular user and the access type on the SMB share.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessType":
+            suggest = "access_type"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAccessRightResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAccessRightResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAccessRightResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_type: str,
                  user_id: str):
@@ -1341,8 +1666,5 @@ class UserAccessRightResponse(dict):
         User ID (already existing in the device).
         """
         return pulumi.get(self, "user_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

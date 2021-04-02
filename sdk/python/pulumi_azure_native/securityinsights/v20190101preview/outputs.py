@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -145,6 +145,25 @@ class AutomationRuleModifyPropertiesActionResponse(dict):
     """
     Describes an automation rule action to modify an object's properties
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionConfiguration":
+            suggest = "action_configuration"
+        elif key == "actionType":
+            suggest = "action_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleModifyPropertiesActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleModifyPropertiesActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleModifyPropertiesActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_configuration: 'outputs.AutomationRuleModifyPropertiesActionResponseActionConfiguration',
                  action_type: str,
@@ -185,15 +204,31 @@ class AutomationRuleModifyPropertiesActionResponse(dict):
         """
         return pulumi.get(self, "order")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutomationRuleModifyPropertiesActionResponseActionConfiguration(dict):
     """
     The configuration of the modify properties automation rule action
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "classificationComment":
+            suggest = "classification_comment"
+        elif key == "classificationReason":
+            suggest = "classification_reason"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleModifyPropertiesActionResponseActionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleModifyPropertiesActionResponseActionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleModifyPropertiesActionResponseActionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  classification: Optional[str] = None,
                  classification_comment: Optional[str] = None,
@@ -283,15 +318,31 @@ class AutomationRuleModifyPropertiesActionResponseActionConfiguration(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutomationRulePropertyValuesConditionResponse(dict):
     """
     Describes an automation rule condition that evaluates a property's value
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conditionProperties":
+            suggest = "condition_properties"
+        elif key == "conditionType":
+            suggest = "condition_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRulePropertyValuesConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRulePropertyValuesConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRulePropertyValuesConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  condition_properties: 'outputs.AutomationRulePropertyValuesConditionResponseConditionProperties',
                  condition_type: str):
@@ -321,15 +372,31 @@ class AutomationRulePropertyValuesConditionResponse(dict):
         """
         return pulumi.get(self, "condition_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutomationRulePropertyValuesConditionResponseConditionProperties(dict):
     """
     The configuration of the automation rule condition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyName":
+            suggest = "property_name"
+        elif key == "propertyValues":
+            suggest = "property_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRulePropertyValuesConditionResponseConditionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRulePropertyValuesConditionResponseConditionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRulePropertyValuesConditionResponseConditionProperties.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operator: Optional[str] = None,
                  property_name: Optional[str] = None,
@@ -371,15 +438,31 @@ class AutomationRulePropertyValuesConditionResponseConditionProperties(dict):
         """
         return pulumi.get(self, "property_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutomationRuleRunPlaybookActionResponse(dict):
     """
     Describes an automation rule action to run a playbook
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionConfiguration":
+            suggest = "action_configuration"
+        elif key == "actionType":
+            suggest = "action_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleRunPlaybookActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleRunPlaybookActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleRunPlaybookActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_configuration: 'outputs.AutomationRuleRunPlaybookActionResponseActionConfiguration',
                  action_type: str,
@@ -420,15 +503,31 @@ class AutomationRuleRunPlaybookActionResponse(dict):
         """
         return pulumi.get(self, "order")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutomationRuleRunPlaybookActionResponseActionConfiguration(dict):
     """
     The configuration of the run playbook automation rule action
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logicAppResourceId":
+            suggest = "logic_app_resource_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleRunPlaybookActionResponseActionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleRunPlaybookActionResponseActionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleRunPlaybookActionResponseActionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  logic_app_resource_id: Optional[str] = None,
                  tenant_id: Optional[str] = None):
@@ -458,15 +557,35 @@ class AutomationRuleRunPlaybookActionResponseActionConfiguration(dict):
         """
         return pulumi.get(self, "tenant_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutomationRuleTriggeringLogicResponse(dict):
     """
     Describes automation rule triggering logic
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "triggersOn":
+            suggest = "triggers_on"
+        elif key == "triggersWhen":
+            suggest = "triggers_when"
+        elif key == "expirationTimeUtc":
+            suggest = "expiration_time_utc"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleTriggeringLogicResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleTriggeringLogicResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleTriggeringLogicResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_enabled: bool,
                  triggers_on: str,
@@ -528,9 +647,6 @@ class AutomationRuleTriggeringLogicResponse(dict):
         Determines when the automation rule should automatically expire and be disabled.
         """
         return pulumi.get(self, "expiration_time_utc")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -657,6 +773,25 @@ class ClientInfoResponse(dict):
     """
     Information on the client (user or application) that made some action
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+        elif key == "userPrincipalName":
+            suggest = "user_principal_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email: Optional[str] = None,
                  name: Optional[str] = None,
@@ -709,9 +844,6 @@ class ClientInfoResponse(dict):
         The user principal name of the client.
         """
         return pulumi.get(self, "user_principal_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -892,6 +1024,29 @@ class IncidentAdditionalDataResponse(dict):
     """
     Incident additional data property bag.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alertProductNames":
+            suggest = "alert_product_names"
+        elif key == "alertsCount":
+            suggest = "alerts_count"
+        elif key == "bookmarksCount":
+            suggest = "bookmarks_count"
+        elif key == "commentsCount":
+            suggest = "comments_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IncidentAdditionalDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IncidentAdditionalDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IncidentAdditionalDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alert_product_names: Sequence[str],
                  alerts_count: int,
@@ -952,15 +1107,31 @@ class IncidentAdditionalDataResponse(dict):
         """
         return pulumi.get(self, "tactics")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IncidentInfoResponse(dict):
     """
     Describes related incident information for the bookmark
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "incidentId":
+            suggest = "incident_id"
+        elif key == "relationName":
+            suggest = "relation_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IncidentInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IncidentInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IncidentInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  incident_id: Optional[str] = None,
                  relation_name: Optional[str] = None,
@@ -1014,15 +1185,31 @@ class IncidentInfoResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IncidentLabelResponse(dict):
     """
     Represents an incident label
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelName":
+            suggest = "label_name"
+        elif key == "labelType":
+            suggest = "label_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IncidentLabelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IncidentLabelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IncidentLabelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label_name: str,
                  label_type: str):
@@ -1050,15 +1237,33 @@ class IncidentLabelResponse(dict):
         """
         return pulumi.get(self, "label_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IncidentOwnerInfoResponse(dict):
     """
     Information on the user an incident is assigned to
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignedTo":
+            suggest = "assigned_to"
+        elif key == "objectId":
+            suggest = "object_id"
+        elif key == "userPrincipalName":
+            suggest = "user_principal_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IncidentOwnerInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IncidentOwnerInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IncidentOwnerInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  assigned_to: Optional[str] = None,
                  email: Optional[str] = None,
@@ -1111,9 +1316,6 @@ class IncidentOwnerInfoResponse(dict):
         The user principal name of the user the incident is assigned to.
         """
         return pulumi.get(self, "user_principal_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1435,6 +1637,23 @@ class UserInfoResponse(dict):
     """
     User information that made some action
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email: str,
                  name: str,
@@ -1473,9 +1692,6 @@ class UserInfoResponse(dict):
         The object id of the user.
         """
         return pulumi.get(self, "object_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1483,6 +1699,23 @@ class WatchlistUserInfoResponse(dict):
     """
     User information that made some action
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WatchlistUserInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WatchlistUserInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WatchlistUserInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email: str,
                  name: str,
@@ -1521,8 +1754,5 @@ class WatchlistUserInfoResponse(dict):
         The object id of the user.
         """
         return pulumi.get(self, "object_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

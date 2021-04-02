@@ -5,10 +5,64 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['DisasterRecoveryConfiguration']
+__all__ = ['DisasterRecoveryConfigurationArgs', 'DisasterRecoveryConfiguration']
+
+@pulumi.input_type
+class DisasterRecoveryConfigurationArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 server_name: pulumi.Input[str],
+                 disaster_recovery_configuration_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DisasterRecoveryConfiguration resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        :param pulumi.Input[str] server_name: The name of the server.
+        :param pulumi.Input[str] disaster_recovery_configuration_name: The name of the disaster recovery configuration to be created/updated.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "server_name", server_name)
+        if disaster_recovery_configuration_name is not None:
+            pulumi.set(__self__, "disaster_recovery_configuration_name", disaster_recovery_configuration_name)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> pulumi.Input[str]:
+        """
+        The name of the server.
+        """
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_name", value)
+
+    @property
+    @pulumi.getter(name="disasterRecoveryConfigurationName")
+    def disaster_recovery_configuration_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the disaster recovery configuration to be created/updated.
+        """
+        return pulumi.get(self, "disaster_recovery_configuration_name")
+
+    @disaster_recovery_configuration_name.setter
+    def disaster_recovery_configuration_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disaster_recovery_configuration_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:sql:DisasterRecoveryConfiguration'.""", DeprecationWarning)
 
@@ -16,6 +70,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class DisasterRecoveryConfiguration(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:sql:DisasterRecoveryConfiguration'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +90,37 @@ class DisasterRecoveryConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
         :param pulumi.Input[str] server_name: The name of the server.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DisasterRecoveryConfigurationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a disaster recovery configuration.
+        Latest API Version: 2014-04-01.
+
+        :param str resource_name: The name of the resource.
+        :param DisasterRecoveryConfigurationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DisasterRecoveryConfigurationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 disaster_recovery_configuration_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""DisasterRecoveryConfiguration is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:sql:DisasterRecoveryConfiguration'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,25 +137,25 @@ class DisasterRecoveryConfiguration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DisasterRecoveryConfigurationArgs.__new__(DisasterRecoveryConfigurationArgs)
 
-            __props__['disaster_recovery_configuration_name'] = disaster_recovery_configuration_name
+            __props__.__dict__['disaster_recovery_configuration_name'] = disaster_recovery_configuration_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if server_name is None and not opts.urn:
                 raise TypeError("Missing required property 'server_name'")
-            __props__['server_name'] = server_name
-            __props__['auto_failover'] = None
-            __props__['failover_policy'] = None
-            __props__['location'] = None
-            __props__['logical_server_name'] = None
-            __props__['name'] = None
-            __props__['partner_logical_server_name'] = None
-            __props__['partner_server_id'] = None
-            __props__['role'] = None
-            __props__['status'] = None
-            __props__['type'] = None
+            __props__.__dict__['server_name'] = server_name
+            __props__.__dict__['auto_failover'] = None
+            __props__.__dict__['failover_policy'] = None
+            __props__.__dict__['location'] = None
+            __props__.__dict__['logical_server_name'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['partner_logical_server_name'] = None
+            __props__.__dict__['partner_server_id'] = None
+            __props__.__dict__['role'] = None
+            __props__.__dict__['status'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/latest:DisasterRecoveryConfiguration"), pulumi.Alias(type_="azure-native:sql:DisasterRecoveryConfiguration"), pulumi.Alias(type_="azure-nextgen:sql:DisasterRecoveryConfiguration"), pulumi.Alias(type_="azure-native:sql/v20140401:DisasterRecoveryConfiguration"), pulumi.Alias(type_="azure-nextgen:sql/v20140401:DisasterRecoveryConfiguration")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DisasterRecoveryConfiguration, __self__).__init__(
@@ -94,16 +180,16 @@ class DisasterRecoveryConfiguration(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["auto_failover"] = None
-        __props__["failover_policy"] = None
-        __props__["location"] = None
-        __props__["logical_server_name"] = None
-        __props__["name"] = None
-        __props__["partner_logical_server_name"] = None
-        __props__["partner_server_id"] = None
-        __props__["role"] = None
-        __props__["status"] = None
-        __props__["type"] = None
+        __props__['auto_failover'] = None
+        __props__['failover_policy'] = None
+        __props__['location'] = None
+        __props__['logical_server_name'] = None
+        __props__['name'] = None
+        __props__['partner_logical_server_name'] = None
+        __props__['partner_server_id'] = None
+        __props__['role'] = None
+        __props__['status'] = None
+        __props__['type'] = None
         return DisasterRecoveryConfiguration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -185,10 +271,4 @@ class DisasterRecoveryConfiguration(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

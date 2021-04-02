@@ -5,13 +5,147 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['WebAppSourceControl']
+__all__ = ['WebAppSourceControlArgs', 'WebAppSourceControl']
+
+@pulumi.input_type
+class WebAppSourceControlArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deployment_rollback_enabled: Optional[pulumi.Input[bool]] = None,
+                 is_manual_integration: Optional[pulumi.Input[bool]] = None,
+                 is_mercurial: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 repo_url: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WebAppSourceControl resource.
+        :param pulumi.Input[str] name: Name of the app.
+        :param pulumi.Input[str] resource_group_name: Name of the resource group to which the resource belongs.
+        :param pulumi.Input[str] branch: Name of branch to use for deployment.
+        :param pulumi.Input[bool] deployment_rollback_enabled: <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+        :param pulumi.Input[bool] is_manual_integration: <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+        :param pulumi.Input[bool] is_mercurial: <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+        :param pulumi.Input[str] kind: Kind of resource.
+        :param pulumi.Input[str] repo_url: Repository or source control URL.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deployment_rollback_enabled is not None:
+            pulumi.set(__self__, "deployment_rollback_enabled", deployment_rollback_enabled)
+        if is_manual_integration is not None:
+            pulumi.set(__self__, "is_manual_integration", is_manual_integration)
+        if is_mercurial is not None:
+            pulumi.set(__self__, "is_mercurial", is_mercurial)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if repo_url is not None:
+            pulumi.set(__self__, "repo_url", repo_url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the app.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group to which the resource belongs.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of branch to use for deployment.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="deploymentRollbackEnabled")
+    def deployment_rollback_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+        """
+        return pulumi.get(self, "deployment_rollback_enabled")
+
+    @deployment_rollback_enabled.setter
+    def deployment_rollback_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deployment_rollback_enabled", value)
+
+    @property
+    @pulumi.getter(name="isManualIntegration")
+    def is_manual_integration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+        """
+        return pulumi.get(self, "is_manual_integration")
+
+    @is_manual_integration.setter
+    def is_manual_integration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_manual_integration", value)
+
+    @property
+    @pulumi.getter(name="isMercurial")
+    def is_mercurial(self) -> Optional[pulumi.Input[bool]]:
+        """
+        <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+        """
+        return pulumi.get(self, "is_mercurial")
+
+    @is_mercurial.setter
+    def is_mercurial(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_mercurial", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of resource.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="repoUrl")
+    def repo_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository or source control URL.
+        """
+        return pulumi.get(self, "repo_url")
+
+    @repo_url.setter
+    def repo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_url", value)
 
 
 class WebAppSourceControl(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +174,41 @@ class WebAppSourceControl(pulumi.CustomResource):
         :param pulumi.Input[str] repo_url: Repository or source control URL.
         :param pulumi.Input[str] resource_group_name: Name of the resource group to which the resource belongs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WebAppSourceControlArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Source control configuration for an app.
+
+        :param str resource_name: The name of the resource.
+        :param WebAppSourceControlArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WebAppSourceControlArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 deployment_rollback_enabled: Optional[pulumi.Input[bool]] = None,
+                 is_manual_integration: Optional[pulumi.Input[bool]] = None,
+                 is_mercurial: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 repo_url: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,21 +224,21 @@ class WebAppSourceControl(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WebAppSourceControlArgs.__new__(WebAppSourceControlArgs)
 
-            __props__['branch'] = branch
-            __props__['deployment_rollback_enabled'] = deployment_rollback_enabled
-            __props__['is_manual_integration'] = is_manual_integration
-            __props__['is_mercurial'] = is_mercurial
-            __props__['kind'] = kind
+            __props__.__dict__['branch'] = branch
+            __props__.__dict__['deployment_rollback_enabled'] = deployment_rollback_enabled
+            __props__.__dict__['is_manual_integration'] = is_manual_integration
+            __props__.__dict__['is_mercurial'] = is_mercurial
+            __props__.__dict__['kind'] = kind
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
-            __props__['repo_url'] = repo_url
+            __props__.__dict__['name'] = name
+            __props__.__dict__['repo_url'] = repo_url
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:web/v20160801:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/latest:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/latest:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20150801:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20150801:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20180201:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20180201:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20181101:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20181101:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20190801:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20190801:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20200601:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20200601:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20200901:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20200901:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20201001:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20201001:WebAppSourceControl"), pulumi.Alias(type_="azure-native:web/v20201201:WebAppSourceControl"), pulumi.Alias(type_="azure-nextgen:web/v20201201:WebAppSourceControl")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WebAppSourceControl, __self__).__init__(
@@ -94,14 +263,14 @@ class WebAppSourceControl(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["branch"] = None
-        __props__["deployment_rollback_enabled"] = None
-        __props__["is_manual_integration"] = None
-        __props__["is_mercurial"] = None
-        __props__["kind"] = None
-        __props__["name"] = None
-        __props__["repo_url"] = None
-        __props__["type"] = None
+        __props__['branch'] = None
+        __props__['deployment_rollback_enabled'] = None
+        __props__['is_manual_integration'] = None
+        __props__['is_mercurial'] = None
+        __props__['kind'] = None
+        __props__['name'] = None
+        __props__['repo_url'] = None
+        __props__['type'] = None
         return WebAppSourceControl(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -167,10 +336,4 @@ class WebAppSourceControl(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

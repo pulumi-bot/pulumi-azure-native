@@ -5,14 +5,153 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['Lab']
+__all__ = ['LabArgs', 'Lab']
+
+@pulumi.input_type
+class LabArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 lab_storage_type: Optional[pulumi.Input[Union[str, 'StorageType']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 premium_data_disks: Optional[pulumi.Input[Union[str, 'PremiumDataDisk']]] = None,
+                 provisioning_state: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 unique_identifier: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Lab resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[Union[str, 'StorageType']] lab_storage_type: Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
+        :param pulumi.Input[str] location: The location of the resource.
+        :param pulumi.Input[str] name: The name of the lab.
+        :param pulumi.Input[Union[str, 'PremiumDataDisk']] premium_data_disks: The setting to enable usage of premium data disks.
+               When its value is 'Enabled', creation of standard or premium data disks is allowed.
+               When its value is 'Disabled', only creation of standard data disks is allowed.
+        :param pulumi.Input[str] provisioning_state: The provisioning status of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
+        :param pulumi.Input[str] unique_identifier: The unique immutable identifier of a resource (Guid).
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if lab_storage_type is not None:
+            pulumi.set(__self__, "lab_storage_type", lab_storage_type)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if premium_data_disks is not None:
+            pulumi.set(__self__, "premium_data_disks", premium_data_disks)
+        if provisioning_state is not None:
+            pulumi.set(__self__, "provisioning_state", provisioning_state)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if unique_identifier is not None:
+            pulumi.set(__self__, "unique_identifier", unique_identifier)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="labStorageType")
+    def lab_storage_type(self) -> Optional[pulumi.Input[Union[str, 'StorageType']]]:
+        """
+        Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
+        """
+        return pulumi.get(self, "lab_storage_type")
+
+    @lab_storage_type.setter
+    def lab_storage_type(self, value: Optional[pulumi.Input[Union[str, 'StorageType']]]):
+        pulumi.set(self, "lab_storage_type", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the resource.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the lab.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="premiumDataDisks")
+    def premium_data_disks(self) -> Optional[pulumi.Input[Union[str, 'PremiumDataDisk']]]:
+        """
+        The setting to enable usage of premium data disks.
+        When its value is 'Enabled', creation of standard or premium data disks is allowed.
+        When its value is 'Disabled', only creation of standard data disks is allowed.
+        """
+        return pulumi.get(self, "premium_data_disks")
+
+    @premium_data_disks.setter
+    def premium_data_disks(self, value: Optional[pulumi.Input[Union[str, 'PremiumDataDisk']]]):
+        pulumi.set(self, "premium_data_disks", value)
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provisioning status of the resource.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @provisioning_state.setter
+    def provisioning_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_state", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="uniqueIdentifier")
+    def unique_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique immutable identifier of a resource (Guid).
+        """
+        return pulumi.get(self, "unique_identifier")
+
+    @unique_identifier.setter
+    def unique_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unique_identifier", value)
 
 
 class Lab(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -43,6 +182,41 @@ class Lab(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] unique_identifier: The unique immutable identifier of a resource (Guid).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LabArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A lab.
+
+        :param str resource_name: The name of the resource.
+        :param LabArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LabArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 lab_storage_type: Optional[pulumi.Input[Union[str, 'StorageType']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 premium_data_disks: Optional[pulumi.Input[Union[str, 'PremiumDataDisk']]] = None,
+                 provisioning_state: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 unique_identifier: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -58,25 +232,25 @@ class Lab(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LabArgs.__new__(LabArgs)
 
-            __props__['lab_storage_type'] = lab_storage_type
-            __props__['location'] = location
-            __props__['name'] = name
-            __props__['premium_data_disks'] = premium_data_disks
-            __props__['provisioning_state'] = provisioning_state
+            __props__.__dict__['lab_storage_type'] = lab_storage_type
+            __props__.__dict__['location'] = location
+            __props__.__dict__['name'] = name
+            __props__.__dict__['premium_data_disks'] = premium_data_disks
+            __props__.__dict__['provisioning_state'] = provisioning_state
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['unique_identifier'] = unique_identifier
-            __props__['artifacts_storage_account'] = None
-            __props__['created_date'] = None
-            __props__['default_premium_storage_account'] = None
-            __props__['default_storage_account'] = None
-            __props__['premium_data_disk_storage_account'] = None
-            __props__['type'] = None
-            __props__['vault_name'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['unique_identifier'] = unique_identifier
+            __props__.__dict__['artifacts_storage_account'] = None
+            __props__.__dict__['created_date'] = None
+            __props__.__dict__['default_premium_storage_account'] = None
+            __props__.__dict__['default_storage_account'] = None
+            __props__.__dict__['premium_data_disk_storage_account'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['vault_name'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:devtestlab/v20160515:Lab"), pulumi.Alias(type_="azure-native:devtestlab:Lab"), pulumi.Alias(type_="azure-nextgen:devtestlab:Lab"), pulumi.Alias(type_="azure-native:devtestlab/latest:Lab"), pulumi.Alias(type_="azure-nextgen:devtestlab/latest:Lab"), pulumi.Alias(type_="azure-native:devtestlab/v20150521preview:Lab"), pulumi.Alias(type_="azure-nextgen:devtestlab/v20150521preview:Lab"), pulumi.Alias(type_="azure-native:devtestlab/v20180915:Lab"), pulumi.Alias(type_="azure-nextgen:devtestlab/v20180915:Lab")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Lab, __self__).__init__(
@@ -101,20 +275,20 @@ class Lab(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["artifacts_storage_account"] = None
-        __props__["created_date"] = None
-        __props__["default_premium_storage_account"] = None
-        __props__["default_storage_account"] = None
-        __props__["lab_storage_type"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["premium_data_disk_storage_account"] = None
-        __props__["premium_data_disks"] = None
-        __props__["provisioning_state"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["unique_identifier"] = None
-        __props__["vault_name"] = None
+        __props__['artifacts_storage_account'] = None
+        __props__['created_date'] = None
+        __props__['default_premium_storage_account'] = None
+        __props__['default_storage_account'] = None
+        __props__['lab_storage_type'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['premium_data_disk_storage_account'] = None
+        __props__['premium_data_disks'] = None
+        __props__['provisioning_state'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['unique_identifier'] = None
+        __props__['vault_name'] = None
         return Lab(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -230,10 +404,4 @@ class Lab(pulumi.CustomResource):
         The lab's Key vault.
         """
         return pulumi.get(self, "vault_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

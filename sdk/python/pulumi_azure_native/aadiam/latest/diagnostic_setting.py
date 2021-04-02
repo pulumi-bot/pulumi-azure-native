@@ -5,13 +5,133 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['DiagnosticSetting']
+__all__ = ['DiagnosticSettingArgs', 'DiagnosticSetting']
+
+@pulumi.input_type
+class DiagnosticSettingArgs:
+    def __init__(__self__, *,
+                 event_hub_authorization_rule_id: Optional[pulumi.Input[str]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
+                 logs: Optional[pulumi.Input[Sequence[pulumi.Input['LogSettingsArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 service_bus_rule_id: Optional[pulumi.Input[str]] = None,
+                 storage_account_id: Optional[pulumi.Input[str]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DiagnosticSetting resource.
+        :param pulumi.Input[str] event_hub_authorization_rule_id: The resource Id for the event hub authorization rule.
+        :param pulumi.Input[str] event_hub_name: The name of the event hub. If none is specified, the default event hub will be selected.
+        :param pulumi.Input[Sequence[pulumi.Input['LogSettingsArgs']]] logs: The list of logs settings.
+        :param pulumi.Input[str] name: The name of the diagnostic setting.
+        :param pulumi.Input[str] service_bus_rule_id: The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
+        :param pulumi.Input[str] storage_account_id: The resource ID of the storage account to which you would like to send Diagnostic Logs.
+        :param pulumi.Input[str] workspace_id: The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
+        """
+        if event_hub_authorization_rule_id is not None:
+            pulumi.set(__self__, "event_hub_authorization_rule_id", event_hub_authorization_rule_id)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_bus_rule_id is not None:
+            pulumi.set(__self__, "service_bus_rule_id", service_bus_rule_id)
+        if storage_account_id is not None:
+            pulumi.set(__self__, "storage_account_id", storage_account_id)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="eventHubAuthorizationRuleId")
+    def event_hub_authorization_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource Id for the event hub authorization rule.
+        """
+        return pulumi.get(self, "event_hub_authorization_rule_id")
+
+    @event_hub_authorization_rule_id.setter
+    def event_hub_authorization_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_authorization_rule_id", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the event hub. If none is specified, the default event hub will be selected.
+        """
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogSettingsArgs']]]]:
+        """
+        The list of logs settings.
+        """
+        return pulumi.get(self, "logs")
+
+    @logs.setter
+    def logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LogSettingsArgs']]]]):
+        pulumi.set(self, "logs", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the diagnostic setting.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serviceBusRuleId")
+    def service_bus_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
+        """
+        return pulumi.get(self, "service_bus_rule_id")
+
+    @service_bus_rule_id.setter
+    def service_bus_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_bus_rule_id", value)
+
+    @property
+    @pulumi.getter(name="storageAccountId")
+    def storage_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the storage account to which you would like to send Diagnostic Logs.
+        """
+        return pulumi.get(self, "storage_account_id")
+
+    @storage_account_id.setter
+    def storage_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_account_id", value)
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:aadiam:DiagnosticSetting'.""", DeprecationWarning)
 
@@ -19,6 +139,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class DiagnosticSetting(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:aadiam:DiagnosticSetting'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +167,41 @@ class DiagnosticSetting(pulumi.CustomResource):
         :param pulumi.Input[str] storage_account_id: The resource ID of the storage account to which you would like to send Diagnostic Logs.
         :param pulumi.Input[str] workspace_id: The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[DiagnosticSettingArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The diagnostic setting resource.
+        Latest API Version: 2017-04-01.
+
+        :param str resource_name: The name of the resource.
+        :param DiagnosticSettingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DiagnosticSettingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 event_hub_authorization_rule_id: Optional[pulumi.Input[str]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
+                 logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSettingsArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 service_bus_rule_id: Optional[pulumi.Input[str]] = None,
+                 storage_account_id: Optional[pulumi.Input[str]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""DiagnosticSetting is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:aadiam:DiagnosticSetting'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,16 +218,16 @@ class DiagnosticSetting(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DiagnosticSettingArgs.__new__(DiagnosticSettingArgs)
 
-            __props__['event_hub_authorization_rule_id'] = event_hub_authorization_rule_id
-            __props__['event_hub_name'] = event_hub_name
-            __props__['logs'] = logs
-            __props__['name'] = name
-            __props__['service_bus_rule_id'] = service_bus_rule_id
-            __props__['storage_account_id'] = storage_account_id
-            __props__['workspace_id'] = workspace_id
-            __props__['type'] = None
+            __props__.__dict__['event_hub_authorization_rule_id'] = event_hub_authorization_rule_id
+            __props__.__dict__['event_hub_name'] = event_hub_name
+            __props__.__dict__['logs'] = logs
+            __props__.__dict__['name'] = name
+            __props__.__dict__['service_bus_rule_id'] = service_bus_rule_id
+            __props__.__dict__['storage_account_id'] = storage_account_id
+            __props__.__dict__['workspace_id'] = workspace_id
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:aadiam/latest:DiagnosticSetting"), pulumi.Alias(type_="azure-native:aadiam:DiagnosticSetting"), pulumi.Alias(type_="azure-nextgen:aadiam:DiagnosticSetting"), pulumi.Alias(type_="azure-native:aadiam/v20170401:DiagnosticSetting"), pulumi.Alias(type_="azure-nextgen:aadiam/v20170401:DiagnosticSetting")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DiagnosticSetting, __self__).__init__(
@@ -96,14 +252,14 @@ class DiagnosticSetting(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["event_hub_authorization_rule_id"] = None
-        __props__["event_hub_name"] = None
-        __props__["logs"] = None
-        __props__["name"] = None
-        __props__["service_bus_rule_id"] = None
-        __props__["storage_account_id"] = None
-        __props__["type"] = None
-        __props__["workspace_id"] = None
+        __props__['event_hub_authorization_rule_id'] = None
+        __props__['event_hub_name'] = None
+        __props__['logs'] = None
+        __props__['name'] = None
+        __props__['service_bus_rule_id'] = None
+        __props__['storage_account_id'] = None
+        __props__['type'] = None
+        __props__['workspace_id'] = None
         return DiagnosticSetting(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -169,10 +325,4 @@ class DiagnosticSetting(pulumi.CustomResource):
         The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
         """
         return pulumi.get(self, "workspace_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

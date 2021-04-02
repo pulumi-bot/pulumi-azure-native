@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -35,6 +35,41 @@ class CognitiveServicesAccountApiPropertiesResponse(dict):
     """
     The api properties for special APIs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aadClientId":
+            suggest = "aad_client_id"
+        elif key == "aadTenantId":
+            suggest = "aad_tenant_id"
+        elif key == "eventHubConnectionString":
+            suggest = "event_hub_connection_string"
+        elif key == "qnaAzureSearchEndpointId":
+            suggest = "qna_azure_search_endpoint_id"
+        elif key == "qnaAzureSearchEndpointKey":
+            suggest = "qna_azure_search_endpoint_key"
+        elif key == "qnaRuntimeEndpoint":
+            suggest = "qna_runtime_endpoint"
+        elif key == "statisticsEnabled":
+            suggest = "statistics_enabled"
+        elif key == "storageAccountConnectionString":
+            suggest = "storage_account_connection_string"
+        elif key == "superUser":
+            suggest = "super_user"
+        elif key == "websiteName":
+            suggest = "website_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CognitiveServicesAccountApiPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CognitiveServicesAccountApiPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CognitiveServicesAccountApiPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aad_client_id: Optional[str] = None,
                  aad_tenant_id: Optional[str] = None,
@@ -160,15 +195,49 @@ class CognitiveServicesAccountApiPropertiesResponse(dict):
         """
         return pulumi.get(self, "website_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CognitiveServicesAccountPropertiesResponse(dict):
     """
     Properties of Cognitive Services account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dateCreated":
+            suggest = "date_created"
+        elif key == "internalId":
+            suggest = "internal_id"
+        elif key == "isMigrated":
+            suggest = "is_migrated"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "skuChangeInfo":
+            suggest = "sku_change_info"
+        elif key == "apiProperties":
+            suggest = "api_properties"
+        elif key == "customSubDomainName":
+            suggest = "custom_sub_domain_name"
+        elif key == "networkAcls":
+            suggest = "network_acls"
+        elif key == "privateEndpointConnections":
+            suggest = "private_endpoint_connections"
+        elif key == "publicNetworkAccess":
+            suggest = "public_network_access"
+        elif key == "userOwnedStorage":
+            suggest = "user_owned_storage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CognitiveServicesAccountPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CognitiveServicesAccountPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CognitiveServicesAccountPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  capabilities: Sequence['outputs.SkuCapabilityResponse'],
                  date_created: str,
@@ -335,15 +404,33 @@ class CognitiveServicesAccountPropertiesResponse(dict):
         """
         return pulumi.get(self, "user_owned_storage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CognitiveServicesAccountSkuChangeInfoResponse(dict):
     """
     Sku change info of account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countOfDowngrades":
+            suggest = "count_of_downgrades"
+        elif key == "countOfUpgradesAfterDowngrades":
+            suggest = "count_of_upgrades_after_downgrades"
+        elif key == "lastChangeDate":
+            suggest = "last_change_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CognitiveServicesAccountSkuChangeInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CognitiveServicesAccountSkuChangeInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CognitiveServicesAccountSkuChangeInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count_of_downgrades: float,
                  count_of_upgrades_after_downgrades: float,
@@ -382,15 +469,31 @@ class CognitiveServicesAccountSkuChangeInfoResponse(dict):
         """
         return pulumi.get(self, "last_change_date")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionResponse(dict):
     """
     Properties to configure Encryption
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keySource":
+            suggest = "key_source"
+        elif key == "keyVaultProperties":
+            suggest = "key_vault_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_source: Optional[str] = None,
                  key_vault_properties: Optional['outputs.KeyVaultPropertiesResponse'] = None):
@@ -422,15 +525,33 @@ class EncryptionResponse(dict):
         """
         return pulumi.get(self, "key_vault_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IdentityResponse(dict):
     """
     Managed service identity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "userAssignedIdentities":
+            suggest = "user_assigned_identities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -482,9 +603,6 @@ class IdentityResponse(dict):
         """
         return pulumi.get(self, "user_assigned_identities")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IpRuleResponse(dict):
@@ -507,15 +625,33 @@ class IpRuleResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyVaultPropertiesResponse(dict):
     """
     Properties to configure keyVault Properties
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyName":
+            suggest = "key_name"
+        elif key == "keyVaultUri":
+            suggest = "key_vault_uri"
+        elif key == "keyVersion":
+            suggest = "key_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyVaultPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyVaultPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_name: Optional[str] = None,
                  key_vault_uri: Optional[str] = None,
@@ -557,15 +693,33 @@ class KeyVaultPropertiesResponse(dict):
         """
         return pulumi.get(self, "key_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkRuleSetResponse(dict):
     """
     A set of rules governing the network accessibility.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultAction":
+            suggest = "default_action"
+        elif key == "ipRules":
+            suggest = "ip_rules"
+        elif key == "virtualNetworkRules":
+            suggest = "virtual_network_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_action: Optional[str] = None,
                  ip_rules: Optional[Sequence['outputs.IpRuleResponse']] = None,
@@ -607,15 +761,33 @@ class NetworkRuleSetResponse(dict):
         """
         return pulumi.get(self, "virtual_network_rules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     Properties of the PrivateEndpointConnectProperties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateLinkServiceConnectionState":
+            suggest = "private_link_service_connection_state"
+        elif key == "groupIds":
+            suggest = "group_ids"
+        elif key == "privateEndpoint":
+            suggest = "private_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_link_service_connection_state: 'outputs.PrivateLinkServiceConnectionStateResponse',
                  group_ids: Optional[Sequence[str]] = None,
@@ -655,9 +827,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
         The resource of private end point.
         """
         return pulumi.get(self, "private_endpoint")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -738,9 +907,6 @@ class PrivateEndpointConnectionResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointResponse(dict):
@@ -763,15 +929,29 @@ class PrivateEndpointResponse(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionsRequired":
+            suggest = "actions_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -813,9 +993,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuCapabilityResponse(dict):
@@ -851,9 +1028,6 @@ class SkuCapabilityResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
@@ -887,15 +1061,31 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserAssignedIdentityResponse(dict):
     """
     User-assigned managed identity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "principalId":
+            suggest = "principal_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAssignedIdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAssignedIdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAssignedIdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Optional[str] = None,
                  principal_id: Optional[str] = None):
@@ -925,15 +1115,29 @@ class UserAssignedIdentityResponse(dict):
         """
         return pulumi.get(self, "principal_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserOwnedStorageResponse(dict):
     """
     The user owned storage for Cognitive Services account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserOwnedStorageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserOwnedStorageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserOwnedStorageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_id: Optional[str] = None):
         """
@@ -951,15 +1155,29 @@ class UserOwnedStorageResponse(dict):
         """
         return pulumi.get(self, "resource_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualNetworkRuleResponse(dict):
     """
     A rule governing the accessibility from a specific virtual network.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreMissingVnetServiceEndpoint":
+            suggest = "ignore_missing_vnet_service_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualNetworkRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualNetworkRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  ignore_missing_vnet_service_endpoint: Optional[bool] = None,
@@ -999,8 +1217,5 @@ class VirtualNetworkRuleResponse(dict):
         Gets the state of virtual network rule.
         """
         return pulumi.get(self, "state")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

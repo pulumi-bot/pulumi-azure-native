@@ -5,11 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['OuContainer']
+__all__ = ['OuContainerArgs', 'OuContainer']
+
+@pulumi.input_type
+class OuContainerArgs:
+    def __init__(__self__, *,
+                 domain_service_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 ou_container_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 spn: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OuContainer resource.
+        :param pulumi.Input[str] domain_service_name: The name of the domain service.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription. The name is case insensitive.
+        :param pulumi.Input[str] account_name: The account name
+        :param pulumi.Input[str] ou_container_name: The name of the OuContainer.
+        :param pulumi.Input[str] password: The account password
+        :param pulumi.Input[str] spn: The account spn
+        """
+        pulumi.set(__self__, "domain_service_name", domain_service_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if ou_container_name is not None:
+            pulumi.set(__self__, "ou_container_name", ou_container_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if spn is not None:
+            pulumi.set(__self__, "spn", spn)
+
+    @property
+    @pulumi.getter(name="domainServiceName")
+    def domain_service_name(self) -> pulumi.Input[str]:
+        """
+        The name of the domain service.
+        """
+        return pulumi.get(self, "domain_service_name")
+
+    @domain_service_name.setter
+    def domain_service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_service_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the user's subscription. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account name
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="ouContainerName")
+    def ou_container_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the OuContainer.
+        """
+        return pulumi.get(self, "ou_container_name")
+
+    @ou_container_name.setter
+    def ou_container_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ou_container_name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account password
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def spn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account spn
+        """
+        return pulumi.get(self, "spn")
+
+    @spn.setter
+    def spn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spn", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:aad:OuContainer'.""", DeprecationWarning)
 
@@ -17,6 +119,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class OuContainer(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:aad:OuContainer'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +145,40 @@ class OuContainer(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription. The name is case insensitive.
         :param pulumi.Input[str] spn: The account spn
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OuContainerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Resource for OuContainer.
+        Latest API Version: 2021-03-01.
+
+        :param str resource_name: The name of the resource.
+        :param OuContainerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OuContainerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 domain_service_name: Optional[pulumi.Input[str]] = None,
+                 ou_container_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 spn: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""OuContainer is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:aad:OuContainer'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -58,32 +195,32 @@ class OuContainer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OuContainerArgs.__new__(OuContainerArgs)
 
-            __props__['account_name'] = account_name
+            __props__.__dict__['account_name'] = account_name
             if domain_service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_service_name'")
-            __props__['domain_service_name'] = domain_service_name
-            __props__['ou_container_name'] = ou_container_name
-            __props__['password'] = password
+            __props__.__dict__['domain_service_name'] = domain_service_name
+            __props__.__dict__['ou_container_name'] = ou_container_name
+            __props__.__dict__['password'] = password
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['spn'] = spn
-            __props__['accounts'] = None
-            __props__['container_id'] = None
-            __props__['deployment_id'] = None
-            __props__['distinguished_name'] = None
-            __props__['domain_name'] = None
-            __props__['etag'] = None
-            __props__['location'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['service_status'] = None
-            __props__['system_data'] = None
-            __props__['tags'] = None
-            __props__['tenant_id'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['spn'] = spn
+            __props__.__dict__['accounts'] = None
+            __props__.__dict__['container_id'] = None
+            __props__.__dict__['deployment_id'] = None
+            __props__.__dict__['distinguished_name'] = None
+            __props__.__dict__['domain_name'] = None
+            __props__.__dict__['etag'] = None
+            __props__.__dict__['location'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['service_status'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['tags'] = None
+            __props__.__dict__['tenant_id'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:aad/latest:OuContainer"), pulumi.Alias(type_="azure-native:aad:OuContainer"), pulumi.Alias(type_="azure-nextgen:aad:OuContainer"), pulumi.Alias(type_="azure-native:aad/v20170601:OuContainer"), pulumi.Alias(type_="azure-nextgen:aad/v20170601:OuContainer"), pulumi.Alias(type_="azure-native:aad/v20200101:OuContainer"), pulumi.Alias(type_="azure-nextgen:aad/v20200101:OuContainer"), pulumi.Alias(type_="azure-native:aad/v20210301:OuContainer"), pulumi.Alias(type_="azure-nextgen:aad/v20210301:OuContainer")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(OuContainer, __self__).__init__(
@@ -108,20 +245,20 @@ class OuContainer(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["accounts"] = None
-        __props__["container_id"] = None
-        __props__["deployment_id"] = None
-        __props__["distinguished_name"] = None
-        __props__["domain_name"] = None
-        __props__["etag"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["service_status"] = None
-        __props__["system_data"] = None
-        __props__["tags"] = None
-        __props__["tenant_id"] = None
-        __props__["type"] = None
+        __props__['accounts'] = None
+        __props__['container_id'] = None
+        __props__['deployment_id'] = None
+        __props__['distinguished_name'] = None
+        __props__['domain_name'] = None
+        __props__['etag'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['service_status'] = None
+        __props__['system_data'] = None
+        __props__['tags'] = None
+        __props__['tenant_id'] = None
+        __props__['type'] = None
         return OuContainer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -235,10 +372,4 @@ class OuContainer(pulumi.CustomResource):
         Resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -22,45 +22,46 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:devtestlab/latest:ArtifactSource":
-		r, err = NewArtifactSource(ctx, name, nil, pulumi.URN_(urn))
+		r = &ArtifactSource{}
 	case "azure-native:devtestlab/latest:CustomImage":
-		r, err = NewCustomImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomImage{}
 	case "azure-native:devtestlab/latest:Disk":
-		r, err = NewDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &Disk{}
 	case "azure-native:devtestlab/latest:Environment":
-		r, err = NewEnvironment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Environment{}
 	case "azure-native:devtestlab/latest:Formula":
-		r, err = NewFormula(ctx, name, nil, pulumi.URN_(urn))
+		r = &Formula{}
 	case "azure-native:devtestlab/latest:GlobalSchedule":
-		r, err = NewGlobalSchedule(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalSchedule{}
 	case "azure-native:devtestlab/latest:Lab":
-		r, err = NewLab(ctx, name, nil, pulumi.URN_(urn))
+		r = &Lab{}
 	case "azure-native:devtestlab/latest:NotificationChannel":
-		r, err = NewNotificationChannel(ctx, name, nil, pulumi.URN_(urn))
+		r = &NotificationChannel{}
 	case "azure-native:devtestlab/latest:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	case "azure-native:devtestlab/latest:Schedule":
-		r, err = NewSchedule(ctx, name, nil, pulumi.URN_(urn))
+		r = &Schedule{}
 	case "azure-native:devtestlab/latest:Secret":
-		r, err = NewSecret(ctx, name, nil, pulumi.URN_(urn))
+		r = &Secret{}
 	case "azure-native:devtestlab/latest:ServiceFabric":
-		r, err = NewServiceFabric(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceFabric{}
 	case "azure-native:devtestlab/latest:ServiceFabricSchedule":
-		r, err = NewServiceFabricSchedule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceFabricSchedule{}
 	case "azure-native:devtestlab/latest:ServiceRunner":
-		r, err = NewServiceRunner(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceRunner{}
 	case "azure-native:devtestlab/latest:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	case "azure-native:devtestlab/latest:VirtualMachine":
-		r, err = NewVirtualMachine(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachine{}
 	case "azure-native:devtestlab/latest:VirtualMachineSchedule":
-		r, err = NewVirtualMachineSchedule(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineSchedule{}
 	case "azure-native:devtestlab/latest:VirtualNetwork":
-		r, err = NewVirtualNetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualNetwork{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

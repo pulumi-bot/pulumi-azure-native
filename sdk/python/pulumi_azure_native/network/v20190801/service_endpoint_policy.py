@@ -5,15 +5,134 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ServiceEndpointPolicy']
+__all__ = ['ServiceEndpointPolicyArgs', 'ServiceEndpointPolicy']
+
+@pulumi.input_type
+class ServiceEndpointPolicyArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 etag: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 service_endpoint_policy_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEndpointPolicyDefinitionArgs']]]] = None,
+                 service_endpoint_policy_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ServiceEndpointPolicy resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] etag: A unique read-only string that changes whenever the resource is updated.
+        :param pulumi.Input[str] id: Resource ID.
+        :param pulumi.Input[str] location: Resource location.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceEndpointPolicyDefinitionArgs']]] service_endpoint_policy_definitions: A collection of service endpoint policy definitions of the service endpoint policy.
+        :param pulumi.Input[str] service_endpoint_policy_name: The name of the service endpoint policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if service_endpoint_policy_definitions is not None:
+            pulumi.set(__self__, "service_endpoint_policy_definitions", service_endpoint_policy_definitions)
+        if service_endpoint_policy_name is not None:
+            pulumi.set(__self__, "service_endpoint_policy_name", service_endpoint_policy_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique read-only string that changes whenever the resource is updated.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="serviceEndpointPolicyDefinitions")
+    def service_endpoint_policy_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEndpointPolicyDefinitionArgs']]]]:
+        """
+        A collection of service endpoint policy definitions of the service endpoint policy.
+        """
+        return pulumi.get(self, "service_endpoint_policy_definitions")
+
+    @service_endpoint_policy_definitions.setter
+    def service_endpoint_policy_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceEndpointPolicyDefinitionArgs']]]]):
+        pulumi.set(self, "service_endpoint_policy_definitions", value)
+
+    @property
+    @pulumi.getter(name="serviceEndpointPolicyName")
+    def service_endpoint_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the service endpoint policy.
+        """
+        return pulumi.get(self, "service_endpoint_policy_name")
+
+    @service_endpoint_policy_name.setter
+    def service_endpoint_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_endpoint_policy_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ServiceEndpointPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +159,40 @@ class ServiceEndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] service_endpoint_policy_name: The name of the service endpoint policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServiceEndpointPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Service End point policy resource.
+
+        :param str resource_name: The name of the resource.
+        :param ServiceEndpointPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceEndpointPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 service_endpoint_policy_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceEndpointPolicyDefinitionArgs']]]]] = None,
+                 service_endpoint_policy_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,22 +208,22 @@ class ServiceEndpointPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServiceEndpointPolicyArgs.__new__(ServiceEndpointPolicyArgs)
 
-            __props__['etag'] = etag
-            __props__['id'] = id
-            __props__['location'] = location
+            __props__.__dict__['etag'] = etag
+            __props__.__dict__['id'] = id
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['service_endpoint_policy_definitions'] = service_endpoint_policy_definitions
-            __props__['service_endpoint_policy_name'] = service_endpoint_policy_name
-            __props__['tags'] = tags
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['resource_guid'] = None
-            __props__['subnets'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['service_endpoint_policy_definitions'] = service_endpoint_policy_definitions
+            __props__.__dict__['service_endpoint_policy_name'] = service_endpoint_policy_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['resource_guid'] = None
+            __props__.__dict__['subnets'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:network/v20190801:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/latest:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/latest:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20180701:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20180701:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20180801:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20180801:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20181001:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20181001:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20181101:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20181101:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20181201:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20181201:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20190201:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20190201:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20190401:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20190401:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20190601:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20190601:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20190701:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20190701:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20190901:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20190901:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20191101:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20191101:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20191201:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20191201:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20200301:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20200301:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20200401:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20200401:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20200501:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20200501:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20200601:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20200601:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20200701:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20200701:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20200801:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20200801:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-native:network/v20201101:ServiceEndpointPolicy"), pulumi.Alias(type_="azure-nextgen:network/v20201101:ServiceEndpointPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ServiceEndpointPolicy, __self__).__init__(
@@ -95,15 +248,15 @@ class ServiceEndpointPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["etag"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["resource_guid"] = None
-        __props__["service_endpoint_policy_definitions"] = None
-        __props__["subnets"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['etag'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['resource_guid'] = None
+        __props__['service_endpoint_policy_definitions'] = None
+        __props__['subnets'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return ServiceEndpointPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -177,10 +330,4 @@ class ServiceEndpointPolicy(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

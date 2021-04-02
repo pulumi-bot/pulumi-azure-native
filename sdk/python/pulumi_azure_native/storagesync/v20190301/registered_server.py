@@ -5,13 +5,195 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['RegisteredServer']
+__all__ = ['RegisteredServerArgs', 'RegisteredServer']
+
+@pulumi.input_type
+class RegisteredServerArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 storage_sync_service_name: pulumi.Input[str],
+                 agent_version: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 last_heart_beat: Optional[pulumi.Input[str]] = None,
+                 server_certificate: Optional[pulumi.Input[str]] = None,
+                 server_id: Optional[pulumi.Input[str]] = None,
+                 server_os_version: Optional[pulumi.Input[str]] = None,
+                 server_role: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RegisteredServer resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] storage_sync_service_name: Name of Storage Sync Service resource.
+        :param pulumi.Input[str] agent_version: Registered Server Agent Version
+        :param pulumi.Input[str] cluster_id: Registered Server clusterId
+        :param pulumi.Input[str] cluster_name: Registered Server clusterName
+        :param pulumi.Input[str] friendly_name: Friendly Name
+        :param pulumi.Input[str] last_heart_beat: Registered Server last heart beat
+        :param pulumi.Input[str] server_certificate: Registered Server Certificate
+        :param pulumi.Input[str] server_id: Registered Server serverId
+        :param pulumi.Input[str] server_os_version: Registered Server OS Version
+        :param pulumi.Input[str] server_role: Registered Server serverRole
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "storage_sync_service_name", storage_sync_service_name)
+        if agent_version is not None:
+            pulumi.set(__self__, "agent_version", agent_version)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if last_heart_beat is not None:
+            pulumi.set(__self__, "last_heart_beat", last_heart_beat)
+        if server_certificate is not None:
+            pulumi.set(__self__, "server_certificate", server_certificate)
+        if server_id is not None:
+            pulumi.set(__self__, "server_id", server_id)
+        if server_os_version is not None:
+            pulumi.set(__self__, "server_os_version", server_os_version)
+        if server_role is not None:
+            pulumi.set(__self__, "server_role", server_role)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="storageSyncServiceName")
+    def storage_sync_service_name(self) -> pulumi.Input[str]:
+        """
+        Name of Storage Sync Service resource.
+        """
+        return pulumi.get(self, "storage_sync_service_name")
+
+    @storage_sync_service_name.setter
+    def storage_sync_service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage_sync_service_name", value)
+
+    @property
+    @pulumi.getter(name="agentVersion")
+    def agent_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server Agent Version
+        """
+        return pulumi.get(self, "agent_version")
+
+    @agent_version.setter
+    def agent_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "agent_version", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server clusterId
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server clusterName
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly Name
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @friendly_name.setter
+    def friendly_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter(name="lastHeartBeat")
+    def last_heart_beat(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server last heart beat
+        """
+        return pulumi.get(self, "last_heart_beat")
+
+    @last_heart_beat.setter
+    def last_heart_beat(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_heart_beat", value)
+
+    @property
+    @pulumi.getter(name="serverCertificate")
+    def server_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server Certificate
+        """
+        return pulumi.get(self, "server_certificate")
+
+    @server_certificate.setter
+    def server_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_certificate", value)
+
+    @property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server serverId
+        """
+        return pulumi.get(self, "server_id")
+
+    @server_id.setter
+    def server_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_id", value)
+
+    @property
+    @pulumi.getter(name="serverOSVersion")
+    def server_os_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server OS Version
+        """
+        return pulumi.get(self, "server_os_version")
+
+    @server_os_version.setter
+    def server_os_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_os_version", value)
+
+    @property
+    @pulumi.getter(name="serverRole")
+    def server_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered Server serverRole
+        """
+        return pulumi.get(self, "server_role")
+
+    @server_role.setter
+    def server_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_role", value)
 
 
 class RegisteredServer(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +228,44 @@ class RegisteredServer(pulumi.CustomResource):
         :param pulumi.Input[str] server_role: Registered Server serverRole
         :param pulumi.Input[str] storage_sync_service_name: Name of Storage Sync Service resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegisteredServerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Registered Server resource.
+
+        :param str resource_name: The name of the resource.
+        :param RegisteredServerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegisteredServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 agent_version: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 last_heart_beat: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_certificate: Optional[pulumi.Input[str]] = None,
+                 server_id: Optional[pulumi.Input[str]] = None,
+                 server_os_version: Optional[pulumi.Input[str]] = None,
+                 server_role: Optional[pulumi.Input[str]] = None,
+                 storage_sync_service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -61,35 +281,35 @@ class RegisteredServer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegisteredServerArgs.__new__(RegisteredServerArgs)
 
-            __props__['agent_version'] = agent_version
-            __props__['cluster_id'] = cluster_id
-            __props__['cluster_name'] = cluster_name
-            __props__['friendly_name'] = friendly_name
-            __props__['last_heart_beat'] = last_heart_beat
+            __props__.__dict__['agent_version'] = agent_version
+            __props__.__dict__['cluster_id'] = cluster_id
+            __props__.__dict__['cluster_name'] = cluster_name
+            __props__.__dict__['friendly_name'] = friendly_name
+            __props__.__dict__['last_heart_beat'] = last_heart_beat
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['server_certificate'] = server_certificate
-            __props__['server_id'] = server_id
-            __props__['server_os_version'] = server_os_version
-            __props__['server_role'] = server_role
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['server_certificate'] = server_certificate
+            __props__.__dict__['server_id'] = server_id
+            __props__.__dict__['server_os_version'] = server_os_version
+            __props__.__dict__['server_role'] = server_role
             if storage_sync_service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_sync_service_name'")
-            __props__['storage_sync_service_name'] = storage_sync_service_name
-            __props__['discovery_endpoint_uri'] = None
-            __props__['last_operation_name'] = None
-            __props__['last_workflow_id'] = None
-            __props__['management_endpoint_uri'] = None
-            __props__['monitoring_configuration'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['resource_location'] = None
-            __props__['server_management_error_code'] = None
-            __props__['service_location'] = None
-            __props__['storage_sync_service_uid'] = None
-            __props__['type'] = None
+            __props__.__dict__['storage_sync_service_name'] = storage_sync_service_name
+            __props__.__dict__['discovery_endpoint_uri'] = None
+            __props__.__dict__['last_operation_name'] = None
+            __props__.__dict__['last_workflow_id'] = None
+            __props__.__dict__['management_endpoint_uri'] = None
+            __props__.__dict__['monitoring_configuration'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['resource_location'] = None
+            __props__.__dict__['server_management_error_code'] = None
+            __props__.__dict__['service_location'] = None
+            __props__.__dict__['storage_sync_service_uid'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storagesync/v20190301:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/latest:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/latest:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20170605preview:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20170605preview:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20180402:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20180402:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20180701:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20180701:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20181001:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20181001:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20190201:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20190201:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20190601:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20190601:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20191001:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20191001:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20200301:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20200301:RegisteredServer"), pulumi.Alias(type_="azure-native:storagesync/v20200901:RegisteredServer"), pulumi.Alias(type_="azure-nextgen:storagesync/v20200901:RegisteredServer")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RegisteredServer, __self__).__init__(
@@ -114,27 +334,27 @@ class RegisteredServer(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["agent_version"] = None
-        __props__["cluster_id"] = None
-        __props__["cluster_name"] = None
-        __props__["discovery_endpoint_uri"] = None
-        __props__["friendly_name"] = None
-        __props__["last_heart_beat"] = None
-        __props__["last_operation_name"] = None
-        __props__["last_workflow_id"] = None
-        __props__["management_endpoint_uri"] = None
-        __props__["monitoring_configuration"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["resource_location"] = None
-        __props__["server_certificate"] = None
-        __props__["server_id"] = None
-        __props__["server_management_error_code"] = None
-        __props__["server_os_version"] = None
-        __props__["server_role"] = None
-        __props__["service_location"] = None
-        __props__["storage_sync_service_uid"] = None
-        __props__["type"] = None
+        __props__['agent_version'] = None
+        __props__['cluster_id'] = None
+        __props__['cluster_name'] = None
+        __props__['discovery_endpoint_uri'] = None
+        __props__['friendly_name'] = None
+        __props__['last_heart_beat'] = None
+        __props__['last_operation_name'] = None
+        __props__['last_workflow_id'] = None
+        __props__['management_endpoint_uri'] = None
+        __props__['monitoring_configuration'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['resource_location'] = None
+        __props__['server_certificate'] = None
+        __props__['server_id'] = None
+        __props__['server_management_error_code'] = None
+        __props__['server_os_version'] = None
+        __props__['server_role'] = None
+        __props__['service_location'] = None
+        __props__['storage_sync_service_uid'] = None
+        __props__['type'] = None
         return RegisteredServer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -304,10 +524,4 @@ class RegisteredServer(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

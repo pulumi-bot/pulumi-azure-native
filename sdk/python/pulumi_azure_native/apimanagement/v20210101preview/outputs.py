@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -58,6 +58,33 @@ class AdditionalLocationResponse(dict):
     """
     Description of an additional API Management resource location.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayRegionalUrl":
+            suggest = "gateway_regional_url"
+        elif key == "privateIPAddresses":
+            suggest = "private_ip_addresses"
+        elif key == "publicIPAddresses":
+            suggest = "public_ip_addresses"
+        elif key == "disableGateway":
+            suggest = "disable_gateway"
+        elif key == "publicIpAddressId":
+            suggest = "public_ip_address_id"
+        elif key == "virtualNetworkConfiguration":
+            suggest = "virtual_network_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdditionalLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdditionalLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdditionalLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gateway_regional_url: str,
                  location: str,
@@ -168,9 +195,6 @@ class AdditionalLocationResponse(dict):
         """
         return pulumi.get(self, "zones")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiContactInformationResponse(dict):
@@ -218,9 +242,6 @@ class ApiContactInformationResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiLicenseInformationResponse(dict):
@@ -256,15 +277,33 @@ class ApiLicenseInformationResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiManagementServiceIdentityResponse(dict):
     """
     Identity properties of the Api Management service resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "userAssignedIdentities":
+            suggest = "user_assigned_identities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiManagementServiceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiManagementServiceIdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiManagementServiceIdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -321,9 +360,6 @@ class ApiManagementServiceIdentityResponse(dict):
         """
         return pulumi.get(self, "user_assigned_identities")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiManagementServiceSkuPropertiesResponse(dict):
@@ -357,15 +393,29 @@ class ApiManagementServiceSkuPropertiesResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiVersionConstraintResponse(dict):
     """
     Control Plane Apis version constraint for the API Management service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minApiVersion":
+            suggest = "min_api_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiVersionConstraintResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiVersionConstraintResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiVersionConstraintResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  min_api_version: Optional[str] = None):
         """
@@ -383,15 +433,33 @@ class ApiVersionConstraintResponse(dict):
         """
         return pulumi.get(self, "min_api_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiVersionSetContractDetailsResponse(dict):
     """
     An API Version Set contains the common configuration for a set of API Versions relating 
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "versionHeaderName":
+            suggest = "version_header_name"
+        elif key == "versionQueryName":
+            suggest = "version_query_name"
+        elif key == "versioningScheme":
+            suggest = "versioning_scheme"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiVersionSetContractDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiVersionSetContractDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiVersionSetContractDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  id: Optional[str] = None,
@@ -469,15 +537,29 @@ class ApiVersionSetContractDetailsResponse(dict):
         """
         return pulumi.get(self, "versioning_scheme")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthenticationSettingsContractResponse(dict):
     """
     API Authentication Settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oAuth2":
+            suggest = "o_auth2"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthenticationSettingsContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthenticationSettingsContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthenticationSettingsContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  o_auth2: Optional['outputs.OAuth2AuthenticationSettingsContractResponse'] = None,
                  openid: Optional['outputs.OpenIdAuthenticationSettingsContractResponse'] = None):
@@ -506,9 +588,6 @@ class AuthenticationSettingsContractResponse(dict):
         OpenID Connect Authentication Settings
         """
         return pulumi.get(self, "openid")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -543,15 +622,29 @@ class BackendAuthorizationHeaderCredentialsResponse(dict):
         """
         return pulumi.get(self, "scheme")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendCredentialsContractResponse(dict):
     """
     Details of the Credentials used to connect to Backend.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateIds":
+            suggest = "certificate_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendCredentialsContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendCredentialsContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendCredentialsContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization: Optional['outputs.BackendAuthorizationHeaderCredentialsResponse'] = None,
                  certificate: Optional[Sequence[str]] = None,
@@ -617,15 +710,29 @@ class BackendCredentialsContractResponse(dict):
         """
         return pulumi.get(self, "query")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendPropertiesResponse(dict):
     """
     Properties specific to the Backend Type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceFabricCluster":
+            suggest = "service_fabric_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service_fabric_cluster: Optional['outputs.BackendServiceFabricClusterPropertiesResponse'] = None):
         """
@@ -642,9 +749,6 @@ class BackendPropertiesResponse(dict):
         Backend Service Fabric Cluster Properties
         """
         return pulumi.get(self, "service_fabric_cluster")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -692,15 +796,39 @@ class BackendProxyContractResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendServiceFabricClusterPropertiesResponse(dict):
     """
     Properties of the Service Fabric Type Backend.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managementEndpoints":
+            suggest = "management_endpoints"
+        elif key == "clientCertificateId":
+            suggest = "client_certificate_id"
+        elif key == "clientCertificatethumbprint":
+            suggest = "client_certificatethumbprint"
+        elif key == "maxPartitionResolutionRetries":
+            suggest = "max_partition_resolution_retries"
+        elif key == "serverCertificateThumbprints":
+            suggest = "server_certificate_thumbprints"
+        elif key == "serverX509Names":
+            suggest = "server_x509_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceFabricClusterPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceFabricClusterPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceFabricClusterPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  management_endpoints: Sequence[str],
                  client_certificate_id: Optional[str] = None,
@@ -777,15 +905,31 @@ class BackendServiceFabricClusterPropertiesResponse(dict):
         """
         return pulumi.get(self, "server_x509_names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendTlsPropertiesResponse(dict):
     """
     Properties controlling TLS Certificate Validation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "validateCertificateChain":
+            suggest = "validate_certificate_chain"
+        elif key == "validateCertificateName":
+            suggest = "validate_certificate_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendTlsPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendTlsPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendTlsPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  validate_certificate_chain: Optional[bool] = None,
                  validate_certificate_name: Optional[bool] = None):
@@ -819,9 +963,6 @@ class BackendTlsPropertiesResponse(dict):
         """
         return pulumi.get(self, "validate_certificate_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BodyDiagnosticSettingsResponse(dict):
@@ -845,15 +986,33 @@ class BodyDiagnosticSettingsResponse(dict):
         """
         return pulumi.get(self, "bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfigurationResponse(dict):
     """
     Certificate configuration which consist of non-trusted intermediates and root certificates.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storeName":
+            suggest = "store_name"
+        elif key == "certificatePassword":
+            suggest = "certificate_password"
+        elif key == "encodedCertificate":
+            suggest = "encoded_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  store_name: str,
                  certificate: Optional['outputs.CertificateInformationResponse'] = None,
@@ -906,9 +1065,6 @@ class CertificateConfigurationResponse(dict):
         """
         return pulumi.get(self, "encoded_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateInformationResponse(dict):
@@ -953,9 +1109,6 @@ class CertificateInformationResponse(dict):
         """
         return pulumi.get(self, "thumbprint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataMaskingEntityResponse(dict):
@@ -987,12 +1140,26 @@ class DataMaskingEntityResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataMaskingResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryParams":
+            suggest = "query_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataMaskingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataMaskingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataMaskingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  headers: Optional[Sequence['outputs.DataMaskingEntityResponse']] = None,
                  query_params: Optional[Sequence['outputs.DataMaskingEntityResponse']] = None):
@@ -1020,9 +1187,6 @@ class DataMaskingResponse(dict):
         Masking settings for Url query parameters
         """
         return pulumi.get(self, "query_params")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1071,15 +1235,33 @@ class EmailTemplateParametersContractPropertiesResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GroupContractPropertiesResponse(dict):
     """
     Group contract Properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "builtIn":
+            suggest = "built_in"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "externalId":
+            suggest = "external_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupContractPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupContractPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupContractPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  built_in: bool,
                  display_name: str,
@@ -1143,15 +1325,45 @@ class GroupContractPropertiesResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HostnameConfigurationResponse(dict):
     """
     Custom hostname configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostName":
+            suggest = "host_name"
+        elif key == "certificatePassword":
+            suggest = "certificate_password"
+        elif key == "certificateSource":
+            suggest = "certificate_source"
+        elif key == "certificateStatus":
+            suggest = "certificate_status"
+        elif key == "defaultSslBinding":
+            suggest = "default_ssl_binding"
+        elif key == "encodedCertificate":
+            suggest = "encoded_certificate"
+        elif key == "identityClientId":
+            suggest = "identity_client_id"
+        elif key == "keyVaultId":
+            suggest = "key_vault_id"
+        elif key == "negotiateClientCertificate":
+            suggest = "negotiate_client_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostnameConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostnameConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostnameConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host_name: str,
                  type: str,
@@ -1291,15 +1503,29 @@ class HostnameConfigurationResponse(dict):
         """
         return pulumi.get(self, "negotiate_client_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpMessageDiagnosticResponse(dict):
     """
     Http message diagnostic settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataMasking":
+            suggest = "data_masking"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpMessageDiagnosticResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpMessageDiagnosticResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpMessageDiagnosticResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  body: Optional['outputs.BodyDiagnosticSettingsResponse'] = None,
                  data_masking: Optional['outputs.DataMaskingResponse'] = None,
@@ -1341,15 +1567,33 @@ class HttpMessageDiagnosticResponse(dict):
         """
         return pulumi.get(self, "headers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyVaultContractPropertiesResponse(dict):
     """
     KeyVault contract details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityClientId":
+            suggest = "identity_client_id"
+        elif key == "lastStatus":
+            suggest = "last_status"
+        elif key == "secretIdentifier":
+            suggest = "secret_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyVaultContractPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyVaultContractPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyVaultContractPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_client_id: Optional[str] = None,
                  last_status: Optional['outputs.KeyVaultLastAccessStatusContractPropertiesResponse'] = None,
@@ -1391,15 +1635,29 @@ class KeyVaultContractPropertiesResponse(dict):
         """
         return pulumi.get(self, "secret_identifier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyVaultLastAccessStatusContractPropertiesResponse(dict):
     """
     Issue contract Update Properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeStampUtc":
+            suggest = "time_stamp_utc"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyVaultLastAccessStatusContractPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyVaultLastAccessStatusContractPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyVaultLastAccessStatusContractPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  code: Optional[str] = None,
                  message: Optional[str] = None,
@@ -1441,15 +1699,29 @@ class KeyVaultLastAccessStatusContractPropertiesResponse(dict):
         """
         return pulumi.get(self, "time_stamp_utc")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OAuth2AuthenticationSettingsContractResponse(dict):
     """
     API OAuth2 Authentication settings details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationServerId":
+            suggest = "authorization_server_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OAuth2AuthenticationSettingsContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OAuth2AuthenticationSettingsContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OAuth2AuthenticationSettingsContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization_server_id: Optional[str] = None,
                  scope: Optional[str] = None):
@@ -1479,15 +1751,31 @@ class OAuth2AuthenticationSettingsContractResponse(dict):
         """
         return pulumi.get(self, "scope")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OpenIdAuthenticationSettingsContractResponse(dict):
     """
     API OAuth2 Authentication settings details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bearerTokenSendingMethods":
+            suggest = "bearer_token_sending_methods"
+        elif key == "openidProviderId":
+            suggest = "openid_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenIdAuthenticationSettingsContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenIdAuthenticationSettingsContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenIdAuthenticationSettingsContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bearer_token_sending_methods: Optional[Sequence[str]] = None,
                  openid_provider_id: Optional[str] = None):
@@ -1517,15 +1805,33 @@ class OpenIdAuthenticationSettingsContractResponse(dict):
         """
         return pulumi.get(self, "openid_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ParameterContractResponse(dict):
     """
     Operation parameters details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "schemaId":
+            suggest = "schema_id"
+        elif key == "typeName":
+            suggest = "type_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParameterContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParameterContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParameterContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -1625,9 +1931,6 @@ class ParameterContractResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PipelineDiagnosticSettingsResponse(dict):
@@ -1663,15 +1966,35 @@ class PipelineDiagnosticSettingsResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RepresentationContractResponse(dict):
     """
     Operation request/response representation details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "formParameters":
+            suggest = "form_parameters"
+        elif key == "schemaId":
+            suggest = "schema_id"
+        elif key == "typeName":
+            suggest = "type_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepresentationContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepresentationContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepresentationContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_type: str,
                  form_parameters: Optional[Sequence['outputs.ParameterContractResponse']] = None,
@@ -1736,15 +2059,29 @@ class RepresentationContractResponse(dict):
         """
         return pulumi.get(self, "type_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RequestContractResponse(dict):
     """
     Operation request details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryParameters":
+            suggest = "query_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RequestContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RequestContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RequestContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  headers: Optional[Sequence['outputs.ParameterContractResponse']] = None,
@@ -1798,15 +2135,29 @@ class RequestContractResponse(dict):
         """
         return pulumi.get(self, "representations")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceLocationDataContractResponse(dict):
     """
     Resource location data properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countryOrRegion":
+            suggest = "country_or_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceLocationDataContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceLocationDataContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceLocationDataContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  city: Optional[str] = None,
@@ -1859,15 +2210,29 @@ class ResourceLocationDataContractResponse(dict):
         """
         return pulumi.get(self, "district")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResponseContractResponse(dict):
     """
     Operation response details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponseContractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponseContractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponseContractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  status_code: int,
                  description: Optional[str] = None,
@@ -1920,15 +2285,29 @@ class ResponseContractResponse(dict):
         """
         return pulumi.get(self, "representations")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SamplingSettingsResponse(dict):
     """
     Sampling settings for Diagnostic.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingType":
+            suggest = "sampling_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SamplingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SamplingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SamplingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  percentage: Optional[float] = None,
                  sampling_type: Optional[str] = None):
@@ -1957,9 +2336,6 @@ class SamplingSettingsResponse(dict):
         Sampling type.
         """
         return pulumi.get(self, "sampling_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1996,9 +2372,6 @@ class SubscriptionKeyParameterNamesContractResponse(dict):
         """
         return pulumi.get(self, "query")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TokenBodyParameterContractResponse(dict):
@@ -2031,9 +2404,6 @@ class TokenBodyParameterContractResponse(dict):
         body parameter value.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2070,12 +2440,28 @@ class UserIdentityContractResponse(dict):
         """
         return pulumi.get(self, "provider")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserIdentityPropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "principalId":
+            suggest = "principal_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserIdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserIdentityPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserIdentityPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Optional[str] = None,
                  principal_id: Optional[str] = None):
@@ -2104,15 +2490,29 @@ class UserIdentityPropertiesResponse(dict):
         """
         return pulumi.get(self, "principal_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualNetworkConfigurationResponse(dict):
     """
     Configuration of a virtual network to which API Management service is deployed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetResourceId":
+            suggest = "subnet_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualNetworkConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualNetworkConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  subnetname: str,
                  vnetid: str,
@@ -2152,15 +2552,29 @@ class VirtualNetworkConfigurationResponse(dict):
         """
         return pulumi.get(self, "subnet_resource_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X509CertificateNameResponse(dict):
     """
     Properties of server X509Names.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issuerCertificateThumbprint":
+            suggest = "issuer_certificate_thumbprint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X509CertificateNameResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X509CertificateNameResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X509CertificateNameResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  issuer_certificate_thumbprint: Optional[str] = None,
                  name: Optional[str] = None):
@@ -2189,8 +2603,5 @@ class X509CertificateNameResponse(dict):
         Common Name of the Certificate.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

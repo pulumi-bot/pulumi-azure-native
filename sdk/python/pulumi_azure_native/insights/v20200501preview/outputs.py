@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -23,6 +23,25 @@ class ActionResponse(dict):
     """
     Actions to invoke when the alert fires.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionGroupId":
+            suggest = "action_group_id"
+        elif key == "webHookProperties":
+            suggest = "web_hook_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_group_id: Optional[str] = None,
                  web_hook_properties: Optional[Mapping[str, str]] = None):
@@ -52,15 +71,35 @@ class ActionResponse(dict):
         """
         return pulumi.get(self, "web_hook_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConditionResponse(dict):
     """
     A condition of the scheduled query rule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeAggregation":
+            suggest = "time_aggregation"
+        elif key == "failingPeriods":
+            suggest = "failing_periods"
+        elif key == "metricMeasureColumn":
+            suggest = "metric_measure_column"
+        elif key == "resourceIdColumn":
+            suggest = "resource_id_column"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operator: str,
                  threshold: float,
@@ -159,15 +198,31 @@ class ConditionResponse(dict):
         """
         return pulumi.get(self, "resource_id_column")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConditionResponseFailingPeriods(dict):
     """
     The minimum number of violations required within the selected lookback time window required to raise an alert.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minFailingPeriodsToAlert":
+            suggest = "min_failing_periods_to_alert"
+        elif key == "numberOfEvaluationPeriods":
+            suggest = "number_of_evaluation_periods"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionResponseFailingPeriods. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionResponseFailingPeriods.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionResponseFailingPeriods.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  min_failing_periods_to_alert: Optional[float] = None,
                  number_of_evaluation_periods: Optional[float] = None):
@@ -200,9 +255,6 @@ class ConditionResponseFailingPeriods(dict):
         The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
         """
         return pulumi.get(self, "number_of_evaluation_periods")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -248,15 +300,29 @@ class DimensionResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduledQueryRuleCriteriaResponse(dict):
     """
     The rule criteria that defines the conditions of the scheduled query rule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allOf":
+            suggest = "all_of"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduledQueryRuleCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduledQueryRuleCriteriaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduledQueryRuleCriteriaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  all_of: Optional[Sequence['outputs.ConditionResponse']] = None):
         """
@@ -273,8 +339,5 @@ class ScheduledQueryRuleCriteriaResponse(dict):
         A list of conditions to evaluate against the specified scopes
         """
         return pulumi.get(self, "all_of")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

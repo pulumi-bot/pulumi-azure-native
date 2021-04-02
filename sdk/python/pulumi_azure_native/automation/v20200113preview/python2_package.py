@@ -5,15 +5,100 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Python2Package']
+__all__ = ['Python2PackageArgs', 'Python2Package']
+
+@pulumi.input_type
+class Python2PackageArgs:
+    def __init__(__self__, *,
+                 automation_account_name: pulumi.Input[str],
+                 content_link: pulumi.Input['ContentLinkArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 package_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Python2Package resource.
+        :param pulumi.Input[str] automation_account_name: The name of the automation account.
+        :param pulumi.Input['ContentLinkArgs'] content_link: Gets or sets the module content link.
+        :param pulumi.Input[str] resource_group_name: Name of an Azure Resource group.
+        :param pulumi.Input[str] package_name: The name of python package.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Gets or sets the tags attached to the resource.
+        """
+        pulumi.set(__self__, "automation_account_name", automation_account_name)
+        pulumi.set(__self__, "content_link", content_link)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if package_name is not None:
+            pulumi.set(__self__, "package_name", package_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="automationAccountName")
+    def automation_account_name(self) -> pulumi.Input[str]:
+        """
+        The name of the automation account.
+        """
+        return pulumi.get(self, "automation_account_name")
+
+    @automation_account_name.setter
+    def automation_account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "automation_account_name", value)
+
+    @property
+    @pulumi.getter(name="contentLink")
+    def content_link(self) -> pulumi.Input['ContentLinkArgs']:
+        """
+        Gets or sets the module content link.
+        """
+        return pulumi.get(self, "content_link")
+
+    @content_link.setter
+    def content_link(self, value: pulumi.Input['ContentLinkArgs']):
+        pulumi.set(self, "content_link", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of an Azure Resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="packageName")
+    def package_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of python package.
+        """
+        return pulumi.get(self, "package_name")
+
+    @package_name.setter
+    def package_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Gets or sets the tags attached to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Python2Package(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +121,38 @@ class Python2Package(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: Name of an Azure Resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Gets or sets the tags attached to the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Python2PackageArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Definition of the module type.
+
+        :param str resource_name: The name of the resource.
+        :param Python2PackageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(Python2PackageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 automation_account_name: Optional[pulumi.Input[str]] = None,
+                 content_link: Optional[pulumi.Input[pulumi.InputType['ContentLinkArgs']]] = None,
+                 package_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,33 +168,33 @@ class Python2Package(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = Python2PackageArgs.__new__(Python2PackageArgs)
 
             if automation_account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'automation_account_name'")
-            __props__['automation_account_name'] = automation_account_name
+            __props__.__dict__['automation_account_name'] = automation_account_name
             if content_link is None and not opts.urn:
                 raise TypeError("Missing required property 'content_link'")
-            __props__['content_link'] = content_link
-            __props__['package_name'] = package_name
+            __props__.__dict__['content_link'] = content_link
+            __props__.__dict__['package_name'] = package_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['activity_count'] = None
-            __props__['creation_time'] = None
-            __props__['description'] = None
-            __props__['error'] = None
-            __props__['etag'] = None
-            __props__['is_composite'] = None
-            __props__['is_global'] = None
-            __props__['last_modified_time'] = None
-            __props__['location'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['size_in_bytes'] = None
-            __props__['type'] = None
-            __props__['version'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['activity_count'] = None
+            __props__.__dict__['creation_time'] = None
+            __props__.__dict__['description'] = None
+            __props__.__dict__['error'] = None
+            __props__.__dict__['etag'] = None
+            __props__.__dict__['is_composite'] = None
+            __props__.__dict__['is_global'] = None
+            __props__.__dict__['last_modified_time'] = None
+            __props__.__dict__['location'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['size_in_bytes'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['version'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:automation/v20200113preview:Python2Package"), pulumi.Alias(type_="azure-native:automation:Python2Package"), pulumi.Alias(type_="azure-nextgen:automation:Python2Package"), pulumi.Alias(type_="azure-native:automation/latest:Python2Package"), pulumi.Alias(type_="azure-nextgen:automation/latest:Python2Package"), pulumi.Alias(type_="azure-native:automation/v20180630:Python2Package"), pulumi.Alias(type_="azure-nextgen:automation/v20180630:Python2Package"), pulumi.Alias(type_="azure-native:automation/v20190601:Python2Package"), pulumi.Alias(type_="azure-nextgen:automation/v20190601:Python2Package")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Python2Package, __self__).__init__(
@@ -102,22 +219,22 @@ class Python2Package(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["activity_count"] = None
-        __props__["content_link"] = None
-        __props__["creation_time"] = None
-        __props__["description"] = None
-        __props__["error"] = None
-        __props__["etag"] = None
-        __props__["is_composite"] = None
-        __props__["is_global"] = None
-        __props__["last_modified_time"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["size_in_bytes"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["version"] = None
+        __props__['activity_count'] = None
+        __props__['content_link'] = None
+        __props__['creation_time'] = None
+        __props__['description'] = None
+        __props__['error'] = None
+        __props__['etag'] = None
+        __props__['is_composite'] = None
+        __props__['is_global'] = None
+        __props__['last_modified_time'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['size_in_bytes'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['version'] = None
         return Python2Package(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -247,10 +364,4 @@ class Python2Package(pulumi.CustomResource):
         Gets or sets the version of the module.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

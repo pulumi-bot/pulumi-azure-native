@@ -5,13 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['Setting']
+__all__ = ['SettingArgs', 'Setting']
+
+@pulumi.input_type
+class SettingArgs:
+    def __init__(__self__, *,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 setting_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Setting resource.
+        :param pulumi.Input[str] scope: For the myscope setting, sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
+        :param pulumi.Input[str] setting_name: Name of the setting. Allowed values: myscope
+        """
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if setting_name is not None:
+            pulumi.set(__self__, "setting_name", setting_name)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        For the myscope setting, sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="settingName")
+    def setting_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the setting. Allowed values: myscope
+        """
+        return pulumi.get(self, "setting_name")
+
+    @setting_name.setter
+    def setting_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "setting_name", value)
 
 
 class Setting(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -29,6 +69,36 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[str] scope: For the myscope setting, sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
         :param pulumi.Input[str] setting_name: Name of the setting. Allowed values: myscope
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[SettingArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        State of Setting
+        API Version: 2019-11-01.
+
+        :param str resource_name: The name of the resource.
+        :param SettingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SettingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 setting_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -44,13 +114,13 @@ class Setting(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SettingArgs.__new__(SettingArgs)
 
-            __props__['scope'] = scope
-            __props__['setting_name'] = setting_name
-            __props__['kind'] = None
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['scope'] = scope
+            __props__.__dict__['setting_name'] = setting_name
+            __props__.__dict__['kind'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:costmanagement:Setting"), pulumi.Alias(type_="azure-native:costmanagement/latest:Setting"), pulumi.Alias(type_="azure-nextgen:costmanagement/latest:Setting"), pulumi.Alias(type_="azure-native:costmanagement/v20191101:Setting"), pulumi.Alias(type_="azure-nextgen:costmanagement/v20191101:Setting")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Setting, __self__).__init__(
@@ -75,10 +145,10 @@ class Setting(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["kind"] = None
-        __props__["name"] = None
-        __props__["scope"] = None
-        __props__["type"] = None
+        __props__['kind'] = None
+        __props__['name'] = None
+        __props__['scope'] = None
+        __props__['type'] = None
         return Setting(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -112,10 +182,4 @@ class Setting(pulumi.CustomResource):
         Resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,15 +5,308 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Cluster']
+__all__ = ['ClusterArgs', 'Cluster']
+
+@pulumi.input_type
+class ClusterArgs:
+    def __init__(__self__, *,
+                 management_endpoint: pulumi.Input[str],
+                 node_types: pulumi.Input[Sequence[pulumi.Input['NodeTypeDescriptionArgs']]],
+                 resource_group_name: pulumi.Input[str],
+                 azure_active_directory: Optional[pulumi.Input['AzureActiveDirectoryArgs']] = None,
+                 certificate: Optional[pulumi.Input['CertificateDescriptionArgs']] = None,
+                 client_certificate_common_names: Optional[pulumi.Input[Sequence[pulumi.Input['ClientCertificateCommonNameArgs']]]] = None,
+                 client_certificate_thumbprints: Optional[pulumi.Input[Sequence[pulumi.Input['ClientCertificateThumbprintArgs']]]] = None,
+                 cluster_code_version: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 diagnostics_storage_account_config: Optional[pulumi.Input['DiagnosticsStorageAccountConfigArgs']] = None,
+                 fabric_settings: Optional[pulumi.Input[Sequence[pulumi.Input['SettingsSectionDescriptionArgs']]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 reliability_level: Optional[pulumi.Input[str]] = None,
+                 reverse_proxy_certificate: Optional[pulumi.Input['CertificateDescriptionArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 upgrade_description: Optional[pulumi.Input['ClusterUpgradePolicyArgs']] = None,
+                 upgrade_mode: Optional[pulumi.Input[str]] = None,
+                 vm_image: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] management_endpoint: The http management endpoint of the cluster
+        :param pulumi.Input[Sequence[pulumi.Input['NodeTypeDescriptionArgs']]] node_types: The list of node types that make up the cluster
+        :param pulumi.Input[str] resource_group_name: The name of the resource group to which the resource belongs or get created
+        :param pulumi.Input['AzureActiveDirectoryArgs'] azure_active_directory: The settings to enable AAD authentication on the cluster
+        :param pulumi.Input['CertificateDescriptionArgs'] certificate: This primary certificate will be used as cluster node to node security, SSL certificate for cluster management endpoint and default admin client
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCertificateCommonNameArgs']]] client_certificate_common_names:  List of client certificates to whitelist based on common names
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCertificateThumbprintArgs']]] client_certificate_thumbprints: The client thumbprint details ,it is used for client access for cluster operation
+        :param pulumi.Input[str] cluster_code_version: The ServiceFabric code version running in your cluster
+        :param pulumi.Input[str] cluster_name: The name of the cluster resource
+        :param pulumi.Input['DiagnosticsStorageAccountConfigArgs'] diagnostics_storage_account_config: The storage diagnostics account configuration details
+        :param pulumi.Input[Sequence[pulumi.Input['SettingsSectionDescriptionArgs']]] fabric_settings: List of custom fabric settings to configure the cluster.
+        :param pulumi.Input[str] location: Resource location.
+        :param pulumi.Input[str] reliability_level: Cluster reliability level indicates replica set size of system service
+        :param pulumi.Input['CertificateDescriptionArgs'] reverse_proxy_certificate: The server certificate used by reverse proxy
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        :param pulumi.Input['ClusterUpgradePolicyArgs'] upgrade_description: The policy to use when upgrading the cluster.
+        :param pulumi.Input[str] upgrade_mode: Cluster upgrade mode indicates if fabric upgrade is initiated automatically by the system or not
+        :param pulumi.Input[str] vm_image: The name of VM image VMSS has been configured with. Generic names such as Windows or Linux can be used.
+        """
+        pulumi.set(__self__, "management_endpoint", management_endpoint)
+        pulumi.set(__self__, "node_types", node_types)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if azure_active_directory is not None:
+            pulumi.set(__self__, "azure_active_directory", azure_active_directory)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if client_certificate_common_names is not None:
+            pulumi.set(__self__, "client_certificate_common_names", client_certificate_common_names)
+        if client_certificate_thumbprints is not None:
+            pulumi.set(__self__, "client_certificate_thumbprints", client_certificate_thumbprints)
+        if cluster_code_version is not None:
+            pulumi.set(__self__, "cluster_code_version", cluster_code_version)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if diagnostics_storage_account_config is not None:
+            pulumi.set(__self__, "diagnostics_storage_account_config", diagnostics_storage_account_config)
+        if fabric_settings is not None:
+            pulumi.set(__self__, "fabric_settings", fabric_settings)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if reliability_level is not None:
+            pulumi.set(__self__, "reliability_level", reliability_level)
+        if reverse_proxy_certificate is not None:
+            pulumi.set(__self__, "reverse_proxy_certificate", reverse_proxy_certificate)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if upgrade_description is not None:
+            pulumi.set(__self__, "upgrade_description", upgrade_description)
+        if upgrade_mode is not None:
+            pulumi.set(__self__, "upgrade_mode", upgrade_mode)
+        if vm_image is not None:
+            pulumi.set(__self__, "vm_image", vm_image)
+
+    @property
+    @pulumi.getter(name="managementEndpoint")
+    def management_endpoint(self) -> pulumi.Input[str]:
+        """
+        The http management endpoint of the cluster
+        """
+        return pulumi.get(self, "management_endpoint")
+
+    @management_endpoint.setter
+    def management_endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "management_endpoint", value)
+
+    @property
+    @pulumi.getter(name="nodeTypes")
+    def node_types(self) -> pulumi.Input[Sequence[pulumi.Input['NodeTypeDescriptionArgs']]]:
+        """
+        The list of node types that make up the cluster
+        """
+        return pulumi.get(self, "node_types")
+
+    @node_types.setter
+    def node_types(self, value: pulumi.Input[Sequence[pulumi.Input['NodeTypeDescriptionArgs']]]):
+        pulumi.set(self, "node_types", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group to which the resource belongs or get created
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="azureActiveDirectory")
+    def azure_active_directory(self) -> Optional[pulumi.Input['AzureActiveDirectoryArgs']]:
+        """
+        The settings to enable AAD authentication on the cluster
+        """
+        return pulumi.get(self, "azure_active_directory")
+
+    @azure_active_directory.setter
+    def azure_active_directory(self, value: Optional[pulumi.Input['AzureActiveDirectoryArgs']]):
+        pulumi.set(self, "azure_active_directory", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['CertificateDescriptionArgs']]:
+        """
+        This primary certificate will be used as cluster node to node security, SSL certificate for cluster management endpoint and default admin client
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['CertificateDescriptionArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="clientCertificateCommonNames")
+    def client_certificate_common_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientCertificateCommonNameArgs']]]]:
+        """
+         List of client certificates to whitelist based on common names
+        """
+        return pulumi.get(self, "client_certificate_common_names")
+
+    @client_certificate_common_names.setter
+    def client_certificate_common_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientCertificateCommonNameArgs']]]]):
+        pulumi.set(self, "client_certificate_common_names", value)
+
+    @property
+    @pulumi.getter(name="clientCertificateThumbprints")
+    def client_certificate_thumbprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientCertificateThumbprintArgs']]]]:
+        """
+        The client thumbprint details ,it is used for client access for cluster operation
+        """
+        return pulumi.get(self, "client_certificate_thumbprints")
+
+    @client_certificate_thumbprints.setter
+    def client_certificate_thumbprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientCertificateThumbprintArgs']]]]):
+        pulumi.set(self, "client_certificate_thumbprints", value)
+
+    @property
+    @pulumi.getter(name="clusterCodeVersion")
+    def cluster_code_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ServiceFabric code version running in your cluster
+        """
+        return pulumi.get(self, "cluster_code_version")
+
+    @cluster_code_version.setter
+    def cluster_code_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_code_version", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the cluster resource
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="diagnosticsStorageAccountConfig")
+    def diagnostics_storage_account_config(self) -> Optional[pulumi.Input['DiagnosticsStorageAccountConfigArgs']]:
+        """
+        The storage diagnostics account configuration details
+        """
+        return pulumi.get(self, "diagnostics_storage_account_config")
+
+    @diagnostics_storage_account_config.setter
+    def diagnostics_storage_account_config(self, value: Optional[pulumi.Input['DiagnosticsStorageAccountConfigArgs']]):
+        pulumi.set(self, "diagnostics_storage_account_config", value)
+
+    @property
+    @pulumi.getter(name="fabricSettings")
+    def fabric_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SettingsSectionDescriptionArgs']]]]:
+        """
+        List of custom fabric settings to configure the cluster.
+        """
+        return pulumi.get(self, "fabric_settings")
+
+    @fabric_settings.setter
+    def fabric_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SettingsSectionDescriptionArgs']]]]):
+        pulumi.set(self, "fabric_settings", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="reliabilityLevel")
+    def reliability_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster reliability level indicates replica set size of system service
+        """
+        return pulumi.get(self, "reliability_level")
+
+    @reliability_level.setter
+    def reliability_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reliability_level", value)
+
+    @property
+    @pulumi.getter(name="reverseProxyCertificate")
+    def reverse_proxy_certificate(self) -> Optional[pulumi.Input['CertificateDescriptionArgs']]:
+        """
+        The server certificate used by reverse proxy
+        """
+        return pulumi.get(self, "reverse_proxy_certificate")
+
+    @reverse_proxy_certificate.setter
+    def reverse_proxy_certificate(self, value: Optional[pulumi.Input['CertificateDescriptionArgs']]):
+        pulumi.set(self, "reverse_proxy_certificate", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="upgradeDescription")
+    def upgrade_description(self) -> Optional[pulumi.Input['ClusterUpgradePolicyArgs']]:
+        """
+        The policy to use when upgrading the cluster.
+        """
+        return pulumi.get(self, "upgrade_description")
+
+    @upgrade_description.setter
+    def upgrade_description(self, value: Optional[pulumi.Input['ClusterUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_description", value)
+
+    @property
+    @pulumi.getter(name="upgradeMode")
+    def upgrade_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster upgrade mode indicates if fabric upgrade is initiated automatically by the system or not
+        """
+        return pulumi.get(self, "upgrade_mode")
+
+    @upgrade_mode.setter
+    def upgrade_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_mode", value)
+
+    @property
+    @pulumi.getter(name="vmImage")
+    def vm_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of VM image VMSS has been configured with. Generic names such as Windows or Linux can be used.
+        """
+        return pulumi.get(self, "vm_image")
+
+    @vm_image.setter
+    def vm_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vm_image", value)
 
 
 class Cluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +355,51 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] upgrade_mode: Cluster upgrade mode indicates if fabric upgrade is initiated automatically by the system or not
         :param pulumi.Input[str] vm_image: The name of VM image VMSS has been configured with. Generic names such as Windows or Linux can be used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The cluster resource
+
+        :param str resource_name: The name of the resource.
+        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 azure_active_directory: Optional[pulumi.Input[pulumi.InputType['AzureActiveDirectoryArgs']]] = None,
+                 certificate: Optional[pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']]] = None,
+                 client_certificate_common_names: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientCertificateCommonNameArgs']]]]] = None,
+                 client_certificate_thumbprints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientCertificateThumbprintArgs']]]]] = None,
+                 cluster_code_version: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 diagnostics_storage_account_config: Optional[pulumi.Input[pulumi.InputType['DiagnosticsStorageAccountConfigArgs']]] = None,
+                 fabric_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SettingsSectionDescriptionArgs']]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 management_endpoint: Optional[pulumi.Input[str]] = None,
+                 node_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTypeDescriptionArgs']]]]] = None,
+                 reliability_level: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 reverse_proxy_certificate: Optional[pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 upgrade_description: Optional[pulumi.Input[pulumi.InputType['ClusterUpgradePolicyArgs']]] = None,
+                 upgrade_mode: Optional[pulumi.Input[str]] = None,
+                 vm_image: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -77,39 +415,39 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterArgs.__new__(ClusterArgs)
 
-            __props__['azure_active_directory'] = azure_active_directory
-            __props__['certificate'] = certificate
-            __props__['client_certificate_common_names'] = client_certificate_common_names
-            __props__['client_certificate_thumbprints'] = client_certificate_thumbprints
-            __props__['cluster_code_version'] = cluster_code_version
-            __props__['cluster_name'] = cluster_name
-            __props__['diagnostics_storage_account_config'] = diagnostics_storage_account_config
-            __props__['fabric_settings'] = fabric_settings
-            __props__['location'] = location
+            __props__.__dict__['azure_active_directory'] = azure_active_directory
+            __props__.__dict__['certificate'] = certificate
+            __props__.__dict__['client_certificate_common_names'] = client_certificate_common_names
+            __props__.__dict__['client_certificate_thumbprints'] = client_certificate_thumbprints
+            __props__.__dict__['cluster_code_version'] = cluster_code_version
+            __props__.__dict__['cluster_name'] = cluster_name
+            __props__.__dict__['diagnostics_storage_account_config'] = diagnostics_storage_account_config
+            __props__.__dict__['fabric_settings'] = fabric_settings
+            __props__.__dict__['location'] = location
             if management_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'management_endpoint'")
-            __props__['management_endpoint'] = management_endpoint
+            __props__.__dict__['management_endpoint'] = management_endpoint
             if node_types is None and not opts.urn:
                 raise TypeError("Missing required property 'node_types'")
-            __props__['node_types'] = node_types
-            __props__['reliability_level'] = reliability_level
+            __props__.__dict__['node_types'] = node_types
+            __props__.__dict__['reliability_level'] = reliability_level
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['reverse_proxy_certificate'] = reverse_proxy_certificate
-            __props__['tags'] = tags
-            __props__['upgrade_description'] = upgrade_description
-            __props__['upgrade_mode'] = upgrade_mode
-            __props__['vm_image'] = vm_image
-            __props__['available_cluster_versions'] = None
-            __props__['cluster_endpoint'] = None
-            __props__['cluster_id'] = None
-            __props__['cluster_state'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['reverse_proxy_certificate'] = reverse_proxy_certificate
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['upgrade_description'] = upgrade_description
+            __props__.__dict__['upgrade_mode'] = upgrade_mode
+            __props__.__dict__['vm_image'] = vm_image
+            __props__.__dict__['available_cluster_versions'] = None
+            __props__.__dict__['cluster_endpoint'] = None
+            __props__.__dict__['cluster_id'] = None
+            __props__.__dict__['cluster_state'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:servicefabric/v20160901:Cluster"), pulumi.Alias(type_="azure-native:servicefabric:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/latest:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/latest:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20170701preview:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20170701preview:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20180201:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20180201:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20190301:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20190301:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20190301preview:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20190301preview:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20190601preview:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20190601preview:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20191101preview:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20191101preview:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20200301:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20200301:Cluster"), pulumi.Alias(type_="azure-native:servicefabric/v20201201preview:Cluster"), pulumi.Alias(type_="azure-nextgen:servicefabric/v20201201preview:Cluster")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Cluster, __self__).__init__(
@@ -134,29 +472,29 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["available_cluster_versions"] = None
-        __props__["azure_active_directory"] = None
-        __props__["certificate"] = None
-        __props__["client_certificate_common_names"] = None
-        __props__["client_certificate_thumbprints"] = None
-        __props__["cluster_code_version"] = None
-        __props__["cluster_endpoint"] = None
-        __props__["cluster_id"] = None
-        __props__["cluster_state"] = None
-        __props__["diagnostics_storage_account_config"] = None
-        __props__["fabric_settings"] = None
-        __props__["location"] = None
-        __props__["management_endpoint"] = None
-        __props__["name"] = None
-        __props__["node_types"] = None
-        __props__["provisioning_state"] = None
-        __props__["reliability_level"] = None
-        __props__["reverse_proxy_certificate"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["upgrade_description"] = None
-        __props__["upgrade_mode"] = None
-        __props__["vm_image"] = None
+        __props__['available_cluster_versions'] = None
+        __props__['azure_active_directory'] = None
+        __props__['certificate'] = None
+        __props__['client_certificate_common_names'] = None
+        __props__['client_certificate_thumbprints'] = None
+        __props__['cluster_code_version'] = None
+        __props__['cluster_endpoint'] = None
+        __props__['cluster_id'] = None
+        __props__['cluster_state'] = None
+        __props__['diagnostics_storage_account_config'] = None
+        __props__['fabric_settings'] = None
+        __props__['location'] = None
+        __props__['management_endpoint'] = None
+        __props__['name'] = None
+        __props__['node_types'] = None
+        __props__['provisioning_state'] = None
+        __props__['reliability_level'] = None
+        __props__['reverse_proxy_certificate'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
+        __props__['upgrade_description'] = None
+        __props__['upgrade_mode'] = None
+        __props__['vm_image'] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -342,10 +680,4 @@ class Cluster(pulumi.CustomResource):
         The name of VM image VMSS has been configured with. Generic names such as Windows or Linux can be used.
         """
         return pulumi.get(self, "vm_image")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

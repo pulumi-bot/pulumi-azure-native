@@ -5,16 +5,181 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ScheduledQueryRule']
+__all__ = ['ScheduledQueryRuleArgs', 'ScheduledQueryRule']
+
+@pulumi.input_type
+class ScheduledQueryRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[Union['AlertingActionArgs', 'LogToMetricActionArgs']],
+                 resource_group_name: pulumi.Input[str],
+                 source: pulumi.Input['SourceArgs'],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[Union[str, 'Enabled']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input['ScheduleArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ScheduledQueryRule resource.
+        :param pulumi.Input[Union['AlertingActionArgs', 'LogToMetricActionArgs']] action: Action needs to be taken on rule execution.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input['SourceArgs'] source: Data Source against which rule will Query Data
+        :param pulumi.Input[str] description: The description of the Log Search rule.
+        :param pulumi.Input[str] display_name: The display name of the alert rule
+        :param pulumi.Input[Union[str, 'Enabled']] enabled: The flag which indicates whether the Log Search rule is enabled. Value should be true or false
+        :param pulumi.Input[str] location: Resource location
+        :param pulumi.Input[str] rule_name: The name of the rule.
+        :param pulumi.Input['ScheduleArgs'] schedule: Schedule (Frequency, Time Window) for rule. Required for action type - AlertingAction
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "source", source)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[Union['AlertingActionArgs', 'LogToMetricActionArgs']]:
+        """
+        Action needs to be taken on rule execution.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[Union['AlertingActionArgs', 'LogToMetricActionArgs']]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input['SourceArgs']:
+        """
+        Data Source against which rule will Query Data
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input['SourceArgs']):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the Log Search rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the alert rule
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[Union[str, 'Enabled']]]:
+        """
+        The flag which indicates whether the Log Search rule is enabled. Value should be true or false
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[Union[str, 'Enabled']]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['ScheduleArgs']]:
+        """
+        Schedule (Frequency, Time Window) for rule. Required for action type - AlertingAction
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['ScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ScheduledQueryRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -47,6 +212,43 @@ class ScheduledQueryRule(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SourceArgs']] source: Data Source against which rule will Query Data
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ScheduledQueryRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The Log Search Rule resource.
+
+        :param str resource_name: The name of the resource.
+        :param ScheduledQueryRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ScheduledQueryRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[Union[pulumi.InputType['AlertingActionArgs'], pulumi.InputType['LogToMetricActionArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[Union[str, 'Enabled']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -62,32 +264,32 @@ class ScheduledQueryRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ScheduledQueryRuleArgs.__new__(ScheduledQueryRuleArgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
-            __props__['action'] = action
-            __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['enabled'] = enabled
-            __props__['location'] = location
+            __props__.__dict__['action'] = action
+            __props__.__dict__['description'] = description
+            __props__.__dict__['display_name'] = display_name
+            __props__.__dict__['enabled'] = enabled
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['rule_name'] = rule_name
-            __props__['schedule'] = schedule
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['rule_name'] = rule_name
+            __props__.__dict__['schedule'] = schedule
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
-            __props__['source'] = source
-            __props__['tags'] = tags
-            __props__['created_with_api_version'] = None
-            __props__['etag'] = None
-            __props__['is_legacy_log_analytics_rule'] = None
-            __props__['kind'] = None
-            __props__['last_updated_time'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['source'] = source
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['created_with_api_version'] = None
+            __props__.__dict__['etag'] = None
+            __props__.__dict__['is_legacy_log_analytics_rule'] = None
+            __props__.__dict__['kind'] = None
+            __props__.__dict__['last_updated_time'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:insights/v20180416:ScheduledQueryRule"), pulumi.Alias(type_="azure-native:insights:ScheduledQueryRule"), pulumi.Alias(type_="azure-nextgen:insights:ScheduledQueryRule"), pulumi.Alias(type_="azure-native:insights/latest:ScheduledQueryRule"), pulumi.Alias(type_="azure-nextgen:insights/latest:ScheduledQueryRule"), pulumi.Alias(type_="azure-native:insights/v20200501preview:ScheduledQueryRule"), pulumi.Alias(type_="azure-nextgen:insights/v20200501preview:ScheduledQueryRule"), pulumi.Alias(type_="azure-native:insights/v20210201preview:ScheduledQueryRule"), pulumi.Alias(type_="azure-nextgen:insights/v20210201preview:ScheduledQueryRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ScheduledQueryRule, __self__).__init__(
@@ -112,22 +314,22 @@ class ScheduledQueryRule(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["action"] = None
-        __props__["created_with_api_version"] = None
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["enabled"] = None
-        __props__["etag"] = None
-        __props__["is_legacy_log_analytics_rule"] = None
-        __props__["kind"] = None
-        __props__["last_updated_time"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["schedule"] = None
-        __props__["source"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['action'] = None
+        __props__['created_with_api_version'] = None
+        __props__['description'] = None
+        __props__['display_name'] = None
+        __props__['enabled'] = None
+        __props__['etag'] = None
+        __props__['is_legacy_log_analytics_rule'] = None
+        __props__['kind'] = None
+        __props__['last_updated_time'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['schedule'] = None
+        __props__['source'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return ScheduledQueryRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -257,10 +459,4 @@ class ScheduledQueryRule(pulumi.CustomResource):
         Azure resource type
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

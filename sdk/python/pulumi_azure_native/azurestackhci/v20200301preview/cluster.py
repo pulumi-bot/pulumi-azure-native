@@ -5,14 +5,115 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['Cluster']
+__all__ = ['ClusterArgs', 'Cluster']
+
+@pulumi.input_type
+class ClusterArgs:
+    def __init__(__self__, *,
+                 aad_client_id: pulumi.Input[str],
+                 aad_tenant_id: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] aad_client_id: App id of cluster AAD identity.
+        :param pulumi.Input[str] aad_tenant_id: Tenant id of cluster AAD identity.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] cluster_name: The name of the cluster.
+        :param pulumi.Input[str] location: The geo-location where the resource lives
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "aad_client_id", aad_client_id)
+        pulumi.set(__self__, "aad_tenant_id", aad_tenant_id)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="aadClientId")
+    def aad_client_id(self) -> pulumi.Input[str]:
+        """
+        App id of cluster AAD identity.
+        """
+        return pulumi.get(self, "aad_client_id")
+
+    @aad_client_id.setter
+    def aad_client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "aad_client_id", value)
+
+    @property
+    @pulumi.getter(name="aadTenantId")
+    def aad_tenant_id(self) -> pulumi.Input[str]:
+        """
+        Tenant id of cluster AAD identity.
+        """
+        return pulumi.get(self, "aad_tenant_id")
+
+    @aad_tenant_id.setter
+    def aad_tenant_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "aad_tenant_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Cluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +138,39 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Cluster details.
+
+        :param str resource_name: The name of the resource.
+        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 aad_client_id: Optional[pulumi.Input[str]] = None,
+                 aad_tenant_id: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,31 +186,31 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterArgs.__new__(ClusterArgs)
 
             if aad_client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'aad_client_id'")
-            __props__['aad_client_id'] = aad_client_id
+            __props__.__dict__['aad_client_id'] = aad_client_id
             if aad_tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'aad_tenant_id'")
-            __props__['aad_tenant_id'] = aad_tenant_id
-            __props__['cluster_name'] = cluster_name
-            __props__['location'] = location
+            __props__.__dict__['aad_tenant_id'] = aad_tenant_id
+            __props__.__dict__['cluster_name'] = cluster_name
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['billing_model'] = None
-            __props__['cloud_id'] = None
-            __props__['last_billing_timestamp'] = None
-            __props__['last_sync_timestamp'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['registration_timestamp'] = None
-            __props__['reported_properties'] = None
-            __props__['status'] = None
-            __props__['trial_days_remaining'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['billing_model'] = None
+            __props__.__dict__['cloud_id'] = None
+            __props__.__dict__['last_billing_timestamp'] = None
+            __props__.__dict__['last_sync_timestamp'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['registration_timestamp'] = None
+            __props__.__dict__['reported_properties'] = None
+            __props__.__dict__['status'] = None
+            __props__.__dict__['trial_days_remaining'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:azurestackhci/v20200301preview:Cluster"), pulumi.Alias(type_="azure-native:azurestackhci:Cluster"), pulumi.Alias(type_="azure-nextgen:azurestackhci:Cluster"), pulumi.Alias(type_="azure-native:azurestackhci/latest:Cluster"), pulumi.Alias(type_="azure-nextgen:azurestackhci/latest:Cluster"), pulumi.Alias(type_="azure-native:azurestackhci/v20201001:Cluster"), pulumi.Alias(type_="azure-nextgen:azurestackhci/v20201001:Cluster")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Cluster, __self__).__init__(
@@ -101,21 +235,21 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["aad_client_id"] = None
-        __props__["aad_tenant_id"] = None
-        __props__["billing_model"] = None
-        __props__["cloud_id"] = None
-        __props__["last_billing_timestamp"] = None
-        __props__["last_sync_timestamp"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["registration_timestamp"] = None
-        __props__["reported_properties"] = None
-        __props__["status"] = None
-        __props__["tags"] = None
-        __props__["trial_days_remaining"] = None
-        __props__["type"] = None
+        __props__['aad_client_id'] = None
+        __props__['aad_tenant_id'] = None
+        __props__['billing_model'] = None
+        __props__['cloud_id'] = None
+        __props__['last_billing_timestamp'] = None
+        __props__['last_sync_timestamp'] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['provisioning_state'] = None
+        __props__['registration_timestamp'] = None
+        __props__['reported_properties'] = None
+        __props__['status'] = None
+        __props__['tags'] = None
+        __props__['trial_days_remaining'] = None
+        __props__['type'] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -237,10 +371,4 @@ class Cluster(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

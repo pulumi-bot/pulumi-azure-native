@@ -5,13 +5,84 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['DeploymentAtTenantScope']
+__all__ = ['DeploymentAtTenantScopeArgs', 'DeploymentAtTenantScope']
+
+@pulumi.input_type
+class DeploymentAtTenantScopeArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input['DeploymentPropertiesArgs'],
+                 deployment_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DeploymentAtTenantScope resource.
+        :param pulumi.Input['DeploymentPropertiesArgs'] properties: The deployment properties.
+        :param pulumi.Input[str] deployment_name: The name of the deployment.
+        :param pulumi.Input[str] location: The location to store the deployment data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Deployment tags
+        """
+        pulumi.set(__self__, "properties", properties)
+        if deployment_name is not None:
+            pulumi.set(__self__, "deployment_name", deployment_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input['DeploymentPropertiesArgs']:
+        """
+        The deployment properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input['DeploymentPropertiesArgs']):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="deploymentName")
+    def deployment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the deployment.
+        """
+        return pulumi.get(self, "deployment_name")
+
+    @deployment_name.setter
+    def deployment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location to store the deployment data.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Deployment tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:resources:DeploymentAtTenantScope'.""", DeprecationWarning)
 
@@ -19,6 +90,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class DeploymentAtTenantScope(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:resources:DeploymentAtTenantScope'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +112,38 @@ class DeploymentAtTenantScope(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeploymentPropertiesArgs']] properties: The deployment properties.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Deployment tags
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeploymentAtTenantScopeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Deployment information.
+        Latest API Version: 2021-01-01.
+
+        :param str resource_name: The name of the resource.
+        :param DeploymentAtTenantScopeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeploymentAtTenantScopeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 deployment_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['DeploymentPropertiesArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""DeploymentAtTenantScope is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:resources:DeploymentAtTenantScope'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -56,16 +160,16 @@ class DeploymentAtTenantScope(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DeploymentAtTenantScopeArgs.__new__(DeploymentAtTenantScopeArgs)
 
-            __props__['deployment_name'] = deployment_name
-            __props__['location'] = location
+            __props__.__dict__['deployment_name'] = deployment_name
+            __props__.__dict__['location'] = location
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
-            __props__['tags'] = tags
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['properties'] = properties
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:resources/latest:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources/v20190701:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources/v20190701:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources/v20190801:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources/v20190801:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources/v20191001:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources/v20191001:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources/v20200601:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources/v20200601:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources/v20200801:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources/v20200801:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources/v20201001:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources/v20201001:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-native:resources/v20210101:DeploymentAtTenantScope"), pulumi.Alias(type_="azure-nextgen:resources/v20210101:DeploymentAtTenantScope")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DeploymentAtTenantScope, __self__).__init__(
@@ -90,11 +194,11 @@ class DeploymentAtTenantScope(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__['location'] = None
+        __props__['name'] = None
+        __props__['properties'] = None
+        __props__['tags'] = None
+        __props__['type'] = None
         return DeploymentAtTenantScope(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -136,10 +240,4 @@ class DeploymentAtTenantScope(pulumi.CustomResource):
         The type of the deployment.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
