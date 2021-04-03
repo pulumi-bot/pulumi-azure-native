@@ -5,16 +5,231 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Workflow']
+__all__ = ['WorkflowArgs', 'Workflow']
+
+@pulumi.input_type
+class WorkflowArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 definition: Optional[Any] = None,
+                 definition_link: Optional[pulumi.Input['ContentLinkArgs']] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowParameterArgs']]]] = None,
+                 parameters_link: Optional[pulumi.Input['ContentLinkArgs']] = None,
+                 sku: Optional[pulumi.Input['SkuArgs']] = None,
+                 state: Optional[pulumi.Input['WorkflowState']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 workflow_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Workflow resource.
+        :param pulumi.Input[str] resource_group_name: The resource group name.
+        :param Any definition: Gets or sets the definition.
+        :param pulumi.Input['ContentLinkArgs'] definition_link: Gets or sets the link to definition.
+        :param pulumi.Input[str] id: Gets or sets the resource id.
+        :param pulumi.Input[str] location: Gets or sets the resource location.
+        :param pulumi.Input[str] name: Gets the resource name.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowParameterArgs']]] parameters: Gets or sets the parameters.
+        :param pulumi.Input['ContentLinkArgs'] parameters_link: Gets or sets the link to parameters.
+        :param pulumi.Input['SkuArgs'] sku: Gets or sets the sku.
+        :param pulumi.Input['WorkflowState'] state: Gets or sets the state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Gets or sets the resource tags.
+        :param pulumi.Input[str] type: Gets the resource type.
+        :param pulumi.Input[str] workflow_name: The workflow name.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if definition_link is not None:
+            pulumi.set(__self__, "definition_link", definition_link)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if parameters_link is not None:
+            pulumi.set(__self__, "parameters_link", parameters_link)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if workflow_name is not None:
+            pulumi.set(__self__, "workflow_name", workflow_name)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The resource group name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> Optional[Any]:
+        """
+        Gets or sets the definition.
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: Optional[Any]):
+        pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter(name="definitionLink")
+    def definition_link(self) -> Optional[pulumi.Input['ContentLinkArgs']]:
+        """
+        Gets or sets the link to definition.
+        """
+        return pulumi.get(self, "definition_link")
+
+    @definition_link.setter
+    def definition_link(self, value: Optional[pulumi.Input['ContentLinkArgs']]):
+        pulumi.set(self, "definition_link", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Gets or sets the resource id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Gets or sets the resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Gets the resource name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowParameterArgs']]]]:
+        """
+        Gets or sets the parameters.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="parametersLink")
+    def parameters_link(self) -> Optional[pulumi.Input['ContentLinkArgs']]:
+        """
+        Gets or sets the link to parameters.
+        """
+        return pulumi.get(self, "parameters_link")
+
+    @parameters_link.setter
+    def parameters_link(self, value: Optional[pulumi.Input['ContentLinkArgs']]):
+        pulumi.set(self, "parameters_link", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input['SkuArgs']]:
+        """
+        Gets or sets the sku.
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input['SkuArgs']]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['WorkflowState']]:
+        """
+        Gets or sets the state.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['WorkflowState']]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Gets or sets the resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Gets the resource type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="workflowName")
+    def workflow_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workflow name.
+        """
+        return pulumi.get(self, "workflow_name")
+
+    @workflow_name.setter
+    def workflow_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflow_name", value)
 
 
 class Workflow(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -52,6 +267,45 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] type: Gets the resource type.
         :param pulumi.Input[str] workflow_name: The workflow name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkflowArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Workflow resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param WorkflowArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkflowArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 definition: Optional[Any] = None,
+                 definition_link: Optional[pulumi.Input[pulumi.InputType['ContentLinkArgs']]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['WorkflowParameterArgs']]]]] = None,
+                 parameters_link: Optional[pulumi.Input[pulumi.InputType['ContentLinkArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['SkuArgs']]] = None,
+                 state: Optional[pulumi.Input['WorkflowState']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 workflow_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -67,28 +321,28 @@ class Workflow(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
-            __props__['definition'] = definition
-            __props__['definition_link'] = definition_link
-            __props__['id'] = id
-            __props__['location'] = location
-            __props__['name'] = name
-            __props__['parameters'] = parameters
-            __props__['parameters_link'] = parameters_link
+            __props__.__dict__['definition'] = definition
+            __props__.__dict__['definition_link'] = definition_link
+            __props__.__dict__['id'] = id
+            __props__.__dict__['location'] = location
+            __props__.__dict__['name'] = name
+            __props__.__dict__['parameters'] = parameters
+            __props__.__dict__['parameters_link'] = parameters_link
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sku'] = sku
-            __props__['state'] = state
-            __props__['tags'] = tags
-            __props__['type'] = type
-            __props__['workflow_name'] = workflow_name
-            __props__['access_endpoint'] = None
-            __props__['changed_time'] = None
-            __props__['created_time'] = None
-            __props__['provisioning_state'] = None
-            __props__['version'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['state'] = state
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['type'] = type
+            __props__.__dict__['workflow_name'] = workflow_name
+            __props__.__dict__['access_endpoint'] = None
+            __props__.__dict__['changed_time'] = None
+            __props__.__dict__['created_time'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['version'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:logic/v20150201preview:Workflow"), pulumi.Alias(type_="azure-native:logic:Workflow"), pulumi.Alias(type_="azure-nextgen:logic:Workflow"), pulumi.Alias(type_="azure-native:logic/latest:Workflow"), pulumi.Alias(type_="azure-nextgen:logic/latest:Workflow"), pulumi.Alias(type_="azure-native:logic/v20160601:Workflow"), pulumi.Alias(type_="azure-nextgen:logic/v20160601:Workflow"), pulumi.Alias(type_="azure-native:logic/v20180701preview:Workflow"), pulumi.Alias(type_="azure-nextgen:logic/v20180701preview:Workflow"), pulumi.Alias(type_="azure-native:logic/v20190501:Workflow"), pulumi.Alias(type_="azure-nextgen:logic/v20190501:Workflow")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Workflow, __self__).__init__(
@@ -111,23 +365,23 @@ class Workflow(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
-        __props__["access_endpoint"] = None
-        __props__["changed_time"] = None
-        __props__["created_time"] = None
-        __props__["definition"] = None
-        __props__["definition_link"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["parameters"] = None
-        __props__["parameters_link"] = None
-        __props__["provisioning_state"] = None
-        __props__["sku"] = None
-        __props__["state"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["version"] = None
+        __props__.__dict__['access_endpoint'] = None
+        __props__.__dict__['changed_time'] = None
+        __props__.__dict__['created_time'] = None
+        __props__.__dict__['definition'] = None
+        __props__.__dict__['definition_link'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['parameters'] = None
+        __props__.__dict__['parameters_link'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['sku'] = None
+        __props__.__dict__['state'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['version'] = None
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -249,10 +503,4 @@ class Workflow(pulumi.CustomResource):
         Gets the version.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

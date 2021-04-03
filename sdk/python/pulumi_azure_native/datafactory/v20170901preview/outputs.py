@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -296,6 +296,23 @@ class ActivityDependencyResponse(dict):
     """
     Activity dependency information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependencyConditions":
+            suggest = "dependency_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActivityDependencyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActivityDependencyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActivityDependencyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  activity: str,
                  dependency_conditions: Sequence[str]):
@@ -323,15 +340,31 @@ class ActivityDependencyResponse(dict):
         """
         return pulumi.get(self, "dependency_conditions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ActivityPolicyResponse(dict):
     """
     Execution policy for an activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retryIntervalInSeconds":
+            suggest = "retry_interval_in_seconds"
+        elif key == "secureOutput":
+            suggest = "secure_output"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActivityPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActivityPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActivityPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  retry: Optional[Any] = None,
                  retry_interval_in_seconds: Optional[int] = None,
@@ -385,15 +418,47 @@ class ActivityPolicyResponse(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AmazonMWSLinkedServiceResponse(dict):
     """
     Amazon Marketplace Web Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "marketplaceID":
+            suggest = "marketplace_id"
+        elif key == "sellerID":
+            suggest = "seller_id"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "mwsAuthToken":
+            suggest = "mws_auth_token"
+        elif key == "secretKey":
+            suggest = "secret_key"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AmazonMWSLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AmazonMWSLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AmazonMWSLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_key_id: Any,
                  endpoint: Any,
@@ -576,15 +641,29 @@ class AmazonMWSLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AmazonMWSObjectDatasetResponse(dict):
     """
     Amazon Marketplace Web Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AmazonMWSObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AmazonMWSObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AmazonMWSObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -662,15 +741,31 @@ class AmazonMWSObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AmazonMWSSourceResponse(dict):
     """
     A copy activity Amazon Marketplace Web Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AmazonMWSSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AmazonMWSSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AmazonMWSSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -725,15 +820,31 @@ class AmazonMWSSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AmazonRedshiftLinkedServiceResponse(dict):
     """
     Linked service for Amazon Redshift.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AmazonRedshiftLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AmazonRedshiftLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AmazonRedshiftLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database: Any,
                  server: Any,
@@ -870,15 +981,33 @@ class AmazonRedshiftLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AmazonRedshiftSourceResponse(dict):
     """
     A copy activity source for Amazon Redshift Source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redshiftUnloadSettings":
+            suggest = "redshift_unload_settings"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AmazonRedshiftSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AmazonRedshiftSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AmazonRedshiftSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -945,15 +1074,31 @@ class AmazonRedshiftSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AmazonS3DatasetResponse(dict):
     """
     A single Amazon Simple Storage Service (S3) object or a set of S3 objects.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AmazonS3DatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AmazonS3DatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AmazonS3DatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -1102,15 +1247,35 @@ class AmazonS3DatasetResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AmazonS3LinkedServiceResponse(dict):
     """
     Linked service for Amazon S3.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AmazonS3LinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AmazonS3LinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AmazonS3LinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  access_key_id: Optional[Any] = None,
@@ -1213,9 +1378,6 @@ class AmazonS3LinkedServiceResponse(dict):
         """
         return pulumi.get(self, "secret_access_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AvroFormatResponse(dict):
@@ -1264,15 +1426,41 @@ class AvroFormatResponse(dict):
         """
         return pulumi.get(self, "serializer")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureBatchLinkedServiceResponse(dict):
     """
     Azure Batch linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountName":
+            suggest = "account_name"
+        elif key == "batchUri":
+            suggest = "batch_uri"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "poolName":
+            suggest = "pool_name"
+        elif key == "accessKey":
+            suggest = "access_key"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureBatchLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureBatchLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureBatchLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_name: Any,
                  batch_uri: Any,
@@ -1407,15 +1595,35 @@ class AzureBatchLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureBlobDatasetResponse(dict):
     """
     The Azure Blob storage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "fileName":
+            suggest = "file_name"
+        elif key == "folderPath":
+            suggest = "folder_path"
+        elif key == "tableRootLocation":
+            suggest = "table_root_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureBlobDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureBlobDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureBlobDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -1553,15 +1761,43 @@ class AzureBlobDatasetResponse(dict):
         """
         return pulumi.get(self, "table_root_location")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureDataLakeAnalyticsLinkedServiceResponse(dict):
     """
     Azure Data Lake Analytics linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountName":
+            suggest = "account_name"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "dataLakeAnalyticsUri":
+            suggest = "data_lake_analytics_uri"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "servicePrincipalId":
+            suggest = "service_principal_id"
+        elif key == "servicePrincipalKey":
+            suggest = "service_principal_key"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeAnalyticsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureDataLakeAnalyticsLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureDataLakeAnalyticsLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_name: Any,
                  tenant: Any,
@@ -1722,15 +1958,33 @@ class AzureDataLakeAnalyticsLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "subscription_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureDataLakeStoreDatasetResponse(dict):
     """
     Azure Data Lake Store dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "folderPath":
+            suggest = "folder_path"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "fileName":
+            suggest = "file_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureDataLakeStoreDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureDataLakeStoreDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  folder_path: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -1855,15 +2109,43 @@ class AzureDataLakeStoreDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureDataLakeStoreLinkedServiceResponse(dict):
     """
     Azure Data Lake Store linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataLakeStoreUri":
+            suggest = "data_lake_store_uri"
+        elif key == "accountName":
+            suggest = "account_name"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "servicePrincipalId":
+            suggest = "service_principal_id"
+        elif key == "servicePrincipalKey":
+            suggest = "service_principal_key"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureDataLakeStoreLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureDataLakeStoreLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  data_lake_store_uri: Any,
                  type: str,
@@ -2025,15 +2307,37 @@ class AzureDataLakeStoreLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "tenant")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureDataLakeStoreSinkResponse(dict):
     """
     A copy activity Azure Data Lake Store sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "copyBehavior":
+            suggest = "copy_behavior"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureDataLakeStoreSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureDataLakeStoreSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -2112,15 +2416,31 @@ class AzureDataLakeStoreSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureDataLakeStoreSourceResponse(dict):
     """
     A copy activity Azure Data Lake source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureDataLakeStoreSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureDataLakeStoreSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  recursive: Optional[Any] = None,
@@ -2175,15 +2495,43 @@ class AzureDataLakeStoreSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureDatabricksLinkedServiceResponse(dict):
     """
     Azure Databricks linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "existingClusterId":
+            suggest = "existing_cluster_id"
+        elif key == "newClusterNodeType":
+            suggest = "new_cluster_node_type"
+        elif key == "newClusterNumOfWorker":
+            suggest = "new_cluster_num_of_worker"
+        elif key == "newClusterSparkConf":
+            suggest = "new_cluster_spark_conf"
+        elif key == "newClusterVersion":
+            suggest = "new_cluster_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureDatabricksLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureDatabricksLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_token: Any,
                  domain: Any,
@@ -2344,15 +2692,31 @@ class AzureDatabricksLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureKeyVaultLinkedServiceResponse(dict):
     """
     Azure Key Vault linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseUrl":
+            suggest = "base_url"
+        elif key == "connectVia":
+            suggest = "connect_via"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureKeyVaultLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureKeyVaultLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureKeyVaultLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_url: Any,
                  type: str,
@@ -2430,15 +2794,31 @@ class AzureKeyVaultLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureKeyVaultSecretReferenceResponse(dict):
     """
     Azure Key Vault secret reference.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretName":
+            suggest = "secret_name"
+        elif key == "secretVersion":
+            suggest = "secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureKeyVaultSecretReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureKeyVaultSecretReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureKeyVaultSecretReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  secret_name: Any,
                  store: 'outputs.LinkedServiceReferenceResponse',
@@ -2491,15 +2871,37 @@ class AzureKeyVaultSecretReferenceResponse(dict):
         """
         return pulumi.get(self, "secret_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureMLBatchExecutionActivityResponse(dict):
     """
     Azure ML Batch Execution activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "globalParameters":
+            suggest = "global_parameters"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "webServiceInputs":
+            suggest = "web_service_inputs"
+        elif key == "webServiceOutputs":
+            suggest = "web_service_outputs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMLBatchExecutionActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMLBatchExecutionActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMLBatchExecutionActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -2613,15 +3015,41 @@ class AzureMLBatchExecutionActivityResponse(dict):
         """
         return pulumi.get(self, "web_service_outputs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureMLLinkedServiceResponse(dict):
     """
     Azure ML Web Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "mlEndpoint":
+            suggest = "ml_endpoint"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "servicePrincipalId":
+            suggest = "service_principal_id"
+        elif key == "servicePrincipalKey":
+            suggest = "service_principal_key"
+        elif key == "updateResourceEndpoint":
+            suggest = "update_resource_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMLLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMLLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMLLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_key: Any,
                  ml_endpoint: Any,
@@ -2770,15 +3198,37 @@ class AzureMLLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "update_resource_endpoint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureMLUpdateResourceActivityResponse(dict):
     """
     Azure ML Update Resource management activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trainedModelFilePath":
+            suggest = "trained_model_file_path"
+        elif key == "trainedModelLinkedServiceName":
+            suggest = "trained_model_linked_service_name"
+        elif key == "trainedModelName":
+            suggest = "trained_model_name"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMLUpdateResourceActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMLUpdateResourceActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMLUpdateResourceActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  trained_model_file_path: Any,
@@ -2889,15 +3339,31 @@ class AzureMLUpdateResourceActivityResponse(dict):
         """
         return pulumi.get(self, "policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureMLWebServiceFileResponse(dict):
     """
     Azure ML WebService Input/Output file
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePath":
+            suggest = "file_path"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMLWebServiceFileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMLWebServiceFileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMLWebServiceFileResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_path: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse'):
@@ -2925,15 +3391,33 @@ class AzureMLWebServiceFileResponse(dict):
         """
         return pulumi.get(self, "linked_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureMySqlLinkedServiceResponse(dict):
     """
     Azure MySQL database linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMySqlLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMySqlLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -3023,15 +3507,31 @@ class AzureMySqlLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureMySqlSourceResponse(dict):
     """
     A copy activity Azure MySQL source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMySqlSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMySqlSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -3086,15 +3586,31 @@ class AzureMySqlSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureMySqlTableDatasetResponse(dict):
     """
     The Azure MySQL database dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureMySqlTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureMySqlTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -3184,15 +3700,33 @@ class AzureMySqlTableDatasetResponse(dict):
         """
         return pulumi.get(self, "table_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzurePostgreSqlLinkedServiceResponse(dict):
     """
     Azure PostgreSQL linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzurePostgreSqlLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzurePostgreSqlLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -3283,15 +3817,31 @@ class AzurePostgreSqlLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzurePostgreSqlSourceResponse(dict):
     """
     A copy activity Azure PostgreSQL source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzurePostgreSqlSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzurePostgreSqlSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -3346,15 +3896,29 @@ class AzurePostgreSqlSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzurePostgreSqlTableDatasetResponse(dict):
     """
     Azure PostgreSQL dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzurePostgreSqlTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzurePostgreSqlTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -3432,15 +3996,35 @@ class AzurePostgreSqlTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureQueueSinkResponse(dict):
     """
     A copy activity Azure Queue sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureQueueSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureQueueSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureQueueSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  sink_retry_count: Optional[Any] = None,
@@ -3507,15 +4091,31 @@ class AzureQueueSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureSearchIndexDatasetResponse(dict):
     """
     The Azure Search Index.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "indexName":
+            suggest = "index_name"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSearchIndexDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSearchIndexDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSearchIndexDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  index_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -3604,15 +4204,37 @@ class AzureSearchIndexDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureSearchIndexSinkResponse(dict):
     """
     A copy activity Azure Search Index sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+        elif key == "writeBehavior":
+            suggest = "write_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSearchIndexSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSearchIndexSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSearchIndexSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  sink_retry_count: Optional[Any] = None,
@@ -3691,15 +4313,31 @@ class AzureSearchIndexSinkResponse(dict):
         """
         return pulumi.get(self, "write_behavior")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureSearchLinkedServiceResponse(dict):
     """
     Linked service for Windows Azure Search Service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSearchLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSearchLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSearchLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -3801,15 +4439,37 @@ class AzureSearchLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureSqlDWLinkedServiceResponse(dict):
     """
     Azure SQL Data Warehouse linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "servicePrincipalId":
+            suggest = "service_principal_id"
+        elif key == "servicePrincipalKey":
+            suggest = "service_principal_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSqlDWLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSqlDWLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSqlDWLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -3935,15 +4595,31 @@ class AzureSqlDWLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "tenant")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureSqlDWTableDatasetResponse(dict):
     """
     The Azure SQL Data Warehouse dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSqlDWTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSqlDWTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSqlDWTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -4032,15 +4708,37 @@ class AzureSqlDWTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureSqlDatabaseLinkedServiceResponse(dict):
     """
     Microsoft Azure SQL Database linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "servicePrincipalId":
+            suggest = "service_principal_id"
+        elif key == "servicePrincipalKey":
+            suggest = "service_principal_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSqlDatabaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSqlDatabaseLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSqlDatabaseLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -4166,15 +4864,31 @@ class AzureSqlDatabaseLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "tenant")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureSqlTableDatasetResponse(dict):
     """
     The Azure SQL Server database dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureSqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureSqlTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureSqlTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -4263,15 +4977,35 @@ class AzureSqlTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureStorageLinkedServiceResponse(dict):
     """
     The storage account linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "sasUri":
+            suggest = "sas_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureStorageLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureStorageLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureStorageLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -4374,15 +5108,31 @@ class AzureStorageLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "sas_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureTableDatasetResponse(dict):
     """
     The Azure Table storage dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -4471,15 +5221,43 @@ class AzureTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureTableSinkResponse(dict):
     """
     A copy activity Azure Table sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureTableDefaultPartitionKeyValue":
+            suggest = "azure_table_default_partition_key_value"
+        elif key == "azureTableInsertType":
+            suggest = "azure_table_insert_type"
+        elif key == "azureTablePartitionKeyName":
+            suggest = "azure_table_partition_key_name"
+        elif key == "azureTableRowKeyName":
+            suggest = "azure_table_row_key_name"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureTableSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureTableSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureTableSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  azure_table_default_partition_key_value: Optional[Any] = None,
@@ -4594,15 +5372,35 @@ class AzureTableSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureTableSourceResponse(dict):
     """
     A copy activity Azure Table source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureTableSourceIgnoreTableNotFound":
+            suggest = "azure_table_source_ignore_table_not_found"
+        elif key == "azureTableSourceQuery":
+            suggest = "azure_table_source_query"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureTableSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureTableSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureTableSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  azure_table_source_ignore_table_not_found: Optional[Any] = None,
@@ -4669,15 +5467,35 @@ class AzureTableSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BlobEventsTriggerResponse(dict):
     """
     Trigger that runs every time a Blob event occurs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runtimeState":
+            suggest = "runtime_state"
+        elif key == "blobPathBeginsWith":
+            suggest = "blob_path_begins_with"
+        elif key == "blobPathEndsWith":
+            suggest = "blob_path_ends_with"
+        elif key == "ignoreEmptyBlobs":
+            suggest = "ignore_empty_blobs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlobEventsTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlobEventsTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlobEventsTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  events: Sequence[str],
                  runtime_state: str,
@@ -4789,15 +5607,43 @@ class BlobEventsTriggerResponse(dict):
         """
         return pulumi.get(self, "pipelines")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BlobSinkResponse(dict):
     """
     A copy activity Azure Blob sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blobWriterAddHeader":
+            suggest = "blob_writer_add_header"
+        elif key == "blobWriterDateTimeFormat":
+            suggest = "blob_writer_date_time_format"
+        elif key == "blobWriterOverwriteFiles":
+            suggest = "blob_writer_overwrite_files"
+        elif key == "copyBehavior":
+            suggest = "copy_behavior"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlobSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlobSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlobSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  blob_writer_add_header: Optional[Any] = None,
@@ -4912,15 +5758,35 @@ class BlobSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BlobSourceResponse(dict):
     """
     A copy activity Azure Blob source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "skipHeaderLineCount":
+            suggest = "skip_header_line_count"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+        elif key == "treatEmptyAsNull":
+            suggest = "treat_empty_as_null"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlobSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlobSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlobSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  recursive: Optional[Any] = None,
@@ -4999,15 +5865,35 @@ class BlobSourceResponse(dict):
         """
         return pulumi.get(self, "treat_empty_as_null")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BlobTriggerResponse(dict):
     """
     Trigger that runs every time the selected Blob container changes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "folderPath":
+            suggest = "folder_path"
+        elif key == "linkedService":
+            suggest = "linked_service"
+        elif key == "maxConcurrency":
+            suggest = "max_concurrency"
+        elif key == "runtimeState":
+            suggest = "runtime_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlobTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlobTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlobTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  folder_path: str,
                  linked_service: 'outputs.LinkedServiceReferenceResponse',
@@ -5094,15 +5980,33 @@ class BlobTriggerResponse(dict):
         """
         return pulumi.get(self, "pipelines")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraLinkedServiceResponse(dict):
     """
     Linked service for Cassandra data source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -5240,15 +6144,33 @@ class CassandraLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraSourceResponse(dict):
     """
     A copy activity source for a Cassandra database.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consistencyLevel":
+            suggest = "consistency_level"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  consistency_level: Optional[str] = None,
@@ -5315,15 +6237,31 @@ class CassandraSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraTableDatasetResponse(dict):
     """
     The Cassandra database dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -5425,15 +6363,39 @@ class CassandraTableDatasetResponse(dict):
         """
         return pulumi.get(self, "table_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConcurLinkedServiceResponse(dict):
     """
     Concur Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConcurLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConcurLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConcurLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  type: str,
@@ -5582,15 +6544,29 @@ class ConcurLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConcurObjectDatasetResponse(dict):
     """
     Concur Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConcurObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConcurObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConcurObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -5668,15 +6644,31 @@ class ConcurObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConcurSourceResponse(dict):
     """
     A copy activity Concur Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConcurSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConcurSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConcurSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -5731,15 +6723,29 @@ class ConcurSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ControlActivityResponse(dict):
     """
     Base class for all control activities like IfCondition, ForEach , Until.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -5793,15 +6799,43 @@ class ControlActivityResponse(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CopyActivityResponse(dict):
     """
     Copy activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudDataMovementUnits":
+            suggest = "cloud_data_movement_units"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "enableSkipIncompatibleRow":
+            suggest = "enable_skip_incompatible_row"
+        elif key == "enableStaging":
+            suggest = "enable_staging"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "parallelCopies":
+            suggest = "parallel_copies"
+        elif key == "redirectIncompatibleRowSettings":
+            suggest = "redirect_incompatible_row_settings"
+        elif key == "stagingSettings":
+            suggest = "staging_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CopyActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CopyActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CopyActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  sink: Any,
@@ -6009,15 +7043,33 @@ class CopyActivityResponse(dict):
         """
         return pulumi.get(self, "translator")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CosmosDbLinkedServiceResponse(dict):
     """
     Microsoft Azure Cosmos Database (CosmosDB) linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CosmosDbLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CosmosDbLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CosmosDbLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -6107,15 +7159,33 @@ class CosmosDbLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CouchbaseLinkedServiceResponse(dict):
     """
     Couchbase server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CouchbaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CouchbaseLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CouchbaseLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -6206,15 +7276,31 @@ class CouchbaseLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CouchbaseSourceResponse(dict):
     """
     A copy activity Couchbase server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CouchbaseSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CouchbaseSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CouchbaseSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -6269,15 +7355,29 @@ class CouchbaseSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CouchbaseTableDatasetResponse(dict):
     """
     Couchbase server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CouchbaseTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CouchbaseTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CouchbaseTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -6355,15 +7455,29 @@ class CouchbaseTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomActivityReferenceObjectResponse(dict):
     """
     Reference objects for custom activity
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServices":
+            suggest = "linked_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomActivityReferenceObjectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomActivityReferenceObjectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomActivityReferenceObjectResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  datasets: Optional[Sequence['outputs.DatasetReferenceResponse']] = None,
                  linked_services: Optional[Sequence['outputs.LinkedServiceReferenceResponse']] = None):
@@ -6393,15 +7507,39 @@ class CustomActivityReferenceObjectResponse(dict):
         """
         return pulumi.get(self, "linked_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomActivityResponse(dict):
     """
     Custom activity type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "extendedProperties":
+            suggest = "extended_properties"
+        elif key == "folderPath":
+            suggest = "folder_path"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "referenceObjects":
+            suggest = "reference_objects"
+        elif key == "resourceLinkedService":
+            suggest = "resource_linked_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  command: Any,
                  name: str,
@@ -6538,15 +7676,29 @@ class CustomActivityResponse(dict):
         """
         return pulumi.get(self, "resource_linked_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomDataSourceLinkedServiceResponse(dict):
     """
     Custom linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDataSourceLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDataSourceLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDataSourceLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -6613,15 +7765,29 @@ class CustomDataSourceLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomDatasetResponse(dict):
     """
     The custom dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -6699,15 +7865,41 @@ class CustomDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataLakeAnalyticsUSQLActivityResponse(dict):
     """
     Data Lake Analytics U-SQL activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scriptLinkedService":
+            suggest = "script_linked_service"
+        elif key == "scriptPath":
+            suggest = "script_path"
+        elif key == "compilationMode":
+            suggest = "compilation_mode"
+        elif key == "degreeOfParallelism":
+            suggest = "degree_of_parallelism"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataLakeAnalyticsUSQLActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataLakeAnalyticsUSQLActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataLakeAnalyticsUSQLActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  script_linked_service: 'outputs.LinkedServiceReferenceResponse',
@@ -6867,15 +8059,35 @@ class DataLakeAnalyticsUSQLActivityResponse(dict):
         """
         return pulumi.get(self, "runtime_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabricksNotebookActivityResponse(dict):
     """
     DatabricksNotebook activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notebookPath":
+            suggest = "notebook_path"
+        elif key == "baseParameters":
+            suggest = "base_parameters"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabricksNotebookActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabricksNotebookActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabricksNotebookActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  notebook_path: Any,
@@ -6976,9 +8188,6 @@ class DatabricksNotebookActivityResponse(dict):
         """
         return pulumi.get(self, "policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatasetBZip2CompressionResponse(dict):
@@ -7002,9 +8211,6 @@ class DatasetBZip2CompressionResponse(dict):
         Expected value is 'BZip2'.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -7042,9 +8248,6 @@ class DatasetDeflateCompressionResponse(dict):
         """
         return pulumi.get(self, "level")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatasetGZipCompressionResponse(dict):
@@ -7081,15 +8284,29 @@ class DatasetGZipCompressionResponse(dict):
         """
         return pulumi.get(self, "level")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatasetReferenceResponse(dict):
     """
     Dataset reference type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceName":
+            suggest = "reference_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -7129,9 +8346,6 @@ class DatasetReferenceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatasetZipDeflateCompressionResponse(dict):
@@ -7168,15 +8382,33 @@ class DatasetZipDeflateCompressionResponse(dict):
         """
         return pulumi.get(self, "level")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Db2LinkedServiceResponse(dict):
     """
     Linked service for DB2 data source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Db2LinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Db2LinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Db2LinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database: Any,
                  server: Any,
@@ -7313,15 +8545,33 @@ class Db2LinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistcpSettingsResponse(dict):
     """
     Distcp settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerEndpoint":
+            suggest = "resource_manager_endpoint"
+        elif key == "tempScriptPath":
+            suggest = "temp_script_path"
+        elif key == "distcpOptions":
+            suggest = "distcp_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistcpSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistcpSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistcpSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_manager_endpoint: Any,
                  temp_script_path: Any,
@@ -7361,15 +8611,31 @@ class DistcpSettingsResponse(dict):
         """
         return pulumi.get(self, "distcp_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DocumentDbCollectionDatasetResponse(dict):
     """
     Microsoft Azure Document Database Collection dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collectionName":
+            suggest = "collection_name"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DocumentDbCollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DocumentDbCollectionDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DocumentDbCollectionDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  collection_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -7458,15 +8724,37 @@ class DocumentDbCollectionDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DocumentDbCollectionSinkResponse(dict):
     """
     A copy activity Document Database Collection sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nestingSeparator":
+            suggest = "nesting_separator"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DocumentDbCollectionSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DocumentDbCollectionSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DocumentDbCollectionSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  nesting_separator: Optional[Any] = None,
@@ -7545,15 +8833,33 @@ class DocumentDbCollectionSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DocumentDbCollectionSourceResponse(dict):
     """
     A copy activity Document Database Collection source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nestingSeparator":
+            suggest = "nesting_separator"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DocumentDbCollectionSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DocumentDbCollectionSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DocumentDbCollectionSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  nesting_separator: Optional[Any] = None,
@@ -7620,15 +8926,33 @@ class DocumentDbCollectionSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DrillLinkedServiceResponse(dict):
     """
     Drill server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DrillLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DrillLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DrillLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -7719,15 +9043,31 @@ class DrillLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DrillSourceResponse(dict):
     """
     A copy activity Drill server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DrillSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DrillSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DrillSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -7782,15 +9122,29 @@ class DrillSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DrillTableDatasetResponse(dict):
     """
     Drill server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DrillTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DrillTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DrillTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -7868,15 +9222,31 @@ class DrillTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DynamicsEntityDatasetResponse(dict):
     """
     The Dynamics entity dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "entityName":
+            suggest = "entity_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamicsEntityDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamicsEntityDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamicsEntityDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -7966,15 +9336,41 @@ class DynamicsEntityDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DynamicsLinkedServiceResponse(dict):
     """
     Dynamics linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "deploymentType":
+            suggest = "deployment_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "hostName":
+            suggest = "host_name"
+        elif key == "organizationName":
+            suggest = "organization_name"
+        elif key == "serviceUri":
+            suggest = "service_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamicsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamicsLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamicsLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  deployment_type: str,
@@ -8146,15 +9542,39 @@ class DynamicsLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "service_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DynamicsSinkResponse(dict):
     """
     A copy activity Dynamics sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "writeBehavior":
+            suggest = "write_behavior"
+        elif key == "ignoreNullValues":
+            suggest = "ignore_null_values"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamicsSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamicsSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamicsSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  write_behavior: str,
@@ -8244,15 +9664,31 @@ class DynamicsSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DynamicsSourceResponse(dict):
     """
     A copy activity Dynamics source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamicsSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamicsSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamicsSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -8307,15 +9743,37 @@ class DynamicsSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EloquaLinkedServiceResponse(dict):
     """
     Eloqua server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EloquaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EloquaLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EloquaLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint: Any,
                  type: str,
@@ -8464,15 +9922,29 @@ class EloquaLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EloquaObjectDatasetResponse(dict):
     """
     Eloqua server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EloquaObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EloquaObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EloquaObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -8550,15 +10022,31 @@ class EloquaObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EloquaSourceResponse(dict):
     """
     A copy activity Eloqua server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EloquaSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EloquaSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EloquaSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -8613,15 +10101,29 @@ class EloquaSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntityReferenceResponse(dict):
     """
     The entity reference.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceName":
+            suggest = "reference_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntityReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntityReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntityReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reference_name: Optional[str] = None,
                  type: Optional[str] = None):
@@ -8651,15 +10153,31 @@ class EntityReferenceResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecutePipelineActivityResponse(dict):
     """
     Execute pipeline activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "waitOnCompletion":
+            suggest = "wait_on_completion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecutePipelineActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecutePipelineActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecutePipelineActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  pipeline: 'outputs.PipelineReferenceResponse',
@@ -8748,15 +10266,53 @@ class ExecutePipelineActivityResponse(dict):
         """
         return pulumi.get(self, "wait_on_completion")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecuteSSISPackageActivityResponse(dict):
     """
     Execute SSIS package activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "packageLocation":
+            suggest = "package_location"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "environmentPath":
+            suggest = "environment_path"
+        elif key == "executionCredential":
+            suggest = "execution_credential"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "logLocation":
+            suggest = "log_location"
+        elif key == "loggingLevel":
+            suggest = "logging_level"
+        elif key == "packageConnectionManagers":
+            suggest = "package_connection_managers"
+        elif key == "packageParameters":
+            suggest = "package_parameters"
+        elif key == "projectConnectionManagers":
+            suggest = "project_connection_managers"
+        elif key == "projectParameters":
+            suggest = "project_parameters"
+        elif key == "propertyOverrides":
+            suggest = "property_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecuteSSISPackageActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecuteSSISPackageActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecuteSSISPackageActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connect_via: 'outputs.IntegrationRuntimeReferenceResponse',
                  name: str,
@@ -8976,15 +10532,31 @@ class ExecuteSSISPackageActivityResponse(dict):
         """
         return pulumi.get(self, "runtime")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecutionActivityResponse(dict):
     """
     Base class for all execution activities.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecutionActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecutionActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecutionActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -9062,9 +10634,6 @@ class ExecutionActivityResponse(dict):
         """
         return pulumi.get(self, "policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExpressionResponse(dict):
@@ -9098,15 +10667,31 @@ class ExpressionResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FactoryIdentityResponse(dict):
     """
     Identity properties of the factory resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FactoryIdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FactoryIdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FactoryIdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -9145,15 +10730,41 @@ class FactoryIdentityResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FactoryVSTSConfigurationResponse(dict):
     """
     Factory's VSTS repo information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountName":
+            suggest = "account_name"
+        elif key == "collaborationBranch":
+            suggest = "collaboration_branch"
+        elif key == "lastCommitId":
+            suggest = "last_commit_id"
+        elif key == "projectName":
+            suggest = "project_name"
+        elif key == "repositoryName":
+            suggest = "repository_name"
+        elif key == "rootFolder":
+            suggest = "root_folder"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FactoryVSTSConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FactoryVSTSConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FactoryVSTSConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_name: Optional[str] = None,
                  collaboration_branch: Optional[str] = None,
@@ -9243,15 +10854,33 @@ class FactoryVSTSConfigurationResponse(dict):
         """
         return pulumi.get(self, "tenant_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileServerLinkedServiceResponse(dict):
     """
     File system linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileServerLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileServerLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -9365,15 +10994,35 @@ class FileServerLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileShareDatasetResponse(dict):
     """
     An on-premises file system dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "fileFilter":
+            suggest = "file_filter"
+        elif key == "fileName":
+            suggest = "file_name"
+        elif key == "folderPath":
+            suggest = "folder_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileShareDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileShareDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileShareDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -9511,15 +11160,37 @@ class FileShareDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileSystemSinkResponse(dict):
     """
     A copy activity file system sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "copyBehavior":
+            suggest = "copy_behavior"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileSystemSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileSystemSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileSystemSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -9598,15 +11269,31 @@ class FileSystemSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileSystemSourceResponse(dict):
     """
     A copy activity file system source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileSystemSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileSystemSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileSystemSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  recursive: Optional[Any] = None,
@@ -9661,15 +11348,29 @@ class FileSystemSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FilterActivityResponse(dict):
     """
     Filter and return results from input array based on the conditions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FilterActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FilterActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FilterActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  condition: 'outputs.ExpressionResponse',
                  items: 'outputs.ExpressionResponse',
@@ -9745,15 +11446,33 @@ class FilterActivityResponse(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ForEachActivityResponse(dict):
     """
     This activity is used for iterating over a collection and execute given activities.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchCount":
+            suggest = "batch_count"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "isSequential":
+            suggest = "is_sequential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ForEachActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ForEachActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ForEachActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  activities: Sequence[Any],
                  items: 'outputs.ExpressionResponse',
@@ -9853,15 +11572,39 @@ class ForEachActivityResponse(dict):
         """
         return pulumi.get(self, "is_sequential")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FtpServerLinkedServiceResponse(dict):
     """
     A FTP server Linked Service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableServerCertificateValidation":
+            suggest = "enable_server_certificate_validation"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FtpServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FtpServerLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FtpServerLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -10023,15 +11766,33 @@ class FtpServerLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GetMetadataActivityResponse(dict):
     """
     Activity to get metadata of dataset
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "fieldList":
+            suggest = "field_list"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GetMetadataActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GetMetadataActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GetMetadataActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
                  name: str,
@@ -10132,15 +11893,49 @@ class GetMetadataActivityResponse(dict):
         """
         return pulumi.get(self, "policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleBigQueryLinkedServiceResponse(dict):
     """
     Google BigQuery service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "additionalProjects":
+            suggest = "additional_projects"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "keyFilePath":
+            suggest = "key_file_path"
+        elif key == "refreshToken":
+            suggest = "refresh_token"
+        elif key == "requestGoogleDriveScope":
+            suggest = "request_google_drive_scope"
+        elif key == "trustedCertPath":
+            suggest = "trusted_cert_path"
+        elif key == "useSystemTrustStore":
+            suggest = "use_system_trust_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleBigQueryLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleBigQueryLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleBigQueryLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  project: Any,
@@ -10349,15 +12144,29 @@ class GoogleBigQueryLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_system_trust_store")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleBigQueryObjectDatasetResponse(dict):
     """
     Google BigQuery service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleBigQueryObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleBigQueryObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleBigQueryObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -10435,15 +12244,31 @@ class GoogleBigQueryObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleBigQuerySourceResponse(dict):
     """
     A copy activity Google BigQuery service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleBigQuerySourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleBigQuerySourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleBigQuerySourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -10498,15 +12323,33 @@ class GoogleBigQuerySourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GreenplumLinkedServiceResponse(dict):
     """
     Greenplum Database linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GreenplumLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GreenplumLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GreenplumLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -10597,15 +12440,31 @@ class GreenplumLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GreenplumSourceResponse(dict):
     """
     A copy activity Greenplum Database source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GreenplumSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GreenplumSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GreenplumSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -10660,15 +12519,29 @@ class GreenplumSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GreenplumTableDatasetResponse(dict):
     """
     Greenplum Database dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GreenplumTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GreenplumTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GreenplumTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -10746,15 +12619,43 @@ class GreenplumTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HBaseLinkedServiceResponse(dict):
     """
     HBase server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "allowHostNameCNMismatch":
+            suggest = "allow_host_name_cn_mismatch"
+        elif key == "allowSelfSignedServerCert":
+            suggest = "allow_self_signed_server_cert"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "httpPath":
+            suggest = "http_path"
+        elif key == "trustedCertPath":
+            suggest = "trusted_cert_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HBaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HBaseLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HBaseLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -10951,15 +12852,29 @@ class HBaseLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HBaseObjectDatasetResponse(dict):
     """
     HBase server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HBaseObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HBaseObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HBaseObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -11037,15 +12952,31 @@ class HBaseObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HBaseSourceResponse(dict):
     """
     A copy activity HBase server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HBaseSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HBaseSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HBaseSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -11100,15 +13031,39 @@ class HBaseSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HDInsightHiveActivityResponse(dict):
     """
     HDInsight Hive activity type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "getDebugInfo":
+            suggest = "get_debug_info"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "scriptLinkedService":
+            suggest = "script_linked_service"
+        elif key == "scriptPath":
+            suggest = "script_path"
+        elif key == "storageLinkedServices":
+            suggest = "storage_linked_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HDInsightHiveActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HDInsightHiveActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HDInsightHiveActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -11258,15 +13213,39 @@ class HDInsightHiveActivityResponse(dict):
         """
         return pulumi.get(self, "storage_linked_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HDInsightLinkedServiceResponse(dict):
     """
     HDInsight linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterUri":
+            suggest = "cluster_uri"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "hcatalogLinkedServiceName":
+            suggest = "hcatalog_linked_service_name"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HDInsightLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HDInsightLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HDInsightLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_uri: Any,
                  type: str,
@@ -11404,15 +13383,43 @@ class HDInsightLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HDInsightMapReduceActivityResponse(dict):
     """
     HDInsight MapReduce activity type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "className":
+            suggest = "class_name"
+        elif key == "jarFilePath":
+            suggest = "jar_file_path"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "getDebugInfo":
+            suggest = "get_debug_info"
+        elif key == "jarLibs":
+            suggest = "jar_libs"
+        elif key == "jarLinkedService":
+            suggest = "jar_linked_service"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "storageLinkedServices":
+            suggest = "storage_linked_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HDInsightMapReduceActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HDInsightMapReduceActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HDInsightMapReduceActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  class_name: Any,
                  jar_file_path: Any,
@@ -11584,15 +13591,85 @@ class HDInsightMapReduceActivityResponse(dict):
         """
         return pulumi.get(self, "storage_linked_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HDInsightOnDemandLinkedServiceResponse(dict):
     """
     HDInsight ondemand linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterResourceGroup":
+            suggest = "cluster_resource_group"
+        elif key == "clusterSize":
+            suggest = "cluster_size"
+        elif key == "hostSubscriptionId":
+            suggest = "host_subscription_id"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "timeToLive":
+            suggest = "time_to_live"
+        elif key == "additionalLinkedServiceNames":
+            suggest = "additional_linked_service_names"
+        elif key == "clusterNamePrefix":
+            suggest = "cluster_name_prefix"
+        elif key == "clusterPassword":
+            suggest = "cluster_password"
+        elif key == "clusterSshPassword":
+            suggest = "cluster_ssh_password"
+        elif key == "clusterSshUserName":
+            suggest = "cluster_ssh_user_name"
+        elif key == "clusterType":
+            suggest = "cluster_type"
+        elif key == "clusterUserName":
+            suggest = "cluster_user_name"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "coreConfiguration":
+            suggest = "core_configuration"
+        elif key == "dataNodeSize":
+            suggest = "data_node_size"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "hBaseConfiguration":
+            suggest = "h_base_configuration"
+        elif key == "hcatalogLinkedServiceName":
+            suggest = "hcatalog_linked_service_name"
+        elif key == "hdfsConfiguration":
+            suggest = "hdfs_configuration"
+        elif key == "headNodeSize":
+            suggest = "head_node_size"
+        elif key == "hiveConfiguration":
+            suggest = "hive_configuration"
+        elif key == "mapReduceConfiguration":
+            suggest = "map_reduce_configuration"
+        elif key == "oozieConfiguration":
+            suggest = "oozie_configuration"
+        elif key == "servicePrincipalId":
+            suggest = "service_principal_id"
+        elif key == "servicePrincipalKey":
+            suggest = "service_principal_key"
+        elif key == "sparkVersion":
+            suggest = "spark_version"
+        elif key == "stormConfiguration":
+            suggest = "storm_configuration"
+        elif key == "yarnConfiguration":
+            suggest = "yarn_configuration"
+        elif key == "zookeeperNodeSize":
+            suggest = "zookeeper_node_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HDInsightOnDemandLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HDInsightOnDemandLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HDInsightOnDemandLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_resource_group: Any,
                  cluster_size: Any,
@@ -12012,15 +14089,39 @@ class HDInsightOnDemandLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "zookeeper_node_size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HDInsightPigActivityResponse(dict):
     """
     HDInsight Pig activity type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "getDebugInfo":
+            suggest = "get_debug_info"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "scriptLinkedService":
+            suggest = "script_linked_service"
+        elif key == "scriptPath":
+            suggest = "script_path"
+        elif key == "storageLinkedServices":
+            suggest = "storage_linked_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HDInsightPigActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HDInsightPigActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HDInsightPigActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -12170,15 +14271,45 @@ class HDInsightPigActivityResponse(dict):
         """
         return pulumi.get(self, "storage_linked_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HDInsightSparkActivityResponse(dict):
     """
     HDInsight Spark activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryFilePath":
+            suggest = "entry_file_path"
+        elif key == "rootPath":
+            suggest = "root_path"
+        elif key == "className":
+            suggest = "class_name"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "getDebugInfo":
+            suggest = "get_debug_info"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "proxyUser":
+            suggest = "proxy_user"
+        elif key == "sparkConfig":
+            suggest = "spark_config"
+        elif key == "sparkJobLinkedService":
+            suggest = "spark_job_linked_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HDInsightSparkActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HDInsightSparkActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HDInsightSparkActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  entry_file_path: Any,
                  name: str,
@@ -12350,15 +14481,41 @@ class HDInsightSparkActivityResponse(dict):
         """
         return pulumi.get(self, "spark_job_linked_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HDInsightStreamingActivityResponse(dict):
     """
     HDInsight streaming activity type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePaths":
+            suggest = "file_paths"
+        elif key == "commandEnvironment":
+            suggest = "command_environment"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "fileLinkedService":
+            suggest = "file_linked_service"
+        elif key == "getDebugInfo":
+            suggest = "get_debug_info"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "storageLinkedServices":
+            suggest = "storage_linked_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HDInsightStreamingActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HDInsightStreamingActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HDInsightStreamingActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_paths: Sequence[Any],
                  input: Any,
@@ -12575,15 +14732,35 @@ class HDInsightStreamingActivityResponse(dict):
         """
         return pulumi.get(self, "storage_linked_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HdfsLinkedServiceResponse(dict):
     """
     Hadoop Distributed File System (HDFS) linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HdfsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HdfsLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HdfsLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -12709,15 +14886,33 @@ class HdfsLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HdfsSourceResponse(dict):
     """
     A copy activity HDFS source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distcpSettings":
+            suggest = "distcp_settings"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HdfsSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HdfsSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HdfsSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  distcp_settings: Optional['outputs.DistcpSettingsResponse'] = None,
@@ -12784,15 +14979,55 @@ class HdfsSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HiveLinkedServiceResponse(dict):
     """
     Hive Server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "allowHostNameCNMismatch":
+            suggest = "allow_host_name_cn_mismatch"
+        elif key == "allowSelfSignedServerCert":
+            suggest = "allow_self_signed_server_cert"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "httpPath":
+            suggest = "http_path"
+        elif key == "serverType":
+            suggest = "server_type"
+        elif key == "serviceDiscoveryMode":
+            suggest = "service_discovery_mode"
+        elif key == "thriftTransportProtocol":
+            suggest = "thrift_transport_protocol"
+        elif key == "trustedCertPath":
+            suggest = "trusted_cert_path"
+        elif key == "useNativeQuery":
+            suggest = "use_native_query"
+        elif key == "useSystemTrustStore":
+            suggest = "use_system_trust_store"
+        elif key == "zooKeeperNameSpace":
+            suggest = "zoo_keeper_name_space"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HiveLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HiveLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HiveLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -13061,15 +15296,29 @@ class HiveLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "zoo_keeper_name_space")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HiveObjectDatasetResponse(dict):
     """
     Hive Server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HiveObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HiveObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HiveObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -13147,15 +15396,31 @@ class HiveObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HiveSourceResponse(dict):
     """
     A copy activity Hive Server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HiveSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HiveSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HiveSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -13210,15 +15475,37 @@ class HiveSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpDatasetResponse(dict):
     """
     A file in an HTTP web server.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "additionalHeaders":
+            suggest = "additional_headers"
+        elif key == "relativeUrl":
+            suggest = "relative_url"
+        elif key == "requestBody":
+            suggest = "request_body"
+        elif key == "requestMethod":
+            suggest = "request_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -13372,15 +15659,41 @@ class HttpDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpLinkedServiceResponse(dict):
     """
     Linked service for an HTTP source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "certThumbprint":
+            suggest = "cert_thumbprint"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "embeddedCertData":
+            suggest = "embedded_cert_data"
+        elif key == "enableServerCertificateValidation":
+            suggest = "enable_server_certificate_validation"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -13542,15 +15855,33 @@ class HttpLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpSourceResponse(dict):
     """
     A copy activity source for an HTTP file.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpRequestTimeout":
+            suggest = "http_request_timeout"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  http_request_timeout: Optional[Any] = None,
@@ -13605,15 +15936,45 @@ class HttpSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HubspotLinkedServiceResponse(dict):
     """
     Hubspot Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "accessToken":
+            suggest = "access_token"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "refreshToken":
+            suggest = "refresh_token"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HubspotLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HubspotLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HubspotLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  type: str,
@@ -13775,15 +16136,29 @@ class HubspotLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HubspotObjectDatasetResponse(dict):
     """
     Hubspot Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HubspotObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HubspotObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HubspotObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -13861,15 +16236,31 @@ class HubspotObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HubspotSourceResponse(dict):
     """
     A copy activity Hubspot Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HubspotSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HubspotSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HubspotSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -13924,15 +16315,33 @@ class HubspotSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IfConditionActivityResponse(dict):
     """
     This activity evaluates a boolean expression and executes either the activities under the ifTrueActivities property or the ifFalseActivities property depending on the result of the expression.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "ifFalseActivities":
+            suggest = "if_false_activities"
+        elif key == "ifTrueActivities":
+            suggest = "if_true_activities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IfConditionActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IfConditionActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IfConditionActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expression: 'outputs.ExpressionResponse',
                  name: str,
@@ -14021,15 +16430,43 @@ class IfConditionActivityResponse(dict):
         """
         return pulumi.get(self, "if_true_activities")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImpalaLinkedServiceResponse(dict):
     """
     Impala server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "allowHostNameCNMismatch":
+            suggest = "allow_host_name_cn_mismatch"
+        elif key == "allowSelfSignedServerCert":
+            suggest = "allow_self_signed_server_cert"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "trustedCertPath":
+            suggest = "trusted_cert_path"
+        elif key == "useSystemTrustStore":
+            suggest = "use_system_trust_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImpalaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImpalaLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImpalaLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -14226,15 +16663,29 @@ class ImpalaLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImpalaObjectDatasetResponse(dict):
     """
     Impala server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImpalaObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImpalaObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImpalaObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -14312,15 +16763,31 @@ class ImpalaObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImpalaSourceResponse(dict):
     """
     A copy activity Impala server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImpalaSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImpalaSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImpalaSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -14375,15 +16842,35 @@ class ImpalaSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationRuntimeComputePropertiesResponse(dict):
     """
     The compute resource properties for managed integration runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxParallelExecutionsPerNode":
+            suggest = "max_parallel_executions_per_node"
+        elif key == "nodeSize":
+            suggest = "node_size"
+        elif key == "numberOfNodes":
+            suggest = "number_of_nodes"
+        elif key == "vNetProperties":
+            suggest = "v_net_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeComputePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRuntimeComputePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRuntimeComputePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  location: Optional[str] = None,
                  max_parallel_executions_per_node: Optional[int] = None,
@@ -14449,15 +16936,31 @@ class IntegrationRuntimeComputePropertiesResponse(dict):
         """
         return pulumi.get(self, "v_net_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationRuntimeCustomSetupScriptPropertiesResponse(dict):
     """
     Custom setup script properties for a managed dedicated integration runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blobContainerUri":
+            suggest = "blob_container_uri"
+        elif key == "sasToken":
+            suggest = "sas_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeCustomSetupScriptPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRuntimeCustomSetupScriptPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRuntimeCustomSetupScriptPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blob_container_uri: Optional[str] = None,
                  sas_token: Optional['outputs.SecureStringResponse'] = None):
@@ -14487,15 +16990,31 @@ class IntegrationRuntimeCustomSetupScriptPropertiesResponse(dict):
         """
         return pulumi.get(self, "sas_token")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationRuntimeDataProxyPropertiesResponse(dict):
     """
     Data proxy properties for a managed dedicated integration runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "stagingLinkedService":
+            suggest = "staging_linked_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeDataProxyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRuntimeDataProxyPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRuntimeDataProxyPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connect_via: Optional['outputs.EntityReferenceResponse'] = None,
                  path: Optional[str] = None,
@@ -14537,15 +17056,29 @@ class IntegrationRuntimeDataProxyPropertiesResponse(dict):
         """
         return pulumi.get(self, "staging_linked_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationRuntimeReferenceResponse(dict):
     """
     Integration runtime reference type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceName":
+            suggest = "reference_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRuntimeReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRuntimeReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -14585,15 +17118,35 @@ class IntegrationRuntimeReferenceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationRuntimeSsisCatalogInfoResponse(dict):
     """
     Catalog information for managed dedicated integration runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "catalogAdminPassword":
+            suggest = "catalog_admin_password"
+        elif key == "catalogAdminUserName":
+            suggest = "catalog_admin_user_name"
+        elif key == "catalogPricingTier":
+            suggest = "catalog_pricing_tier"
+        elif key == "catalogServerEndpoint":
+            suggest = "catalog_server_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeSsisCatalogInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRuntimeSsisCatalogInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRuntimeSsisCatalogInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  catalog_admin_password: Optional['outputs.SecureStringResponse'] = None,
                  catalog_admin_user_name: Optional[str] = None,
@@ -14647,15 +17200,35 @@ class IntegrationRuntimeSsisCatalogInfoResponse(dict):
         """
         return pulumi.get(self, "catalog_server_endpoint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationRuntimeSsisPropertiesResponse(dict):
     """
     SSIS properties for managed integration runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "catalogInfo":
+            suggest = "catalog_info"
+        elif key == "customSetupScriptProperties":
+            suggest = "custom_setup_script_properties"
+        elif key == "dataProxyProperties":
+            suggest = "data_proxy_properties"
+        elif key == "licenseType":
+            suggest = "license_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeSsisPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRuntimeSsisPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRuntimeSsisPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  catalog_info: Optional['outputs.IntegrationRuntimeSsisCatalogInfoResponse'] = None,
                  custom_setup_script_properties: Optional['outputs.IntegrationRuntimeCustomSetupScriptPropertiesResponse'] = None,
@@ -14721,15 +17294,29 @@ class IntegrationRuntimeSsisPropertiesResponse(dict):
         """
         return pulumi.get(self, "license_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntegrationRuntimeVNetPropertiesResponse(dict):
     """
     VNet properties for managed integration runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vNetId":
+            suggest = "v_net_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeVNetPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRuntimeVNetPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRuntimeVNetPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  subnet: Optional[str] = None,
                  v_net_id: Optional[str] = None):
@@ -14759,15 +17346,37 @@ class IntegrationRuntimeVNetPropertiesResponse(dict):
         """
         return pulumi.get(self, "v_net_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JiraLinkedServiceResponse(dict):
     """
     Jira Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JiraLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JiraLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JiraLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -14928,15 +17537,29 @@ class JiraLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JiraObjectDatasetResponse(dict):
     """
     Jira Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JiraObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JiraObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JiraObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -15014,15 +17637,31 @@ class JiraObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JiraSourceResponse(dict):
     """
     A copy activity Jira Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JiraSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JiraSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JiraSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -15077,15 +17716,37 @@ class JiraSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JsonFormatResponse(dict):
     """
     The data stored in JSON format.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encodingName":
+            suggest = "encoding_name"
+        elif key == "filePattern":
+            suggest = "file_pattern"
+        elif key == "jsonNodeReference":
+            suggest = "json_node_reference"
+        elif key == "jsonPathDefinition":
+            suggest = "json_path_definition"
+        elif key == "nestingSeparator":
+            suggest = "nesting_separator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JsonFormatResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JsonFormatResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JsonFormatResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  deserializer: Optional[Any] = None,
@@ -15188,15 +17849,29 @@ class JsonFormatResponse(dict):
         """
         return pulumi.get(self, "serializer")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LinkedIntegrationRuntimeKeyResponse(dict):
     """
     The base definition of a secret type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationType":
+            suggest = "authorization_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinkedIntegrationRuntimeKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinkedIntegrationRuntimeKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinkedIntegrationRuntimeKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization_type: str,
                  key: 'outputs.SecureStringResponse'):
@@ -15226,15 +17901,31 @@ class LinkedIntegrationRuntimeKeyResponse(dict):
         """
         return pulumi.get(self, "key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LinkedIntegrationRuntimeRbacResponse(dict):
     """
     The base definition of a secret type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationType":
+            suggest = "authorization_type"
+        elif key == "resourceId":
+            suggest = "resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinkedIntegrationRuntimeRbacResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinkedIntegrationRuntimeRbacResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinkedIntegrationRuntimeRbacResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization_type: str,
                  resource_id: str):
@@ -15263,9 +17954,6 @@ class LinkedIntegrationRuntimeRbacResponse(dict):
         The resource ID of the integration runtime to be shared.
         """
         return pulumi.get(self, "resource_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -15339,6 +18027,23 @@ class LinkedServiceReferenceResponse(dict):
     """
     Linked service reference type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceName":
+            suggest = "reference_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinkedServiceReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinkedServiceReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinkedServiceReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -15378,15 +18083,33 @@ class LinkedServiceReferenceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LookupActivityResponse(dict):
     """
     Lookup activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "firstRowOnly":
+            suggest = "first_row_only"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LookupActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LookupActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LookupActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
                  name: str,
@@ -15498,15 +18221,39 @@ class LookupActivityResponse(dict):
         """
         return pulumi.get(self, "policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MagentoLinkedServiceResponse(dict):
     """
     Magento server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MagentoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MagentoLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MagentoLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -15644,15 +18391,29 @@ class MagentoLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MagentoObjectDatasetResponse(dict):
     """
     Magento server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MagentoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MagentoObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MagentoObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -15730,15 +18491,31 @@ class MagentoObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MagentoSourceResponse(dict):
     """
     A copy activity Magento server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MagentoSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MagentoSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MagentoSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -15792,9 +18569,6 @@ class MagentoSourceResponse(dict):
         Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
         """
         return pulumi.get(self, "source_retry_wait")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -15979,6 +18753,25 @@ class ManagedIntegrationRuntimeResponse(dict):
     """
     Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computeProperties":
+            suggest = "compute_properties"
+        elif key == "ssisProperties":
+            suggest = "ssis_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedIntegrationRuntimeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedIntegrationRuntimeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedIntegrationRuntimeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  state: str,
                  type: str,
@@ -16043,9 +18836,6 @@ class ManagedIntegrationRuntimeResponse(dict):
         SSIS properties for managed integration runtime.
         """
         return pulumi.get(self, "ssis_properties")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -16144,6 +18934,27 @@ class MariaDBLinkedServiceResponse(dict):
     """
     MariaDB server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MariaDBLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MariaDBLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MariaDBLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -16234,15 +19045,31 @@ class MariaDBLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MariaDBSourceResponse(dict):
     """
     A copy activity MariaDB server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MariaDBSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MariaDBSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MariaDBSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -16297,15 +19124,29 @@ class MariaDBSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MariaDBTableDatasetResponse(dict):
     """
     MariaDB server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MariaDBTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MariaDBTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MariaDBTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -16383,15 +19224,41 @@ class MariaDBTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MarketoLinkedServiceResponse(dict):
     """
     Marketo server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MarketoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MarketoLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MarketoLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  endpoint: Any,
@@ -16540,15 +19407,29 @@ class MarketoLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MarketoObjectDatasetResponse(dict):
     """
     Marketo server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MarketoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MarketoObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MarketoObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -16626,15 +19507,31 @@ class MarketoObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MarketoSourceResponse(dict):
     """
     A copy activity Marketo server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MarketoSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MarketoSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MarketoSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -16689,15 +19586,31 @@ class MarketoSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MongoDbCollectionDatasetResponse(dict):
     """
     The MongoDB database dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collectionName":
+            suggest = "collection_name"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MongoDbCollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MongoDbCollectionDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MongoDbCollectionDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  collection_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -16786,15 +19699,41 @@ class MongoDbCollectionDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MongoDbLinkedServiceResponse(dict):
     """
     Linked service for MongoDb data source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+        elif key == "allowSelfSignedServerCert":
+            suggest = "allow_self_signed_server_cert"
+        elif key == "authSource":
+            suggest = "auth_source"
+        elif key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MongoDbLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MongoDbLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MongoDbLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database_name: Any,
                  server: Any,
@@ -16979,15 +19918,31 @@ class MongoDbLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MongoDbSourceResponse(dict):
     """
     A copy activity source for a MongoDB database.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MongoDbSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MongoDbSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MongoDbSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -17042,15 +19997,29 @@ class MongoDbSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MultiplePipelineTriggerResponse(dict):
     """
     Base class for all triggers that support one to many model for trigger to pipeline.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runtimeState":
+            suggest = "runtime_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiplePipelineTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiplePipelineTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiplePipelineTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  runtime_state: str,
                  type: str,
@@ -17104,15 +20073,33 @@ class MultiplePipelineTriggerResponse(dict):
         """
         return pulumi.get(self, "pipelines")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlLinkedServiceResponse(dict):
     """
     Linked service for MySQL data source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -17202,15 +20189,33 @@ class MySqlLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetezzaLinkedServiceResponse(dict):
     """
     Netezza linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetezzaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetezzaLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetezzaLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -17301,15 +20306,31 @@ class NetezzaLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetezzaSourceResponse(dict):
     """
     A copy activity Netezza source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetezzaSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetezzaSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetezzaSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -17364,15 +20385,29 @@ class NetezzaSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetezzaTableDatasetResponse(dict):
     """
     Netezza dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetezzaTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetezzaTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetezzaTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -17450,15 +20485,35 @@ class NetezzaTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ODataLinkedServiceResponse(dict):
     """
     Open Data Protocol (OData) linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ODataLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ODataLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ODataLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -17584,15 +20639,29 @@ class ODataLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ODataResourceDatasetResponse(dict):
     """
     The Open Data Protocol (OData) resource dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ODataResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ODataResourceDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ODataResourceDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -17682,15 +20751,37 @@ class ODataResourceDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OdbcLinkedServiceResponse(dict):
     """
     Open Database Connectivity (ODBC) linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OdbcLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OdbcLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OdbcLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -17828,15 +20919,37 @@ class OdbcLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OdbcSinkResponse(dict):
     """
     A copy activity ODBC sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preCopyScript":
+            suggest = "pre_copy_script"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OdbcSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OdbcSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OdbcSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  pre_copy_script: Optional[Any] = None,
@@ -17915,15 +21028,33 @@ class OdbcSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OracleLinkedServiceResponse(dict):
     """
     Oracle database.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OracleLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OracleLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OracleLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -18013,15 +21144,37 @@ class OracleLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OracleSinkResponse(dict):
     """
     A copy activity Oracle sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preCopyScript":
+            suggest = "pre_copy_script"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OracleSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OracleSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OracleSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  pre_copy_script: Optional[Any] = None,
@@ -18100,15 +21253,35 @@ class OracleSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OracleSourceResponse(dict):
     """
     A copy activity Oracle source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleReaderQuery":
+            suggest = "oracle_reader_query"
+        elif key == "queryTimeout":
+            suggest = "query_timeout"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OracleSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OracleSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OracleSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  oracle_reader_query: Optional[Any] = None,
@@ -18175,15 +21348,31 @@ class OracleSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OracleTableDatasetResponse(dict):
     """
     The on-premises Oracle database dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OracleTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OracleTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OracleTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -18272,9 +21461,6 @@ class OracleTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrcFormatResponse(dict):
@@ -18323,15 +21509,29 @@ class OrcFormatResponse(dict):
         """
         return pulumi.get(self, "serializer")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ParameterSpecificationResponse(dict):
     """
     Definition of a single parameter for an entity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParameterSpecificationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParameterSpecificationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParameterSpecificationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  default_value: Optional[Any] = None):
@@ -18359,9 +21559,6 @@ class ParameterSpecificationResponse(dict):
         Default value of parameter.
         """
         return pulumi.get(self, "default_value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -18411,15 +21608,41 @@ class ParquetFormatResponse(dict):
         """
         return pulumi.get(self, "serializer")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PaypalLinkedServiceResponse(dict):
     """
     Paypal Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PaypalLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PaypalLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PaypalLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  host: Any,
@@ -18568,15 +21791,29 @@ class PaypalLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PaypalObjectDatasetResponse(dict):
     """
     Paypal Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PaypalObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PaypalObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PaypalObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -18654,15 +21891,31 @@ class PaypalObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PaypalSourceResponse(dict):
     """
     A copy activity Paypal Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PaypalSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PaypalSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PaypalSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -18717,15 +21970,45 @@ class PaypalSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PhoenixLinkedServiceResponse(dict):
     """
     Phoenix server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "allowHostNameCNMismatch":
+            suggest = "allow_host_name_cn_mismatch"
+        elif key == "allowSelfSignedServerCert":
+            suggest = "allow_self_signed_server_cert"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "httpPath":
+            suggest = "http_path"
+        elif key == "trustedCertPath":
+            suggest = "trusted_cert_path"
+        elif key == "useSystemTrustStore":
+            suggest = "use_system_trust_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhoenixLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhoenixLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhoenixLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -18934,15 +22217,29 @@ class PhoenixLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PhoenixObjectDatasetResponse(dict):
     """
     Phoenix server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhoenixObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhoenixObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhoenixObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -19020,15 +22317,31 @@ class PhoenixObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PhoenixSourceResponse(dict):
     """
     A copy activity Phoenix server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhoenixSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhoenixSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhoenixSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -19083,15 +22396,29 @@ class PhoenixSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PipelineReferenceResponse(dict):
     """
     Pipeline reference type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceName":
+            suggest = "reference_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -19131,15 +22458,35 @@ class PipelineReferenceResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolybaseSettingsResponse(dict):
     """
     PolyBase settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rejectSampleValue":
+            suggest = "reject_sample_value"
+        elif key == "rejectType":
+            suggest = "reject_type"
+        elif key == "rejectValue":
+            suggest = "reject_value"
+        elif key == "useTypeDefault":
+            suggest = "use_type_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolybaseSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolybaseSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolybaseSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reject_sample_value: Optional[Any] = None,
                  reject_type: Optional[str] = None,
@@ -19193,15 +22540,33 @@ class PolybaseSettingsResponse(dict):
         """
         return pulumi.get(self, "use_type_default")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PostgreSqlLinkedServiceResponse(dict):
     """
     Linked service for PostgreSQL data source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgreSqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgreSqlLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgreSqlLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -19291,15 +22656,47 @@ class PostgreSqlLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrestoLinkedServiceResponse(dict):
     """
     Presto server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "serverVersion":
+            suggest = "server_version"
+        elif key == "allowHostNameCNMismatch":
+            suggest = "allow_host_name_cn_mismatch"
+        elif key == "allowSelfSignedServerCert":
+            suggest = "allow_self_signed_server_cert"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "timeZoneID":
+            suggest = "time_zone_id"
+        elif key == "trustedCertPath":
+            suggest = "trusted_cert_path"
+        elif key == "useSystemTrustStore":
+            suggest = "use_system_trust_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrestoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrestoLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrestoLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  catalog: Any,
@@ -19530,15 +22927,29 @@ class PrestoLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrestoObjectDatasetResponse(dict):
     """
     Presto server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrestoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrestoObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrestoObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -19616,15 +23027,31 @@ class PrestoObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrestoSourceResponse(dict):
     """
     A copy activity Presto server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrestoSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrestoSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrestoSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -19679,15 +23106,43 @@ class PrestoSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QuickBooksLinkedServiceResponse(dict):
     """
     QuickBooks server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "accessTokenSecret":
+            suggest = "access_token_secret"
+        elif key == "companyId":
+            suggest = "company_id"
+        elif key == "consumerKey":
+            suggest = "consumer_key"
+        elif key == "consumerSecret":
+            suggest = "consumer_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuickBooksLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuickBooksLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuickBooksLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_token: Any,
                  access_token_secret: Any,
@@ -19844,15 +23299,29 @@ class QuickBooksLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_encrypted_endpoints")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QuickBooksObjectDatasetResponse(dict):
     """
     QuickBooks server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuickBooksObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuickBooksObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuickBooksObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -19930,15 +23399,31 @@ class QuickBooksObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QuickBooksSourceResponse(dict):
     """
     A copy activity QuickBooks server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuickBooksSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuickBooksSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuickBooksSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -19993,9 +23478,6 @@ class QuickBooksSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RecurrenceScheduleOccurrenceResponse(dict):
@@ -20031,15 +23513,33 @@ class RecurrenceScheduleOccurrenceResponse(dict):
         """
         return pulumi.get(self, "occurrence")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RecurrenceScheduleResponse(dict):
     """
     The recurrence schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "monthDays":
+            suggest = "month_days"
+        elif key == "monthlyOccurrences":
+            suggest = "monthly_occurrences"
+        elif key == "weekDays":
+            suggest = "week_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecurrenceScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecurrenceScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecurrenceScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hours: Optional[Sequence[int]] = None,
                  minutes: Optional[Sequence[int]] = None,
@@ -20105,15 +23605,29 @@ class RecurrenceScheduleResponse(dict):
         """
         return pulumi.get(self, "week_days")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedirectIncompatibleRowSettingsResponse(dict):
     """
     Redirect incompatible row settings
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedirectIncompatibleRowSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedirectIncompatibleRowSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedirectIncompatibleRowSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: Any,
                  path: Optional[Any] = None):
@@ -20142,15 +23656,31 @@ class RedirectIncompatibleRowSettingsResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedshiftUnloadSettingsResponse(dict):
     """
     The Amazon S3 settings needed for the interim Amazon S3 when copying from Amazon Redshift with unload. With this, data from Amazon Redshift source will be unloaded into S3 first and then copied into the targeted sink from the interim S3.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "s3LinkedServiceName":
+            suggest = "s3_linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedshiftUnloadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedshiftUnloadSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedshiftUnloadSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: Any,
                  s3_linked_service_name: 'outputs.LinkedServiceReferenceResponse'):
@@ -20178,15 +23708,31 @@ class RedshiftUnloadSettingsResponse(dict):
         """
         return pulumi.get(self, "s3_linked_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RelationalSourceResponse(dict):
     """
     A copy activity source for various relational databases.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RelationalSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RelationalSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RelationalSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -20241,15 +23787,31 @@ class RelationalSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RelationalTableDatasetResponse(dict):
     """
     The relational table dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RelationalTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RelationalTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RelationalTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -20339,15 +23901,41 @@ class RelationalTableDatasetResponse(dict):
         """
         return pulumi.get(self, "table_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResponsysLinkedServiceResponse(dict):
     """
     Responsys linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponsysLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponsysLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponsysLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  endpoint: Any,
@@ -20496,15 +24084,29 @@ class ResponsysLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResponsysObjectDatasetResponse(dict):
     """
     Responsys dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponsysObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponsysObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponsysObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -20582,15 +24184,31 @@ class ResponsysObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResponsysSourceResponse(dict):
     """
     A copy activity Responsys source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponsysSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponsysSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponsysSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -20645,15 +24263,29 @@ class ResponsysSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RetryPolicyResponse(dict):
     """
     Execution policy for an activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalInSeconds":
+            suggest = "interval_in_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetryPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetryPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetryPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count: Optional[Any] = None,
                  interval_in_seconds: Optional[int] = None):
@@ -20683,15 +24315,29 @@ class RetryPolicyResponse(dict):
         """
         return pulumi.get(self, "interval_in_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SSISAccessCredentialResponse(dict):
     """
     SSIS access credential.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SSISAccessCredentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SSISAccessCredentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SSISAccessCredentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  domain: Any,
                  password: Any,
@@ -20730,15 +24376,29 @@ class SSISAccessCredentialResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SSISExecutionCredentialResponse(dict):
     """
     SSIS package execution credential.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SSISExecutionCredentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SSISExecutionCredentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SSISExecutionCredentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  domain: Any,
                  password: 'outputs.SecureStringResponse',
@@ -20777,9 +24437,6 @@ class SSISExecutionCredentialResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SSISExecutionParameterResponse(dict):
@@ -20802,15 +24459,33 @@ class SSISExecutionParameterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SSISLogLocationResponse(dict):
     """
     SSIS package execution log location
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logPath":
+            suggest = "log_path"
+        elif key == "accessCredential":
+            suggest = "access_credential"
+        elif key == "logRefreshInterval":
+            suggest = "log_refresh_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SSISLogLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SSISLogLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SSISLogLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_path: Any,
                  type: str,
@@ -20862,15 +24537,35 @@ class SSISLogLocationResponse(dict):
         """
         return pulumi.get(self, "log_refresh_interval")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SSISPackageLocationResponse(dict):
     """
     SSIS package location.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packagePath":
+            suggest = "package_path"
+        elif key == "accessCredential":
+            suggest = "access_credential"
+        elif key == "configurationPath":
+            suggest = "configuration_path"
+        elif key == "packagePassword":
+            suggest = "package_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SSISPackageLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SSISPackageLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SSISPackageLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  package_path: Any,
                  access_credential: Optional['outputs.SSISAccessCredentialResponse'] = None,
@@ -20935,15 +24630,29 @@ class SSISPackageLocationResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SSISPropertyOverrideResponse(dict):
     """
     SSIS property override.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isSensitive":
+            suggest = "is_sensitive"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SSISPropertyOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SSISPropertyOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SSISPropertyOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  value: Any,
                  is_sensitive: Optional[bool] = None):
@@ -20972,15 +24681,35 @@ class SSISPropertyOverrideResponse(dict):
         """
         return pulumi.get(self, "is_sensitive")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SalesforceLinkedServiceResponse(dict):
     """
     Linked service for Salesforce.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "environmentUrl":
+            suggest = "environment_url"
+        elif key == "securityToken":
+            suggest = "security_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SalesforceLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SalesforceLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SalesforceLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -21107,15 +24836,41 @@ class SalesforceLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SalesforceMarketingCloudLinkedServiceResponse(dict):
     """
     Salesforce Marketing Cloud linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SalesforceMarketingCloudLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SalesforceMarketingCloudLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SalesforceMarketingCloudLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  type: str,
@@ -21253,15 +25008,29 @@ class SalesforceMarketingCloudLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SalesforceMarketingCloudObjectDatasetResponse(dict):
     """
     Salesforce Marketing Cloud dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SalesforceMarketingCloudObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SalesforceMarketingCloudObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SalesforceMarketingCloudObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -21339,15 +25108,31 @@ class SalesforceMarketingCloudObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SalesforceMarketingCloudSourceResponse(dict):
     """
     A copy activity Salesforce Marketing Cloud source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SalesforceMarketingCloudSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SalesforceMarketingCloudSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SalesforceMarketingCloudSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -21402,15 +25187,31 @@ class SalesforceMarketingCloudSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SalesforceObjectDatasetResponse(dict):
     """
     The Salesforce object dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "objectApiName":
+            suggest = "object_api_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SalesforceObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SalesforceObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SalesforceObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -21500,15 +25301,41 @@ class SalesforceObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SalesforceSinkResponse(dict):
     """
     A copy activity Salesforce sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalIdFieldName":
+            suggest = "external_id_field_name"
+        elif key == "ignoreNullValues":
+            suggest = "ignore_null_values"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+        elif key == "writeBehavior":
+            suggest = "write_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SalesforceSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SalesforceSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SalesforceSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  external_id_field_name: Optional[Any] = None,
@@ -21611,15 +25438,33 @@ class SalesforceSinkResponse(dict):
         """
         return pulumi.get(self, "write_behavior")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SalesforceSourceResponse(dict):
     """
     A copy activity Salesforce source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readBehavior":
+            suggest = "read_behavior"
+        elif key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SalesforceSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SalesforceSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SalesforceSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -21686,15 +25531,37 @@ class SalesforceSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapBWLinkedServiceResponse(dict):
     """
     SAP Business Warehouse Linked Service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "systemNumber":
+            suggest = "system_number"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapBWLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapBWLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapBWLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  server: Any,
@@ -21830,15 +25697,31 @@ class SapBWLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapCloudForCustomerLinkedServiceResponse(dict):
     """
     Linked service for SAP Cloud for Customer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapCloudForCustomerLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapCloudForCustomerLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -21952,15 +25835,29 @@ class SapCloudForCustomerLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapCloudForCustomerResourceDatasetResponse(dict):
     """
     The path of the SAP Cloud for Customer OData entity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapCloudForCustomerResourceDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapCloudForCustomerResourceDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  path: Any,
@@ -22049,15 +25946,37 @@ class SapCloudForCustomerResourceDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapCloudForCustomerSinkResponse(dict):
     """
     A copy activity SAP Cloud for Customer sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+        elif key == "writeBehavior":
+            suggest = "write_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapCloudForCustomerSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapCloudForCustomerSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  sink_retry_count: Optional[Any] = None,
@@ -22136,15 +26055,31 @@ class SapCloudForCustomerSinkResponse(dict):
         """
         return pulumi.get(self, "write_behavior")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapCloudForCustomerSourceResponse(dict):
     """
     A copy activity source for SAP Cloud for Customer source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapCloudForCustomerSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapCloudForCustomerSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -22199,15 +26134,31 @@ class SapCloudForCustomerSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapEccLinkedServiceResponse(dict):
     """
     Linked service for SAP ERP Central Component(SAP ECC).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapEccLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapEccLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapEccLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  url: str,
@@ -22321,15 +26272,29 @@ class SapEccLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapEccResourceDatasetResponse(dict):
     """
     The path of the SAP ECC OData entity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapEccResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapEccResourceDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapEccResourceDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  path: Any,
@@ -22418,15 +26383,31 @@ class SapEccResourceDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapEccSourceResponse(dict):
     """
     A copy activity source for SAP ECC source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapEccSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapEccSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapEccSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -22481,15 +26462,35 @@ class SapEccSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SapHanaLinkedServiceResponse(dict):
     """
     SAP HANA Linked Service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SapHanaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SapHanaLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SapHanaLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  server: Any,
                  type: str,
@@ -22615,15 +26616,33 @@ class SapHanaLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleTriggerRecurrenceResponse(dict):
     """
     The workflow trigger recurrence.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleTriggerRecurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleTriggerRecurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleTriggerRecurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: Optional[str] = None,
                  frequency: Optional[str] = None,
@@ -22701,15 +26720,29 @@ class ScheduleTriggerRecurrenceResponse(dict):
         """
         return pulumi.get(self, "time_zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleTriggerResponse(dict):
     """
     Trigger that creates pipeline runs periodically, on schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runtimeState":
+            suggest = "runtime_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recurrence: 'outputs.ScheduleTriggerRecurrenceResponse',
                  runtime_state: str,
@@ -22774,9 +26807,6 @@ class ScheduleTriggerResponse(dict):
         """
         return pulumi.get(self, "pipelines")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecureStringResponse(dict):
@@ -22811,9 +26841,6 @@ class SecureStringResponse(dict):
         Value of secure string.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -23030,6 +27057,23 @@ class SelfHostedIntegrationRuntimeResponse(dict):
     """
     Self-hosted integration runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedInfo":
+            suggest = "linked_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SelfHostedIntegrationRuntimeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SelfHostedIntegrationRuntimeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SelfHostedIntegrationRuntimeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  description: Optional[str] = None,
@@ -23071,9 +27115,6 @@ class SelfHostedIntegrationRuntimeResponse(dict):
         The base definition of a secret type.
         """
         return pulumi.get(self, "linked_info")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -23273,6 +27314,37 @@ class ServiceNowLinkedServiceResponse(dict):
     """
     ServiceNow server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNowLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNowLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNowLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  endpoint: Any,
@@ -23457,15 +27529,29 @@ class ServiceNowLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceNowObjectDatasetResponse(dict):
     """
     ServiceNow server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNowObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNowObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNowObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -23543,15 +27629,31 @@ class ServiceNowObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceNowSourceResponse(dict):
     """
     A copy activity ServiceNow server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNowSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNowSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNowSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -23606,15 +27708,45 @@ class ServiceNowSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SftpServerLinkedServiceResponse(dict):
     """
     A linked service for an SSH File Transfer Protocol (SFTP) server. 
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "hostKeyFingerprint":
+            suggest = "host_key_fingerprint"
+        elif key == "passPhrase":
+            suggest = "pass_phrase"
+        elif key == "privateKeyContent":
+            suggest = "private_key_content"
+        elif key == "privateKeyPath":
+            suggest = "private_key_path"
+        elif key == "skipHostKeyValidation":
+            suggest = "skip_host_key_validation"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SftpServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SftpServerLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SftpServerLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -23812,15 +27944,39 @@ class SftpServerLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ShopifyLinkedServiceResponse(dict):
     """
     Shopify Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShopifyLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShopifyLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShopifyLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -23958,15 +28114,29 @@ class ShopifyLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ShopifyObjectDatasetResponse(dict):
     """
     Shopify Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShopifyObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShopifyObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShopifyObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -24044,15 +28214,31 @@ class ShopifyObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ShopifySourceResponse(dict):
     """
     A copy activity Shopify Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShopifySourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShopifySourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShopifySourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -24107,15 +28293,49 @@ class ShopifySourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SparkLinkedServiceResponse(dict):
     """
     Spark Server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "allowHostNameCNMismatch":
+            suggest = "allow_host_name_cn_mismatch"
+        elif key == "allowSelfSignedServerCert":
+            suggest = "allow_self_signed_server_cert"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "enableSsl":
+            suggest = "enable_ssl"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "httpPath":
+            suggest = "http_path"
+        elif key == "serverType":
+            suggest = "server_type"
+        elif key == "thriftTransportProtocol":
+            suggest = "thrift_transport_protocol"
+        elif key == "trustedCertPath":
+            suggest = "trusted_cert_path"
+        elif key == "useSystemTrustStore":
+            suggest = "use_system_trust_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -24347,15 +28567,29 @@ class SparkLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SparkObjectDatasetResponse(dict):
     """
     Spark Server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -24433,15 +28667,31 @@ class SparkObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SparkSourceResponse(dict):
     """
     A copy activity Spark Server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -24496,15 +28746,41 @@ class SparkSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlDWSinkResponse(dict):
     """
     A copy activity SQL Data Warehouse sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPolyBase":
+            suggest = "allow_poly_base"
+        elif key == "polyBaseSettings":
+            suggest = "poly_base_settings"
+        elif key == "preCopyScript":
+            suggest = "pre_copy_script"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlDWSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlDWSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlDWSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  allow_poly_base: Optional[Any] = None,
@@ -24607,15 +28883,37 @@ class SqlDWSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlDWSourceResponse(dict):
     """
     A copy activity SQL Data Warehouse source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+        elif key == "sqlReaderQuery":
+            suggest = "sql_reader_query"
+        elif key == "sqlReaderStoredProcedureName":
+            suggest = "sql_reader_stored_procedure_name"
+        elif key == "storedProcedureParameters":
+            suggest = "stored_procedure_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlDWSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlDWSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlDWSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  source_retry_count: Optional[Any] = None,
@@ -24694,15 +28992,35 @@ class SqlDWSourceResponse(dict):
         """
         return pulumi.get(self, "stored_procedure_parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlServerLinkedServiceResponse(dict):
     """
     SQL Server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -24816,15 +29134,35 @@ class SqlServerLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlServerStoredProcedureActivityResponse(dict):
     """
     SQL stored procedure activity type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "storedProcedureName":
+            suggest = "stored_procedure_name"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "storedProcedureParameters":
+            suggest = "stored_procedure_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerStoredProcedureActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerStoredProcedureActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerStoredProcedureActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  name: str,
@@ -24924,15 +29262,31 @@ class SqlServerStoredProcedureActivityResponse(dict):
         """
         return pulumi.get(self, "stored_procedure_parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlServerTableDatasetResponse(dict):
     """
     The on-premises SQL Server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "tableName":
+            suggest = "table_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -25021,15 +29375,43 @@ class SqlServerTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlSinkResponse(dict):
     """
     A copy activity SQL sink.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preCopyScript":
+            suggest = "pre_copy_script"
+        elif key == "sinkRetryCount":
+            suggest = "sink_retry_count"
+        elif key == "sinkRetryWait":
+            suggest = "sink_retry_wait"
+        elif key == "sqlWriterStoredProcedureName":
+            suggest = "sql_writer_stored_procedure_name"
+        elif key == "sqlWriterTableType":
+            suggest = "sql_writer_table_type"
+        elif key == "storedProcedureParameters":
+            suggest = "stored_procedure_parameters"
+        elif key == "writeBatchSize":
+            suggest = "write_batch_size"
+        elif key == "writeBatchTimeout":
+            suggest = "write_batch_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlSinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlSinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlSinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  pre_copy_script: Optional[Any] = None,
@@ -25144,15 +29526,37 @@ class SqlSinkResponse(dict):
         """
         return pulumi.get(self, "write_batch_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlSourceResponse(dict):
     """
     A copy activity SQL source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+        elif key == "sqlReaderQuery":
+            suggest = "sql_reader_query"
+        elif key == "sqlReaderStoredProcedureName":
+            suggest = "sql_reader_stored_procedure_name"
+        elif key == "storedProcedureParameters":
+            suggest = "stored_procedure_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  source_retry_count: Optional[Any] = None,
@@ -25231,15 +29635,43 @@ class SqlSourceResponse(dict):
         """
         return pulumi.get(self, "stored_procedure_parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SquareLinkedServiceResponse(dict):
     """
     Square Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "redirectUri":
+            suggest = "redirect_uri"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SquareLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SquareLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SquareLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: Any,
                  host: Any,
@@ -25399,15 +29831,29 @@ class SquareLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SquareObjectDatasetResponse(dict):
     """
     Square Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SquareObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SquareObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SquareObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -25485,15 +29931,31 @@ class SquareObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SquareSourceResponse(dict):
     """
     A copy activity Square Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SquareSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SquareSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SquareSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -25548,15 +30010,31 @@ class SquareSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StagingSettingsResponse(dict):
     """
     Staging settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "enableCompression":
+            suggest = "enable_compression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StagingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StagingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StagingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  enable_compression: Optional[Any] = None,
@@ -25597,9 +30075,6 @@ class StagingSettingsResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StoredProcedureParameterResponse(dict):
@@ -25634,15 +30109,33 @@ class StoredProcedureParameterResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SybaseLinkedServiceResponse(dict):
     """
     Linked service for Sybase data source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SybaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SybaseLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SybaseLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database: Any,
                  server: Any,
@@ -25791,15 +30284,33 @@ class SybaseLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TeradataLinkedServiceResponse(dict):
     """
     Linked service for Teradata data source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeradataLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeradataLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeradataLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  server: Any,
                  type: str,
@@ -25925,15 +30436,45 @@ class TeradataLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TextFormatResponse(dict):
     """
     The data stored in text format.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnDelimiter":
+            suggest = "column_delimiter"
+        elif key == "encodingName":
+            suggest = "encoding_name"
+        elif key == "escapeChar":
+            suggest = "escape_char"
+        elif key == "firstRowAsHeader":
+            suggest = "first_row_as_header"
+        elif key == "nullValue":
+            suggest = "null_value"
+        elif key == "quoteChar":
+            suggest = "quote_char"
+        elif key == "rowDelimiter":
+            suggest = "row_delimiter"
+        elif key == "skipLineCount":
+            suggest = "skip_line_count"
+        elif key == "treatEmptyAsNull":
+            suggest = "treat_empty_as_null"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TextFormatResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TextFormatResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TextFormatResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  column_delimiter: Optional[Any] = None,
@@ -26084,15 +30625,29 @@ class TextFormatResponse(dict):
         """
         return pulumi.get(self, "treat_empty_as_null")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerPipelineReferenceResponse(dict):
     """
     Pipeline that needs to be triggered with the given parameters.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pipelineReference":
+            suggest = "pipeline_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerPipelineReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerPipelineReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerPipelineReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  parameters: Optional[Mapping[str, Any]] = None,
                  pipeline_reference: Optional['outputs.PipelineReferenceResponse'] = None):
@@ -26122,15 +30677,37 @@ class TriggerPipelineReferenceResponse(dict):
         """
         return pulumi.get(self, "pipeline_reference")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TumblingWindowTriggerResponse(dict):
     """
     Trigger that schedules pipeline runs for all fixed time interval windows from a start time without gaps and also supports backfill scenarios (when start time is in the past).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxConcurrency":
+            suggest = "max_concurrency"
+        elif key == "runtimeState":
+            suggest = "runtime_state"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "retryPolicy":
+            suggest = "retry_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TumblingWindowTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TumblingWindowTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TumblingWindowTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  frequency: str,
                  interval: int,
@@ -26263,15 +30840,29 @@ class TumblingWindowTriggerResponse(dict):
         """
         return pulumi.get(self, "retry_policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UntilActivityResponse(dict):
     """
     This activity executes inner activities until the specified boolean expression results to true or timeout is reached, whichever is earlier.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UntilActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UntilActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UntilActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  activities: Sequence[Any],
                  expression: 'outputs.ExpressionResponse',
@@ -26359,15 +30950,33 @@ class UntilActivityResponse(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VerticaLinkedServiceResponse(dict):
     """
     Vertica linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VerticaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VerticaLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VerticaLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -26458,15 +31067,31 @@ class VerticaLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VerticaSourceResponse(dict):
     """
     A copy activity Vertica source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VerticaSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VerticaSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VerticaSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -26521,15 +31146,29 @@ class VerticaSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VerticaTableDatasetResponse(dict):
     """
     Vertica dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VerticaTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VerticaTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VerticaTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -26607,15 +31246,31 @@ class VerticaTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WaitActivityResponse(dict):
     """
     This activity suspends pipeline execution for the specified interval.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "waitTimeInSeconds":
+            suggest = "wait_time_in_seconds"
+        elif key == "dependsOn":
+            suggest = "depends_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WaitActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WaitActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WaitActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -26679,9 +31334,6 @@ class WaitActivityResponse(dict):
         Activity description.
         """
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -26753,15 +31405,33 @@ class WebActivityAuthenticationResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebActivityResponse(dict):
     """
     Web activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "linkedServiceName":
+            suggest = "linked_service_name"
+        elif key == "linkedServices":
+            suggest = "linked_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method: str,
                  name: str,
@@ -26921,15 +31591,29 @@ class WebActivityResponse(dict):
         """
         return pulumi.get(self, "policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebAnonymousAuthenticationResponse(dict):
     """
     A WebLinkedService that uses anonymous authentication to communicate with an HTTP endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebAnonymousAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebAnonymousAuthenticationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebAnonymousAuthenticationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  url: Any):
@@ -26959,15 +31643,29 @@ class WebAnonymousAuthenticationResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebBasicAuthenticationResponse(dict):
     """
     A WebLinkedService that uses basic authentication to communicate with an HTTP endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebBasicAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebBasicAuthenticationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebBasicAuthenticationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  password: Any,
@@ -27019,15 +31717,29 @@ class WebBasicAuthenticationResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebClientCertificateAuthenticationResponse(dict):
     """
     A WebLinkedService that uses client certificate based authentication to communicate with an HTTP endpoint. This scheme follows mutual authentication; the server must also provide valid credentials to the client.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebClientCertificateAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebClientCertificateAuthenticationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebClientCertificateAuthenticationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_type: str,
                  password: Any,
@@ -27079,15 +31791,31 @@ class WebClientCertificateAuthenticationResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebLinkedServiceResponse(dict):
     """
     Web linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "typeProperties":
+            suggest = "type_properties"
+        elif key == "connectVia":
+            suggest = "connect_via"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  type_properties: Any,
@@ -27165,15 +31893,31 @@ class WebLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebSourceResponse(dict):
     """
     A copy activity source for web page table.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  source_retry_count: Optional[Any] = None,
@@ -27216,15 +31960,29 @@ class WebSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebTableDatasetResponse(dict):
     """
     The dataset points to a HTML table in the web page.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebTableDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebTableDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  index: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -27325,15 +32083,41 @@ class WebTableDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class XeroLinkedServiceResponse(dict):
     """
     Xero Service linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVia":
+            suggest = "connect_via"
+        elif key == "consumerKey":
+            suggest = "consumer_key"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in XeroLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        XeroLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        XeroLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -27485,15 +32269,29 @@ class XeroLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class XeroObjectDatasetResponse(dict):
     """
     Xero Service dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in XeroObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        XeroObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        XeroObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -27571,15 +32369,31 @@ class XeroObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class XeroSourceResponse(dict):
     """
     A copy activity Xero Service source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in XeroSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        XeroSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        XeroSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -27634,15 +32448,39 @@ class XeroSourceResponse(dict):
         """
         return pulumi.get(self, "source_retry_wait")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZohoLinkedServiceResponse(dict):
     """
     Zoho server linked service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "connectVia":
+            suggest = "connect_via"
+        elif key == "encryptedCredential":
+            suggest = "encrypted_credential"
+        elif key == "useEncryptedEndpoints":
+            suggest = "use_encrypted_endpoints"
+        elif key == "useHostVerification":
+            suggest = "use_host_verification"
+        elif key == "usePeerVerification":
+            suggest = "use_peer_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZohoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZohoLinkedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZohoLinkedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint: Any,
                  type: str,
@@ -27780,15 +32618,29 @@ class ZohoLinkedServiceResponse(dict):
         """
         return pulumi.get(self, "use_peer_verification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZohoObjectDatasetResponse(dict):
     """
     Zoho server dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedServiceName":
+            suggest = "linked_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZohoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZohoObjectDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZohoObjectDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -27866,15 +32718,31 @@ class ZohoObjectDatasetResponse(dict):
         """
         return pulumi.get(self, "structure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZohoSourceResponse(dict):
     """
     A copy activity Zoho server source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRetryCount":
+            suggest = "source_retry_count"
+        elif key == "sourceRetryWait":
+            suggest = "source_retry_wait"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZohoSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZohoSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZohoSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  query: Optional[Any] = None,
@@ -27928,8 +32796,5 @@ class ZohoSourceResponse(dict):
         Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
         """
         return pulumi.get(self, "source_retry_wait")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

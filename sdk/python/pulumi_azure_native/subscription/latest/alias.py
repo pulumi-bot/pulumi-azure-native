@@ -5,13 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Alias']
+__all__ = ['AliasArgs', 'Alias']
+
+@pulumi.input_type
+class AliasArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input['PutAliasRequestPropertiesArgs'],
+                 alias_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Alias resource.
+        :param pulumi.Input['PutAliasRequestPropertiesArgs'] properties: Put alias request properties.
+        :param pulumi.Input[str] alias_name: Alias Name
+        """
+        pulumi.set(__self__, "properties", properties)
+        if alias_name is not None:
+            pulumi.set(__self__, "alias_name", alias_name)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input['PutAliasRequestPropertiesArgs']:
+        """
+        Put alias request properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input['PutAliasRequestPropertiesArgs']):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alias Name
+        """
+        return pulumi.get(self, "alias_name")
+
+    @alias_name.setter
+    def alias_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alias_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:subscription:Alias'.""", DeprecationWarning)
 
@@ -19,6 +58,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class Alias(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:subscription:Alias'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +76,36 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] alias_name: Alias Name
         :param pulumi.Input[pulumi.InputType['PutAliasRequestPropertiesArgs']] properties: Put alias request properties.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AliasArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Subscription Information with the alias.
+        Latest API Version: 2020-09-01.
+
+        :param str resource_name: The name of the resource.
+        :param AliasArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AliasArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alias_name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['PutAliasRequestPropertiesArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""Alias is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:subscription:Alias'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -52,14 +122,14 @@ class Alias(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AliasArgs.__new__(AliasArgs)
 
-            __props__['alias_name'] = alias_name
+            __props__.__dict__['alias_name'] = alias_name
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['properties'] = properties
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:subscription/latest:Alias"), pulumi.Alias(type_="azure-native:subscription:Alias"), pulumi.Alias(type_="azure-nextgen:subscription:Alias"), pulumi.Alias(type_="azure-native:subscription/v20191001preview:Alias"), pulumi.Alias(type_="azure-nextgen:subscription/v20191001preview:Alias"), pulumi.Alias(type_="azure-native:subscription/v20200901:Alias"), pulumi.Alias(type_="azure-nextgen:subscription/v20200901:Alias")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Alias, __self__).__init__(
@@ -82,11 +152,11 @@ class Alias(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = AliasArgs.__new__(AliasArgs)
 
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["type"] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['properties'] = None
+        __props__.__dict__['type'] = None
         return Alias(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -112,10 +182,4 @@ class Alias(pulumi.CustomResource):
         Resource type, Microsoft.Subscription/aliases.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

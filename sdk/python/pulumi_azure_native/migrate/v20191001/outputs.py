@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -25,6 +25,73 @@ class AssessmentPropertiesResponse(dict):
     """
     Properties of an assessment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureDiskType":
+            suggest = "azure_disk_type"
+        elif key == "azureHybridUseBenefit":
+            suggest = "azure_hybrid_use_benefit"
+        elif key == "azureLocation":
+            suggest = "azure_location"
+        elif key == "azureOfferCode":
+            suggest = "azure_offer_code"
+        elif key == "azurePricingTier":
+            suggest = "azure_pricing_tier"
+        elif key == "azureStorageRedundancy":
+            suggest = "azure_storage_redundancy"
+        elif key == "azureVmFamilies":
+            suggest = "azure_vm_families"
+        elif key == "confidenceRatingInPercentage":
+            suggest = "confidence_rating_in_percentage"
+        elif key == "createdTimestamp":
+            suggest = "created_timestamp"
+        elif key == "discountPercentage":
+            suggest = "discount_percentage"
+        elif key == "eaSubscriptionId":
+            suggest = "ea_subscription_id"
+        elif key == "monthlyBandwidthCost":
+            suggest = "monthly_bandwidth_cost"
+        elif key == "monthlyComputeCost":
+            suggest = "monthly_compute_cost"
+        elif key == "monthlyPremiumStorageCost":
+            suggest = "monthly_premium_storage_cost"
+        elif key == "monthlyStandardSSDStorageCost":
+            suggest = "monthly_standard_ssd_storage_cost"
+        elif key == "monthlyStorageCost":
+            suggest = "monthly_storage_cost"
+        elif key == "numberOfMachines":
+            suggest = "number_of_machines"
+        elif key == "perfDataEndTime":
+            suggest = "perf_data_end_time"
+        elif key == "perfDataStartTime":
+            suggest = "perf_data_start_time"
+        elif key == "pricesTimestamp":
+            suggest = "prices_timestamp"
+        elif key == "reservedInstance":
+            suggest = "reserved_instance"
+        elif key == "scalingFactor":
+            suggest = "scaling_factor"
+        elif key == "sizingCriterion":
+            suggest = "sizing_criterion"
+        elif key == "timeRange":
+            suggest = "time_range"
+        elif key == "updatedTimestamp":
+            suggest = "updated_timestamp"
+        elif key == "vmUptime":
+            suggest = "vm_uptime"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssessmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssessmentPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssessmentPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  azure_disk_type: str,
                  azure_hybrid_use_benefit: str,
@@ -360,12 +427,28 @@ class AssessmentPropertiesResponse(dict):
         """
         return pulumi.get(self, "vm_uptime")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CollectorAgentPropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastHeartbeatUtc":
+            suggest = "last_heartbeat_utc"
+        elif key == "spnDetails":
+            suggest = "spn_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CollectorAgentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CollectorAgentPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CollectorAgentPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  last_heartbeat_utc: str,
@@ -397,12 +480,30 @@ class CollectorAgentPropertiesResponse(dict):
     def spn_details(self) -> Optional['outputs.CollectorBodyAgentSpnPropertiesResponse']:
         return pulumi.get(self, "spn_details")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CollectorBodyAgentSpnPropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationId":
+            suggest = "application_id"
+        elif key == "objectId":
+            suggest = "object_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CollectorBodyAgentSpnPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CollectorBodyAgentSpnPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CollectorBodyAgentSpnPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  application_id: Optional[str] = None,
                  audience: Optional[str] = None,
@@ -467,12 +568,32 @@ class CollectorBodyAgentSpnPropertiesResponse(dict):
         """
         return pulumi.get(self, "tenant_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CollectorPropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdTimestamp":
+            suggest = "created_timestamp"
+        elif key == "updatedTimestamp":
+            suggest = "updated_timestamp"
+        elif key == "agentProperties":
+            suggest = "agent_properties"
+        elif key == "discoverySiteId":
+            suggest = "discovery_site_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CollectorPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CollectorPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CollectorPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_timestamp: str,
                  updated_timestamp: str,
@@ -519,15 +640,37 @@ class CollectorPropertiesResponse(dict):
         """
         return pulumi.get(self, "discovery_site_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GroupPropertiesResponse(dict):
     """
     Properties of group resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "areAssessmentsRunning":
+            suggest = "are_assessments_running"
+        elif key == "createdTimestamp":
+            suggest = "created_timestamp"
+        elif key == "groupStatus":
+            suggest = "group_status"
+        elif key == "machineCount":
+            suggest = "machine_count"
+        elif key == "updatedTimestamp":
+            suggest = "updated_timestamp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  are_assessments_running: bool,
                  assessments: Sequence[str],
@@ -599,15 +742,51 @@ class GroupPropertiesResponse(dict):
         """
         return pulumi.get(self, "updated_timestamp")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ProjectPropertiesResponse(dict):
     """
     Properties of a project.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdTimestamp":
+            suggest = "created_timestamp"
+        elif key == "lastAssessmentTimestamp":
+            suggest = "last_assessment_timestamp"
+        elif key == "numberOfAssessments":
+            suggest = "number_of_assessments"
+        elif key == "numberOfGroups":
+            suggest = "number_of_groups"
+        elif key == "numberOfMachines":
+            suggest = "number_of_machines"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "serviceEndpoint":
+            suggest = "service_endpoint"
+        elif key == "updatedTimestamp":
+            suggest = "updated_timestamp"
+        elif key == "assessmentSolutionId":
+            suggest = "assessment_solution_id"
+        elif key == "customerWorkspaceId":
+            suggest = "customer_workspace_id"
+        elif key == "customerWorkspaceLocation":
+            suggest = "customer_workspace_location"
+        elif key == "projectStatus":
+            suggest = "project_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_timestamp: str,
                  last_assessment_timestamp: str,
@@ -749,12 +928,28 @@ class ProjectPropertiesResponse(dict):
         """
         return pulumi.get(self, "project_status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VmUptimeResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "daysPerMonth":
+            suggest = "days_per_month"
+        elif key == "hoursPerDay":
+            suggest = "hours_per_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmUptimeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmUptimeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmUptimeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  days_per_month: Optional[float] = None,
                  hours_per_day: Optional[float] = None):
@@ -782,8 +977,5 @@ class VmUptimeResponse(dict):
         Number of hours per day for VM uptime.
         """
         return pulumi.get(self, "hours_per_day")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

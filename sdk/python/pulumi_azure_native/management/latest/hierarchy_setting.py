@@ -5,10 +5,65 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['HierarchySetting']
+__all__ = ['HierarchySettingArgs', 'HierarchySetting']
+
+@pulumi.input_type
+class HierarchySettingArgs:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[str],
+                 default_management_group: Optional[pulumi.Input[str]] = None,
+                 require_authorization_for_group_creation: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a HierarchySetting resource.
+        :param pulumi.Input[str] group_id: Management Group ID.
+        :param pulumi.Input[str] default_management_group: Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
+        :param pulumi.Input[bool] require_authorization_for_group_creation: Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        if default_management_group is not None:
+            pulumi.set(__self__, "default_management_group", default_management_group)
+        if require_authorization_for_group_creation is not None:
+            pulumi.set(__self__, "require_authorization_for_group_creation", require_authorization_for_group_creation)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        Management Group ID.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="defaultManagementGroup")
+    def default_management_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
+        """
+        return pulumi.get(self, "default_management_group")
+
+    @default_management_group.setter
+    def default_management_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_management_group", value)
+
+    @property
+    @pulumi.getter(name="requireAuthorizationForGroupCreation")
+    def require_authorization_for_group_creation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
+        """
+        return pulumi.get(self, "require_authorization_for_group_creation")
+
+    @require_authorization_for_group_creation.setter
+    def require_authorization_for_group_creation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_authorization_for_group_creation", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:management:HierarchySetting'.""", DeprecationWarning)
 
@@ -16,6 +71,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class HierarchySetting(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:management:HierarchySetting'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +91,37 @@ class HierarchySetting(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: Management Group ID.
         :param pulumi.Input[bool] require_authorization_for_group_creation: Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HierarchySettingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Settings defined at the Management Group scope.
+        Latest API Version: 2020-05-01.
+
+        :param str resource_name: The name of the resource.
+        :param HierarchySettingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HierarchySettingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_management_group: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 require_authorization_for_group_creation: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""HierarchySetting is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:management:HierarchySetting'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,16 +138,16 @@ class HierarchySetting(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = HierarchySettingArgs.__new__(HierarchySettingArgs)
 
-            __props__['default_management_group'] = default_management_group
+            __props__.__dict__['default_management_group'] = default_management_group
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
-            __props__['require_authorization_for_group_creation'] = require_authorization_for_group_creation
-            __props__['name'] = None
-            __props__['tenant_id'] = None
-            __props__['type'] = None
+            __props__.__dict__['group_id'] = group_id
+            __props__.__dict__['require_authorization_for_group_creation'] = require_authorization_for_group_creation
+            __props__.__dict__['name'] = None
+            __props__.__dict__['tenant_id'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:management/latest:HierarchySetting"), pulumi.Alias(type_="azure-native:management:HierarchySetting"), pulumi.Alias(type_="azure-nextgen:management:HierarchySetting"), pulumi.Alias(type_="azure-native:management/v20200201:HierarchySetting"), pulumi.Alias(type_="azure-nextgen:management/v20200201:HierarchySetting"), pulumi.Alias(type_="azure-native:management/v20200501:HierarchySetting"), pulumi.Alias(type_="azure-nextgen:management/v20200501:HierarchySetting")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(HierarchySetting, __self__).__init__(
@@ -83,13 +170,13 @@ class HierarchySetting(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = HierarchySettingArgs.__new__(HierarchySettingArgs)
 
-        __props__["default_management_group"] = None
-        __props__["name"] = None
-        __props__["require_authorization_for_group_creation"] = None
-        __props__["tenant_id"] = None
-        __props__["type"] = None
+        __props__.__dict__['default_management_group'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['require_authorization_for_group_creation'] = None
+        __props__.__dict__['tenant_id'] = None
+        __props__.__dict__['type'] = None
         return HierarchySetting(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -131,10 +218,4 @@ class HierarchySetting(pulumi.CustomResource):
         The type of the resource.  For example, Microsoft.Management/managementGroups/settings.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

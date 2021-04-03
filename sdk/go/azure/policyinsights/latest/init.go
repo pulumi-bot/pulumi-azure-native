@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:policyinsights/latest:AttestationAtResource":
-		r, err = NewAttestationAtResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &AttestationAtResource{}
 	case "azure-native:policyinsights/latest:AttestationAtResourceGroup":
-		r, err = NewAttestationAtResourceGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &AttestationAtResourceGroup{}
 	case "azure-native:policyinsights/latest:AttestationAtSubscription":
-		r, err = NewAttestationAtSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &AttestationAtSubscription{}
 	case "azure-native:policyinsights/latest:RemediationAtManagementGroup":
-		r, err = NewRemediationAtManagementGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &RemediationAtManagementGroup{}
 	case "azure-native:policyinsights/latest:RemediationAtResource":
-		r, err = NewRemediationAtResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &RemediationAtResource{}
 	case "azure-native:policyinsights/latest:RemediationAtResourceGroup":
-		r, err = NewRemediationAtResourceGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &RemediationAtResourceGroup{}
 	case "azure-native:policyinsights/latest:RemediationAtSubscription":
-		r, err = NewRemediationAtSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &RemediationAtSubscription{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

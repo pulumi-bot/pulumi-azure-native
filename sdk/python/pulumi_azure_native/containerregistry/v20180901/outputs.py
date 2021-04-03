@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -52,15 +52,29 @@ class AgentPropertiesResponse(dict):
         """
         return pulumi.get(self, "cpu")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ArgumentResponse(dict):
     """
     The properties of a run argument.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isSecret":
+            suggest = "is_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ArgumentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ArgumentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ArgumentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  value: str,
@@ -102,15 +116,33 @@ class ArgumentResponse(dict):
         """
         return pulumi.get(self, "is_secret")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthInfoResponse(dict):
     """
     The authorization properties for accessing the source code repository.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenType":
+            suggest = "token_type"
+        elif key == "expiresIn":
+            suggest = "expires_in"
+        elif key == "refreshToken":
+            suggest = "refresh_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  token: str,
                  token_type: str,
@@ -173,9 +205,6 @@ class AuthInfoResponse(dict):
         The scope of the access token.
         """
         return pulumi.get(self, "scope")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -248,15 +277,29 @@ class BaseImageDependencyResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BaseImageTriggerResponse(dict):
     """
     The trigger based on base image dependency.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseImageTriggerType":
+            suggest = "base_image_trigger_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BaseImageTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BaseImageTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BaseImageTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_image_trigger_type: str,
                  name: str,
@@ -298,15 +341,31 @@ class BaseImageTriggerResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CredentialsResponse(dict):
     """
     The parameters that describes a set of credentials that will be used when a run is invoked.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customRegistries":
+            suggest = "custom_registries"
+        elif key == "sourceRegistry":
+            suggest = "source_registry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_registries: Optional[Mapping[str, 'outputs.CustomRegistryCredentialsResponse']] = None,
                  source_registry: Optional['outputs.SourceRegistryCredentialsResponse'] = None):
@@ -340,15 +399,29 @@ class CredentialsResponse(dict):
         """
         return pulumi.get(self, "source_registry")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomRegistryCredentialsResponse(dict):
     """
     Describes the credentials that will be used to access a custom registry during a run.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomRegistryCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomRegistryCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomRegistryCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  password: Optional['outputs.SecretObjectResponse'] = None,
                  user_name: Optional['outputs.SecretObjectResponse'] = None):
@@ -380,15 +453,41 @@ class CustomRegistryCredentialsResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DockerBuildStepResponse(dict):
     """
     The Docker build step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseImageDependencies":
+            suggest = "base_image_dependencies"
+        elif key == "dockerFilePath":
+            suggest = "docker_file_path"
+        elif key == "contextAccessToken":
+            suggest = "context_access_token"
+        elif key == "contextPath":
+            suggest = "context_path"
+        elif key == "imageNames":
+            suggest = "image_names"
+        elif key == "isPushEnabled":
+            suggest = "is_push_enabled"
+        elif key == "noCache":
+            suggest = "no_cache"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DockerBuildStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DockerBuildStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DockerBuildStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_image_dependencies: Sequence['outputs.BaseImageDependencyResponse'],
                  docker_file_path: str,
@@ -517,15 +616,37 @@ class DockerBuildStepResponse(dict):
         """
         return pulumi.get(self, "target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncodedTaskStepResponse(dict):
     """
     The properties of a encoded task step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseImageDependencies":
+            suggest = "base_image_dependencies"
+        elif key == "encodedTaskContent":
+            suggest = "encoded_task_content"
+        elif key == "contextAccessToken":
+            suggest = "context_access_token"
+        elif key == "contextPath":
+            suggest = "context_path"
+        elif key == "encodedValuesContent":
+            suggest = "encoded_values_content"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncodedTaskStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncodedTaskStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncodedTaskStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_image_dependencies: Sequence['outputs.BaseImageDependencyResponse'],
                  encoded_task_content: str,
@@ -614,15 +735,37 @@ class EncodedTaskStepResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileTaskStepResponse(dict):
     """
     The properties of a task step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseImageDependencies":
+            suggest = "base_image_dependencies"
+        elif key == "taskFilePath":
+            suggest = "task_file_path"
+        elif key == "contextAccessToken":
+            suggest = "context_access_token"
+        elif key == "contextPath":
+            suggest = "context_path"
+        elif key == "valuesFilePath":
+            suggest = "values_file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileTaskStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileTaskStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileTaskStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_image_dependencies: Sequence['outputs.BaseImageDependencyResponse'],
                  task_file_path: str,
@@ -711,9 +854,6 @@ class FileTaskStepResponse(dict):
         """
         return pulumi.get(self, "values_file_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PlatformPropertiesResponse(dict):
@@ -760,9 +900,6 @@ class PlatformPropertiesResponse(dict):
         """
         return pulumi.get(self, "variant")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretObjectResponse(dict):
@@ -804,15 +941,29 @@ class SecretObjectResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SetValueResponse(dict):
     """
     The properties of a overridable value that can be passed to a task template.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isSecret":
+            suggest = "is_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SetValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SetValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SetValueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  value: str,
@@ -854,15 +1005,33 @@ class SetValueResponse(dict):
         """
         return pulumi.get(self, "is_secret")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourcePropertiesResponse(dict):
     """
     The properties of the source code repository.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repositoryUrl":
+            suggest = "repository_url"
+        elif key == "sourceControlType":
+            suggest = "source_control_type"
+        elif key == "sourceControlAuthProperties":
+            suggest = "source_control_auth_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourcePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourcePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourcePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  repository_url: str,
                  source_control_type: str,
@@ -916,15 +1085,29 @@ class SourcePropertiesResponse(dict):
         """
         return pulumi.get(self, "source_control_auth_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceRegistryCredentialsResponse(dict):
     """
     Describes the credential parameters for accessing the source registry.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginMode":
+            suggest = "login_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceRegistryCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceRegistryCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceRegistryCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  login_mode: Optional[str] = None):
         """
@@ -946,15 +1129,31 @@ class SourceRegistryCredentialsResponse(dict):
         """
         return pulumi.get(self, "login_mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceTriggerResponse(dict):
     """
     The properties of a source based trigger.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceRepository":
+            suggest = "source_repository"
+        elif key == "sourceTriggerEvents":
+            suggest = "source_trigger_events"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  source_repository: 'outputs.SourcePropertiesResponse',
@@ -1007,15 +1206,31 @@ class SourceTriggerResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerPropertiesResponse(dict):
     """
     The properties of a trigger.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseImageTrigger":
+            suggest = "base_image_trigger"
+        elif key == "sourceTriggers":
+            suggest = "source_triggers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_image_trigger: Optional['outputs.BaseImageTriggerResponse'] = None,
                  source_triggers: Optional[Sequence['outputs.SourceTriggerResponse']] = None):
@@ -1044,8 +1259,5 @@ class TriggerPropertiesResponse(dict):
         The collection of triggers based on source code repository.
         """
         return pulumi.get(self, "source_triggers")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -23,6 +23,27 @@ class AdditionalRegionResponse(dict):
     """
     Description of an additional API Management resource location.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "skuType":
+            suggest = "sku_type"
+        elif key == "staticIPs":
+            suggest = "static_ips"
+        elif key == "skuUnitCount":
+            suggest = "sku_unit_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdditionalRegionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdditionalRegionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdditionalRegionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  location: str,
                  sku_type: str,
@@ -87,9 +108,6 @@ class AdditionalRegionResponse(dict):
         """
         return pulumi.get(self, "vpnconfiguration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiManagementServiceSkuPropertiesResponse(dict):
@@ -125,9 +143,6 @@ class ApiManagementServiceSkuPropertiesResponse(dict):
         Capacity of the SKU (number of deployed units of the SKU). The default value is 1.
         """
         return pulumi.get(self, "capacity")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -173,9 +188,6 @@ class CertificateInformationResponse(dict):
         """
         return pulumi.get(self, "thumbprint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HostnameConfigurationResponse(dict):
@@ -220,15 +232,29 @@ class HostnameConfigurationResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualNetworkConfigurationResponse(dict):
     """
     Configuration of a virtual network to which API Management service is deployed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetResourceId":
+            suggest = "subnet_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualNetworkConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualNetworkConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  subnetname: str,
                  vnetid: str,
@@ -279,8 +305,5 @@ class VirtualNetworkConfigurationResponse(dict):
         The full resource ID of a subnet in a virtual network to deploy the API Management service in.
         """
         return pulumi.get(self, "subnet_resource_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

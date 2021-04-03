@@ -5,13 +5,178 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['StorageTarget']
+__all__ = ['StorageTargetArgs', 'StorageTarget']
+
+@pulumi.input_type
+class StorageTargetArgs:
+    def __init__(__self__, *,
+                 cache_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 target_type: pulumi.Input[Union[str, 'StorageTargetType']],
+                 blob_nfs: Optional[pulumi.Input['BlobNfsTargetArgs']] = None,
+                 clfs: Optional[pulumi.Input['ClfsTargetArgs']] = None,
+                 junctions: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceJunctionArgs']]]] = None,
+                 nfs3: Optional[pulumi.Input['Nfs3TargetArgs']] = None,
+                 provisioning_state: Optional[pulumi.Input[Union[str, 'ProvisioningStateType']]] = None,
+                 storage_target_name: Optional[pulumi.Input[str]] = None,
+                 unknown: Optional[pulumi.Input['UnknownTargetArgs']] = None):
+        """
+        The set of arguments for constructing a StorageTarget resource.
+        :param pulumi.Input[str] cache_name: Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+        :param pulumi.Input[str] resource_group_name: Target resource group.
+        :param pulumi.Input[Union[str, 'StorageTargetType']] target_type: Type of the Storage Target.
+        :param pulumi.Input['BlobNfsTargetArgs'] blob_nfs: Properties when targetType is blobNfs.
+        :param pulumi.Input['ClfsTargetArgs'] clfs: Properties when targetType is clfs.
+        :param pulumi.Input[Sequence[pulumi.Input['NamespaceJunctionArgs']]] junctions: List of Cache namespace junctions to target for namespace associations.
+        :param pulumi.Input['Nfs3TargetArgs'] nfs3: Properties when targetType is nfs3.
+        :param pulumi.Input[Union[str, 'ProvisioningStateType']] provisioning_state: ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
+        :param pulumi.Input[str] storage_target_name: Name of Storage Target.
+        :param pulumi.Input['UnknownTargetArgs'] unknown: Properties when targetType is unknown.
+        """
+        pulumi.set(__self__, "cache_name", cache_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "target_type", target_type)
+        if blob_nfs is not None:
+            pulumi.set(__self__, "blob_nfs", blob_nfs)
+        if clfs is not None:
+            pulumi.set(__self__, "clfs", clfs)
+        if junctions is not None:
+            pulumi.set(__self__, "junctions", junctions)
+        if nfs3 is not None:
+            pulumi.set(__self__, "nfs3", nfs3)
+        if provisioning_state is not None:
+            pulumi.set(__self__, "provisioning_state", provisioning_state)
+        if storage_target_name is not None:
+            pulumi.set(__self__, "storage_target_name", storage_target_name)
+        if unknown is not None:
+            pulumi.set(__self__, "unknown", unknown)
+
+    @property
+    @pulumi.getter(name="cacheName")
+    def cache_name(self) -> pulumi.Input[str]:
+        """
+        Name of Cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+        """
+        return pulumi.get(self, "cache_name")
+
+    @cache_name.setter
+    def cache_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cache_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Target resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> pulumi.Input[Union[str, 'StorageTargetType']]:
+        """
+        Type of the Storage Target.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: pulumi.Input[Union[str, 'StorageTargetType']]):
+        pulumi.set(self, "target_type", value)
+
+    @property
+    @pulumi.getter(name="blobNfs")
+    def blob_nfs(self) -> Optional[pulumi.Input['BlobNfsTargetArgs']]:
+        """
+        Properties when targetType is blobNfs.
+        """
+        return pulumi.get(self, "blob_nfs")
+
+    @blob_nfs.setter
+    def blob_nfs(self, value: Optional[pulumi.Input['BlobNfsTargetArgs']]):
+        pulumi.set(self, "blob_nfs", value)
+
+    @property
+    @pulumi.getter
+    def clfs(self) -> Optional[pulumi.Input['ClfsTargetArgs']]:
+        """
+        Properties when targetType is clfs.
+        """
+        return pulumi.get(self, "clfs")
+
+    @clfs.setter
+    def clfs(self, value: Optional[pulumi.Input['ClfsTargetArgs']]):
+        pulumi.set(self, "clfs", value)
+
+    @property
+    @pulumi.getter
+    def junctions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceJunctionArgs']]]]:
+        """
+        List of Cache namespace junctions to target for namespace associations.
+        """
+        return pulumi.get(self, "junctions")
+
+    @junctions.setter
+    def junctions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceJunctionArgs']]]]):
+        pulumi.set(self, "junctions", value)
+
+    @property
+    @pulumi.getter
+    def nfs3(self) -> Optional[pulumi.Input['Nfs3TargetArgs']]:
+        """
+        Properties when targetType is nfs3.
+        """
+        return pulumi.get(self, "nfs3")
+
+    @nfs3.setter
+    def nfs3(self, value: Optional[pulumi.Input['Nfs3TargetArgs']]):
+        pulumi.set(self, "nfs3", value)
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> Optional[pulumi.Input[Union[str, 'ProvisioningStateType']]]:
+        """
+        ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @provisioning_state.setter
+    def provisioning_state(self, value: Optional[pulumi.Input[Union[str, 'ProvisioningStateType']]]):
+        pulumi.set(self, "provisioning_state", value)
+
+    @property
+    @pulumi.getter(name="storageTargetName")
+    def storage_target_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Storage Target.
+        """
+        return pulumi.get(self, "storage_target_name")
+
+    @storage_target_name.setter
+    def storage_target_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_target_name", value)
+
+    @property
+    @pulumi.getter
+    def unknown(self) -> Optional[pulumi.Input['UnknownTargetArgs']]:
+        """
+        Properties when targetType is unknown.
+        """
+        return pulumi.get(self, "unknown")
+
+    @unknown.setter
+    def unknown(self, value: Optional[pulumi.Input['UnknownTargetArgs']]):
+        pulumi.set(self, "unknown", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:storagecache:StorageTarget'.""", DeprecationWarning)
 
@@ -19,6 +184,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class StorageTarget(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:storagecache:StorageTarget'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -52,6 +218,44 @@ class StorageTarget(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'StorageTargetType']] target_type: Type of the Storage Target.
         :param pulumi.Input[pulumi.InputType['UnknownTargetArgs']] unknown: Properties when targetType is unknown.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: StorageTargetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Type of the Storage Target.
+        Latest API Version: 2021-03-01.
+
+        :param str resource_name: The name of the resource.
+        :param StorageTargetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(StorageTargetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 blob_nfs: Optional[pulumi.Input[pulumi.InputType['BlobNfsTargetArgs']]] = None,
+                 cache_name: Optional[pulumi.Input[str]] = None,
+                 clfs: Optional[pulumi.Input[pulumi.InputType['ClfsTargetArgs']]] = None,
+                 junctions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceJunctionArgs']]]]] = None,
+                 nfs3: Optional[pulumi.Input[pulumi.InputType['Nfs3TargetArgs']]] = None,
+                 provisioning_state: Optional[pulumi.Input[Union[str, 'ProvisioningStateType']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 storage_target_name: Optional[pulumi.Input[str]] = None,
+                 target_type: Optional[pulumi.Input[Union[str, 'StorageTargetType']]] = None,
+                 unknown: Optional[pulumi.Input[pulumi.InputType['UnknownTargetArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""StorageTarget is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:storagecache:StorageTarget'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,28 +272,28 @@ class StorageTarget(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = StorageTargetArgs.__new__(StorageTargetArgs)
 
-            __props__['blob_nfs'] = blob_nfs
+            __props__.__dict__['blob_nfs'] = blob_nfs
             if cache_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cache_name'")
-            __props__['cache_name'] = cache_name
-            __props__['clfs'] = clfs
-            __props__['junctions'] = junctions
-            __props__['nfs3'] = nfs3
-            __props__['provisioning_state'] = provisioning_state
+            __props__.__dict__['cache_name'] = cache_name
+            __props__.__dict__['clfs'] = clfs
+            __props__.__dict__['junctions'] = junctions
+            __props__.__dict__['nfs3'] = nfs3
+            __props__.__dict__['provisioning_state'] = provisioning_state
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['storage_target_name'] = storage_target_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['storage_target_name'] = storage_target_name
             if target_type is None and not opts.urn:
                 raise TypeError("Missing required property 'target_type'")
-            __props__['target_type'] = target_type
-            __props__['unknown'] = unknown
-            __props__['location'] = None
-            __props__['name'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
+            __props__.__dict__['target_type'] = target_type
+            __props__.__dict__['unknown'] = unknown
+            __props__.__dict__['location'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storagecache/latest:StorageTarget"), pulumi.Alias(type_="azure-native:storagecache:StorageTarget"), pulumi.Alias(type_="azure-nextgen:storagecache:StorageTarget"), pulumi.Alias(type_="azure-native:storagecache/v20190801preview:StorageTarget"), pulumi.Alias(type_="azure-nextgen:storagecache/v20190801preview:StorageTarget"), pulumi.Alias(type_="azure-native:storagecache/v20191101:StorageTarget"), pulumi.Alias(type_="azure-nextgen:storagecache/v20191101:StorageTarget"), pulumi.Alias(type_="azure-native:storagecache/v20200301:StorageTarget"), pulumi.Alias(type_="azure-nextgen:storagecache/v20200301:StorageTarget"), pulumi.Alias(type_="azure-native:storagecache/v20201001:StorageTarget"), pulumi.Alias(type_="azure-nextgen:storagecache/v20201001:StorageTarget"), pulumi.Alias(type_="azure-native:storagecache/v20210301:StorageTarget"), pulumi.Alias(type_="azure-nextgen:storagecache/v20210301:StorageTarget")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(StorageTarget, __self__).__init__(
@@ -112,19 +316,19 @@ class StorageTarget(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = StorageTargetArgs.__new__(StorageTargetArgs)
 
-        __props__["blob_nfs"] = None
-        __props__["clfs"] = None
-        __props__["junctions"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["nfs3"] = None
-        __props__["provisioning_state"] = None
-        __props__["system_data"] = None
-        __props__["target_type"] = None
-        __props__["type"] = None
-        __props__["unknown"] = None
+        __props__.__dict__['blob_nfs'] = None
+        __props__.__dict__['clfs'] = None
+        __props__.__dict__['junctions'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['nfs3'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['system_data'] = None
+        __props__.__dict__['target_type'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['unknown'] = None
         return StorageTarget(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -214,10 +418,4 @@ class StorageTarget(pulumi.CustomResource):
         Properties when targetType is unknown.
         """
         return pulumi.get(self, "unknown")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

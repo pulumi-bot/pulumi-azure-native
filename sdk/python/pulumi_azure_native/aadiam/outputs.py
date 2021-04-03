@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -18,6 +18,23 @@ __all__ = [
 
 @pulumi.output_type
 class AzureADMetricsPropertiesFormatResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureADMetricsPropertiesFormatResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureADMetricsPropertiesFormatResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureADMetricsPropertiesFormatResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  provisioning_state: str):
         """
@@ -33,15 +50,29 @@ class AzureADMetricsPropertiesFormatResponse(dict):
         """
         return pulumi.get(self, "provisioning_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogSettingsResponse(dict):
     """
     Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionPolicy":
+            suggest = "retention_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: bool,
                  category: Optional[str] = None,
@@ -82,9 +113,6 @@ class LogSettingsResponse(dict):
         """
         return pulumi.get(self, "retention_policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RetentionPolicyResponse(dict):
@@ -117,8 +145,5 @@ class RetentionPolicyResponse(dict):
         A value indicating whether the retention policy is enabled.
         """
         return pulumi.get(self, "enabled")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

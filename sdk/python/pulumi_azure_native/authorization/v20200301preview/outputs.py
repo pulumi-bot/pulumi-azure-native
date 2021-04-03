@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
 __all__ = [
@@ -19,6 +19,27 @@ class PermissionResponse(dict):
     """
     Role definition permissions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataActions":
+            suggest = "data_actions"
+        elif key == "notActions":
+            suggest = "not_actions"
+        elif key == "notDataActions":
+            suggest = "not_data_actions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PermissionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PermissionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PermissionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None,
                  data_actions: Optional[Sequence[str]] = None,
@@ -72,9 +93,6 @@ class PermissionResponse(dict):
         """
         return pulumi.get(self, "not_data_actions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrincipalResponse(dict):
@@ -109,8 +127,5 @@ class PrincipalResponse(dict):
         Type of object represented by principal id (user, group, or service principal). An empty guid '00000000-0000-0000-0000-000000000000' as principal id and principal type as 'Everyone' represents all users, groups and service principals.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

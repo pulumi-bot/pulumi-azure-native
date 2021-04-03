@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -29,6 +29,29 @@ class CacheExpirationActionParametersResponse(dict):
     """
     Defines the parameters for the cache expiration action.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cacheBehavior":
+            suggest = "cache_behavior"
+        elif key == "cacheType":
+            suggest = "cache_type"
+        elif key == "odataType":
+            suggest = "odata_type"
+        elif key == "cacheDuration":
+            suggest = "cache_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CacheExpirationActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CacheExpirationActionParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CacheExpirationActionParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cache_behavior: str,
                  cache_type: str,
@@ -75,15 +98,33 @@ class CacheExpirationActionParametersResponse(dict):
         """
         return pulumi.get(self, "cache_duration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeepCreatedOriginResponse(dict):
     """
     The main origin of CDN content which is added when creating a CDN endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostName":
+            suggest = "host_name"
+        elif key == "httpPort":
+            suggest = "http_port"
+        elif key == "httpsPort":
+            suggest = "https_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeepCreatedOriginResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeepCreatedOriginResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeepCreatedOriginResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host_name: str,
                  name: str,
@@ -135,9 +176,6 @@ class DeepCreatedOriginResponse(dict):
         """
         return pulumi.get(self, "https_port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeliveryRuleCacheExpirationActionResponse(dict):
@@ -172,9 +210,6 @@ class DeliveryRuleCacheExpirationActionResponse(dict):
         Defines the parameters for the action.
         """
         return pulumi.get(self, "parameters")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -221,9 +256,6 @@ class DeliveryRuleResponse(dict):
         """
         return pulumi.get(self, "conditions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeliveryRuleUrlFileExtensionConditionResponse(dict):
@@ -258,9 +290,6 @@ class DeliveryRuleUrlFileExtensionConditionResponse(dict):
         Defines the parameters for the condition.
         """
         return pulumi.get(self, "parameters")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -297,9 +326,6 @@ class DeliveryRuleUrlPathConditionResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EndpointPropertiesUpdateParametersResponseDeliveryPolicy(dict):
@@ -334,15 +360,31 @@ class EndpointPropertiesUpdateParametersResponseDeliveryPolicy(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GeoFilterResponse(dict):
     """
     Rules defining user's geo access within a CDN endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countryCodes":
+            suggest = "country_codes"
+        elif key == "relativePath":
+            suggest = "relative_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeoFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeoFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeoFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: str,
                  country_codes: Sequence[str],
@@ -381,9 +423,6 @@ class GeoFilterResponse(dict):
         """
         return pulumi.get(self, "relative_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
@@ -407,15 +446,29 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UrlFileExtensionConditionParametersResponse(dict):
     """
     Defines the parameters for the URL file extension condition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "odataType":
+            suggest = "odata_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UrlFileExtensionConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UrlFileExtensionConditionParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UrlFileExtensionConditionParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  extensions: Sequence[str],
                  odata_type: str):
@@ -439,15 +492,31 @@ class UrlFileExtensionConditionParametersResponse(dict):
     def odata_type(self) -> str:
         return pulumi.get(self, "odata_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UrlPathConditionParametersResponse(dict):
     """
     Defines the parameters for the URL path condition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+        elif key == "odataType":
+            suggest = "odata_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UrlPathConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UrlPathConditionParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UrlPathConditionParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  match_type: str,
                  odata_type: str,
@@ -481,8 +550,5 @@ class UrlPathConditionParametersResponse(dict):
         A URL path for the condition of the delivery rule
         """
         return pulumi.get(self, "path")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

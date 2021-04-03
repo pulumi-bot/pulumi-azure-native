@@ -5,14 +5,116 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['ApiPolicy']
+__all__ = ['ApiPolicyArgs', 'ApiPolicy']
+
+@pulumi.input_type
+class ApiPolicyArgs:
+    def __init__(__self__, *,
+                 api_id: pulumi.Input[str],
+                 policy_content: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 content_format: Optional[pulumi.Input[Union[str, 'PolicyContentFormat']]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApiPolicy resource.
+        :param pulumi.Input[str] api_id: API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+        :param pulumi.Input[str] policy_content: Json escaped Xml Encoded contents of the Policy.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] service_name: The name of the API Management service.
+        :param pulumi.Input[Union[str, 'PolicyContentFormat']] content_format: Format of the policyContent.
+        :param pulumi.Input[str] policy_id: The identifier of the Policy.
+        """
+        pulumi.set(__self__, "api_id", api_id)
+        pulumi.set(__self__, "policy_content", policy_content)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "service_name", service_name)
+        if content_format is None:
+            content_format = 'xml'
+        if content_format is not None:
+            pulumi.set(__self__, "content_format", content_format)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Input[str]:
+        """
+        API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
+        """
+        return pulumi.get(self, "api_id")
+
+    @api_id.setter
+    def api_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_id", value)
+
+    @property
+    @pulumi.getter(name="policyContent")
+    def policy_content(self) -> pulumi.Input[str]:
+        """
+        Json escaped Xml Encoded contents of the Policy.
+        """
+        return pulumi.get(self, "policy_content")
+
+    @policy_content.setter
+    def policy_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_content", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        The name of the API Management service.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="contentFormat")
+    def content_format(self) -> Optional[pulumi.Input[Union[str, 'PolicyContentFormat']]]:
+        """
+        Format of the policyContent.
+        """
+        return pulumi.get(self, "content_format")
+
+    @content_format.setter
+    def content_format(self, value: Optional[pulumi.Input[Union[str, 'PolicyContentFormat']]]):
+        pulumi.set(self, "content_format", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the Policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
 
 
 class ApiPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +139,39 @@ class ApiPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         :param pulumi.Input[str] service_name: The name of the API Management service.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApiPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Policy Contract details.
+
+        :param str resource_name: The name of the resource.
+        :param ApiPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApiPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
+                 content_format: Optional[pulumi.Input[Union[str, 'PolicyContentFormat']]] = None,
+                 policy_content: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,26 +187,26 @@ class ApiPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApiPolicyArgs.__new__(ApiPolicyArgs)
 
             if api_id is None and not opts.urn:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
+            __props__.__dict__['api_id'] = api_id
             if content_format is None:
                 content_format = 'xml'
-            __props__['content_format'] = content_format
+            __props__.__dict__['content_format'] = content_format
             if policy_content is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_content'")
-            __props__['policy_content'] = policy_content
-            __props__['policy_id'] = policy_id
+            __props__.__dict__['policy_content'] = policy_content
+            __props__.__dict__['policy_id'] = policy_id
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['service_name'] = service_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:apimanagement/v20180101:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/latest:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/latest:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20170301:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20170301:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20180601preview:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20180601preview:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20190101:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20190101:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20191201:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20191201:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20191201preview:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20191201preview:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20200601preview:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20200601preview:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20201201:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20201201:ApiPolicy"), pulumi.Alias(type_="azure-native:apimanagement/v20210101preview:ApiPolicy"), pulumi.Alias(type_="azure-nextgen:apimanagement/v20210101preview:ApiPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ApiPolicy, __self__).__init__(
@@ -94,12 +229,12 @@ class ApiPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ApiPolicyArgs.__new__(ApiPolicyArgs)
 
-        __props__["content_format"] = None
-        __props__["name"] = None
-        __props__["policy_content"] = None
-        __props__["type"] = None
+        __props__.__dict__['content_format'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['policy_content'] = None
+        __props__.__dict__['type'] = None
         return ApiPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -133,10 +268,4 @@ class ApiPolicy(pulumi.CustomResource):
         Resource type for API Management resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,15 +5,69 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RoleAssignment']
+__all__ = ['RoleAssignmentArgs', 'RoleAssignment']
+
+@pulumi.input_type
+class RoleAssignmentArgs:
+    def __init__(__self__, *,
+                 properties: pulumi.Input['RoleAssignmentPropertiesArgs'],
+                 scope: pulumi.Input[str],
+                 role_assignment_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RoleAssignment resource.
+        :param pulumi.Input['RoleAssignmentPropertiesArgs'] properties: Role assignment properties.
+        :param pulumi.Input[str] scope: The scope of the role assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
+        :param pulumi.Input[str] role_assignment_name: The name of the role assignment to create. It can be any valid GUID.
+        """
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "scope", scope)
+        if role_assignment_name is not None:
+            pulumi.set(__self__, "role_assignment_name", role_assignment_name)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Input['RoleAssignmentPropertiesArgs']:
+        """
+        Role assignment properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: pulumi.Input['RoleAssignmentPropertiesArgs']):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The scope of the role assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="roleAssignmentName")
+    def role_assignment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role assignment to create. It can be any valid GUID.
+        """
+        return pulumi.get(self, "role_assignment_name")
+
+    @role_assignment_name.setter
+    def role_assignment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_assignment_name", value)
 
 
 class RoleAssignment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -32,6 +86,36 @@ class RoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] role_assignment_name: The name of the role assignment to create. It can be any valid GUID.
         :param pulumi.Input[str] scope: The scope of the role assignment to create. The scope can be any REST resource instance. For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RoleAssignmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Role Assignments
+
+        :param str resource_name: The name of the resource.
+        :param RoleAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['RoleAssignmentPropertiesArgs']]] = None,
+                 role_assignment_name: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -47,17 +131,17 @@ class RoleAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RoleAssignmentArgs.__new__(RoleAssignmentArgs)
 
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
-            __props__['properties'] = properties
-            __props__['role_assignment_name'] = role_assignment_name
+            __props__.__dict__['properties'] = properties
+            __props__.__dict__['role_assignment_name'] = role_assignment_name
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
-            __props__['scope'] = scope
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['scope'] = scope
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:authorization/v20150701:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization/latest:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/latest:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization/v20171001preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20171001preview:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization/v20180101preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20180101preview:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization/v20180901preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20180901preview:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization/v20200301preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20200301preview:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization/v20200401preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20200401preview:RoleAssignment"), pulumi.Alias(type_="azure-native:authorization/v20200801preview:RoleAssignment"), pulumi.Alias(type_="azure-nextgen:authorization/v20200801preview:RoleAssignment")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RoleAssignment, __self__).__init__(
@@ -80,11 +164,11 @@ class RoleAssignment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = RoleAssignmentArgs.__new__(RoleAssignmentArgs)
 
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["type"] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['properties'] = None
+        __props__.__dict__['type'] = None
         return RoleAssignment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -110,10 +194,4 @@ class RoleAssignment(pulumi.CustomResource):
         The role assignment type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

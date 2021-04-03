@@ -5,13 +5,130 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Export']
+__all__ = ['ExportArgs', 'Export']
+
+@pulumi.input_type
+class ExportArgs:
+    def __init__(__self__, *,
+                 definition: pulumi.Input['ExportDefinitionArgs'],
+                 delivery_info: pulumi.Input['ExportDeliveryInfoArgs'],
+                 scope: pulumi.Input[str],
+                 e_tag: Optional[pulumi.Input[str]] = None,
+                 export_name: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[Union[str, 'FormatType']]] = None,
+                 schedule: Optional[pulumi.Input['ExportScheduleArgs']] = None):
+        """
+        The set of arguments for constructing a Export resource.
+        :param pulumi.Input['ExportDefinitionArgs'] definition: Has the definition for the export.
+        :param pulumi.Input['ExportDeliveryInfoArgs'] delivery_info: Has delivery information for the export.
+        :param pulumi.Input[str] scope: The scope associated with export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
+        :param pulumi.Input[str] e_tag: eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+        :param pulumi.Input[str] export_name: Export Name.
+        :param pulumi.Input[Union[str, 'FormatType']] format: The format of the export being delivered. Currently only 'Csv' is supported.
+        :param pulumi.Input['ExportScheduleArgs'] schedule: Has schedule information for the export.
+        """
+        pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "delivery_info", delivery_info)
+        pulumi.set(__self__, "scope", scope)
+        if e_tag is not None:
+            pulumi.set(__self__, "e_tag", e_tag)
+        if export_name is not None:
+            pulumi.set(__self__, "export_name", export_name)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> pulumi.Input['ExportDefinitionArgs']:
+        """
+        Has the definition for the export.
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: pulumi.Input['ExportDefinitionArgs']):
+        pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter(name="deliveryInfo")
+    def delivery_info(self) -> pulumi.Input['ExportDeliveryInfoArgs']:
+        """
+        Has delivery information for the export.
+        """
+        return pulumi.get(self, "delivery_info")
+
+    @delivery_info.setter
+    def delivery_info(self, value: pulumi.Input['ExportDeliveryInfoArgs']):
+        pulumi.set(self, "delivery_info", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The scope associated with export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="eTag")
+    def e_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+        """
+        return pulumi.get(self, "e_tag")
+
+    @e_tag.setter
+    def e_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "e_tag", value)
+
+    @property
+    @pulumi.getter(name="exportName")
+    def export_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Export Name.
+        """
+        return pulumi.get(self, "export_name")
+
+    @export_name.setter
+    def export_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "export_name", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[Union[str, 'FormatType']]]:
+        """
+        The format of the export being delivered. Currently only 'Csv' is supported.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[Union[str, 'FormatType']]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['ExportScheduleArgs']]:
+        """
+        Has schedule information for the export.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['ExportScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:costmanagement:Export'.""", DeprecationWarning)
 
@@ -19,6 +136,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class Export(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:costmanagement:Export'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +164,41 @@ class Export(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ExportScheduleArgs']] schedule: Has schedule information for the export.
         :param pulumi.Input[str] scope: The scope associated with export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ExportArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An export resource.
+        Latest API Version: 2020-06-01.
+
+        :param str resource_name: The name of the resource.
+        :param ExportArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ExportArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 definition: Optional[pulumi.Input[pulumi.InputType['ExportDefinitionArgs']]] = None,
+                 delivery_info: Optional[pulumi.Input[pulumi.InputType['ExportDeliveryInfoArgs']]] = None,
+                 e_tag: Optional[pulumi.Input[str]] = None,
+                 export_name: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[Union[str, 'FormatType']]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['ExportScheduleArgs']]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""Export is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:costmanagement:Export'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,25 +215,25 @@ class Export(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ExportArgs.__new__(ExportArgs)
 
             if definition is None and not opts.urn:
                 raise TypeError("Missing required property 'definition'")
-            __props__['definition'] = definition
+            __props__.__dict__['definition'] = definition
             if delivery_info is None and not opts.urn:
                 raise TypeError("Missing required property 'delivery_info'")
-            __props__['delivery_info'] = delivery_info
-            __props__['e_tag'] = e_tag
-            __props__['export_name'] = export_name
-            __props__['format'] = format
-            __props__['schedule'] = schedule
+            __props__.__dict__['delivery_info'] = delivery_info
+            __props__.__dict__['e_tag'] = e_tag
+            __props__.__dict__['export_name'] = export_name
+            __props__.__dict__['format'] = format
+            __props__.__dict__['schedule'] = schedule
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
-            __props__['scope'] = scope
-            __props__['name'] = None
-            __props__['next_run_time_estimate'] = None
-            __props__['run_history'] = None
-            __props__['type'] = None
+            __props__.__dict__['scope'] = scope
+            __props__.__dict__['name'] = None
+            __props__.__dict__['next_run_time_estimate'] = None
+            __props__.__dict__['run_history'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:costmanagement/latest:Export"), pulumi.Alias(type_="azure-native:costmanagement:Export"), pulumi.Alias(type_="azure-nextgen:costmanagement:Export"), pulumi.Alias(type_="azure-native:costmanagement/v20190101:Export"), pulumi.Alias(type_="azure-nextgen:costmanagement/v20190101:Export"), pulumi.Alias(type_="azure-native:costmanagement/v20190901:Export"), pulumi.Alias(type_="azure-nextgen:costmanagement/v20190901:Export"), pulumi.Alias(type_="azure-native:costmanagement/v20191001:Export"), pulumi.Alias(type_="azure-nextgen:costmanagement/v20191001:Export"), pulumi.Alias(type_="azure-native:costmanagement/v20191101:Export"), pulumi.Alias(type_="azure-nextgen:costmanagement/v20191101:Export"), pulumi.Alias(type_="azure-native:costmanagement/v20200601:Export"), pulumi.Alias(type_="azure-nextgen:costmanagement/v20200601:Export")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Export, __self__).__init__(
@@ -103,17 +256,17 @@ class Export(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ExportArgs.__new__(ExportArgs)
 
-        __props__["definition"] = None
-        __props__["delivery_info"] = None
-        __props__["e_tag"] = None
-        __props__["format"] = None
-        __props__["name"] = None
-        __props__["next_run_time_estimate"] = None
-        __props__["run_history"] = None
-        __props__["schedule"] = None
-        __props__["type"] = None
+        __props__.__dict__['definition'] = None
+        __props__.__dict__['delivery_info'] = None
+        __props__.__dict__['e_tag'] = None
+        __props__.__dict__['format'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['next_run_time_estimate'] = None
+        __props__.__dict__['run_history'] = None
+        __props__.__dict__['schedule'] = None
+        __props__.__dict__['type'] = None
         return Export(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -187,10 +340,4 @@ class Export(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

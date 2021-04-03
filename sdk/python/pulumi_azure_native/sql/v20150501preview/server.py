@@ -5,16 +5,151 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Server']
+__all__ = ['ServerArgs', 'Server']
+
+@pulumi.input_type
+class ServerArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 administrator_login: Optional[pulumi.Input[str]] = None,
+                 administrator_login_password: Optional[pulumi.Input[str]] = None,
+                 identity: Optional[pulumi.Input['ResourceIdentityArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Server resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        :param pulumi.Input[str] administrator_login: Administrator username for the server. Once created it cannot be changed.
+        :param pulumi.Input[str] administrator_login_password: The administrator login password (required for server creation).
+        :param pulumi.Input['ResourceIdentityArgs'] identity: The Azure Active Directory identity of the server.
+        :param pulumi.Input[str] location: Resource location.
+        :param pulumi.Input[str] server_name: The name of the server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        :param pulumi.Input[str] version: The version of the server.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if administrator_login is not None:
+            pulumi.set(__self__, "administrator_login", administrator_login)
+        if administrator_login_password is not None:
+            pulumi.set(__self__, "administrator_login_password", administrator_login_password)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if server_name is not None:
+            pulumi.set(__self__, "server_name", server_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="administratorLogin")
+    def administrator_login(self) -> Optional[pulumi.Input[str]]:
+        """
+        Administrator username for the server. Once created it cannot be changed.
+        """
+        return pulumi.get(self, "administrator_login")
+
+    @administrator_login.setter
+    def administrator_login(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "administrator_login", value)
+
+    @property
+    @pulumi.getter(name="administratorLoginPassword")
+    def administrator_login_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The administrator login password (required for server creation).
+        """
+        return pulumi.get(self, "administrator_login_password")
+
+    @administrator_login_password.setter
+    def administrator_login_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "administrator_login_password", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input['ResourceIdentityArgs']]:
+        """
+        The Azure Active Directory identity of the server.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input['ResourceIdentityArgs']]):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the server.
+        """
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the server.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class Server(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -43,6 +178,41 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         :param pulumi.Input[str] version: The version of the server.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An Azure SQL Database server.
+
+        :param str resource_name: The name of the resource.
+        :param ServerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 administrator_login: Optional[pulumi.Input[str]] = None,
+                 administrator_login_password: Optional[pulumi.Input[str]] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['ResourceIdentityArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -58,23 +228,23 @@ class Server(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServerArgs.__new__(ServerArgs)
 
-            __props__['administrator_login'] = administrator_login
-            __props__['administrator_login_password'] = administrator_login_password
-            __props__['identity'] = identity
-            __props__['location'] = location
+            __props__.__dict__['administrator_login'] = administrator_login
+            __props__.__dict__['administrator_login_password'] = administrator_login_password
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['server_name'] = server_name
-            __props__['tags'] = tags
-            __props__['version'] = version
-            __props__['fully_qualified_domain_name'] = None
-            __props__['kind'] = None
-            __props__['name'] = None
-            __props__['state'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['server_name'] = server_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['version'] = version
+            __props__.__dict__['fully_qualified_domain_name'] = None
+            __props__.__dict__['kind'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/v20150501preview:Server"), pulumi.Alias(type_="azure-native:sql:Server"), pulumi.Alias(type_="azure-nextgen:sql:Server"), pulumi.Alias(type_="azure-native:sql/latest:Server"), pulumi.Alias(type_="azure-nextgen:sql/latest:Server"), pulumi.Alias(type_="azure-native:sql/v20140401:Server"), pulumi.Alias(type_="azure-nextgen:sql/v20140401:Server"), pulumi.Alias(type_="azure-native:sql/v20190601preview:Server"), pulumi.Alias(type_="azure-nextgen:sql/v20190601preview:Server"), pulumi.Alias(type_="azure-native:sql/v20200202preview:Server"), pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:Server"), pulumi.Alias(type_="azure-native:sql/v20200801preview:Server"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:Server"), pulumi.Alias(type_="azure-native:sql/v20201101preview:Server"), pulumi.Alias(type_="azure-nextgen:sql/v20201101preview:Server")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Server, __self__).__init__(
@@ -97,18 +267,18 @@ class Server(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ServerArgs.__new__(ServerArgs)
 
-        __props__["administrator_login"] = None
-        __props__["fully_qualified_domain_name"] = None
-        __props__["identity"] = None
-        __props__["kind"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["state"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["version"] = None
+        __props__.__dict__['administrator_login'] = None
+        __props__.__dict__['fully_qualified_domain_name'] = None
+        __props__.__dict__['identity'] = None
+        __props__.__dict__['kind'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['state'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['version'] = None
         return Server(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -190,10 +360,4 @@ class Server(pulumi.CustomResource):
         The version of the server.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -23,6 +23,29 @@ class AuthorizationResponse(dict):
     """
     Authorization tuple containing principal Id (of user/service principal/security group) and role definition id.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "roleDefinitionId":
+            suggest = "role_definition_id"
+        elif key == "delegatedRoleDefinitionIds":
+            suggest = "delegated_role_definition_ids"
+        elif key == "principalIdDisplayName":
+            suggest = "principal_id_display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  role_definition_id: str,
@@ -73,9 +96,6 @@ class AuthorizationResponse(dict):
         Display name of the principal Id.
         """
         return pulumi.get(self, "principal_id_display_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -132,15 +152,33 @@ class PlanResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistrationAssignmentPropertiesResponse(dict):
     """
     Properties of a registration assignment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "registrationDefinition":
+            suggest = "registration_definition"
+        elif key == "registrationDefinitionId":
+            suggest = "registration_definition_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistrationAssignmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistrationAssignmentPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistrationAssignmentPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  provisioning_state: str,
                  registration_definition: 'outputs.RegistrationAssignmentPropertiesResponseRegistrationDefinition',
@@ -179,15 +217,39 @@ class RegistrationAssignmentPropertiesResponse(dict):
         """
         return pulumi.get(self, "registration_definition_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistrationAssignmentPropertiesResponseProperties(dict):
     """
     Properties of registration definition inside registration assignment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managedByTenantId":
+            suggest = "managed_by_tenant_id"
+        elif key == "managedByTenantName":
+            suggest = "managed_by_tenant_name"
+        elif key == "manageeTenantId":
+            suggest = "managee_tenant_id"
+        elif key == "manageeTenantName":
+            suggest = "managee_tenant_name"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "registrationDefinitionName":
+            suggest = "registration_definition_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistrationAssignmentPropertiesResponseProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistrationAssignmentPropertiesResponseProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistrationAssignmentPropertiesResponseProperties.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorizations: Optional[Sequence['outputs.AuthorizationResponse']] = None,
                  description: Optional[str] = None,
@@ -289,9 +351,6 @@ class RegistrationAssignmentPropertiesResponseProperties(dict):
         """
         return pulumi.get(self, "registration_definition_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistrationAssignmentPropertiesResponseRegistrationDefinition(dict):
@@ -360,15 +419,35 @@ class RegistrationAssignmentPropertiesResponseRegistrationDefinition(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistrationDefinitionPropertiesResponse(dict):
     """
     Properties of a registration definition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managedByTenantId":
+            suggest = "managed_by_tenant_id"
+        elif key == "managedByTenantName":
+            suggest = "managed_by_tenant_name"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "registrationDefinitionName":
+            suggest = "registration_definition_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistrationDefinitionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistrationDefinitionPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistrationDefinitionPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorizations: Sequence['outputs.AuthorizationResponse'],
                  managed_by_tenant_id: str,
@@ -441,8 +520,5 @@ class RegistrationDefinitionPropertiesResponse(dict):
         Name of the registration definition.
         """
         return pulumi.get(self, "registration_definition_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

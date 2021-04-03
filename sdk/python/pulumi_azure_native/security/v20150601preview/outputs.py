@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -29,6 +29,23 @@ class AppWhitelistingIssueSummaryResponse(dict):
     """
     Represents a summary of the alerts of the VM/server group
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numberOfVms":
+            suggest = "number_of_vms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppWhitelistingIssueSummaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppWhitelistingIssueSummaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppWhitelistingIssueSummaryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  issue: Optional[str] = None,
                  number_of_vms: Optional[float] = None):
@@ -58,12 +75,26 @@ class AppWhitelistingIssueSummaryResponse(dict):
         """
         return pulumi.get(self, "number_of_vms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JitNetworkAccessPolicyVirtualMachineResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicIpAddress":
+            suggest = "public_ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JitNetworkAccessPolicyVirtualMachineResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JitNetworkAccessPolicyVirtualMachineResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JitNetworkAccessPolicyVirtualMachineResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  ports: Sequence['outputs.JitNetworkAccessPortRuleResponse'],
@@ -102,12 +133,30 @@ class JitNetworkAccessPolicyVirtualMachineResponse(dict):
         """
         return pulumi.get(self, "public_ip_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JitNetworkAccessPortRuleResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxRequestAccessDuration":
+            suggest = "max_request_access_duration"
+        elif key == "allowedSourceAddressPrefix":
+            suggest = "allowed_source_address_prefix"
+        elif key == "allowedSourceAddressPrefixes":
+            suggest = "allowed_source_address_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JitNetworkAccessPortRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JitNetworkAccessPortRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JitNetworkAccessPortRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_request_access_duration: str,
                  number: int,
@@ -161,12 +210,34 @@ class JitNetworkAccessPortRuleResponse(dict):
         """
         return pulumi.get(self, "allowed_source_address_prefixes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JitNetworkAccessRequestPortResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTimeUtc":
+            suggest = "end_time_utc"
+        elif key == "statusReason":
+            suggest = "status_reason"
+        elif key == "allowedSourceAddressPrefix":
+            suggest = "allowed_source_address_prefix"
+        elif key == "allowedSourceAddressPrefixes":
+            suggest = "allowed_source_address_prefixes"
+        elif key == "mappedPort":
+            suggest = "mapped_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JitNetworkAccessRequestPortResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JitNetworkAccessRequestPortResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JitNetworkAccessRequestPortResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time_utc: str,
                  number: int,
@@ -247,12 +318,28 @@ class JitNetworkAccessRequestPortResponse(dict):
         """
         return pulumi.get(self, "mapped_port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JitNetworkAccessRequestResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTimeUtc":
+            suggest = "start_time_utc"
+        elif key == "virtualMachines":
+            suggest = "virtual_machines"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JitNetworkAccessRequestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JitNetworkAccessRequestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JitNetworkAccessRequestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  requestor: str,
                  start_time_utc: str,
@@ -298,9 +385,6 @@ class JitNetworkAccessRequestResponse(dict):
         """
         return pulumi.get(self, "justification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JitNetworkAccessRequestVirtualMachineResponse(dict):
@@ -330,15 +414,35 @@ class JitNetworkAccessRequestVirtualMachineResponse(dict):
         """
         return pulumi.get(self, "ports")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PathRecommendationResponse(dict):
     """
     Represents a path that is recommended to be allowed and its properties
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configurationStatus":
+            suggest = "configuration_status"
+        elif key == "fileType":
+            suggest = "file_type"
+        elif key == "publisherInfo":
+            suggest = "publisher_info"
+        elif key == "userSids":
+            suggest = "user_sids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PathRecommendationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PathRecommendationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PathRecommendationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  common: Optional[bool] = None,
@@ -444,9 +548,6 @@ class PathRecommendationResponse(dict):
     def usernames(self) -> Optional[Sequence['outputs.UserRecommendationResponse']]:
         return pulumi.get(self, "usernames")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ProtectionModeResponse(dict):
@@ -506,15 +607,33 @@ class ProtectionModeResponse(dict):
         """
         return pulumi.get(self, "script")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PublisherInfoResponse(dict):
     """
     Represents the publisher information of a process/rule
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "binaryName":
+            suggest = "binary_name"
+        elif key == "productName":
+            suggest = "product_name"
+        elif key == "publisherName":
+            suggest = "publisher_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublisherInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublisherInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublisherInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  binary_name: Optional[str] = None,
                  product_name: Optional[str] = None,
@@ -568,15 +687,29 @@ class PublisherInfoResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserRecommendationResponse(dict):
     """
     Represents a user that is recommended to be allowed for a certain rule
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recommendationAction":
+            suggest = "recommendation_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserRecommendationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserRecommendationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserRecommendationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recommendation_action: Optional[str] = None,
                  username: Optional[str] = None):
@@ -606,15 +739,35 @@ class UserRecommendationResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VmRecommendationResponse(dict):
     """
     Represents a machine that is part of a VM/server group
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configurationStatus":
+            suggest = "configuration_status"
+        elif key == "enforcementSupport":
+            suggest = "enforcement_support"
+        elif key == "recommendationAction":
+            suggest = "recommendation_action"
+        elif key == "resourceId":
+            suggest = "resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmRecommendationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmRecommendationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmRecommendationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  configuration_status: Optional[str] = None,
                  enforcement_support: Optional[str] = None,
@@ -667,8 +820,5 @@ class VmRecommendationResponse(dict):
         The full azure resource id of the machine
         """
         return pulumi.get(self, "resource_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

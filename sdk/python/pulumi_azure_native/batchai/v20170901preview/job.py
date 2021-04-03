@@ -5,16 +5,350 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Job']
+__all__ = ['JobArgs', 'Job']
+
+@pulumi.input_type
+class JobArgs:
+    def __init__(__self__, *,
+                 cluster: pulumi.Input['ResourceIdArgs'],
+                 node_count: pulumi.Input[int],
+                 resource_group_name: pulumi.Input[str],
+                 std_out_err_path_prefix: pulumi.Input[str],
+                 caffe2_settings: Optional[pulumi.Input['Caffe2SettingsArgs']] = None,
+                 caffe_settings: Optional[pulumi.Input['CaffeSettingsArgs']] = None,
+                 chainer_settings: Optional[pulumi.Input['ChainerSettingsArgs']] = None,
+                 cntk_settings: Optional[pulumi.Input['CNTKsettingsArgs']] = None,
+                 constraints: Optional[pulumi.Input['JobBasePropertiesConstraintsArgs']] = None,
+                 container_settings: Optional[pulumi.Input['ContainerSettingsArgs']] = None,
+                 custom_toolkit_settings: Optional[pulumi.Input['CustomToolkitSettingsArgs']] = None,
+                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentSettingArgs']]]] = None,
+                 experiment_name: Optional[pulumi.Input[str]] = None,
+                 input_directories: Optional[pulumi.Input[Sequence[pulumi.Input['InputDirectoryArgs']]]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 job_preparation: Optional[pulumi.Input['JobPreparationArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 output_directories: Optional[pulumi.Input[Sequence[pulumi.Input['OutputDirectoryArgs']]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tensor_flow_settings: Optional[pulumi.Input['TensorFlowSettingsArgs']] = None):
+        """
+        The set of arguments for constructing a Job resource.
+        :param pulumi.Input['ResourceIdArgs'] cluster: Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+        :param pulumi.Input[int] node_count: The job will be gang scheduled on that many compute nodes
+        :param pulumi.Input[str] resource_group_name: Name of the resource group to which the resource belongs.
+        :param pulumi.Input[str] std_out_err_path_prefix: The path where the Batch AI service will upload stdout and stderror of the job.
+        :param pulumi.Input['Caffe2SettingsArgs'] caffe2_settings: Specifies the settings for Caffe2 job.
+        :param pulumi.Input['CaffeSettingsArgs'] caffe_settings: Specifies the settings for Caffe job.
+        :param pulumi.Input['ChainerSettingsArgs'] chainer_settings: Specifies the settings for Chainer job.
+        :param pulumi.Input['CNTKsettingsArgs'] cntk_settings: Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job.
+        :param pulumi.Input['JobBasePropertiesConstraintsArgs'] constraints: Constraints associated with the Job.
+        :param pulumi.Input['ContainerSettingsArgs'] container_settings: If the container was downloaded as part of cluster setup then the same container image will be used. If not provided, the job will run on the VM.
+        :param pulumi.Input['CustomToolkitSettingsArgs'] custom_toolkit_settings: Specifies the settings for a custom tool kit job.
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentSettingArgs']]] environment_variables: Batch AI service sets the following environment variables for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id, AZ_BATCHAI_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following additional environment variables are set by the Batch AI Service: AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS
+        :param pulumi.Input[str] experiment_name: Describe the experiment information of the job
+        :param pulumi.Input[str] job_name: The name of the job within the specified resource group. Job names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long.
+        :param pulumi.Input['JobPreparationArgs'] job_preparation: The specified actions will run on all the nodes that are part of the job
+        :param pulumi.Input[str] location: The region in which to create the job.
+        :param pulumi.Input[int] priority: Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The user specified tags associated with the job.
+        :param pulumi.Input['TensorFlowSettingsArgs'] tensor_flow_settings: Specifies the settings for TensorFlow job.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "std_out_err_path_prefix", std_out_err_path_prefix)
+        if caffe2_settings is not None:
+            pulumi.set(__self__, "caffe2_settings", caffe2_settings)
+        if caffe_settings is not None:
+            pulumi.set(__self__, "caffe_settings", caffe_settings)
+        if chainer_settings is not None:
+            pulumi.set(__self__, "chainer_settings", chainer_settings)
+        if cntk_settings is not None:
+            pulumi.set(__self__, "cntk_settings", cntk_settings)
+        if constraints is not None:
+            pulumi.set(__self__, "constraints", constraints)
+        if container_settings is not None:
+            pulumi.set(__self__, "container_settings", container_settings)
+        if custom_toolkit_settings is not None:
+            pulumi.set(__self__, "custom_toolkit_settings", custom_toolkit_settings)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
+        if experiment_name is not None:
+            pulumi.set(__self__, "experiment_name", experiment_name)
+        if input_directories is not None:
+            pulumi.set(__self__, "input_directories", input_directories)
+        if job_name is not None:
+            pulumi.set(__self__, "job_name", job_name)
+        if job_preparation is not None:
+            pulumi.set(__self__, "job_preparation", job_preparation)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if output_directories is not None:
+            pulumi.set(__self__, "output_directories", output_directories)
+        if priority is None:
+            priority = 0
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tensor_flow_settings is not None:
+            pulumi.set(__self__, "tensor_flow_settings", tensor_flow_settings)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input['ResourceIdArgs']:
+        """
+        Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input['ResourceIdArgs']):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Input[int]:
+        """
+        The job will be gang scheduled on that many compute nodes
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group to which the resource belongs.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="stdOutErrPathPrefix")
+    def std_out_err_path_prefix(self) -> pulumi.Input[str]:
+        """
+        The path where the Batch AI service will upload stdout and stderror of the job.
+        """
+        return pulumi.get(self, "std_out_err_path_prefix")
+
+    @std_out_err_path_prefix.setter
+    def std_out_err_path_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "std_out_err_path_prefix", value)
+
+    @property
+    @pulumi.getter(name="caffe2Settings")
+    def caffe2_settings(self) -> Optional[pulumi.Input['Caffe2SettingsArgs']]:
+        """
+        Specifies the settings for Caffe2 job.
+        """
+        return pulumi.get(self, "caffe2_settings")
+
+    @caffe2_settings.setter
+    def caffe2_settings(self, value: Optional[pulumi.Input['Caffe2SettingsArgs']]):
+        pulumi.set(self, "caffe2_settings", value)
+
+    @property
+    @pulumi.getter(name="caffeSettings")
+    def caffe_settings(self) -> Optional[pulumi.Input['CaffeSettingsArgs']]:
+        """
+        Specifies the settings for Caffe job.
+        """
+        return pulumi.get(self, "caffe_settings")
+
+    @caffe_settings.setter
+    def caffe_settings(self, value: Optional[pulumi.Input['CaffeSettingsArgs']]):
+        pulumi.set(self, "caffe_settings", value)
+
+    @property
+    @pulumi.getter(name="chainerSettings")
+    def chainer_settings(self) -> Optional[pulumi.Input['ChainerSettingsArgs']]:
+        """
+        Specifies the settings for Chainer job.
+        """
+        return pulumi.get(self, "chainer_settings")
+
+    @chainer_settings.setter
+    def chainer_settings(self, value: Optional[pulumi.Input['ChainerSettingsArgs']]):
+        pulumi.set(self, "chainer_settings", value)
+
+    @property
+    @pulumi.getter(name="cntkSettings")
+    def cntk_settings(self) -> Optional[pulumi.Input['CNTKsettingsArgs']]:
+        """
+        Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job.
+        """
+        return pulumi.get(self, "cntk_settings")
+
+    @cntk_settings.setter
+    def cntk_settings(self, value: Optional[pulumi.Input['CNTKsettingsArgs']]):
+        pulumi.set(self, "cntk_settings", value)
+
+    @property
+    @pulumi.getter
+    def constraints(self) -> Optional[pulumi.Input['JobBasePropertiesConstraintsArgs']]:
+        """
+        Constraints associated with the Job.
+        """
+        return pulumi.get(self, "constraints")
+
+    @constraints.setter
+    def constraints(self, value: Optional[pulumi.Input['JobBasePropertiesConstraintsArgs']]):
+        pulumi.set(self, "constraints", value)
+
+    @property
+    @pulumi.getter(name="containerSettings")
+    def container_settings(self) -> Optional[pulumi.Input['ContainerSettingsArgs']]:
+        """
+        If the container was downloaded as part of cluster setup then the same container image will be used. If not provided, the job will run on the VM.
+        """
+        return pulumi.get(self, "container_settings")
+
+    @container_settings.setter
+    def container_settings(self, value: Optional[pulumi.Input['ContainerSettingsArgs']]):
+        pulumi.set(self, "container_settings", value)
+
+    @property
+    @pulumi.getter(name="customToolkitSettings")
+    def custom_toolkit_settings(self) -> Optional[pulumi.Input['CustomToolkitSettingsArgs']]:
+        """
+        Specifies the settings for a custom tool kit job.
+        """
+        return pulumi.get(self, "custom_toolkit_settings")
+
+    @custom_toolkit_settings.setter
+    def custom_toolkit_settings(self, value: Optional[pulumi.Input['CustomToolkitSettingsArgs']]):
+        pulumi.set(self, "custom_toolkit_settings", value)
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentSettingArgs']]]]:
+        """
+        Batch AI service sets the following environment variables for all jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id, AZ_BATCHAI_NUM_GPUS_PER_NODE. For distributed TensorFlow jobs, following additional environment variables are set by the Batch AI Service: AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS
+        """
+        return pulumi.get(self, "environment_variables")
+
+    @environment_variables.setter
+    def environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentSettingArgs']]]]):
+        pulumi.set(self, "environment_variables", value)
+
+    @property
+    @pulumi.getter(name="experimentName")
+    def experiment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describe the experiment information of the job
+        """
+        return pulumi.get(self, "experiment_name")
+
+    @experiment_name.setter
+    def experiment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "experiment_name", value)
+
+    @property
+    @pulumi.getter(name="inputDirectories")
+    def input_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InputDirectoryArgs']]]]:
+        return pulumi.get(self, "input_directories")
+
+    @input_directories.setter
+    def input_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InputDirectoryArgs']]]]):
+        pulumi.set(self, "input_directories", value)
+
+    @property
+    @pulumi.getter(name="jobName")
+    def job_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the job within the specified resource group. Job names can only contain a combination of alphanumeric characters along with dash (-) and underscore (_). The name must be from 1 through 64 characters long.
+        """
+        return pulumi.get(self, "job_name")
+
+    @job_name.setter
+    def job_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_name", value)
+
+    @property
+    @pulumi.getter(name="jobPreparation")
+    def job_preparation(self) -> Optional[pulumi.Input['JobPreparationArgs']]:
+        """
+        The specified actions will run on all the nodes that are part of the job
+        """
+        return pulumi.get(self, "job_preparation")
+
+    @job_preparation.setter
+    def job_preparation(self, value: Optional[pulumi.Input['JobPreparationArgs']]):
+        pulumi.set(self, "job_preparation", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the job.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="outputDirectories")
+    def output_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OutputDirectoryArgs']]]]:
+        return pulumi.get(self, "output_directories")
+
+    @output_directories.setter
+    def output_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OutputDirectoryArgs']]]]):
+        pulumi.set(self, "output_directories", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Priority associated with the job. Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The user specified tags associated with the job.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tensorFlowSettings")
+    def tensor_flow_settings(self) -> Optional[pulumi.Input['TensorFlowSettingsArgs']]:
+        """
+        Specifies the settings for TensorFlow job.
+        """
+        return pulumi.get(self, "tensor_flow_settings")
+
+    @tensor_flow_settings.setter
+    def tensor_flow_settings(self, value: Optional[pulumi.Input['TensorFlowSettingsArgs']]):
+        pulumi.set(self, "tensor_flow_settings", value)
 
 
 class Job(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +401,54 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The user specified tags associated with the job.
         :param pulumi.Input[pulumi.InputType['TensorFlowSettingsArgs']] tensor_flow_settings: Specifies the settings for TensorFlow job.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: JobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Contains information about the job.
+
+        :param str resource_name: The name of the resource.
+        :param JobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(JobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 caffe2_settings: Optional[pulumi.Input[pulumi.InputType['Caffe2SettingsArgs']]] = None,
+                 caffe_settings: Optional[pulumi.Input[pulumi.InputType['CaffeSettingsArgs']]] = None,
+                 chainer_settings: Optional[pulumi.Input[pulumi.InputType['ChainerSettingsArgs']]] = None,
+                 cluster: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
+                 cntk_settings: Optional[pulumi.Input[pulumi.InputType['CNTKsettingsArgs']]] = None,
+                 constraints: Optional[pulumi.Input[pulumi.InputType['JobBasePropertiesConstraintsArgs']]] = None,
+                 container_settings: Optional[pulumi.Input[pulumi.InputType['ContainerSettingsArgs']]] = None,
+                 custom_toolkit_settings: Optional[pulumi.Input[pulumi.InputType['CustomToolkitSettingsArgs']]] = None,
+                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnvironmentSettingArgs']]]]] = None,
+                 experiment_name: Optional[pulumi.Input[str]] = None,
+                 input_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InputDirectoryArgs']]]]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 job_preparation: Optional[pulumi.Input[pulumi.InputType['JobPreparationArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 output_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OutputDirectoryArgs']]]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 std_out_err_path_prefix: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tensor_flow_settings: Optional[pulumi.Input[pulumi.InputType['TensorFlowSettingsArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -82,48 +464,48 @@ class Job(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = JobArgs.__new__(JobArgs)
 
-            __props__['caffe2_settings'] = caffe2_settings
-            __props__['caffe_settings'] = caffe_settings
-            __props__['chainer_settings'] = chainer_settings
+            __props__.__dict__['caffe2_settings'] = caffe2_settings
+            __props__.__dict__['caffe_settings'] = caffe_settings
+            __props__.__dict__['chainer_settings'] = chainer_settings
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
-            __props__['cluster'] = cluster
-            __props__['cntk_settings'] = cntk_settings
-            __props__['constraints'] = constraints
-            __props__['container_settings'] = container_settings
-            __props__['custom_toolkit_settings'] = custom_toolkit_settings
-            __props__['environment_variables'] = environment_variables
-            __props__['experiment_name'] = experiment_name
-            __props__['input_directories'] = input_directories
-            __props__['job_name'] = job_name
-            __props__['job_preparation'] = job_preparation
-            __props__['location'] = location
+            __props__.__dict__['cluster'] = cluster
+            __props__.__dict__['cntk_settings'] = cntk_settings
+            __props__.__dict__['constraints'] = constraints
+            __props__.__dict__['container_settings'] = container_settings
+            __props__.__dict__['custom_toolkit_settings'] = custom_toolkit_settings
+            __props__.__dict__['environment_variables'] = environment_variables
+            __props__.__dict__['experiment_name'] = experiment_name
+            __props__.__dict__['input_directories'] = input_directories
+            __props__.__dict__['job_name'] = job_name
+            __props__.__dict__['job_preparation'] = job_preparation
+            __props__.__dict__['location'] = location
             if node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'node_count'")
-            __props__['node_count'] = node_count
-            __props__['output_directories'] = output_directories
+            __props__.__dict__['node_count'] = node_count
+            __props__.__dict__['output_directories'] = output_directories
             if priority is None:
                 priority = 0
-            __props__['priority'] = priority
+            __props__.__dict__['priority'] = priority
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if std_out_err_path_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'std_out_err_path_prefix'")
-            __props__['std_out_err_path_prefix'] = std_out_err_path_prefix
-            __props__['tags'] = tags
-            __props__['tensor_flow_settings'] = tensor_flow_settings
-            __props__['creation_time'] = None
-            __props__['execution_info'] = None
-            __props__['execution_state'] = None
-            __props__['execution_state_transition_time'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['provisioning_state_transition_time'] = None
-            __props__['tool_type'] = None
-            __props__['type'] = None
+            __props__.__dict__['std_out_err_path_prefix'] = std_out_err_path_prefix
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['tensor_flow_settings'] = tensor_flow_settings
+            __props__.__dict__['creation_time'] = None
+            __props__.__dict__['execution_info'] = None
+            __props__.__dict__['execution_state'] = None
+            __props__.__dict__['execution_state_transition_time'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['provisioning_state_transition_time'] = None
+            __props__.__dict__['tool_type'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:batchai/v20170901preview:Job"), pulumi.Alias(type_="azure-native:batchai/v20180301:Job"), pulumi.Alias(type_="azure-nextgen:batchai/v20180301:Job")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Job, __self__).__init__(
@@ -146,35 +528,35 @@ class Job(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = JobArgs.__new__(JobArgs)
 
-        __props__["caffe_settings"] = None
-        __props__["chainer_settings"] = None
-        __props__["cluster"] = None
-        __props__["cntk_settings"] = None
-        __props__["constraints"] = None
-        __props__["container_settings"] = None
-        __props__["creation_time"] = None
-        __props__["custom_toolkit_settings"] = None
-        __props__["environment_variables"] = None
-        __props__["execution_info"] = None
-        __props__["execution_state"] = None
-        __props__["execution_state_transition_time"] = None
-        __props__["experiment_name"] = None
-        __props__["input_directories"] = None
-        __props__["job_preparation"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["node_count"] = None
-        __props__["output_directories"] = None
-        __props__["priority"] = None
-        __props__["provisioning_state"] = None
-        __props__["provisioning_state_transition_time"] = None
-        __props__["std_out_err_path_prefix"] = None
-        __props__["tags"] = None
-        __props__["tensor_flow_settings"] = None
-        __props__["tool_type"] = None
-        __props__["type"] = None
+        __props__.__dict__['caffe_settings'] = None
+        __props__.__dict__['chainer_settings'] = None
+        __props__.__dict__['cluster'] = None
+        __props__.__dict__['cntk_settings'] = None
+        __props__.__dict__['constraints'] = None
+        __props__.__dict__['container_settings'] = None
+        __props__.__dict__['creation_time'] = None
+        __props__.__dict__['custom_toolkit_settings'] = None
+        __props__.__dict__['environment_variables'] = None
+        __props__.__dict__['execution_info'] = None
+        __props__.__dict__['execution_state'] = None
+        __props__.__dict__['execution_state_transition_time'] = None
+        __props__.__dict__['experiment_name'] = None
+        __props__.__dict__['input_directories'] = None
+        __props__.__dict__['job_preparation'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['node_count'] = None
+        __props__.__dict__['output_directories'] = None
+        __props__.__dict__['priority'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['provisioning_state_transition_time'] = None
+        __props__.__dict__['std_out_err_path_prefix'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['tensor_flow_settings'] = None
+        __props__.__dict__['tool_type'] = None
+        __props__.__dict__['type'] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -386,10 +768,4 @@ class Job(pulumi.CustomResource):
         The type of the resource
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

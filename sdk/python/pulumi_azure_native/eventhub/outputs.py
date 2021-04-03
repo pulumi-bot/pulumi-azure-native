@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -28,6 +28,27 @@ class CaptureDescriptionResponse(dict):
     """
     Properties to configure capture description for eventhub
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalInSeconds":
+            suggest = "interval_in_seconds"
+        elif key == "sizeLimitInBytes":
+            suggest = "size_limit_in_bytes"
+        elif key == "skipEmptyArchives":
+            suggest = "skip_empty_archives"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CaptureDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CaptureDescriptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CaptureDescriptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  destination: Optional['outputs.DestinationResponse'] = None,
                  enabled: Optional[bool] = None,
@@ -105,9 +126,6 @@ class CaptureDescriptionResponse(dict):
         """
         return pulumi.get(self, "skip_empty_archives")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterSkuResponse(dict):
@@ -141,9 +159,6 @@ class ClusterSkuResponse(dict):
         The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
         """
         return pulumi.get(self, "capacity")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -180,15 +195,33 @@ class ConnectionStateResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DestinationResponse(dict):
     """
     Capture storage details for capture description
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveNameFormat":
+            suggest = "archive_name_format"
+        elif key == "blobContainer":
+            suggest = "blob_container"
+        elif key == "storageAccountResourceId":
+            suggest = "storage_account_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  archive_name_format: Optional[str] = None,
                  blob_container: Optional[str] = None,
@@ -242,15 +275,29 @@ class DestinationResponse(dict):
         """
         return pulumi.get(self, "storage_account_resource_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NWRuleSetIpRulesResponse(dict):
     """
     Description of NetWorkRuleSet - IpRules resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipMask":
+            suggest = "ip_mask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NWRuleSetIpRulesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NWRuleSetIpRulesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NWRuleSetIpRulesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  ip_mask: Optional[str] = None):
@@ -282,15 +329,29 @@ class NWRuleSetIpRulesResponse(dict):
         """
         return pulumi.get(self, "ip_mask")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NWRuleSetVirtualNetworkRulesResponse(dict):
     """
     Description of VirtualNetworkRules - NetworkRules resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreMissingVnetServiceEndpoint":
+            suggest = "ignore_missing_vnet_service_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NWRuleSetVirtualNetworkRulesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NWRuleSetVirtualNetworkRulesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NWRuleSetVirtualNetworkRulesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ignore_missing_vnet_service_endpoint: Optional[bool] = None,
                  subnet: Optional['outputs.SubnetResponse'] = None):
@@ -320,9 +381,6 @@ class NWRuleSetVirtualNetworkRulesResponse(dict):
         """
         return pulumi.get(self, "subnet")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointResponse(dict):
@@ -345,9 +403,6 @@ class PrivateEndpointResponse(dict):
         The ARM identifier for Private Endpoint.
         """
         return pulumi.get(self, "id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -395,9 +450,6 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubnetResponse(dict):
@@ -420,15 +472,39 @@ class SubnetResponse(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByType":
+            suggest = "created_by_type"
+        elif key == "lastModifiedAt":
+            suggest = "last_modified_at"
+        elif key == "lastModifiedBy":
+            suggest = "last_modified_by"
+        elif key == "lastModifiedByType":
+            suggest = "last_modified_by_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -505,8 +581,5 @@ class SystemDataResponse(dict):
         The type of identity that last modified the resource.
         """
         return pulumi.get(self, "last_modified_by_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

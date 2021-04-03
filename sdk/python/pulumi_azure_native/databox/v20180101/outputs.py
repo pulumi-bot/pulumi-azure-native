@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -124,6 +124,29 @@ class ContactDetailsResponse(dict):
     """
     Contact Details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contactName":
+            suggest = "contact_name"
+        elif key == "emailList":
+            suggest = "email_list"
+        elif key == "notificationPreference":
+            suggest = "notification_preference"
+        elif key == "phoneExtension":
+            suggest = "phone_extension"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContactDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContactDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContactDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  contact_name: str,
                  email_list: Sequence[str],
@@ -198,15 +221,39 @@ class ContactDetailsResponse(dict):
         """
         return pulumi.get(self, "phone_extension")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CopyProgressResponse(dict):
     """
     Copy progress.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountId":
+            suggest = "account_id"
+        elif key == "bytesSentToCloud":
+            suggest = "bytes_sent_to_cloud"
+        elif key == "filesProcessed":
+            suggest = "files_processed"
+        elif key == "storageAccountName":
+            suggest = "storage_account_name"
+        elif key == "totalBytesToProcess":
+            suggest = "total_bytes_to_process"
+        elif key == "totalFilesToProcess":
+            suggest = "total_files_to_process"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CopyProgressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CopyProgressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CopyProgressResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_id: str,
                  bytes_sent_to_cloud: float,
@@ -278,15 +325,33 @@ class CopyProgressResponse(dict):
         """
         return pulumi.get(self, "total_files_to_process")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxAccountCopyLogDetailsResponse(dict):
     """
     Copy log details for a storage account of a DataBox job
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountName":
+            suggest = "account_name"
+        elif key == "copyLogDetailsType":
+            suggest = "copy_log_details_type"
+        elif key == "copyLogLink":
+            suggest = "copy_log_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoxAccountCopyLogDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoxAccountCopyLogDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoxAccountCopyLogDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_name: str,
                  copy_log_details_type: str,
@@ -327,15 +392,35 @@ class DataBoxAccountCopyLogDetailsResponse(dict):
         """
         return pulumi.get(self, "copy_log_link")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxDiskCopyLogDetailsResponse(dict):
     """
     Copy Log Details for a disk
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "copyLogDetailsType":
+            suggest = "copy_log_details_type"
+        elif key == "diskSerialNumber":
+            suggest = "disk_serial_number"
+        elif key == "errorLogLink":
+            suggest = "error_log_link"
+        elif key == "verboseLogLink":
+            suggest = "verbose_log_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoxDiskCopyLogDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoxDiskCopyLogDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoxDiskCopyLogDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  copy_log_details_type: str,
                  disk_serial_number: str,
@@ -387,15 +472,33 @@ class DataBoxDiskCopyLogDetailsResponse(dict):
         """
         return pulumi.get(self, "verbose_log_link")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxDiskCopyProgressResponse(dict):
     """
     DataBox Disk Copy Progress
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bytesCopied":
+            suggest = "bytes_copied"
+        elif key == "percentComplete":
+            suggest = "percent_complete"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoxDiskCopyProgressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoxDiskCopyProgressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoxDiskCopyProgressResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bytes_copied: float,
                  percent_complete: int,
@@ -445,15 +548,57 @@ class DataBoxDiskCopyProgressResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxDiskJobDetailsResponse(dict):
     """
     DataBox Disk Job Details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chainOfCustodySasKey":
+            suggest = "chain_of_custody_sas_key"
+        elif key == "contactDetails":
+            suggest = "contact_details"
+        elif key == "copyLogDetails":
+            suggest = "copy_log_details"
+        elif key == "copyProgress":
+            suggest = "copy_progress"
+        elif key == "deliveryPackage":
+            suggest = "delivery_package"
+        elif key == "destinationAccountDetails":
+            suggest = "destination_account_details"
+        elif key == "disksAndSizeDetails":
+            suggest = "disks_and_size_details"
+        elif key == "errorDetails":
+            suggest = "error_details"
+        elif key == "jobDetailsType":
+            suggest = "job_details_type"
+        elif key == "jobStages":
+            suggest = "job_stages"
+        elif key == "returnPackage":
+            suggest = "return_package"
+        elif key == "reverseShipmentLabelSasKey":
+            suggest = "reverse_shipment_label_sas_key"
+        elif key == "shippingAddress":
+            suggest = "shipping_address"
+        elif key == "expectedDataSizeInTeraBytes":
+            suggest = "expected_data_size_in_tera_bytes"
+        elif key == "preferredDisks":
+            suggest = "preferred_disks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoxDiskJobDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoxDiskJobDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoxDiskJobDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chain_of_custody_sas_key: str,
                  contact_details: 'outputs.ContactDetailsResponse',
@@ -652,9 +797,6 @@ class DataBoxDiskJobDetailsResponse(dict):
         """
         return pulumi.get(self, "preferred_disks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxDiskJobSecretsResponseResult(dict):
@@ -718,6 +860,27 @@ class DataBoxHeavyAccountCopyLogDetailsResponse(dict):
     """
     Copy log details for a storage account for DataBoxHeavy
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountName":
+            suggest = "account_name"
+        elif key == "copyLogDetailsType":
+            suggest = "copy_log_details_type"
+        elif key == "copyLogLink":
+            suggest = "copy_log_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoxHeavyAccountCopyLogDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoxHeavyAccountCopyLogDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoxHeavyAccountCopyLogDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_name: str,
                  copy_log_details_type: str,
@@ -758,15 +921,53 @@ class DataBoxHeavyAccountCopyLogDetailsResponse(dict):
         """
         return pulumi.get(self, "copy_log_link")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxHeavyJobDetailsResponse(dict):
     """
     DataBoxHeavy Device Job Details
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chainOfCustodySasKey":
+            suggest = "chain_of_custody_sas_key"
+        elif key == "contactDetails":
+            suggest = "contact_details"
+        elif key == "copyLogDetails":
+            suggest = "copy_log_details"
+        elif key == "copyProgress":
+            suggest = "copy_progress"
+        elif key == "deliveryPackage":
+            suggest = "delivery_package"
+        elif key == "destinationAccountDetails":
+            suggest = "destination_account_details"
+        elif key == "errorDetails":
+            suggest = "error_details"
+        elif key == "jobDetailsType":
+            suggest = "job_details_type"
+        elif key == "jobStages":
+            suggest = "job_stages"
+        elif key == "returnPackage":
+            suggest = "return_package"
+        elif key == "reverseShipmentLabelSasKey":
+            suggest = "reverse_shipment_label_sas_key"
+        elif key == "shippingAddress":
+            suggest = "shipping_address"
+        elif key == "expectedDataSizeInTeraBytes":
+            suggest = "expected_data_size_in_tera_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoxHeavyJobDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoxHeavyJobDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoxHeavyJobDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chain_of_custody_sas_key: str,
                  contact_details: 'outputs.ContactDetailsResponse',
@@ -930,9 +1131,6 @@ class DataBoxHeavyJobDetailsResponse(dict):
         """
         return pulumi.get(self, "preferences")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxHeavyJobSecretsResponseResult(dict):
@@ -1040,6 +1238,47 @@ class DataBoxJobDetailsResponse(dict):
     """
     DataBox Job Details
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chainOfCustodySasKey":
+            suggest = "chain_of_custody_sas_key"
+        elif key == "contactDetails":
+            suggest = "contact_details"
+        elif key == "copyLogDetails":
+            suggest = "copy_log_details"
+        elif key == "copyProgress":
+            suggest = "copy_progress"
+        elif key == "deliveryPackage":
+            suggest = "delivery_package"
+        elif key == "destinationAccountDetails":
+            suggest = "destination_account_details"
+        elif key == "errorDetails":
+            suggest = "error_details"
+        elif key == "jobDetailsType":
+            suggest = "job_details_type"
+        elif key == "jobStages":
+            suggest = "job_stages"
+        elif key == "returnPackage":
+            suggest = "return_package"
+        elif key == "reverseShipmentLabelSasKey":
+            suggest = "reverse_shipment_label_sas_key"
+        elif key == "shippingAddress":
+            suggest = "shipping_address"
+        elif key == "expectedDataSizeInTeraBytes":
+            suggest = "expected_data_size_in_tera_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoxJobDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoxJobDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoxJobDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chain_of_custody_sas_key: str,
                  contact_details: 'outputs.ContactDetailsResponse',
@@ -1203,9 +1442,6 @@ class DataBoxJobDetailsResponse(dict):
         """
         return pulumi.get(self, "preferences")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataBoxSecretResponseResult(dict):
@@ -1314,6 +1550,29 @@ class DestinationManagedDiskDetailsResponse(dict):
     """
     Details for the destination compute disks.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataDestinationType":
+            suggest = "data_destination_type"
+        elif key == "resourceGroupId":
+            suggest = "resource_group_id"
+        elif key == "stagingStorageAccountId":
+            suggest = "staging_storage_account_id"
+        elif key == "accountId":
+            suggest = "account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationManagedDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationManagedDiskDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationManagedDiskDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  data_destination_type: str,
                  resource_group_id: str,
@@ -1366,15 +1625,33 @@ class DestinationManagedDiskDetailsResponse(dict):
         """
         return pulumi.get(self, "account_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DestinationStorageAccountDetailsResponse(dict):
     """
     Details for the destination storage account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataDestinationType":
+            suggest = "data_destination_type"
+        elif key == "storageAccountId":
+            suggest = "storage_account_id"
+        elif key == "accountId":
+            suggest = "account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationStorageAccountDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationStorageAccountDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationStorageAccountDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  data_destination_type: str,
                  storage_account_id: str,
@@ -1415,9 +1692,6 @@ class DestinationStorageAccountDetailsResponse(dict):
         Arm Id of the destination where the data has to be moved.
         """
         return pulumi.get(self, "account_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1485,15 +1759,35 @@ class ErrorResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobErrorDetailsResponse(dict):
     """
     Job Error Details for providing the information and recommended action.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorCode":
+            suggest = "error_code"
+        elif key == "errorMessage":
+            suggest = "error_message"
+        elif key == "exceptionMessage":
+            suggest = "exception_message"
+        elif key == "recommendedAction":
+            suggest = "recommended_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobErrorDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobErrorDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobErrorDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_code: int,
                  error_message: str,
@@ -1543,15 +1837,39 @@ class JobErrorDetailsResponse(dict):
         """
         return pulumi.get(self, "recommended_action")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobStagesResponse(dict):
     """
     Job stages.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "errorDetails":
+            suggest = "error_details"
+        elif key == "jobStageDetails":
+            suggest = "job_stage_details"
+        elif key == "stageName":
+            suggest = "stage_name"
+        elif key == "stageStatus":
+            suggest = "stage_status"
+        elif key == "stageTime":
+            suggest = "stage_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStagesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStagesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStagesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_name: str,
                  error_details: Sequence['outputs.JobErrorDetailsResponse'],
@@ -1623,15 +1941,31 @@ class JobStagesResponse(dict):
         """
         return pulumi.get(self, "stage_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NotificationPreferenceResponse(dict):
     """
     Notification preference for a job stage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sendNotification":
+            suggest = "send_notification"
+        elif key == "stageName":
+            suggest = "stage_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationPreferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationPreferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationPreferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  send_notification: bool,
                  stage_name: str):
@@ -1661,15 +1995,33 @@ class NotificationPreferenceResponse(dict):
         """
         return pulumi.get(self, "stage_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PackageShippingDetailsResponse(dict):
     """
     Shipping details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "carrierName":
+            suggest = "carrier_name"
+        elif key == "trackingId":
+            suggest = "tracking_id"
+        elif key == "trackingUrl":
+            suggest = "tracking_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageShippingDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageShippingDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageShippingDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  carrier_name: str,
                  tracking_id: str,
@@ -1708,15 +2060,29 @@ class PackageShippingDetailsResponse(dict):
         """
         return pulumi.get(self, "tracking_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreferencesResponse(dict):
     """
     Preferences related to the order
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preferredDataCenterRegion":
+            suggest = "preferred_data_center_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreferencesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreferencesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreferencesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  preferred_data_center_region: Optional[Sequence[str]] = None):
         """
@@ -1729,9 +2095,6 @@ class PreferencesResponse(dict):
     @pulumi.getter(name="preferredDataCenterRegion")
     def preferred_data_center_region(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "preferred_data_center_region")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1805,6 +2168,37 @@ class ShippingAddressResponse(dict):
     """
     Shipping address where customer wishes to receive the device.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postalCode":
+            suggest = "postal_code"
+        elif key == "streetAddress1":
+            suggest = "street_address1"
+        elif key == "addressType":
+            suggest = "address_type"
+        elif key == "companyName":
+            suggest = "company_name"
+        elif key == "stateOrProvince":
+            suggest = "state_or_province"
+        elif key == "streetAddress2":
+            suggest = "street_address2"
+        elif key == "streetAddress3":
+            suggest = "street_address3"
+        elif key == "zipExtendedCode":
+            suggest = "zip_extended_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShippingAddressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShippingAddressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShippingAddressResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  country: str,
                  postal_code: str,
@@ -1929,15 +2323,29 @@ class ShippingAddressResponse(dict):
         """
         return pulumi.get(self, "zip_extended_code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
     """
     The Sku.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkuResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkuResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkuResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  display_name: Optional[str] = None,
@@ -1977,9 +2385,6 @@ class SkuResponse(dict):
         The sku family.
         """
         return pulumi.get(self, "family")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

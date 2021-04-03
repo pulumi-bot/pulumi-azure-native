@@ -22,59 +22,60 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:compute/latest:AvailabilitySet":
-		r, err = NewAvailabilitySet(ctx, name, nil, pulumi.URN_(urn))
+		r = &AvailabilitySet{}
 	case "azure-native:compute/latest:CloudService":
-		r, err = NewCloudService(ctx, name, nil, pulumi.URN_(urn))
+		r = &CloudService{}
 	case "azure-native:compute/latest:DedicatedHost":
-		r, err = NewDedicatedHost(ctx, name, nil, pulumi.URN_(urn))
+		r = &DedicatedHost{}
 	case "azure-native:compute/latest:DedicatedHostGroup":
-		r, err = NewDedicatedHostGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &DedicatedHostGroup{}
 	case "azure-native:compute/latest:Disk":
-		r, err = NewDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &Disk{}
 	case "azure-native:compute/latest:DiskAccess":
-		r, err = NewDiskAccess(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskAccess{}
 	case "azure-native:compute/latest:DiskAccessAPrivateEndpointConnection":
-		r, err = NewDiskAccessAPrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskAccessAPrivateEndpointConnection{}
 	case "azure-native:compute/latest:DiskEncryptionSet":
-		r, err = NewDiskEncryptionSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskEncryptionSet{}
 	case "azure-native:compute/latest:Gallery":
-		r, err = NewGallery(ctx, name, nil, pulumi.URN_(urn))
+		r = &Gallery{}
 	case "azure-native:compute/latest:GalleryApplication":
-		r, err = NewGalleryApplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &GalleryApplication{}
 	case "azure-native:compute/latest:GalleryApplicationVersion":
-		r, err = NewGalleryApplicationVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &GalleryApplicationVersion{}
 	case "azure-native:compute/latest:GalleryImage":
-		r, err = NewGalleryImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &GalleryImage{}
 	case "azure-native:compute/latest:GalleryImageVersion":
-		r, err = NewGalleryImageVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &GalleryImageVersion{}
 	case "azure-native:compute/latest:Image":
-		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &Image{}
 	case "azure-native:compute/latest:ProximityPlacementGroup":
-		r, err = NewProximityPlacementGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProximityPlacementGroup{}
 	case "azure-native:compute/latest:Snapshot":
-		r, err = NewSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &Snapshot{}
 	case "azure-native:compute/latest:SshPublicKey":
-		r, err = NewSshPublicKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &SshPublicKey{}
 	case "azure-native:compute/latest:VirtualMachine":
-		r, err = NewVirtualMachine(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachine{}
 	case "azure-native:compute/latest:VirtualMachineExtension":
-		r, err = NewVirtualMachineExtension(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineExtension{}
 	case "azure-native:compute/latest:VirtualMachineRunCommandByVirtualMachine":
-		r, err = NewVirtualMachineRunCommandByVirtualMachine(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineRunCommandByVirtualMachine{}
 	case "azure-native:compute/latest:VirtualMachineScaleSet":
-		r, err = NewVirtualMachineScaleSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineScaleSet{}
 	case "azure-native:compute/latest:VirtualMachineScaleSetExtension":
-		r, err = NewVirtualMachineScaleSetExtension(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineScaleSetExtension{}
 	case "azure-native:compute/latest:VirtualMachineScaleSetVM":
-		r, err = NewVirtualMachineScaleSetVM(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineScaleSetVM{}
 	case "azure-native:compute/latest:VirtualMachineScaleSetVMExtension":
-		r, err = NewVirtualMachineScaleSetVMExtension(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineScaleSetVMExtension{}
 	case "azure-native:compute/latest:VirtualMachineScaleSetVMRunCommand":
-		r, err = NewVirtualMachineScaleSetVMRunCommand(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineScaleSetVMRunCommand{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

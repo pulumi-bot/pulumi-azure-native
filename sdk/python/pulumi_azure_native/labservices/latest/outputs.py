@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -144,6 +144,29 @@ class EnvironmentSizeResponse(dict):
     """
     Represents a size category supported by this Lab Account (small, medium or large)
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxPrice":
+            suggest = "max_price"
+        elif key == "minMemory":
+            suggest = "min_memory"
+        elif key == "minNumberOfCores":
+            suggest = "min_number_of_cores"
+        elif key == "vmSizes":
+            suggest = "vm_sizes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentSizeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentSizeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentSizeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_price: float,
                  min_memory: float,
@@ -206,15 +229,29 @@ class EnvironmentSizeResponse(dict):
         """
         return pulumi.get(self, "vm_sizes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GalleryImageReferenceResponse(dict):
     """
     The reference information for an Azure Marketplace image.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osType":
+            suggest = "os_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GalleryImageReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GalleryImageReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GalleryImageReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  offer: Optional[str] = None,
                  os_type: Optional[str] = None,
@@ -280,9 +317,6 @@ class GalleryImageReferenceResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LabDetailsResponseResult(dict):
@@ -347,6 +381,31 @@ class LatestOperationResultResponse(dict):
     """
     Details of the status of an operation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorCode":
+            suggest = "error_code"
+        elif key == "errorMessage":
+            suggest = "error_message"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "operationUrl":
+            suggest = "operation_url"
+        elif key == "requestUri":
+            suggest = "request_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LatestOperationResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LatestOperationResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LatestOperationResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_code: str,
                  error_message: str,
@@ -418,15 +477,33 @@ class LatestOperationResultResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkInterfaceResponse(dict):
     """
     Network details of the environment
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateIpAddress":
+            suggest = "private_ip_address"
+        elif key == "rdpAuthority":
+            suggest = "rdp_authority"
+        elif key == "sshAuthority":
+            suggest = "ssh_authority"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkInterfaceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkInterfaceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_ip_address: str,
                  rdp_authority: str,
@@ -476,9 +553,6 @@ class NetworkInterfaceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OperationBatchStatusResponseItemResponseResult(dict):
@@ -518,6 +592,27 @@ class ReferenceVmResponse(dict):
     """
     Details of a Reference Vm
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+        elif key == "vmResourceId":
+            suggest = "vm_resource_id"
+        elif key == "vmStateDetails":
+            suggest = "vm_state_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReferenceVmResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReferenceVmResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReferenceVmResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  user_name: str,
                  vm_resource_id: str,
@@ -568,9 +663,6 @@ class ReferenceVmResponse(dict):
         """
         return pulumi.get(self, "password")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegionalAvailabilityResponseResult(dict):
@@ -612,6 +704,25 @@ class ResourceSetResponse(dict):
     """
     Represents a VM and the setting Id it was created for.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceSettingId":
+            suggest = "resource_setting_id"
+        elif key == "vmResourceId":
+            suggest = "vm_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_setting_id: Optional[str] = None,
                  vm_resource_id: Optional[str] = None):
@@ -641,15 +752,33 @@ class ResourceSetResponse(dict):
         """
         return pulumi.get(self, "vm_resource_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceSettingsResponse(dict):
     """
     Represents resource specific settings
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageName":
+            suggest = "image_name"
+        elif key == "referenceVm":
+            suggest = "reference_vm"
+        elif key == "galleryImageResourceId":
+            suggest = "gallery_image_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cores: int,
                  id: str,
@@ -723,9 +852,6 @@ class ResourceSettingsResponse(dict):
         """
         return pulumi.get(self, "size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SizeAvailabilityResponseResult(dict):
@@ -767,6 +893,23 @@ class SizeConfigurationPropertiesResponse(dict):
     """
     Represents the size configuration under the lab account
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentSizes":
+            suggest = "environment_sizes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SizeConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SizeConfigurationPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SizeConfigurationPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  environment_sizes: Optional[Sequence['outputs.EnvironmentSizeResponse']] = None):
         """
@@ -784,15 +927,31 @@ class SizeConfigurationPropertiesResponse(dict):
         """
         return pulumi.get(self, "environment_sizes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SizeInfoResponse(dict):
     """
     Contains detailed information about a size
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computeSize":
+            suggest = "compute_size"
+        elif key == "numberOfCores":
+            suggest = "number_of_cores"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SizeInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SizeInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SizeInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  compute_size: Optional[str] = None,
                  memory: Optional[float] = None,
@@ -845,9 +1004,6 @@ class SizeInfoResponse(dict):
         The pay-as-you-go price per hour this size will cost. It does not include discounts and may not reflect the actual price the size will cost.
         """
         return pulumi.get(self, "price")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -932,6 +1088,29 @@ class VmStateDetailsResponse(dict):
     """
     Details about the state of the reference virtual machine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastKnownPowerState":
+            suggest = "last_known_power_state"
+        elif key == "powerState":
+            suggest = "power_state"
+        elif key == "rdpAuthority":
+            suggest = "rdp_authority"
+        elif key == "sshAuthority":
+            suggest = "ssh_authority"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmStateDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmStateDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmStateDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_known_power_state: str,
                  power_state: str,
@@ -980,8 +1159,5 @@ class VmStateDetailsResponse(dict):
         The SshAuthority property is a server DNS host name or IP address followed by the service port number for SSH.
         """
         return pulumi.get(self, "ssh_authority")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

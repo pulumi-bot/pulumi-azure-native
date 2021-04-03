@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -63,15 +63,33 @@ class AdvancedScheduleMonthlyOccurrenceResponse(dict):
         """
         return pulumi.get(self, "occurrence")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AdvancedScheduleResponse(dict):
     """
     The properties of the create Advanced Schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "monthDays":
+            suggest = "month_days"
+        elif key == "monthlyOccurrences":
+            suggest = "monthly_occurrences"
+        elif key == "weekDays":
+            suggest = "week_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdvancedScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdvancedScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdvancedScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  month_days: Optional[Sequence[int]] = None,
                  monthly_occurrences: Optional[Sequence['outputs.AdvancedScheduleMonthlyOccurrenceResponse']] = None,
@@ -113,9 +131,6 @@ class AdvancedScheduleResponse(dict):
         """
         return pulumi.get(self, "week_days")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectionTypeAssociationPropertyResponse(dict):
@@ -138,9 +153,6 @@ class ConnectionTypeAssociationPropertyResponse(dict):
         Gets or sets the name of the connection type.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -175,15 +187,29 @@ class ContentHashResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContentLinkResponse(dict):
     """
     Definition of the content link.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentHash":
+            suggest = "content_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContentLinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContentLinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContentLinkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_hash: Optional['outputs.ContentHashResponse'] = None,
                  uri: Optional[str] = None,
@@ -224,9 +250,6 @@ class ContentLinkResponse(dict):
         Gets or sets the version of the content.
         """
         return pulumi.get(self, "version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -287,9 +310,6 @@ class ContentSourceResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DscConfigurationAssociationPropertyResponse(dict):
@@ -313,15 +333,31 @@ class DscConfigurationAssociationPropertyResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DscConfigurationParameterResponse(dict):
     """
     Definition of the configuration parameter type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "isMandatory":
+            suggest = "is_mandatory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DscConfigurationParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DscConfigurationParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DscConfigurationParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_value: Optional[str] = None,
                  is_mandatory: Optional[bool] = None,
@@ -375,15 +411,31 @@ class DscConfigurationParameterResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FieldDefinitionResponse(dict):
     """
     Definition of the connection fields.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEncrypted":
+            suggest = "is_encrypted"
+        elif key == "isOptional":
+            suggest = "is_optional"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FieldDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FieldDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FieldDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  is_encrypted: Optional[bool] = None,
@@ -423,9 +475,6 @@ class FieldDefinitionResponse(dict):
         Gets or sets the isOptional flag of the connection field definition.
         """
         return pulumi.get(self, "is_optional")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -506,9 +555,6 @@ class ModuleErrorInfoResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RunbookAssociationPropertyResponse(dict):
@@ -532,12 +578,34 @@ class RunbookAssociationPropertyResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RunbookDraftResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "creationTime":
+            suggest = "creation_time"
+        elif key == "draftContentLink":
+            suggest = "draft_content_link"
+        elif key == "inEdit":
+            suggest = "in_edit"
+        elif key == "lastModifiedTime":
+            suggest = "last_modified_time"
+        elif key == "outputTypes":
+            suggest = "output_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RunbookDraftResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RunbookDraftResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RunbookDraftResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  creation_time: Optional[str] = None,
                  draft_content_link: Optional['outputs.ContentLinkResponse'] = None,
@@ -614,15 +682,31 @@ class RunbookDraftResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RunbookParameterResponse(dict):
     """
     Definition of the runbook parameter type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "isMandatory":
+            suggest = "is_mandatory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RunbookParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RunbookParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RunbookParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_value: Optional[str] = None,
                  is_mandatory: Optional[bool] = None,
@@ -676,9 +760,6 @@ class RunbookParameterResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleAssociationPropertyResponse(dict):
@@ -701,9 +782,6 @@ class ScheduleAssociationPropertyResponse(dict):
         Gets or sets the name of the Schedule.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -750,8 +828,5 @@ class SkuResponse(dict):
         Gets or sets the SKU family.
         """
         return pulumi.get(self, "family")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

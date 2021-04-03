@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -24,6 +24,23 @@ class DnsConfigResponse(dict):
     """
     Class containing DNS settings in a Traffic Manager profile.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeName":
+            suggest = "relative_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fqdn: str,
                  relative_name: Optional[str] = None,
@@ -64,9 +81,6 @@ class DnsConfigResponse(dict):
         """
         return pulumi.get(self, "ttl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EndpointPropertiesResponseCustomHeaders(dict):
@@ -102,15 +116,41 @@ class EndpointPropertiesResponseCustomHeaders(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EndpointResponse(dict):
     """
     Class representing a Traffic Manager endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customHeaders":
+            suggest = "custom_headers"
+        elif key == "endpointLocation":
+            suggest = "endpoint_location"
+        elif key == "endpointMonitorStatus":
+            suggest = "endpoint_monitor_status"
+        elif key == "endpointStatus":
+            suggest = "endpoint_status"
+        elif key == "geoMapping":
+            suggest = "geo_mapping"
+        elif key == "minChildEndpoints":
+            suggest = "min_child_endpoints"
+        elif key == "targetResourceId":
+            suggest = "target_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_headers: Optional[Sequence['outputs.EndpointPropertiesResponseCustomHeaders']] = None,
                  endpoint_location: Optional[str] = None,
@@ -272,15 +312,39 @@ class EndpointResponse(dict):
         """
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MonitorConfigResponse(dict):
     """
     Class containing endpoint monitoring settings in a Traffic Manager profile.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customHeaders":
+            suggest = "custom_headers"
+        elif key == "expectedStatusCodeRanges":
+            suggest = "expected_status_code_ranges"
+        elif key == "intervalInSeconds":
+            suggest = "interval_in_seconds"
+        elif key == "profileMonitorStatus":
+            suggest = "profile_monitor_status"
+        elif key == "timeoutInSeconds":
+            suggest = "timeout_in_seconds"
+        elif key == "toleratedNumberOfFailures":
+            suggest = "tolerated_number_of_failures"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_headers: Optional[Sequence['outputs.MonitorConfigResponseCustomHeaders']] = None,
                  expected_status_code_ranges: Optional[Sequence['outputs.MonitorConfigResponseExpectedStatusCodeRanges']] = None,
@@ -394,9 +458,6 @@ class MonitorConfigResponse(dict):
         """
         return pulumi.get(self, "tolerated_number_of_failures")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MonitorConfigResponseCustomHeaders(dict):
@@ -432,9 +493,6 @@ class MonitorConfigResponseCustomHeaders(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MonitorConfigResponseExpectedStatusCodeRanges(dict):
@@ -469,8 +527,5 @@ class MonitorConfigResponseExpectedStatusCodeRanges(dict):
         Min status code.
         """
         return pulumi.get(self, "min")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -22,127 +22,128 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:web/latest:AppServiceEnvironment":
-		r, err = NewAppServiceEnvironment(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppServiceEnvironment{}
 	case "azure-native:web/latest:AppServiceEnvironmentPrivateEndpointConnection":
-		r, err = NewAppServiceEnvironmentPrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppServiceEnvironmentPrivateEndpointConnection{}
 	case "azure-native:web/latest:AppServicePlan":
-		r, err = NewAppServicePlan(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppServicePlan{}
 	case "azure-native:web/latest:AppServicePlanRouteForVnet":
-		r, err = NewAppServicePlanRouteForVnet(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppServicePlanRouteForVnet{}
 	case "azure-native:web/latest:Certificate":
-		r, err = NewCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &Certificate{}
 	case "azure-native:web/latest:Connection":
-		r, err = NewConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &Connection{}
 	case "azure-native:web/latest:ConnectionGateway":
-		r, err = NewConnectionGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConnectionGateway{}
 	case "azure-native:web/latest:CustomApi":
-		r, err = NewCustomApi(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomApi{}
 	case "azure-native:web/latest:StaticSite":
-		r, err = NewStaticSite(ctx, name, nil, pulumi.URN_(urn))
+		r = &StaticSite{}
 	case "azure-native:web/latest:StaticSiteCustomDomain":
-		r, err = NewStaticSiteCustomDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &StaticSiteCustomDomain{}
 	case "azure-native:web/latest:StaticSitePrivateEndpointConnection":
-		r, err = NewStaticSitePrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &StaticSitePrivateEndpointConnection{}
 	case "azure-native:web/latest:StaticSiteUserProvidedFunctionAppForStaticSite":
-		r, err = NewStaticSiteUserProvidedFunctionAppForStaticSite(ctx, name, nil, pulumi.URN_(urn))
+		r = &StaticSiteUserProvidedFunctionAppForStaticSite{}
 	case "azure-native:web/latest:StaticSiteUserProvidedFunctionAppForStaticSiteBuild":
-		r, err = NewStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx, name, nil, pulumi.URN_(urn))
+		r = &StaticSiteUserProvidedFunctionAppForStaticSiteBuild{}
 	case "azure-native:web/latest:WebApp":
-		r, err = NewWebApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebApp{}
 	case "azure-native:web/latest:WebAppApplicationSettings":
-		r, err = NewWebAppApplicationSettings(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppApplicationSettings{}
 	case "azure-native:web/latest:WebAppApplicationSettingsSlot":
-		r, err = NewWebAppApplicationSettingsSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppApplicationSettingsSlot{}
 	case "azure-native:web/latest:WebAppAuthSettings":
-		r, err = NewWebAppAuthSettings(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppAuthSettings{}
 	case "azure-native:web/latest:WebAppAuthSettingsSlot":
-		r, err = NewWebAppAuthSettingsSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppAuthSettingsSlot{}
 	case "azure-native:web/latest:WebAppAuthSettingsV2":
-		r, err = NewWebAppAuthSettingsV2(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppAuthSettingsV2{}
 	case "azure-native:web/latest:WebAppAuthSettingsV2Slot":
-		r, err = NewWebAppAuthSettingsV2Slot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppAuthSettingsV2Slot{}
 	case "azure-native:web/latest:WebAppAzureStorageAccounts":
-		r, err = NewWebAppAzureStorageAccounts(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppAzureStorageAccounts{}
 	case "azure-native:web/latest:WebAppAzureStorageAccountsSlot":
-		r, err = NewWebAppAzureStorageAccountsSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppAzureStorageAccountsSlot{}
 	case "azure-native:web/latest:WebAppBackupConfiguration":
-		r, err = NewWebAppBackupConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppBackupConfiguration{}
 	case "azure-native:web/latest:WebAppBackupConfigurationSlot":
-		r, err = NewWebAppBackupConfigurationSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppBackupConfigurationSlot{}
 	case "azure-native:web/latest:WebAppConnectionStrings":
-		r, err = NewWebAppConnectionStrings(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppConnectionStrings{}
 	case "azure-native:web/latest:WebAppConnectionStringsSlot":
-		r, err = NewWebAppConnectionStringsSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppConnectionStringsSlot{}
 	case "azure-native:web/latest:WebAppDeployment":
-		r, err = NewWebAppDeployment(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppDeployment{}
 	case "azure-native:web/latest:WebAppDeploymentSlot":
-		r, err = NewWebAppDeploymentSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppDeploymentSlot{}
 	case "azure-native:web/latest:WebAppDiagnosticLogsConfiguration":
-		r, err = NewWebAppDiagnosticLogsConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppDiagnosticLogsConfiguration{}
 	case "azure-native:web/latest:WebAppDomainOwnershipIdentifier":
-		r, err = NewWebAppDomainOwnershipIdentifier(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppDomainOwnershipIdentifier{}
 	case "azure-native:web/latest:WebAppDomainOwnershipIdentifierSlot":
-		r, err = NewWebAppDomainOwnershipIdentifierSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppDomainOwnershipIdentifierSlot{}
 	case "azure-native:web/latest:WebAppFunction":
-		r, err = NewWebAppFunction(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppFunction{}
 	case "azure-native:web/latest:WebAppHostNameBinding":
-		r, err = NewWebAppHostNameBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppHostNameBinding{}
 	case "azure-native:web/latest:WebAppHostNameBindingSlot":
-		r, err = NewWebAppHostNameBindingSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppHostNameBindingSlot{}
 	case "azure-native:web/latest:WebAppHybridConnection":
-		r, err = NewWebAppHybridConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppHybridConnection{}
 	case "azure-native:web/latest:WebAppHybridConnectionSlot":
-		r, err = NewWebAppHybridConnectionSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppHybridConnectionSlot{}
 	case "azure-native:web/latest:WebAppInstanceFunctionSlot":
-		r, err = NewWebAppInstanceFunctionSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppInstanceFunctionSlot{}
 	case "azure-native:web/latest:WebAppMetadata":
-		r, err = NewWebAppMetadata(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppMetadata{}
 	case "azure-native:web/latest:WebAppMetadataSlot":
-		r, err = NewWebAppMetadataSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppMetadataSlot{}
 	case "azure-native:web/latest:WebAppPremierAddOn":
-		r, err = NewWebAppPremierAddOn(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppPremierAddOn{}
 	case "azure-native:web/latest:WebAppPremierAddOnSlot":
-		r, err = NewWebAppPremierAddOnSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppPremierAddOnSlot{}
 	case "azure-native:web/latest:WebAppPrivateEndpointConnection":
-		r, err = NewWebAppPrivateEndpointConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppPrivateEndpointConnection{}
 	case "azure-native:web/latest:WebAppPrivateEndpointConnectionSlot":
-		r, err = NewWebAppPrivateEndpointConnectionSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppPrivateEndpointConnectionSlot{}
 	case "azure-native:web/latest:WebAppPublicCertificate":
-		r, err = NewWebAppPublicCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppPublicCertificate{}
 	case "azure-native:web/latest:WebAppPublicCertificateSlot":
-		r, err = NewWebAppPublicCertificateSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppPublicCertificateSlot{}
 	case "azure-native:web/latest:WebAppRelayServiceConnection":
-		r, err = NewWebAppRelayServiceConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppRelayServiceConnection{}
 	case "azure-native:web/latest:WebAppRelayServiceConnectionSlot":
-		r, err = NewWebAppRelayServiceConnectionSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppRelayServiceConnectionSlot{}
 	case "azure-native:web/latest:WebAppSiteExtension":
-		r, err = NewWebAppSiteExtension(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSiteExtension{}
 	case "azure-native:web/latest:WebAppSiteExtensionSlot":
-		r, err = NewWebAppSiteExtensionSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSiteExtensionSlot{}
 	case "azure-native:web/latest:WebAppSitePushSettings":
-		r, err = NewWebAppSitePushSettings(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSitePushSettings{}
 	case "azure-native:web/latest:WebAppSitePushSettingsSlot":
-		r, err = NewWebAppSitePushSettingsSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSitePushSettingsSlot{}
 	case "azure-native:web/latest:WebAppSlot":
-		r, err = NewWebAppSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSlot{}
 	case "azure-native:web/latest:WebAppSlotConfigurationNames":
-		r, err = NewWebAppSlotConfigurationNames(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSlotConfigurationNames{}
 	case "azure-native:web/latest:WebAppSourceControl":
-		r, err = NewWebAppSourceControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSourceControl{}
 	case "azure-native:web/latest:WebAppSourceControlSlot":
-		r, err = NewWebAppSourceControlSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSourceControlSlot{}
 	case "azure-native:web/latest:WebAppSwiftVirtualNetworkConnection":
-		r, err = NewWebAppSwiftVirtualNetworkConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSwiftVirtualNetworkConnection{}
 	case "azure-native:web/latest:WebAppSwiftVirtualNetworkConnectionSlot":
-		r, err = NewWebAppSwiftVirtualNetworkConnectionSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppSwiftVirtualNetworkConnectionSlot{}
 	case "azure-native:web/latest:WebAppVnetConnection":
-		r, err = NewWebAppVnetConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppVnetConnection{}
 	case "azure-native:web/latest:WebAppVnetConnectionSlot":
-		r, err = NewWebAppVnetConnectionSlot(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebAppVnetConnectionSlot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

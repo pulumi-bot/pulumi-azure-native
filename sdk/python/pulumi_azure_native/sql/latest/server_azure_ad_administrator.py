@@ -5,11 +5,125 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['ServerAzureADAdministrator']
+__all__ = ['ServerAzureADAdministratorArgs', 'ServerAzureADAdministrator']
+
+@pulumi.input_type
+class ServerAzureADAdministratorArgs:
+    def __init__(__self__, *,
+                 administrator_type: pulumi.Input[Union[str, 'AdministratorType']],
+                 login: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 server_name: pulumi.Input[str],
+                 sid: pulumi.Input[str],
+                 tenant_id: pulumi.Input[str],
+                 administrator_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ServerAzureADAdministrator resource.
+        :param pulumi.Input[Union[str, 'AdministratorType']] administrator_type: The type of administrator.
+        :param pulumi.Input[str] login: The server administrator login value.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        :param pulumi.Input[str] server_name: The name of the server.
+        :param pulumi.Input[str] sid: The server administrator Sid (Secure ID).
+        :param pulumi.Input[str] tenant_id: The server Active Directory Administrator tenant id.
+        :param pulumi.Input[str] administrator_name: Name of the server administrator resource.
+        """
+        pulumi.set(__self__, "administrator_type", administrator_type)
+        pulumi.set(__self__, "login", login)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "server_name", server_name)
+        pulumi.set(__self__, "sid", sid)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+        if administrator_name is not None:
+            pulumi.set(__self__, "administrator_name", administrator_name)
+
+    @property
+    @pulumi.getter(name="administratorType")
+    def administrator_type(self) -> pulumi.Input[Union[str, 'AdministratorType']]:
+        """
+        The type of administrator.
+        """
+        return pulumi.get(self, "administrator_type")
+
+    @administrator_type.setter
+    def administrator_type(self, value: pulumi.Input[Union[str, 'AdministratorType']]):
+        pulumi.set(self, "administrator_type", value)
+
+    @property
+    @pulumi.getter
+    def login(self) -> pulumi.Input[str]:
+        """
+        The server administrator login value.
+        """
+        return pulumi.get(self, "login")
+
+    @login.setter
+    def login(self, value: pulumi.Input[str]):
+        pulumi.set(self, "login", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> pulumi.Input[str]:
+        """
+        The name of the server.
+        """
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_name", value)
+
+    @property
+    @pulumi.getter
+    def sid(self) -> pulumi.Input[str]:
+        """
+        The server administrator Sid (Secure ID).
+        """
+        return pulumi.get(self, "sid")
+
+    @sid.setter
+    def sid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sid", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Input[str]:
+        """
+        The server Active Directory Administrator tenant id.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="administratorName")
+    def administrator_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the server administrator resource.
+        """
+        return pulumi.get(self, "administrator_name")
+
+    @administrator_name.setter
+    def administrator_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "administrator_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:sql:ServerAzureADAdministrator'.""", DeprecationWarning)
 
@@ -17,6 +131,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class ServerAzureADAdministrator(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:sql:ServerAzureADAdministrator'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +159,41 @@ class ServerAzureADAdministrator(pulumi.CustomResource):
         :param pulumi.Input[str] sid: The server administrator Sid (Secure ID).
         :param pulumi.Input[str] tenant_id: The server Active Directory Administrator tenant id.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServerAzureADAdministratorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An server Active Directory Administrator.
+        Latest API Version: 2014-04-01.
+
+        :param str resource_name: The name of the resource.
+        :param ServerAzureADAdministratorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServerAzureADAdministratorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 administrator_name: Optional[pulumi.Input[str]] = None,
+                 administrator_type: Optional[pulumi.Input[Union[str, 'AdministratorType']]] = None,
+                 login: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None,
+                 sid: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""ServerAzureADAdministrator is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:sql:ServerAzureADAdministrator'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -60,29 +210,29 @@ class ServerAzureADAdministrator(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServerAzureADAdministratorArgs.__new__(ServerAzureADAdministratorArgs)
 
-            __props__['administrator_name'] = administrator_name
+            __props__.__dict__['administrator_name'] = administrator_name
             if administrator_type is None and not opts.urn:
                 raise TypeError("Missing required property 'administrator_type'")
-            __props__['administrator_type'] = administrator_type
+            __props__.__dict__['administrator_type'] = administrator_type
             if login is None and not opts.urn:
                 raise TypeError("Missing required property 'login'")
-            __props__['login'] = login
+            __props__.__dict__['login'] = login
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if server_name is None and not opts.urn:
                 raise TypeError("Missing required property 'server_name'")
-            __props__['server_name'] = server_name
+            __props__.__dict__['server_name'] = server_name
             if sid is None and not opts.urn:
                 raise TypeError("Missing required property 'sid'")
-            __props__['sid'] = sid
+            __props__.__dict__['sid'] = sid
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
-            __props__['tenant_id'] = tenant_id
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['tenant_id'] = tenant_id
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:sql/latest:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-native:sql:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-native:sql/v20140401:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20140401:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-native:sql/v20180601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20180601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-native:sql/v20190601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20190601preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-native:sql/v20200202preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20200202preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-native:sql/v20200801preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20200801preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-native:sql/v20201101preview:ServerAzureADAdministrator"), pulumi.Alias(type_="azure-nextgen:sql/v20201101preview:ServerAzureADAdministrator")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ServerAzureADAdministrator, __self__).__init__(
@@ -105,14 +255,14 @@ class ServerAzureADAdministrator(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ServerAzureADAdministratorArgs.__new__(ServerAzureADAdministratorArgs)
 
-        __props__["administrator_type"] = None
-        __props__["login"] = None
-        __props__["name"] = None
-        __props__["sid"] = None
-        __props__["tenant_id"] = None
-        __props__["type"] = None
+        __props__.__dict__['administrator_type'] = None
+        __props__.__dict__['login'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['sid'] = None
+        __props__.__dict__['tenant_id'] = None
+        __props__.__dict__['type'] = None
         return ServerAzureADAdministrator(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -162,10 +312,4 @@ class ServerAzureADAdministrator(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -205,6 +205,23 @@ class ManagementGroupChildInfoResponse(dict):
     """
     The child information of a management group.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagementGroupChildInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagementGroupChildInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagementGroupChildInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  children: Optional[Sequence['outputs.ManagementGroupChildInfoResponse']] = None,
                  display_name: Optional[str] = None,
@@ -282,15 +299,31 @@ class ManagementGroupChildInfoResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagementGroupDetailsResponse(dict):
     """
     The details of a management group.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedTime":
+            suggest = "updated_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagementGroupDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagementGroupDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagementGroupDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  parent: Optional['outputs.ParentGroupInfoResponse'] = None,
                  updated_by: Optional[str] = None,
@@ -344,15 +377,29 @@ class ManagementGroupDetailsResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ParentGroupInfoResponse(dict):
     """
     (Optional) The ID of the parent management group.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParentGroupInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParentGroupInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParentGroupInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_name: Optional[str] = None,
                  id: Optional[str] = None,
@@ -393,8 +440,5 @@ class ParentGroupInfoResponse(dict):
         The name of the parent management group
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

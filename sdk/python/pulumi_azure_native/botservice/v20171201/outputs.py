@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -48,6 +48,43 @@ class BotPropertiesResponse(dict):
     """
     The parameters to provide for the Bot.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configuredChannels":
+            suggest = "configured_channels"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "enabledChannels":
+            suggest = "enabled_channels"
+        elif key == "endpointVersion":
+            suggest = "endpoint_version"
+        elif key == "msaAppId":
+            suggest = "msa_app_id"
+        elif key == "developerAppInsightKey":
+            suggest = "developer_app_insight_key"
+        elif key == "developerAppInsightsApiKey":
+            suggest = "developer_app_insights_api_key"
+        elif key == "developerAppInsightsApplicationId":
+            suggest = "developer_app_insights_application_id"
+        elif key == "iconUrl":
+            suggest = "icon_url"
+        elif key == "luisAppIds":
+            suggest = "luis_app_ids"
+        elif key == "luisKey":
+            suggest = "luis_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BotPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BotPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BotPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  configured_channels: Sequence[str],
                  display_name: str,
@@ -203,9 +240,6 @@ class BotPropertiesResponse(dict):
         """
         return pulumi.get(self, "luis_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectionSettingParameterResponse(dict):
@@ -241,15 +275,37 @@ class ConnectionSettingParameterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectionSettingPropertiesResponse(dict):
     """
     Properties for a Connection Setting Item
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "settingId":
+            suggest = "setting_id"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "serviceProviderDisplayName":
+            suggest = "service_provider_display_name"
+        elif key == "serviceProviderId":
+            suggest = "service_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionSettingPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionSettingPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionSettingPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  setting_id: str,
                  client_id: Optional[str] = None,
@@ -338,9 +394,6 @@ class ConnectionSettingPropertiesResponse(dict):
         """
         return pulumi.get(self, "service_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DirectLineChannelPropertiesResponse(dict):
@@ -364,15 +417,29 @@ class DirectLineChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "sites")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DirectLineChannelResponse(dict):
     """
     Direct Line channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectLineChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectLineChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectLineChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.DirectLineChannelPropertiesResponse'] = None):
@@ -403,15 +470,37 @@ class DirectLineChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DirectLineSiteResponse(dict):
     """
     A site for the Direct Line channel
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "isV1Enabled":
+            suggest = "is_v1_enabled"
+        elif key == "isV3Enabled":
+            suggest = "is_v3_enabled"
+        elif key == "siteId":
+            suggest = "site_id"
+        elif key == "siteName":
+            suggest = "site_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectLineSiteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectLineSiteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectLineSiteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_enabled: bool,
                  is_v1_enabled: bool,
@@ -494,15 +583,31 @@ class DirectLineSiteResponse(dict):
         """
         return pulumi.get(self, "site_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EmailChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Email channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddress":
+            suggest = "email_address"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmailChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmailChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmailChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email_address: str,
                  is_enabled: bool,
@@ -541,15 +646,29 @@ class EmailChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "password")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EmailChannelResponse(dict):
     """
     Email channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmailChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmailChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmailChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.EmailChannelPropertiesResponse'] = None):
@@ -580,15 +699,37 @@ class EmailChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FacebookChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Facebook channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appId":
+            suggest = "app_id"
+        elif key == "appSecret":
+            suggest = "app_secret"
+        elif key == "callbackUrl":
+            suggest = "callback_url"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "verifyToken":
+            suggest = "verify_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FacebookChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FacebookChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FacebookChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_id: str,
                  app_secret: str,
@@ -661,15 +802,29 @@ class FacebookChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "pages")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FacebookChannelResponse(dict):
     """
     Facebook channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FacebookChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FacebookChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FacebookChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.FacebookChannelPropertiesResponse'] = None):
@@ -700,15 +855,29 @@ class FacebookChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FacebookPageResponse(dict):
     """
     A Facebook page for Facebook channel registration
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FacebookPageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FacebookPageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FacebookPageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_token: str,
                  id: str):
@@ -736,15 +905,35 @@ class FacebookPageResponse(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KikChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Kik channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "userName":
+            suggest = "user_name"
+        elif key == "isValidated":
+            suggest = "is_validated"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KikChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KikChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KikChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_key: str,
                  is_enabled: bool,
@@ -795,15 +984,29 @@ class KikChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "is_validated")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KikChannelResponse(dict):
     """
     Kik channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KikChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KikChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KikChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.KikChannelPropertiesResponse'] = None):
@@ -834,15 +1037,39 @@ class KikChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MsTeamsChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Microsoft Teams channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "callMode":
+            suggest = "call_mode"
+        elif key == "enableCalling":
+            suggest = "enable_calling"
+        elif key == "enableMediaCards":
+            suggest = "enable_media_cards"
+        elif key == "enableMessaging":
+            suggest = "enable_messaging"
+        elif key == "enableVideo":
+            suggest = "enable_video"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MsTeamsChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MsTeamsChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MsTeamsChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_enabled: bool,
                  call_mode: Optional[str] = None,
@@ -919,15 +1146,29 @@ class MsTeamsChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "enable_video")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MsTeamsChannelResponse(dict):
     """
     Microsoft Teams channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MsTeamsChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MsTeamsChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MsTeamsChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.MsTeamsChannelPropertiesResponse'] = None):
@@ -957,9 +1198,6 @@ class MsTeamsChannelResponse(dict):
         The set of properties specific to Microsoft Teams channel resource
         """
         return pulumi.get(self, "properties")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1172,15 +1410,45 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkypeChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Microsoft Teams channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "callingWebHook":
+            suggest = "calling_web_hook"
+        elif key == "enableCalling":
+            suggest = "enable_calling"
+        elif key == "enableGroups":
+            suggest = "enable_groups"
+        elif key == "enableMediaCards":
+            suggest = "enable_media_cards"
+        elif key == "enableMessaging":
+            suggest = "enable_messaging"
+        elif key == "enableScreenSharing":
+            suggest = "enable_screen_sharing"
+        elif key == "enableVideo":
+            suggest = "enable_video"
+        elif key == "groupsMode":
+            suggest = "groups_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkypeChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkypeChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkypeChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_enabled: bool,
                  calling_web_hook: Optional[str] = None,
@@ -1293,15 +1561,29 @@ class SkypeChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "groups_mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkypeChannelResponse(dict):
     """
     Skype channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkypeChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkypeChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkypeChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.SkypeChannelPropertiesResponse'] = None):
@@ -1332,15 +1614,45 @@ class SkypeChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SlackChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Slack channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "isValidated":
+            suggest = "is_validated"
+        elif key == "lastSubmissionId":
+            suggest = "last_submission_id"
+        elif key == "redirectAction":
+            suggest = "redirect_action"
+        elif key == "registerBeforeOAuthFlow":
+            suggest = "register_before_o_auth_flow"
+        elif key == "verificationToken":
+            suggest = "verification_token"
+        elif key == "landingPageUrl":
+            suggest = "landing_page_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlackChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlackChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlackChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_id: str,
                  client_secret: str,
@@ -1446,15 +1758,29 @@ class SlackChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "landing_page_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SlackChannelResponse(dict):
     """
     Slack channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlackChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlackChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlackChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.SlackChannelPropertiesResponse'] = None):
@@ -1485,15 +1811,35 @@ class SlackChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SmsChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Sms channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountSID":
+            suggest = "account_sid"
+        elif key == "authToken":
+            suggest = "auth_token"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "isValidated":
+            suggest = "is_validated"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SmsChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SmsChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SmsChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_sid: str,
                  auth_token: str,
@@ -1555,15 +1901,29 @@ class SmsChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "is_validated")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SmsChannelResponse(dict):
     """
     Sms channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SmsChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SmsChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SmsChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.SmsChannelPropertiesResponse'] = None):
@@ -1594,15 +1954,33 @@ class SmsChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TelegramChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Telegram channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "isValidated":
+            suggest = "is_validated"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelegramChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelegramChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelegramChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_token: str,
                  is_enabled: bool,
@@ -1642,15 +2020,29 @@ class TelegramChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "is_validated")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TelegramChannelResponse(dict):
     """
     Telegram channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelegramChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelegramChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelegramChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.TelegramChannelPropertiesResponse'] = None):
@@ -1681,15 +2073,29 @@ class TelegramChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebChatChannelPropertiesResponse(dict):
     """
     The parameters to provide for the Web Chat channel.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "webChatEmbedCode":
+            suggest = "web_chat_embed_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebChatChannelPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebChatChannelPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebChatChannelPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  web_chat_embed_code: str,
                  sites: Optional[Sequence['outputs.WebChatSiteResponse']] = None):
@@ -1718,15 +2124,29 @@ class WebChatChannelPropertiesResponse(dict):
         """
         return pulumi.get(self, "sites")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebChatChannelResponse(dict):
     """
     Web Chat channel definition
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelName":
+            suggest = "channel_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebChatChannelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebChatChannelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebChatChannelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  channel_name: str,
                  properties: Optional['outputs.WebChatChannelPropertiesResponse'] = None):
@@ -1757,15 +2177,35 @@ class WebChatChannelResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebChatSiteResponse(dict):
     """
     A site for the Webchat channel
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enablePreview":
+            suggest = "enable_preview"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "siteId":
+            suggest = "site_id"
+        elif key == "siteName":
+            suggest = "site_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebChatSiteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebChatSiteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebChatSiteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_preview: bool,
                  is_enabled: bool,
@@ -1836,8 +2276,5 @@ class WebChatSiteResponse(dict):
         Site name
         """
         return pulumi.get(self, "site_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

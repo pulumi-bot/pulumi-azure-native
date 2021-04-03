@@ -5,14 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['Zone']
+__all__ = ['ZoneArgs', 'Zone']
+
+@pulumi.input_type
+class ZoneArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 etag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None,
+                 zone_type: Optional[pulumi.Input['ZoneType']] = None):
+        """
+        The set of arguments for constructing a Zone resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] etag: The etag of the zone.
+        :param pulumi.Input[str] location: The geo-location where the resource lives
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        :param pulumi.Input[str] zone_name: The name of the DNS zone (without a terminating dot).
+        :param pulumi.Input['ZoneType'] zone_type: The type of this DNS zone (Public or Private).
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if zone_name is not None:
+            pulumi.set(__self__, "zone_name", zone_name)
+        if zone_type is None:
+            zone_type = 'Public'
+        if zone_type is not None:
+            pulumi.set(__self__, "zone_type", zone_type)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The etag of the zone.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the DNS zone (without a terminating dot).
+        """
+        return pulumi.get(self, "zone_name")
+
+    @zone_name.setter
+    def zone_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_name", value)
+
+    @property
+    @pulumi.getter(name="zoneType")
+    def zone_type(self) -> Optional[pulumi.Input['ZoneType']]:
+        """
+        The type of this DNS zone (Public or Private).
+        """
+        return pulumi.get(self, "zone_type")
+
+    @zone_type.setter
+    def zone_type(self, value: Optional[pulumi.Input['ZoneType']]):
+        pulumi.set(self, "zone_type", value)
 
 
 class Zone(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +142,39 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] zone_name: The name of the DNS zone (without a terminating dot).
         :param pulumi.Input['ZoneType'] zone_type: The type of this DNS zone (Public or Private).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ZoneArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Describes a DNS zone.
+
+        :param str resource_name: The name of the resource.
+        :param ZoneArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None,
+                 zone_type: Optional[pulumi.Input['ZoneType']] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,24 +190,24 @@ class Zone(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ZoneArgs.__new__(ZoneArgs)
 
-            __props__['etag'] = etag
-            __props__['location'] = location
+            __props__.__dict__['etag'] = etag
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['zone_name'] = zone_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['zone_name'] = zone_name
             if zone_type is None:
                 zone_type = 'Public'
-            __props__['zone_type'] = zone_type
-            __props__['max_number_of_record_sets'] = None
-            __props__['max_number_of_records_per_record_set'] = None
-            __props__['name'] = None
-            __props__['name_servers'] = None
-            __props__['number_of_record_sets'] = None
-            __props__['type'] = None
+            __props__.__dict__['zone_type'] = zone_type
+            __props__.__dict__['max_number_of_record_sets'] = None
+            __props__.__dict__['max_number_of_records_per_record_set'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['name_servers'] = None
+            __props__.__dict__['number_of_record_sets'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:network/v20170901:Zone"), pulumi.Alias(type_="azure-native:network:Zone"), pulumi.Alias(type_="azure-nextgen:network:Zone"), pulumi.Alias(type_="azure-native:network/latest:Zone"), pulumi.Alias(type_="azure-nextgen:network/latest:Zone"), pulumi.Alias(type_="azure-native:network/v20150504preview:Zone"), pulumi.Alias(type_="azure-nextgen:network/v20150504preview:Zone"), pulumi.Alias(type_="azure-native:network/v20160401:Zone"), pulumi.Alias(type_="azure-nextgen:network/v20160401:Zone"), pulumi.Alias(type_="azure-native:network/v20171001:Zone"), pulumi.Alias(type_="azure-nextgen:network/v20171001:Zone"), pulumi.Alias(type_="azure-native:network/v20180301preview:Zone"), pulumi.Alias(type_="azure-nextgen:network/v20180301preview:Zone"), pulumi.Alias(type_="azure-native:network/v20180501:Zone"), pulumi.Alias(type_="azure-nextgen:network/v20180501:Zone")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Zone, __self__).__init__(
@@ -92,18 +230,18 @@ class Zone(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ZoneArgs.__new__(ZoneArgs)
 
-        __props__["etag"] = None
-        __props__["location"] = None
-        __props__["max_number_of_record_sets"] = None
-        __props__["max_number_of_records_per_record_set"] = None
-        __props__["name"] = None
-        __props__["name_servers"] = None
-        __props__["number_of_record_sets"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["zone_type"] = None
+        __props__.__dict__['etag'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['max_number_of_record_sets'] = None
+        __props__.__dict__['max_number_of_records_per_record_set'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['name_servers'] = None
+        __props__.__dict__['number_of_record_sets'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['zone_type'] = None
         return Zone(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -185,10 +323,4 @@ class Zone(pulumi.CustomResource):
         The type of this DNS zone (Public or Private).
         """
         return pulumi.get(self, "zone_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -22,33 +22,34 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "azure-native:sql/v20170301preview:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "azure-native:sql/v20170301preview:DatabaseVulnerabilityAssessment":
-		r, err = NewDatabaseVulnerabilityAssessment(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseVulnerabilityAssessment{}
 	case "azure-native:sql/v20170301preview:DatabaseVulnerabilityAssessmentRuleBaseline":
-		r, err = NewDatabaseVulnerabilityAssessmentRuleBaseline(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseVulnerabilityAssessmentRuleBaseline{}
 	case "azure-native:sql/v20170301preview:Job":
-		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &Job{}
 	case "azure-native:sql/v20170301preview:JobAgent":
-		r, err = NewJobAgent(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobAgent{}
 	case "azure-native:sql/v20170301preview:JobCredential":
-		r, err = NewJobCredential(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobCredential{}
 	case "azure-native:sql/v20170301preview:JobStep":
-		r, err = NewJobStep(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobStep{}
 	case "azure-native:sql/v20170301preview:JobTargetGroup":
-		r, err = NewJobTargetGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobTargetGroup{}
 	case "azure-native:sql/v20170301preview:ManagedDatabase":
-		r, err = NewManagedDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagedDatabase{}
 	case "azure-native:sql/v20170301preview:ManagedInstanceAdministrator":
-		r, err = NewManagedInstanceAdministrator(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagedInstanceAdministrator{}
 	case "azure-native:sql/v20170301preview:SensitivityLabel":
-		r, err = NewSensitivityLabel(ctx, name, nil, pulumi.URN_(urn))
+		r = &SensitivityLabel{}
 	case "azure-native:sql/v20170301preview:ServerDnsAlias":
-		r, err = NewServerDnsAlias(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerDnsAlias{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

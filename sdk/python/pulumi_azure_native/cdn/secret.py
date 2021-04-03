@@ -5,15 +5,85 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Secret']
+__all__ = ['SecretArgs', 'Secret']
+
+@pulumi.input_type
+class SecretArgs:
+    def __init__(__self__, *,
+                 profile_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 parameters: Optional[pulumi.Input[Union['CustomerCertificateParametersArgs', 'ManagedCertificateParametersArgs', 'UrlSigningKeyParametersArgs']]] = None,
+                 secret_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Secret resource.
+        :param pulumi.Input[str] profile_name: Name of the CDN profile which is unique within the resource group.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource group within the Azure subscription.
+        :param pulumi.Input[Union['CustomerCertificateParametersArgs', 'ManagedCertificateParametersArgs', 'UrlSigningKeyParametersArgs']] parameters: object which contains secret parameters
+        :param pulumi.Input[str] secret_name: Name of the Secret under the profile.
+        """
+        pulumi.set(__self__, "profile_name", profile_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
+
+    @property
+    @pulumi.getter(name="profileName")
+    def profile_name(self) -> pulumi.Input[str]:
+        """
+        Name of the CDN profile which is unique within the resource group.
+        """
+        return pulumi.get(self, "profile_name")
+
+    @profile_name.setter
+    def profile_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "profile_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the Resource group within the Azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Union['CustomerCertificateParametersArgs', 'ManagedCertificateParametersArgs', 'UrlSigningKeyParametersArgs']]]:
+        """
+        object which contains secret parameters
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Union['CustomerCertificateParametersArgs', 'ManagedCertificateParametersArgs', 'UrlSigningKeyParametersArgs']]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Secret under the profile.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @secret_name.setter
+    def secret_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_name", value)
 
 
 class Secret(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +105,38 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: Name of the Resource group within the Azure subscription.
         :param pulumi.Input[str] secret_name: Name of the Secret under the profile.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SecretArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Friendly Secret name mapping to the any Secret or secret related information.
+        API Version: 2020-09-01.
+
+        :param str resource_name: The name of the resource.
+        :param SecretArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecretArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 parameters: Optional[pulumi.Input[Union[pulumi.InputType['CustomerCertificateParametersArgs'], pulumi.InputType['ManagedCertificateParametersArgs'], pulumi.InputType['UrlSigningKeyParametersArgs']]]] = None,
+                 profile_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 secret_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -50,21 +152,21 @@ class Secret(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SecretArgs.__new__(SecretArgs)
 
-            __props__['parameters'] = parameters
+            __props__.__dict__['parameters'] = parameters
             if profile_name is None and not opts.urn:
                 raise TypeError("Missing required property 'profile_name'")
-            __props__['profile_name'] = profile_name
+            __props__.__dict__['profile_name'] = profile_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['secret_name'] = secret_name
-            __props__['deployment_status'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['secret_name'] = secret_name
+            __props__.__dict__['deployment_status'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:cdn:Secret"), pulumi.Alias(type_="azure-native:cdn/latest:Secret"), pulumi.Alias(type_="azure-nextgen:cdn/latest:Secret"), pulumi.Alias(type_="azure-native:cdn/v20200901:Secret"), pulumi.Alias(type_="azure-nextgen:cdn/v20200901:Secret")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Secret, __self__).__init__(
@@ -87,14 +189,14 @@ class Secret(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SecretArgs.__new__(SecretArgs)
 
-        __props__["deployment_status"] = None
-        __props__["name"] = None
-        __props__["parameters"] = None
-        __props__["provisioning_state"] = None
-        __props__["system_data"] = None
-        __props__["type"] = None
+        __props__.__dict__['deployment_status'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['parameters'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['system_data'] = None
+        __props__.__dict__['type'] = None
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -141,10 +243,4 @@ class Secret(pulumi.CustomResource):
         Resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

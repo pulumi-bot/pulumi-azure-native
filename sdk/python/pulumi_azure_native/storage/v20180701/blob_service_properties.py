@@ -5,15 +5,117 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BlobServiceProperties']
+__all__ = ['BlobServicePropertiesArgs', 'BlobServiceProperties']
+
+@pulumi.input_type
+class BlobServicePropertiesArgs:
+    def __init__(__self__, *,
+                 account_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 blob_services_name: Optional[pulumi.Input[str]] = None,
+                 cors: Optional[pulumi.Input['CorsRulesArgs']] = None,
+                 default_service_version: Optional[pulumi.Input[str]] = None,
+                 delete_retention_policy: Optional[pulumi.Input['DeleteRetentionPolicyArgs']] = None):
+        """
+        The set of arguments for constructing a BlobServiceProperties resource.
+        :param pulumi.Input[str] account_name: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription. The name is case insensitive.
+        :param pulumi.Input[str] blob_services_name: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+        :param pulumi.Input['CorsRulesArgs'] cors: Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+        :param pulumi.Input[str] default_service_version: DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
+        :param pulumi.Input['DeleteRetentionPolicyArgs'] delete_retention_policy: The blob service properties for soft delete.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if blob_services_name is not None:
+            pulumi.set(__self__, "blob_services_name", blob_services_name)
+        if cors is not None:
+            pulumi.set(__self__, "cors", cors)
+        if default_service_version is not None:
+            pulumi.set(__self__, "default_service_version", default_service_version)
+        if delete_retention_policy is not None:
+            pulumi.set(__self__, "delete_retention_policy", delete_retention_policy)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[str]:
+        """
+        The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the user's subscription. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="blobServicesName")
+    def blob_services_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+        """
+        return pulumi.get(self, "blob_services_name")
+
+    @blob_services_name.setter
+    def blob_services_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blob_services_name", value)
+
+    @property
+    @pulumi.getter
+    def cors(self) -> Optional[pulumi.Input['CorsRulesArgs']]:
+        """
+        Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+        """
+        return pulumi.get(self, "cors")
+
+    @cors.setter
+    def cors(self, value: Optional[pulumi.Input['CorsRulesArgs']]):
+        pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter(name="defaultServiceVersion")
+    def default_service_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
+        """
+        return pulumi.get(self, "default_service_version")
+
+    @default_service_version.setter
+    def default_service_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_service_version", value)
+
+    @property
+    @pulumi.getter(name="deleteRetentionPolicy")
+    def delete_retention_policy(self) -> Optional[pulumi.Input['DeleteRetentionPolicyArgs']]:
+        """
+        The blob service properties for soft delete.
+        """
+        return pulumi.get(self, "delete_retention_policy")
+
+    @delete_retention_policy.setter
+    def delete_retention_policy(self, value: Optional[pulumi.Input['DeleteRetentionPolicyArgs']]):
+        pulumi.set(self, "delete_retention_policy", value)
 
 
 class BlobServiceProperties(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +140,39 @@ class BlobServiceProperties(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeleteRetentionPolicyArgs']] delete_retention_policy: The blob service properties for soft delete.
         :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription. The name is case insensitive.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BlobServicePropertiesArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The properties of a storage account’s Blob service.
+
+        :param str resource_name: The name of the resource.
+        :param BlobServicePropertiesArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BlobServicePropertiesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 blob_services_name: Optional[pulumi.Input[str]] = None,
+                 cors: Optional[pulumi.Input[pulumi.InputType['CorsRulesArgs']]] = None,
+                 default_service_version: Optional[pulumi.Input[str]] = None,
+                 delete_retention_policy: Optional[pulumi.Input[pulumi.InputType['DeleteRetentionPolicyArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -53,20 +188,20 @@ class BlobServiceProperties(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BlobServicePropertiesArgs.__new__(BlobServicePropertiesArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['blob_services_name'] = blob_services_name
-            __props__['cors'] = cors
-            __props__['default_service_version'] = default_service_version
-            __props__['delete_retention_policy'] = delete_retention_policy
+            __props__.__dict__['account_name'] = account_name
+            __props__.__dict__['blob_services_name'] = blob_services_name
+            __props__.__dict__['cors'] = cors
+            __props__.__dict__['default_service_version'] = default_service_version
+            __props__.__dict__['delete_retention_policy'] = delete_retention_policy
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storage/v20180701:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage/latest:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/latest:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage/v20181101:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20181101:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage/v20190401:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20190401:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage/v20190601:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20190601:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage/v20200801preview:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20200801preview:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage/v20210101:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20210101:BlobServiceProperties"), pulumi.Alias(type_="azure-native:storage/v20210201:BlobServiceProperties"), pulumi.Alias(type_="azure-nextgen:storage/v20210201:BlobServiceProperties")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(BlobServiceProperties, __self__).__init__(
@@ -89,13 +224,13 @@ class BlobServiceProperties(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = BlobServicePropertiesArgs.__new__(BlobServicePropertiesArgs)
 
-        __props__["cors"] = None
-        __props__["default_service_version"] = None
-        __props__["delete_retention_policy"] = None
-        __props__["name"] = None
-        __props__["type"] = None
+        __props__.__dict__['cors'] = None
+        __props__.__dict__['default_service_version'] = None
+        __props__.__dict__['delete_retention_policy'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['type'] = None
         return BlobServiceProperties(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -137,10 +272,4 @@ class BlobServiceProperties(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

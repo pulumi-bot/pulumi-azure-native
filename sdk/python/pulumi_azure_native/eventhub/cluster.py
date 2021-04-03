@@ -5,16 +5,103 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Cluster']
+__all__ = ['ClusterArgs', 'Cluster']
+
+@pulumi.input_type
+class ClusterArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input['ClusterSkuArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] resource_group_name: Name of the resource group within the azure subscription.
+        :param pulumi.Input[str] cluster_name: The name of the Event Hubs Cluster.
+        :param pulumi.Input[str] location: Resource location.
+        :param pulumi.Input['ClusterSkuArgs'] sku: Properties of the cluster SKU.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group within the azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Event Hubs Cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource location.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input['ClusterSkuArgs']]:
+        """
+        Properties of the cluster SKU.
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input['ClusterSkuArgs']]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Cluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +125,39 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterSkuArgs']] sku: Properties of the cluster SKU.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Single Event Hubs Cluster resource in List or Get operations.
+        API Version: 2018-01-01-preview.
+
+        :param str resource_name: The name of the resource.
+        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['ClusterSkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -53,21 +173,21 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterArgs.__new__(ClusterArgs)
 
-            __props__['cluster_name'] = cluster_name
-            __props__['location'] = location
+            __props__.__dict__['cluster_name'] = cluster_name
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['created_at'] = None
-            __props__['metric_id'] = None
-            __props__['name'] = None
-            __props__['status'] = None
-            __props__['type'] = None
-            __props__['updated_at'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['created_at'] = None
+            __props__.__dict__['metric_id'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['status'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['updated_at'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:eventhub:Cluster"), pulumi.Alias(type_="azure-native:eventhub/v20180101preview:Cluster"), pulumi.Alias(type_="azure-nextgen:eventhub/v20180101preview:Cluster")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Cluster, __self__).__init__(
@@ -90,17 +210,17 @@ class Cluster(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ClusterArgs.__new__(ClusterArgs)
 
-        __props__["created_at"] = None
-        __props__["location"] = None
-        __props__["metric_id"] = None
-        __props__["name"] = None
-        __props__["sku"] = None
-        __props__["status"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["updated_at"] = None
+        __props__.__dict__['created_at'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['metric_id'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['sku'] = None
+        __props__.__dict__['status'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['updated_at'] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -174,10 +294,4 @@ class Cluster(pulumi.CustomResource):
         The UTC time when the Event Hubs Cluster was last updated.
         """
         return pulumi.get(self, "updated_at")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

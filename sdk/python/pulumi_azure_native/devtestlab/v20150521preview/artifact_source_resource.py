@@ -5,14 +5,260 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
-__all__ = ['ArtifactSourceResource']
+__all__ = ['ArtifactSourceResourceArgs', 'ArtifactSourceResource']
+
+@pulumi.input_type
+class ArtifactSourceResourceArgs:
+    def __init__(__self__, *,
+                 lab_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 branch_ref: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 folder_path: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[str]] = None,
+                 security_token: Optional[pulumi.Input[str]] = None,
+                 source_type: Optional[pulumi.Input[Union[str, 'SourceControlType']]] = None,
+                 status: Optional[pulumi.Input[Union[str, 'EnableStatus']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ArtifactSourceResource resource.
+        :param pulumi.Input[str] lab_name: The name of the lab.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group.
+        :param pulumi.Input[str] branch_ref: The branch reference of the artifact source.
+        :param pulumi.Input[str] display_name: The display name of the artifact source.
+        :param pulumi.Input[str] folder_path: The folder path of the artifact source.
+        :param pulumi.Input[str] id: The identifier of the resource.
+        :param pulumi.Input[str] location: The location of the resource.
+        :param pulumi.Input[str] name: The name of the resource.
+        :param pulumi.Input[str] provisioning_state: The provisioning status of the resource.
+        :param pulumi.Input[str] security_token: The security token of the artifact source.
+        :param pulumi.Input[Union[str, 'SourceControlType']] source_type: The type of the artifact source.
+        :param pulumi.Input[Union[str, 'EnableStatus']] status: The status of the artifact source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
+        :param pulumi.Input[str] type: The type of the resource.
+        :param pulumi.Input[str] uri: The URI of the artifact source.
+        """
+        pulumi.set(__self__, "lab_name", lab_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if branch_ref is not None:
+            pulumi.set(__self__, "branch_ref", branch_ref)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if folder_path is not None:
+            pulumi.set(__self__, "folder_path", folder_path)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if provisioning_state is not None:
+            pulumi.set(__self__, "provisioning_state", provisioning_state)
+        if security_token is not None:
+            pulumi.set(__self__, "security_token", security_token)
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="labName")
+    def lab_name(self) -> pulumi.Input[str]:
+        """
+        The name of the lab.
+        """
+        return pulumi.get(self, "lab_name")
+
+    @lab_name.setter
+    def lab_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lab_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="branchRef")
+    def branch_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The branch reference of the artifact source.
+        """
+        return pulumi.get(self, "branch_ref")
+
+    @branch_ref.setter
+    def branch_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch_ref", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the artifact source.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="folderPath")
+    def folder_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The folder path of the artifact source.
+        """
+        return pulumi.get(self, "folder_path")
+
+    @folder_path.setter
+    def folder_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder_path", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the resource.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the resource.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provisioning status of the resource.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @provisioning_state.setter
+    def provisioning_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_state", value)
+
+    @property
+    @pulumi.getter(name="securityToken")
+    def security_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security token of the artifact source.
+        """
+        return pulumi.get(self, "security_token")
+
+    @security_token.setter
+    def security_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_token", value)
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> Optional[pulumi.Input[Union[str, 'SourceControlType']]]:
+        """
+        The type of the artifact source.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: Optional[pulumi.Input[Union[str, 'SourceControlType']]]):
+        pulumi.set(self, "source_type", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[Union[str, 'EnableStatus']]]:
+        """
+        The status of the artifact source.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[Union[str, 'EnableStatus']]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the resource.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the artifact source.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
 
 
 class ArtifactSourceResource(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +301,48 @@ class ArtifactSourceResource(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the resource.
         :param pulumi.Input[str] uri: The URI of the artifact source.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ArtifactSourceResourceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Properties of an artifact source.
+
+        :param str resource_name: The name of the resource.
+        :param ArtifactSourceResourceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ArtifactSourceResourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 branch_ref: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 folder_path: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 lab_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 security_token: Optional[pulumi.Input[str]] = None,
+                 source_type: Optional[pulumi.Input[Union[str, 'SourceControlType']]] = None,
+                 status: Optional[pulumi.Input[Union[str, 'EnableStatus']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -70,27 +358,27 @@ class ArtifactSourceResource(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ArtifactSourceResourceArgs.__new__(ArtifactSourceResourceArgs)
 
-            __props__['branch_ref'] = branch_ref
-            __props__['display_name'] = display_name
-            __props__['folder_path'] = folder_path
-            __props__['id'] = id
+            __props__.__dict__['branch_ref'] = branch_ref
+            __props__.__dict__['display_name'] = display_name
+            __props__.__dict__['folder_path'] = folder_path
+            __props__.__dict__['id'] = id
             if lab_name is None and not opts.urn:
                 raise TypeError("Missing required property 'lab_name'")
-            __props__['lab_name'] = lab_name
-            __props__['location'] = location
-            __props__['name'] = name
-            __props__['provisioning_state'] = provisioning_state
+            __props__.__dict__['lab_name'] = lab_name
+            __props__.__dict__['location'] = location
+            __props__.__dict__['name'] = name
+            __props__.__dict__['provisioning_state'] = provisioning_state
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['security_token'] = security_token
-            __props__['source_type'] = source_type
-            __props__['status'] = status
-            __props__['tags'] = tags
-            __props__['type'] = type
-            __props__['uri'] = uri
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['security_token'] = security_token
+            __props__.__dict__['source_type'] = source_type
+            __props__.__dict__['status'] = status
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['type'] = type
+            __props__.__dict__['uri'] = uri
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:devtestlab/v20150521preview:ArtifactSourceResource"), pulumi.Alias(type_="azure-native:devtestlab:ArtifactSourceResource"), pulumi.Alias(type_="azure-nextgen:devtestlab:ArtifactSourceResource"), pulumi.Alias(type_="azure-native:devtestlab/latest:ArtifactSourceResource"), pulumi.Alias(type_="azure-nextgen:devtestlab/latest:ArtifactSourceResource"), pulumi.Alias(type_="azure-native:devtestlab/v20160515:ArtifactSourceResource"), pulumi.Alias(type_="azure-nextgen:devtestlab/v20160515:ArtifactSourceResource"), pulumi.Alias(type_="azure-native:devtestlab/v20180915:ArtifactSourceResource"), pulumi.Alias(type_="azure-nextgen:devtestlab/v20180915:ArtifactSourceResource")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ArtifactSourceResource, __self__).__init__(
@@ -113,20 +401,20 @@ class ArtifactSourceResource(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ArtifactSourceResourceArgs.__new__(ArtifactSourceResourceArgs)
 
-        __props__["branch_ref"] = None
-        __props__["display_name"] = None
-        __props__["folder_path"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["security_token"] = None
-        __props__["source_type"] = None
-        __props__["status"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["uri"] = None
+        __props__.__dict__['branch_ref'] = None
+        __props__.__dict__['display_name'] = None
+        __props__.__dict__['folder_path'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['security_token'] = None
+        __props__.__dict__['source_type'] = None
+        __props__.__dict__['status'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['uri'] = None
         return ArtifactSourceResource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -224,10 +512,4 @@ class ArtifactSourceResource(pulumi.CustomResource):
         The URI of the artifact source.
         """
         return pulumi.get(self, "uri")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

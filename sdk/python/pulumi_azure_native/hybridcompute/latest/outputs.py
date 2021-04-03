@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -71,15 +71,29 @@ class ErrorDetailResponse(dict):
         """
         return pulumi.get(self, "target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocationDataResponse(dict):
     """
     Metadata pertaining to the geographic location of the resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countryOrRegion":
+            suggest = "country_or_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocationDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocationDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocationDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  city: Optional[str] = None,
@@ -132,15 +146,29 @@ class LocationDataResponse(dict):
         """
         return pulumi.get(self, "district")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MachineExtensionInstanceViewResponse(dict):
     """
     Describes the Machine Extension Instance View.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "typeHandlerVersion":
+            suggest = "type_handler_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineExtensionInstanceViewResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineExtensionInstanceViewResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -191,15 +219,29 @@ class MachineExtensionInstanceViewResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MachineExtensionInstanceViewResponseStatus(dict):
     """
     Instance view status.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayStatus":
+            suggest = "display_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponseStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  code: str,
                  display_status: str,
@@ -260,15 +302,29 @@ class MachineExtensionInstanceViewResponseStatus(dict):
         """
         return pulumi.get(self, "time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MachineExtensionPropertiesResponseInstanceView(dict):
     """
     The machine extension instance view.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "typeHandlerVersion":
+            suggest = "type_handler_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionPropertiesResponseInstanceView. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineExtensionPropertiesResponseInstanceView.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineExtensionPropertiesResponseInstanceView.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -319,15 +375,29 @@ class MachineExtensionPropertiesResponseInstanceView(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MachinePropertiesResponseOsProfile(dict):
     """
     Specifies the operating system settings for the hybrid machine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computerName":
+            suggest = "computer_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachinePropertiesResponseOsProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachinePropertiesResponseOsProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachinePropertiesResponseOsProfile.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  computer_name: str):
         """
@@ -344,12 +414,28 @@ class MachinePropertiesResponseOsProfile(dict):
         """
         return pulumi.get(self, "computer_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MachineResponseIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineResponseIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineResponseIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineResponseIdentity.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -387,8 +473,5 @@ class MachineResponseIdentity(dict):
         The identity type.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -5,14 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['PublishedBlueprint']
+__all__ = ['PublishedBlueprintArgs', 'PublishedBlueprint']
+
+@pulumi.input_type
+class PublishedBlueprintArgs:
+    def __init__(__self__, *,
+                 blueprint_name: pulumi.Input[str],
+                 management_group_name: pulumi.Input[str],
+                 version_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a PublishedBlueprint resource.
+        :param pulumi.Input[str] blueprint_name: name of the blueprint.
+        :param pulumi.Input[str] management_group_name: ManagementGroup where blueprint stores.
+        :param pulumi.Input[str] version_id: version of the published blueprint.
+        """
+        pulumi.set(__self__, "blueprint_name", blueprint_name)
+        pulumi.set(__self__, "management_group_name", management_group_name)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter(name="blueprintName")
+    def blueprint_name(self) -> pulumi.Input[str]:
+        """
+        name of the blueprint.
+        """
+        return pulumi.get(self, "blueprint_name")
+
+    @blueprint_name.setter
+    def blueprint_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint_name", value)
+
+    @property
+    @pulumi.getter(name="managementGroupName")
+    def management_group_name(self) -> pulumi.Input[str]:
+        """
+        ManagementGroup where blueprint stores.
+        """
+        return pulumi.get(self, "management_group_name")
+
+    @management_group_name.setter
+    def management_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "management_group_name", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        version of the published blueprint.
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
 
 
 class PublishedBlueprint(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,6 +85,36 @@ class PublishedBlueprint(pulumi.CustomResource):
         :param pulumi.Input[str] management_group_name: ManagementGroup where blueprint stores.
         :param pulumi.Input[str] version_id: version of the published blueprint.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PublishedBlueprintArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a published Blueprint.
+
+        :param str resource_name: The name of the resource.
+        :param PublishedBlueprintArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PublishedBlueprintArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 blueprint_name: Optional[pulumi.Input[str]] = None,
+                 management_group_name: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -46,24 +130,24 @@ class PublishedBlueprint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PublishedBlueprintArgs.__new__(PublishedBlueprintArgs)
 
             if blueprint_name is None and not opts.urn:
                 raise TypeError("Missing required property 'blueprint_name'")
-            __props__['blueprint_name'] = blueprint_name
+            __props__.__dict__['blueprint_name'] = blueprint_name
             if management_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'management_group_name'")
-            __props__['management_group_name'] = management_group_name
-            __props__['version_id'] = version_id
-            __props__['change_notes'] = None
-            __props__['description'] = None
-            __props__['display_name'] = None
-            __props__['name'] = None
-            __props__['parameters'] = None
-            __props__['resource_groups'] = None
-            __props__['status'] = None
-            __props__['target_scope'] = None
-            __props__['type'] = None
+            __props__.__dict__['management_group_name'] = management_group_name
+            __props__.__dict__['version_id'] = version_id
+            __props__.__dict__['change_notes'] = None
+            __props__.__dict__['description'] = None
+            __props__.__dict__['display_name'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['parameters'] = None
+            __props__.__dict__['resource_groups'] = None
+            __props__.__dict__['status'] = None
+            __props__.__dict__['target_scope'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:blueprint/v20171111preview:PublishedBlueprint")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PublishedBlueprint, __self__).__init__(
@@ -86,18 +170,18 @@ class PublishedBlueprint(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = PublishedBlueprintArgs.__new__(PublishedBlueprintArgs)
 
-        __props__["blueprint_name"] = None
-        __props__["change_notes"] = None
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["name"] = None
-        __props__["parameters"] = None
-        __props__["resource_groups"] = None
-        __props__["status"] = None
-        __props__["target_scope"] = None
-        __props__["type"] = None
+        __props__.__dict__['blueprint_name'] = None
+        __props__.__dict__['change_notes'] = None
+        __props__.__dict__['description'] = None
+        __props__.__dict__['display_name'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['parameters'] = None
+        __props__.__dict__['resource_groups'] = None
+        __props__.__dict__['status'] = None
+        __props__.__dict__['target_scope'] = None
+        __props__.__dict__['type'] = None
         return PublishedBlueprint(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -179,10 +263,4 @@ class PublishedBlueprint(pulumi.CustomResource):
         Type of this resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

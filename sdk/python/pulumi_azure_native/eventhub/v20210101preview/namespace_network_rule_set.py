@@ -5,16 +5,118 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['NamespaceNetworkRuleSet']
+__all__ = ['NamespaceNetworkRuleSetArgs', 'NamespaceNetworkRuleSet']
+
+@pulumi.input_type
+class NamespaceNetworkRuleSetArgs:
+    def __init__(__self__, *,
+                 namespace_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 default_action: Optional[pulumi.Input[Union[str, 'DefaultAction']]] = None,
+                 ip_rules: Optional[pulumi.Input[Sequence[pulumi.Input['NWRuleSetIpRulesArgs']]]] = None,
+                 trusted_service_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 virtual_network_rules: Optional[pulumi.Input[Sequence[pulumi.Input['NWRuleSetVirtualNetworkRulesArgs']]]] = None):
+        """
+        The set of arguments for constructing a NamespaceNetworkRuleSet resource.
+        :param pulumi.Input[str] namespace_name: The Namespace name
+        :param pulumi.Input[str] resource_group_name: Name of the resource group within the azure subscription.
+        :param pulumi.Input[Union[str, 'DefaultAction']] default_action: Default Action for Network Rule Set
+        :param pulumi.Input[Sequence[pulumi.Input['NWRuleSetIpRulesArgs']]] ip_rules: List of IpRules
+        :param pulumi.Input[bool] trusted_service_access_enabled: Value that indicates whether Trusted Service Access is Enabled or not.
+        :param pulumi.Input[Sequence[pulumi.Input['NWRuleSetVirtualNetworkRulesArgs']]] virtual_network_rules: List VirtualNetwork Rules
+        """
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if default_action is not None:
+            pulumi.set(__self__, "default_action", default_action)
+        if ip_rules is not None:
+            pulumi.set(__self__, "ip_rules", ip_rules)
+        if trusted_service_access_enabled is not None:
+            pulumi.set(__self__, "trusted_service_access_enabled", trusted_service_access_enabled)
+        if virtual_network_rules is not None:
+            pulumi.set(__self__, "virtual_network_rules", virtual_network_rules)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> pulumi.Input[str]:
+        """
+        The Namespace name
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the resource group within the azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> Optional[pulumi.Input[Union[str, 'DefaultAction']]]:
+        """
+        Default Action for Network Rule Set
+        """
+        return pulumi.get(self, "default_action")
+
+    @default_action.setter
+    def default_action(self, value: Optional[pulumi.Input[Union[str, 'DefaultAction']]]):
+        pulumi.set(self, "default_action", value)
+
+    @property
+    @pulumi.getter(name="ipRules")
+    def ip_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NWRuleSetIpRulesArgs']]]]:
+        """
+        List of IpRules
+        """
+        return pulumi.get(self, "ip_rules")
+
+    @ip_rules.setter
+    def ip_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NWRuleSetIpRulesArgs']]]]):
+        pulumi.set(self, "ip_rules", value)
+
+    @property
+    @pulumi.getter(name="trustedServiceAccessEnabled")
+    def trusted_service_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Value that indicates whether Trusted Service Access is Enabled or not.
+        """
+        return pulumi.get(self, "trusted_service_access_enabled")
+
+    @trusted_service_access_enabled.setter
+    def trusted_service_access_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "trusted_service_access_enabled", value)
+
+    @property
+    @pulumi.getter(name="virtualNetworkRules")
+    def virtual_network_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NWRuleSetVirtualNetworkRulesArgs']]]]:
+        """
+        List VirtualNetwork Rules
+        """
+        return pulumi.get(self, "virtual_network_rules")
+
+    @virtual_network_rules.setter
+    def virtual_network_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NWRuleSetVirtualNetworkRulesArgs']]]]):
+        pulumi.set(self, "virtual_network_rules", value)
 
 
 class NamespaceNetworkRuleSet(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +141,39 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         :param pulumi.Input[bool] trusted_service_access_enabled: Value that indicates whether Trusted Service Access is Enabled or not.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NWRuleSetVirtualNetworkRulesArgs']]]] virtual_network_rules: List VirtualNetwork Rules
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NamespaceNetworkRuleSetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Description of topic resource.
+
+        :param str resource_name: The name of the resource.
+        :param NamespaceNetworkRuleSetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NamespaceNetworkRuleSetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_action: Optional[pulumi.Input[Union[str, 'DefaultAction']]] = None,
+                 ip_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NWRuleSetIpRulesArgs']]]]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 trusted_service_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 virtual_network_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NWRuleSetVirtualNetworkRulesArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -54,21 +189,21 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NamespaceNetworkRuleSetArgs.__new__(NamespaceNetworkRuleSetArgs)
 
-            __props__['default_action'] = default_action
-            __props__['ip_rules'] = ip_rules
+            __props__.__dict__['default_action'] = default_action
+            __props__.__dict__['ip_rules'] = ip_rules
             if namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_name'")
-            __props__['namespace_name'] = namespace_name
+            __props__.__dict__['namespace_name'] = namespace_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['trusted_service_access_enabled'] = trusted_service_access_enabled
-            __props__['virtual_network_rules'] = virtual_network_rules
-            __props__['name'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['trusted_service_access_enabled'] = trusted_service_access_enabled
+            __props__.__dict__['virtual_network_rules'] = virtual_network_rules
+            __props__.__dict__['name'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:eventhub/v20210101preview:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-native:eventhub:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-nextgen:eventhub:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-native:eventhub/latest:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-nextgen:eventhub/latest:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-native:eventhub/v20170401:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-nextgen:eventhub/v20170401:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-native:eventhub/v20180101preview:NamespaceNetworkRuleSet"), pulumi.Alias(type_="azure-nextgen:eventhub/v20180101preview:NamespaceNetworkRuleSet")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(NamespaceNetworkRuleSet, __self__).__init__(
@@ -91,15 +226,15 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = NamespaceNetworkRuleSetArgs.__new__(NamespaceNetworkRuleSetArgs)
 
-        __props__["default_action"] = None
-        __props__["ip_rules"] = None
-        __props__["name"] = None
-        __props__["system_data"] = None
-        __props__["trusted_service_access_enabled"] = None
-        __props__["type"] = None
-        __props__["virtual_network_rules"] = None
+        __props__.__dict__['default_action'] = None
+        __props__.__dict__['ip_rules'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['system_data'] = None
+        __props__.__dict__['trusted_service_access_enabled'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['virtual_network_rules'] = None
         return NamespaceNetworkRuleSet(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -157,10 +292,4 @@ class NamespaceNetworkRuleSet(pulumi.CustomResource):
         List VirtualNetwork Rules
         """
         return pulumi.get(self, "virtual_network_rules")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

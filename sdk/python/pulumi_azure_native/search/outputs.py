@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -29,6 +29,25 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -67,9 +86,6 @@ class IdentityResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IpRuleResponse(dict):
@@ -93,15 +109,29 @@ class IpRuleResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkRuleSetResponse(dict):
     """
     Network specific rules that determine how the Azure Cognitive Search service may be reached.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipRules":
+            suggest = "ip_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_rules: Optional[Sequence['outputs.IpRuleResponse']] = None):
         """
@@ -119,15 +149,31 @@ class NetworkRuleSetResponse(dict):
         """
         return pulumi.get(self, "ip_rules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateEndpoint":
+            suggest = "private_endpoint"
+        elif key == "privateLinkServiceConnectionState":
+            suggest = "private_link_service_connection_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_endpoint: Optional['outputs.PrivateEndpointConnectionPropertiesResponsePrivateEndpoint'] = None,
                  private_link_service_connection_state: Optional['outputs.PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState'] = None):
@@ -157,9 +203,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
         """
         return pulumi.get(self, "private_link_service_connection_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointConnectionPropertiesResponsePrivateEndpoint(dict):
@@ -183,15 +226,29 @@ class PrivateEndpointConnectionPropertiesResponsePrivateEndpoint(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState(dict):
     """
     Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionsRequired":
+            suggest = "actions_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -234,9 +291,6 @@ class PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionSta
         Status of the the private link service connection. Can be Pending, Approved, Rejected, or Disconnected.
         """
         return pulumi.get(self, "status")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -294,9 +348,6 @@ class PrivateEndpointConnectionResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueryKeyResponseResult(dict):
@@ -336,6 +387,31 @@ class SharedPrivateLinkResourcePropertiesResponse(dict):
     """
     Describes the properties of an existing Shared Private Link Resource managed by the Azure Cognitive Search service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "privateLinkResourceId":
+            suggest = "private_link_resource_id"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "requestMessage":
+            suggest = "request_message"
+        elif key == "resourceRegion":
+            suggest = "resource_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SharedPrivateLinkResourcePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SharedPrivateLinkResourcePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SharedPrivateLinkResourcePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  group_id: Optional[str] = None,
                  private_link_resource_id: Optional[str] = None,
@@ -413,9 +489,6 @@ class SharedPrivateLinkResourcePropertiesResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SharedPrivateLinkResourceResponse(dict):
@@ -472,9 +545,6 @@ class SharedPrivateLinkResourceResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
@@ -497,8 +567,5 @@ class SkuResponse(dict):
         The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -5,16 +5,116 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['MediaGraph']
+__all__ = ['MediaGraphArgs', 'MediaGraph']
+
+@pulumi.input_type
+class MediaGraphArgs:
+    def __init__(__self__, *,
+                 account_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 sinks: pulumi.Input[Sequence[pulumi.Input['MediaGraphAssetSinkArgs']]],
+                 sources: pulumi.Input[Sequence[pulumi.Input['MediaGraphRtspSourceArgs']]],
+                 description: Optional[pulumi.Input[str]] = None,
+                 media_graph_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a MediaGraph resource.
+        :param pulumi.Input[str] account_name: The Media Services account name.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the Azure subscription.
+        :param pulumi.Input[Sequence[pulumi.Input['MediaGraphAssetSinkArgs']]] sinks: Media Graph sinks.
+        :param pulumi.Input[Sequence[pulumi.Input['MediaGraphRtspSourceArgs']]] sources: Media Graph sources.
+        :param pulumi.Input[str] description: Media Graph description.
+        :param pulumi.Input[str] media_graph_name: The Media Graph name.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "sinks", sinks)
+        pulumi.set(__self__, "sources", sources)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if media_graph_name is not None:
+            pulumi.set(__self__, "media_graph_name", media_graph_name)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[str]:
+        """
+        The Media Services account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the Azure subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def sinks(self) -> pulumi.Input[Sequence[pulumi.Input['MediaGraphAssetSinkArgs']]]:
+        """
+        Media Graph sinks.
+        """
+        return pulumi.get(self, "sinks")
+
+    @sinks.setter
+    def sinks(self, value: pulumi.Input[Sequence[pulumi.Input['MediaGraphAssetSinkArgs']]]):
+        pulumi.set(self, "sinks", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> pulumi.Input[Sequence[pulumi.Input['MediaGraphRtspSourceArgs']]]:
+        """
+        Media Graph sources.
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: pulumi.Input[Sequence[pulumi.Input['MediaGraphRtspSourceArgs']]]):
+        pulumi.set(self, "sources", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Media Graph description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="mediaGraphName")
+    def media_graph_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Media Graph name.
+        """
+        return pulumi.get(self, "media_graph_name")
+
+    @media_graph_name.setter
+    def media_graph_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "media_graph_name", value)
 
 
 class MediaGraph(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +139,39 @@ class MediaGraph(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MediaGraphAssetSinkArgs']]]] sinks: Media Graph sinks.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MediaGraphRtspSourceArgs']]]] sources: Media Graph sources.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MediaGraphArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The Media Graph.
+
+        :param str resource_name: The name of the resource.
+        :param MediaGraphArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MediaGraphArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 media_graph_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MediaGraphAssetSinkArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MediaGraphRtspSourceArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -54,27 +187,27 @@ class MediaGraph(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MediaGraphArgs.__new__(MediaGraphArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['description'] = description
-            __props__['media_graph_name'] = media_graph_name
+            __props__.__dict__['account_name'] = account_name
+            __props__.__dict__['description'] = description
+            __props__.__dict__['media_graph_name'] = media_graph_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if sinks is None and not opts.urn:
                 raise TypeError("Missing required property 'sinks'")
-            __props__['sinks'] = sinks
+            __props__.__dict__['sinks'] = sinks
             if sources is None and not opts.urn:
                 raise TypeError("Missing required property 'sources'")
-            __props__['sources'] = sources
-            __props__['created'] = None
-            __props__['last_modified'] = None
-            __props__['name'] = None
-            __props__['state'] = None
-            __props__['type'] = None
+            __props__.__dict__['sources'] = sources
+            __props__.__dict__['created'] = None
+            __props__.__dict__['last_modified'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:media/v20200201preview:MediaGraph"), pulumi.Alias(type_="azure-native:media:MediaGraph"), pulumi.Alias(type_="azure-nextgen:media:MediaGraph"), pulumi.Alias(type_="azure-native:media/v20190901preview:MediaGraph"), pulumi.Alias(type_="azure-nextgen:media/v20190901preview:MediaGraph")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MediaGraph, __self__).__init__(
@@ -97,16 +230,16 @@ class MediaGraph(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = MediaGraphArgs.__new__(MediaGraphArgs)
 
-        __props__["created"] = None
-        __props__["description"] = None
-        __props__["last_modified"] = None
-        __props__["name"] = None
-        __props__["sinks"] = None
-        __props__["sources"] = None
-        __props__["state"] = None
-        __props__["type"] = None
+        __props__.__dict__['created'] = None
+        __props__.__dict__['description'] = None
+        __props__.__dict__['last_modified'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['sinks'] = None
+        __props__.__dict__['sources'] = None
+        __props__.__dict__['state'] = None
+        __props__.__dict__['type'] = None
         return MediaGraph(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -172,10 +305,4 @@ class MediaGraph(pulumi.CustomResource):
         The type of the resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

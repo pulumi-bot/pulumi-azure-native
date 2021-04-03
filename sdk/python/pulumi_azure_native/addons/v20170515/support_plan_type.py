@@ -5,13 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['SupportPlanType']
+__all__ = ['SupportPlanTypeArgs', 'SupportPlanType']
+
+@pulumi.input_type
+class SupportPlanTypeArgs:
+    def __init__(__self__, *,
+                 provider_name: pulumi.Input[str],
+                 plan_type_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SupportPlanType resource.
+        :param pulumi.Input[str] provider_name: The support plan type. For now the only valid type is "canonical".
+        :param pulumi.Input[str] plan_type_name: The Canonical support plan type.
+        """
+        pulumi.set(__self__, "provider_name", provider_name)
+        if plan_type_name is not None:
+            pulumi.set(__self__, "plan_type_name", plan_type_name)
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> pulumi.Input[str]:
+        """
+        The support plan type. For now the only valid type is "canonical".
+        """
+        return pulumi.get(self, "provider_name")
+
+    @provider_name.setter
+    def provider_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "provider_name", value)
+
+    @property
+    @pulumi.getter(name="planTypeName")
+    def plan_type_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Canonical support plan type.
+        """
+        return pulumi.get(self, "plan_type_name")
+
+    @plan_type_name.setter
+    def plan_type_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_type_name", value)
 
 
 class SupportPlanType(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -28,6 +67,35 @@ class SupportPlanType(pulumi.CustomResource):
         :param pulumi.Input[str] plan_type_name: The Canonical support plan type.
         :param pulumi.Input[str] provider_name: The support plan type. For now the only valid type is "canonical".
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SupportPlanTypeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The status of the Canonical support plan.
+
+        :param str resource_name: The name of the resource.
+        :param SupportPlanTypeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SupportPlanTypeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 plan_type_name: Optional[pulumi.Input[str]] = None,
+                 provider_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -43,15 +111,15 @@ class SupportPlanType(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SupportPlanTypeArgs.__new__(SupportPlanTypeArgs)
 
-            __props__['plan_type_name'] = plan_type_name
+            __props__.__dict__['plan_type_name'] = plan_type_name
             if provider_name is None and not opts.urn:
                 raise TypeError("Missing required property 'provider_name'")
-            __props__['provider_name'] = provider_name
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['provider_name'] = provider_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:addons/v20170515:SupportPlanType"), pulumi.Alias(type_="azure-native:addons:SupportPlanType"), pulumi.Alias(type_="azure-nextgen:addons:SupportPlanType"), pulumi.Alias(type_="azure-native:addons/latest:SupportPlanType"), pulumi.Alias(type_="azure-nextgen:addons/latest:SupportPlanType"), pulumi.Alias(type_="azure-native:addons/v20180301:SupportPlanType"), pulumi.Alias(type_="azure-nextgen:addons/v20180301:SupportPlanType")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SupportPlanType, __self__).__init__(
@@ -74,11 +142,11 @@ class SupportPlanType(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SupportPlanTypeArgs.__new__(SupportPlanTypeArgs)
 
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["type"] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['type'] = None
         return SupportPlanType(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -104,10 +172,4 @@ class SupportPlanType(pulumi.CustomResource):
         Microsoft.Addons/supportProvider
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

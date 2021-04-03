@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -30,6 +30,27 @@ class AccessPolicyEntryResponse(dict):
     """
     An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "applicationId":
+            suggest = "application_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyEntryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyEntryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyEntryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  object_id: str,
                  permissions: 'outputs.PermissionsResponse',
@@ -80,9 +101,6 @@ class AccessPolicyEntryResponse(dict):
         """
         return pulumi.get(self, "application_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IPRuleResponse(dict):
@@ -105,15 +123,33 @@ class IPRuleResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkRuleSetResponse(dict):
     """
     A set of rules governing the network accessibility of a vault.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultAction":
+            suggest = "default_action"
+        elif key == "ipRules":
+            suggest = "ip_rules"
+        elif key == "virtualNetworkRules":
+            suggest = "virtual_network_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bypass: Optional[str] = None,
                  default_action: Optional[str] = None,
@@ -166,9 +202,6 @@ class NetworkRuleSetResponse(dict):
         The list of virtual network rules.
         """
         return pulumi.get(self, "virtual_network_rules")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -229,15 +262,33 @@ class PermissionsResponse(dict):
         """
         return pulumi.get(self, "storage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointConnectionItemResponse(dict):
     """
     Private endpoint connection item.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "privateEndpoint":
+            suggest = "private_endpoint"
+        elif key == "privateLinkServiceConnectionState":
+            suggest = "private_link_service_connection_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateEndpointConnectionItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateEndpointConnectionItemResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None,
@@ -278,9 +329,6 @@ class PrivateEndpointConnectionItemResponse(dict):
         """
         return pulumi.get(self, "private_link_service_connection_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointResponse(dict):
@@ -303,15 +351,29 @@ class PrivateEndpointResponse(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateLinkServiceConnectionStateResponse(dict):
     """
     An object that represents the approval state of the private link connection.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionRequired":
+            suggest = "action_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -353,15 +415,29 @@ class PrivateLinkServiceConnectionStateResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretAttributesResponse(dict):
     """
     The secret management attributes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notBefore":
+            suggest = "not_before"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created: int,
                  updated: int,
@@ -425,15 +501,33 @@ class SecretAttributesResponse(dict):
         """
         return pulumi.get(self, "not_before")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretPropertiesResponse(dict):
     """
     Properties of the secret
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretUri":
+            suggest = "secret_uri"
+        elif key == "secretUriWithVersion":
+            suggest = "secret_uri_with_version"
+        elif key == "contentType":
+            suggest = "content_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  secret_uri: str,
                  secret_uri_with_version: str,
@@ -497,9 +591,6 @@ class SecretPropertiesResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
@@ -533,15 +624,49 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VaultPropertiesResponse(dict):
     """
     Properties of the vault
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateEndpointConnections":
+            suggest = "private_endpoint_connections"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "accessPolicies":
+            suggest = "access_policies"
+        elif key == "createMode":
+            suggest = "create_mode"
+        elif key == "enablePurgeProtection":
+            suggest = "enable_purge_protection"
+        elif key == "enableSoftDelete":
+            suggest = "enable_soft_delete"
+        elif key == "enabledForDeployment":
+            suggest = "enabled_for_deployment"
+        elif key == "enabledForDiskEncryption":
+            suggest = "enabled_for_disk_encryption"
+        elif key == "enabledForTemplateDeployment":
+            suggest = "enabled_for_template_deployment"
+        elif key == "networkAcls":
+            suggest = "network_acls"
+        elif key == "vaultUri":
+            suggest = "vault_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VaultPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VaultPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_endpoint_connections: Sequence['outputs.PrivateEndpointConnectionItemResponse'],
                  sku: 'outputs.SkuResponse',
@@ -688,9 +813,6 @@ class VaultPropertiesResponse(dict):
         """
         return pulumi.get(self, "vault_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualNetworkRuleResponse(dict):
@@ -712,8 +834,5 @@ class VirtualNetworkRuleResponse(dict):
         Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
         """
         return pulumi.get(self, "id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

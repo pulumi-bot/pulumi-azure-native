@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -30,6 +30,23 @@ class AddressSpaceResponse(dict):
     """
     AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressPrefixes":
+            suggest = "address_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddressSpaceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddressSpaceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddressSpaceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address_prefixes: Optional[Sequence[str]] = None):
         """
@@ -47,15 +64,29 @@ class AddressSpaceResponse(dict):
         """
         return pulumi.get(self, "address_prefixes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CreatedByResponse(dict):
     """
     Provides details of the entity that created/updated the workspace.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationId":
+            suggest = "application_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CreatedByResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CreatedByResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CreatedByResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  application_id: str,
                  oid: str,
@@ -94,15 +125,35 @@ class CreatedByResponse(dict):
         """
         return pulumi.get(self, "puid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionResponse(dict):
     """
     The object that contains details of encryption used on the workspace.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyName":
+            suggest = "key_name"
+        elif key == "keySource":
+            suggest = "key_source"
+        elif key == "keyVaultUri":
+            suggest = "key_vault_uri"
+        elif key == "keyVersion":
+            suggest = "key_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_name: Optional[str] = None,
                  key_source: Optional[str] = None,
@@ -158,15 +209,31 @@ class EncryptionResponse(dict):
         """
         return pulumi.get(self, "key_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedIdentityConfigurationResponse(dict):
     """
     The Managed Identity details for storage account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedIdentityConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedIdentityConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedIdentityConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -205,9 +272,6 @@ class ManagedIdentityConfigurationResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
@@ -242,9 +306,6 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork(dict):
@@ -268,9 +329,6 @@ class VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork(dict
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork(dict):
@@ -293,9 +351,6 @@ class VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork(dict):
         The Id of the remote virtual network.
         """
         return pulumi.get(self, "id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -330,15 +385,41 @@ class WorkspaceCustomBooleanParameterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkspaceCustomParametersResponse(dict):
     """
     Custom Parameters used for Cluster Creation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "amlWorkspaceId":
+            suggest = "aml_workspace_id"
+        elif key == "customPrivateSubnetName":
+            suggest = "custom_private_subnet_name"
+        elif key == "customPublicSubnetName":
+            suggest = "custom_public_subnet_name"
+        elif key == "customVirtualNetworkId":
+            suggest = "custom_virtual_network_id"
+        elif key == "enableNoPublicIp":
+            suggest = "enable_no_public_ip"
+        elif key == "prepareEncryption":
+            suggest = "prepare_encryption"
+        elif key == "requireInfrastructureEncryption":
+            suggest = "require_infrastructure_encryption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkspaceCustomParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkspaceCustomParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkspaceCustomParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aml_workspace_id: Optional['outputs.WorkspaceCustomStringParameterResponse'] = None,
                  custom_private_subnet_name: Optional['outputs.WorkspaceCustomStringParameterResponse'] = None,
@@ -440,9 +521,6 @@ class WorkspaceCustomParametersResponse(dict):
         """
         return pulumi.get(self, "require_infrastructure_encryption")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkspaceCustomStringParameterResponse(dict):
@@ -475,9 +553,6 @@ class WorkspaceCustomStringParameterResponse(dict):
         The value which should be used for this field.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -513,15 +588,31 @@ class WorkspaceEncryptionParameterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkspaceProviderAuthorizationResponse(dict):
     """
     The workspace provider authorization.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "roleDefinitionId":
+            suggest = "role_definition_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkspaceProviderAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkspaceProviderAuthorizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkspaceProviderAuthorizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  role_definition_id: str):
@@ -548,8 +639,5 @@ class WorkspaceProviderAuthorizationResponse(dict):
         The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
         """
         return pulumi.get(self, "role_definition_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

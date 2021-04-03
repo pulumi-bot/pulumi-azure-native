@@ -5,13 +5,84 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Topic']
+__all__ = ['TopicArgs', 'Topic']
+
+@pulumi.input_type
+class TopicArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 topic_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Topic resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group within the user's subscription.
+        :param pulumi.Input[str] location: Location of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the resource
+        :param pulumi.Input[str] topic_name: Name of the topic
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if topic_name is not None:
+            pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group within the user's subscription.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the resource
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the topic
+        """
+        return pulumi.get(self, "topic_name")
+
+    @topic_name.setter
+    def topic_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic_name", value)
 
 
 class Topic(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -32,6 +103,37 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the resource
         :param pulumi.Input[str] topic_name: Name of the topic
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TopicArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        EventGrid Topic
+
+        :param str resource_name: The name of the resource.
+        :param TopicArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 topic_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -47,18 +149,18 @@ class Topic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TopicArgs.__new__(TopicArgs)
 
-            __props__['location'] = location
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['topic_name'] = topic_name
-            __props__['endpoint'] = None
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['topic_name'] = topic_name
+            __props__.__dict__['endpoint'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:eventgrid/v20180101:Topic"), pulumi.Alias(type_="azure-native:eventgrid:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid:Topic"), pulumi.Alias(type_="azure-native:eventgrid/latest:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/latest:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20170615preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20170615preview:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20170915preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20170915preview:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20180501preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20180501preview:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20180915preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20180915preview:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20190101:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20190101:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20190201preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20190201preview:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20190601:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20190601:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20200101preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20200101preview:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20200401preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20200401preview:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20200601:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20200601:Topic"), pulumi.Alias(type_="azure-native:eventgrid/v20201015preview:Topic"), pulumi.Alias(type_="azure-nextgen:eventgrid/v20201015preview:Topic")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Topic, __self__).__init__(
@@ -81,14 +183,14 @@ class Topic(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = TopicArgs.__new__(TopicArgs)
 
-        __props__["endpoint"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__.__dict__['endpoint'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -138,10 +240,4 @@ class Topic(pulumi.CustomResource):
         Type of the resource
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

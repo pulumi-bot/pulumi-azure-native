@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
 __all__ = [
     'IotHubSettingsResponse',
@@ -17,6 +17,27 @@ class IotHubSettingsResponse(dict):
     """
     Device Update account integration with IoT Hub settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "eventHubConnectionString":
+            suggest = "event_hub_connection_string"
+        elif key == "ioTHubConnectionString":
+            suggest = "io_t_hub_connection_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IotHubSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IotHubSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IotHubSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_id: str,
                  event_hub_connection_string: Optional[str] = None,
@@ -56,8 +77,5 @@ class IotHubSettingsResponse(dict):
         IoTHub connection string.
         """
         return pulumi.get(self, "io_t_hub_connection_string")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

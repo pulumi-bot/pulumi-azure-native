@@ -5,16 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Monitor']
+__all__ = ['MonitorArgs', 'Monitor']
+
+@pulumi.input_type
+class MonitorArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 identity: Optional[pulumi.Input['IdentityPropertiesArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 monitor_name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input['MonitorPropertiesArgs']] = None,
+                 sku: Optional[pulumi.Input['ResourceSkuArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Monitor resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group to which the Datadog resource belongs.
+        :param pulumi.Input[str] monitor_name: Monitor resource name
+        :param pulumi.Input['MonitorPropertiesArgs'] properties: Properties specific to the monitor resource.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if monitor_name is not None:
+            pulumi.set(__self__, "monitor_name", monitor_name)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group to which the Datadog resource belongs.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input['IdentityPropertiesArgs']]:
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input['IdentityPropertiesArgs']]):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="monitorName")
+    def monitor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Monitor resource name
+        """
+        return pulumi.get(self, "monitor_name")
+
+    @monitor_name.setter
+    def monitor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitor_name", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['MonitorPropertiesArgs']]:
+        """
+        Properties specific to the monitor resource.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['MonitorPropertiesArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input['ResourceSkuArgs']]:
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input['ResourceSkuArgs']]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Monitor(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +139,39 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MonitorPropertiesArgs']] properties: Properties specific to the monitor resource.
         :param pulumi.Input[str] resource_group_name: The name of the resource group to which the Datadog resource belongs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MonitorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Monitor resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param MonitorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MonitorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['IdentityPropertiesArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 monitor_name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['MonitorPropertiesArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[pulumi.InputType['ResourceSkuArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,19 +187,19 @@ class Monitor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MonitorArgs.__new__(MonitorArgs)
 
-            __props__['identity'] = identity
-            __props__['location'] = location
-            __props__['monitor_name'] = monitor_name
-            __props__['properties'] = properties
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['location'] = location
+            __props__.__dict__['monitor_name'] = monitor_name
+            __props__.__dict__['properties'] = properties
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['sku'] = sku
-            __props__['tags'] = tags
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['sku'] = sku
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:datadog/v20200201preview:Monitor"), pulumi.Alias(type_="azure-native:datadog:Monitor"), pulumi.Alias(type_="azure-nextgen:datadog:Monitor"), pulumi.Alias(type_="azure-native:datadog/latest:Monitor"), pulumi.Alias(type_="azure-nextgen:datadog/latest:Monitor"), pulumi.Alias(type_="azure-native:datadog/v20210301:Monitor"), pulumi.Alias(type_="azure-nextgen:datadog/v20210301:Monitor")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Monitor, __self__).__init__(
@@ -86,15 +222,15 @@ class Monitor(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = MonitorArgs.__new__(MonitorArgs)
 
-        __props__["identity"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["sku"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__.__dict__['identity'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['properties'] = None
+        __props__.__dict__['sku'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
         return Monitor(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -140,10 +276,4 @@ class Monitor(pulumi.CustomResource):
         The type of the monitor resource.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

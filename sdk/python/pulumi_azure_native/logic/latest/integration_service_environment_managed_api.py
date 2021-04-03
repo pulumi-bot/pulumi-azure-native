@@ -5,11 +5,65 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['IntegrationServiceEnvironmentManagedApi']
+__all__ = ['IntegrationServiceEnvironmentManagedApiArgs', 'IntegrationServiceEnvironmentManagedApi']
+
+@pulumi.input_type
+class IntegrationServiceEnvironmentManagedApiArgs:
+    def __init__(__self__, *,
+                 integration_service_environment_name: pulumi.Input[str],
+                 resource_group: pulumi.Input[str],
+                 api_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a IntegrationServiceEnvironmentManagedApi resource.
+        :param pulumi.Input[str] integration_service_environment_name: The integration service environment name.
+        :param pulumi.Input[str] resource_group: The resource group name.
+        :param pulumi.Input[str] api_name: The api name.
+        """
+        pulumi.set(__self__, "integration_service_environment_name", integration_service_environment_name)
+        pulumi.set(__self__, "resource_group", resource_group)
+        if api_name is not None:
+            pulumi.set(__self__, "api_name", api_name)
+
+    @property
+    @pulumi.getter(name="integrationServiceEnvironmentName")
+    def integration_service_environment_name(self) -> pulumi.Input[str]:
+        """
+        The integration service environment name.
+        """
+        return pulumi.get(self, "integration_service_environment_name")
+
+    @integration_service_environment_name.setter
+    def integration_service_environment_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_service_environment_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> pulumi.Input[str]:
+        """
+        The resource group name.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="apiName")
+    def api_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The api name.
+        """
+        return pulumi.get(self, "api_name")
+
+    @api_name.setter
+    def api_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_name", value)
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:logic:IntegrationServiceEnvironmentManagedApi'.""", DeprecationWarning)
 
@@ -17,6 +71,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class IntegrationServiceEnvironmentManagedApi(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:logic:IntegrationServiceEnvironmentManagedApi'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +91,37 @@ class IntegrationServiceEnvironmentManagedApi(pulumi.CustomResource):
         :param pulumi.Input[str] integration_service_environment_name: The integration service environment name.
         :param pulumi.Input[str] resource_group: The resource group name.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntegrationServiceEnvironmentManagedApiArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The managed api definition.
+        Latest API Version: 2019-05-01.
+
+        :param str resource_name: The name of the resource.
+        :param IntegrationServiceEnvironmentManagedApiArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntegrationServiceEnvironmentManagedApiArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_name: Optional[pulumi.Input[str]] = None,
+                 integration_service_environment_name: Optional[pulumi.Input[str]] = None,
+                 resource_group: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""IntegrationServiceEnvironmentManagedApi is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:logic:IntegrationServiceEnvironmentManagedApi'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -52,20 +138,20 @@ class IntegrationServiceEnvironmentManagedApi(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IntegrationServiceEnvironmentManagedApiArgs.__new__(IntegrationServiceEnvironmentManagedApiArgs)
 
-            __props__['api_name'] = api_name
+            __props__.__dict__['api_name'] = api_name
             if integration_service_environment_name is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_service_environment_name'")
-            __props__['integration_service_environment_name'] = integration_service_environment_name
+            __props__.__dict__['integration_service_environment_name'] = integration_service_environment_name
             if resource_group is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group'")
-            __props__['resource_group'] = resource_group
-            __props__['location'] = None
-            __props__['name'] = None
-            __props__['properties'] = None
-            __props__['tags'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group'] = resource_group
+            __props__.__dict__['location'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['properties'] = None
+            __props__.__dict__['tags'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:logic/latest:IntegrationServiceEnvironmentManagedApi"), pulumi.Alias(type_="azure-native:logic:IntegrationServiceEnvironmentManagedApi"), pulumi.Alias(type_="azure-nextgen:logic:IntegrationServiceEnvironmentManagedApi"), pulumi.Alias(type_="azure-native:logic/v20190501:IntegrationServiceEnvironmentManagedApi"), pulumi.Alias(type_="azure-nextgen:logic/v20190501:IntegrationServiceEnvironmentManagedApi")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(IntegrationServiceEnvironmentManagedApi, __self__).__init__(
@@ -88,13 +174,13 @@ class IntegrationServiceEnvironmentManagedApi(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = IntegrationServiceEnvironmentManagedApiArgs.__new__(IntegrationServiceEnvironmentManagedApiArgs)
 
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['properties'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
         return IntegrationServiceEnvironmentManagedApi(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -136,10 +222,4 @@ class IntegrationServiceEnvironmentManagedApi(pulumi.CustomResource):
         Gets the resource type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

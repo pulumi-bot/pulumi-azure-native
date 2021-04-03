@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -56,9 +56,6 @@ class AssignmentInfoResponse(dict):
         """
         return pulumi.get(self, "configuration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AssignmentReportResourceComplianceReasonResponse(dict):
@@ -92,15 +89,31 @@ class AssignmentReportResourceComplianceReasonResponse(dict):
         """
         return pulumi.get(self, "phrase")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AssignmentReportResourceResponse(dict):
     """
     The guest configuration assignment resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceStatus":
+            suggest = "compliance_status"
+        elif key == "resourceId":
+            suggest = "resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssignmentReportResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssignmentReportResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssignmentReportResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  compliance_status: str,
                  properties: Any,
@@ -151,12 +164,34 @@ class AssignmentReportResourceResponse(dict):
         """
         return pulumi.get(self, "reasons")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AssignmentReportResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceStatus":
+            suggest = "compliance_status"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "operationType":
+            suggest = "operation_type"
+        elif key == "reportId":
+            suggest = "report_id"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssignmentReportResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssignmentReportResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssignmentReportResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  compliance_status: str,
                  end_time: str,
@@ -263,9 +298,6 @@ class AssignmentReportResponse(dict):
         """
         return pulumi.get(self, "vm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfigurationInfoResponse(dict):
@@ -298,9 +330,6 @@ class ConfigurationInfoResponse(dict):
         Version of the configuration.
         """
         return pulumi.get(self, "version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -337,15 +366,39 @@ class ConfigurationParameterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfigurationSettingResponse(dict):
     """
     Configuration setting of LCM (Local Configuration Manager).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionAfterReboot":
+            suggest = "action_after_reboot"
+        elif key == "allowModuleOverwrite":
+            suggest = "allow_module_overwrite"
+        elif key == "configurationMode":
+            suggest = "configuration_mode"
+        elif key == "configurationModeFrequencyMins":
+            suggest = "configuration_mode_frequency_mins"
+        elif key == "rebootIfNeeded":
+            suggest = "reboot_if_needed"
+        elif key == "refreshFrequencyMins":
+            suggest = "refresh_frequency_mins"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigurationSettingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigurationSettingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigurationSettingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_after_reboot: Optional[str] = None,
                  allow_module_overwrite: Optional[bool] = None,
@@ -427,15 +480,43 @@ class ConfigurationSettingResponse(dict):
         """
         return pulumi.get(self, "refresh_frequency_mins")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestConfigurationAssignmentPropertiesResponse(dict):
     """
     Guest configuration assignment properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignmentHash":
+            suggest = "assignment_hash"
+        elif key == "complianceStatus":
+            suggest = "compliance_status"
+        elif key == "lastComplianceStatusChecked":
+            suggest = "last_compliance_status_checked"
+        elif key == "latestReportId":
+            suggest = "latest_report_id"
+        elif key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "targetResourceId":
+            suggest = "target_resource_id"
+        elif key == "guestConfiguration":
+            suggest = "guest_configuration"
+        elif key == "latestAssignmentReport":
+            suggest = "latest_assignment_report"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestConfigurationAssignmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestConfigurationAssignmentPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestConfigurationAssignmentPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  assignment_hash: str,
                  compliance_status: str,
@@ -543,15 +624,35 @@ class GuestConfigurationAssignmentPropertiesResponse(dict):
         """
         return pulumi.get(self, "latest_assignment_report")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestConfigurationNavigationResponse(dict):
     """
     Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentHash":
+            suggest = "content_hash"
+        elif key == "contentUri":
+            suggest = "content_uri"
+        elif key == "configurationParameter":
+            suggest = "configuration_parameter"
+        elif key == "configurationSetting":
+            suggest = "configuration_setting"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuestConfigurationNavigationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuestConfigurationNavigationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuestConfigurationNavigationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_hash: str,
                  content_uri: str,
@@ -639,9 +740,6 @@ class GuestConfigurationNavigationResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VMInfoResponse(dict):
@@ -674,8 +772,5 @@ class VMInfoResponse(dict):
         UUID(Universally Unique Identifier) of the VM.
         """
         return pulumi.get(self, "uuid")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

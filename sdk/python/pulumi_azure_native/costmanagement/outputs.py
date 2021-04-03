@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -59,6 +59,27 @@ class CommonExportPropertiesResponse(dict):
     """
     The common properties of the export.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deliveryInfo":
+            suggest = "delivery_info"
+        elif key == "nextRunTimeEstimate":
+            suggest = "next_run_time_estimate"
+        elif key == "runHistory":
+            suggest = "run_history"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CommonExportPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CommonExportPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CommonExportPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  definition: 'outputs.ExportDefinitionResponse',
                  delivery_info: 'outputs.ExportDeliveryInfoResponse',
@@ -121,15 +142,35 @@ class CommonExportPropertiesResponse(dict):
         """
         return pulumi.get(self, "run_history")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectorCollectionErrorInfoResponse(dict):
     """
     Details of any error encountered on last collection attempt
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorCode":
+            suggest = "error_code"
+        elif key == "errorInnerMessage":
+            suggest = "error_inner_message"
+        elif key == "errorMessage":
+            suggest = "error_message"
+        elif key == "errorStartTime":
+            suggest = "error_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorCollectionErrorInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorCollectionErrorInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorCollectionErrorInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_code: str,
                  error_inner_message: str,
@@ -179,15 +220,33 @@ class ConnectorCollectionErrorInfoResponse(dict):
         """
         return pulumi.get(self, "error_start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectorCollectionInfoResponse(dict):
     """
     Collection and ingestion information
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastChecked":
+            suggest = "last_checked"
+        elif key == "lastUpdated":
+            suggest = "last_updated"
+        elif key == "sourceLastUpdated":
+            suggest = "source_last_updated"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorCollectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorCollectionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorCollectionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_checked: str,
                  last_updated: str,
@@ -238,9 +297,6 @@ class ConnectorCollectionInfoResponse(dict):
         """
         return pulumi.get(self, "error")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CostAllocationProportionResponse(dict):
@@ -274,15 +330,31 @@ class CostAllocationProportionResponse(dict):
         """
         return pulumi.get(self, "percentage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CostAllocationRuleDetailsResponse(dict):
     """
     Resource details of the cost allocation rule
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceResources":
+            suggest = "source_resources"
+        elif key == "targetResources":
+            suggest = "target_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CostAllocationRuleDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CostAllocationRuleDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CostAllocationRuleDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_resources: Optional[Sequence['outputs.SourceCostAllocationResourceResponse']] = None,
                  target_resources: Optional[Sequence['outputs.TargetCostAllocationResourceResponse']] = None):
@@ -312,15 +384,31 @@ class CostAllocationRuleDetailsResponse(dict):
         """
         return pulumi.get(self, "target_resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CostAllocationRulePropertiesResponse(dict):
     """
     The properties of a cost allocation rule
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdDate":
+            suggest = "created_date"
+        elif key == "updatedDate":
+            suggest = "updated_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CostAllocationRulePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CostAllocationRulePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CostAllocationRulePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_date: str,
                  details: 'outputs.CostAllocationRuleDetailsResponse',
@@ -382,9 +470,6 @@ class CostAllocationRulePropertiesResponse(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ErrorDetailsResponse(dict):
@@ -418,9 +503,6 @@ class ErrorDetailsResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportDatasetConfigurationResponse(dict):
@@ -443,9 +525,6 @@ class ExportDatasetConfigurationResponse(dict):
         Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
         """
         return pulumi.get(self, "columns")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -482,15 +561,31 @@ class ExportDatasetResponse(dict):
         """
         return pulumi.get(self, "granularity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportDefinitionResponse(dict):
     """
     The definition of an export.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataSet":
+            suggest = "data_set"
+        elif key == "timePeriod":
+            suggest = "time_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExportDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExportDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExportDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  timeframe: str,
                  type: str,
@@ -542,15 +637,31 @@ class ExportDefinitionResponse(dict):
         """
         return pulumi.get(self, "time_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportDeliveryDestinationResponse(dict):
     """
     The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "rootFolderPath":
+            suggest = "root_folder_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExportDeliveryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExportDeliveryDestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExportDeliveryDestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container: str,
                  resource_id: str,
@@ -590,9 +701,6 @@ class ExportDeliveryDestinationResponse(dict):
         """
         return pulumi.get(self, "root_folder_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportDeliveryInfoResponse(dict):
@@ -614,9 +722,6 @@ class ExportDeliveryInfoResponse(dict):
         Has destination for the export being delivered.
         """
         return pulumi.get(self, "destination")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -640,15 +745,43 @@ class ExportExecutionListResultResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportExecutionResponse(dict):
     """
     An export execution.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eTag":
+            suggest = "e_tag"
+        elif key == "executionType":
+            suggest = "execution_type"
+        elif key == "fileName":
+            suggest = "file_name"
+        elif key == "processingEndTime":
+            suggest = "processing_end_time"
+        elif key == "processingStartTime":
+            suggest = "processing_start_time"
+        elif key == "runSettings":
+            suggest = "run_settings"
+        elif key == "submittedBy":
+            suggest = "submitted_by"
+        elif key == "submittedTime":
+            suggest = "submitted_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExportExecutionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExportExecutionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExportExecutionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -807,15 +940,29 @@ class ExportExecutionResponse(dict):
         """
         return pulumi.get(self, "submitted_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportRecurrencePeriodResponse(dict):
     """
     The start and end date for recurrence schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExportRecurrencePeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExportRecurrencePeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExportRecurrencePeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_: str,
                  to: Optional[str] = None):
@@ -844,15 +991,29 @@ class ExportRecurrencePeriodResponse(dict):
         """
         return pulumi.get(self, "to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportScheduleResponse(dict):
     """
     The schedule associated with the export.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recurrencePeriod":
+            suggest = "recurrence_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExportScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExportScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExportScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recurrence: Optional[str] = None,
                  recurrence_period: Optional['outputs.ExportRecurrencePeriodResponse'] = None,
@@ -894,15 +1055,29 @@ class ExportScheduleResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExportTimePeriodResponse(dict):
     """
     The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExportTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExportTimePeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExportTimePeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_: str,
                  to: str):
@@ -929,9 +1104,6 @@ class ExportTimePeriodResponse(dict):
         The end date for export data.
         """
         return pulumi.get(self, "to")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -980,9 +1152,6 @@ class KpiPropertiesResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PivotPropertiesResponse(dict):
@@ -1018,9 +1187,6 @@ class PivotPropertiesResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportAggregationResponse(dict):
@@ -1053,9 +1219,6 @@ class ReportAggregationResponse(dict):
         The name of the column to aggregate.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1101,9 +1264,6 @@ class ReportComparisonExpressionResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportConfigAggregationResponse(dict):
@@ -1136,9 +1296,6 @@ class ReportConfigAggregationResponse(dict):
         The name of the column to aggregate.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1184,9 +1341,6 @@ class ReportConfigComparisonExpressionResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportConfigDatasetConfigurationResponse(dict):
@@ -1209,9 +1363,6 @@ class ReportConfigDatasetConfigurationResponse(dict):
         Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
         """
         return pulumi.get(self, "columns")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1296,15 +1447,35 @@ class ReportConfigDatasetResponse(dict):
         """
         return pulumi.get(self, "sorting")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportConfigFilterResponse(dict):
     """
     The filter expression to be used in the report.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "and":
+            suggest = "and_"
+        elif key == "or":
+            suggest = "or_"
+        elif key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportConfigFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportConfigFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportConfigFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  and_: Optional[Sequence['outputs.ReportConfigFilterResponse']] = None,
                  dimensions: Optional['outputs.ReportConfigComparisonExpressionResponse'] = None,
@@ -1382,9 +1553,6 @@ class ReportConfigFilterResponse(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportConfigGroupingResponse(dict):
@@ -1417,9 +1585,6 @@ class ReportConfigGroupingResponse(dict):
         Has type of the column to group.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1455,15 +1620,29 @@ class ReportConfigSortingResponse(dict):
         """
         return pulumi.get(self, "direction")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportConfigTimePeriodResponse(dict):
     """
     The start and end date for pulling data for the report.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportConfigTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportConfigTimePeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportConfigTimePeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_: str,
                  to: str):
@@ -1491,9 +1670,6 @@ class ReportConfigTimePeriodResponse(dict):
         """
         return pulumi.get(self, "to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportDatasetConfigurationResponse(dict):
@@ -1516,9 +1692,6 @@ class ReportDatasetConfigurationResponse(dict):
         Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
         """
         return pulumi.get(self, "columns")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1591,15 +1764,29 @@ class ReportDatasetResponse(dict):
         """
         return pulumi.get(self, "grouping")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportDefinitionResponse(dict):
     """
     The definition of a report.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timePeriod":
+            suggest = "time_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  timeframe: str,
                  type: str,
@@ -1651,15 +1838,31 @@ class ReportDefinitionResponse(dict):
         """
         return pulumi.get(self, "time_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportDeliveryDestinationResponse(dict):
     """
     The destination information for the delivery of the report.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "rootFolderPath":
+            suggest = "root_folder_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportDeliveryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportDeliveryDestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportDeliveryDestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container: str,
                  resource_id: str,
@@ -1699,9 +1902,6 @@ class ReportDeliveryDestinationResponse(dict):
         """
         return pulumi.get(self, "root_folder_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportDeliveryInfoResponse(dict):
@@ -1724,15 +1924,33 @@ class ReportDeliveryInfoResponse(dict):
         """
         return pulumi.get(self, "destination")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportFilterResponse(dict):
     """
     The filter expression to be used in the report.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "and":
+            suggest = "and_"
+        elif key == "not":
+            suggest = "not_"
+        elif key == "or":
+            suggest = "or_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  and_: Optional[Sequence['outputs.ReportFilterResponse']] = None,
                  dimension: Optional['outputs.ReportComparisonExpressionResponse'] = None,
@@ -1798,9 +2016,6 @@ class ReportFilterResponse(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportGroupingResponse(dict):
@@ -1834,15 +2049,29 @@ class ReportGroupingResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportRecurrencePeriodResponse(dict):
     """
     The start and end date for recurrence schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportRecurrencePeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportRecurrencePeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportRecurrencePeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_: str,
                  to: Optional[str] = None):
@@ -1871,15 +2100,29 @@ class ReportRecurrencePeriodResponse(dict):
         """
         return pulumi.get(self, "to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportScheduleResponse(dict):
     """
     The schedule associated with a report.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recurrencePeriod":
+            suggest = "recurrence_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recurrence: str,
                  recurrence_period: Optional['outputs.ReportRecurrencePeriodResponse'] = None,
@@ -1920,15 +2163,29 @@ class ReportScheduleResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReportTimePeriodResponse(dict):
     """
     The start and end date for pulling data for the report.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportTimePeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportTimePeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_: str,
                  to: str):
@@ -1956,15 +2213,29 @@ class ReportTimePeriodResponse(dict):
         """
         return pulumi.get(self, "to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceCostAllocationResourceResponse(dict):
     """
     Source resources for cost allocation
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceCostAllocationResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceCostAllocationResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceCostAllocationResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  resource_type: str,
@@ -2003,15 +2274,31 @@ class SourceCostAllocationResourceResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TargetCostAllocationResourceResponse(dict):
     """
     Target resources for cost allocation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyType":
+            suggest = "policy_type"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetCostAllocationResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetCostAllocationResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetCostAllocationResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  policy_type: str,
@@ -2060,8 +2347,5 @@ class TargetCostAllocationResourceResponse(dict):
         Target resources for cost allocation. This list cannot contain more than 25 values.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

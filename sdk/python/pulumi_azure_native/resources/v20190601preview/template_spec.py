@@ -5,14 +5,117 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['TemplateSpec']
+__all__ = ['TemplateSpecArgs', 'TemplateSpec']
+
+@pulumi.input_type
+class TemplateSpecArgs:
+    def __init__(__self__, *,
+                 resource_group_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 template_spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TemplateSpec resource.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] description: Template Spec description.
+        :param pulumi.Input[str] display_name: Template Spec display name.
+        :param pulumi.Input[str] location: The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        :param pulumi.Input[str] template_spec_name: Name of the Template Spec.
+        """
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if template_spec_name is not None:
+            pulumi.set(__self__, "template_spec_name", template_spec_name)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template Spec description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template Spec display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="templateSpecName")
+    def template_spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Template Spec.
+        """
+        return pulumi.get(self, "template_spec_name")
+
+    @template_spec_name.setter
+    def template_spec_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_spec_name", value)
 
 
 class TemplateSpec(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +140,39 @@ class TemplateSpec(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         :param pulumi.Input[str] template_spec_name: Name of the Template Spec.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TemplateSpecArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Template Spec object.
+
+        :param str resource_name: The name of the resource.
+        :param TemplateSpecArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TemplateSpecArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 template_spec_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,20 +188,20 @@ class TemplateSpec(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TemplateSpecArgs.__new__(TemplateSpecArgs)
 
-            __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['location'] = location
+            __props__.__dict__['description'] = description
+            __props__.__dict__['display_name'] = display_name
+            __props__.__dict__['location'] = location
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['template_spec_name'] = template_spec_name
-            __props__['name'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
-            __props__['versions'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['template_spec_name'] = template_spec_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
+            __props__.__dict__['versions'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:resources/v20190601preview:TemplateSpec"), pulumi.Alias(type_="azure-native:resources:TemplateSpec"), pulumi.Alias(type_="azure-nextgen:resources:TemplateSpec")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TemplateSpec, __self__).__init__(
@@ -88,16 +224,16 @@ class TemplateSpec(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = TemplateSpecArgs.__new__(TemplateSpecArgs)
 
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["location"] = None
-        __props__["name"] = None
-        __props__["system_data"] = None
-        __props__["tags"] = None
-        __props__["type"] = None
-        __props__["versions"] = None
+        __props__.__dict__['description'] = None
+        __props__.__dict__['display_name'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['system_data'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['type'] = None
+        __props__.__dict__['versions'] = None
         return TemplateSpec(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -163,10 +299,4 @@ class TemplateSpec(pulumi.CustomResource):
         High-level information about the versions within this Template Spec. The keys are the version names. Only populated if the $expand query parameter is set to 'versions'.
         """
         return pulumi.get(self, "versions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

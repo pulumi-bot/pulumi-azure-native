@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._enums import *
 
 __all__ = [
@@ -55,9 +55,6 @@ class AzureSkuResponse(dict):
         SKU capacity.
         """
         return pulumi.get(self, "capacity")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -154,9 +151,6 @@ class DatabaseStatisticsResponse(dict):
         """
         return pulumi.get(self, "size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TrustedExternalTenantResponse(dict):
@@ -175,8 +169,5 @@ class TrustedExternalTenantResponse(dict):
         GUID representing an external tenant.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

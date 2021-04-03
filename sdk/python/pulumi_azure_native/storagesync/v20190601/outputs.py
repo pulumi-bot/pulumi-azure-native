@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -24,6 +24,27 @@ class ServerEndpointCloudTieringStatusResponse(dict):
     """
     Server endpoint cloud tiering status object.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastCloudTieringResult":
+            suggest = "last_cloud_tiering_result"
+        elif key == "lastSuccessTimestamp":
+            suggest = "last_success_timestamp"
+        elif key == "lastUpdatedTimestamp":
+            suggest = "last_updated_timestamp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointCloudTieringStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerEndpointCloudTieringStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerEndpointCloudTieringStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  health: str,
                  last_cloud_tiering_result: int,
@@ -73,15 +94,33 @@ class ServerEndpointCloudTieringStatusResponse(dict):
         """
         return pulumi.get(self, "last_updated_timestamp")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerEndpointFilesNotSyncingErrorResponse(dict):
     """
     Files not syncing error object
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorCode":
+            suggest = "error_code"
+        elif key == "persistentCount":
+            suggest = "persistent_count"
+        elif key == "transientCount":
+            suggest = "transient_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointFilesNotSyncingErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerEndpointFilesNotSyncingErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerEndpointFilesNotSyncingErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_code: int,
                  persistent_count: float,
@@ -120,15 +159,29 @@ class ServerEndpointFilesNotSyncingErrorResponse(dict):
         """
         return pulumi.get(self, "transient_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerEndpointRecallErrorResponse(dict):
     """
     Server endpoint recall error object
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorCode":
+            suggest = "error_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointRecallErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerEndpointRecallErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerEndpointRecallErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count: float,
                  error_code: int):
@@ -156,15 +209,33 @@ class ServerEndpointRecallErrorResponse(dict):
         """
         return pulumi.get(self, "error_code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerEndpointRecallStatusResponse(dict):
     """
     Server endpoint recall status object.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastUpdatedTimestamp":
+            suggest = "last_updated_timestamp"
+        elif key == "recallErrors":
+            suggest = "recall_errors"
+        elif key == "totalRecallErrorsCount":
+            suggest = "total_recall_errors_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointRecallStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerEndpointRecallStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerEndpointRecallStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_updated_timestamp: str,
                  recall_errors: Sequence['outputs.ServerEndpointRecallErrorResponse'],
@@ -203,15 +274,37 @@ class ServerEndpointRecallStatusResponse(dict):
         """
         return pulumi.get(self, "total_recall_errors_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerEndpointSyncActivityStatusResponse(dict):
     """
     Sync Session status object.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appliedBytes":
+            suggest = "applied_bytes"
+        elif key == "appliedItemCount":
+            suggest = "applied_item_count"
+        elif key == "perItemErrorCount":
+            suggest = "per_item_error_count"
+        elif key == "totalBytes":
+            suggest = "total_bytes"
+        elif key == "totalItemCount":
+            suggest = "total_item_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointSyncActivityStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerEndpointSyncActivityStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerEndpointSyncActivityStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  applied_bytes: float,
                  applied_item_count: float,
@@ -283,15 +376,41 @@ class ServerEndpointSyncActivityStatusResponse(dict):
         """
         return pulumi.get(self, "total_item_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerEndpointSyncSessionStatusResponse(dict):
     """
     Sync Session status object.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filesNotSyncingErrors":
+            suggest = "files_not_syncing_errors"
+        elif key == "lastSyncPerItemErrorCount":
+            suggest = "last_sync_per_item_error_count"
+        elif key == "lastSyncResult":
+            suggest = "last_sync_result"
+        elif key == "lastSyncSuccessTimestamp":
+            suggest = "last_sync_success_timestamp"
+        elif key == "lastSyncTimestamp":
+            suggest = "last_sync_timestamp"
+        elif key == "persistentFilesNotSyncingCount":
+            suggest = "persistent_files_not_syncing_count"
+        elif key == "transientFilesNotSyncingCount":
+            suggest = "transient_files_not_syncing_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointSyncSessionStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerEndpointSyncSessionStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerEndpointSyncSessionStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  files_not_syncing_errors: Sequence['outputs.ServerEndpointFilesNotSyncingErrorResponse'],
                  last_sync_per_item_error_count: float,
@@ -374,15 +493,49 @@ class ServerEndpointSyncSessionStatusResponse(dict):
         """
         return pulumi.get(self, "transient_files_not_syncing_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerEndpointSyncStatusResponse(dict):
     """
     Server Endpoint sync status
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "combinedHealth":
+            suggest = "combined_health"
+        elif key == "downloadActivity":
+            suggest = "download_activity"
+        elif key == "downloadHealth":
+            suggest = "download_health"
+        elif key == "downloadStatus":
+            suggest = "download_status"
+        elif key == "lastUpdatedTimestamp":
+            suggest = "last_updated_timestamp"
+        elif key == "offlineDataTransferStatus":
+            suggest = "offline_data_transfer_status"
+        elif key == "syncActivity":
+            suggest = "sync_activity"
+        elif key == "totalPersistentFilesNotSyncingCount":
+            suggest = "total_persistent_files_not_syncing_count"
+        elif key == "uploadActivity":
+            suggest = "upload_activity"
+        elif key == "uploadHealth":
+            suggest = "upload_health"
+        elif key == "uploadStatus":
+            suggest = "upload_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointSyncStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerEndpointSyncStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerEndpointSyncStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  combined_health: str,
                  download_activity: 'outputs.ServerEndpointSyncActivityStatusResponse',
@@ -508,8 +661,5 @@ class ServerEndpointSyncStatusResponse(dict):
         Upload Status
         """
         return pulumi.get(self, "upload_status")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

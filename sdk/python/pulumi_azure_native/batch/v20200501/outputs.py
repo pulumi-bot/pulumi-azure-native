@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -87,9 +87,6 @@ class ApplicationPackageReferenceResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoScaleRunErrorResponse(dict):
@@ -127,12 +124,26 @@ class AutoScaleRunErrorResponse(dict):
     def details(self) -> Optional[Sequence['outputs.AutoScaleRunErrorResponse']]:
         return pulumi.get(self, "details")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoScaleRunResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationTime":
+            suggest = "evaluation_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoScaleRunResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoScaleRunResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoScaleRunResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  evaluation_time: str,
                  error: Optional['outputs.AutoScaleRunErrorResponse'] = None,
@@ -164,12 +175,26 @@ class AutoScaleRunResponse(dict):
         """
         return pulumi.get(self, "results")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoScaleSettingsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationInterval":
+            suggest = "evaluation_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoScaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoScaleSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoScaleSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  formula: str,
                  evaluation_interval: Optional[str] = None):
@@ -193,15 +218,31 @@ class AutoScaleSettingsResponse(dict):
         """
         return pulumi.get(self, "evaluation_interval")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoStoragePropertiesResponse(dict):
     """
     Contains information about the auto-storage account associated with a Batch account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastKeySync":
+            suggest = "last_key_sync"
+        elif key == "storageAccountId":
+            suggest = "storage_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoStoragePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoStoragePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoStoragePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_key_sync: str,
                  storage_account_id: str):
@@ -229,12 +270,26 @@ class AutoStoragePropertiesResponse(dict):
         """
         return pulumi.get(self, "storage_account_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoUserSpecificationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elevationLevel":
+            suggest = "elevation_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoUserSpecificationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoUserSpecificationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoUserSpecificationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  elevation_level: Optional[str] = None,
                  scope: Optional[str] = None):
@@ -263,12 +318,36 @@ class AutoUserSpecificationResponse(dict):
         """
         return pulumi.get(self, "scope")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureBlobFileSystemConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountName":
+            suggest = "account_name"
+        elif key == "containerName":
+            suggest = "container_name"
+        elif key == "relativeMountPath":
+            suggest = "relative_mount_path"
+        elif key == "accountKey":
+            suggest = "account_key"
+        elif key == "blobfuseOptions":
+            suggest = "blobfuse_options"
+        elif key == "sasKey":
+            suggest = "sas_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFileSystemConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureBlobFileSystemConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureBlobFileSystemConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_name: str,
                  container_name: str,
@@ -334,12 +413,34 @@ class AzureBlobFileSystemConfigurationResponse(dict):
         """
         return pulumi.get(self, "sas_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureFileShareConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountKey":
+            suggest = "account_key"
+        elif key == "accountName":
+            suggest = "account_name"
+        elif key == "azureFileUrl":
+            suggest = "azure_file_url"
+        elif key == "relativeMountPath":
+            suggest = "relative_mount_path"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureFileShareConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureFileShareConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureFileShareConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_key: str,
                  account_name: str,
@@ -392,15 +493,31 @@ class AzureFileShareConfigurationResponse(dict):
         """
         return pulumi.get(self, "mount_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BatchAccountIdentityResponse(dict):
     """
     The identity of the Batch account, if configured. This is only used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchAccountIdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchAccountIdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchAccountIdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -439,12 +556,28 @@ class BatchAccountIdentityResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CIFSMountConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeMountPath":
+            suggest = "relative_mount_path"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CIFSMountConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CIFSMountConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CIFSMountConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  password: str,
                  relative_mount_path: str,
@@ -493,12 +626,28 @@ class CIFSMountConfigurationResponse(dict):
         """
         return pulumi.get(self, "mount_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storeLocation":
+            suggest = "store_location"
+        elif key == "storeName":
+            suggest = "store_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  store_location: Optional[str] = None,
@@ -542,12 +691,28 @@ class CertificateReferenceResponse(dict):
     def visibility(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "visibility")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudServiceConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osFamily":
+            suggest = "os_family"
+        elif key == "osVersion":
+            suggest = "os_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudServiceConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudServiceConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudServiceConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  os_family: str,
                  os_version: Optional[str] = None):
@@ -575,12 +740,28 @@ class CloudServiceConfigurationResponse(dict):
         """
         return pulumi.get(self, "os_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImageNames":
+            suggest = "container_image_names"
+        elif key == "containerRegistries":
+            suggest = "container_registries"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  container_image_names: Optional[Sequence[str]] = None,
@@ -616,12 +797,28 @@ class ContainerConfigurationResponse(dict):
         """
         return pulumi.get(self, "container_registries")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerRegistryResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+        elif key == "registryServer":
+            suggest = "registry_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRegistryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRegistryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRegistryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  password: str,
                  user_name: str,
@@ -652,15 +849,31 @@ class ContainerRegistryResponse(dict):
         """
         return pulumi.get(self, "registry_server")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataDiskResponse(dict):
     """
     Settings which will be used by the data disks associated to Compute Nodes in the Pool. When using attached data disks, you need to mount and format the disks from within a VM to use them.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGB":
+            suggest = "disk_size_gb"
+        elif key == "storageAccountType":
+            suggest = "storage_account_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_size_gb: int,
                  lun: int,
@@ -726,9 +939,6 @@ class DataDiskResponse(dict):
         """
         return pulumi.get(self, "storage_account_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeleteCertificateErrorResponse(dict):
@@ -786,12 +996,28 @@ class DeleteCertificateErrorResponse(dict):
         """
         return pulumi.get(self, "target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeploymentConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudServiceConfiguration":
+            suggest = "cloud_service_configuration"
+        elif key == "virtualMachineConfiguration":
+            suggest = "virtual_machine_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeploymentConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeploymentConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeploymentConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_service_configuration: Optional['outputs.CloudServiceConfigurationResponse'] = None,
                  virtual_machine_configuration: Optional['outputs.VirtualMachineConfigurationResponse'] = None):
@@ -820,9 +1046,6 @@ class DeploymentConfigurationResponse(dict):
         """
         return pulumi.get(self, "virtual_machine_configuration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskEncryptionConfigurationResponse(dict):
@@ -846,15 +1069,31 @@ class DiskEncryptionConfigurationResponse(dict):
         """
         return pulumi.get(self, "targets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionPropertiesResponse(dict):
     """
     Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keySource":
+            suggest = "key_source"
+        elif key == "keyVaultProperties":
+            suggest = "key_vault_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_source: Optional[str] = None,
                  key_vault_properties: Optional['outputs.KeyVaultPropertiesResponse'] = None):
@@ -884,9 +1123,6 @@ class EncryptionPropertiesResponse(dict):
         """
         return pulumi.get(self, "key_vault_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EnvironmentSettingResponse(dict):
@@ -907,12 +1143,32 @@ class EnvironmentSettingResponse(dict):
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FixedScaleSettingsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeDeallocationOption":
+            suggest = "node_deallocation_option"
+        elif key == "resizeTimeout":
+            suggest = "resize_timeout"
+        elif key == "targetDedicatedNodes":
+            suggest = "target_dedicated_nodes"
+        elif key == "targetLowPriorityNodes":
+            suggest = "target_low_priority_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FixedScaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FixedScaleSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FixedScaleSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  node_deallocation_option: Optional[str] = None,
                  resize_timeout: Optional[str] = None,
@@ -964,9 +1220,6 @@ class FixedScaleSettingsResponse(dict):
         At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
         """
         return pulumi.get(self, "target_low_priority_nodes")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1035,12 +1288,32 @@ class ImageReferenceResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InboundNatPoolResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendPort":
+            suggest = "backend_port"
+        elif key == "frontendPortRangeEnd":
+            suggest = "frontend_port_range_end"
+        elif key == "frontendPortRangeStart":
+            suggest = "frontend_port_range_start"
+        elif key == "networkSecurityGroupRules":
+            suggest = "network_security_group_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InboundNatPoolResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InboundNatPoolResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InboundNatPoolResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backend_port: int,
                  frontend_port_range_end: int,
@@ -1108,15 +1381,29 @@ class InboundNatPoolResponse(dict):
         """
         return pulumi.get(self, "network_security_group_rules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyVaultPropertiesResponse(dict):
     """
     KeyVault configuration when using an encryption KeySource of Microsoft.KeyVault.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyIdentifier":
+            suggest = "key_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyVaultPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyVaultPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_identifier: Optional[str] = None):
         """
@@ -1141,9 +1428,6 @@ class KeyVaultPropertiesResponse(dict):
          The KeyVault has soft-delete and purge protection enabled
         """
         return pulumi.get(self, "key_identifier")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1178,12 +1462,26 @@ class KeyVaultReferenceResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LinuxUserConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sshPrivateKey":
+            suggest = "ssh_private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinuxUserConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinuxUserConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinuxUserConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gid: Optional[int] = None,
                  ssh_private_key: Optional[str] = None,
@@ -1224,9 +1522,6 @@ class LinuxUserConfigurationResponse(dict):
         """
         return pulumi.get(self, "uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetadataItemResponse(dict):
@@ -1252,12 +1547,32 @@ class MetadataItemResponse(dict):
     def value(self) -> str:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MountConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureBlobFileSystemConfiguration":
+            suggest = "azure_blob_file_system_configuration"
+        elif key == "azureFileShareConfiguration":
+            suggest = "azure_file_share_configuration"
+        elif key == "cifsMountConfiguration":
+            suggest = "cifs_mount_configuration"
+        elif key == "nfsMountConfiguration":
+            suggest = "nfs_mount_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MountConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MountConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MountConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  azure_blob_file_system_configuration: Optional['outputs.AzureBlobFileSystemConfigurationResponse'] = None,
                  azure_file_share_configuration: Optional['outputs.AzureFileShareConfigurationResponse'] = None,
@@ -1310,12 +1625,28 @@ class MountConfigurationResponse(dict):
         """
         return pulumi.get(self, "nfs_mount_configuration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NFSMountConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeMountPath":
+            suggest = "relative_mount_path"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NFSMountConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NFSMountConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NFSMountConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  relative_mount_path: str,
                  source: str,
@@ -1350,15 +1681,33 @@ class NFSMountConfigurationResponse(dict):
         """
         return pulumi.get(self, "mount_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkConfigurationResponse(dict):
     """
     The network configuration for a pool.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointConfiguration":
+            suggest = "endpoint_configuration"
+        elif key == "publicIPAddressConfiguration":
+            suggest = "public_ip_address_configuration"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint_configuration: Optional['outputs.PoolEndpointConfigurationResponse'] = None,
                  public_ip_address_configuration: Optional['outputs.PublicIPAddressConfigurationResponse'] = None,
@@ -1400,12 +1749,28 @@ class NetworkConfigurationResponse(dict):
         """
         return pulumi.get(self, "subnet_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkSecurityGroupRuleResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceAddressPrefix":
+            suggest = "source_address_prefix"
+        elif key == "sourcePortRanges":
+            suggest = "source_port_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkSecurityGroupRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkSecurityGroupRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkSecurityGroupRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access: str,
                  priority: int,
@@ -1451,12 +1816,26 @@ class NetworkSecurityGroupRuleResponse(dict):
         """
         return pulumi.get(self, "source_port_ranges")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PoolEndpointConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inboundNatPools":
+            suggest = "inbound_nat_pools"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PoolEndpointConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PoolEndpointConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PoolEndpointConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  inbound_nat_pools: Sequence['outputs.InboundNatPoolResponse']):
         """
@@ -1472,15 +1851,33 @@ class PoolEndpointConfigurationResponse(dict):
         """
         return pulumi.get(self, "inbound_nat_pools")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointConnectionResponse(dict):
     """
     Contains information about a private link resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningState":
+            suggest = "provisioning_state"
+        elif key == "privateEndpoint":
+            suggest = "private_endpoint"
+        elif key == "privateLinkServiceConnectionState":
+            suggest = "private_link_service_connection_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateEndpointConnectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateEndpointConnectionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -1561,9 +1958,6 @@ class PrivateEndpointConnectionResponse(dict):
         """
         return pulumi.get(self, "private_link_service_connection_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEndpointResponse(dict):
@@ -1582,15 +1976,29 @@ class PrivateEndpointResponse(dict):
     def id(self) -> str:
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateLinkServiceConnectionStateResponse(dict):
     """
     The private link service connection state of the private endpoint connection
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionRequired":
+            suggest = "action_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_required: str,
                  status: str,
@@ -1618,15 +2026,29 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PublicIPAddressConfigurationResponse(dict):
     """
     The public IP Address configuration of the networking configuration of a Pool.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddressIds":
+            suggest = "ip_address_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublicIPAddressConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublicIPAddressConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublicIPAddressConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address_ids: Optional[Sequence[str]] = None,
                  provision: Optional[str] = None):
@@ -1655,9 +2077,6 @@ class PublicIPAddressConfigurationResponse(dict):
         The default value is BatchManaged
         """
         return pulumi.get(self, "provision")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1696,15 +2115,37 @@ class ResizeErrorResponse(dict):
     def details(self) -> Optional[Sequence['outputs.ResizeErrorResponse']]:
         return pulumi.get(self, "details")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResizeOperationStatusResponse(dict):
     """
     Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeDeallocationOption":
+            suggest = "node_deallocation_option"
+        elif key == "resizeTimeout":
+            suggest = "resize_timeout"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "targetDedicatedNodes":
+            suggest = "target_dedicated_nodes"
+        elif key == "targetLowPriorityNodes":
+            suggest = "target_low_priority_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResizeOperationStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResizeOperationStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResizeOperationStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  errors: Optional[Sequence['outputs.ResizeErrorResponse']] = None,
                  node_deallocation_option: Optional[str] = None,
@@ -1770,12 +2211,36 @@ class ResizeOperationStatusResponse(dict):
     def target_low_priority_nodes(self) -> Optional[int]:
         return pulumi.get(self, "target_low_priority_nodes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceFileResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoStorageContainerName":
+            suggest = "auto_storage_container_name"
+        elif key == "blobPrefix":
+            suggest = "blob_prefix"
+        elif key == "fileMode":
+            suggest = "file_mode"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "httpUrl":
+            suggest = "http_url"
+        elif key == "storageContainerUrl":
+            suggest = "storage_container_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceFileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceFileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceFileResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_storage_container_name: Optional[str] = None,
                  blob_prefix: Optional[str] = None,
@@ -1852,15 +2317,31 @@ class ResourceFileResponse(dict):
         """
         return pulumi.get(self, "storage_container_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScaleSettingsResponse(dict):
     """
     Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoScale":
+            suggest = "auto_scale"
+        elif key == "fixedScale":
+            suggest = "fixed_scale"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScaleSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScaleSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_scale: Optional['outputs.AutoScaleSettingsResponse'] = None,
                  fixed_scale: Optional['outputs.FixedScaleSettingsResponse'] = None):
@@ -1890,15 +2371,41 @@ class ScaleSettingsResponse(dict):
         """
         return pulumi.get(self, "fixed_scale")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StartTaskResponse(dict):
     """
     In some cases the start task may be re-run even though the node was not rebooted. Due to this, start tasks should be idempotent and exit gracefully if the setup they're performing has already been done. Special care should be taken to avoid start tasks which create breakaway process or install/launch services from the start task working directory, as this will block Batch from being able to re-run the start task.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commandLine":
+            suggest = "command_line"
+        elif key == "containerSettings":
+            suggest = "container_settings"
+        elif key == "environmentSettings":
+            suggest = "environment_settings"
+        elif key == "maxTaskRetryCount":
+            suggest = "max_task_retry_count"
+        elif key == "resourceFiles":
+            suggest = "resource_files"
+        elif key == "userIdentity":
+            suggest = "user_identity"
+        elif key == "waitForSuccess":
+            suggest = "wait_for_success"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StartTaskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StartTaskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StartTaskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  command_line: Optional[str] = None,
                  container_settings: Optional['outputs.TaskContainerSettingsResponse'] = None,
@@ -1980,12 +2487,30 @@ class StartTaskResponse(dict):
         """
         return pulumi.get(self, "wait_for_success")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TaskContainerSettingsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageName":
+            suggest = "image_name"
+        elif key == "containerRunOptions":
+            suggest = "container_run_options"
+        elif key == "workingDirectory":
+            suggest = "working_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TaskContainerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TaskContainerSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TaskContainerSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image_name: str,
                  container_run_options: Optional[str] = None,
@@ -2033,12 +2558,26 @@ class TaskContainerSettingsResponse(dict):
     def working_directory(self) -> Optional[str]:
         return pulumi.get(self, "working_directory")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TaskSchedulingPolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeFillType":
+            suggest = "node_fill_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TaskSchedulingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TaskSchedulingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TaskSchedulingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  node_fill_type: str):
         pulumi.set(__self__, "node_fill_type", node_fill_type)
@@ -2048,12 +2587,30 @@ class TaskSchedulingPolicyResponse(dict):
     def node_fill_type(self) -> str:
         return pulumi.get(self, "node_fill_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserAccountResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elevationLevel":
+            suggest = "elevation_level"
+        elif key == "linuxUserConfiguration":
+            suggest = "linux_user_configuration"
+        elif key == "windowsUserConfiguration":
+            suggest = "windows_user_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAccountResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAccountResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAccountResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  password: str,
@@ -2108,15 +2665,31 @@ class UserAccountResponse(dict):
         """
         return pulumi.get(self, "windows_user_configuration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserIdentityResponse(dict):
     """
     Specify either the userName or autoUser property, but not both.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoUser":
+            suggest = "auto_user"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserIdentityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserIdentityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserIdentityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_user: Optional['outputs.AutoUserSpecificationResponse'] = None,
                  user_name: Optional[str] = None):
@@ -2146,12 +2719,38 @@ class UserIdentityResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageReference":
+            suggest = "image_reference"
+        elif key == "nodeAgentSkuId":
+            suggest = "node_agent_sku_id"
+        elif key == "containerConfiguration":
+            suggest = "container_configuration"
+        elif key == "dataDisks":
+            suggest = "data_disks"
+        elif key == "diskEncryptionConfiguration":
+            suggest = "disk_encryption_configuration"
+        elif key == "licenseType":
+            suggest = "license_type"
+        elif key == "windowsConfiguration":
+            suggest = "windows_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image_reference: 'outputs.ImageReferenceResponse',
                  node_agent_sku_id: str,
@@ -2240,15 +2839,29 @@ class VirtualMachineConfigurationResponse(dict):
         """
         return pulumi.get(self, "windows_configuration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineFamilyCoreQuotaResponse(dict):
     """
     A VM Family and its associated core quota for the Batch account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coreQuota":
+            suggest = "core_quota"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineFamilyCoreQuotaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineFamilyCoreQuotaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineFamilyCoreQuotaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  core_quota: int,
                  name: str):
@@ -2276,12 +2889,26 @@ class VirtualMachineFamilyCoreQuotaResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WindowsConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableAutomaticUpdates":
+            suggest = "enable_automatic_updates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WindowsConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WindowsConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WindowsConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_automatic_updates: Optional[bool] = None):
         """
@@ -2298,12 +2925,26 @@ class WindowsConfigurationResponse(dict):
         """
         return pulumi.get(self, "enable_automatic_updates")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WindowsUserConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginMode":
+            suggest = "login_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WindowsUserConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WindowsUserConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WindowsUserConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  login_mode: Optional[str] = None):
         """
@@ -2319,8 +2960,5 @@ class WindowsUserConfigurationResponse(dict):
         Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
         """
         return pulumi.get(self, "login_mode")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

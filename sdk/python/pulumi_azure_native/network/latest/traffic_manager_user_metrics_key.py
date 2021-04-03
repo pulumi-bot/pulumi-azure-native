@@ -5,10 +5,19 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['TrafficManagerUserMetricsKey']
+__all__ = ['TrafficManagerUserMetricsKeyArgs', 'TrafficManagerUserMetricsKey']
+
+@pulumi.input_type
+class TrafficManagerUserMetricsKeyArgs:
+    def __init__(__self__):
+        """
+        The set of arguments for constructing a TrafficManagerUserMetricsKey resource.
+        """
+        pass
+
 
 warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:network:TrafficManagerUserMetricsKey'.""", DeprecationWarning)
 
@@ -16,6 +25,7 @@ warnings.warn("""The 'latest' version is deprecated. Please migrate to the resou
 class TrafficManagerUserMetricsKey(pulumi.CustomResource):
     warnings.warn("""The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:network:TrafficManagerUserMetricsKey'.""", DeprecationWarning)
 
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -29,6 +39,34 @@ class TrafficManagerUserMetricsKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[TrafficManagerUserMetricsKeyArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Class representing Traffic Manager User Metrics.
+        Latest API Version: 2018-08-01.
+
+        :param str resource_name: The name of the resource.
+        :param TrafficManagerUserMetricsKeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TrafficManagerUserMetricsKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         pulumi.log.warn("""TrafficManagerUserMetricsKey is deprecated: The 'latest' version is deprecated. Please migrate to the resource in the top-level module: 'azure-native:network:TrafficManagerUserMetricsKey'.""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -45,11 +83,11 @@ class TrafficManagerUserMetricsKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TrafficManagerUserMetricsKeyArgs.__new__(TrafficManagerUserMetricsKeyArgs)
 
-            __props__['key'] = None
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['key'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:network/latest:TrafficManagerUserMetricsKey"), pulumi.Alias(type_="azure-native:network:TrafficManagerUserMetricsKey"), pulumi.Alias(type_="azure-nextgen:network:TrafficManagerUserMetricsKey"), pulumi.Alias(type_="azure-native:network/v20180401:TrafficManagerUserMetricsKey"), pulumi.Alias(type_="azure-nextgen:network/v20180401:TrafficManagerUserMetricsKey"), pulumi.Alias(type_="azure-native:network/v20180801:TrafficManagerUserMetricsKey"), pulumi.Alias(type_="azure-nextgen:network/v20180801:TrafficManagerUserMetricsKey")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TrafficManagerUserMetricsKey, __self__).__init__(
@@ -72,11 +110,11 @@ class TrafficManagerUserMetricsKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = TrafficManagerUserMetricsKeyArgs.__new__(TrafficManagerUserMetricsKeyArgs)
 
-        __props__["key"] = None
-        __props__["name"] = None
-        __props__["type"] = None
+        __props__.__dict__['key'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['type'] = None
         return TrafficManagerUserMetricsKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -102,10 +140,4 @@ class TrafficManagerUserMetricsKey(pulumi.CustomResource):
         The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

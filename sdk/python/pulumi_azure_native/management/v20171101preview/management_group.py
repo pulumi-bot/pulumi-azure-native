@@ -5,14 +5,70 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['ManagementGroup']
+__all__ = ['ManagementGroupArgs', 'ManagementGroup']
+
+@pulumi.input_type
+class ManagementGroupArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ManagementGroup resource.
+        :param pulumi.Input[str] display_name: The friendly name of the management group.
+        :param pulumi.Input[str] group_id: Management Group ID.
+        :param pulumi.Input[str] parent_id: (Optional) The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The friendly name of the management group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Management Group ID.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_id", value)
 
 
 class ManagementGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,6 +87,36 @@ class ManagementGroup(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: Management Group ID.
         :param pulumi.Input[str] parent_id: (Optional) The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ManagementGroupArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The management group details.
+
+        :param str resource_name: The name of the resource.
+        :param ManagementGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ManagementGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -46,16 +132,16 @@ class ManagementGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ManagementGroupArgs.__new__(ManagementGroupArgs)
 
-            __props__['display_name'] = display_name
-            __props__['group_id'] = group_id
-            __props__['parent_id'] = parent_id
-            __props__['children'] = None
-            __props__['details'] = None
-            __props__['name'] = None
-            __props__['tenant_id'] = None
-            __props__['type'] = None
+            __props__.__dict__['display_name'] = display_name
+            __props__.__dict__['group_id'] = group_id
+            __props__.__dict__['parent_id'] = parent_id
+            __props__.__dict__['children'] = None
+            __props__.__dict__['details'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['tenant_id'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:management/v20171101preview:ManagementGroup"), pulumi.Alias(type_="azure-native:management:ManagementGroup"), pulumi.Alias(type_="azure-nextgen:management:ManagementGroup"), pulumi.Alias(type_="azure-native:management/latest:ManagementGroup"), pulumi.Alias(type_="azure-nextgen:management/latest:ManagementGroup"), pulumi.Alias(type_="azure-native:management/v20180101preview:ManagementGroup"), pulumi.Alias(type_="azure-nextgen:management/v20180101preview:ManagementGroup"), pulumi.Alias(type_="azure-native:management/v20180301preview:ManagementGroup"), pulumi.Alias(type_="azure-nextgen:management/v20180301preview:ManagementGroup"), pulumi.Alias(type_="azure-native:management/v20191101:ManagementGroup"), pulumi.Alias(type_="azure-nextgen:management/v20191101:ManagementGroup"), pulumi.Alias(type_="azure-native:management/v20200201:ManagementGroup"), pulumi.Alias(type_="azure-nextgen:management/v20200201:ManagementGroup"), pulumi.Alias(type_="azure-native:management/v20200501:ManagementGroup"), pulumi.Alias(type_="azure-nextgen:management/v20200501:ManagementGroup")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ManagementGroup, __self__).__init__(
@@ -78,14 +164,14 @@ class ManagementGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ManagementGroupArgs.__new__(ManagementGroupArgs)
 
-        __props__["children"] = None
-        __props__["details"] = None
-        __props__["display_name"] = None
-        __props__["name"] = None
-        __props__["tenant_id"] = None
-        __props__["type"] = None
+        __props__.__dict__['children'] = None
+        __props__.__dict__['details'] = None
+        __props__.__dict__['display_name'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['tenant_id'] = None
+        __props__.__dict__['type'] = None
         return ManagementGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -135,10 +221,4 @@ class ManagementGroup(pulumi.CustomResource):
         The type of the resource.  For example, /providers/Microsoft.Management/managementGroups
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

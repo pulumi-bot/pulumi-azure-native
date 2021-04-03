@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -25,6 +25,23 @@ class CustomDomainResponse(dict):
     """
     The custom domain assigned to this storage account. This can be set via Update.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useSubDomainName":
+            suggest = "use_sub_domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDomainResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDomainResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDomainResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  use_sub_domain_name: Optional[bool] = None):
@@ -53,15 +70,29 @@ class CustomDomainResponse(dict):
         """
         return pulumi.get(self, "use_sub_domain_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionResponse(dict):
     """
     The encryption settings on the storage account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keySource":
+            suggest = "key_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_source: str,
                  services: Optional['outputs.EncryptionServicesResponse'] = None):
@@ -90,15 +121,29 @@ class EncryptionResponse(dict):
         """
         return pulumi.get(self, "services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionServiceResponse(dict):
     """
     A service that allows server-side encryption to be used.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastEnabledTime":
+            suggest = "last_enabled_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_enabled_time: str,
                  enabled: Optional[bool] = None):
@@ -127,9 +172,6 @@ class EncryptionServiceResponse(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionServicesResponse(dict):
@@ -152,9 +194,6 @@ class EncryptionServicesResponse(dict):
         The encryption function of the blob storage service.
         """
         return pulumi.get(self, "blob")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -211,9 +250,6 @@ class EndpointsResponse(dict):
         """
         return pulumi.get(self, "table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkuResponse(dict):
@@ -246,9 +282,6 @@ class SkuResponse(dict):
         Gets the sku tier. This is based on the SKU name.
         """
         return pulumi.get(self, "tier")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

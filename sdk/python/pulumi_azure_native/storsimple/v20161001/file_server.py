@@ -5,13 +5,143 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['FileServer']
+__all__ = ['FileServerArgs', 'FileServer']
+
+@pulumi.input_type
+class FileServerArgs:
+    def __init__(__self__, *,
+                 backup_schedule_group_id: pulumi.Input[str],
+                 device_name: pulumi.Input[str],
+                 domain_name: pulumi.Input[str],
+                 manager_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 storage_domain_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_server_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FileServer resource.
+        :param pulumi.Input[str] backup_schedule_group_id: The backup policy id.
+        :param pulumi.Input[str] device_name: The device name.
+        :param pulumi.Input[str] domain_name: Domain of the file server
+        :param pulumi.Input[str] manager_name: The manager name
+        :param pulumi.Input[str] resource_group_name: The resource group name
+        :param pulumi.Input[str] storage_domain_id: The storage domain id.
+        :param pulumi.Input[str] description: The description of the file server
+        :param pulumi.Input[str] file_server_name: The file server name.
+        """
+        pulumi.set(__self__, "backup_schedule_group_id", backup_schedule_group_id)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "manager_name", manager_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "storage_domain_id", storage_domain_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if file_server_name is not None:
+            pulumi.set(__self__, "file_server_name", file_server_name)
+
+    @property
+    @pulumi.getter(name="backupScheduleGroupId")
+    def backup_schedule_group_id(self) -> pulumi.Input[str]:
+        """
+        The backup policy id.
+        """
+        return pulumi.get(self, "backup_schedule_group_id")
+
+    @backup_schedule_group_id.setter
+    def backup_schedule_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_schedule_group_id", value)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> pulumi.Input[str]:
+        """
+        The device name.
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        Domain of the file server
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="managerName")
+    def manager_name(self) -> pulumi.Input[str]:
+        """
+        The manager name
+        """
+        return pulumi.get(self, "manager_name")
+
+    @manager_name.setter
+    def manager_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "manager_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The resource group name
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="storageDomainId")
+    def storage_domain_id(self) -> pulumi.Input[str]:
+        """
+        The storage domain id.
+        """
+        return pulumi.get(self, "storage_domain_id")
+
+    @storage_domain_id.setter
+    def storage_domain_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage_domain_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the file server
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="fileServerName")
+    def file_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file server name.
+        """
+        return pulumi.get(self, "file_server_name")
+
+    @file_server_name.setter
+    def file_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_server_name", value)
 
 
 class FileServer(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +170,41 @@ class FileServer(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The resource group name
         :param pulumi.Input[str] storage_domain_id: The storage domain id.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FileServerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The file server.
+
+        :param str resource_name: The name of the resource.
+        :param FileServerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FileServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_schedule_group_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 file_server_name: Optional[pulumi.Input[str]] = None,
+                 manager_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 storage_domain_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,30 +220,30 @@ class FileServer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FileServerArgs.__new__(FileServerArgs)
 
             if backup_schedule_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_schedule_group_id'")
-            __props__['backup_schedule_group_id'] = backup_schedule_group_id
-            __props__['description'] = description
+            __props__.__dict__['backup_schedule_group_id'] = backup_schedule_group_id
+            __props__.__dict__['description'] = description
             if device_name is None and not opts.urn:
                 raise TypeError("Missing required property 'device_name'")
-            __props__['device_name'] = device_name
+            __props__.__dict__['device_name'] = device_name
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
-            __props__['file_server_name'] = file_server_name
+            __props__.__dict__['domain_name'] = domain_name
+            __props__.__dict__['file_server_name'] = file_server_name
             if manager_name is None and not opts.urn:
                 raise TypeError("Missing required property 'manager_name'")
-            __props__['manager_name'] = manager_name
+            __props__.__dict__['manager_name'] = manager_name
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
             if storage_domain_id is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_domain_id'")
-            __props__['storage_domain_id'] = storage_domain_id
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__['storage_domain_id'] = storage_domain_id
+            __props__.__dict__['name'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:storsimple/v20161001:FileServer")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(FileServer, __self__).__init__(
@@ -101,14 +266,14 @@ class FileServer(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = FileServerArgs.__new__(FileServerArgs)
 
-        __props__["backup_schedule_group_id"] = None
-        __props__["description"] = None
-        __props__["domain_name"] = None
-        __props__["name"] = None
-        __props__["storage_domain_id"] = None
-        __props__["type"] = None
+        __props__.__dict__['backup_schedule_group_id'] = None
+        __props__.__dict__['description'] = None
+        __props__.__dict__['domain_name'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['storage_domain_id'] = None
+        __props__.__dict__['type'] = None
         return FileServer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -158,10 +323,4 @@ class FileServer(pulumi.CustomResource):
         The type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

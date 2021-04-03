@@ -5,16 +5,196 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ConnectedCluster']
+__all__ = ['ConnectedClusterArgs', 'ConnectedCluster']
+
+@pulumi.input_type
+class ConnectedClusterArgs:
+    def __init__(__self__, *,
+                 aad_profile: pulumi.Input['ConnectedClusterAADProfileArgs'],
+                 agent_public_key_certificate: pulumi.Input[str],
+                 identity: pulumi.Input['ConnectedClusterIdentityArgs'],
+                 resource_group_name: pulumi.Input[str],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 connectivity_status: Optional[pulumi.Input[Union[str, 'ConnectivityStatus']]] = None,
+                 distribution: Optional[pulumi.Input[str]] = None,
+                 infrastructure: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[Union[str, 'ProvisioningState']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ConnectedCluster resource.
+        :param pulumi.Input['ConnectedClusterAADProfileArgs'] aad_profile: AAD profile of the connected cluster.
+        :param pulumi.Input[str] agent_public_key_certificate: Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
+        :param pulumi.Input['ConnectedClusterIdentityArgs'] identity: The identity of the connected cluster.
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] cluster_name: The name of the Kubernetes cluster on which get is called.
+        :param pulumi.Input[Union[str, 'ConnectivityStatus']] connectivity_status: Represents the connectivity status of the connected cluster.
+        :param pulumi.Input[str] distribution: The Kubernetes distribution running on this connected cluster.
+        :param pulumi.Input[str] infrastructure: The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
+        :param pulumi.Input[str] location: The geo-location where the resource lives
+        :param pulumi.Input[Union[str, 'ProvisioningState']] provisioning_state: Provisioning state of the connected cluster resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
+        """
+        pulumi.set(__self__, "aad_profile", aad_profile)
+        pulumi.set(__self__, "agent_public_key_certificate", agent_public_key_certificate)
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if connectivity_status is not None:
+            pulumi.set(__self__, "connectivity_status", connectivity_status)
+        if distribution is not None:
+            pulumi.set(__self__, "distribution", distribution)
+        if infrastructure is not None:
+            pulumi.set(__self__, "infrastructure", infrastructure)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if provisioning_state is not None:
+            pulumi.set(__self__, "provisioning_state", provisioning_state)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="aadProfile")
+    def aad_profile(self) -> pulumi.Input['ConnectedClusterAADProfileArgs']:
+        """
+        AAD profile of the connected cluster.
+        """
+        return pulumi.get(self, "aad_profile")
+
+    @aad_profile.setter
+    def aad_profile(self, value: pulumi.Input['ConnectedClusterAADProfileArgs']):
+        pulumi.set(self, "aad_profile", value)
+
+    @property
+    @pulumi.getter(name="agentPublicKeyCertificate")
+    def agent_public_key_certificate(self) -> pulumi.Input[str]:
+        """
+        Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
+        """
+        return pulumi.get(self, "agent_public_key_certificate")
+
+    @agent_public_key_certificate.setter
+    def agent_public_key_certificate(self, value: pulumi.Input[str]):
+        pulumi.set(self, "agent_public_key_certificate", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> pulumi.Input['ConnectedClusterIdentityArgs']:
+        """
+        The identity of the connected cluster.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: pulumi.Input['ConnectedClusterIdentityArgs']):
+        pulumi.set(self, "identity", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Kubernetes cluster on which get is called.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="connectivityStatus")
+    def connectivity_status(self) -> Optional[pulumi.Input[Union[str, 'ConnectivityStatus']]]:
+        """
+        Represents the connectivity status of the connected cluster.
+        """
+        return pulumi.get(self, "connectivity_status")
+
+    @connectivity_status.setter
+    def connectivity_status(self, value: Optional[pulumi.Input[Union[str, 'ConnectivityStatus']]]):
+        pulumi.set(self, "connectivity_status", value)
+
+    @property
+    @pulumi.getter
+    def distribution(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kubernetes distribution running on this connected cluster.
+        """
+        return pulumi.get(self, "distribution")
+
+    @distribution.setter
+    def distribution(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "distribution", value)
+
+    @property
+    @pulumi.getter
+    def infrastructure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
+        """
+        return pulumi.get(self, "infrastructure")
+
+    @infrastructure.setter
+    def infrastructure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "infrastructure", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geo-location where the resource lives
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> Optional[pulumi.Input[Union[str, 'ProvisioningState']]]:
+        """
+        Provisioning state of the connected cluster resource.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @provisioning_state.setter
+    def provisioning_state(self, value: Optional[pulumi.Input[Union[str, 'ProvisioningState']]]):
+        pulumi.set(self, "provisioning_state", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ConnectedCluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +229,44 @@ class ConnectedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectedClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Represents a connected cluster.
+
+        :param str resource_name: The name of the resource.
+        :param ConnectedClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectedClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 aad_profile: Optional[pulumi.Input[pulumi.InputType['ConnectedClusterAADProfileArgs']]] = None,
+                 agent_public_key_certificate: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 connectivity_status: Optional[pulumi.Input[Union[str, 'ConnectivityStatus']]] = None,
+                 distribution: Optional[pulumi.Input[str]] = None,
+                 identity: Optional[pulumi.Input[pulumi.InputType['ConnectedClusterIdentityArgs']]] = None,
+                 infrastructure: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 provisioning_state: Optional[pulumi.Input[Union[str, 'ProvisioningState']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -64,36 +282,36 @@ class ConnectedCluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectedClusterArgs.__new__(ConnectedClusterArgs)
 
             if aad_profile is None and not opts.urn:
                 raise TypeError("Missing required property 'aad_profile'")
-            __props__['aad_profile'] = aad_profile
+            __props__.__dict__['aad_profile'] = aad_profile
             if agent_public_key_certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_public_key_certificate'")
-            __props__['agent_public_key_certificate'] = agent_public_key_certificate
-            __props__['cluster_name'] = cluster_name
-            __props__['connectivity_status'] = connectivity_status
-            __props__['distribution'] = distribution
+            __props__.__dict__['agent_public_key_certificate'] = agent_public_key_certificate
+            __props__.__dict__['cluster_name'] = cluster_name
+            __props__.__dict__['connectivity_status'] = connectivity_status
+            __props__.__dict__['distribution'] = distribution
             if identity is None and not opts.urn:
                 raise TypeError("Missing required property 'identity'")
-            __props__['identity'] = identity
-            __props__['infrastructure'] = infrastructure
-            __props__['location'] = location
-            __props__['provisioning_state'] = provisioning_state
+            __props__.__dict__['identity'] = identity
+            __props__.__dict__['infrastructure'] = infrastructure
+            __props__.__dict__['location'] = location
+            __props__.__dict__['provisioning_state'] = provisioning_state
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['tags'] = tags
-            __props__['agent_version'] = None
-            __props__['kubernetes_version'] = None
-            __props__['last_connectivity_time'] = None
-            __props__['managed_identity_certificate_expiration_time'] = None
-            __props__['name'] = None
-            __props__['offering'] = None
-            __props__['total_core_count'] = None
-            __props__['total_node_count'] = None
-            __props__['type'] = None
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['tags'] = tags
+            __props__.__dict__['agent_version'] = None
+            __props__.__dict__['kubernetes_version'] = None
+            __props__.__dict__['last_connectivity_time'] = None
+            __props__.__dict__['managed_identity_certificate_expiration_time'] = None
+            __props__.__dict__['name'] = None
+            __props__.__dict__['offering'] = None
+            __props__.__dict__['total_core_count'] = None
+            __props__.__dict__['total_node_count'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:kubernetes/v20200101preview:ConnectedCluster"), pulumi.Alias(type_="azure-native:kubernetes:ConnectedCluster"), pulumi.Alias(type_="azure-nextgen:kubernetes:ConnectedCluster"), pulumi.Alias(type_="azure-native:kubernetes/latest:ConnectedCluster"), pulumi.Alias(type_="azure-nextgen:kubernetes/latest:ConnectedCluster"), pulumi.Alias(type_="azure-native:kubernetes/v20210301:ConnectedCluster"), pulumi.Alias(type_="azure-nextgen:kubernetes/v20210301:ConnectedCluster"), pulumi.Alias(type_="azure-native:kubernetes/v20210401preview:ConnectedCluster"), pulumi.Alias(type_="azure-nextgen:kubernetes/v20210401preview:ConnectedCluster")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ConnectedCluster, __self__).__init__(
@@ -116,26 +334,26 @@ class ConnectedCluster(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ConnectedClusterArgs.__new__(ConnectedClusterArgs)
 
-        __props__["aad_profile"] = None
-        __props__["agent_public_key_certificate"] = None
-        __props__["agent_version"] = None
-        __props__["connectivity_status"] = None
-        __props__["distribution"] = None
-        __props__["identity"] = None
-        __props__["infrastructure"] = None
-        __props__["kubernetes_version"] = None
-        __props__["last_connectivity_time"] = None
-        __props__["location"] = None
-        __props__["managed_identity_certificate_expiration_time"] = None
-        __props__["name"] = None
-        __props__["offering"] = None
-        __props__["provisioning_state"] = None
-        __props__["tags"] = None
-        __props__["total_core_count"] = None
-        __props__["total_node_count"] = None
-        __props__["type"] = None
+        __props__.__dict__['aad_profile'] = None
+        __props__.__dict__['agent_public_key_certificate'] = None
+        __props__.__dict__['agent_version'] = None
+        __props__.__dict__['connectivity_status'] = None
+        __props__.__dict__['distribution'] = None
+        __props__.__dict__['identity'] = None
+        __props__.__dict__['infrastructure'] = None
+        __props__.__dict__['kubernetes_version'] = None
+        __props__.__dict__['last_connectivity_time'] = None
+        __props__.__dict__['location'] = None
+        __props__.__dict__['managed_identity_certificate_expiration_time'] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['offering'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['tags'] = None
+        __props__.__dict__['total_core_count'] = None
+        __props__.__dict__['total_node_count'] = None
+        __props__.__dict__['type'] = None
         return ConnectedCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -281,10 +499,4 @@ class ConnectedCluster(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

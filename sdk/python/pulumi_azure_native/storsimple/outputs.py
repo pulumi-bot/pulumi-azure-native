@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 
@@ -31,6 +31,25 @@ class AsymmetricEncryptedSecretResponse(dict):
     """
     Represent the secrets intended for encryption with asymmetric key pair.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionAlgorithm":
+            suggest = "encryption_algorithm"
+        elif key == "encryptionCertThumbprint":
+            suggest = "encryption_cert_thumbprint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AsymmetricEncryptedSecretResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AsymmetricEncryptedSecretResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AsymmetricEncryptedSecretResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  value: str,
@@ -70,15 +89,29 @@ class AsymmetricEncryptedSecretResponse(dict):
         """
         return pulumi.get(self, "encryption_cert_thumbprint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BandwidthScheduleResponse(dict):
     """
     The schedule for bandwidth setting.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rateInMbps":
+            suggest = "rate_in_mbps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BandwidthScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BandwidthScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BandwidthScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  days: Sequence[str],
                  rate_in_mbps: int,
@@ -127,9 +160,6 @@ class BandwidthScheduleResponse(dict):
         The stop time of the schedule.
         """
         return pulumi.get(self, "stop")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -366,9 +396,6 @@ class ManagerIntrinsicSettingsResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagerSkuResponse(dict):
@@ -391,15 +418,33 @@ class ManagerSkuResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleRecurrenceResponse(dict):
     """
     The schedule recurrence.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recurrenceType":
+            suggest = "recurrence_type"
+        elif key == "recurrenceValue":
+            suggest = "recurrence_value"
+        elif key == "weeklyDaysList":
+            suggest = "weekly_days_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleRecurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleRecurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleRecurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recurrence_type: str,
                  recurrence_value: int,
@@ -438,9 +483,6 @@ class ScheduleRecurrenceResponse(dict):
         The week days list. Applicable only for schedules of recurrence type 'weekly'.
         """
         return pulumi.get(self, "weekly_days_list")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -567,9 +609,6 @@ class TimeResponse(dict):
         The second.
         """
         return pulumi.get(self, "seconds")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

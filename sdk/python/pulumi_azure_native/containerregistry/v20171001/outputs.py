@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._enums import *
 
@@ -340,6 +340,23 @@ class IPRuleResponse(dict):
     """
     IP rule with specific IP or IP range in CIDR format.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iPAddressOrRange":
+            suggest = "i_p_address_or_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IPRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IPRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IPRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  i_p_address_or_range: str,
                  action: Optional[str] = None):
@@ -370,15 +387,33 @@ class IPRuleResponse(dict):
         """
         return pulumi.get(self, "action")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkRuleSetResponse(dict):
     """
     The network rule set for a container registry.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultAction":
+            suggest = "default_action"
+        elif key == "ipRules":
+            suggest = "ip_rules"
+        elif key == "virtualNetworkRules":
+            suggest = "virtual_network_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkRuleSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_action: str,
                  ip_rules: Optional[Sequence['outputs.IPRuleResponse']] = None,
@@ -420,9 +455,6 @@ class NetworkRuleSetResponse(dict):
         The virtual network rules.
         """
         return pulumi.get(self, "virtual_network_rules")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -563,9 +595,6 @@ class SkuResponse(dict):
         """
         return pulumi.get(self, "tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceResponseResult(dict):
@@ -607,6 +636,23 @@ class StatusResponse(dict):
     """
     The status of an Azure resource at the time the operation was called.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayStatus":
+            suggest = "display_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_status: str,
                  message: str,
@@ -645,9 +691,6 @@ class StatusResponse(dict):
         """
         return pulumi.get(self, "timestamp")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StorageAccountPropertiesResponse(dict):
@@ -669,9 +712,6 @@ class StorageAccountPropertiesResponse(dict):
         The resource ID of the storage account.
         """
         return pulumi.get(self, "id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -798,6 +838,23 @@ class VirtualNetworkRuleResponse(dict):
     """
     Virtual network rule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "virtualNetworkResourceId":
+            suggest = "virtual_network_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualNetworkRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualNetworkRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  virtual_network_resource_id: str,
                  action: Optional[str] = None):
@@ -827,8 +884,5 @@ class VirtualNetworkRuleResponse(dict):
         The action of virtual network rule.
         """
         return pulumi.get(self, "action")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

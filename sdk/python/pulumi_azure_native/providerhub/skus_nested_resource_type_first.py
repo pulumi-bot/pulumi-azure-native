@@ -5,16 +5,96 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['SkusNestedResourceTypeFirst']
+__all__ = ['SkusNestedResourceTypeFirstArgs', 'SkusNestedResourceTypeFirst']
+
+@pulumi.input_type
+class SkusNestedResourceTypeFirstArgs:
+    def __init__(__self__, *,
+                 nested_resource_type_first: pulumi.Input[str],
+                 provider_namespace: pulumi.Input[str],
+                 resource_type: pulumi.Input[str],
+                 sku_settings: pulumi.Input[Sequence[pulumi.Input['SkuSettingArgs']]],
+                 sku: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SkusNestedResourceTypeFirst resource.
+        :param pulumi.Input[str] nested_resource_type_first: The first child resource type.
+        :param pulumi.Input[str] provider_namespace: The name of the resource provider hosted within ProviderHub.
+        :param pulumi.Input[str] resource_type: The resource type.
+        :param pulumi.Input[str] sku: The SKU.
+        """
+        pulumi.set(__self__, "nested_resource_type_first", nested_resource_type_first)
+        pulumi.set(__self__, "provider_namespace", provider_namespace)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "sku_settings", sku_settings)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+
+    @property
+    @pulumi.getter(name="nestedResourceTypeFirst")
+    def nested_resource_type_first(self) -> pulumi.Input[str]:
+        """
+        The first child resource type.
+        """
+        return pulumi.get(self, "nested_resource_type_first")
+
+    @nested_resource_type_first.setter
+    def nested_resource_type_first(self, value: pulumi.Input[str]):
+        pulumi.set(self, "nested_resource_type_first", value)
+
+    @property
+    @pulumi.getter(name="providerNamespace")
+    def provider_namespace(self) -> pulumi.Input[str]:
+        """
+        The name of the resource provider hosted within ProviderHub.
+        """
+        return pulumi.get(self, "provider_namespace")
+
+    @provider_namespace.setter
+    def provider_namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "provider_namespace", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[str]:
+        """
+        The resource type.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter(name="skuSettings")
+    def sku_settings(self) -> pulumi.Input[Sequence[pulumi.Input['SkuSettingArgs']]]:
+        return pulumi.get(self, "sku_settings")
+
+    @sku_settings.setter
+    def sku_settings(self, value: pulumi.Input[Sequence[pulumi.Input['SkuSettingArgs']]]):
+        pulumi.set(self, "sku_settings", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SKU.
+        """
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sku", value)
 
 
 class SkusNestedResourceTypeFirst(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +116,38 @@ class SkusNestedResourceTypeFirst(pulumi.CustomResource):
         :param pulumi.Input[str] resource_type: The resource type.
         :param pulumi.Input[str] sku: The SKU.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SkusNestedResourceTypeFirstArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        API Version: 2020-11-20.
+
+        :param str resource_name: The name of the resource.
+        :param SkusNestedResourceTypeFirstArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SkusNestedResourceTypeFirstArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 nested_resource_type_first: Optional[pulumi.Input[str]] = None,
+                 provider_namespace: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 sku: Optional[pulumi.Input[str]] = None,
+                 sku_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SkuSettingArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,24 +163,24 @@ class SkusNestedResourceTypeFirst(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SkusNestedResourceTypeFirstArgs.__new__(SkusNestedResourceTypeFirstArgs)
 
             if nested_resource_type_first is None and not opts.urn:
                 raise TypeError("Missing required property 'nested_resource_type_first'")
-            __props__['nested_resource_type_first'] = nested_resource_type_first
+            __props__.__dict__['nested_resource_type_first'] = nested_resource_type_first
             if provider_namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'provider_namespace'")
-            __props__['provider_namespace'] = provider_namespace
+            __props__.__dict__['provider_namespace'] = provider_namespace
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
-            __props__['resource_type'] = resource_type
-            __props__['sku'] = sku
+            __props__.__dict__['resource_type'] = resource_type
+            __props__.__dict__['sku'] = sku
             if sku_settings is None and not opts.urn:
                 raise TypeError("Missing required property 'sku_settings'")
-            __props__['sku_settings'] = sku_settings
-            __props__['name'] = None
-            __props__['properties'] = None
-            __props__['type'] = None
+            __props__.__dict__['sku_settings'] = sku_settings
+            __props__.__dict__['name'] = None
+            __props__.__dict__['properties'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:providerhub:SkusNestedResourceTypeFirst"), pulumi.Alias(type_="azure-native:providerhub/latest:SkusNestedResourceTypeFirst"), pulumi.Alias(type_="azure-nextgen:providerhub/latest:SkusNestedResourceTypeFirst"), pulumi.Alias(type_="azure-native:providerhub/v20201120:SkusNestedResourceTypeFirst"), pulumi.Alias(type_="azure-nextgen:providerhub/v20201120:SkusNestedResourceTypeFirst")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SkusNestedResourceTypeFirst, __self__).__init__(
@@ -91,11 +203,11 @@ class SkusNestedResourceTypeFirst(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SkusNestedResourceTypeFirstArgs.__new__(SkusNestedResourceTypeFirstArgs)
 
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["type"] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['properties'] = None
+        __props__.__dict__['type'] = None
         return SkusNestedResourceTypeFirst(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -118,10 +230,4 @@ class SkusNestedResourceTypeFirst(pulumi.CustomResource):
         The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

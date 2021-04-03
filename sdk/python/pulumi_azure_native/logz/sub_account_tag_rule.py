@@ -5,16 +5,97 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['SubAccountTagRule']
+__all__ = ['SubAccountTagRuleArgs', 'SubAccountTagRule']
+
+@pulumi.input_type
+class SubAccountTagRuleArgs:
+    def __init__(__self__, *,
+                 monitor_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 sub_account_name: pulumi.Input[str],
+                 properties: Optional[pulumi.Input['MonitoringTagRulesPropertiesArgs']] = None,
+                 rule_set_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SubAccountTagRule resource.
+        :param pulumi.Input[str] monitor_name: Monitor resource name
+        :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
+        :param pulumi.Input[str] sub_account_name: Sub Account resource name
+        :param pulumi.Input['MonitoringTagRulesPropertiesArgs'] properties: Definition of the properties for a TagRules resource.
+        """
+        pulumi.set(__self__, "monitor_name", monitor_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "sub_account_name", sub_account_name)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if rule_set_name is not None:
+            pulumi.set(__self__, "rule_set_name", rule_set_name)
+
+    @property
+    @pulumi.getter(name="monitorName")
+    def monitor_name(self) -> pulumi.Input[str]:
+        """
+        Monitor resource name
+        """
+        return pulumi.get(self, "monitor_name")
+
+    @monitor_name.setter
+    def monitor_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "monitor_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource group. The name is case insensitive.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="subAccountName")
+    def sub_account_name(self) -> pulumi.Input[str]:
+        """
+        Sub Account resource name
+        """
+        return pulumi.get(self, "sub_account_name")
+
+    @sub_account_name.setter
+    def sub_account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sub_account_name", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['MonitoringTagRulesPropertiesArgs']]:
+        """
+        Definition of the properties for a TagRules resource.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['MonitoringTagRulesPropertiesArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="ruleSetName")
+    def rule_set_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "rule_set_name")
+
+    @rule_set_name.setter
+    def rule_set_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_set_name", value)
 
 
 class SubAccountTagRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +118,39 @@ class SubAccountTagRule(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
         :param pulumi.Input[str] sub_account_name: Sub Account resource name
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SubAccountTagRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Capture logs and metrics of Azure resources based on ARM tags.
+        API Version: 2020-10-01-preview.
+
+        :param str resource_name: The name of the resource.
+        :param SubAccountTagRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SubAccountTagRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 monitor_name: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['MonitoringTagRulesPropertiesArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 rule_set_name: Optional[pulumi.Input[str]] = None,
+                 sub_account_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,22 +166,22 @@ class SubAccountTagRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SubAccountTagRuleArgs.__new__(SubAccountTagRuleArgs)
 
             if monitor_name is None and not opts.urn:
                 raise TypeError("Missing required property 'monitor_name'")
-            __props__['monitor_name'] = monitor_name
-            __props__['properties'] = properties
+            __props__.__dict__['monitor_name'] = monitor_name
+            __props__.__dict__['properties'] = properties
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
-            __props__['rule_set_name'] = rule_set_name
+            __props__.__dict__['resource_group_name'] = resource_group_name
+            __props__.__dict__['rule_set_name'] = rule_set_name
             if sub_account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'sub_account_name'")
-            __props__['sub_account_name'] = sub_account_name
-            __props__['name'] = None
-            __props__['system_data'] = None
-            __props__['type'] = None
+            __props__.__dict__['sub_account_name'] = sub_account_name
+            __props__.__dict__['name'] = None
+            __props__.__dict__['system_data'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:logz:SubAccountTagRule"), pulumi.Alias(type_="azure-native:logz/v20201001preview:SubAccountTagRule"), pulumi.Alias(type_="azure-nextgen:logz/v20201001preview:SubAccountTagRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SubAccountTagRule, __self__).__init__(
@@ -90,12 +204,12 @@ class SubAccountTagRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SubAccountTagRuleArgs.__new__(SubAccountTagRuleArgs)
 
-        __props__["name"] = None
-        __props__["properties"] = None
-        __props__["system_data"] = None
-        __props__["type"] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['properties'] = None
+        __props__.__dict__['system_data'] = None
+        __props__.__dict__['type'] = None
         return SubAccountTagRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -129,10 +243,4 @@ class SubAccountTagRule(pulumi.CustomResource):
         The type of the rule set.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

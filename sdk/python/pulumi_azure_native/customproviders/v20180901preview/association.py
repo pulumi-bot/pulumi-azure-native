@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Association']
+__all__ = ['AssociationArgs', 'Association']
+
+@pulumi.input_type
+class AssociationArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str],
+                 association_name: Optional[pulumi.Input[str]] = None,
+                 target_resource_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Association resource.
+        :param pulumi.Input[str] scope: The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.
+        :param pulumi.Input[str] association_name: The name of the association.
+        :param pulumi.Input[str] target_resource_id: The REST resource instance of the target resource for this association.
+        """
+        pulumi.set(__self__, "scope", scope)
+        if association_name is not None:
+            pulumi.set(__self__, "association_name", association_name)
+        if target_resource_id is not None:
+            pulumi.set(__self__, "target_resource_id", target_resource_id)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="associationName")
+    def association_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the association.
+        """
+        return pulumi.get(self, "association_name")
+
+    @association_name.setter
+    def association_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "association_name", value)
+
+    @property
+    @pulumi.getter(name="targetResourceId")
+    def target_resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The REST resource instance of the target resource for this association.
+        """
+        return pulumi.get(self, "target_resource_id")
+
+    @target_resource_id.setter
+    def target_resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_resource_id", value)
 
 
 class Association(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -30,6 +85,36 @@ class Association(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.
         :param pulumi.Input[str] target_resource_id: The REST resource instance of the target resource for this association.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AssociationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The resource definition of this association.
+
+        :param str resource_name: The name of the resource.
+        :param AssociationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 association_name: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 target_resource_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -45,16 +130,16 @@ class Association(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AssociationArgs.__new__(AssociationArgs)
 
-            __props__['association_name'] = association_name
+            __props__.__dict__['association_name'] = association_name
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
-            __props__['scope'] = scope
-            __props__['target_resource_id'] = target_resource_id
-            __props__['name'] = None
-            __props__['provisioning_state'] = None
-            __props__['type'] = None
+            __props__.__dict__['scope'] = scope
+            __props__.__dict__['target_resource_id'] = target_resource_id
+            __props__.__dict__['name'] = None
+            __props__.__dict__['provisioning_state'] = None
+            __props__.__dict__['type'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="azure-nextgen:customproviders/v20180901preview:Association"), pulumi.Alias(type_="azure-native:customproviders:Association"), pulumi.Alias(type_="azure-nextgen:customproviders:Association")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Association, __self__).__init__(
@@ -77,12 +162,12 @@ class Association(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = AssociationArgs.__new__(AssociationArgs)
 
-        __props__["name"] = None
-        __props__["provisioning_state"] = None
-        __props__["target_resource_id"] = None
-        __props__["type"] = None
+        __props__.__dict__['name'] = None
+        __props__.__dict__['provisioning_state'] = None
+        __props__.__dict__['target_resource_id'] = None
+        __props__.__dict__['type'] = None
         return Association(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -116,10 +201,4 @@ class Association(pulumi.CustomResource):
         The association type.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
