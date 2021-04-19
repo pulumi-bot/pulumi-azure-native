@@ -53,25 +53,6 @@ class ApplicableScheduleResponse(dict):
     """
     Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "labVmsShutdown":
-            suggest = "lab_vms_shutdown"
-        elif key == "labVmsStartup":
-            suggest = "lab_vms_startup"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicableScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicableScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicableScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -199,27 +180,6 @@ class ArtifactDeploymentStatusPropertiesResponse(dict):
     """
     Properties of an artifact deployment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "artifactsApplied":
-            suggest = "artifacts_applied"
-        elif key == "deploymentStatus":
-            suggest = "deployment_status"
-        elif key == "totalArtifacts":
-            suggest = "total_artifacts"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ArtifactDeploymentStatusPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ArtifactDeploymentStatusPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ArtifactDeploymentStatusPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  artifacts_applied: Optional[int] = None,
                  deployment_status: Optional[str] = None,
@@ -267,29 +227,6 @@ class ArtifactInstallPropertiesResponse(dict):
     """
     Properties of an artifact.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "artifactId":
-            suggest = "artifact_id"
-        elif key == "deploymentStatusMessage":
-            suggest = "deployment_status_message"
-        elif key == "installTime":
-            suggest = "install_time"
-        elif key == "vmExtensionStatusMessage":
-            suggest = "vm_extension_status_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ArtifactInstallPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ArtifactInstallPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ArtifactInstallPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  artifact_id: Optional[str] = None,
                  deployment_status_message: Optional[str] = None,
@@ -408,23 +345,6 @@ class BulkCreationParametersResponse(dict):
     """
     Parameters for creating multiple virtual machines as a single action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceCount":
-            suggest = "instance_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BulkCreationParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BulkCreationParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BulkCreationParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_count: Optional[int] = None):
         """
@@ -448,27 +368,6 @@ class ComputeDataDiskResponse(dict):
     """
     A data disks attached to a virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskSizeGiB":
-            suggest = "disk_size_gi_b"
-        elif key == "diskUri":
-            suggest = "disk_uri"
-        elif key == "managedDiskId":
-            suggest = "managed_disk_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComputeDataDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComputeDataDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComputeDataDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_size_gi_b: Optional[int] = None,
                  disk_uri: Optional[str] = None,
@@ -528,23 +427,6 @@ class ComputeVmInstanceViewStatusResponse(dict):
     """
     Status information about a virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComputeVmInstanceViewStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComputeVmInstanceViewStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComputeVmInstanceViewStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: Optional[str] = None,
                  display_status: Optional[str] = None,
@@ -592,33 +474,6 @@ class ComputeVmPropertiesResponse(dict):
     """
     Properties of a virtual machine returned by the Microsoft.Compute API.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataDiskIds":
-            suggest = "data_disk_ids"
-        elif key == "dataDisks":
-            suggest = "data_disks"
-        elif key == "networkInterfaceId":
-            suggest = "network_interface_id"
-        elif key == "osDiskId":
-            suggest = "os_disk_id"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComputeVmPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComputeVmPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComputeVmPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_disk_ids: Optional[Sequence[str]] = None,
                  data_disks: Optional[Sequence['outputs.ComputeDataDiskResponse']] = None,
@@ -714,27 +569,6 @@ class CustomImagePropertiesCustomResponse(dict):
     """
     Properties for creating a custom image from a VHD.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "osType":
-            suggest = "os_type"
-        elif key == "imageName":
-            suggest = "image_name"
-        elif key == "sysPrep":
-            suggest = "sys_prep"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomImagePropertiesCustomResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomImagePropertiesCustomResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomImagePropertiesCustomResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  os_type: str,
                  image_name: Optional[str] = None,
@@ -781,27 +615,6 @@ class CustomImagePropertiesFromVmResponse(dict):
     """
     Properties for creating a custom image from a virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linuxOsInfo":
-            suggest = "linux_os_info"
-        elif key == "sourceVmId":
-            suggest = "source_vm_id"
-        elif key == "windowsOsInfo":
-            suggest = "windows_os_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomImagePropertiesFromVmResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomImagePropertiesFromVmResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomImagePropertiesFromVmResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linux_os_info: Optional['outputs.LinuxOsInfoResponse'] = None,
                  source_vm_id: Optional[str] = None,
@@ -872,23 +685,6 @@ class EnvironmentDeploymentPropertiesResponse(dict):
     """
     Properties of an environment deployment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "armTemplateId":
-            suggest = "arm_template_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnvironmentDeploymentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnvironmentDeploymentPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnvironmentDeploymentPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  arm_template_id: Optional[str] = None,
                  parameters: Optional[Sequence['outputs.ArmTemplateParameterPropertiesResponse']] = None):
@@ -924,23 +720,6 @@ class EventResponse(dict):
     """
     An event to be notified for.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventName":
-            suggest = "event_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_name: Optional[str] = None):
         """
@@ -999,23 +778,6 @@ class FormulaPropertiesFromVmResponse(dict):
     """
     Information about a VM from which a formula is to be created.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "labVmId":
-            suggest = "lab_vm_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FormulaPropertiesFromVmResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FormulaPropertiesFromVmResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FormulaPropertiesFromVmResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lab_vm_id: Optional[str] = None):
         """
@@ -1039,23 +801,6 @@ class GalleryImageReferenceResponse(dict):
     """
     The reference information for an Azure Marketplace image.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "osType":
-            suggest = "os_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GalleryImageReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GalleryImageReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GalleryImageReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  offer: Optional[str] = None,
                  os_type: Optional[str] = None,
@@ -1150,27 +895,6 @@ class IdentityPropertiesResponse(dict):
     """
     Properties of a managed identity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientSecretUrl":
-            suggest = "client_secret_url"
-        elif key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_secret_url: Optional[str] = None,
                  principal_id: Optional[str] = None,
@@ -1230,27 +954,6 @@ class InboundNatRuleResponse(dict):
     """
     A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendPort":
-            suggest = "backend_port"
-        elif key == "frontendPort":
-            suggest = "frontend_port"
-        elif key == "transportProtocol":
-            suggest = "transport_protocol"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InboundNatRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InboundNatRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InboundNatRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_port: Optional[int] = None,
                  frontend_port: Optional[int] = None,
@@ -1321,73 +1024,6 @@ class LabVirtualMachineCreationParameterResponse(dict):
     """
     Properties for creating a virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowClaim":
-            suggest = "allow_claim"
-        elif key == "applicableSchedule":
-            suggest = "applicable_schedule"
-        elif key == "artifactDeploymentStatus":
-            suggest = "artifact_deployment_status"
-        elif key == "bulkCreationParameters":
-            suggest = "bulk_creation_parameters"
-        elif key == "computeVm":
-            suggest = "compute_vm"
-        elif key == "createdByUser":
-            suggest = "created_by_user"
-        elif key == "createdByUserId":
-            suggest = "created_by_user_id"
-        elif key == "createdDate":
-            suggest = "created_date"
-        elif key == "customImageId":
-            suggest = "custom_image_id"
-        elif key == "disallowPublicIpAddress":
-            suggest = "disallow_public_ip_address"
-        elif key == "environmentId":
-            suggest = "environment_id"
-        elif key == "expirationDate":
-            suggest = "expiration_date"
-        elif key == "galleryImageReference":
-            suggest = "gallery_image_reference"
-        elif key == "isAuthenticationWithSshKey":
-            suggest = "is_authentication_with_ssh_key"
-        elif key == "labSubnetName":
-            suggest = "lab_subnet_name"
-        elif key == "labVirtualNetworkId":
-            suggest = "lab_virtual_network_id"
-        elif key == "networkInterface":
-            suggest = "network_interface"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "ownerObjectId":
-            suggest = "owner_object_id"
-        elif key == "ownerUserPrincipalName":
-            suggest = "owner_user_principal_name"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "sshKey":
-            suggest = "ssh_key"
-        elif key == "storageType":
-            suggest = "storage_type"
-        elif key == "uniqueIdentifier":
-            suggest = "unique_identifier"
-        elif key == "userName":
-            suggest = "user_name"
-        elif key == "virtualMachineCreationSource":
-            suggest = "virtual_machine_creation_source"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LabVirtualMachineCreationParameterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LabVirtualMachineCreationParameterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LabVirtualMachineCreationParameterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_claim: Optional[bool] = None,
                  applicable_schedule: Optional['outputs.ApplicableScheduleResponse'] = None,
@@ -1807,23 +1443,6 @@ class LinuxOsInfoResponse(dict):
     """
     Information about a Linux OS.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linuxOsState":
-            suggest = "linux_os_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinuxOsInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinuxOsInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinuxOsInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linux_os_state: Optional[str] = None):
         """
@@ -1847,39 +1466,6 @@ class NetworkInterfacePropertiesResponse(dict):
     """
     Properties of a network interface.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsName":
-            suggest = "dns_name"
-        elif key == "privateIpAddress":
-            suggest = "private_ip_address"
-        elif key == "publicIpAddress":
-            suggest = "public_ip_address"
-        elif key == "publicIpAddressId":
-            suggest = "public_ip_address_id"
-        elif key == "rdpAuthority":
-            suggest = "rdp_authority"
-        elif key == "sharedPublicIpAddressConfiguration":
-            suggest = "shared_public_ip_address_configuration"
-        elif key == "sshAuthority":
-            suggest = "ssh_authority"
-        elif key == "subnetId":
-            suggest = "subnet_id"
-        elif key == "virtualNetworkId":
-            suggest = "virtual_network_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfacePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkInterfacePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkInterfacePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dns_name: Optional[str] = None,
                  private_ip_address: Optional[str] = None,
@@ -1999,25 +1585,6 @@ class NotificationSettingsResponse(dict):
     """
     Notification settings for a schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timeInMinutes":
-            suggest = "time_in_minutes"
-        elif key == "webhookUrl":
-            suggest = "webhook_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NotificationSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NotificationSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NotificationSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  status: Optional[str] = None,
                  time_in_minutes: Optional[int] = None,
@@ -2065,25 +1632,6 @@ class PortResponse(dict):
     """
     Properties of a network port.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendPort":
-            suggest = "backend_port"
-        elif key == "transportProtocol":
-            suggest = "transport_protocol"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PortResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PortResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PortResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_port: Optional[int] = None,
                  transport_protocol: Optional[str] = None):
@@ -2119,41 +1667,6 @@ class ScheduleResponse(dict):
     """
     A schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdDate":
-            suggest = "created_date"
-        elif key == "dailyRecurrence":
-            suggest = "daily_recurrence"
-        elif key == "hourlyRecurrence":
-            suggest = "hourly_recurrence"
-        elif key == "notificationSettings":
-            suggest = "notification_settings"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "targetResourceId":
-            suggest = "target_resource_id"
-        elif key == "taskType":
-            suggest = "task_type"
-        elif key == "timeZoneId":
-            suggest = "time_zone_id"
-        elif key == "uniqueIdentifier":
-            suggest = "unique_identifier"
-        elif key == "weeklyRecurrence":
-            suggest = "weekly_recurrence"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_date: str,
                  id: str,
@@ -2353,23 +1866,6 @@ class SharedPublicIpAddressConfigurationResponse(dict):
     """
     Properties of a virtual machine that determine how it is connected to a load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inboundNatRules":
-            suggest = "inbound_nat_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharedPublicIpAddressConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharedPublicIpAddressConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharedPublicIpAddressConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  inbound_nat_rules: Optional[Sequence['outputs.InboundNatRuleResponse']] = None):
         """
@@ -2393,33 +1889,6 @@ class SubnetOverrideResponse(dict):
     """
     Property overrides on a subnet of a virtual network.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "labSubnetName":
-            suggest = "lab_subnet_name"
-        elif key == "resourceId":
-            suggest = "resource_id"
-        elif key == "sharedPublicIpAddressConfiguration":
-            suggest = "shared_public_ip_address_configuration"
-        elif key == "useInVmCreationPermission":
-            suggest = "use_in_vm_creation_permission"
-        elif key == "usePublicIpAddressPermission":
-            suggest = "use_public_ip_address_permission"
-        elif key == "virtualNetworkPoolName":
-            suggest = "virtual_network_pool_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubnetOverrideResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubnetOverrideResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubnetOverrideResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lab_subnet_name: Optional[str] = None,
                  resource_id: Optional[str] = None,
@@ -2503,27 +1972,6 @@ class SubnetResponse(dict):
     """
     Subnet information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowPublicIp":
-            suggest = "allow_public_ip"
-        elif key == "labSubnetName":
-            suggest = "lab_subnet_name"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubnetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubnetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubnetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_public_ip: Optional[str] = None,
                  lab_subnet_name: Optional[str] = None,
@@ -2571,23 +2019,6 @@ class SubnetSharedPublicIpAddressConfigurationResponse(dict):
     """
     Configuration for public IP address sharing.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedPorts":
-            suggest = "allowed_ports"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubnetSharedPublicIpAddressConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubnetSharedPublicIpAddressConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubnetSharedPublicIpAddressConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_ports: Optional[Sequence['outputs.PortResponse']] = None):
         """
@@ -2611,31 +2042,6 @@ class UserIdentityResponse(dict):
     """
     Identity attributes of a lab user.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appId":
-            suggest = "app_id"
-        elif key == "objectId":
-            suggest = "object_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-        elif key == "principalName":
-            suggest = "principal_name"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  app_id: Optional[str] = None,
                  object_id: Optional[str] = None,
@@ -2707,25 +2113,6 @@ class UserSecretStoreResponse(dict):
     """
     Properties of a user's secret store.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultId":
-            suggest = "key_vault_id"
-        elif key == "keyVaultUri":
-            suggest = "key_vault_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserSecretStoreResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserSecretStoreResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserSecretStoreResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault_id: Optional[str] = None,
                  key_vault_uri: Optional[str] = None):
@@ -2796,23 +2183,6 @@ class WindowsOsInfoResponse(dict):
     """
     Information about a Windows OS.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "windowsOsState":
-            suggest = "windows_os_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WindowsOsInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WindowsOsInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WindowsOsInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  windows_os_state: Optional[str] = None):
         """

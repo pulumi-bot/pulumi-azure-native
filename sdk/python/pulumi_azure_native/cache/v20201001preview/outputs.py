@@ -102,27 +102,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     The Private Endpoint Connection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -223,23 +202,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,

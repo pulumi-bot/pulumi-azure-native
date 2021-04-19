@@ -21,25 +21,6 @@ class AsymmetricEncryptedSecretResponse(dict):
     """
     This class can be used as the Type for any secret entity represented as Password, CertThumbprint, Algorithm. This class is intended to be used when the secret is encrypted with an asymmetric key pair. The encryptionAlgorithm field is mainly for future usage to potentially allow different entities encrypted using different algorithms.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encryptionAlgorithm":
-            suggest = "encryption_algorithm"
-        elif key == "encryptionCertificateThumbprint":
-            suggest = "encryption_certificate_thumbprint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AsymmetricEncryptedSecretResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AsymmetricEncryptedSecretResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AsymmetricEncryptedSecretResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  value: str,

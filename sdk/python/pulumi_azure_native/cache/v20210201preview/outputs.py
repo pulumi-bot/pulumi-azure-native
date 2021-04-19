@@ -26,25 +26,6 @@ class DatabasePropertiesResponseGeoReplication(dict):
     """
     Optional set of properties to configure geo replication for this database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupNickname":
-            suggest = "group_nickname"
-        elif key == "linkedDatabases":
-            suggest = "linked_databases"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabasePropertiesResponseGeoReplication. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabasePropertiesResponseGeoReplication.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabasePropertiesResponseGeoReplication.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_nickname: Optional[str] = None,
                  linked_databases: Optional[Sequence['outputs.LinkedDatabaseResponse']] = None):
@@ -193,29 +174,6 @@ class PersistenceResponse(dict):
     """
     Persistence-related configuration for the RedisEnterprise database
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aofEnabled":
-            suggest = "aof_enabled"
-        elif key == "aofFrequency":
-            suggest = "aof_frequency"
-        elif key == "rdbEnabled":
-            suggest = "rdb_enabled"
-        elif key == "rdbFrequency":
-            suggest = "rdb_frequency"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PersistenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PersistenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PersistenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aof_enabled: Optional[bool] = None,
                  aof_frequency: Optional[str] = None,
@@ -275,27 +233,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     The Private Endpoint Connection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -396,23 +333,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,

@@ -23,23 +23,6 @@ class CertificatePropertiesResponse(dict):
     """
     The description of an X509 CA Certificate.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isVerified":
-            suggest = "is_verified"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificatePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificatePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificatePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created: str,
                  expiry: str,
@@ -117,35 +100,6 @@ class IotDpsPropertiesDescriptionResponse(dict):
     """
     the service specific properties of a provisioning service, including keys, linked iot hubs, current state, and system generated properties such as hostname and idScope
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deviceProvisioningHostName":
-            suggest = "device_provisioning_host_name"
-        elif key == "idScope":
-            suggest = "id_scope"
-        elif key == "serviceOperationsHostName":
-            suggest = "service_operations_host_name"
-        elif key == "allocationPolicy":
-            suggest = "allocation_policy"
-        elif key == "authorizationPolicies":
-            suggest = "authorization_policies"
-        elif key == "iotHubs":
-            suggest = "iot_hubs"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IotDpsPropertiesDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IotDpsPropertiesDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IotDpsPropertiesDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  device_provisioning_host_name: str,
                  id_scope: str,
@@ -296,27 +250,6 @@ class IotHubDefinitionDescriptionResponse(dict):
     """
     Description of the IoT hub.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "allocationWeight":
-            suggest = "allocation_weight"
-        elif key == "applyAllocationPolicy":
-            suggest = "apply_allocation_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IotHubDefinitionDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IotHubDefinitionDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IotHubDefinitionDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: str,
                  location: str,
@@ -385,27 +318,6 @@ class SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse(dict
     """
     Description of the shared access key.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyName":
-            suggest = "key_name"
-        elif key == "primaryKey":
-            suggest = "primary_key"
-        elif key == "secondaryKey":
-            suggest = "secondary_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_name: str,
                  rights: str,

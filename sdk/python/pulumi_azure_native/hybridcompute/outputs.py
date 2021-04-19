@@ -83,27 +83,6 @@ class HybridComputePrivateLinkScopePropertiesResponse(dict):
     """
     Properties that define a Azure Arc PrivateLinkScope resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkScopeId":
-            suggest = "private_link_scope_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicNetworkAccess":
-            suggest = "public_network_access"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HybridComputePrivateLinkScopePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HybridComputePrivateLinkScopePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HybridComputePrivateLinkScopePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_link_scope_id: str,
                  provisioning_state: str,
@@ -149,23 +128,6 @@ class LocationDataResponse(dict):
     """
     Metadata pertaining to the geographic location of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryOrRegion":
-            suggest = "country_or_region"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LocationDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LocationDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LocationDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  city: Optional[str] = None,
@@ -224,23 +186,6 @@ class MachineExtensionInstanceViewResponse(dict):
     """
     Describes the Machine Extension Instance View.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -297,23 +242,6 @@ class MachineExtensionInstanceViewResponseStatus(dict):
     """
     Instance view status.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponseStatus. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: str,
                  display_status: str,
@@ -380,23 +308,6 @@ class MachineExtensionPropertiesResponseInstanceView(dict):
     """
     The machine extension instance view.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionPropertiesResponseInstanceView. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionPropertiesResponseInstanceView.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionPropertiesResponseInstanceView.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -453,23 +364,6 @@ class MachinePropertiesResponseOsProfile(dict):
     """
     Specifies the operating system settings for the hybrid machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computerName":
-            suggest = "computer_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachinePropertiesResponseOsProfile. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachinePropertiesResponseOsProfile.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachinePropertiesResponseOsProfile.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  computer_name: str):
         """
@@ -489,25 +383,6 @@ class MachinePropertiesResponseOsProfile(dict):
 
 @pulumi.output_type
 class MachineResponseIdentity(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineResponseIdentity. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineResponseIdentity.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineResponseIdentity.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -552,27 +427,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     Properties of a private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.PrivateEndpointPropertyResponse'] = None,
@@ -642,23 +496,6 @@ class PrivateLinkServiceConnectionStatePropertyResponse(dict):
     """
     State of the private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -703,33 +540,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

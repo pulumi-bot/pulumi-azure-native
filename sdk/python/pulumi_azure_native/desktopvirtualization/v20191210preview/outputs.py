@@ -18,25 +18,6 @@ class RegistrationInfoResponse(dict):
     """
     Represents a RegistrationInfo definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expirationTime":
-            suggest = "expiration_time"
-        elif key == "registrationTokenOperation":
-            suggest = "registration_token_operation"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RegistrationInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RegistrationInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RegistrationInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  expiration_time: Optional[str] = None,
                  registration_token_operation: Optional[str] = None,

@@ -19,25 +19,6 @@ class AccessReviewInstanceResponse(dict):
     """
     Access Review Instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endDateTime":
-            suggest = "end_date_time"
-        elif key == "startDateTime":
-            suggest = "start_date_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AccessReviewInstanceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AccessReviewInstanceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AccessReviewInstanceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -117,25 +98,6 @@ class AccessReviewReviewerResponse(dict):
     """
     Descriptor for what needs to be reviewed
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalType":
-            suggest = "principal_type"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AccessReviewReviewerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AccessReviewReviewerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AccessReviewReviewerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_type: str,
                  principal_id: Optional[str] = None):

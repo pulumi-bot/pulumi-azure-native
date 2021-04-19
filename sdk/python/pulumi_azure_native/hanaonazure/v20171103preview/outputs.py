@@ -24,23 +24,6 @@ class DiskResponse(dict):
     """
     Specifies the disk information fo the HANA instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskSizeGB":
-            suggest = "disk_size_gb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lun: int,
                  disk_size_gb: Optional[int] = None,
@@ -87,25 +70,6 @@ class HardwareProfileResponse(dict):
     """
     Specifies the hardware settings for the HANA instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hanaInstanceSize":
-            suggest = "hana_instance_size"
-        elif key == "hardwareType":
-            suggest = "hardware_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HardwareProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HardwareProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HardwareProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  hana_instance_size: Optional[str] = None,
                  hardware_type: Optional[str] = None):
@@ -141,23 +105,6 @@ class IpAddressResponse(dict):
     """
     Specifies the IP address of the network interface.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipAddress":
-            suggest = "ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IpAddressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IpAddressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IpAddressResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_address: Optional[str] = None):
         """
@@ -181,25 +128,6 @@ class NetworkProfileResponse(dict):
     """
     Specifies the network settings for the HANA instance disks.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "circuitId":
-            suggest = "circuit_id"
-        elif key == "networkInterfaces":
-            suggest = "network_interfaces"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  circuit_id: Optional[str] = None,
                  network_interfaces: Optional[Sequence['outputs.IpAddressResponse']] = None):
@@ -235,27 +163,6 @@ class OSProfileResponse(dict):
     """
     Specifies the operating system settings for the HANA instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computerName":
-            suggest = "computer_name"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "sshPublicKey":
-            suggest = "ssh_public_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  computer_name: Optional[str] = None,
                  os_type: Optional[str] = None,
@@ -315,25 +222,6 @@ class StorageProfileResponse(dict):
     """
     Specifies the storage settings for the HANA instance disks.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nfsIpAddress":
-            suggest = "nfs_ip_address"
-        elif key == "osDisks":
-            suggest = "os_disks"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  nfs_ip_address: Optional[str] = None,
                  os_disks: Optional[Sequence['outputs.DiskResponse']] = None):

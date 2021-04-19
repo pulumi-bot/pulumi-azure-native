@@ -19,25 +19,6 @@ class MachineReferenceWithHintsResponse(dict):
     """
     A machine reference with a hint of the machine's name and operating system.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayNameHint":
-            suggest = "display_name_hint"
-        elif key == "osFamilyHint":
-            suggest = "os_family_hint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineReferenceWithHintsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineReferenceWithHintsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineReferenceWithHintsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_name_hint: str,
                  id: str,

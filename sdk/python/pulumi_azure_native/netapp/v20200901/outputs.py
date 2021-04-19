@@ -31,43 +31,6 @@ class ActiveDirectoryResponse(dict):
     """
     Active Directory
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "statusDetails":
-            suggest = "status_details"
-        elif key == "activeDirectoryId":
-            suggest = "active_directory_id"
-        elif key == "adName":
-            suggest = "ad_name"
-        elif key == "aesEncryption":
-            suggest = "aes_encryption"
-        elif key == "backupOperators":
-            suggest = "backup_operators"
-        elif key == "kdcIP":
-            suggest = "kdc_ip"
-        elif key == "ldapSigning":
-            suggest = "ldap_signing"
-        elif key == "organizationalUnit":
-            suggest = "organizational_unit"
-        elif key == "securityOperators":
-            suggest = "security_operators"
-        elif key == "serverRootCACertificate":
-            suggest = "server_root_ca_certificate"
-        elif key == "smbServerName":
-            suggest = "smb_server_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActiveDirectoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActiveDirectoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActiveDirectoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  status: str,
                  status_details: str,
@@ -285,25 +248,6 @@ class DailyScheduleResponse(dict):
     """
     Daily Schedule properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "snapshotsToKeep":
-            suggest = "snapshots_to_keep"
-        elif key == "usedBytes":
-            suggest = "used_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DailyScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DailyScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DailyScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  hour: Optional[int] = None,
                  minute: Optional[int] = None,
@@ -363,43 +307,6 @@ class ExportPolicyRuleResponse(dict):
     """
     Volume Export Policy Rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedClients":
-            suggest = "allowed_clients"
-        elif key == "hasRootAccess":
-            suggest = "has_root_access"
-        elif key == "kerberos5ReadOnly":
-            suggest = "kerberos5_read_only"
-        elif key == "kerberos5ReadWrite":
-            suggest = "kerberos5_read_write"
-        elif key == "kerberos5iReadOnly":
-            suggest = "kerberos5i_read_only"
-        elif key == "kerberos5iReadWrite":
-            suggest = "kerberos5i_read_write"
-        elif key == "kerberos5pReadOnly":
-            suggest = "kerberos5p_read_only"
-        elif key == "kerberos5pReadWrite":
-            suggest = "kerberos5p_read_write"
-        elif key == "ruleIndex":
-            suggest = "rule_index"
-        elif key == "unixReadOnly":
-            suggest = "unix_read_only"
-        elif key == "unixReadWrite":
-            suggest = "unix_read_write"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportPolicyRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportPolicyRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportPolicyRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_clients: Optional[str] = None,
                  cifs: Optional[bool] = None,
@@ -595,25 +502,6 @@ class HourlyScheduleResponse(dict):
     """
     Hourly Schedule properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "snapshotsToKeep":
-            suggest = "snapshots_to_keep"
-        elif key == "usedBytes":
-            suggest = "used_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HourlyScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HourlyScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HourlyScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  minute: Optional[int] = None,
                  snapshots_to_keep: Optional[int] = None,
@@ -661,27 +549,6 @@ class MonthlyScheduleResponse(dict):
     """
     Monthly Schedule properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "daysOfMonth":
-            suggest = "days_of_month"
-        elif key == "snapshotsToKeep":
-            suggest = "snapshots_to_keep"
-        elif key == "usedBytes":
-            suggest = "used_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MonthlyScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MonthlyScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MonthlyScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  days_of_month: Optional[str] = None,
                  hour: Optional[int] = None,
@@ -753,29 +620,6 @@ class MountTargetPropertiesResponse(dict):
     """
     Mount target properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileSystemId":
-            suggest = "file_system_id"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "mountTargetId":
-            suggest = "mount_target_id"
-        elif key == "smbServerFqdn":
-            suggest = "smb_server_fqdn"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MountTargetPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MountTargetPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MountTargetPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_system_id: str,
                  ip_address: str,
@@ -832,31 +676,6 @@ class ReplicationObjectResponse(dict):
     """
     Replication properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "remoteVolumeResourceId":
-            suggest = "remote_volume_resource_id"
-        elif key == "replicationSchedule":
-            suggest = "replication_schedule"
-        elif key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "remoteVolumeRegion":
-            suggest = "remote_volume_region"
-        elif key == "replicationId":
-            suggest = "replication_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReplicationObjectResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReplicationObjectResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReplicationObjectResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  remote_volume_resource_id: str,
                  replication_schedule: str,
@@ -926,29 +745,6 @@ class VolumeBackupPropertiesResponse(dict):
     """
     Volume Backup Properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupEnabled":
-            suggest = "backup_enabled"
-        elif key == "backupPolicyId":
-            suggest = "backup_policy_id"
-        elif key == "policyEnforced":
-            suggest = "policy_enforced"
-        elif key == "vaultId":
-            suggest = "vault_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VolumeBackupPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VolumeBackupPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VolumeBackupPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_enabled: Optional[bool] = None,
                  backup_policy_id: Optional[str] = None,
@@ -1008,27 +804,6 @@ class VolumeBackupsResponse(dict):
     """
     Volume details using the backup policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupsCount":
-            suggest = "backups_count"
-        elif key == "policyEnabled":
-            suggest = "policy_enabled"
-        elif key == "volumeName":
-            suggest = "volume_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VolumeBackupsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VolumeBackupsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VolumeBackupsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backups_count: Optional[int] = None,
                  policy_enabled: Optional[bool] = None,
@@ -1146,23 +921,6 @@ class VolumeSnapshotPropertiesResponse(dict):
     """
     Volume Snapshot Properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "snapshotPolicyId":
-            suggest = "snapshot_policy_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VolumeSnapshotPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VolumeSnapshotPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VolumeSnapshotPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  snapshot_policy_id: Optional[str] = None):
         """
@@ -1186,25 +944,6 @@ class WeeklyScheduleResponse(dict):
     """
     Weekly Schedule properties, make a snapshot every week at a specific day or days
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "snapshotsToKeep":
-            suggest = "snapshots_to_keep"
-        elif key == "usedBytes":
-            suggest = "used_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WeeklyScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WeeklyScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WeeklyScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  day: Optional[str] = None,
                  hour: Optional[int] = None,

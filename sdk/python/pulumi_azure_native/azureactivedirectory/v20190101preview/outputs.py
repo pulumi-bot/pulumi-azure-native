@@ -54,25 +54,6 @@ class B2CTenantResourcePropertiesResponseBillingConfig(dict):
     """
     The billing configuration for the tenant.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "effectiveStartDateUtc":
-            suggest = "effective_start_date_utc"
-        elif key == "billingType":
-            suggest = "billing_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in B2CTenantResourcePropertiesResponseBillingConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        B2CTenantResourcePropertiesResponseBillingConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        B2CTenantResourcePropertiesResponseBillingConfig.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  effective_start_date_utc: str,
                  billing_type: Optional[str] = None):

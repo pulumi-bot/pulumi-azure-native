@@ -41,29 +41,6 @@ class AzureIaaSVMProtectionPolicyResponse(dict):
     """
     Azure VM (also known as IaaS VM) workload-specific backup policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupManagementType":
-            suggest = "backup_management_type"
-        elif key == "protectedItemsCount":
-            suggest = "protected_items_count"
-        elif key == "retentionPolicy":
-            suggest = "retention_policy"
-        elif key == "schedulePolicy":
-            suggest = "schedule_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureIaaSVMProtectionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureIaaSVMProtectionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureIaaSVMProtectionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_management_type: Optional[str] = None,
                  protected_items_count: Optional[int] = None,
@@ -125,27 +102,6 @@ class AzureSqlProtectionPolicyResponse(dict):
     """
      The Azure SQL workload-specific backup policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupManagementType":
-            suggest = "backup_management_type"
-        elif key == "protectedItemsCount":
-            suggest = "protected_items_count"
-        elif key == "retentionPolicy":
-            suggest = "retention_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlProtectionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlProtectionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlProtectionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_management_type: Optional[str] = None,
                  protected_items_count: Optional[int] = None,
@@ -195,23 +151,6 @@ class DailyRetentionFormatResponse(dict):
     """
     Daily retention format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "daysOfTheMonth":
-            suggest = "days_of_the_month"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DailyRetentionFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DailyRetentionFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DailyRetentionFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  days_of_the_month: Optional[Sequence['outputs.DayResponse']] = None):
         """
@@ -235,25 +174,6 @@ class DailyRetentionScheduleResponse(dict):
     """
     Daily retention schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionDuration":
-            suggest = "retention_duration"
-        elif key == "retentionTimes":
-            suggest = "retention_times"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DailyRetentionScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DailyRetentionScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DailyRetentionScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  retention_duration: Optional['outputs.RetentionDurationResponse'] = None,
                  retention_times: Optional[Sequence[str]] = None):
@@ -289,23 +209,6 @@ class DayResponse(dict):
     """
     Day of the week.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isLast":
-            suggest = "is_last"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DayResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DayResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DayResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  date: Optional[int] = None,
                  is_last: Optional[bool] = None):
@@ -333,25 +236,6 @@ class IdentityDataResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -396,31 +280,6 @@ class LongTermRetentionPolicyResponse(dict):
     """
     Long-term retention policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dailySchedule":
-            suggest = "daily_schedule"
-        elif key == "monthlySchedule":
-            suggest = "monthly_schedule"
-        elif key == "retentionPolicyType":
-            suggest = "retention_policy_type"
-        elif key == "weeklySchedule":
-            suggest = "weekly_schedule"
-        elif key == "yearlySchedule":
-            suggest = "yearly_schedule"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LongTermRetentionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LongTermRetentionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LongTermRetentionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  daily_schedule: Optional['outputs.DailyRetentionScheduleResponse'] = None,
                  monthly_schedule: Optional['outputs.MonthlyRetentionScheduleResponse'] = None,
@@ -494,23 +353,6 @@ class LongTermSchedulePolicyResponse(dict):
     """
     Long-term policy schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "schedulePolicyType":
-            suggest = "schedule_policy_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LongTermSchedulePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LongTermSchedulePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LongTermSchedulePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  schedule_policy_type: Optional[str] = None):
         """
@@ -536,29 +378,6 @@ class MabProtectionPolicyResponse(dict):
     """
     The backup policy for the file or folder container.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupManagementType":
-            suggest = "backup_management_type"
-        elif key == "protectedItemsCount":
-            suggest = "protected_items_count"
-        elif key == "retentionPolicy":
-            suggest = "retention_policy"
-        elif key == "schedulePolicy":
-            suggest = "schedule_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MabProtectionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MabProtectionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MabProtectionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_management_type: Optional[str] = None,
                  protected_items_count: Optional[int] = None,
@@ -620,31 +439,6 @@ class MonthlyRetentionScheduleResponse(dict):
     """
     The monthly retention schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionDuration":
-            suggest = "retention_duration"
-        elif key == "retentionScheduleDaily":
-            suggest = "retention_schedule_daily"
-        elif key == "retentionScheduleFormatType":
-            suggest = "retention_schedule_format_type"
-        elif key == "retentionScheduleWeekly":
-            suggest = "retention_schedule_weekly"
-        elif key == "retentionTimes":
-            suggest = "retention_times"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MonthlyRetentionScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MonthlyRetentionScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MonthlyRetentionScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  retention_duration: Optional['outputs.RetentionDurationResponse'] = None,
                  retention_schedule_daily: Optional['outputs.DailyRetentionFormatResponse'] = None,
@@ -771,23 +565,6 @@ class RetentionDurationResponse(dict):
     """
     Retention duration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "durationType":
-            suggest = "duration_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RetentionDurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RetentionDurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RetentionDurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  duration_type: Optional[str] = None):
@@ -825,25 +602,6 @@ class SimpleRetentionPolicyResponse(dict):
     """
     Simple policy retention.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionDuration":
-            suggest = "retention_duration"
-        elif key == "retentionPolicyType":
-            suggest = "retention_policy_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SimpleRetentionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SimpleRetentionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SimpleRetentionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  retention_duration: Optional['outputs.RetentionDurationResponse'] = None,
                  retention_policy_type: Optional[str] = None):
@@ -881,31 +639,6 @@ class SimpleSchedulePolicyResponse(dict):
     """
     Simple policy schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "schedulePolicyType":
-            suggest = "schedule_policy_type"
-        elif key == "scheduleRunDays":
-            suggest = "schedule_run_days"
-        elif key == "scheduleRunFrequency":
-            suggest = "schedule_run_frequency"
-        elif key == "scheduleRunTimes":
-            suggest = "schedule_run_times"
-        elif key == "scheduleWeeklyFrequency":
-            suggest = "schedule_weekly_frequency"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SimpleSchedulePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SimpleSchedulePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SimpleSchedulePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  schedule_policy_type: Optional[str] = None,
                  schedule_run_days: Optional[Sequence[str]] = None,
@@ -1001,35 +734,6 @@ class UpgradeDetailsResponse(dict):
     """
     Details for upgrading vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTimeUtc":
-            suggest = "end_time_utc"
-        elif key == "lastUpdatedTimeUtc":
-            suggest = "last_updated_time_utc"
-        elif key == "operationId":
-            suggest = "operation_id"
-        elif key == "previousResourceId":
-            suggest = "previous_resource_id"
-        elif key == "startTimeUtc":
-            suggest = "start_time_utc"
-        elif key == "triggerType":
-            suggest = "trigger_type"
-        elif key == "upgradedResourceId":
-            suggest = "upgraded_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UpgradeDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UpgradeDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UpgradeDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_time_utc: str,
                  last_updated_time_utc: str,
@@ -1140,27 +844,6 @@ class VaultPrivateEndpointConnectionResponse(dict):
     """
     Private Endpoint Connection Response Properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_endpoint: 'outputs.PrivateEndpointResponse',
                  private_link_service_connection_state: 'outputs.VaultPrivateLinkServiceConnectionStateResponse',
@@ -1205,23 +888,6 @@ class VaultPrivateLinkServiceConnectionStateResponse(dict):
     """
     Gets or sets private link service connection state.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -1266,31 +932,6 @@ class VaultPropertiesResponse(dict):
     """
     Properties of the vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateEndpointConnections":
-            suggest = "private_endpoint_connections"
-        elif key == "privateEndpointStateForBackup":
-            suggest = "private_endpoint_state_for_backup"
-        elif key == "privateEndpointStateForSiteRecovery":
-            suggest = "private_endpoint_state_for_site_recovery"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "upgradeDetails":
-            suggest = "upgrade_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_endpoint_connections: Sequence['outputs.PrivateEndpointConnectionVaultPropertiesResponse'],
                  private_endpoint_state_for_backup: str,
@@ -1358,25 +999,6 @@ class WeeklyRetentionFormatResponse(dict):
     """
     Weekly retention format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "daysOfTheWeek":
-            suggest = "days_of_the_week"
-        elif key == "weeksOfTheMonth":
-            suggest = "weeks_of_the_month"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WeeklyRetentionFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WeeklyRetentionFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WeeklyRetentionFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  days_of_the_week: Optional[Sequence[str]] = None,
                  weeks_of_the_month: Optional[Sequence[str]] = None):
@@ -1412,27 +1034,6 @@ class WeeklyRetentionScheduleResponse(dict):
     """
     Weekly retention schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "daysOfTheWeek":
-            suggest = "days_of_the_week"
-        elif key == "retentionDuration":
-            suggest = "retention_duration"
-        elif key == "retentionTimes":
-            suggest = "retention_times"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WeeklyRetentionScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WeeklyRetentionScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WeeklyRetentionScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  days_of_the_week: Optional[Sequence[str]] = None,
                  retention_duration: Optional['outputs.RetentionDurationResponse'] = None,
@@ -1480,33 +1081,6 @@ class YearlyRetentionScheduleResponse(dict):
     """
     Yearly retention schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "monthsOfYear":
-            suggest = "months_of_year"
-        elif key == "retentionDuration":
-            suggest = "retention_duration"
-        elif key == "retentionScheduleDaily":
-            suggest = "retention_schedule_daily"
-        elif key == "retentionScheduleFormatType":
-            suggest = "retention_schedule_format_type"
-        elif key == "retentionScheduleWeekly":
-            suggest = "retention_schedule_weekly"
-        elif key == "retentionTimes":
-            suggest = "retention_times"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in YearlyRetentionScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        YearlyRetentionScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        YearlyRetentionScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  months_of_year: Optional[Sequence[str]] = None,
                  retention_duration: Optional['outputs.RetentionDurationResponse'] = None,

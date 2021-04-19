@@ -27,27 +27,6 @@ class ComplianceStatusResponse(dict):
     """
     Compliance Status details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "complianceState":
-            suggest = "compliance_state"
-        elif key == "lastConfigApplied":
-            suggest = "last_config_applied"
-        elif key == "messageLevel":
-            suggest = "message_level"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComplianceStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComplianceStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComplianceStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compliance_state: str,
                  last_config_applied: Optional[str] = None,
@@ -106,25 +85,6 @@ class ConfigurationIdentityResponse(dict):
     """
     Identity for the managed cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigurationIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigurationIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigurationIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -203,23 +163,6 @@ class ExtensionStatusResponse(dict):
     """
     Status from this instance of the extension.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExtensionStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExtensionStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExtensionStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: Optional[str] = None,
                  display_status: Optional[str] = None,
@@ -293,25 +236,6 @@ class HelmOperatorPropertiesResponse(dict):
     """
     Properties for Helm operator.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "chartValues":
-            suggest = "chart_values"
-        elif key == "chartVersion":
-            suggest = "chart_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HelmOperatorPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HelmOperatorPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HelmOperatorPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  chart_values: Optional[str] = None,
                  chart_version: Optional[str] = None):
@@ -347,23 +271,6 @@ class ScopeClusterResponse(dict):
     """
     Specifies that the scope of the extensionInstance is Cluster
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "releaseNamespace":
-            suggest = "release_namespace"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScopeClusterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScopeClusterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScopeClusterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  release_namespace: Optional[str] = None):
         """
@@ -387,23 +294,6 @@ class ScopeNamespaceResponse(dict):
     """
     Specifies that the scope of the extensionInstance is Namespace
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetNamespace":
-            suggest = "target_namespace"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScopeNamespaceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScopeNamespaceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScopeNamespaceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target_namespace: Optional[str] = None):
         """
@@ -462,33 +352,6 @@ class SystemDataResponse(dict):
     """
     Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: str,
                  created_by: str,

@@ -25,23 +25,6 @@ class AdditionalWorkspacesPropertiesResponse(dict):
     """
     Properties of the additional workspaces.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataTypes":
-            suggest = "data_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdditionalWorkspacesPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdditionalWorkspacesPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdditionalWorkspacesPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_types: Optional[Sequence[str]] = None,
                  type: Optional[str] = None,
@@ -91,31 +74,6 @@ class AllowlistCustomAlertRuleResponse(dict):
     """
     A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowlistValues":
-            suggest = "allowlist_values"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "ruleType":
-            suggest = "rule_type"
-        elif key == "valueType":
-            suggest = "value_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AllowlistCustomAlertRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AllowlistCustomAlertRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AllowlistCustomAlertRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowlist_values: Sequence[str],
                  description: str,
@@ -195,31 +153,6 @@ class DenylistCustomAlertRuleResponse(dict):
     """
     A custom alert rule that checks if a value (depends on the custom alert type) is denied.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "denylistValues":
-            suggest = "denylist_values"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "ruleType":
-            suggest = "rule_type"
-        elif key == "valueType":
-            suggest = "value_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DenylistCustomAlertRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DenylistCustomAlertRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DenylistCustomAlertRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  denylist_values: Sequence[str],
                  description: str,
@@ -299,23 +232,6 @@ class RecommendationConfigurationPropertiesResponse(dict):
     """
     The type of IoT Security recommendation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recommendationType":
-            suggest = "recommendation_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecommendationConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecommendationConfigurationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecommendationConfigurationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  recommendation_type: str,
@@ -358,33 +274,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -468,31 +357,6 @@ class ThresholdCustomAlertRuleResponse(dict):
     """
     A custom alert rule that checks if a value (depends on the custom alert type) is within the given range.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "maxThreshold":
-            suggest = "max_threshold"
-        elif key == "minThreshold":
-            suggest = "min_threshold"
-        elif key == "ruleType":
-            suggest = "rule_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ThresholdCustomAlertRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ThresholdCustomAlertRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ThresholdCustomAlertRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: str,
                  display_name: str,
@@ -572,33 +436,6 @@ class TimeWindowCustomAlertRuleResponse(dict):
     """
     A custom alert rule that checks if the number of activities (depends on the custom alert type) in a time window is within the given range.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "maxThreshold":
-            suggest = "max_threshold"
-        elif key == "minThreshold":
-            suggest = "min_threshold"
-        elif key == "ruleType":
-            suggest = "rule_type"
-        elif key == "timeWindowSize":
-            suggest = "time_window_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TimeWindowCustomAlertRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TimeWindowCustomAlertRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TimeWindowCustomAlertRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: str,
                  display_name: str,
@@ -689,23 +526,6 @@ class UserDefinedResourcesPropertiesResponse(dict):
     """
     Properties of the IoT Security solution's user defined resources.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "querySubscriptions":
-            suggest = "query_subscriptions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserDefinedResourcesPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserDefinedResourcesPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserDefinedResourcesPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  query: str,
                  query_subscriptions: Sequence[str]):

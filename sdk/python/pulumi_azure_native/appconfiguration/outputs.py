@@ -104,23 +104,6 @@ class EncryptionPropertiesResponse(dict):
     """
     The encryption settings for a configuration store.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultProperties":
-            suggest = "key_vault_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault_properties: Optional['outputs.KeyVaultPropertiesResponse'] = None):
         """
@@ -144,25 +127,6 @@ class KeyVaultPropertiesResponse(dict):
     """
     Settings concerning key vault encryption for a configuration store.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "identityClientId":
-            suggest = "identity_client_id"
-        elif key == "keyIdentifier":
-            suggest = "key_identifier"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  identity_client_id: Optional[str] = None,
                  key_identifier: Optional[str] = None):
@@ -198,27 +162,6 @@ class PrivateEndpointConnectionReferenceResponse(dict):
     """
     A reference to a related private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -320,23 +263,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     The state of a private link service connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: Optional[str] = None,
@@ -383,27 +309,6 @@ class ResourceIdentityResponse(dict):
     """
     An identity that can be associated with a resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -483,25 +388,6 @@ class UserIdentityResponse(dict):
     """
     A resource identity that is managed by the user of the service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):

@@ -30,25 +30,6 @@ class EnterprisePolicyIdentityResponse(dict):
     """
     The identity of the EnterprisePolicy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "systemAssignedIdentityPrincipalId":
-            suggest = "system_assigned_identity_principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnterprisePolicyIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnterprisePolicyIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnterprisePolicyIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  system_assigned_identity_principal_id: str,
                  tenant_id: str,
@@ -186,23 +167,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -250,23 +214,6 @@ class PropertiesResponseEncryption(dict):
     """
     The encryption settings for a configuration store.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVault":
-            suggest = "key_vault"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PropertiesResponseEncryption. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PropertiesResponseEncryption.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PropertiesResponseEncryption.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault: Optional['outputs.KeyVaultPropertiesResponse'] = None,
                  state: Optional[str] = None):
@@ -325,23 +272,6 @@ class PropertiesResponseNetworkInjection(dict):
     """
     Settings concerning network injection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "virtualNetworks":
-            suggest = "virtual_networks"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PropertiesResponseNetworkInjection. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PropertiesResponseNetworkInjection.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PropertiesResponseNetworkInjection.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  virtual_networks: Optional['outputs.VirtualNetworkPropertiesListResponse'] = None):
         """
@@ -388,33 +318,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

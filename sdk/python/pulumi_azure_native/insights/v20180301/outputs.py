@@ -35,31 +35,6 @@ class AutomationRunbookReceiverResponse(dict):
     """
     The Azure Automation Runbook notification receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "automationAccountId":
-            suggest = "automation_account_id"
-        elif key == "isGlobalRunbook":
-            suggest = "is_global_runbook"
-        elif key == "runbookName":
-            suggest = "runbook_name"
-        elif key == "webhookResourceId":
-            suggest = "webhook_resource_id"
-        elif key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutomationRunbookReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutomationRunbookReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutomationRunbookReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  automation_account_id: str,
                  is_global_runbook: bool,
@@ -139,23 +114,6 @@ class AzureAppPushReceiverResponse(dict):
     """
     The Azure mobile App push notification receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureAppPushReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureAppPushReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureAppPushReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_address: str,
                  name: str):
@@ -189,27 +147,6 @@ class AzureFunctionReceiverResponse(dict):
     """
     An azure function receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "functionAppResourceId":
-            suggest = "function_app_resource_id"
-        elif key == "functionName":
-            suggest = "function_name"
-        elif key == "httpTriggerUrl":
-            suggest = "http_trigger_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFunctionReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFunctionReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFunctionReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  function_app_resource_id: str,
                  function_name: str,
@@ -265,37 +202,6 @@ class DynamicMetricCriteriaResponse(dict):
     """
     Criterion for dynamic threshold.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "alertSensitivity":
-            suggest = "alert_sensitivity"
-        elif key == "criterionType":
-            suggest = "criterion_type"
-        elif key == "failingPeriods":
-            suggest = "failing_periods"
-        elif key == "metricName":
-            suggest = "metric_name"
-        elif key == "timeAggregation":
-            suggest = "time_aggregation"
-        elif key == "ignoreDataBefore":
-            suggest = "ignore_data_before"
-        elif key == "metricNamespace":
-            suggest = "metric_namespace"
-        elif key == "skipMetricValidation":
-            suggest = "skip_metric_validation"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicMetricCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicMetricCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicMetricCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  alert_sensitivity: str,
                  criterion_type: str,
@@ -434,25 +340,6 @@ class DynamicThresholdFailingPeriodsResponse(dict):
     """
     The minimum number of violations required within the selected lookback time window required to raise an alert.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "minFailingPeriodsToAlert":
-            suggest = "min_failing_periods_to_alert"
-        elif key == "numberOfEvaluationPeriods":
-            suggest = "number_of_evaluation_periods"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicThresholdFailingPeriodsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicThresholdFailingPeriodsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicThresholdFailingPeriodsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  min_failing_periods_to_alert: float,
                  number_of_evaluation_periods: float):
@@ -486,23 +373,6 @@ class EmailReceiverResponse(dict):
     """
     An email receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EmailReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EmailReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EmailReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_address: str,
                  name: str,
@@ -547,27 +417,6 @@ class ItsmReceiverResponse(dict):
     """
     An Itsm receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionId":
-            suggest = "connection_id"
-        elif key == "ticketConfiguration":
-            suggest = "ticket_configuration"
-        elif key == "workspaceId":
-            suggest = "workspace_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ItsmReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ItsmReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ItsmReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_id: str,
                  name: str,
@@ -634,25 +483,6 @@ class LogicAppReceiverResponse(dict):
     """
     A logic app receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "callbackUrl":
-            suggest = "callback_url"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogicAppReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogicAppReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogicAppReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  callback_url: str,
                  name: str,
@@ -697,25 +527,6 @@ class MetricAlertActionResponse(dict):
     """
     An alert action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroupId":
-            suggest = "action_group_id"
-        elif key == "webHookProperties":
-            suggest = "web_hook_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MetricAlertActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MetricAlertActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MetricAlertActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_group_id: Optional[str] = None,
                  web_hook_properties: Optional[Mapping[str, str]] = None):
@@ -751,25 +562,6 @@ class MetricAlertMultipleResourceMultipleMetricCriteriaResponse(dict):
     """
     Specifies the metric alert criteria for multiple resource that has multiple metric criteria.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "allOf":
-            suggest = "all_of"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MetricAlertMultipleResourceMultipleMetricCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MetricAlertMultipleResourceMultipleMetricCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MetricAlertMultipleResourceMultipleMetricCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  all_of: Optional[Sequence[Any]] = None):
@@ -806,25 +598,6 @@ class MetricAlertSingleResourceMultipleMetricCriteriaResponse(dict):
     """
     Specifies the metric alert criteria for a single resource that has multiple metric criteria.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "allOf":
-            suggest = "all_of"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MetricAlertSingleResourceMultipleMetricCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MetricAlertSingleResourceMultipleMetricCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MetricAlertSingleResourceMultipleMetricCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  all_of: Optional[Sequence['outputs.MetricCriteriaResponse']] = None):
@@ -861,31 +634,6 @@ class MetricCriteriaResponse(dict):
     """
     Criterion to filter metrics.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "criterionType":
-            suggest = "criterion_type"
-        elif key == "metricName":
-            suggest = "metric_name"
-        elif key == "timeAggregation":
-            suggest = "time_aggregation"
-        elif key == "metricNamespace":
-            suggest = "metric_namespace"
-        elif key == "skipMetricValidation":
-            suggest = "skip_metric_validation"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MetricCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MetricCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MetricCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  criterion_type: str,
                  metric_name: str,
@@ -1045,25 +793,6 @@ class SmsReceiverResponse(dict):
     """
     An SMS receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryCode":
-            suggest = "country_code"
-        elif key == "phoneNumber":
-            suggest = "phone_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SmsReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SmsReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SmsReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  country_code: str,
                  name: str,
@@ -1119,25 +848,6 @@ class VoiceReceiverResponse(dict):
     """
     A voice receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryCode":
-            suggest = "country_code"
-        elif key == "phoneNumber":
-            suggest = "phone_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VoiceReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VoiceReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VoiceReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  country_code: str,
                  name: str,
@@ -1182,23 +892,6 @@ class WebhookReceiverResponse(dict):
     """
     A webhook receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebhookReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebhookReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebhookReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  service_uri: str):
@@ -1232,29 +925,6 @@ class WebtestLocationAvailabilityCriteriaResponse(dict):
     """
     Specifies the metric alert rule criteria for a web test resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "componentId":
-            suggest = "component_id"
-        elif key == "failedLocationCount":
-            suggest = "failed_location_count"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "webTestId":
-            suggest = "web_test_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebtestLocationAvailabilityCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebtestLocationAvailabilityCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebtestLocationAvailabilityCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  component_id: str,
                  failed_location_count: float,

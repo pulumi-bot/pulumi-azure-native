@@ -26,23 +26,6 @@ class FailoverGroupReadOnlyEndpointResponse(dict):
     """
     Read-only endpoint of the failover group instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPolicy":
-            suggest = "failover_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FailoverGroupReadOnlyEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FailoverGroupReadOnlyEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FailoverGroupReadOnlyEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failover_policy: Optional[str] = None):
         """
@@ -66,25 +49,6 @@ class FailoverGroupReadWriteEndpointResponse(dict):
     """
     Read-write endpoint of the failover group instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPolicy":
-            suggest = "failover_policy"
-        elif key == "failoverWithDataLossGracePeriodMinutes":
-            suggest = "failover_with_data_loss_grace_period_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FailoverGroupReadWriteEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FailoverGroupReadWriteEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FailoverGroupReadWriteEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failover_policy: str,
                  failover_with_data_loss_grace_period_minutes: Optional[int] = None):
@@ -119,23 +83,6 @@ class PartnerInfoResponse(dict):
     """
     Partner server information for the failover group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "replicationRole":
-            suggest = "replication_role"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PartnerInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PartnerInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PartnerInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  location: str,
@@ -180,25 +127,6 @@ class ResourceIdentityResponse(dict):
     """
     Azure Active Directory identity configuration for a resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -314,23 +242,6 @@ class SyncGroupSchemaResponse(dict):
     """
     Properties of sync group schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "masterSyncMemberName":
-            suggest = "master_sync_member_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  master_sync_member_name: Optional[str] = None,
                  tables: Optional[Sequence['outputs.SyncGroupSchemaTableResponse']] = None):
@@ -366,27 +277,6 @@ class SyncGroupSchemaTableColumnResponse(dict):
     """
     Properties of column in sync group table.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSize":
-            suggest = "data_size"
-        elif key == "dataType":
-            suggest = "data_type"
-        elif key == "quotedName":
-            suggest = "quoted_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaTableColumnResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaTableColumnResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaTableColumnResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_size: Optional[str] = None,
                  data_type: Optional[str] = None,
@@ -434,23 +324,6 @@ class SyncGroupSchemaTableResponse(dict):
     """
     Properties of table in sync group schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "quotedName":
-            suggest = "quoted_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaTableResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaTableResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaTableResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  columns: Optional[Sequence['outputs.SyncGroupSchemaTableColumnResponse']] = None,
                  quoted_name: Optional[str] = None):

@@ -75,23 +75,6 @@ class MachineExtensionInstanceViewResponse(dict):
     """
     Describes the Machine Extension Instance View.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  status: Optional['outputs.MachineExtensionInstanceViewResponseStatus'] = None,
@@ -151,23 +134,6 @@ class MachineExtensionInstanceViewResponseStatus(dict):
     """
     Instance view status.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponseStatus. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: Optional[str] = None,
                  display_status: Optional[str] = None,
@@ -239,23 +205,6 @@ class OSProfileResponse(dict):
     """
     Specifies the operating system settings for the hybrid machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computerName":
-            suggest = "computer_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  computer_name: str):
         """

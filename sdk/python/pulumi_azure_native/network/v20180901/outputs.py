@@ -25,23 +25,6 @@ class ARecordResponse(dict):
     """
     An A record.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipv4Address":
-            suggest = "ipv4_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ARecordResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ARecordResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ARecordResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ipv4_address: Optional[str] = None):
         """
@@ -65,23 +48,6 @@ class AaaaRecordResponse(dict):
     """
     An AAAA record.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipv6Address":
-            suggest = "ipv6_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AaaaRecordResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AaaaRecordResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AaaaRecordResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ipv6_address: Optional[str] = None):
         """
@@ -186,31 +152,6 @@ class SoaRecordResponse(dict):
     """
     An SOA record.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expireTime":
-            suggest = "expire_time"
-        elif key == "minimumTtl":
-            suggest = "minimum_ttl"
-        elif key == "refreshTime":
-            suggest = "refresh_time"
-        elif key == "retryTime":
-            suggest = "retry_time"
-        elif key == "serialNumber":
-            suggest = "serial_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SoaRecordResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SoaRecordResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SoaRecordResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email: Optional[str] = None,
                  expire_time: Optional[float] = None,

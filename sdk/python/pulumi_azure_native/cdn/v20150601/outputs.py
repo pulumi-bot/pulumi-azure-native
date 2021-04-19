@@ -19,27 +19,6 @@ class DeepCreatedOriginResponse(dict):
     """
     Deep created origins within a CDN endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hostName":
-            suggest = "host_name"
-        elif key == "httpPort":
-            suggest = "http_port"
-        elif key == "httpsPort":
-            suggest = "https_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeepCreatedOriginResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeepCreatedOriginResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeepCreatedOriginResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host_name: str,
                  name: str,

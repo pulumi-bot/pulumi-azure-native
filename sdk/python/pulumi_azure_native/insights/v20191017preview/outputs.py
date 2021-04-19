@@ -22,27 +22,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     A private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -145,23 +124,6 @@ class PrivateLinkServiceConnectionStatePropertyResponse(dict):
     """
     State of the private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -206,23 +168,6 @@ class WorkbookTemplateGalleryResponse(dict):
     """
     Gallery information for a workbook template.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceType":
-            suggest = "resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkbookTemplateGalleryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkbookTemplateGalleryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkbookTemplateGalleryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  name: Optional[str] = None,
@@ -294,23 +239,6 @@ class WorkbookTemplateLocalizedGalleryResponse(dict):
     """
     Localized template data and gallery information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "templateData":
-            suggest = "template_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkbookTemplateLocalizedGalleryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkbookTemplateLocalizedGalleryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkbookTemplateLocalizedGalleryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  galleries: Optional[Sequence['outputs.WorkbookTemplateGalleryResponse']] = None,
                  template_data: Optional[Any] = None):

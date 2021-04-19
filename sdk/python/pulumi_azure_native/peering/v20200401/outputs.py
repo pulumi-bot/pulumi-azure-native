@@ -28,43 +28,6 @@ class BgpSessionResponse(dict):
     """
     The properties that define a BGP session.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sessionStateV4":
-            suggest = "session_state_v4"
-        elif key == "sessionStateV6":
-            suggest = "session_state_v6"
-        elif key == "maxPrefixesAdvertisedV4":
-            suggest = "max_prefixes_advertised_v4"
-        elif key == "maxPrefixesAdvertisedV6":
-            suggest = "max_prefixes_advertised_v6"
-        elif key == "md5AuthenticationKey":
-            suggest = "md5_authentication_key"
-        elif key == "microsoftSessionIPv4Address":
-            suggest = "microsoft_session_i_pv4_address"
-        elif key == "microsoftSessionIPv6Address":
-            suggest = "microsoft_session_i_pv6_address"
-        elif key == "peerSessionIPv4Address":
-            suggest = "peer_session_i_pv4_address"
-        elif key == "peerSessionIPv6Address":
-            suggest = "peer_session_i_pv6_address"
-        elif key == "sessionPrefixV4":
-            suggest = "session_prefix_v4"
-        elif key == "sessionPrefixV6":
-            suggest = "session_prefix_v6"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BgpSessionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BgpSessionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BgpSessionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  session_state_v4: str,
                  session_state_v6: str,
@@ -253,39 +216,6 @@ class DirectConnectionResponse(dict):
     """
     The properties that define a direct connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionState":
-            suggest = "connection_state"
-        elif key == "errorMessage":
-            suggest = "error_message"
-        elif key == "provisionedBandwidthInMbps":
-            suggest = "provisioned_bandwidth_in_mbps"
-        elif key == "bandwidthInMbps":
-            suggest = "bandwidth_in_mbps"
-        elif key == "bgpSession":
-            suggest = "bgp_session"
-        elif key == "connectionIdentifier":
-            suggest = "connection_identifier"
-        elif key == "peeringDBFacilityId":
-            suggest = "peering_db_facility_id"
-        elif key == "sessionAddressProvider":
-            suggest = "session_address_provider"
-        elif key == "useForPeeringService":
-            suggest = "use_for_peering_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DirectConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DirectConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DirectConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_state: str,
                  error_message: str,
@@ -402,31 +332,6 @@ class ExchangeConnectionResponse(dict):
     """
     The properties that define an exchange connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionState":
-            suggest = "connection_state"
-        elif key == "errorMessage":
-            suggest = "error_message"
-        elif key == "bgpSession":
-            suggest = "bgp_session"
-        elif key == "connectionIdentifier":
-            suggest = "connection_identifier"
-        elif key == "peeringDBFacilityId":
-            suggest = "peering_db_facility_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExchangeConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExchangeConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExchangeConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_state: str,
                  error_message: str,
@@ -496,27 +401,6 @@ class PeeringPropertiesDirectResponse(dict):
     """
     The properties that define a direct peering.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "useForPeeringService":
-            suggest = "use_for_peering_service"
-        elif key == "directPeeringType":
-            suggest = "direct_peering_type"
-        elif key == "peerAsn":
-            suggest = "peer_asn"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeeringPropertiesDirectResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeeringPropertiesDirectResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeeringPropertiesDirectResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  use_for_peering_service: bool,
                  connections: Optional[Sequence['outputs.DirectConnectionResponse']] = None,
@@ -575,23 +459,6 @@ class PeeringPropertiesExchangeResponse(dict):
     """
     The properties that define an exchange peering.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "peerAsn":
-            suggest = "peer_asn"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeeringPropertiesExchangeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeeringPropertiesExchangeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeeringPropertiesExchangeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connections: Optional[Sequence['outputs.ExchangeConnectionResponse']] = None,
                  peer_asn: Optional['outputs.SubResourceResponse'] = None):
@@ -627,31 +494,6 @@ class PeeringServicePrefixEventResponse(dict):
     """
     The details of the event associated with a prefix.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventDescription":
-            suggest = "event_description"
-        elif key == "eventLevel":
-            suggest = "event_level"
-        elif key == "eventSummary":
-            suggest = "event_summary"
-        elif key == "eventTimestamp":
-            suggest = "event_timestamp"
-        elif key == "eventType":
-            suggest = "event_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeeringServicePrefixEventResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeeringServicePrefixEventResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeeringServicePrefixEventResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_description: str,
                  event_level: str,

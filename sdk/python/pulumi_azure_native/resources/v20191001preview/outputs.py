@@ -21,25 +21,6 @@ class ManagedServiceIdentityResponse(dict):
     """
     Managed identity generic object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedServiceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  tenant_id: str,
                  type: Optional[str] = None,
@@ -86,33 +67,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -196,25 +150,6 @@ class UserAssignedIdentityResponse(dict):
     """
     User-assigned managed identity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserAssignedIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserAssignedIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserAssignedIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):

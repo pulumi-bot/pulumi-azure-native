@@ -57,23 +57,6 @@ class ManagementAssociationPropertiesResponse(dict):
     """
     ManagementAssociation properties supported by the OperationsManagement resource provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationId":
-            suggest = "application_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagementAssociationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagementAssociationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagementAssociationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  application_id: str):
         """
@@ -96,27 +79,6 @@ class ManagementConfigurationPropertiesResponse(dict):
     """
     ManagementConfiguration properties supported by the OperationsManagement resource provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "parentResourceType":
-            suggest = "parent_resource_type"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "applicationId":
-            suggest = "application_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagementConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagementConfigurationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagementConfigurationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  parameters: Sequence['outputs.ArmTemplateParameterResponse'],
                  parent_resource_type: str,
@@ -184,23 +146,6 @@ class SolutionPlanResponse(dict):
     """
     Plan for solution object supported by the OperationsManagement resource provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "promotionCode":
-            suggest = "promotion_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SolutionPlanResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SolutionPlanResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SolutionPlanResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  product: Optional[str] = None,
@@ -260,29 +205,6 @@ class SolutionPropertiesResponse(dict):
     """
     Solution properties supported by the OperationsManagement resource provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "workspaceResourceId":
-            suggest = "workspace_resource_id"
-        elif key == "containedResources":
-            suggest = "contained_resources"
-        elif key == "referencedResources":
-            suggest = "referenced_resources"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SolutionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SolutionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SolutionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  workspace_resource_id: str,

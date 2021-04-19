@@ -19,27 +19,6 @@ class ComplianceStatusResponse(dict):
     """
     Compliance Status details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "complianceState":
-            suggest = "compliance_state"
-        elif key == "lastConfigApplied":
-            suggest = "last_config_applied"
-        elif key == "messageLevel":
-            suggest = "message_level"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComplianceStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComplianceStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComplianceStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compliance_state: str,
                  last_config_applied: Optional[str] = None,
@@ -98,25 +77,6 @@ class HelmOperatorPropertiesResponse(dict):
     """
     Properties for Helm operator.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "chartValues":
-            suggest = "chart_values"
-        elif key == "chartVersion":
-            suggest = "chart_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HelmOperatorPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HelmOperatorPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HelmOperatorPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  chart_values: Optional[str] = None,
                  chart_version: Optional[str] = None):
