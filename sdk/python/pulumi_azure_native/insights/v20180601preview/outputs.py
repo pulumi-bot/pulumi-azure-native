@@ -21,25 +21,6 @@ __all__ = [
 
 @pulumi.output_type
 class DataSourceConfigurationResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventLogs":
-            suggest = "event_logs"
-        elif key == "perfCounters":
-            suggest = "perf_counters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataSourceConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataSourceConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataSourceConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_logs: Optional[Sequence['outputs.EventLogConfigurationResponse']] = None,
                  perf_counters: Optional[Sequence['outputs.PerformanceCounterConfigurationResponse']] = None,
@@ -165,23 +146,6 @@ class EtwProviderConfigurationResponse(dict):
 
 @pulumi.output_type
 class EventLogConfigurationResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "logName":
-            suggest = "log_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventLogConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventLogConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventLogConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  log_name: str,
                  filter: Optional[str] = None):
@@ -202,23 +166,6 @@ class EventLogConfigurationResponse(dict):
 
 @pulumi.output_type
 class PerformanceCounterConfigurationResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "samplingPeriod":
-            suggest = "sampling_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PerformanceCounterConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PerformanceCounterConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PerformanceCounterConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  sampling_period: str,

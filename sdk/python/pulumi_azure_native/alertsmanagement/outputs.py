@@ -33,31 +33,6 @@ class ActionGroupResponse(dict):
     """
     Action rule with action group configuration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroupId":
-            suggest = "action_group_id"
-        elif key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActionGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActionGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_group_id: str,
                  created_at: str,
@@ -185,27 +160,6 @@ class ActionGroupsInformationResponse(dict):
     """
     The Action Groups information, used by the alert rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupIds":
-            suggest = "group_ids"
-        elif key == "customEmailSubject":
-            suggest = "custom_email_subject"
-        elif key == "customWebhookPayload":
-            suggest = "custom_webhook_payload"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionGroupsInformationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActionGroupsInformationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActionGroupsInformationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_ids: Sequence[str],
                  custom_email_subject: Optional[str] = None,
@@ -287,31 +241,6 @@ class ConditionsResponse(dict):
     """
     Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "alertContext":
-            suggest = "alert_context"
-        elif key == "alertRuleId":
-            suggest = "alert_rule_id"
-        elif key == "monitorCondition":
-            suggest = "monitor_condition"
-        elif key == "monitorService":
-            suggest = "monitor_service"
-        elif key == "targetResourceType":
-            suggest = "target_resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConditionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConditionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConditionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  alert_context: Optional['outputs.ConditionResponse'] = None,
                  alert_rule_id: Optional['outputs.ConditionResponse'] = None,
@@ -407,25 +336,6 @@ class DetectorResponse(dict):
     """
     The detector information. By default this is not populated, unless it's specified in expandDetector
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imagePaths":
-            suggest = "image_paths"
-        elif key == "supportedResourceTypes":
-            suggest = "supported_resource_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DetectorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DetectorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DetectorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  description: Optional[str] = None,
@@ -508,29 +418,6 @@ class DiagnosticsResponse(dict):
     """
     Action rule with diagnostics configuration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiagnosticsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiagnosticsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiagnosticsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: str,
                  created_by: str,
@@ -647,25 +534,6 @@ class HealthAlertActionResponse(dict):
     """
     An alert action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroupId":
-            suggest = "action_group_id"
-        elif key == "webHookProperties":
-            suggest = "web_hook_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthAlertActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthAlertActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthAlertActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_group_id: Optional[str] = None,
                  web_hook_properties: Optional[Mapping[str, str]] = None):
@@ -701,23 +569,6 @@ class HealthAlertCriteriaResponse(dict):
     """
     Specifies the resource health alert criteria for a single resource that has multiple metric criteria.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allOf":
-            suggest = "all_of"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthAlertCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthAlertCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthAlertCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  all_of: Optional[Sequence['outputs.VmGuestHealthAlertCriterionResponse']] = None):
         """
@@ -741,23 +592,6 @@ class HealthStateResponse(dict):
     """
     Specifies the health state to alert on and the corresponding severity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthStateName":
-            suggest = "health_state_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  health_state_name: str,
                  severity: float):
@@ -791,23 +625,6 @@ class ScopeResponse(dict):
     """
     Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "scopeType":
-            suggest = "scope_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScopeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScopeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScopeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  scope_type: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
@@ -843,23 +660,6 @@ class SuppressionConfigResponse(dict):
     """
     Suppression logic for a given action rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recurrenceType":
-            suggest = "recurrence_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SuppressionConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SuppressionConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SuppressionConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  recurrence_type: str,
                  schedule: Optional['outputs.SuppressionScheduleResponse'] = None):
@@ -894,31 +694,6 @@ class SuppressionResponse(dict):
     """
     Action rule with suppression configuration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "suppressionConfig":
-            suggest = "suppression_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SuppressionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SuppressionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SuppressionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: str,
                  created_by: str,
@@ -1046,31 +821,6 @@ class SuppressionScheduleResponse(dict):
     """
     Schedule for a given suppression configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endDate":
-            suggest = "end_date"
-        elif key == "endTime":
-            suggest = "end_time"
-        elif key == "recurrenceValues":
-            suggest = "recurrence_values"
-        elif key == "startDate":
-            suggest = "start_date"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SuppressionScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SuppressionScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SuppressionScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_date: Optional[str] = None,
                  end_time: Optional[str] = None,
@@ -1165,27 +915,6 @@ class VmGuestHealthAlertCriterionResponse(dict):
     """
     Specifies the health alert criteria to alert on.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthStates":
-            suggest = "health_states"
-        elif key == "monitorNames":
-            suggest = "monitor_names"
-        elif key == "monitorTypes":
-            suggest = "monitor_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VmGuestHealthAlertCriterionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VmGuestHealthAlertCriterionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VmGuestHealthAlertCriterionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  health_states: Sequence['outputs.HealthStateResponse'],
                  namespace: str,

@@ -19,23 +19,6 @@ class DnsConfigResponse(dict):
     """
     Class containing DNS settings in a Traffic Manager profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "relativeName":
-            suggest = "relative_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DnsConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DnsConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DnsConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fqdn: Optional[str] = None,
                  relative_name: Optional[str] = None,
@@ -83,31 +66,6 @@ class EndpointResponse(dict):
     """
     Class representing a Traffic Manager endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointLocation":
-            suggest = "endpoint_location"
-        elif key == "endpointMonitorStatus":
-            suggest = "endpoint_monitor_status"
-        elif key == "endpointStatus":
-            suggest = "endpoint_status"
-        elif key == "minChildEndpoints":
-            suggest = "min_child_endpoints"
-        elif key == "targetResourceId":
-            suggest = "target_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_location: Optional[str] = None,
                  endpoint_monitor_status: Optional[str] = None,
@@ -251,23 +209,6 @@ class MonitorConfigResponse(dict):
     """
     Class containing endpoint monitoring settings in a Traffic Manager profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "profileMonitorStatus":
-            suggest = "profile_monitor_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MonitorConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MonitorConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MonitorConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  path: Optional[str] = None,
                  port: Optional[float] = None,

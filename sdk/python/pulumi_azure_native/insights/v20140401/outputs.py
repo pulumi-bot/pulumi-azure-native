@@ -27,29 +27,6 @@ class LocationThresholdRuleConditionResponse(dict):
     """
     A rule condition based on a certain number of locations failing.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failedLocationCount":
-            suggest = "failed_location_count"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "dataSource":
-            suggest = "data_source"
-        elif key == "windowSize":
-            suggest = "window_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LocationThresholdRuleConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LocationThresholdRuleConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LocationThresholdRuleConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failed_location_count: int,
                  odata_type: str,
@@ -109,23 +86,6 @@ class ManagementEventAggregationConditionResponse(dict):
     """
     How the data that is collected should be combined over time.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "windowSize":
-            suggest = "window_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagementEventAggregationConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagementEventAggregationConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagementEventAggregationConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator: Optional[str] = None,
                  threshold: Optional[float] = None,
@@ -173,25 +133,6 @@ class ManagementEventRuleConditionResponse(dict):
     """
     A management event rule condition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "dataSource":
-            suggest = "data_source"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagementEventRuleConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagementEventRuleConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagementEventRuleConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  aggregation: Optional['outputs.ManagementEventAggregationConditionResponse'] = None,
@@ -240,27 +181,6 @@ class RuleEmailActionResponse(dict):
     """
     Specifies the action to send email when the rule condition is evaluated. The discriminator is always RuleEmailAction in this case.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "customEmails":
-            suggest = "custom_emails"
-        elif key == "sendToServiceOwners":
-            suggest = "send_to_service_owners"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuleEmailActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuleEmailActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuleEmailActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  custom_emails: Optional[Sequence[str]] = None,
@@ -309,23 +229,6 @@ class RuleManagementEventClaimsDataSourceResponse(dict):
     """
     The claims for a rule management event data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuleManagementEventClaimsDataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuleManagementEventClaimsDataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuleManagementEventClaimsDataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_address: Optional[str] = None):
         """
@@ -349,43 +252,6 @@ class RuleManagementEventDataSourceResponse(dict):
     """
     A rule management event data source. The discriminator fields is always RuleManagementEventDataSource in this case.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "eventName":
-            suggest = "event_name"
-        elif key == "eventSource":
-            suggest = "event_source"
-        elif key == "legacyResourceId":
-            suggest = "legacy_resource_id"
-        elif key == "metricNamespace":
-            suggest = "metric_namespace"
-        elif key == "operationName":
-            suggest = "operation_name"
-        elif key == "resourceGroupName":
-            suggest = "resource_group_name"
-        elif key == "resourceLocation":
-            suggest = "resource_location"
-        elif key == "resourceProviderName":
-            suggest = "resource_provider_name"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-        elif key == "subStatus":
-            suggest = "sub_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuleManagementEventDataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuleManagementEventDataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuleManagementEventDataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  claims: Optional['outputs.RuleManagementEventClaimsDataSourceResponse'] = None,
@@ -566,33 +432,6 @@ class RuleMetricDataSourceResponse(dict):
     """
     A rule metric data source. The discriminator value is always RuleMetricDataSource in this case.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "legacyResourceId":
-            suggest = "legacy_resource_id"
-        elif key == "metricName":
-            suggest = "metric_name"
-        elif key == "metricNamespace":
-            suggest = "metric_namespace"
-        elif key == "resourceLocation":
-            suggest = "resource_location"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuleMetricDataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuleMetricDataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuleMetricDataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  legacy_resource_id: Optional[str] = None,
@@ -677,25 +516,6 @@ class RuleWebhookActionResponse(dict):
     """
     Specifies the action to post to service when the rule condition is evaluated. The discriminator is always RuleWebhookAction in this case.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuleWebhookActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuleWebhookActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuleWebhookActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  properties: Optional[Mapping[str, str]] = None,
@@ -744,29 +564,6 @@ class ThresholdRuleConditionResponse(dict):
     """
     A rule condition based on a metric crossing a threshold.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "dataSource":
-            suggest = "data_source"
-        elif key == "timeAggregation":
-            suggest = "time_aggregation"
-        elif key == "windowSize":
-            suggest = "window_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ThresholdRuleConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ThresholdRuleConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ThresholdRuleConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,

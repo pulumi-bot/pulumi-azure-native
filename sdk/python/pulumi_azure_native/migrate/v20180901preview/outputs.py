@@ -26,29 +26,6 @@ class DatabaseProjectSummaryResponse(dict):
     """
     The database project summary class.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "extendedSummary":
-            suggest = "extended_summary"
-        elif key == "lastSummaryRefreshedTime":
-            suggest = "last_summary_refreshed_time"
-        elif key == "refreshSummaryState":
-            suggest = "refresh_summary_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseProjectSummaryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseProjectSummaryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseProjectSummaryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  extended_summary: Optional[Mapping[str, str]] = None,
@@ -109,29 +86,6 @@ class DatabasesSolutionSummaryResponse(dict):
     """
     Class representing the databases solution summary.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "databaseInstancesAssessedCount":
-            suggest = "database_instances_assessed_count"
-        elif key == "databasesAssessedCount":
-            suggest = "databases_assessed_count"
-        elif key == "migrationReadyCount":
-            suggest = "migration_ready_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabasesSolutionSummaryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabasesSolutionSummaryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabasesSolutionSummaryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  database_instances_assessed_count: Optional[int] = None,
@@ -192,29 +146,6 @@ class MigrateProjectPropertiesResponse(dict):
     """
     Class for migrate project properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastSummaryRefreshedTime":
-            suggest = "last_summary_refreshed_time"
-        elif key == "refreshSummaryState":
-            suggest = "refresh_summary_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "registeredTools":
-            suggest = "registered_tools"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateProjectPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateProjectPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateProjectPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_summary_refreshed_time: str,
                  refresh_summary_state: str,
@@ -283,23 +214,6 @@ class MigrateProjectResponseTags(dict):
     """
     Gets or sets the tags.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalProperties":
-            suggest = "additional_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateProjectResponseTags. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateProjectResponseTags.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateProjectResponseTags.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  additional_properties: Optional[str] = None):
         """
@@ -319,39 +233,6 @@ class ServersProjectSummaryResponse(dict):
     """
     Class representing the servers project summary.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "assessedCount":
-            suggest = "assessed_count"
-        elif key == "discoveredCount":
-            suggest = "discovered_count"
-        elif key == "extendedSummary":
-            suggest = "extended_summary"
-        elif key == "lastSummaryRefreshedTime":
-            suggest = "last_summary_refreshed_time"
-        elif key == "migratedCount":
-            suggest = "migrated_count"
-        elif key == "refreshSummaryState":
-            suggest = "refresh_summary_state"
-        elif key == "replicatingCount":
-            suggest = "replicating_count"
-        elif key == "testMigratedCount":
-            suggest = "test_migrated_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServersProjectSummaryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServersProjectSummaryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServersProjectSummaryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  assessed_count: Optional[int] = None,
@@ -472,33 +353,6 @@ class ServersSolutionSummaryResponse(dict):
     """
     Class representing the servers solution summary.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "assessedCount":
-            suggest = "assessed_count"
-        elif key == "discoveredCount":
-            suggest = "discovered_count"
-        elif key == "migratedCount":
-            suggest = "migrated_count"
-        elif key == "replicatingCount":
-            suggest = "replicating_count"
-        elif key == "testMigratedCount":
-            suggest = "test_migrated_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServersSolutionSummaryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServersSolutionSummaryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServersSolutionSummaryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  assessed_count: Optional[int] = None,
@@ -583,27 +437,6 @@ class SolutionDetailsResponse(dict):
     """
     Class representing the details of the solution.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assessmentCount":
-            suggest = "assessment_count"
-        elif key == "extendedDetails":
-            suggest = "extended_details"
-        elif key == "groupCount":
-            suggest = "group_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SolutionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SolutionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SolutionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  assessment_count: Optional[int] = None,
                  extended_details: Optional[Mapping[str, str]] = None,
@@ -651,23 +484,6 @@ class SolutionPropertiesResponse(dict):
     """
     Class for solution properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cleanupState":
-            suggest = "cleanup_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SolutionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SolutionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SolutionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cleanup_state: Optional[str] = None,
                  details: Optional['outputs.SolutionDetailsResponse'] = None,

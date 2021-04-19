@@ -182,23 +182,6 @@ class OptimizedAutoscaleResponse(dict):
     """
     A class that contains the optimized auto scale definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isEnabled":
-            suggest = "is_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OptimizedAutoscaleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OptimizedAutoscaleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OptimizedAutoscaleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_enabled: bool,
                  maximum: int,
@@ -277,27 +260,6 @@ class VirtualNetworkConfigurationResponse(dict):
     """
     A class that contains virtual network definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataManagementPublicIpId":
-            suggest = "data_management_public_ip_id"
-        elif key == "enginePublicIpId":
-            suggest = "engine_public_ip_id"
-        elif key == "subnetId":
-            suggest = "subnet_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_management_public_ip_id: str,
                  engine_public_ip_id: str,

@@ -176,23 +176,6 @@ class AddressSpaceResponse(dict):
     """
     AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "addressPrefixes":
-            suggest = "address_prefixes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AddressSpaceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AddressSpaceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AddressSpaceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address_prefixes: Optional[Sequence[str]] = None):
         """
@@ -216,23 +199,6 @@ class ApplicationGatewayAuthenticationCertificateResponse(dict):
     """
     Authentication certificates of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayAuthenticationCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayAuthenticationCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayAuthenticationCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data: Optional[str] = None,
                  etag: Optional[str] = None,
@@ -316,25 +282,6 @@ class ApplicationGatewayAutoscaleConfigurationResponse(dict):
     """
     Application Gateway autoscale configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "minCapacity":
-            suggest = "min_capacity"
-        elif key == "maxCapacity":
-            suggest = "max_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayAutoscaleConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayAutoscaleConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayAutoscaleConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  min_capacity: int,
                  max_capacity: Optional[int] = None):
@@ -369,27 +316,6 @@ class ApplicationGatewayBackendAddressPoolResponse(dict):
     """
     Backend Address Pool of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendAddresses":
-            suggest = "backend_addresses"
-        elif key == "backendIPConfigurations":
-            suggest = "backend_ip_configurations"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayBackendAddressPoolResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayBackendAddressPoolResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayBackendAddressPoolResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_addresses: Optional[Sequence['outputs.ApplicationGatewayBackendAddressResponse']] = None,
                  backend_ip_configurations: Optional[Sequence['outputs.NetworkInterfaceIPConfigurationResponse']] = None,
@@ -485,23 +411,6 @@ class ApplicationGatewayBackendAddressResponse(dict):
     """
     Backend address of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipAddress":
-            suggest = "ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayBackendAddressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayBackendAddressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayBackendAddressResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fqdn: Optional[str] = None,
                  ip_address: Optional[str] = None):
@@ -631,41 +540,6 @@ class ApplicationGatewayBackendHttpSettingsResponse(dict):
     """
     Backend address pool settings of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "affinityCookieName":
-            suggest = "affinity_cookie_name"
-        elif key == "authenticationCertificates":
-            suggest = "authentication_certificates"
-        elif key == "connectionDraining":
-            suggest = "connection_draining"
-        elif key == "cookieBasedAffinity":
-            suggest = "cookie_based_affinity"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "pickHostNameFromBackendAddress":
-            suggest = "pick_host_name_from_backend_address"
-        elif key == "probeEnabled":
-            suggest = "probe_enabled"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "requestTimeout":
-            suggest = "request_timeout"
-        elif key == "trustedRootCertificates":
-            suggest = "trusted_root_certificates"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayBackendHttpSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayBackendHttpSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayBackendHttpSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  affinity_cookie_name: Optional[str] = None,
                  authentication_certificates: Optional[Sequence['outputs.SubResourceResponse']] = None,
@@ -893,23 +767,6 @@ class ApplicationGatewayConnectionDrainingResponse(dict):
     """
     Connection draining allows open connections to a backend server to be active for a specified time after the backend server got removed from the configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "drainTimeoutInSec":
-            suggest = "drain_timeout_in_sec"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayConnectionDrainingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayConnectionDrainingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayConnectionDrainingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  drain_timeout_in_sec: int,
                  enabled: bool):
@@ -943,25 +800,6 @@ class ApplicationGatewayCustomErrorResponse(dict):
     """
     Customer error of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customErrorPageUrl":
-            suggest = "custom_error_page_url"
-        elif key == "statusCode":
-            suggest = "status_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayCustomErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayCustomErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayCustomErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_error_page_url: Optional[str] = None,
                  status_code: Optional[str] = None):
@@ -997,23 +835,6 @@ class ApplicationGatewayFirewallDisabledRuleGroupResponse(dict):
     """
     Allows to disable rules within a rule group or an entire rule group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleGroupName":
-            suggest = "rule_group_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayFirewallDisabledRuleGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayFirewallDisabledRuleGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayFirewallDisabledRuleGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_group_name: str,
                  rules: Optional[Sequence[int]] = None):
@@ -1048,25 +869,6 @@ class ApplicationGatewayFirewallExclusionResponse(dict):
     """
     Allow to exclude some variable satisfy the condition for the WAF check.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "matchVariable":
-            suggest = "match_variable"
-        elif key == "selectorMatchOperator":
-            suggest = "selector_match_operator"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayFirewallExclusionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayFirewallExclusionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayFirewallExclusionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  match_variable: str,
                  selector: str,
@@ -1111,29 +913,6 @@ class ApplicationGatewayFrontendIPConfigurationResponse(dict):
     """
     Frontend IP configuration of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "privateIPAllocationMethod":
-            suggest = "private_ip_allocation_method"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayFrontendIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayFrontendIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayFrontendIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: Optional[str] = None,
                  id: Optional[str] = None,
@@ -1253,23 +1032,6 @@ class ApplicationGatewayFrontendPortResponse(dict):
     """
     Frontend port of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayFrontendPortResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayFrontendPortResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayFrontendPortResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: Optional[str] = None,
                  id: Optional[str] = None,
@@ -1353,25 +1115,6 @@ class ApplicationGatewayHeaderConfigurationResponse(dict):
     """
     Header configuration of the Actions set in Application Gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "headerName":
-            suggest = "header_name"
-        elif key == "headerValue":
-            suggest = "header_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayHeaderConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayHeaderConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayHeaderConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  header_name: Optional[str] = None,
                  header_value: Optional[str] = None):
@@ -1407,35 +1150,6 @@ class ApplicationGatewayHttpListenerResponse(dict):
     """
     Http listener of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customErrorConfigurations":
-            suggest = "custom_error_configurations"
-        elif key == "frontendIPConfiguration":
-            suggest = "frontend_ip_configuration"
-        elif key == "frontendPort":
-            suggest = "frontend_port"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "requireServerNameIndication":
-            suggest = "require_server_name_indication"
-        elif key == "sslCertificate":
-            suggest = "ssl_certificate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayHttpListenerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayHttpListenerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayHttpListenerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_error_configurations: Optional[Sequence['outputs.ApplicationGatewayCustomErrorResponse']] = None,
                  etag: Optional[str] = None,
@@ -1591,23 +1305,6 @@ class ApplicationGatewayIPConfigurationResponse(dict):
     """
     IP configuration of an application gateway. Currently 1 public and 1 private IP configuration is allowed.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: Optional[str] = None,
                  id: Optional[str] = None,
@@ -1691,31 +1388,6 @@ class ApplicationGatewayPathRuleResponse(dict):
     """
     Path rule of URL path map of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendAddressPool":
-            suggest = "backend_address_pool"
-        elif key == "backendHttpSettings":
-            suggest = "backend_http_settings"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "redirectConfiguration":
-            suggest = "redirect_configuration"
-        elif key == "rewriteRuleSet":
-            suggest = "rewrite_rule_set"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayPathRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayPathRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayPathRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_address_pool: Optional['outputs.SubResourceResponse'] = None,
                  backend_http_settings: Optional['outputs.SubResourceResponse'] = None,
@@ -1847,23 +1519,6 @@ class ApplicationGatewayProbeHealthResponseMatchResponse(dict):
     """
     Application gateway probe health response match.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "statusCodes":
-            suggest = "status_codes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayProbeHealthResponseMatchResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayProbeHealthResponseMatchResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayProbeHealthResponseMatchResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  body: Optional[str] = None,
                  status_codes: Optional[Sequence[str]] = None):
@@ -1899,29 +1554,6 @@ class ApplicationGatewayProbeResponse(dict):
     """
     Probe of the application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "minServers":
-            suggest = "min_servers"
-        elif key == "pickHostNameFromBackendHttpSettings":
-            suggest = "pick_host_name_from_backend_http_settings"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "unhealthyThreshold":
-            suggest = "unhealthy_threshold"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayProbeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayProbeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayProbeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: Optional[str] = None,
                  host: Optional[str] = None,
@@ -2113,37 +1745,6 @@ class ApplicationGatewayRedirectConfigurationResponse(dict):
     """
     Redirect configuration of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "includePath":
-            suggest = "include_path"
-        elif key == "includeQueryString":
-            suggest = "include_query_string"
-        elif key == "pathRules":
-            suggest = "path_rules"
-        elif key == "redirectType":
-            suggest = "redirect_type"
-        elif key == "requestRoutingRules":
-            suggest = "request_routing_rules"
-        elif key == "targetListener":
-            suggest = "target_listener"
-        elif key == "targetUrl":
-            suggest = "target_url"
-        elif key == "urlPathMaps":
-            suggest = "url_path_maps"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayRedirectConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayRedirectConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayRedirectConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: Optional[str] = None,
                  id: Optional[str] = None,
@@ -2299,37 +1900,6 @@ class ApplicationGatewayRequestRoutingRuleResponse(dict):
     """
     Request routing rule of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendAddressPool":
-            suggest = "backend_address_pool"
-        elif key == "backendHttpSettings":
-            suggest = "backend_http_settings"
-        elif key == "httpListener":
-            suggest = "http_listener"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "redirectConfiguration":
-            suggest = "redirect_configuration"
-        elif key == "rewriteRuleSet":
-            suggest = "rewrite_rule_set"
-        elif key == "ruleType":
-            suggest = "rule_type"
-        elif key == "urlPathMap":
-            suggest = "url_path_map"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayRequestRoutingRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayRequestRoutingRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayRequestRoutingRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_address_pool: Optional['outputs.SubResourceResponse'] = None,
                  backend_http_settings: Optional['outputs.SubResourceResponse'] = None,
@@ -2485,67 +2055,6 @@ class ApplicationGatewayResponse(dict):
     """
     Application gateway resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operationalState":
-            suggest = "operational_state"
-        elif key == "authenticationCertificates":
-            suggest = "authentication_certificates"
-        elif key == "autoscaleConfiguration":
-            suggest = "autoscale_configuration"
-        elif key == "backendAddressPools":
-            suggest = "backend_address_pools"
-        elif key == "backendHttpSettingsCollection":
-            suggest = "backend_http_settings_collection"
-        elif key == "customErrorConfigurations":
-            suggest = "custom_error_configurations"
-        elif key == "enableFips":
-            suggest = "enable_fips"
-        elif key == "enableHttp2":
-            suggest = "enable_http2"
-        elif key == "firewallPolicy":
-            suggest = "firewall_policy"
-        elif key == "frontendIPConfigurations":
-            suggest = "frontend_ip_configurations"
-        elif key == "frontendPorts":
-            suggest = "frontend_ports"
-        elif key == "gatewayIPConfigurations":
-            suggest = "gateway_ip_configurations"
-        elif key == "httpListeners":
-            suggest = "http_listeners"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "redirectConfigurations":
-            suggest = "redirect_configurations"
-        elif key == "requestRoutingRules":
-            suggest = "request_routing_rules"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-        elif key == "rewriteRuleSets":
-            suggest = "rewrite_rule_sets"
-        elif key == "sslCertificates":
-            suggest = "ssl_certificates"
-        elif key == "sslPolicy":
-            suggest = "ssl_policy"
-        elif key == "trustedRootCertificates":
-            suggest = "trusted_root_certificates"
-        elif key == "urlPathMaps":
-            suggest = "url_path_maps"
-        elif key == "webApplicationFirewallConfiguration":
-            suggest = "web_application_firewall_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  operational_state: str,
@@ -2950,25 +2459,6 @@ class ApplicationGatewayRewriteRuleActionSetResponse(dict):
     """
     Set of actions in the Rewrite Rule in Application Gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "requestHeaderConfigurations":
-            suggest = "request_header_configurations"
-        elif key == "responseHeaderConfigurations":
-            suggest = "response_header_configurations"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayRewriteRuleActionSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayRewriteRuleActionSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayRewriteRuleActionSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  request_header_configurations: Optional[Sequence['outputs.ApplicationGatewayHeaderConfigurationResponse']] = None,
                  response_header_configurations: Optional[Sequence['outputs.ApplicationGatewayHeaderConfigurationResponse']] = None):
@@ -3004,23 +2494,6 @@ class ApplicationGatewayRewriteRuleConditionResponse(dict):
     """
     Set of conditions in the Rewrite Rule in Application Gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ignoreCase":
-            suggest = "ignore_case"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayRewriteRuleConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayRewriteRuleConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayRewriteRuleConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ignore_case: Optional[bool] = None,
                  negate: Optional[bool] = None,
@@ -3080,25 +2553,6 @@ class ApplicationGatewayRewriteRuleResponse(dict):
     """
     Rewrite rule of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionSet":
-            suggest = "action_set"
-        elif key == "ruleSequence":
-            suggest = "rule_sequence"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayRewriteRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayRewriteRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayRewriteRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_set: Optional['outputs.ApplicationGatewayRewriteRuleActionSetResponse'] = None,
                  conditions: Optional[Sequence['outputs.ApplicationGatewayRewriteRuleConditionResponse']] = None,
@@ -3158,25 +2612,6 @@ class ApplicationGatewayRewriteRuleSetResponse(dict):
     """
     Rewrite rule set of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "rewriteRules":
-            suggest = "rewrite_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayRewriteRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayRewriteRuleSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayRewriteRuleSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -3293,27 +2728,6 @@ class ApplicationGatewaySslCertificateResponse(dict):
     """
     SSL certificates of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultSecretId":
-            suggest = "key_vault_secret_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicCertData":
-            suggest = "public_cert_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewaySslCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewaySslCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewaySslCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data: Optional[str] = None,
                  etag: Optional[str] = None,
@@ -3433,31 +2847,6 @@ class ApplicationGatewaySslPolicyResponse(dict):
     """
     Application Gateway Ssl policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cipherSuites":
-            suggest = "cipher_suites"
-        elif key == "disabledSslProtocols":
-            suggest = "disabled_ssl_protocols"
-        elif key == "minProtocolVersion":
-            suggest = "min_protocol_version"
-        elif key == "policyName":
-            suggest = "policy_name"
-        elif key == "policyType":
-            suggest = "policy_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewaySslPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewaySslPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewaySslPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cipher_suites: Optional[Sequence[str]] = None,
                  disabled_ssl_protocols: Optional[Sequence[str]] = None,
@@ -3529,25 +2918,6 @@ class ApplicationGatewayTrustedRootCertificateResponse(dict):
     """
     Trusted Root certificates of an application gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultSecretId":
-            suggest = "key_vault_secret_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayTrustedRootCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayTrustedRootCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayTrustedRootCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data: Optional[str] = None,
                  etag: Optional[str] = None,
@@ -3643,33 +3013,6 @@ class ApplicationGatewayUrlPathMapResponse(dict):
     """
     UrlPathMaps give a url path to the backend mapping information for PathBasedRouting.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultBackendAddressPool":
-            suggest = "default_backend_address_pool"
-        elif key == "defaultBackendHttpSettings":
-            suggest = "default_backend_http_settings"
-        elif key == "defaultRedirectConfiguration":
-            suggest = "default_redirect_configuration"
-        elif key == "defaultRewriteRuleSet":
-            suggest = "default_rewrite_rule_set"
-        elif key == "pathRules":
-            suggest = "path_rules"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayUrlPathMapResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayUrlPathMapResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayUrlPathMapResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_backend_address_pool: Optional['outputs.SubResourceResponse'] = None,
                  default_backend_http_settings: Optional['outputs.SubResourceResponse'] = None,
@@ -3801,37 +3144,6 @@ class ApplicationGatewayWebApplicationFirewallConfigurationResponse(dict):
     """
     Application gateway web application firewall configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "firewallMode":
-            suggest = "firewall_mode"
-        elif key == "ruleSetType":
-            suggest = "rule_set_type"
-        elif key == "ruleSetVersion":
-            suggest = "rule_set_version"
-        elif key == "disabledRuleGroups":
-            suggest = "disabled_rule_groups"
-        elif key == "fileUploadLimitInMb":
-            suggest = "file_upload_limit_in_mb"
-        elif key == "maxRequestBodySize":
-            suggest = "max_request_body_size"
-        elif key == "maxRequestBodySizeInKb":
-            suggest = "max_request_body_size_in_kb"
-        elif key == "requestBodyCheck":
-            suggest = "request_body_check"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGatewayWebApplicationFirewallConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGatewayWebApplicationFirewallConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGatewayWebApplicationFirewallConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: bool,
                  firewall_mode: str,
@@ -3959,31 +3271,6 @@ class ApplicationRuleConditionResponse(dict):
     """
     Rule condition of type application.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleConditionType":
-            suggest = "rule_condition_type"
-        elif key == "destinationAddresses":
-            suggest = "destination_addresses"
-        elif key == "fqdnTags":
-            suggest = "fqdn_tags"
-        elif key == "sourceAddresses":
-            suggest = "source_addresses"
-        elif key == "targetFqdns":
-            suggest = "target_fqdns"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationRuleConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationRuleConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationRuleConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_condition_type: str,
                  description: Optional[str] = None,
@@ -4092,25 +3379,6 @@ class ApplicationSecurityGroupResponse(dict):
     """
     An application security group in a resource group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationSecurityGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationSecurityGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationSecurityGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  name: str,
@@ -4213,23 +3481,6 @@ class AzureFirewallApplicationRuleCollectionResponse(dict):
     """
     Application rule collection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallApplicationRuleCollectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallApplicationRuleCollectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallApplicationRuleCollectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -4323,23 +3574,6 @@ class AzureFirewallApplicationRuleProtocolResponse(dict):
     """
     Properties of the application rule protocol.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "protocolType":
-            suggest = "protocol_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallApplicationRuleProtocolResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallApplicationRuleProtocolResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallApplicationRuleProtocolResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  protocol_type: Optional[str] = None):
@@ -4375,27 +3609,6 @@ class AzureFirewallApplicationRuleResponse(dict):
     """
     Properties of an application rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fqdnTags":
-            suggest = "fqdn_tags"
-        elif key == "sourceAddresses":
-            suggest = "source_addresses"
-        elif key == "targetFqdns":
-            suggest = "target_fqdns"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallApplicationRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallApplicationRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallApplicationRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  fqdn_tags: Optional[Sequence[str]] = None,
@@ -4479,27 +3692,6 @@ class AzureFirewallIPConfigurationResponse(dict):
     """
     IP configuration of an Azure Firewall.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  private_ip_address: str,
@@ -4615,23 +3807,6 @@ class AzureFirewallNatRuleCollectionResponse(dict):
     """
     NAT rule collection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallNatRuleCollectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallNatRuleCollectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallNatRuleCollectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -4725,31 +3900,6 @@ class AzureFirewallNatRuleResponse(dict):
     """
     Properties of a NAT rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationAddresses":
-            suggest = "destination_addresses"
-        elif key == "destinationPorts":
-            suggest = "destination_ports"
-        elif key == "sourceAddresses":
-            suggest = "source_addresses"
-        elif key == "translatedAddress":
-            suggest = "translated_address"
-        elif key == "translatedPort":
-            suggest = "translated_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallNatRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallNatRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallNatRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  destination_addresses: Optional[Sequence[str]] = None,
@@ -4857,23 +4007,6 @@ class AzureFirewallNetworkRuleCollectionResponse(dict):
     """
     Network rule collection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallNetworkRuleCollectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallNetworkRuleCollectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallNetworkRuleCollectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -4967,27 +4100,6 @@ class AzureFirewallNetworkRuleResponse(dict):
     """
     Properties of the network rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationAddresses":
-            suggest = "destination_addresses"
-        elif key == "destinationPorts":
-            suggest = "destination_ports"
-        elif key == "sourceAddresses":
-            suggest = "source_addresses"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFirewallNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFirewallNetworkRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFirewallNetworkRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  destination_addresses: Optional[Sequence[str]] = None,
@@ -5117,31 +4229,6 @@ class BackendAddressPoolResponse(dict):
     """
     Pool of backend IP addresses.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendIPConfigurations":
-            suggest = "backend_ip_configurations"
-        elif key == "loadBalancingRules":
-            suggest = "load_balancing_rules"
-        elif key == "outboundRule":
-            suggest = "outbound_rule"
-        elif key == "outboundRules":
-            suggest = "outbound_rules"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackendAddressPoolResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackendAddressPoolResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackendAddressPoolResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_ip_configurations: Sequence['outputs.NetworkInterfaceIPConfigurationResponse'],
                  load_balancing_rules: Sequence['outputs.SubResourceResponse'],
@@ -5256,27 +4343,6 @@ class BastionHostIPConfigurationResponse(dict):
     """
     IP configuration of an Bastion Host.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-        elif key == "privateIPAllocationMethod":
-            suggest = "private_ip_allocation_method"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BastionHostIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BastionHostIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BastionHostIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -5478,25 +4544,6 @@ class BgpSettingsResponse(dict):
     """
     BGP settings details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bgpPeeringAddress":
-            suggest = "bgp_peering_address"
-        elif key == "peerWeight":
-            suggest = "peer_weight"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BgpSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BgpSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BgpSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  asn: Optional[float] = None,
                  bgp_peering_address: Optional[str] = None,
@@ -5544,23 +4591,6 @@ class ConnectionMonitorDestinationResponse(dict):
     """
     Describes the destination of connection monitor.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionMonitorDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionMonitorDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionMonitorDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  port: Optional[int] = None,
@@ -5608,23 +4638,6 @@ class ConnectionMonitorSourceResponse(dict):
     """
     Describes the source of connection monitor.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionMonitorSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionMonitorSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionMonitorSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_id: str,
                  port: Optional[int] = None):
@@ -5659,27 +4672,6 @@ class ContainerNetworkInterfaceConfigurationResponse(dict):
     """
     Container network interface configuration child resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "containerNetworkInterfaces":
-            suggest = "container_network_interfaces"
-        elif key == "ipConfigurations":
-            suggest = "ip_configurations"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerNetworkInterfaceConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerNetworkInterfaceConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerNetworkInterfaceConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  type: str,
@@ -5773,23 +4765,6 @@ class ContainerNetworkInterfaceIpConfigurationResponse(dict):
     """
     The ip configuration for a container network interface.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerNetworkInterfaceIpConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerNetworkInterfaceIpConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerNetworkInterfaceIpConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  type: str,
@@ -5847,27 +4822,6 @@ class ContainerNetworkInterfaceResponse(dict):
     """
     Container network interface child resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "containerNetworkInterfaceConfiguration":
-            suggest = "container_network_interface_configuration"
-        elif key == "ipConfigurations":
-            suggest = "ip_configurations"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerNetworkInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerNetworkInterfaceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerNetworkInterfaceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  type: str,
@@ -5996,25 +4950,6 @@ class DdosSettingsResponse(dict):
     """
     Contains the DDoS protection settings of the public IP.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ddosCustomPolicy":
-            suggest = "ddos_custom_policy"
-        elif key == "protectionCoverage":
-            suggest = "protection_coverage"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DdosSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DdosSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DdosSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ddos_custom_policy: Optional['outputs.SubResourceResponse'] = None,
                  protection_coverage: Optional[str] = None):
@@ -6050,25 +4985,6 @@ class DelegationResponse(dict):
     """
     Details the service to which the subnet is delegated.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "serviceName":
-            suggest = "service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DelegationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DelegationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DelegationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  actions: Optional[Sequence[str]] = None,
@@ -6151,27 +5067,6 @@ class DevicePropertiesResponse(dict):
     """
     List of properties of the device.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deviceModel":
-            suggest = "device_model"
-        elif key == "deviceVendor":
-            suggest = "device_vendor"
-        elif key == "linkSpeedInMbps":
-            suggest = "link_speed_in_mbps"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DevicePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DevicePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DevicePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  device_model: Optional[str] = None,
                  device_vendor: Optional[str] = None,
@@ -6219,23 +5114,6 @@ class DhcpOptionsResponse(dict):
     """
     DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsServers":
-            suggest = "dns_servers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DhcpOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DhcpOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DhcpOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dns_servers: Optional[Sequence[str]] = None):
         """
@@ -6259,27 +5137,6 @@ class ExpressRouteCircuitAuthorizationResponse(dict):
     """
     Authorization in an ExpressRouteCircuit resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationKey":
-            suggest = "authorization_key"
-        elif key == "authorizationUseStatus":
-            suggest = "authorization_use_status"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteCircuitAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteCircuitAuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteCircuitAuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  type: str,
@@ -6373,33 +5230,6 @@ class ExpressRouteCircuitConnectionResponse(dict):
     """
     Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "circuitConnectionStatus":
-            suggest = "circuit_connection_status"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "addressPrefix":
-            suggest = "address_prefix"
-        elif key == "authorizationKey":
-            suggest = "authorization_key"
-        elif key == "expressRouteCircuitPeering":
-            suggest = "express_route_circuit_peering"
-        elif key == "peerExpressRouteCircuitPeering":
-            suggest = "peer_express_route_circuit_peering"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteCircuitConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteCircuitConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteCircuitConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  circuit_connection_status: str,
                  etag: str,
@@ -6527,33 +5357,6 @@ class ExpressRouteCircuitPeeringConfigResponse(dict):
     """
     Specifies the peering configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "advertisedCommunities":
-            suggest = "advertised_communities"
-        elif key == "advertisedPublicPrefixes":
-            suggest = "advertised_public_prefixes"
-        elif key == "advertisedPublicPrefixesState":
-            suggest = "advertised_public_prefixes_state"
-        elif key == "customerASN":
-            suggest = "customer_asn"
-        elif key == "legacyMode":
-            suggest = "legacy_mode"
-        elif key == "routingRegistryName":
-            suggest = "routing_registry_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteCircuitPeeringConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteCircuitPeeringConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteCircuitPeeringConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  advertised_communities: Optional[Sequence[str]] = None,
                  advertised_public_prefixes: Optional[Sequence[str]] = None,
@@ -6660,55 +5463,6 @@ class ExpressRouteCircuitPeeringResponse(dict):
     """
     Peering in an ExpressRouteCircuit resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "peeredConnections":
-            suggest = "peered_connections"
-        elif key == "azureASN":
-            suggest = "azure_asn"
-        elif key == "expressRouteConnection":
-            suggest = "express_route_connection"
-        elif key == "gatewayManagerEtag":
-            suggest = "gateway_manager_etag"
-        elif key == "ipv6PeeringConfig":
-            suggest = "ipv6_peering_config"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "microsoftPeeringConfig":
-            suggest = "microsoft_peering_config"
-        elif key == "peerASN":
-            suggest = "peer_asn"
-        elif key == "peeringType":
-            suggest = "peering_type"
-        elif key == "primaryAzurePort":
-            suggest = "primary_azure_port"
-        elif key == "primaryPeerAddressPrefix":
-            suggest = "primary_peer_address_prefix"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "routeFilter":
-            suggest = "route_filter"
-        elif key == "secondaryAzurePort":
-            suggest = "secondary_azure_port"
-        elif key == "secondaryPeerAddressPrefix":
-            suggest = "secondary_peer_address_prefix"
-        elif key == "sharedKey":
-            suggest = "shared_key"
-        elif key == "vlanId":
-            suggest = "vlan_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteCircuitPeeringResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteCircuitPeeringResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteCircuitPeeringResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  peered_connections: Sequence['outputs.PeerExpressRouteCircuitConnectionResponse'],
@@ -7005,27 +5759,6 @@ class ExpressRouteCircuitServiceProviderPropertiesResponse(dict):
     """
     Contains ServiceProviderProperties in an ExpressRouteCircuit.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bandwidthInMbps":
-            suggest = "bandwidth_in_mbps"
-        elif key == "peeringLocation":
-            suggest = "peering_location"
-        elif key == "serviceProviderName":
-            suggest = "service_provider_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteCircuitServiceProviderPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteCircuitServiceProviderPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteCircuitServiceProviderPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bandwidth_in_mbps: Optional[int] = None,
                  peering_location: Optional[str] = None,
@@ -7120,29 +5853,6 @@ class ExpressRouteCircuitStatsResponse(dict):
     """
     Contains stats associated with the peering.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "primarybytesIn":
-            suggest = "primarybytes_in"
-        elif key == "primarybytesOut":
-            suggest = "primarybytes_out"
-        elif key == "secondarybytesIn":
-            suggest = "secondarybytes_in"
-        elif key == "secondarybytesOut":
-            suggest = "secondarybytes_out"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteCircuitStatsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteCircuitStatsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteCircuitStatsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  primarybytes_in: Optional[float] = None,
                  primarybytes_out: Optional[float] = None,
@@ -7224,29 +5934,6 @@ class ExpressRouteConnectionResponse(dict):
     """
     ExpressRouteConnection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expressRouteCircuitPeering":
-            suggest = "express_route_circuit_peering"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "authorizationKey":
-            suggest = "authorization_key"
-        elif key == "routingWeight":
-            suggest = "routing_weight"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  express_route_circuit_peering: 'outputs.ExpressRouteCircuitPeeringIdResponse',
                  name: str,
@@ -7385,35 +6072,6 @@ class ExpressRouteLinkResponse(dict):
     """
     ExpressRouteLink child resource definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectorType":
-            suggest = "connector_type"
-        elif key == "interfaceName":
-            suggest = "interface_name"
-        elif key == "patchPanelId":
-            suggest = "patch_panel_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "rackId":
-            suggest = "rack_id"
-        elif key == "routerName":
-            suggest = "router_name"
-        elif key == "adminState":
-            suggest = "admin_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExpressRouteLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExpressRouteLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExpressRouteLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connector_type: str,
                  etag: str,
@@ -7561,25 +6219,6 @@ class FirewallPolicyFilterRuleResponse(dict):
     """
     Firewall Policy Filter Rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleType":
-            suggest = "rule_type"
-        elif key == "ruleConditions":
-            suggest = "rule_conditions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyFilterRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FirewallPolicyFilterRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FirewallPolicyFilterRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_type: str,
                  action: Optional['outputs.FirewallPolicyFilterRuleActionResponse'] = None,
@@ -7675,29 +6314,6 @@ class FirewallPolicyNatRuleResponse(dict):
     """
     Firewall Policy NAT Rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleType":
-            suggest = "rule_type"
-        elif key == "ruleCondition":
-            suggest = "rule_condition"
-        elif key == "translatedAddress":
-            suggest = "translated_address"
-        elif key == "translatedPort":
-            suggest = "translated_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyNatRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FirewallPolicyNatRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FirewallPolicyNatRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_type: str,
                  action: Optional['outputs.FirewallPolicyNatRuleActionResponse'] = None,
@@ -7794,23 +6410,6 @@ class FirewallPolicyRuleConditionApplicationProtocolResponse(dict):
     """
     Properties of the application rule protocol.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "protocolType":
-            suggest = "protocol_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleConditionApplicationProtocolResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FirewallPolicyRuleConditionApplicationProtocolResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FirewallPolicyRuleConditionApplicationProtocolResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  protocol_type: Optional[str] = None):
@@ -7846,41 +6445,6 @@ class FrontendIPConfigurationResponse(dict):
     """
     Frontend IP address of the load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inboundNatPools":
-            suggest = "inbound_nat_pools"
-        elif key == "inboundNatRules":
-            suggest = "inbound_nat_rules"
-        elif key == "loadBalancingRules":
-            suggest = "load_balancing_rules"
-        elif key == "outboundRules":
-            suggest = "outbound_rules"
-        elif key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "privateIPAddressVersion":
-            suggest = "private_ip_address_version"
-        elif key == "privateIPAllocationMethod":
-            suggest = "private_ip_allocation_method"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-        elif key == "publicIPPrefix":
-            suggest = "public_ip_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FrontendIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FrontendIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FrontendIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  inbound_nat_pools: Sequence['outputs.SubResourceResponse'],
                  inbound_nat_rules: Sequence['outputs.SubResourceResponse'],
@@ -8167,25 +6731,6 @@ class HubIPAddressesResponse(dict):
     """
     IP addresses associated with azure firewall.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "publicIPAddresses":
-            suggest = "public_ip_addresses"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HubIPAddressesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HubIPAddressesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HubIPAddressesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_ip_address: Optional[str] = None,
                  public_ip_addresses: Optional[Sequence['outputs.AzureFirewallPublicIPAddressResponse']] = None):
@@ -8221,31 +6766,6 @@ class HubVirtualNetworkConnectionResponse(dict):
     """
     HubVirtualNetworkConnection Resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "allowHubToRemoteVnetTransit":
-            suggest = "allow_hub_to_remote_vnet_transit"
-        elif key == "allowRemoteVnetToUseHubVnetGateways":
-            suggest = "allow_remote_vnet_to_use_hub_vnet_gateways"
-        elif key == "enableInternetSecurity":
-            suggest = "enable_internet_security"
-        elif key == "remoteVirtualNetwork":
-            suggest = "remote_virtual_network"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HubVirtualNetworkConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HubVirtualNetworkConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HubVirtualNetworkConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -8351,23 +6871,6 @@ class IPConfigurationProfileResponse(dict):
     """
     IP configuration profile child resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPConfigurationProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPConfigurationProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPConfigurationProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  type: str,
@@ -8449,29 +6952,6 @@ class IPConfigurationResponse(dict):
     """
     IP configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "privateIPAllocationMethod":
-            suggest = "private_ip_allocation_method"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: Optional[str] = None,
                  id: Optional[str] = None,
@@ -8579,37 +7059,6 @@ class InboundNatPoolResponse(dict):
     """
     Inbound NAT pool of the load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendPort":
-            suggest = "backend_port"
-        elif key == "frontendPortRangeEnd":
-            suggest = "frontend_port_range_end"
-        elif key == "frontendPortRangeStart":
-            suggest = "frontend_port_range_start"
-        elif key == "enableFloatingIP":
-            suggest = "enable_floating_ip"
-        elif key == "enableTcpReset":
-            suggest = "enable_tcp_reset"
-        elif key == "frontendIPConfiguration":
-            suggest = "frontend_ip_configuration"
-        elif key == "idleTimeoutInMinutes":
-            suggest = "idle_timeout_in_minutes"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InboundNatPoolResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InboundNatPoolResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InboundNatPoolResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_port: int,
                  frontend_port_range_end: int,
@@ -8772,37 +7221,6 @@ class InboundNatRuleResponse(dict):
     """
     Inbound NAT rule of the load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendIPConfiguration":
-            suggest = "backend_ip_configuration"
-        elif key == "backendPort":
-            suggest = "backend_port"
-        elif key == "enableFloatingIP":
-            suggest = "enable_floating_ip"
-        elif key == "enableTcpReset":
-            suggest = "enable_tcp_reset"
-        elif key == "frontendIPConfiguration":
-            suggest = "frontend_ip_configuration"
-        elif key == "frontendPort":
-            suggest = "frontend_port"
-        elif key == "idleTimeoutInMinutes":
-            suggest = "idle_timeout_in_minutes"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InboundNatRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InboundNatRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InboundNatRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_ip_configuration: 'outputs.NetworkInterfaceIPConfigurationResponse',
                  type: str,
@@ -8968,23 +7386,6 @@ class IpTagResponse(dict):
     """
     Contains the IpTag associated with the object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipTagType":
-            suggest = "ip_tag_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IpTagResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IpTagResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IpTagResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_tag_type: Optional[str] = None,
                  tag: Optional[str] = None):
@@ -9020,37 +7421,6 @@ class IpsecPolicyResponse(dict):
     """
     An IPSec Policy configuration for a virtual network gateway connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dhGroup":
-            suggest = "dh_group"
-        elif key == "ikeEncryption":
-            suggest = "ike_encryption"
-        elif key == "ikeIntegrity":
-            suggest = "ike_integrity"
-        elif key == "ipsecEncryption":
-            suggest = "ipsec_encryption"
-        elif key == "ipsecIntegrity":
-            suggest = "ipsec_integrity"
-        elif key == "pfsGroup":
-            suggest = "pfs_group"
-        elif key == "saDataSizeKilobytes":
-            suggest = "sa_data_size_kilobytes"
-        elif key == "saLifeTimeSeconds":
-            suggest = "sa_life_time_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IpsecPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IpsecPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IpsecPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dh_group: str,
                  ike_encryption: str,
@@ -9150,29 +7520,6 @@ class Ipv6ExpressRouteCircuitPeeringConfigResponse(dict):
     """
     Contains IPv6 peering config.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "microsoftPeeringConfig":
-            suggest = "microsoft_peering_config"
-        elif key == "primaryPeerAddressPrefix":
-            suggest = "primary_peer_address_prefix"
-        elif key == "routeFilter":
-            suggest = "route_filter"
-        elif key == "secondaryPeerAddressPrefix":
-            suggest = "secondary_peer_address_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Ipv6ExpressRouteCircuitPeeringConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Ipv6ExpressRouteCircuitPeeringConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Ipv6ExpressRouteCircuitPeeringConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  microsoft_peering_config: Optional['outputs.ExpressRouteCircuitPeeringConfigResponse'] = None,
                  primary_peer_address_prefix: Optional[str] = None,
@@ -9267,41 +7614,6 @@ class LoadBalancingRuleResponse(dict):
     """
     A load balancing rule for a load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "frontendPort":
-            suggest = "frontend_port"
-        elif key == "backendAddressPool":
-            suggest = "backend_address_pool"
-        elif key == "backendPort":
-            suggest = "backend_port"
-        elif key == "disableOutboundSnat":
-            suggest = "disable_outbound_snat"
-        elif key == "enableFloatingIP":
-            suggest = "enable_floating_ip"
-        elif key == "enableTcpReset":
-            suggest = "enable_tcp_reset"
-        elif key == "frontendIPConfiguration":
-            suggest = "frontend_ip_configuration"
-        elif key == "idleTimeoutInMinutes":
-            suggest = "idle_timeout_in_minutes"
-        elif key == "loadDistribution":
-            suggest = "load_distribution"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LoadBalancingRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LoadBalancingRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LoadBalancingRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  frontend_port: int,
                  protocol: str,
@@ -9502,31 +7814,6 @@ class LocalNetworkGatewayResponse(dict):
     """
     A common class for general resource information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "bgpSettings":
-            suggest = "bgp_settings"
-        elif key == "gatewayIpAddress":
-            suggest = "gateway_ip_address"
-        elif key == "localNetworkAddressSpace":
-            suggest = "local_network_address_space"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LocalNetworkGatewayResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LocalNetworkGatewayResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LocalNetworkGatewayResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  provisioning_state: str,
@@ -9667,27 +7954,6 @@ class ManagedServiceIdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedServiceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -9742,25 +8008,6 @@ class ManagedServiceIdentityResponse(dict):
 
 @pulumi.output_type
 class ManagedServiceIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedServiceIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedServiceIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedServiceIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -9793,27 +8040,6 @@ class MatchConditionResponse(dict):
     """
     Define match conditions.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "matchValues":
-            suggest = "match_values"
-        elif key == "matchVariables":
-            suggest = "match_variables"
-        elif key == "negationConditon":
-            suggest = "negation_conditon"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MatchConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MatchConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MatchConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  match_values: Sequence[str],
                  match_variables: Sequence['outputs.MatchVariableResponse'],
@@ -9882,23 +8108,6 @@ class MatchVariableResponse(dict):
     """
     Define match variables.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "variableName":
-            suggest = "variable_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MatchVariableResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MatchVariableResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MatchVariableResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  variable_name: str,
                  selector: Optional[str] = None):
@@ -9956,31 +8165,6 @@ class NetworkInterfaceDnsSettingsResponse(dict):
     """
     DNS settings of a network interface.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appliedDnsServers":
-            suggest = "applied_dns_servers"
-        elif key == "dnsServers":
-            suggest = "dns_servers"
-        elif key == "internalDnsNameLabel":
-            suggest = "internal_dns_name_label"
-        elif key == "internalDomainNameSuffix":
-            suggest = "internal_domain_name_suffix"
-        elif key == "internalFqdn":
-            suggest = "internal_fqdn"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfaceDnsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkInterfaceDnsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkInterfaceDnsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  applied_dns_servers: Optional[Sequence[str]] = None,
                  dns_servers: Optional[Sequence[str]] = None,
@@ -10052,41 +8236,6 @@ class NetworkInterfaceIPConfigurationResponse(dict):
     """
     IPConfiguration in a network interface.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationGatewayBackendAddressPools":
-            suggest = "application_gateway_backend_address_pools"
-        elif key == "applicationSecurityGroups":
-            suggest = "application_security_groups"
-        elif key == "loadBalancerBackendAddressPools":
-            suggest = "load_balancer_backend_address_pools"
-        elif key == "loadBalancerInboundNatRules":
-            suggest = "load_balancer_inbound_nat_rules"
-        elif key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "privateIPAddressVersion":
-            suggest = "private_ip_address_version"
-        elif key == "privateIPAllocationMethod":
-            suggest = "private_ip_allocation_method"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-        elif key == "virtualNetworkTaps":
-            suggest = "virtual_network_taps"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfaceIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkInterfaceIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkInterfaceIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  application_gateway_backend_address_pools: Optional[Sequence['outputs.ApplicationGatewayBackendAddressPoolResponse']] = None,
                  application_security_groups: Optional[Sequence['outputs.ApplicationSecurityGroupResponse']] = None,
@@ -10278,45 +8427,6 @@ class NetworkInterfaceResponse(dict):
     """
     A network interface in a resource group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hostedWorkloads":
-            suggest = "hosted_workloads"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "virtualMachine":
-            suggest = "virtual_machine"
-        elif key == "dnsSettings":
-            suggest = "dns_settings"
-        elif key == "enableAcceleratedNetworking":
-            suggest = "enable_accelerated_networking"
-        elif key == "enableIPForwarding":
-            suggest = "enable_ip_forwarding"
-        elif key == "ipConfigurations":
-            suggest = "ip_configurations"
-        elif key == "macAddress":
-            suggest = "mac_address"
-        elif key == "networkSecurityGroup":
-            suggest = "network_security_group"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-        elif key == "tapConfigurations":
-            suggest = "tap_configurations"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkInterfaceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkInterfaceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  hosted_workloads: Sequence[str],
                  name: str,
@@ -10551,25 +8661,6 @@ class NetworkInterfaceTapConfigurationResponse(dict):
     """
     Tap configuration in a Network Interface.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "virtualNetworkTap":
-            suggest = "virtual_network_tap"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfaceTapConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkInterfaceTapConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkInterfaceTapConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  type: str,
@@ -10651,31 +8742,6 @@ class NetworkRuleConditionResponse(dict):
     """
     Rule condition of type network
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleConditionType":
-            suggest = "rule_condition_type"
-        elif key == "destinationAddresses":
-            suggest = "destination_addresses"
-        elif key == "destinationPorts":
-            suggest = "destination_ports"
-        elif key == "ipProtocols":
-            suggest = "ip_protocols"
-        elif key == "sourceAddresses":
-            suggest = "source_addresses"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRuleConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRuleConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_condition_type: str,
                  description: Optional[str] = None,
@@ -10772,31 +8838,6 @@ class NetworkSecurityGroupResponse(dict):
     """
     NetworkSecurityGroup resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkInterfaces":
-            suggest = "network_interfaces"
-        elif key == "defaultSecurityRules":
-            suggest = "default_security_rules"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-        elif key == "securityRules":
-            suggest = "security_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkSecurityGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkSecurityGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkSecurityGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  network_interfaces: Sequence['outputs.NetworkInterfaceResponse'],
@@ -10948,33 +8989,6 @@ class OutboundRuleResponse(dict):
     """
     Outbound rule of the load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendAddressPool":
-            suggest = "backend_address_pool"
-        elif key == "frontendIPConfigurations":
-            suggest = "frontend_ip_configurations"
-        elif key == "allocatedOutboundPorts":
-            suggest = "allocated_outbound_ports"
-        elif key == "enableTcpReset":
-            suggest = "enable_tcp_reset"
-        elif key == "idleTimeoutInMinutes":
-            suggest = "idle_timeout_in_minutes"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OutboundRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OutboundRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OutboundRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_address_pool: 'outputs.SubResourceResponse',
                  frontend_ip_configurations: Sequence['outputs.SubResourceResponse'],
@@ -11114,23 +9128,6 @@ class P2SVpnServerConfigRadiusClientRootCertificateResponse(dict):
     """
     Radius client root certificate of P2SVpnServerConfiguration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in P2SVpnServerConfigRadiusClientRootCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        P2SVpnServerConfigRadiusClientRootCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        P2SVpnServerConfigRadiusClientRootCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  etag: Optional[str] = None,
@@ -11201,25 +9198,6 @@ class P2SVpnServerConfigRadiusServerRootCertificateResponse(dict):
     """
     Radius Server root certificate of P2SVpnServerConfiguration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicCertData":
-            suggest = "public_cert_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in P2SVpnServerConfigRadiusServerRootCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        P2SVpnServerConfigRadiusServerRootCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        P2SVpnServerConfigRadiusServerRootCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  public_cert_data: str,
@@ -11289,23 +9267,6 @@ class P2SVpnServerConfigVpnClientRevokedCertificateResponse(dict):
     """
     VPN client revoked certificate of P2SVpnServerConfiguration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in P2SVpnServerConfigVpnClientRevokedCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        P2SVpnServerConfigVpnClientRevokedCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        P2SVpnServerConfigVpnClientRevokedCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  etag: Optional[str] = None,
@@ -11376,25 +9337,6 @@ class P2SVpnServerConfigVpnClientRootCertificateResponse(dict):
     """
     VPN client root certificate of P2SVpnServerConfiguration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicCertData":
-            suggest = "public_cert_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in P2SVpnServerConfigVpnClientRootCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        P2SVpnServerConfigVpnClientRootCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        P2SVpnServerConfigVpnClientRootCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  public_cert_data: str,
@@ -11464,41 +9406,6 @@ class P2SVpnServerConfigurationResponse(dict):
     """
     P2SVpnServerConfiguration Resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "p2SVpnGateways":
-            suggest = "p2_s_vpn_gateways"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "p2SVpnServerConfigRadiusClientRootCertificates":
-            suggest = "p2_s_vpn_server_config_radius_client_root_certificates"
-        elif key == "p2SVpnServerConfigRadiusServerRootCertificates":
-            suggest = "p2_s_vpn_server_config_radius_server_root_certificates"
-        elif key == "p2SVpnServerConfigVpnClientRevokedCertificates":
-            suggest = "p2_s_vpn_server_config_vpn_client_revoked_certificates"
-        elif key == "p2SVpnServerConfigVpnClientRootCertificates":
-            suggest = "p2_s_vpn_server_config_vpn_client_root_certificates"
-        elif key == "radiusServerAddress":
-            suggest = "radius_server_address"
-        elif key == "radiusServerSecret":
-            suggest = "radius_server_secret"
-        elif key == "vpnClientIpsecPolicies":
-            suggest = "vpn_client_ipsec_policies"
-        elif key == "vpnProtocols":
-            suggest = "vpn_protocols"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in P2SVpnServerConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        P2SVpnServerConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        P2SVpnServerConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  p2_s_vpn_gateways: Sequence['outputs.SubResourceResponse'],
@@ -11663,29 +9570,6 @@ class PacketCaptureFilterResponse(dict):
     """
     Filter that is applied to packet capture request. Multiple filters can be applied.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "localIPAddress":
-            suggest = "local_ip_address"
-        elif key == "localPort":
-            suggest = "local_port"
-        elif key == "remoteIPAddress":
-            suggest = "remote_ip_address"
-        elif key == "remotePort":
-            suggest = "remote_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PacketCaptureFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PacketCaptureFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PacketCaptureFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  local_ip_address: Optional[str] = None,
                  local_port: Optional[str] = None,
@@ -11759,27 +9643,6 @@ class PacketCaptureStorageLocationResponse(dict):
     """
     Describes the storage location for a packet capture session.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filePath":
-            suggest = "file_path"
-        elif key == "storageId":
-            suggest = "storage_id"
-        elif key == "storagePath":
-            suggest = "storage_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PacketCaptureStorageLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PacketCaptureStorageLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PacketCaptureStorageLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_path: Optional[str] = None,
                  storage_id: Optional[str] = None,
@@ -11827,35 +9690,6 @@ class PeerExpressRouteCircuitConnectionResponse(dict):
     """
     Peer Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "circuitConnectionStatus":
-            suggest = "circuit_connection_status"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "addressPrefix":
-            suggest = "address_prefix"
-        elif key == "authResourceGuid":
-            suggest = "auth_resource_guid"
-        elif key == "connectionName":
-            suggest = "connection_name"
-        elif key == "expressRouteCircuitPeering":
-            suggest = "express_route_circuit_peering"
-        elif key == "peerExpressRouteCircuitPeering":
-            suggest = "peer_express_route_circuit_peering"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeerExpressRouteCircuitConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeerExpressRouteCircuitConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeerExpressRouteCircuitConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  circuit_connection_status: str,
                  etag: str,
@@ -11995,23 +9829,6 @@ class PolicySettingsResponse(dict):
     """
     Defines contents of a web application firewall global configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enabledState":
-            suggest = "enabled_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicySettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicySettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicySettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled_state: Optional[str] = None,
                  mode: Optional[str] = None):
@@ -12047,27 +9864,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     PrivateEndpointConnection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -12160,29 +9956,6 @@ class PrivateEndpointResponse(dict):
     """
     Private endpoint resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkInterfaces":
-            suggest = "network_interfaces"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "manualPrivateLinkServiceConnections":
-            suggest = "manual_private_link_service_connections"
-        elif key == "privateLinkServiceConnections":
-            suggest = "private_link_service_connections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  network_interfaces: Sequence['outputs.NetworkInterfaceResponse'],
@@ -12322,31 +10095,6 @@ class PrivateLinkServiceConnectionResponse(dict):
     """
     PrivateLinkServiceConnection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "groupIds":
-            suggest = "group_ids"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "privateLinkServiceId":
-            suggest = "private_link_service_id"
-        elif key == "requestMessage":
-            suggest = "request_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -12463,23 +10211,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -12527,29 +10258,6 @@ class PrivateLinkServiceIpConfigurationResponse(dict):
     """
     The private link service ip configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "privateIPAddressVersion":
-            suggest = "private_ip_address_version"
-        elif key == "privateIPAllocationMethod":
-            suggest = "private_ip_allocation_method"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceIpConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceIpConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceIpConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -12724,31 +10432,6 @@ class ProbeResponse(dict):
     """
     A load balancer probe.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "loadBalancingRules":
-            suggest = "load_balancing_rules"
-        elif key == "intervalInSeconds":
-            suggest = "interval_in_seconds"
-        elif key == "numberOfProbes":
-            suggest = "number_of_probes"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "requestPath":
-            suggest = "request_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProbeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProbeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProbeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  load_balancing_rules: Sequence['outputs.SubResourceResponse'],
                  port: int,
@@ -12888,27 +10571,6 @@ class ProtocolCustomSettingsFormatResponse(dict):
     """
     DDoS custom policy properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceRateOverride":
-            suggest = "source_rate_override"
-        elif key == "triggerRateOverride":
-            suggest = "trigger_rate_override"
-        elif key == "triggerSensitivityOverride":
-            suggest = "trigger_sensitivity_override"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProtocolCustomSettingsFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProtocolCustomSettingsFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProtocolCustomSettingsFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  protocol: Optional[str] = None,
                  source_rate_override: Optional[str] = None,
@@ -12968,25 +10630,6 @@ class PublicIPAddressDnsSettingsResponse(dict):
     """
     Contains FQDN of the DNS record associated with the public IP address.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "domainNameLabel":
-            suggest = "domain_name_label"
-        elif key == "reverseFqdn":
-            suggest = "reverse_fqdn"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PublicIPAddressDnsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PublicIPAddressDnsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PublicIPAddressDnsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  domain_name_label: Optional[str] = None,
                  fqdn: Optional[str] = None,
@@ -13034,43 +10677,6 @@ class PublicIPAddressResponse(dict):
     """
     Public IP address resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipConfiguration":
-            suggest = "ip_configuration"
-        elif key == "ddosSettings":
-            suggest = "ddos_settings"
-        elif key == "dnsSettings":
-            suggest = "dns_settings"
-        elif key == "idleTimeoutInMinutes":
-            suggest = "idle_timeout_in_minutes"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "ipTags":
-            suggest = "ip_tags"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicIPAddressVersion":
-            suggest = "public_ip_address_version"
-        elif key == "publicIPAllocationMethod":
-            suggest = "public_ip_allocation_method"
-        elif key == "publicIPPrefix":
-            suggest = "public_ip_prefix"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PublicIPAddressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PublicIPAddressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PublicIPAddressResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_configuration: 'outputs.IPConfigurationResponse',
                  name: str,
@@ -13376,25 +10982,6 @@ class ResourceNavigationLinkResponse(dict):
     """
     ResourceNavigationLink resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "linkedResourceType":
-            suggest = "linked_resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceNavigationLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceNavigationLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceNavigationLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -13486,25 +11073,6 @@ class RouteFilterRuleResponse(dict):
     """
     Route Filter Rule Resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "routeFilterRuleType":
-            suggest = "route_filter_rule_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RouteFilterRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RouteFilterRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RouteFilterRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access: str,
                  communities: Sequence[str],
@@ -13607,29 +11175,6 @@ class RouteResponse(dict):
     """
     Route resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nextHopType":
-            suggest = "next_hop_type"
-        elif key == "addressPrefix":
-            suggest = "address_prefix"
-        elif key == "nextHopIpAddress":
-            suggest = "next_hop_ip_address"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RouteResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RouteResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RouteResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  next_hop_type: str,
                  address_prefix: Optional[str] = None,
@@ -13724,25 +11269,6 @@ class RouteTableResponse(dict):
     """
     Route table resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "disableBgpRoutePropagation":
-            suggest = "disable_bgp_route_propagation"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RouteTableResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RouteTableResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RouteTableResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  subnets: Sequence['outputs.SubnetResponse'],
@@ -13871,43 +11397,6 @@ class SecurityRuleResponse(dict):
     """
     Network security rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationAddressPrefix":
-            suggest = "destination_address_prefix"
-        elif key == "destinationAddressPrefixes":
-            suggest = "destination_address_prefixes"
-        elif key == "destinationApplicationSecurityGroups":
-            suggest = "destination_application_security_groups"
-        elif key == "destinationPortRange":
-            suggest = "destination_port_range"
-        elif key == "destinationPortRanges":
-            suggest = "destination_port_ranges"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "sourceAddressPrefix":
-            suggest = "source_address_prefix"
-        elif key == "sourceAddressPrefixes":
-            suggest = "source_address_prefixes"
-        elif key == "sourceApplicationSecurityGroups":
-            suggest = "source_application_security_groups"
-        elif key == "sourcePortRange":
-            suggest = "source_port_range"
-        elif key == "sourcePortRanges":
-            suggest = "source_port_ranges"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SecurityRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SecurityRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SecurityRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access: str,
                  direction: str,
@@ -14144,27 +11633,6 @@ class ServiceAssociationLinkResponse(dict):
     """
     ServiceAssociationLink resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "allowDelete":
-            suggest = "allow_delete"
-        elif key == "linkedResourceType":
-            suggest = "linked_resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceAssociationLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceAssociationLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceAssociationLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -14282,25 +11750,6 @@ class ServiceEndpointPolicyDefinitionResponse(dict):
     """
     Service Endpoint policy definitions.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "serviceResources":
-            suggest = "service_resources"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceEndpointPolicyDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceEndpointPolicyDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceEndpointPolicyDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  description: Optional[str] = None,
@@ -14395,27 +11844,6 @@ class ServiceEndpointPolicyResponse(dict):
     """
     Service End point policy resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-        elif key == "serviceEndpointPolicyDefinitions":
-            suggest = "service_endpoint_policy_definitions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceEndpointPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceEndpointPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceEndpointPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  provisioning_state: str,
@@ -14542,23 +11970,6 @@ class ServiceEndpointPropertiesFormatResponse(dict):
     """
     The service endpoint properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceEndpointPropertiesFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceEndpointPropertiesFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceEndpointPropertiesFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  locations: Optional[Sequence[str]] = None,
                  provisioning_state: Optional[str] = None,
@@ -14629,51 +12040,6 @@ class SubnetResponse(dict):
     """
     Subnet in a virtual network resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipConfigurationProfiles":
-            suggest = "ip_configuration_profiles"
-        elif key == "ipConfigurations":
-            suggest = "ip_configurations"
-        elif key == "privateEndpoints":
-            suggest = "private_endpoints"
-        elif key == "addressPrefix":
-            suggest = "address_prefix"
-        elif key == "addressPrefixes":
-            suggest = "address_prefixes"
-        elif key == "natGateway":
-            suggest = "nat_gateway"
-        elif key == "networkSecurityGroup":
-            suggest = "network_security_group"
-        elif key == "privateEndpointNetworkPolicies":
-            suggest = "private_endpoint_network_policies"
-        elif key == "privateLinkServiceNetworkPolicies":
-            suggest = "private_link_service_network_policies"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "resourceNavigationLinks":
-            suggest = "resource_navigation_links"
-        elif key == "routeTable":
-            suggest = "route_table"
-        elif key == "serviceAssociationLinks":
-            suggest = "service_association_links"
-        elif key == "serviceEndpointPolicies":
-            suggest = "service_endpoint_policies"
-        elif key == "serviceEndpoints":
-            suggest = "service_endpoints"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubnetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubnetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubnetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_configuration_profiles: Sequence['outputs.IPConfigurationProfileResponse'],
                  ip_configurations: Sequence['outputs.IPConfigurationResponse'],
@@ -14921,29 +12287,6 @@ class TunnelConnectionHealthResponse(dict):
     """
     VirtualNetworkGatewayConnection properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionStatus":
-            suggest = "connection_status"
-        elif key == "egressBytesTransferred":
-            suggest = "egress_bytes_transferred"
-        elif key == "ingressBytesTransferred":
-            suggest = "ingress_bytes_transferred"
-        elif key == "lastConnectionEstablishedUtcTime":
-            suggest = "last_connection_established_utc_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TunnelConnectionHealthResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TunnelConnectionHealthResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TunnelConnectionHealthResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_status: str,
                  egress_bytes_transferred: float,
@@ -15033,25 +12376,6 @@ class VirtualHubRouteResponse(dict):
     """
     VirtualHub route.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "addressPrefixes":
-            suggest = "address_prefixes"
-        elif key == "nextHopIpAddress":
-            suggest = "next_hop_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualHubRouteResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualHubRouteResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualHubRouteResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address_prefixes: Optional[Sequence[str]] = None,
                  next_hop_ip_address: Optional[str] = None):
@@ -15110,27 +12434,6 @@ class VirtualNetworkGatewayIPConfigurationResponse(dict):
     """
     IP configuration for virtual network gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateIPAllocationMethod":
-            suggest = "private_ip_allocation_method"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkGatewayIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkGatewayIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkGatewayIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  etag: Optional[str] = None,
@@ -15225,43 +12528,6 @@ class VirtualNetworkGatewayResponse(dict):
     """
     A common class for general resource information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "activeActive":
-            suggest = "active_active"
-        elif key == "bgpSettings":
-            suggest = "bgp_settings"
-        elif key == "customRoutes":
-            suggest = "custom_routes"
-        elif key == "enableBgp":
-            suggest = "enable_bgp"
-        elif key == "gatewayDefaultSite":
-            suggest = "gateway_default_site"
-        elif key == "gatewayType":
-            suggest = "gateway_type"
-        elif key == "ipConfigurations":
-            suggest = "ip_configurations"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-        elif key == "vpnClientConfiguration":
-            suggest = "vpn_client_configuration"
-        elif key == "vpnType":
-            suggest = "vpn_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkGatewayResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkGatewayResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkGatewayResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  provisioning_state: str,
@@ -15533,37 +12799,6 @@ class VirtualNetworkPeeringResponse(dict):
     """
     Peerings in a virtual network resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowForwardedTraffic":
-            suggest = "allow_forwarded_traffic"
-        elif key == "allowGatewayTransit":
-            suggest = "allow_gateway_transit"
-        elif key == "allowVirtualNetworkAccess":
-            suggest = "allow_virtual_network_access"
-        elif key == "peeringState":
-            suggest = "peering_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "remoteAddressSpace":
-            suggest = "remote_address_space"
-        elif key == "remoteVirtualNetwork":
-            suggest = "remote_virtual_network"
-        elif key == "useRemoteGateways":
-            suggest = "use_remote_gateways"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkPeeringResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkPeeringResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkPeeringResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_forwarded_traffic: Optional[bool] = None,
                  allow_gateway_transit: Optional[bool] = None,
@@ -15707,33 +12942,6 @@ class VirtualNetworkTapResponse(dict):
     """
     Virtual Network Tap resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkInterfaceTapConfigurations":
-            suggest = "network_interface_tap_configurations"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "resourceGuid":
-            suggest = "resource_guid"
-        elif key == "destinationLoadBalancerFrontEndIPConfiguration":
-            suggest = "destination_load_balancer_front_end_ip_configuration"
-        elif key == "destinationNetworkInterfaceIPConfiguration":
-            suggest = "destination_network_interface_ip_configuration"
-        elif key == "destinationPort":
-            suggest = "destination_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkTapResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkTapResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkTapResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  network_interface_tap_configurations: Sequence['outputs.NetworkInterfaceTapConfigurationResponse'],
@@ -15884,41 +13092,6 @@ class VpnClientConfigurationResponse(dict):
     """
     VpnClientConfiguration for P2S client.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aadAudience":
-            suggest = "aad_audience"
-        elif key == "aadIssuer":
-            suggest = "aad_issuer"
-        elif key == "aadTenant":
-            suggest = "aad_tenant"
-        elif key == "radiusServerAddress":
-            suggest = "radius_server_address"
-        elif key == "radiusServerSecret":
-            suggest = "radius_server_secret"
-        elif key == "vpnClientAddressPool":
-            suggest = "vpn_client_address_pool"
-        elif key == "vpnClientIpsecPolicies":
-            suggest = "vpn_client_ipsec_policies"
-        elif key == "vpnClientProtocols":
-            suggest = "vpn_client_protocols"
-        elif key == "vpnClientRevokedCertificates":
-            suggest = "vpn_client_revoked_certificates"
-        elif key == "vpnClientRootCertificates":
-            suggest = "vpn_client_root_certificates"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnClientConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnClientConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnClientConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aad_audience: Optional[str] = None,
                  aad_issuer: Optional[str] = None,
@@ -16193,29 +13366,6 @@ class VpnClientConnectionHealthResponse(dict):
     """
     VpnClientConnectionHealth properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "totalEgressBytesTransferred":
-            suggest = "total_egress_bytes_transferred"
-        elif key == "totalIngressBytesTransferred":
-            suggest = "total_ingress_bytes_transferred"
-        elif key == "allocatedIpAddresses":
-            suggest = "allocated_ip_addresses"
-        elif key == "vpnClientConnectionsCount":
-            suggest = "vpn_client_connections_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnClientConnectionHealthResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnClientConnectionHealthResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnClientConnectionHealthResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  total_egress_bytes_transferred: float,
                  total_ingress_bytes_transferred: float,
@@ -16273,23 +13423,6 @@ class VpnClientRevokedCertificateResponse(dict):
     """
     VPN client revoked certificate of virtual network gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnClientRevokedCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnClientRevokedCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnClientRevokedCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  etag: Optional[str] = None,
@@ -16360,25 +13493,6 @@ class VpnClientRootCertificateResponse(dict):
     """
     VPN client root certificate of virtual network gateway.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicCertData":
-            suggest = "public_cert_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnClientRootCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnClientRootCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnClientRootCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  public_cert_data: str,
@@ -16448,53 +13562,6 @@ class VpnConnectionResponse(dict):
     """
     VpnConnection Resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionStatus":
-            suggest = "connection_status"
-        elif key == "egressBytesTransferred":
-            suggest = "egress_bytes_transferred"
-        elif key == "ingressBytesTransferred":
-            suggest = "ingress_bytes_transferred"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "connectionBandwidth":
-            suggest = "connection_bandwidth"
-        elif key == "enableBgp":
-            suggest = "enable_bgp"
-        elif key == "enableInternetSecurity":
-            suggest = "enable_internet_security"
-        elif key == "enableRateLimiting":
-            suggest = "enable_rate_limiting"
-        elif key == "ipsecPolicies":
-            suggest = "ipsec_policies"
-        elif key == "remoteVpnSite":
-            suggest = "remote_vpn_site"
-        elif key == "routingWeight":
-            suggest = "routing_weight"
-        elif key == "sharedKey":
-            suggest = "shared_key"
-        elif key == "useLocalAzureIpAddress":
-            suggest = "use_local_azure_ip_address"
-        elif key == "usePolicyBasedTrafficSelectors":
-            suggest = "use_policy_based_traffic_selectors"
-        elif key == "vpnConnectionProtocolType":
-            suggest = "vpn_connection_protocol_type"
-        elif key == "vpnLinkConnections":
-            suggest = "vpn_link_connections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_status: str,
                  egress_bytes_transferred: float,
@@ -16729,23 +13796,6 @@ class VpnLinkBgpSettingsResponse(dict):
     """
     BGP settings details for a link.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bgpPeeringAddress":
-            suggest = "bgp_peering_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnLinkBgpSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnLinkBgpSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnLinkBgpSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  asn: Optional[float] = None,
                  bgp_peering_address: Optional[str] = None):
@@ -16781,25 +13831,6 @@ class VpnLinkProviderPropertiesResponse(dict):
     """
     List of properties of a link provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkProviderName":
-            suggest = "link_provider_name"
-        elif key == "linkSpeedInMbps":
-            suggest = "link_speed_in_mbps"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnLinkProviderPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnLinkProviderPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnLinkProviderPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  link_provider_name: Optional[str] = None,
                  link_speed_in_mbps: Optional[int] = None):
@@ -16835,49 +13866,6 @@ class VpnSiteLinkConnectionResponse(dict):
     """
     VpnSiteLinkConnection Resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionStatus":
-            suggest = "connection_status"
-        elif key == "egressBytesTransferred":
-            suggest = "egress_bytes_transferred"
-        elif key == "ingressBytesTransferred":
-            suggest = "ingress_bytes_transferred"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "connectionBandwidth":
-            suggest = "connection_bandwidth"
-        elif key == "enableBgp":
-            suggest = "enable_bgp"
-        elif key == "enableRateLimiting":
-            suggest = "enable_rate_limiting"
-        elif key == "ipsecPolicies":
-            suggest = "ipsec_policies"
-        elif key == "routingWeight":
-            suggest = "routing_weight"
-        elif key == "sharedKey":
-            suggest = "shared_key"
-        elif key == "useLocalAzureIpAddress":
-            suggest = "use_local_azure_ip_address"
-        elif key == "usePolicyBasedTrafficSelectors":
-            suggest = "use_policy_based_traffic_selectors"
-        elif key == "vpnConnectionProtocolType":
-            suggest = "vpn_connection_protocol_type"
-        elif key == "vpnSiteLink":
-            suggest = "vpn_site_link"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnSiteLinkConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnSiteLinkConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnSiteLinkConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_status: str,
                  egress_bytes_transferred: float,
@@ -17099,29 +14087,6 @@ class VpnSiteLinkResponse(dict):
     """
     VpnSiteLink Resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "bgpProperties":
-            suggest = "bgp_properties"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "linkProperties":
-            suggest = "link_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VpnSiteLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VpnSiteLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VpnSiteLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -17226,25 +14191,6 @@ class WebApplicationFirewallCustomRuleResponse(dict):
     """
     Defines contents of a web application rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "matchConditions":
-            suggest = "match_conditions"
-        elif key == "ruleType":
-            suggest = "rule_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebApplicationFirewallCustomRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebApplicationFirewallCustomRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebApplicationFirewallCustomRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: str,
                  etag: str,

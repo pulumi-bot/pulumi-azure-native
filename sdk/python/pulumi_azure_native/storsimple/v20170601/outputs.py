@@ -31,25 +31,6 @@ class AsymmetricEncryptedSecretResponse(dict):
     """
     Represent the secrets intended for encryption with asymmetric key pair.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encryptionAlgorithm":
-            suggest = "encryption_algorithm"
-        elif key == "encryptionCertThumbprint":
-            suggest = "encryption_cert_thumbprint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AsymmetricEncryptedSecretResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AsymmetricEncryptedSecretResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AsymmetricEncryptedSecretResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  value: str,
@@ -95,23 +76,6 @@ class BandwidthScheduleResponse(dict):
     """
     The schedule for bandwidth setting.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "rateInMbps":
-            suggest = "rate_in_mbps"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BandwidthScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BandwidthScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BandwidthScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  days: Sequence[str],
                  rate_in_mbps: int,
@@ -424,27 +388,6 @@ class ScheduleRecurrenceResponse(dict):
     """
     The schedule recurrence.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recurrenceType":
-            suggest = "recurrence_type"
-        elif key == "recurrenceValue":
-            suggest = "recurrence_value"
-        elif key == "weeklyDaysList":
-            suggest = "weekly_days_list"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleRecurrenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleRecurrenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleRecurrenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  recurrence_type: str,
                  recurrence_value: int,

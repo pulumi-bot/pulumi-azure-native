@@ -31,33 +31,6 @@ class AcsClusterPropertiesResponse(dict):
     """
     Information about the container service backing the cluster
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterFqdn":
-            suggest = "cluster_fqdn"
-        elif key == "orchestratorProperties":
-            suggest = "orchestrator_properties"
-        elif key == "orchestratorType":
-            suggest = "orchestrator_type"
-        elif key == "agentCount":
-            suggest = "agent_count"
-        elif key == "agentVmSize":
-            suggest = "agent_vm_size"
-        elif key == "systemServices":
-            suggest = "system_services"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AcsClusterPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AcsClusterPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AcsClusterPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_fqdn: str,
                  orchestrator_properties: 'outputs.KubernetesClusterPropertiesResponse',
@@ -142,25 +115,6 @@ class AppInsightsCredentialsResponse(dict):
     """
     AppInsights credentials.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiKey":
-            suggest = "api_key"
-        elif key == "appId":
-            suggest = "app_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AppInsightsCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AppInsightsCredentialsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AppInsightsCredentialsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  api_key: Optional[str] = None,
                  app_id: Optional[str] = None):
@@ -196,29 +150,6 @@ class AutoScaleConfigurationResponse(dict):
     """
     AutoScale configuration properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxReplicas":
-            suggest = "max_replicas"
-        elif key == "minReplicas":
-            suggest = "min_replicas"
-        elif key == "refreshPeriodInSeconds":
-            suggest = "refresh_period_in_seconds"
-        elif key == "targetUtilization":
-            suggest = "target_utilization"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoScaleConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoScaleConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoScaleConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_replicas: Optional[int] = None,
                  min_replicas: Optional[int] = None,
@@ -340,23 +271,6 @@ class ContainerRegistryPropertiesResponse(dict):
     """
     Properties of Azure Container Registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerRegistryPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerRegistryPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerRegistryPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_id: Optional[str] = None):
         """
@@ -424,25 +338,6 @@ class GlobalServiceConfigurationResponse(dict):
     """
     Global configuration for services in the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoScale":
-            suggest = "auto_scale"
-        elif key == "serviceAuth":
-            suggest = "service_auth"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GlobalServiceConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GlobalServiceConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GlobalServiceConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  auto_scale: Optional['outputs.AutoScaleConfigurationResponse'] = None,
                  etag: Optional[str] = None,
@@ -502,23 +397,6 @@ class KubernetesClusterPropertiesResponse(dict):
     """
     Kubernetes cluster specific properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "servicePrincipal":
-            suggest = "service_principal"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KubernetesClusterPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KubernetesClusterPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  service_principal: 'outputs.ServicePrincipalPropertiesResponse'):
         """
@@ -541,25 +419,6 @@ class ServiceAuthConfigurationResponse(dict):
     """
     Global service auth configuration properties. These are the data-plane authorization keys and are used if a service doesn't define it's own.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "primaryAuthKeyHash":
-            suggest = "primary_auth_key_hash"
-        elif key == "secondaryAuthKeyHash":
-            suggest = "secondary_auth_key_hash"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceAuthConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceAuthConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceAuthConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  primary_auth_key_hash: str,
                  secondary_auth_key_hash: str):
@@ -593,23 +452,6 @@ class ServicePrincipalPropertiesResponse(dict):
     """
     The Azure service principal used by Kubernetes for configuring load balancers
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServicePrincipalPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServicePrincipalPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServicePrincipalPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  secret: str):
@@ -736,23 +578,6 @@ class StorageAccountPropertiesResponse(dict):
     """
     Properties of Storage Account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageAccountPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageAccountPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageAccountPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_id: Optional[str] = None):
         """

@@ -29,29 +29,6 @@ class CacheExpirationActionParametersResponse(dict):
     """
     Defines the parameters for the cache expiration action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cacheBehavior":
-            suggest = "cache_behavior"
-        elif key == "cacheType":
-            suggest = "cache_type"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "cacheDuration":
-            suggest = "cache_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheExpirationActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheExpirationActionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheExpirationActionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cache_behavior: str,
                  cache_type: str,
@@ -104,27 +81,6 @@ class DeepCreatedOriginResponse(dict):
     """
     The main origin of CDN content which is added when creating a CDN endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hostName":
-            suggest = "host_name"
-        elif key == "httpPort":
-            suggest = "http_port"
-        elif key == "httpsPort":
-            suggest = "https_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeepCreatedOriginResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeepCreatedOriginResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeepCreatedOriginResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host_name: str,
                  name: str,
@@ -366,25 +322,6 @@ class GeoFilterResponse(dict):
     """
     Rules defining user's geo access within a CDN endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryCodes":
-            suggest = "country_codes"
-        elif key == "relativePath":
-            suggest = "relative_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GeoFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GeoFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GeoFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: str,
                  country_codes: Sequence[str],
@@ -452,23 +389,6 @@ class UrlFileExtensionConditionParametersResponse(dict):
     """
     Defines the parameters for the URL file extension condition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UrlFileExtensionConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UrlFileExtensionConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UrlFileExtensionConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  extensions: Sequence[str],
                  odata_type: str):
@@ -498,25 +418,6 @@ class UrlPathConditionParametersResponse(dict):
     """
     Defines the parameters for the URL path condition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "matchType":
-            suggest = "match_type"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UrlPathConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UrlPathConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UrlPathConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  match_type: str,
                  odata_type: str,

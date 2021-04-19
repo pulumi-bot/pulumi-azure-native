@@ -150,27 +150,6 @@ class AzureActiveDirectoryAppResponse(dict):
     """
     Azure Active Directory Application
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appKey":
-            suggest = "app_key"
-        elif key == "applicationId":
-            suggest = "application_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureActiveDirectoryAppResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureActiveDirectoryAppResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureActiveDirectoryAppResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  app_key: str,
                  application_id: str,
@@ -215,25 +194,6 @@ class BackupFileInfoResponse(dict):
     """
     Information of the backup file
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "familySequenceNumber":
-            suggest = "family_sequence_number"
-        elif key == "fileLocation":
-            suggest = "file_location"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackupFileInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackupFileInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackupFileInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  family_sequence_number: Optional[int] = None,
                  file_location: Optional[str] = None,
@@ -281,41 +241,6 @@ class BackupSetInfoResponse(dict):
     """
     Information of backup set
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupFinishedDate":
-            suggest = "backup_finished_date"
-        elif key == "backupSetId":
-            suggest = "backup_set_id"
-        elif key == "backupStartDate":
-            suggest = "backup_start_date"
-        elif key == "backupType":
-            suggest = "backup_type"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "firstLsn":
-            suggest = "first_lsn"
-        elif key == "isBackupRestored":
-            suggest = "is_backup_restored"
-        elif key == "lastLsn":
-            suggest = "last_lsn"
-        elif key == "lastModifiedTime":
-            suggest = "last_modified_time"
-        elif key == "listOfBackupFiles":
-            suggest = "list_of_backup_files"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackupSetInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackupSetInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackupSetInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_finished_date: Optional[str] = None,
                  backup_set_id: Optional[str] = None,
@@ -447,23 +372,6 @@ class BlobShareResponse(dict):
     """
     Blob container storage information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sasUri":
-            suggest = "sas_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BlobShareResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BlobShareResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BlobShareResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  sas_uri: str):
         """
@@ -486,23 +394,6 @@ class ConnectToSourcePostgreSqlSyncTaskInputResponse(dict):
     """
     Input for the task that validates connection to PostgreSQL and source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourcePostgreSqlSyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourcePostgreSqlSyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourcePostgreSqlSyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_connection_info: 'outputs.PostgreSqlConnectionInfoResponse'):
         """
@@ -525,27 +416,6 @@ class ConnectToSourcePostgreSqlSyncTaskOutputResponse(dict):
     """
     Output for the task that validates connection to PostgreSQL and source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceServerBrandVersion":
-            suggest = "source_server_brand_version"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourcePostgreSqlSyncTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourcePostgreSqlSyncTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourcePostgreSqlSyncTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  databases: Sequence[str],
                  id: str,
@@ -612,23 +482,6 @@ class ConnectToSourcePostgreSqlSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to PostgreSQL server and source server requirements for online migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourcePostgreSqlSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourcePostgreSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourcePostgreSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -709,23 +562,6 @@ class ConnectToSourceSqlServerSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to SQL Server and source server requirements for online migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourceSqlServerSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourceSqlServerSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourceSqlServerSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -806,29 +642,6 @@ class ConnectToSourceSqlServerTaskInputResponse(dict):
     """
     Input for the task that validates connection to SQL Server and also validates source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "checkPermissionsGroup":
-            suggest = "check_permissions_group"
-        elif key == "collectAgentJobs":
-            suggest = "collect_agent_jobs"
-        elif key == "collectLogins":
-            suggest = "collect_logins"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourceSqlServerTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourceSqlServerTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourceSqlServerTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_connection_info: 'outputs.SqlConnectionInfoResponse',
                  check_permissions_group: Optional[str] = None,
@@ -891,33 +704,6 @@ class ConnectToSourceSqlServerTaskOutputAgentJobLevelResponse(dict):
     """
     AgentJob level output for the task that validates connection to SQL Server and also validates source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "jobCategory":
-            suggest = "job_category"
-        elif key == "jobOwner":
-            suggest = "job_owner"
-        elif key == "lastExecutedOn":
-            suggest = "last_executed_on"
-        elif key == "migrationEligibility":
-            suggest = "migration_eligibility"
-        elif key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourceSqlServerTaskOutputAgentJobLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourceSqlServerTaskOutputAgentJobLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourceSqlServerTaskOutputAgentJobLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  is_enabled: bool,
@@ -1019,31 +805,6 @@ class ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse(dict):
     """
     Database level output for the task that validates connection to SQL Server and also validates source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "compatibilityLevel":
-            suggest = "compatibility_level"
-        elif key == "databaseFiles":
-            suggest = "database_files"
-        elif key == "databaseState":
-            suggest = "database_state"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sizeMB":
-            suggest = "size_mb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compatibility_level: str,
                  database_files: Sequence['outputs.DatabaseFileInfoResponse'],
@@ -1134,31 +895,6 @@ class ConnectToSourceSqlServerTaskOutputLoginLevelResponse(dict):
     """
     Login level output for the task that validates connection to SQL Server and also validates source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultDatabase":
-            suggest = "default_database"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "loginType":
-            suggest = "login_type"
-        elif key == "migrationEligibility":
-            suggest = "migration_eligibility"
-        elif key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourceSqlServerTaskOutputLoginLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourceSqlServerTaskOutputLoginLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourceSqlServerTaskOutputLoginLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_database: str,
                  id: str,
@@ -1249,31 +985,6 @@ class ConnectToSourceSqlServerTaskOutputTaskLevelResponse(dict):
     """
     Task level output for the task that validates connection to SQL Server and also validates source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "agentJobs":
-            suggest = "agent_jobs"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sourceServerBrandVersion":
-            suggest = "source_server_brand_version"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourceSqlServerTaskOutputTaskLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourceSqlServerTaskOutputTaskLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourceSqlServerTaskOutputTaskLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  agent_jobs: Mapping[str, str],
                  databases: Mapping[str, str],
@@ -1375,23 +1086,6 @@ class ConnectToSourceSqlServerTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to SQL Server and also validates source server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToSourceSqlServerTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToSourceSqlServerTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToSourceSqlServerTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -1472,25 +1166,6 @@ class ConnectToTargetAzureDbForMySqlTaskInputResponse(dict):
     """
     Input for the task that validates connection to Azure Database for MySQL and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetAzureDbForMySqlTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetAzureDbForMySqlTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetAzureDbForMySqlTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_connection_info: 'outputs.MySqlConnectionInfoResponse',
                  target_connection_info: 'outputs.MySqlConnectionInfoResponse'):
@@ -1524,27 +1199,6 @@ class ConnectToTargetAzureDbForMySqlTaskOutputResponse(dict):
     """
     Output for the task that validates connection to Azure Database for MySQL and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serverVersion":
-            suggest = "server_version"
-        elif key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetAzureDbForMySqlTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetAzureDbForMySqlTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetAzureDbForMySqlTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  databases: Sequence[str],
                  id: str,
@@ -1611,23 +1265,6 @@ class ConnectToTargetAzureDbForMySqlTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to Azure Database for MySQL and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetAzureDbForMySqlTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetAzureDbForMySqlTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetAzureDbForMySqlTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -1708,25 +1345,6 @@ class ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse(dict):
     """
     Input for the task that validates connection to Azure Database for PostgreSQL and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_connection_info: 'outputs.PostgreSqlConnectionInfoResponse',
                  target_connection_info: 'outputs.PostgreSqlConnectionInfoResponse'):
@@ -1760,27 +1378,6 @@ class ConnectToTargetAzureDbForPostgreSqlSyncTaskOutputResponse(dict):
     """
     Output for the task that validates connection to Azure Database for PostgreSQL and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetAzureDbForPostgreSqlSyncTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  databases: Sequence[str],
                  id: str,
@@ -1847,23 +1444,6 @@ class ConnectToTargetAzureDbForPostgreSqlSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to Azure Database For PostgreSQL server and target server requirements for online migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetAzureDbForPostgreSqlSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetAzureDbForPostgreSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -1944,23 +1524,6 @@ class ConnectToTargetSqlDbTaskInputResponse(dict):
     """
     Input for the task that validates connection to SQL DB and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlDbTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlDbTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlDbTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target_connection_info: 'outputs.SqlConnectionInfoResponse'):
         """
@@ -1983,25 +1546,6 @@ class ConnectToTargetSqlDbTaskOutputResponse(dict):
     """
     Output for the task that validates connection to SQL DB and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlDbTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlDbTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlDbTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  databases: Mapping[str, str],
                  id: str,
@@ -2057,23 +1601,6 @@ class ConnectToTargetSqlDbTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to SQL DB and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlDbTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlDbTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlDbTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -2154,25 +1681,6 @@ class ConnectToTargetSqlMISyncTaskInputResponse(dict):
     """
     Input for the task that validates connection to Azure SQL Database Managed Instance online scenario.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureApp":
-            suggest = "azure_app"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlMISyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlMISyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlMISyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_app: 'outputs.AzureActiveDirectoryAppResponse',
                  target_connection_info: 'outputs.MiSqlConnectionInfoResponse'):
@@ -2206,27 +1714,6 @@ class ConnectToTargetSqlMISyncTaskOutputResponse(dict):
     """
     Output for the task that validates connection to Azure SQL Database Managed Instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlMISyncTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlMISyncTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlMISyncTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target_server_brand_version: str,
                  target_server_version: str,
@@ -2271,23 +1758,6 @@ class ConnectToTargetSqlMISyncTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to Azure SQL Database Managed Instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlMISyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlMISyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlMISyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -2368,23 +1838,6 @@ class ConnectToTargetSqlMITaskInputResponse(dict):
     """
     Input for the task that validates connection to Azure SQL Database Managed Instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlMITaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlMITaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlMITaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target_connection_info: 'outputs.SqlConnectionInfoResponse'):
         """
@@ -2407,29 +1860,6 @@ class ConnectToTargetSqlMITaskOutputResponse(dict):
     """
     Output for the task that validates connection to Azure SQL Database Managed Instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "agentJobs":
-            suggest = "agent_jobs"
-        elif key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlMITaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlMITaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlMITaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  agent_jobs: Sequence[str],
                  id: str,
@@ -2507,23 +1937,6 @@ class ConnectToTargetSqlMITaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to Azure SQL Database Managed Instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlMITaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlMITaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlMITaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -2604,25 +2017,6 @@ class ConnectToTargetSqlSqlDbSyncTaskInputResponse(dict):
     """
     Input for the task that validates connection to Azure SQL DB and target server requirements
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlSqlDbSyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlSqlDbSyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlSqlDbSyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_connection_info: 'outputs.SqlConnectionInfoResponse',
                  target_connection_info: 'outputs.SqlConnectionInfoResponse'):
@@ -2656,23 +2050,6 @@ class ConnectToTargetSqlSqlDbSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that validates connection to SQL DB and target server requirements for online migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectToTargetSqlSqlDbSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectToTargetSqlSqlDbSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectToTargetSqlSqlDbSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -2753,25 +2130,6 @@ class DataIntegrityValidationResultResponse(dict):
     """
     Results for checksum based Data Integrity validation results
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failedObjects":
-            suggest = "failed_objects"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataIntegrityValidationResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataIntegrityValidationResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataIntegrityValidationResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failed_objects: Mapping[str, str],
                  validation_errors: 'outputs.ValidationErrorResponse'):
@@ -2805,35 +2163,6 @@ class DataItemMigrationSummaryResultResponse(dict):
     """
     Basic summary of a data item migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "errorPrefix":
-            suggest = "error_prefix"
-        elif key == "itemsCompletedCount":
-            suggest = "items_completed_count"
-        elif key == "itemsCount":
-            suggest = "items_count"
-        elif key == "resultPrefix":
-            suggest = "result_prefix"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "statusMessage":
-            suggest = "status_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataItemMigrationSummaryResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataItemMigrationSummaryResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataItemMigrationSummaryResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  error_prefix: str,
@@ -2944,35 +2273,6 @@ class DatabaseBackupInfoResponse(dict):
     """
     Information about backup files when existing backup mode is used.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupFiles":
-            suggest = "backup_files"
-        elif key == "backupFinishDate":
-            suggest = "backup_finish_date"
-        elif key == "backupType":
-            suggest = "backup_type"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "familyCount":
-            suggest = "family_count"
-        elif key == "isCompressed":
-            suggest = "is_compressed"
-        elif key == "isDamaged":
-            suggest = "is_damaged"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseBackupInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseBackupInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseBackupInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_files: Sequence[str],
                  backup_finish_date: str,
@@ -3072,33 +2372,6 @@ class DatabaseFileInfoResponse(dict):
     """
     Database file specific information
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "fileType":
-            suggest = "file_type"
-        elif key == "logicalName":
-            suggest = "logical_name"
-        elif key == "physicalFullName":
-            suggest = "physical_full_name"
-        elif key == "restoreFullName":
-            suggest = "restore_full_name"
-        elif key == "sizeMB":
-            suggest = "size_mb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseFileInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseFileInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseFileInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_name: Optional[str] = None,
                  file_type: Optional[str] = None,
@@ -3194,23 +2467,6 @@ class DatabaseInfoResponse(dict):
     """
     Project Database Details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceDatabaseName":
-            suggest = "source_database_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_database_name: str):
         """
@@ -3233,37 +2489,6 @@ class DatabaseSummaryResultResponse(dict):
     """
     Summary of database results in the migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "errorPrefix":
-            suggest = "error_prefix"
-        elif key == "itemsCompletedCount":
-            suggest = "items_completed_count"
-        elif key == "itemsCount":
-            suggest = "items_count"
-        elif key == "resultPrefix":
-            suggest = "result_prefix"
-        elif key == "sizeMB":
-            suggest = "size_mb"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "statusMessage":
-            suggest = "status_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseSummaryResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseSummaryResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseSummaryResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  error_prefix: str,
@@ -3385,23 +2610,6 @@ class DatabaseTableResponse(dict):
     """
     Table properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hasRows":
-            suggest = "has_rows"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseTableResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseTableResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseTableResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  has_rows: bool,
                  name: str):
@@ -3435,33 +2643,6 @@ class ExecutionStatisticsResponse(dict):
     """
     Description about the errors happen while performing migration validation
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cpuTimeMs":
-            suggest = "cpu_time_ms"
-        elif key == "elapsedTimeMs":
-            suggest = "elapsed_time_ms"
-        elif key == "executionCount":
-            suggest = "execution_count"
-        elif key == "hasErrors":
-            suggest = "has_errors"
-        elif key == "sqlErrors":
-            suggest = "sql_errors"
-        elif key == "waitStats":
-            suggest = "wait_stats"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExecutionStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExecutionStatisticsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExecutionStatisticsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cpu_time_ms: float,
                  elapsed_time_ms: float,
@@ -3540,23 +2721,6 @@ class FileShareResponse(dict):
     """
     File share information with Path, Username, and Password.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileShareResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileShareResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileShareResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  path: str,
                  password: Optional[str] = None,
@@ -3603,27 +2767,6 @@ class GetTdeCertificatesSqlTaskInputResponse(dict):
     """
     Input for the task that gets TDE certificates in Base64 encoded format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupFileShare":
-            suggest = "backup_file_share"
-        elif key == "connectionInfo":
-            suggest = "connection_info"
-        elif key == "selectedCertificates":
-            suggest = "selected_certificates"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetTdeCertificatesSqlTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetTdeCertificatesSqlTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetTdeCertificatesSqlTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_file_share: 'outputs.FileShareResponse',
                  connection_info: 'outputs.SqlConnectionInfoResponse',
@@ -3668,25 +2811,6 @@ class GetTdeCertificatesSqlTaskOutputResponse(dict):
     """
     Output of the task that gets TDE certificates in Base64 encoded format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "base64EncodedCertificates":
-            suggest = "base64_encoded_certificates"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetTdeCertificatesSqlTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetTdeCertificatesSqlTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetTdeCertificatesSqlTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  base64_encoded_certificates: Mapping[str, Sequence[str]],
                  validation_errors: Sequence['outputs.ReportableExceptionResponse']):
@@ -3720,23 +2844,6 @@ class GetTdeCertificatesSqlTaskPropertiesResponse(dict):
     """
     Properties for the task that gets TDE certificates in Base64 encoded format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetTdeCertificatesSqlTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetTdeCertificatesSqlTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetTdeCertificatesSqlTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -3817,29 +2924,6 @@ class GetUserTablesSqlSyncTaskInputResponse(dict):
     """
     Input for the task that collects user tables for the given list of databases
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "selectedSourceDatabases":
-            suggest = "selected_source_databases"
-        elif key == "selectedTargetDatabases":
-            suggest = "selected_target_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetUserTablesSqlSyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetUserTablesSqlSyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetUserTablesSqlSyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  selected_source_databases: Sequence[str],
                  selected_target_databases: Sequence[str],
@@ -3895,29 +2979,6 @@ class GetUserTablesSqlSyncTaskOutputResponse(dict):
     """
     Output of the task that collects user tables for the given list of databases
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databasesToSourceTables":
-            suggest = "databases_to_source_tables"
-        elif key == "databasesToTargetTables":
-            suggest = "databases_to_target_tables"
-        elif key == "tableValidationErrors":
-            suggest = "table_validation_errors"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetUserTablesSqlSyncTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetUserTablesSqlSyncTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetUserTablesSqlSyncTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  databases_to_source_tables: Mapping[str, Sequence['outputs.DatabaseTableResponse']],
                  databases_to_target_tables: Mapping[str, Sequence['outputs.DatabaseTableResponse']],
@@ -3973,23 +3034,6 @@ class GetUserTablesSqlSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that collects user tables for the given list of databases
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetUserTablesSqlSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetUserTablesSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetUserTablesSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -4070,25 +3114,6 @@ class GetUserTablesSqlTaskInputResponse(dict):
     """
     Input for the task that collects user tables for the given list of databases
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionInfo":
-            suggest = "connection_info"
-        elif key == "selectedDatabases":
-            suggest = "selected_databases"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetUserTablesSqlTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetUserTablesSqlTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetUserTablesSqlTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_info: 'outputs.SqlConnectionInfoResponse',
                  selected_databases: Sequence[str]):
@@ -4122,25 +3147,6 @@ class GetUserTablesSqlTaskOutputResponse(dict):
     """
     Output of the task that collects user tables for the given list of databases
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databasesToTables":
-            suggest = "databases_to_tables"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetUserTablesSqlTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetUserTablesSqlTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetUserTablesSqlTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  databases_to_tables: Mapping[str, Sequence['outputs.DatabaseTableResponse']],
                  id: str,
@@ -4185,23 +3191,6 @@ class GetUserTablesSqlTaskPropertiesResponse(dict):
     """
     Properties for the task that collects user tables for the given list of databases
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetUserTablesSqlTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetUserTablesSqlTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetUserTablesSqlTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -4282,25 +3271,6 @@ class MiSqlConnectionInfoResponse(dict):
     """
     Properties required to create a connection to Azure SQL database Managed instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "managedInstanceResourceId":
-            suggest = "managed_instance_resource_id"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MiSqlConnectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MiSqlConnectionInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MiSqlConnectionInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  managed_instance_resource_id: str,
                  type: str,
@@ -4360,23 +3330,6 @@ class MigrateMISyncCompleteCommandInputResponse(dict):
     """
     Input for command that completes online migration for an Azure SQL Database Managed Instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceDatabaseName":
-            suggest = "source_database_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMISyncCompleteCommandInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMISyncCompleteCommandInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMISyncCompleteCommandInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_database_name: str):
         """
@@ -4422,23 +3375,6 @@ class MigrateMISyncCompleteCommandPropertiesResponse(dict):
     """
     Properties for the command that completes online migration for an Azure SQL Database Managed Instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandType":
-            suggest = "command_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMISyncCompleteCommandPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMISyncCompleteCommandPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMISyncCompleteCommandPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command_type: str,
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -4508,29 +3444,6 @@ class MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse(dict):
     """
     Database specific information for MySQL to Azure Database for MySQL migration task inputs
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "migrationSetting":
-            suggest = "migration_setting"
-        elif key == "sourceSetting":
-            suggest = "source_setting"
-        elif key == "targetDatabaseName":
-            suggest = "target_database_name"
-        elif key == "targetSetting":
-            suggest = "target_setting"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  migration_setting: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None,
@@ -4602,27 +3515,6 @@ class MigrateMySqlAzureDbForMySqlSyncTaskInputResponse(dict):
     """
     Input for the task that migrates MySQL databases to Azure Database for MySQL for online migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  selected_databases: Sequence['outputs.MigrateMySqlAzureDbForMySqlSyncDatabaseInputResponse'],
                  source_connection_info: 'outputs.MySqlConnectionInfoResponse',
@@ -4664,25 +3556,6 @@ class MigrateMySqlAzureDbForMySqlSyncTaskInputResponse(dict):
 
 @pulumi.output_type
 class MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-        elif key == "errorMessage":
-            suggest = "error_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  result_type: str,
@@ -4738,51 +3611,6 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse(dict):
 
 @pulumi.output_type
 class MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appliedChanges":
-            suggest = "applied_changes"
-        elif key == "cdcDeleteCounter":
-            suggest = "cdc_delete_counter"
-        elif key == "cdcInsertCounter":
-            suggest = "cdc_insert_counter"
-        elif key == "cdcUpdateCounter":
-            suggest = "cdc_update_counter"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "fullLoadCompletedTables":
-            suggest = "full_load_completed_tables"
-        elif key == "fullLoadErroredTables":
-            suggest = "full_load_errored_tables"
-        elif key == "fullLoadLoadingTables":
-            suggest = "full_load_loading_tables"
-        elif key == "fullLoadQueuedTables":
-            suggest = "full_load_queued_tables"
-        elif key == "incomingChanges":
-            suggest = "incoming_changes"
-        elif key == "initializationCompleted":
-            suggest = "initialization_completed"
-        elif key == "migrationState":
-            suggest = "migration_state"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "startedOn":
-            suggest = "started_on"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  applied_changes: float,
                  cdc_delete_counter: float,
@@ -4979,23 +3807,6 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateMySqlAzureDbForMySqlSyncTaskOutputErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncTaskOutputErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error: 'outputs.ReportableExceptionResponse',
                  id: str,
@@ -5038,35 +3849,6 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputErrorResponse(dict):
 
 @pulumi.output_type
 class MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sourceServer":
-            suggest = "source_server"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "targetServer":
-            suggest = "target_server"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  id: str,
@@ -5164,47 +3946,6 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateMySqlAzureDbForMySqlSyncTaskOutputTableLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cdcDeleteCounter":
-            suggest = "cdc_delete_counter"
-        elif key == "cdcInsertCounter":
-            suggest = "cdc_insert_counter"
-        elif key == "cdcUpdateCounter":
-            suggest = "cdc_update_counter"
-        elif key == "dataErrorsCounter":
-            suggest = "data_errors_counter"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "fullLoadEndedOn":
-            suggest = "full_load_ended_on"
-        elif key == "fullLoadEstFinishTime":
-            suggest = "full_load_est_finish_time"
-        elif key == "fullLoadStartedOn":
-            suggest = "full_load_started_on"
-        elif key == "fullLoadTotalRows":
-            suggest = "full_load_total_rows"
-        elif key == "lastModifiedTime":
-            suggest = "last_modified_time"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "tableName":
-            suggest = "table_name"
-        elif key == "totalChangesApplied":
-            suggest = "total_changes_applied"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncTaskOutputTableLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputTableLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskOutputTableLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cdc_delete_counter: str,
                  cdc_insert_counter: str,
@@ -5382,23 +4123,6 @@ class MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that migrates MySQL databases to Azure Database for MySQL for online migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -5479,29 +4203,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse(dict):
     """
     Database specific information for PostgreSQL to Azure Database for PostgreSQL migration task inputs
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "migrationSetting":
-            suggest = "migration_setting"
-        elif key == "sourceSetting":
-            suggest = "source_setting"
-        elif key == "targetDatabaseName":
-            suggest = "target_database_name"
-        elif key == "targetSetting":
-            suggest = "target_setting"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  migration_setting: Optional[Mapping[str, str]] = None,
                  name: Optional[str] = None,
@@ -5573,27 +4274,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse(dict):
     """
     Input for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  selected_databases: Sequence['outputs.MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse'],
                  source_connection_info: 'outputs.PostgreSqlConnectionInfoResponse',
@@ -5635,25 +4315,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse(dict):
 
 @pulumi.output_type
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-        elif key == "errorMessage":
-            suggest = "error_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  result_type: str,
@@ -5709,51 +4370,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse(d
 
 @pulumi.output_type
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appliedChanges":
-            suggest = "applied_changes"
-        elif key == "cdcDeleteCounter":
-            suggest = "cdc_delete_counter"
-        elif key == "cdcInsertCounter":
-            suggest = "cdc_insert_counter"
-        elif key == "cdcUpdateCounter":
-            suggest = "cdc_update_counter"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "fullLoadCompletedTables":
-            suggest = "full_load_completed_tables"
-        elif key == "fullLoadErroredTables":
-            suggest = "full_load_errored_tables"
-        elif key == "fullLoadLoadingTables":
-            suggest = "full_load_loading_tables"
-        elif key == "fullLoadQueuedTables":
-            suggest = "full_load_queued_tables"
-        elif key == "incomingChanges":
-            suggest = "incoming_changes"
-        elif key == "initializationCompleted":
-            suggest = "initialization_completed"
-        elif key == "migrationState":
-            suggest = "migration_state"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "startedOn":
-            suggest = "started_on"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  applied_changes: float,
                  cdc_delete_counter: float,
@@ -5950,23 +4566,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseLevelResponse(d
 
 @pulumi.output_type
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error: 'outputs.ReportableExceptionResponse',
                  id: str,
@@ -6009,35 +4608,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse(dict):
 
 @pulumi.output_type
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sourceServer":
-            suggest = "source_server"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "targetServer":
-            suggest = "target_server"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  id: str,
@@ -6135,47 +4705,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse(
 
 @pulumi.output_type
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cdcDeleteCounter":
-            suggest = "cdc_delete_counter"
-        elif key == "cdcInsertCounter":
-            suggest = "cdc_insert_counter"
-        elif key == "cdcUpdateCounter":
-            suggest = "cdc_update_counter"
-        elif key == "dataErrorsCounter":
-            suggest = "data_errors_counter"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "fullLoadEndedOn":
-            suggest = "full_load_ended_on"
-        elif key == "fullLoadEstFinishTime":
-            suggest = "full_load_est_finish_time"
-        elif key == "fullLoadStartedOn":
-            suggest = "full_load_started_on"
-        elif key == "fullLoadTotalRows":
-            suggest = "full_load_total_rows"
-        elif key == "lastModifiedTime":
-            suggest = "last_modified_time"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "tableName":
-            suggest = "table_name"
-        elif key == "totalChangesApplied":
-            suggest = "total_changes_applied"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cdc_delete_counter: float,
                  cdc_insert_counter: float,
@@ -6353,23 +4882,6 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -6450,27 +4962,6 @@ class MigrateSqlServerSqlDbDatabaseInputResponse(dict):
     """
     Database specific information for SQL to Azure SQL DB migration task inputs
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "makeSourceDbReadOnly":
-            suggest = "make_source_db_read_only"
-        elif key == "tableMap":
-            suggest = "table_map"
-        elif key == "targetDatabaseName":
-            suggest = "target_database_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbDatabaseInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbDatabaseInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbDatabaseInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  make_source_db_read_only: Optional[bool] = None,
                  name: Optional[str] = None,
@@ -6530,33 +5021,6 @@ class MigrateSqlServerSqlDbSyncDatabaseInputResponse(dict):
     """
     Database specific information for SQL to Azure SQL DB sync migration task inputs
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "migrationSetting":
-            suggest = "migration_setting"
-        elif key == "schemaName":
-            suggest = "schema_name"
-        elif key == "sourceSetting":
-            suggest = "source_setting"
-        elif key == "tableMap":
-            suggest = "table_map"
-        elif key == "targetDatabaseName":
-            suggest = "target_database_name"
-        elif key == "targetSetting":
-            suggest = "target_setting"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncDatabaseInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncDatabaseInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncDatabaseInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  migration_setting: Optional[Mapping[str, str]] = None,
@@ -6664,29 +5128,6 @@ class MigrateSqlServerSqlDbSyncTaskInputResponse(dict):
     """
     Input for the task that migrates on-prem SQL Server databases to Azure SQL Database for online migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-        elif key == "validationOptions":
-            suggest = "validation_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  selected_databases: Sequence['outputs.MigrateSqlServerSqlDbSyncDatabaseInputResponse'],
                  source_connection_info: 'outputs.SqlConnectionInfoResponse',
@@ -6740,25 +5181,6 @@ class MigrateSqlServerSqlDbSyncTaskInputResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-        elif key == "errorMessage":
-            suggest = "error_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  result_type: str,
@@ -6814,51 +5236,6 @@ class MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appliedChanges":
-            suggest = "applied_changes"
-        elif key == "cdcDeleteCounter":
-            suggest = "cdc_delete_counter"
-        elif key == "cdcInsertCounter":
-            suggest = "cdc_insert_counter"
-        elif key == "cdcUpdateCounter":
-            suggest = "cdc_update_counter"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "fullLoadCompletedTables":
-            suggest = "full_load_completed_tables"
-        elif key == "fullLoadErroredTables":
-            suggest = "full_load_errored_tables"
-        elif key == "fullLoadLoadingTables":
-            suggest = "full_load_loading_tables"
-        elif key == "fullLoadQueuedTables":
-            suggest = "full_load_queued_tables"
-        elif key == "incomingChanges":
-            suggest = "incoming_changes"
-        elif key == "initializationCompleted":
-            suggest = "initialization_completed"
-        elif key == "migrationState":
-            suggest = "migration_state"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "startedOn":
-            suggest = "started_on"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  applied_changes: float,
                  cdc_delete_counter: float,
@@ -7055,23 +5432,6 @@ class MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlDbSyncTaskOutputErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncTaskOutputErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error: 'outputs.ReportableExceptionResponse',
                  id: str,
@@ -7114,37 +5474,6 @@ class MigrateSqlServerSqlDbSyncTaskOutputErrorResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseCount":
-            suggest = "database_count"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sourceServer":
-            suggest = "source_server"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "targetServer":
-            suggest = "target_server"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_count: int,
                  ended_on: str,
@@ -7253,47 +5582,6 @@ class MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlDbSyncTaskOutputTableLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cdcDeleteCounter":
-            suggest = "cdc_delete_counter"
-        elif key == "cdcInsertCounter":
-            suggest = "cdc_insert_counter"
-        elif key == "cdcUpdateCounter":
-            suggest = "cdc_update_counter"
-        elif key == "dataErrorsCounter":
-            suggest = "data_errors_counter"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "fullLoadEndedOn":
-            suggest = "full_load_ended_on"
-        elif key == "fullLoadEstFinishTime":
-            suggest = "full_load_est_finish_time"
-        elif key == "fullLoadStartedOn":
-            suggest = "full_load_started_on"
-        elif key == "fullLoadTotalRows":
-            suggest = "full_load_total_rows"
-        elif key == "lastModifiedTime":
-            suggest = "last_modified_time"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "tableName":
-            suggest = "table_name"
-        elif key == "totalChangesApplied":
-            suggest = "total_changes_applied"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncTaskOutputTableLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputTableLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncTaskOutputTableLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cdc_delete_counter: float,
                  cdc_insert_counter: float,
@@ -7471,23 +5759,6 @@ class MigrateSqlServerSqlDbSyncTaskPropertiesResponse(dict):
     """
     Properties for the task that migrates on-prem SQL Server databases to Azure SQL Database for online migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -7568,29 +5839,6 @@ class MigrateSqlServerSqlDbTaskInputResponse(dict):
     """
     Input for the task that migrates on-prem SQL Server databases to Azure SQL Database
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-        elif key == "validationOptions":
-            suggest = "validation_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  selected_databases: Sequence['outputs.MigrateSqlServerSqlDbDatabaseInputResponse'],
                  source_connection_info: 'outputs.SqlConnectionInfoResponse',
@@ -7651,45 +5899,6 @@ class MigrateSqlServerSqlDbTaskOutputDatabaseLevelResponse(dict):
     """
     Database level result for Sql Server to Azure Sql DB migration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "errorCount":
-            suggest = "error_count"
-        elif key == "errorPrefix":
-            suggest = "error_prefix"
-        elif key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-        elif key == "numberOfObjects":
-            suggest = "number_of_objects"
-        elif key == "numberOfObjectsCompleted":
-            suggest = "number_of_objects_completed"
-        elif key == "objectSummary":
-            suggest = "object_summary"
-        elif key == "resultPrefix":
-            suggest = "result_prefix"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "statusMessage":
-            suggest = "status_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskOutputDatabaseLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_name: str,
                  ended_on: str,
@@ -7879,39 +6088,6 @@ class MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse(dict)
     """
     Database validation result for Sql Server to Azure Sql DB migration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataIntegrityValidationResult":
-            suggest = "data_integrity_validation_result"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "migrationId":
-            suggest = "migration_id"
-        elif key == "queryAnalysisValidationResult":
-            suggest = "query_analysis_validation_result"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "schemaValidationResult":
-            suggest = "schema_validation_result"
-        elif key == "sourceDatabaseName":
-            suggest = "source_database_name"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "targetDatabaseName":
-            suggest = "target_database_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_integrity_validation_result: 'outputs.DataIntegrityValidationResultResponse',
                  ended_on: str,
@@ -8046,23 +6222,6 @@ class MigrateSqlServerSqlDbTaskOutputErrorResponse(dict):
     """
     Task errors for Sql Server to Azure Sql DB migration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskOutputErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskOutputErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskOutputErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error: 'outputs.ReportableExceptionResponse',
                  id: str,
@@ -8109,45 +6268,6 @@ class MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse(dict):
     """
     Migration level result for Sql server to Azure Sql DB migration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseSummary":
-            suggest = "database_summary"
-        elif key == "durationInSeconds":
-            suggest = "duration_in_seconds"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-        elif key == "migrationReport":
-            suggest = "migration_report"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sourceServerBrandVersion":
-            suggest = "source_server_brand_version"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "statusMessage":
-            suggest = "status_message"
-        elif key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_summary: Mapping[str, 'outputs.DatabaseSummaryResultResponse'],
                  databases: Mapping[str, str],
@@ -8337,39 +6457,6 @@ class MigrateSqlServerSqlDbTaskOutputTableLevelResponse(dict):
     """
     Table level result for Sql Server to Azure Sql DB migration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "errorPrefix":
-            suggest = "error_prefix"
-        elif key == "itemsCompletedCount":
-            suggest = "items_completed_count"
-        elif key == "itemsCount":
-            suggest = "items_count"
-        elif key == "objectName":
-            suggest = "object_name"
-        elif key == "resultPrefix":
-            suggest = "result_prefix"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "statusMessage":
-            suggest = "status_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskOutputTableLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskOutputTableLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskOutputTableLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  error_prefix: str,
@@ -8504,27 +6591,6 @@ class MigrateSqlServerSqlDbTaskOutputValidationResultResponse(dict):
     """
     Validation result for Sql Server to Azure Sql DB migration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "migrationId":
-            suggest = "migration_id"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "summaryResults":
-            suggest = "summary_results"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskOutputValidationResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskOutputValidationResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskOutputValidationResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  migration_id: str,
@@ -8594,23 +6660,6 @@ class MigrateSqlServerSqlDbTaskPropertiesResponse(dict):
     """
     Properties for the task that migrates on-prem SQL Server databases to Azure SQL Database
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlDbTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlDbTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlDbTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -8691,27 +6740,6 @@ class MigrateSqlServerSqlMIDatabaseInputResponse(dict):
     """
     Database specific information for SQL to Azure SQL DB Managed Instance migration task inputs
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "restoreDatabaseName":
-            suggest = "restore_database_name"
-        elif key == "backupFilePaths":
-            suggest = "backup_file_paths"
-        elif key == "backupFileShare":
-            suggest = "backup_file_share"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMIDatabaseInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMIDatabaseInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMIDatabaseInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  restore_database_name: str,
@@ -8769,33 +6797,6 @@ class MigrateSqlServerSqlMISyncTaskInputResponse(dict):
     """
     Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureApp":
-            suggest = "azure_app"
-        elif key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "storageResourceId":
-            suggest = "storage_resource_id"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-        elif key == "backupFileShare":
-            suggest = "backup_file_share"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMISyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMISyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMISyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_app: 'outputs.AzureActiveDirectoryAppResponse',
                  selected_databases: Sequence['outputs.MigrateSqlServerSqlMIDatabaseInputResponse'],
@@ -8871,45 +6872,6 @@ class MigrateSqlServerSqlMISyncTaskInputResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "activeBackupSets":
-            suggest = "active_backup_sets"
-        elif key == "containerName":
-            suggest = "container_name"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "errorPrefix":
-            suggest = "error_prefix"
-        elif key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-        elif key == "fullBackupSetInfo":
-            suggest = "full_backup_set_info"
-        elif key == "isFullBackupRestored":
-            suggest = "is_full_backup_restored"
-        elif key == "lastRestoredBackupSetInfo":
-            suggest = "last_restored_backup_set_info"
-        elif key == "migrationState":
-            suggest = "migration_state"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sourceDatabaseName":
-            suggest = "source_database_name"
-        elif key == "startedOn":
-            suggest = "started_on"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  active_backup_sets: Sequence['outputs.BackupSetInfoResponse'],
                  container_name: str,
@@ -9062,23 +7024,6 @@ class MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMISyncTaskOutputErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMISyncTaskOutputErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMISyncTaskOutputErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMISyncTaskOutputErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error: 'outputs.ReportableExceptionResponse',
                  id: str,
@@ -9121,43 +7066,6 @@ class MigrateSqlServerSqlMISyncTaskOutputErrorResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseCount":
-            suggest = "database_count"
-        elif key == "databaseErrorCount":
-            suggest = "database_error_count"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sourceServerBrandVersion":
-            suggest = "source_server_brand_version"
-        elif key == "sourceServerName":
-            suggest = "source_server_name"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "targetServerName":
-            suggest = "target_server_name"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_count: int,
                  database_error_count: int,
@@ -9313,23 +7221,6 @@ class MigrateSqlServerSqlMISyncTaskPropertiesResponse(dict):
     """
     Properties for task that migrates SQL Server databases to Azure SQL Database Managed Instance sync scenario
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMISyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMISyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMISyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -9410,37 +7301,6 @@ class MigrateSqlServerSqlMITaskInputResponse(dict):
     """
     Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupBlobShare":
-            suggest = "backup_blob_share"
-        elif key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-        elif key == "backupFileShare":
-            suggest = "backup_file_share"
-        elif key == "backupMode":
-            suggest = "backup_mode"
-        elif key == "selectedAgentJobs":
-            suggest = "selected_agent_jobs"
-        elif key == "selectedLogins":
-            suggest = "selected_logins"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMITaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMITaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMITaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_blob_share: 'outputs.BlobShareResponse',
                  selected_databases: Sequence['outputs.MigrateSqlServerSqlMIDatabaseInputResponse'],
@@ -9541,31 +7401,6 @@ class MigrateSqlServerSqlMITaskInputResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "startedOn":
-            suggest = "started_on"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  exceptions_and_warnings: Sequence['outputs.ReportableExceptionResponse'],
@@ -9674,33 +7509,6 @@ class MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "sizeMB":
-            suggest = "size_mb"
-        elif key == "startedOn":
-            suggest = "started_on"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_name: str,
                  ended_on: str,
@@ -9820,23 +7628,6 @@ class MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMITaskOutputErrorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resultType":
-            suggest = "result_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMITaskOutputErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMITaskOutputErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMITaskOutputErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error: 'outputs.ReportableExceptionResponse',
                  id: str,
@@ -9879,31 +7670,6 @@ class MigrateSqlServerSqlMITaskOutputErrorResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMITaskOutputLoginLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-        elif key == "loginName":
-            suggest = "login_name"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "startedOn":
-            suggest = "started_on"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMITaskOutputLoginLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMITaskOutputLoginLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMITaskOutputLoginLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  exceptions_and_warnings: Sequence['outputs.ReportableExceptionResponse'],
@@ -10012,43 +7778,6 @@ class MigrateSqlServerSqlMITaskOutputLoginLevelResponse(dict):
 
 @pulumi.output_type
 class MigrateSqlServerSqlMITaskOutputMigrationLevelResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "agentJobs":
-            suggest = "agent_jobs"
-        elif key == "endedOn":
-            suggest = "ended_on"
-        elif key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-        elif key == "orphanedUsersInfo":
-            suggest = "orphaned_users_info"
-        elif key == "resultType":
-            suggest = "result_type"
-        elif key == "serverRoleResults":
-            suggest = "server_role_results"
-        elif key == "sourceServerBrandVersion":
-            suggest = "source_server_brand_version"
-        elif key == "sourceServerVersion":
-            suggest = "source_server_version"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "targetServerBrandVersion":
-            suggest = "target_server_brand_version"
-        elif key == "targetServerVersion":
-            suggest = "target_server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMITaskOutputMigrationLevelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMITaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMITaskOutputMigrationLevelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  agent_jobs: Mapping[str, str],
                  databases: Mapping[str, str],
@@ -10248,23 +7977,6 @@ class MigrateSqlServerSqlMITaskPropertiesResponse(dict):
     """
     Properties for task that migrates SQL Server databases to Azure SQL Database Managed Instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSqlServerSqlMITaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSqlServerSqlMITaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSqlServerSqlMITaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -10345,25 +8057,6 @@ class MigrateSyncCompleteCommandInputResponse(dict):
     """
     Input for command that completes sync migration for a database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "commitTimeStamp":
-            suggest = "commit_time_stamp"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSyncCompleteCommandInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSyncCompleteCommandInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSyncCompleteCommandInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_name: str,
                  commit_time_stamp: Optional[str] = None):
@@ -10431,23 +8124,6 @@ class MigrateSyncCompleteCommandPropertiesResponse(dict):
     """
     Properties for the command that completes sync migration for a database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandType":
-            suggest = "command_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrateSyncCompleteCommandPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrateSyncCompleteCommandPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrateSyncCompleteCommandPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command_type: str,
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -10517,25 +8193,6 @@ class MigrationEligibilityInfoResponse(dict):
     """
     Information about migration eligibility of a server object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isEligibleForMigration":
-            suggest = "is_eligible_for_migration"
-        elif key == "validationMessages":
-            suggest = "validation_messages"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrationEligibilityInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrationEligibilityInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrationEligibilityInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_eligible_for_migration: bool,
                  validation_messages: Sequence[str]):
@@ -10569,23 +8226,6 @@ class MigrationReportResultResponse(dict):
     """
     Migration validation report result, contains the url for downloading the generated report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "reportUrl":
-            suggest = "report_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrationReportResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrationReportResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrationReportResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  report_url: str):
@@ -10619,31 +8259,6 @@ class MigrationValidationDatabaseSummaryResultResponse(dict):
     """
     Migration Validation Database level summary result
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endedOn":
-            suggest = "ended_on"
-        elif key == "migrationId":
-            suggest = "migration_id"
-        elif key == "sourceDatabaseName":
-            suggest = "source_database_name"
-        elif key == "startedOn":
-            suggest = "started_on"
-        elif key == "targetDatabaseName":
-            suggest = "target_database_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrationValidationDatabaseSummaryResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrationValidationDatabaseSummaryResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrationValidationDatabaseSummaryResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ended_on: str,
                  id: str,
@@ -10732,27 +8347,6 @@ class MigrationValidationOptionsResponse(dict):
     """
     Types of validations to run after the migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableDataIntegrityValidation":
-            suggest = "enable_data_integrity_validation"
-        elif key == "enableQueryAnalysisValidation":
-            suggest = "enable_query_analysis_validation"
-        elif key == "enableSchemaValidation":
-            suggest = "enable_schema_validation"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrationValidationOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrationValidationOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrationValidationOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_data_integrity_validation: Optional[bool] = None,
                  enable_query_analysis_validation: Optional[bool] = None,
@@ -10800,25 +8394,6 @@ class MySqlConnectionInfoResponse(dict):
     """
     Information for connecting to MySQL server
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serverName":
-            suggest = "server_name"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MySqlConnectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MySqlConnectionInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MySqlConnectionInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  port: int,
                  server_name: str,
@@ -10933,23 +8508,6 @@ class OrphanedUserInfoResponse(dict):
     """
     Information of orphaned users on the SQL server database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OrphanedUserInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OrphanedUserInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OrphanedUserInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_name: Optional[str] = None,
                  name: Optional[str] = None):
@@ -10985,27 +8543,6 @@ class PostgreSqlConnectionInfoResponse(dict):
     """
     Information for connecting to PostgreSQL server
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serverName":
-            suggest = "server_name"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PostgreSqlConnectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PostgreSqlConnectionInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PostgreSqlConnectionInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  port: int,
                  server_name: str,
@@ -11088,27 +8625,6 @@ class ProjectFilePropertiesResponse(dict):
     """
     Base class for file properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastModified":
-            suggest = "last_modified"
-        elif key == "filePath":
-            suggest = "file_path"
-        elif key == "mediaType":
-            suggest = "media_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectFilePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectFilePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectFilePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_modified: str,
                  size: float,
@@ -11178,25 +8694,6 @@ class QueryAnalysisValidationResultResponse(dict):
     """
     Results for query analysis comparison between the source and target
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "queryResults":
-            suggest = "query_results"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QueryAnalysisValidationResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QueryAnalysisValidationResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QueryAnalysisValidationResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  query_results: 'outputs.QueryExecutionResultResponse',
                  validation_errors: 'outputs.ValidationErrorResponse'):
@@ -11230,29 +8727,6 @@ class QueryExecutionResultResponse(dict):
     """
     Describes query analysis results for execution in source and target
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "queryText":
-            suggest = "query_text"
-        elif key == "sourceResult":
-            suggest = "source_result"
-        elif key == "statementsInBatch":
-            suggest = "statements_in_batch"
-        elif key == "targetResult":
-            suggest = "target_result"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QueryExecutionResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QueryExecutionResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QueryExecutionResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  query_text: str,
                  source_result: 'outputs.ExecutionStatisticsResponse',
@@ -11308,31 +8782,6 @@ class ReportableExceptionResponse(dict):
     """
     Exception object for all custom exceptions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filePath":
-            suggest = "file_path"
-        elif key == "hResult":
-            suggest = "h_result"
-        elif key == "lineNumber":
-            suggest = "line_number"
-        elif key == "stackTrace":
-            suggest = "stack_trace"
-        elif key == "actionableMessage":
-            suggest = "actionable_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportableExceptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportableExceptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportableExceptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_path: str,
                  h_result: int,
@@ -11411,29 +8860,6 @@ class SchemaComparisonValidationResultResponse(dict):
     """
     Results for schema comparison between the source and target
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "schemaDifferences":
-            suggest = "schema_differences"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-        elif key == "sourceDatabaseObjectCount":
-            suggest = "source_database_object_count"
-        elif key == "targetDatabaseObjectCount":
-            suggest = "target_database_object_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SchemaComparisonValidationResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SchemaComparisonValidationResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SchemaComparisonValidationResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  schema_differences: 'outputs.SchemaComparisonValidationResultTypeResponse',
                  validation_errors: 'outputs.ValidationErrorResponse',
@@ -11491,27 +8917,6 @@ class SchemaComparisonValidationResultTypeResponse(dict):
     """
     Description about the errors happen while performing migration validation
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectName":
-            suggest = "object_name"
-        elif key == "objectType":
-            suggest = "object_type"
-        elif key == "updateAction":
-            suggest = "update_action"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SchemaComparisonValidationResultTypeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SchemaComparisonValidationResultTypeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SchemaComparisonValidationResultTypeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_name: str,
                  object_type: str,
@@ -11556,23 +8961,6 @@ class SelectedCertificateInputResponse(dict):
     """
     Info for certificate to be exported for TDE enabled databases.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateName":
-            suggest = "certificate_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SelectedCertificateInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SelectedCertificateInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SelectedCertificateInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_name: str,
                  password: str):
@@ -11677,31 +9065,6 @@ class SqlConnectionInfoResponse(dict):
     """
     Information for connecting to SQL database server
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSource":
-            suggest = "data_source"
-        elif key == "additionalSettings":
-            suggest = "additional_settings"
-        elif key == "encryptConnection":
-            suggest = "encrypt_connection"
-        elif key == "trustServerCertificate":
-            suggest = "trust_server_certificate"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlConnectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlConnectionInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlConnectionInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_source: str,
                  type: str,
@@ -11825,23 +9188,6 @@ class StartMigrationScenarioServerRoleResultResponse(dict):
     """
     Server role migration result
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "exceptionsAndWarnings":
-            suggest = "exceptions_and_warnings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StartMigrationScenarioServerRoleResultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StartMigrationScenarioServerRoleResultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StartMigrationScenarioServerRoleResultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  exceptions_and_warnings: Sequence['outputs.ReportableExceptionResponse'],
                  name: str,
@@ -11886,27 +9232,6 @@ class SyncMigrationDatabaseErrorEventResponse(dict):
     """
     Database migration errors for online migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventText":
-            suggest = "event_text"
-        elif key == "eventTypeString":
-            suggest = "event_type_string"
-        elif key == "timestampString":
-            suggest = "timestamp_string"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncMigrationDatabaseErrorEventResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncMigrationDatabaseErrorEventResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncMigrationDatabaseErrorEventResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_text: str,
                  event_type_string: str,
@@ -11951,23 +9276,6 @@ class ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse(dict):
     """
     Properties for task that validates migration input for SQL to Azure SQL DB sync migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -12048,33 +9356,6 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse(dict):
     """
     Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureApp":
-            suggest = "azure_app"
-        elif key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "storageResourceId":
-            suggest = "storage_resource_id"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-        elif key == "backupFileShare":
-            suggest = "backup_file_share"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_app: 'outputs.AzureActiveDirectoryAppResponse',
                  selected_databases: Sequence['outputs.MigrateSqlServerSqlMIDatabaseInputResponse'],
@@ -12153,23 +9434,6 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskOutputResponse(dict):
     """
     Output for task that validates migration input for Azure SQL Database Managed Instance online migration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateMigrationInputSqlServerSqlMISyncTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateMigrationInputSqlServerSqlMISyncTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateMigrationInputSqlServerSqlMISyncTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -12214,23 +9478,6 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskPropertiesResponse(dict):
     """
     Properties for task that validates migration input for SQL to Azure SQL Database Managed Instance sync scenario
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateMigrationInputSqlServerSqlMISyncTaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateMigrationInputSqlServerSqlMISyncTaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateMigrationInputSqlServerSqlMISyncTaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -12311,35 +9558,6 @@ class ValidateMigrationInputSqlServerSqlMITaskInputResponse(dict):
     """
     Input for task that validates migration input for SQL to Azure SQL Managed Instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupBlobShare":
-            suggest = "backup_blob_share"
-        elif key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-        elif key == "backupFileShare":
-            suggest = "backup_file_share"
-        elif key == "backupMode":
-            suggest = "backup_mode"
-        elif key == "selectedLogins":
-            suggest = "selected_logins"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateMigrationInputSqlServerSqlMITaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateMigrationInputSqlServerSqlMITaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateMigrationInputSqlServerSqlMITaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_blob_share: 'outputs.BlobShareResponse',
                  selected_databases: Sequence['outputs.MigrateSqlServerSqlMIDatabaseInputResponse'],
@@ -12431,33 +9649,6 @@ class ValidateMigrationInputSqlServerSqlMITaskOutputResponse(dict):
     """
     Output for task that validates migration input for SQL to Azure SQL Managed Instance migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupFolderErrors":
-            suggest = "backup_folder_errors"
-        elif key == "backupShareCredentialsErrors":
-            suggest = "backup_share_credentials_errors"
-        elif key == "backupStorageAccountErrors":
-            suggest = "backup_storage_account_errors"
-        elif key == "existingBackupErrors":
-            suggest = "existing_backup_errors"
-        elif key == "restoreDatabaseNameErrors":
-            suggest = "restore_database_name_errors"
-        elif key == "databaseBackupInfo":
-            suggest = "database_backup_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateMigrationInputSqlServerSqlMITaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateMigrationInputSqlServerSqlMITaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateMigrationInputSqlServerSqlMITaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_folder_errors: Sequence['outputs.ReportableExceptionResponse'],
                  backup_share_credentials_errors: Sequence['outputs.ReportableExceptionResponse'],
@@ -12558,23 +9749,6 @@ class ValidateMigrationInputSqlServerSqlMITaskPropertiesResponse(dict):
     """
     Properties for task that validates migration input for SQL to Azure SQL Database Managed Instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskType":
-            suggest = "task_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateMigrationInputSqlServerSqlMITaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateMigrationInputSqlServerSqlMITaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateMigrationInputSqlServerSqlMITaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  commands: Sequence[Any],
                  errors: Sequence['outputs.ODataErrorResponse'],
@@ -12655,27 +9829,6 @@ class ValidateSyncMigrationInputSqlServerTaskInputResponse(dict):
     """
     Input for task that validates migration input for SQL sync migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "selectedDatabases":
-            suggest = "selected_databases"
-        elif key == "sourceConnectionInfo":
-            suggest = "source_connection_info"
-        elif key == "targetConnectionInfo":
-            suggest = "target_connection_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateSyncMigrationInputSqlServerTaskInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateSyncMigrationInputSqlServerTaskInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateSyncMigrationInputSqlServerTaskInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  selected_databases: Sequence['outputs.MigrateSqlServerSqlDbSyncDatabaseInputResponse'],
                  source_connection_info: 'outputs.SqlConnectionInfoResponse',
@@ -12720,23 +9873,6 @@ class ValidateSyncMigrationInputSqlServerTaskOutputResponse(dict):
     """
     Output for task that validates migration input for SQL sync migrations
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "validationErrors":
-            suggest = "validation_errors"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidateSyncMigrationInputSqlServerTaskOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidateSyncMigrationInputSqlServerTaskOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidateSyncMigrationInputSqlServerTaskOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -12814,27 +9950,6 @@ class WaitStatisticsResponse(dict):
     """
     Wait statistics gathered during query batch execution
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "waitCount":
-            suggest = "wait_count"
-        elif key == "waitTimeMs":
-            suggest = "wait_time_ms"
-        elif key == "waitType":
-            suggest = "wait_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WaitStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WaitStatisticsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WaitStatisticsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  wait_count: float,
                  wait_time_ms: float,

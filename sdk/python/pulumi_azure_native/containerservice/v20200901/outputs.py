@@ -44,23 +44,6 @@ class AgentPoolUpgradeSettingsResponse(dict):
     """
     Settings for upgrading an agentpool
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxSurge":
-            suggest = "max_surge"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AgentPoolUpgradeSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AgentPoolUpgradeSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AgentPoolUpgradeSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_surge: Optional[str] = None):
         """
@@ -84,23 +67,6 @@ class ContainerServiceLinuxProfileResponse(dict):
     """
     Profile for Linux VMs in the container service cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminUsername":
-            suggest = "admin_username"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceLinuxProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceLinuxProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceLinuxProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_username: str,
                  ssh: 'outputs.ContainerServiceSshConfigurationResponse'):
@@ -134,41 +100,6 @@ class ContainerServiceNetworkProfileResponse(dict):
     """
     Profile of network configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsServiceIP":
-            suggest = "dns_service_ip"
-        elif key == "dockerBridgeCidr":
-            suggest = "docker_bridge_cidr"
-        elif key == "loadBalancerProfile":
-            suggest = "load_balancer_profile"
-        elif key == "loadBalancerSku":
-            suggest = "load_balancer_sku"
-        elif key == "networkMode":
-            suggest = "network_mode"
-        elif key == "networkPlugin":
-            suggest = "network_plugin"
-        elif key == "networkPolicy":
-            suggest = "network_policy"
-        elif key == "outboundType":
-            suggest = "outbound_type"
-        elif key == "podCidr":
-            suggest = "pod_cidr"
-        elif key == "serviceCidr":
-            suggest = "service_cidr"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceNetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceNetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceNetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dns_service_ip: Optional[str] = None,
                  docker_bridge_cidr: Optional[str] = None,
@@ -312,23 +243,6 @@ class ContainerServiceSshConfigurationResponse(dict):
     """
     SSH configuration for Linux-based VMs running on Azure.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicKeys":
-            suggest = "public_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceSshConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceSshConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceSshConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_keys: Sequence['outputs.ContainerServiceSshPublicKeyResponse']):
         """
@@ -351,23 +265,6 @@ class ContainerServiceSshPublicKeyResponse(dict):
     """
     Contains information about SSH certificate public key data.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyData":
-            suggest = "key_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceSshPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceSshPublicKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceSshPublicKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_data: str):
         """
@@ -423,33 +320,6 @@ class ManagedClusterAADProfileResponse(dict):
     """
     AADProfile specifies attributes for Azure Active Directory integration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminGroupObjectIDs":
-            suggest = "admin_group_object_ids"
-        elif key == "clientAppID":
-            suggest = "client_app_id"
-        elif key == "enableAzureRBAC":
-            suggest = "enable_azure_rbac"
-        elif key == "serverAppID":
-            suggest = "server_app_id"
-        elif key == "serverAppSecret":
-            suggest = "server_app_secret"
-        elif key == "tenantID":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterAADProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterAADProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterAADProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_group_object_ids: Optional[Sequence[str]] = None,
                  client_app_id: Optional[str] = None,
@@ -545,25 +415,6 @@ class ManagedClusterAPIServerAccessProfileResponse(dict):
     """
     Access profile for managed cluster API server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizedIPRanges":
-            suggest = "authorized_ip_ranges"
-        elif key == "enablePrivateCluster":
-            suggest = "enable_private_cluster"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterAPIServerAccessProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterAPIServerAccessProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterAPIServerAccessProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorized_ip_ranges: Optional[Sequence[str]] = None,
                  enable_private_cluster: Optional[bool] = None):
@@ -644,27 +495,6 @@ class ManagedClusterAddonProfileResponseIdentity(dict):
     """
     Information of user assigned identity used by this add-on.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "objectId":
-            suggest = "object_id"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterAddonProfileResponseIdentity. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterAddonProfileResponseIdentity.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterAddonProfileResponseIdentity.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Optional[str] = None,
                  object_id: Optional[str] = None,
@@ -712,65 +542,6 @@ class ManagedClusterAgentPoolProfileResponse(dict):
     """
     Profile for the container service agent pool.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nodeImageVersion":
-            suggest = "node_image_version"
-        elif key == "powerState":
-            suggest = "power_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "availabilityZones":
-            suggest = "availability_zones"
-        elif key == "enableAutoScaling":
-            suggest = "enable_auto_scaling"
-        elif key == "enableNodePublicIP":
-            suggest = "enable_node_public_ip"
-        elif key == "maxCount":
-            suggest = "max_count"
-        elif key == "maxPods":
-            suggest = "max_pods"
-        elif key == "minCount":
-            suggest = "min_count"
-        elif key == "nodeLabels":
-            suggest = "node_labels"
-        elif key == "nodeTaints":
-            suggest = "node_taints"
-        elif key == "orchestratorVersion":
-            suggest = "orchestrator_version"
-        elif key == "osDiskSizeGB":
-            suggest = "os_disk_size_gb"
-        elif key == "osDiskType":
-            suggest = "os_disk_type"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "proximityPlacementGroupID":
-            suggest = "proximity_placement_group_id"
-        elif key == "scaleSetEvictionPolicy":
-            suggest = "scale_set_eviction_policy"
-        elif key == "scaleSetPriority":
-            suggest = "scale_set_priority"
-        elif key == "spotMaxPrice":
-            suggest = "spot_max_price"
-        elif key == "upgradeSettings":
-            suggest = "upgrade_settings"
-        elif key == "vmSize":
-            suggest = "vm_size"
-        elif key == "vnetSubnetID":
-            suggest = "vnet_subnet_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterAgentPoolProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterAgentPoolProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterAgentPoolProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  node_image_version: str,
@@ -1102,27 +873,6 @@ class ManagedClusterIdentityResponse(dict):
     """
     Identity for the managed cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -1177,25 +927,6 @@ class ManagedClusterIdentityResponse(dict):
 
 @pulumi.output_type
 class ManagedClusterIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -1228,33 +959,6 @@ class ManagedClusterLoadBalancerProfileResponse(dict):
     """
     Profile of the managed cluster load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allocatedOutboundPorts":
-            suggest = "allocated_outbound_ports"
-        elif key == "effectiveOutboundIPs":
-            suggest = "effective_outbound_ips"
-        elif key == "idleTimeoutInMinutes":
-            suggest = "idle_timeout_in_minutes"
-        elif key == "managedOutboundIPs":
-            suggest = "managed_outbound_ips"
-        elif key == "outboundIPPrefixes":
-            suggest = "outbound_ip_prefixes"
-        elif key == "outboundIPs":
-            suggest = "outbound_ips"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterLoadBalancerProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterLoadBalancerProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterLoadBalancerProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allocated_outbound_ports: Optional[int] = None,
                  effective_outbound_ips: Optional[Sequence['outputs.ResourceReferenceResponse']] = None,
@@ -1367,23 +1071,6 @@ class ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes(dict):
     """
     Desired outbound IP Prefix resources for the cluster load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicIPPrefixes":
-            suggest = "public_ip_prefixes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_ip_prefixes: Optional[Sequence['outputs.ResourceReferenceResponse']] = None):
         """
@@ -1407,23 +1094,6 @@ class ManagedClusterLoadBalancerProfileResponseOutboundIPs(dict):
     """
     Desired outbound IP resources for the cluster load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicIPs":
-            suggest = "public_ips"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterLoadBalancerProfileResponseOutboundIPs. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterLoadBalancerProfileResponseOutboundIPs.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterLoadBalancerProfileResponseOutboundIPs.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_ips: Optional[Sequence['outputs.ResourceReferenceResponse']] = None):
         """
@@ -1447,51 +1117,6 @@ class ManagedClusterPropertiesResponseAutoScalerProfile(dict):
     """
     Parameters to be applied to the cluster-autoscaler when enabled
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "balanceSimilarNodeGroups":
-            suggest = "balance_similar_node_groups"
-        elif key == "maxEmptyBulkDelete":
-            suggest = "max_empty_bulk_delete"
-        elif key == "maxGracefulTerminationSec":
-            suggest = "max_graceful_termination_sec"
-        elif key == "maxTotalUnreadyPercentage":
-            suggest = "max_total_unready_percentage"
-        elif key == "newPodScaleUpDelay":
-            suggest = "new_pod_scale_up_delay"
-        elif key == "okTotalUnreadyCount":
-            suggest = "ok_total_unready_count"
-        elif key == "scaleDownDelayAfterAdd":
-            suggest = "scale_down_delay_after_add"
-        elif key == "scaleDownDelayAfterDelete":
-            suggest = "scale_down_delay_after_delete"
-        elif key == "scaleDownDelayAfterFailure":
-            suggest = "scale_down_delay_after_failure"
-        elif key == "scaleDownUnneededTime":
-            suggest = "scale_down_unneeded_time"
-        elif key == "scaleDownUnreadyTime":
-            suggest = "scale_down_unready_time"
-        elif key == "scaleDownUtilizationThreshold":
-            suggest = "scale_down_utilization_threshold"
-        elif key == "scanInterval":
-            suggest = "scan_interval"
-        elif key == "skipNodesWithLocalStorage":
-            suggest = "skip_nodes_with_local_storage"
-        elif key == "skipNodesWithSystemPods":
-            suggest = "skip_nodes_with_system_pods"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterPropertiesResponseAutoScalerProfile. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterPropertiesResponseAutoScalerProfile.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterPropertiesResponseAutoScalerProfile.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  balance_similar_node_groups: Optional[str] = None,
                  expander: Optional[str] = None,
@@ -1628,27 +1253,6 @@ class ManagedClusterPropertiesResponseAutoScalerProfile(dict):
 
 @pulumi.output_type
 class ManagedClusterPropertiesResponseIdentityProfile(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "objectId":
-            suggest = "object_id"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterPropertiesResponseIdentityProfile. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterPropertiesResponseIdentityProfile.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterPropertiesResponseIdentityProfile.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Optional[str] = None,
                  object_id: Optional[str] = None,
@@ -1726,23 +1330,6 @@ class ManagedClusterServicePrincipalProfileResponse(dict):
     """
     Information about a service principal identity for the cluster to use for manipulating Azure APIs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterServicePrincipalProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterServicePrincipalProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterServicePrincipalProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  secret: Optional[str] = None):
@@ -1777,27 +1364,6 @@ class ManagedClusterWindowsProfileResponse(dict):
     """
     Profile for Windows VMs in the container service cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminUsername":
-            suggest = "admin_username"
-        elif key == "adminPassword":
-            suggest = "admin_password"
-        elif key == "licenseType":
-            suggest = "license_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterWindowsProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedClusterWindowsProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedClusterWindowsProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_username: str,
                  admin_password: Optional[str] = None,

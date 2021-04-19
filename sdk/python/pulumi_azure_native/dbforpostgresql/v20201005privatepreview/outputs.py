@@ -24,29 +24,6 @@ class MaintenanceWindowResponse(dict):
     """
     Maintenance window of a server group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customWindow":
-            suggest = "custom_window"
-        elif key == "dayOfWeek":
-            suggest = "day_of_week"
-        elif key == "startHour":
-            suggest = "start_hour"
-        elif key == "startMinute":
-            suggest = "start_minute"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MaintenanceWindowResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MaintenanceWindowResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_window: Optional[str] = None,
                  day_of_week: Optional[int] = None,
@@ -106,23 +83,6 @@ class ServerGroupPropertiesResponseDelegatedSubnetArguments(dict):
     """
     The delegated subnet arguments for a server group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetArmResourceId":
-            suggest = "subnet_arm_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerGroupPropertiesResponseDelegatedSubnetArguments. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerGroupPropertiesResponseDelegatedSubnetArguments.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerGroupPropertiesResponseDelegatedSubnetArguments.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  subnet_arm_resource_id: Optional[str] = None):
         """
@@ -146,23 +106,6 @@ class ServerGroupPropertiesResponsePrivateDnsZoneArguments(dict):
     """
     The private dns zone arguments for a server group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateDnsZoneArmResourceId":
-            suggest = "private_dns_zone_arm_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerGroupPropertiesResponsePrivateDnsZoneArguments. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerGroupPropertiesResponsePrivateDnsZoneArguments.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerGroupPropertiesResponsePrivateDnsZoneArguments.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_dns_zone_arm_resource_id: Optional[str] = None):
         """
@@ -186,23 +129,6 @@ class ServerNameItemResponse(dict):
     """
     The name object for a server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fullyQualifiedDomainName":
-            suggest = "fully_qualified_domain_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerNameItemResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerNameItemResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerNameItemResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fully_qualified_domain_name: str,
                  name: Optional[str] = None):
@@ -237,35 +163,6 @@ class ServerRoleGroupResponse(dict):
     """
     Represents a server role group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enablePublicIp":
-            suggest = "enable_public_ip"
-        elif key == "serverNames":
-            suggest = "server_names"
-        elif key == "enableHa":
-            suggest = "enable_ha"
-        elif key == "serverCount":
-            suggest = "server_count"
-        elif key == "serverEdition":
-            suggest = "server_edition"
-        elif key == "storageQuotaInMb":
-            suggest = "storage_quota_in_mb"
-        elif key == "vCores":
-            suggest = "v_cores"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerRoleGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerRoleGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerRoleGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_public_ip: bool,
                  server_names: Sequence['outputs.ServerNameItemResponse'],
@@ -383,33 +280,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

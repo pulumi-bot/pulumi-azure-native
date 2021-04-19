@@ -19,33 +19,6 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRespo
     """
     Static definitions of the ProactiveDetection configuration rule (same values for all components).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-        elif key == "helpUrl":
-            suggest = "help_url"
-        elif key == "isEnabledByDefault":
-            suggest = "is_enabled_by_default"
-        elif key == "isHidden":
-            suggest = "is_hidden"
-        elif key == "isInPreview":
-            suggest = "is_in_preview"
-        elif key == "supportsEmailNotifications":
-            suggest = "supports_email_notifications"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  display_name: Optional[str] = None,
@@ -153,25 +126,6 @@ class PrivateLinkScopedResourceResponse(dict):
     """
     The private link scope resource reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-        elif key == "scopeId":
-            suggest = "scope_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkScopedResourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkScopedResourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkScopedResourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_id: Optional[str] = None,
                  scope_id: Optional[str] = None):

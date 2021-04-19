@@ -136,25 +136,6 @@ class AacAudioResponse(dict):
     """
     Describes Advanced Audio Codec (AAC) audio encoding settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "samplingRate":
-            suggest = "sampling_rate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AacAudioResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AacAudioResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AacAudioResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  bitrate: Optional[int] = None,
@@ -239,23 +220,6 @@ class AbsoluteClipTimeResponse(dict):
     """
     Specifies the clip time as an absolute time position in the media file.  The absolute time can point to a different position depending on whether the media file starts from a timestamp of zero or not.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AbsoluteClipTimeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AbsoluteClipTimeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AbsoluteClipTimeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  time: str):
@@ -288,23 +252,6 @@ class AbsoluteClipTimeResponse(dict):
 
 @pulumi.output_type
 class AccountEncryptionResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultProperties":
-            suggest = "key_vault_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AccountEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AccountEncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AccountEncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  key_vault_properties: Optional['outputs.KeyVaultPropertiesResponse'] = None):
@@ -338,23 +285,6 @@ class AkamaiAccessControlResponse(dict):
     """
     Akamai access control
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "akamaiSignatureHeaderAuthenticationKeyList":
-            suggest = "akamai_signature_header_authentication_key_list"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AkamaiAccessControlResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AkamaiAccessControlResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AkamaiAccessControlResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  akamai_signature_header_authentication_key_list: Optional[Sequence['outputs.AkamaiSignatureHeaderAuthenticationKeyResponse']] = None):
         """
@@ -378,23 +308,6 @@ class AkamaiSignatureHeaderAuthenticationKeyResponse(dict):
     """
     Akamai Signature Header authentication key.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "base64Key":
-            suggest = "base64_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AkamaiSignatureHeaderAuthenticationKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AkamaiSignatureHeaderAuthenticationKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AkamaiSignatureHeaderAuthenticationKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  base64_key: Optional[str] = None,
                  expiration: Optional[str] = None,
@@ -587,27 +500,6 @@ class AudioAnalyzerPresetResponse(dict):
     """
     The Audio Analyzer preset applies a pre-defined set of AI-based analysis operations, including speech transcription. Currently, the preset supports processing of content with a single audio track.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "audioLanguage":
-            suggest = "audio_language"
-        elif key == "experimentalOptions":
-            suggest = "experimental_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AudioAnalyzerPresetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AudioAnalyzerPresetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AudioAnalyzerPresetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  audio_language: Optional[str] = None,
@@ -668,31 +560,6 @@ class AudioOverlayResponse(dict):
     """
     Describes the properties of an audio overlay.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inputLabel":
-            suggest = "input_label"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "audioGainLevel":
-            suggest = "audio_gain_level"
-        elif key == "fadeInDuration":
-            suggest = "fade_in_duration"
-        elif key == "fadeOutDuration":
-            suggest = "fade_out_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AudioOverlayResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AudioOverlayResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AudioOverlayResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  input_label: str,
                  odata_type: str,
@@ -788,25 +655,6 @@ class AudioResponse(dict):
     """
     Defines the common properties for all audio codecs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "samplingRate":
-            suggest = "sampling_rate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AudioResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AudioResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AudioResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  bitrate: Optional[int] = None,
@@ -879,25 +727,6 @@ class AudioTrackDescriptorResponse(dict):
     """
     A TrackSelection to select audio tracks.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "channelMapping":
-            suggest = "channel_mapping"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AudioTrackDescriptorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AudioTrackDescriptorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AudioTrackDescriptorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  channel_mapping: Optional[str] = None):
@@ -934,25 +763,6 @@ class BuiltInStandardEncoderPresetResponse(dict):
     """
     Describes a built-in preset for encoding the input video with the Standard Encoder.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "presetName":
-            suggest = "preset_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BuiltInStandardEncoderPresetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BuiltInStandardEncoderPresetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BuiltInStandardEncoderPresetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  preset_name: str):
@@ -988,25 +798,6 @@ class CbcsDrmConfigurationResponse(dict):
     """
     Class to specify DRM configurations of CommonEncryptionCbcs scheme in Streaming Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fairPlay":
-            suggest = "fair_play"
-        elif key == "playReady":
-            suggest = "play_ready"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CbcsDrmConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CbcsDrmConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CbcsDrmConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fair_play: Optional['outputs.StreamingPolicyFairPlayConfigurationResponse'] = None,
                  play_ready: Optional['outputs.StreamingPolicyPlayReadyConfigurationResponse'] = None,
@@ -1054,23 +845,6 @@ class CencDrmConfigurationResponse(dict):
     """
     Class to specify DRM configurations of CommonEncryptionCenc scheme in Streaming Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "playReady":
-            suggest = "play_ready"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CencDrmConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CencDrmConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CencDrmConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  play_ready: Optional['outputs.StreamingPolicyPlayReadyConfigurationResponse'] = None,
                  widevine: Optional['outputs.StreamingPolicyWidevineConfigurationResponse'] = None):
@@ -1106,27 +880,6 @@ class CommonEncryptionCbcsResponse(dict):
     """
     Class for CommonEncryptionCbcs encryption scheme
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clearTracks":
-            suggest = "clear_tracks"
-        elif key == "contentKeys":
-            suggest = "content_keys"
-        elif key == "enabledProtocols":
-            suggest = "enabled_protocols"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommonEncryptionCbcsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommonEncryptionCbcsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommonEncryptionCbcsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  clear_tracks: Optional[Sequence['outputs.TrackSelectionResponse']] = None,
                  content_keys: Optional['outputs.StreamingPolicyContentKeysResponse'] = None,
@@ -1186,27 +939,6 @@ class CommonEncryptionCencResponse(dict):
     """
     Class for envelope encryption scheme
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clearTracks":
-            suggest = "clear_tracks"
-        elif key == "contentKeys":
-            suggest = "content_keys"
-        elif key == "enabledProtocols":
-            suggest = "enabled_protocols"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommonEncryptionCencResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommonEncryptionCencResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommonEncryptionCencResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  clear_tracks: Optional[Sequence['outputs.TrackSelectionResponse']] = None,
                  content_keys: Optional['outputs.StreamingPolicyContentKeysResponse'] = None,
@@ -1266,23 +998,6 @@ class ContentKeyPolicyClearKeyConfigurationResponse(dict):
     """
     Represents a configuration for non-DRM keys.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyClearKeyConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyClearKeyConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyClearKeyConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str):
         """
@@ -1307,33 +1022,6 @@ class ContentKeyPolicyFairPlayConfigurationResponse(dict):
     """
     Specifies a configuration for FairPlay licenses.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fairPlayPfx":
-            suggest = "fair_play_pfx"
-        elif key == "fairPlayPfxPassword":
-            suggest = "fair_play_pfx_password"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "rentalAndLeaseKeyType":
-            suggest = "rental_and_lease_key_type"
-        elif key == "rentalDuration":
-            suggest = "rental_duration"
-        elif key == "offlineRentalConfiguration":
-            suggest = "offline_rental_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyFairPlayConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyFairPlayConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyFairPlayConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ask: str,
                  fair_play_pfx: str,
@@ -1422,25 +1110,6 @@ class ContentKeyPolicyFairPlayConfigurationResponse(dict):
 
 @pulumi.output_type
 class ContentKeyPolicyFairPlayOfflineRentalConfigurationResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "playbackDurationSeconds":
-            suggest = "playback_duration_seconds"
-        elif key == "storageDurationSeconds":
-            suggest = "storage_duration_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyFairPlayOfflineRentalConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyFairPlayOfflineRentalConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyFairPlayOfflineRentalConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  playback_duration_seconds: float,
                  storage_duration_seconds: float):
@@ -1473,23 +1142,6 @@ class ContentKeyPolicyOpenRestrictionResponse(dict):
     """
     Represents an open restriction. License or key will be delivered on every request.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyOpenRestrictionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyOpenRestrictionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyOpenRestrictionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str):
         """
@@ -1514,23 +1166,6 @@ class ContentKeyPolicyOptionResponse(dict):
     """
     Represents a policy option.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyOptionId":
-            suggest = "policy_option_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyOptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyOptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyOptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  configuration: Any,
                  policy_option_id: str,
@@ -1587,25 +1222,6 @@ class ContentKeyPolicyPlayReadyConfigurationResponse(dict):
     """
     Specifies a configuration for PlayReady licenses.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "responseCustomData":
-            suggest = "response_custom_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyPlayReadyConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyPlayReadyConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyPlayReadyConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  licenses: Sequence['outputs.ContentKeyPolicyPlayReadyLicenseResponse'],
                  odata_type: str,
@@ -1653,23 +1269,6 @@ class ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeaderResponse(dict):
     """
     Specifies that the content key ID is in the PlayReady header.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeaderResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeaderResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeaderResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str):
         """
@@ -1694,25 +1293,6 @@ class ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifierResponse(dic
     """
     Specifies that the content key ID is specified in the PlayReady configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyId":
-            suggest = "key_id"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifierResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifierResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifierResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_id: str,
                  odata_type: str):
@@ -1748,25 +1328,6 @@ class ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestrictionResponse(dict)
     """
     Configures the Explicit Analog Television Output Restriction control bits. For further details see the PlayReady Compliance Rules.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bestEffort":
-            suggest = "best_effort"
-        elif key == "configurationData":
-            suggest = "configuration_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestrictionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestrictionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestrictionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  best_effort: bool,
                  configuration_data: int):
@@ -1800,41 +1361,6 @@ class ContentKeyPolicyPlayReadyLicenseResponse(dict):
     """
     The PlayReady license
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowTestDevices":
-            suggest = "allow_test_devices"
-        elif key == "contentKeyLocation":
-            suggest = "content_key_location"
-        elif key == "contentType":
-            suggest = "content_type"
-        elif key == "licenseType":
-            suggest = "license_type"
-        elif key == "beginDate":
-            suggest = "begin_date"
-        elif key == "expirationDate":
-            suggest = "expiration_date"
-        elif key == "gracePeriod":
-            suggest = "grace_period"
-        elif key == "playRight":
-            suggest = "play_right"
-        elif key == "relativeBeginDate":
-            suggest = "relative_begin_date"
-        elif key == "relativeExpirationDate":
-            suggest = "relative_expiration_date"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyPlayReadyLicenseResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyPlayReadyLicenseResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyPlayReadyLicenseResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_test_devices: bool,
                  content_key_location: Any,
@@ -1962,47 +1488,6 @@ class ContentKeyPolicyPlayReadyPlayRightResponse(dict):
     """
     Configures the Play Right in the PlayReady license.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowPassingVideoContentToUnknownOutput":
-            suggest = "allow_passing_video_content_to_unknown_output"
-        elif key == "digitalVideoOnlyContentRestriction":
-            suggest = "digital_video_only_content_restriction"
-        elif key == "imageConstraintForAnalogComponentVideoRestriction":
-            suggest = "image_constraint_for_analog_component_video_restriction"
-        elif key == "imageConstraintForAnalogComputerMonitorRestriction":
-            suggest = "image_constraint_for_analog_computer_monitor_restriction"
-        elif key == "agcAndColorStripeRestriction":
-            suggest = "agc_and_color_stripe_restriction"
-        elif key == "analogVideoOpl":
-            suggest = "analog_video_opl"
-        elif key == "compressedDigitalAudioOpl":
-            suggest = "compressed_digital_audio_opl"
-        elif key == "compressedDigitalVideoOpl":
-            suggest = "compressed_digital_video_opl"
-        elif key == "explicitAnalogTelevisionOutputRestriction":
-            suggest = "explicit_analog_television_output_restriction"
-        elif key == "firstPlayExpiration":
-            suggest = "first_play_expiration"
-        elif key == "scmsRestriction":
-            suggest = "scms_restriction"
-        elif key == "uncompressedDigitalAudioOpl":
-            suggest = "uncompressed_digital_audio_opl"
-        elif key == "uncompressedDigitalVideoOpl":
-            suggest = "uncompressed_digital_video_opl"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyPlayReadyPlayRightResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyPlayReadyPlayRightResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyPlayReadyPlayRightResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_passing_video_content_to_unknown_output: str,
                  digital_video_only_content_restriction: bool,
@@ -2166,23 +1651,6 @@ class ContentKeyPolicyRsaTokenKeyResponse(dict):
     """
     Specifies a RSA key for token validation
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyRsaTokenKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyRsaTokenKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyRsaTokenKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  exponent: str,
                  modulus: str,
@@ -2229,25 +1697,6 @@ class ContentKeyPolicySymmetricTokenKeyResponse(dict):
     """
     Specifies a symmetric key for token validation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyValue":
-            suggest = "key_value"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicySymmetricTokenKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicySymmetricTokenKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicySymmetricTokenKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_value: str,
                  odata_type: str):
@@ -2283,25 +1732,6 @@ class ContentKeyPolicyTokenClaimResponse(dict):
     """
     Represents a token claim.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "claimType":
-            suggest = "claim_type"
-        elif key == "claimValue":
-            suggest = "claim_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyTokenClaimResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyTokenClaimResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyTokenClaimResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  claim_type: Optional[str] = None,
                  claim_value: Optional[str] = None):
@@ -2337,33 +1767,6 @@ class ContentKeyPolicyTokenRestrictionResponse(dict):
     """
     Represents a token restriction. Provided token must match these requirements for successful license or key delivery.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "primaryVerificationKey":
-            suggest = "primary_verification_key"
-        elif key == "restrictionTokenType":
-            suggest = "restriction_token_type"
-        elif key == "alternateVerificationKeys":
-            suggest = "alternate_verification_keys"
-        elif key == "openIdConnectDiscoveryDocument":
-            suggest = "open_id_connect_discovery_document"
-        elif key == "requiredClaims":
-            suggest = "required_claims"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyTokenRestrictionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyTokenRestrictionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyTokenRestrictionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  audience: str,
                  issuer: str,
@@ -2468,23 +1871,6 @@ class ContentKeyPolicyUnknownConfigurationResponse(dict):
     """
     Represents a ContentKeyPolicyConfiguration that is unavailable in the current API version.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyUnknownConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyUnknownConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyUnknownConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str):
         """
@@ -2509,23 +1895,6 @@ class ContentKeyPolicyUnknownRestrictionResponse(dict):
     """
     Represents a ContentKeyPolicyRestriction that is unavailable in the current API version.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyUnknownRestrictionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyUnknownRestrictionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyUnknownRestrictionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str):
         """
@@ -2550,25 +1919,6 @@ class ContentKeyPolicyWidevineConfigurationResponse(dict):
     """
     Specifies a configuration for Widevine licenses.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "widevineTemplate":
-            suggest = "widevine_template"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyWidevineConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyWidevineConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyWidevineConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  widevine_template: str):
@@ -2604,25 +1954,6 @@ class ContentKeyPolicyX509CertificateTokenKeyResponse(dict):
     """
     Specifies a certificate for token validation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "rawBody":
-            suggest = "raw_body"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentKeyPolicyX509CertificateTokenKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentKeyPolicyX509CertificateTokenKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentKeyPolicyX509CertificateTokenKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  raw_body: str):
@@ -2658,23 +1989,6 @@ class CopyAudioResponse(dict):
     """
     A codec flag, which tells the encoder to copy the input audio bitstream.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CopyAudioResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CopyAudioResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CopyAudioResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  label: Optional[str] = None):
@@ -2711,23 +2025,6 @@ class CopyVideoResponse(dict):
     """
     A codec flag, which tells the encoder to copy the input video bitstream without re-encoding.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CopyVideoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CopyVideoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CopyVideoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  label: Optional[str] = None):
@@ -2764,25 +2061,6 @@ class CrossSiteAccessPoliciesResponse(dict):
     """
     The client access policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientAccessPolicy":
-            suggest = "client_access_policy"
-        elif key == "crossDomainPolicy":
-            suggest = "cross_domain_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CrossSiteAccessPoliciesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CrossSiteAccessPoliciesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CrossSiteAccessPoliciesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_access_policy: Optional[str] = None,
                  cross_domain_policy: Optional[str] = None):
@@ -2818,23 +2096,6 @@ class DefaultKeyResponse(dict):
     """
     Class to specify properties of default content key for each encryption scheme
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyName":
-            suggest = "policy_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DefaultKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DefaultKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DefaultKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  label: Optional[str] = None,
                  policy_name: Optional[str] = None):
@@ -3003,23 +2264,6 @@ class EnabledProtocolsResponse(dict):
     """
     Class to specify which protocols are enabled
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "smoothStreaming":
-            suggest = "smooth_streaming"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnabledProtocolsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnabledProtocolsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnabledProtocolsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dash: bool,
                  download: bool,
@@ -3075,29 +2319,6 @@ class EnvelopeEncryptionResponse(dict):
     """
     Class for EnvelopeEncryption encryption scheme
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clearTracks":
-            suggest = "clear_tracks"
-        elif key == "contentKeys":
-            suggest = "content_keys"
-        elif key == "customKeyAcquisitionUrlTemplate":
-            suggest = "custom_key_acquisition_url_template"
-        elif key == "enabledProtocols":
-            suggest = "enabled_protocols"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnvelopeEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnvelopeEncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnvelopeEncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  clear_tracks: Optional[Sequence['outputs.TrackSelectionResponse']] = None,
                  content_keys: Optional['outputs.StreamingPolicyContentKeysResponse'] = None,
@@ -3157,27 +2378,6 @@ class FaceDetectorPresetResponse(dict):
     """
     Describes all the settings to be used when analyzing a video in order to detect (and optionally redact) all the faces present.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "blurType":
-            suggest = "blur_type"
-        elif key == "experimentalOptions":
-            suggest = "experimental_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FaceDetectorPresetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FaceDetectorPresetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FaceDetectorPresetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  blur_type: Optional[str] = None,
@@ -3294,23 +2494,6 @@ class FilterTrackSelectionResponse(dict):
     """
     Representing a list of FilterTrackPropertyConditions to select a track.  The filters are combined using a logical AND operation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "trackSelections":
-            suggest = "track_selections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FilterTrackSelectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FilterTrackSelectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FilterTrackSelectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  track_selections: Sequence['outputs.FilterTrackPropertyConditionResponse']):
         """
@@ -3414,25 +2597,6 @@ class FromAllInputFileResponse(dict):
     """
     An InputDefinition that looks across all of the files provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to allow selection of a single track across a set of input files.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "includedTracks":
-            suggest = "included_tracks"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FromAllInputFileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FromAllInputFileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FromAllInputFileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  included_tracks: Optional[Sequence[Any]] = None):
@@ -3469,25 +2633,6 @@ class FromEachInputFileResponse(dict):
     """
     An InputDefinition that looks at each input file provided to select tracks specified by the IncludedTracks property. Generally used with the AudioTrackByAttribute and VideoTrackByAttribute to select tracks from each file given.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "includedTracks":
-            suggest = "included_tracks"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FromEachInputFileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FromEachInputFileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FromEachInputFileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  included_tracks: Optional[Sequence[Any]] = None):
@@ -3524,37 +2669,6 @@ class H264LayerResponse(dict):
     """
     Describes the settings to be used when encoding the input video into a desired output bitrate layer with the H.264 video codec.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "adaptiveBFrame":
-            suggest = "adaptive_b_frame"
-        elif key == "bFrames":
-            suggest = "b_frames"
-        elif key == "bufferWindow":
-            suggest = "buffer_window"
-        elif key == "entropyMode":
-            suggest = "entropy_mode"
-        elif key == "frameRate":
-            suggest = "frame_rate"
-        elif key == "maxBitrate":
-            suggest = "max_bitrate"
-        elif key == "referenceFrames":
-            suggest = "reference_frames"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in H264LayerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        H264LayerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        H264LayerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bitrate: int,
                  odata_type: str,
@@ -3746,31 +2860,6 @@ class H264VideoResponse(dict):
     """
     Describes all the properties for encoding a video with the H.264 codec.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "keyFrameInterval":
-            suggest = "key_frame_interval"
-        elif key == "sceneChangeDetection":
-            suggest = "scene_change_detection"
-        elif key == "stretchMode":
-            suggest = "stretch_mode"
-        elif key == "syncMode":
-            suggest = "sync_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in H264VideoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        H264VideoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        H264VideoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  complexity: Optional[str] = None,
@@ -3879,35 +2968,6 @@ class H265LayerResponse(dict):
     """
     Describes the settings to be used when encoding the input video into a desired output bitrate layer with the H.265 video codec.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "adaptiveBFrame":
-            suggest = "adaptive_b_frame"
-        elif key == "bFrames":
-            suggest = "b_frames"
-        elif key == "bufferWindow":
-            suggest = "buffer_window"
-        elif key == "frameRate":
-            suggest = "frame_rate"
-        elif key == "maxBitrate":
-            suggest = "max_bitrate"
-        elif key == "referenceFrames":
-            suggest = "reference_frames"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in H265LayerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        H265LayerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        H265LayerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bitrate: int,
                  odata_type: str,
@@ -4087,31 +3147,6 @@ class H265VideoResponse(dict):
     """
     Describes all the properties for encoding a video with the H.265 codec.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "keyFrameInterval":
-            suggest = "key_frame_interval"
-        elif key == "sceneChangeDetection":
-            suggest = "scene_change_detection"
-        elif key == "stretchMode":
-            suggest = "stretch_mode"
-        elif key == "syncMode":
-            suggest = "sync_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in H265VideoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        H265VideoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        H265VideoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  complexity: Optional[str] = None,
@@ -4220,23 +3255,6 @@ class HlsResponse(dict):
     """
     HTTP Live Streaming (HLS) packing setting for the live output.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fragmentsPerTsSegment":
-            suggest = "fragments_per_ts_segment"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HlsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HlsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HlsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fragments_per_ts_segment: Optional[int] = None):
         """
@@ -4283,23 +3301,6 @@ class IPRangeResponse(dict):
     """
     The IP address range in the CIDR scheme.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetPrefixLength":
-            suggest = "subnet_prefix_length"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPRangeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPRangeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPRangeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  name: Optional[str] = None,
@@ -4347,25 +3348,6 @@ class ImageFormatResponse(dict):
     """
     Describes the properties for an output image file.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filenamePattern":
-            suggest = "filename_pattern"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filename_pattern: str,
                  odata_type: str):
@@ -4401,29 +3383,6 @@ class ImageResponse(dict):
     """
     Describes the basic properties for generating thumbnails from the input video
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "keyFrameInterval":
-            suggest = "key_frame_interval"
-        elif key == "stretchMode":
-            suggest = "stretch_mode"
-        elif key == "syncMode":
-            suggest = "sync_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  start: str,
@@ -4531,25 +3490,6 @@ class InputFileResponse(dict):
     """
     An InputDefinition for a single file.  TrackSelections are scoped to the file specified.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "includedTracks":
-            suggest = "included_tracks"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InputFileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InputFileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InputFileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  filename: Optional[str] = None,
@@ -4697,27 +3637,6 @@ class JobInputAssetResponse(dict):
     """
     Represents an Asset for input into a Job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assetName":
-            suggest = "asset_name"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "inputDefinitions":
-            suggest = "input_definitions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobInputAssetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobInputAssetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobInputAssetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  asset_name: str,
                  odata_type: str,
@@ -4813,25 +3732,6 @@ class JobInputClipResponse(dict):
     """
     Represents input files for a Job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "inputDefinitions":
-            suggest = "input_definitions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobInputClipResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobInputClipResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobInputClipResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  end: Optional[Any] = None,
@@ -4916,27 +3816,6 @@ class JobInputHttpResponse(dict):
     """
     Represents HTTPS job input.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "baseUri":
-            suggest = "base_uri"
-        elif key == "inputDefinitions":
-            suggest = "input_definitions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobInputHttpResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobInputHttpResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobInputHttpResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  base_uri: Optional[str] = None,
@@ -5033,23 +3912,6 @@ class JobInputSequenceResponse(dict):
     """
     A Sequence contains an ordered list of Clips where each clip is a JobInput.  The Sequence will be treated as a single input.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobInputSequenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobInputSequenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobInputSequenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  inputs: Optional[Sequence['outputs.JobInputClipResponse']] = None):
@@ -5086,23 +3948,6 @@ class JobInputsResponse(dict):
     """
     Describes a list of inputs to a Job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobInputsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobInputsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobInputsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  inputs: Optional[Sequence[Any]] = None):
@@ -5139,29 +3984,6 @@ class JobOutputAssetResponse(dict):
     """
     Represents an Asset used as a JobOutput.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assetName":
-            suggest = "asset_name"
-        elif key == "endTime":
-            suggest = "end_time"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobOutputAssetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobOutputAssetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobOutputAssetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  asset_name: str,
                  end_time: str,
@@ -5264,25 +4086,6 @@ class JpgFormatResponse(dict):
     """
     Describes the settings for producing JPEG thumbnails.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filenamePattern":
-            suggest = "filename_pattern"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JpgFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JpgFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JpgFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filename_pattern: str,
                  odata_type: str):
@@ -5318,31 +4121,6 @@ class JpgImageResponse(dict):
     """
     Describes the properties for producing a series of JPEG images from the input video.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "keyFrameInterval":
-            suggest = "key_frame_interval"
-        elif key == "spriteColumn":
-            suggest = "sprite_column"
-        elif key == "stretchMode":
-            suggest = "stretch_mode"
-        elif key == "syncMode":
-            suggest = "sync_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JpgImageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JpgImageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JpgImageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  start: str,
@@ -5474,23 +4252,6 @@ class JpgLayerResponse(dict):
     """
     Describes the settings to produce a JPEG image from the input video.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JpgLayerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JpgLayerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JpgLayerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  height: Optional[str] = None,
@@ -5560,25 +4321,6 @@ class JpgLayerResponse(dict):
 
 @pulumi.output_type
 class KeyVaultPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "currentKeyIdentifier":
-            suggest = "current_key_identifier"
-        elif key == "keyIdentifier":
-            suggest = "key_identifier"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  current_key_identifier: str,
                  key_identifier: Optional[str] = None):
@@ -5612,29 +4354,6 @@ class LiveEventEncodingResponse(dict):
     """
     Specifies the live event type and optional encoding settings for encoding live events.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encodingType":
-            suggest = "encoding_type"
-        elif key == "keyFrameInterval":
-            suggest = "key_frame_interval"
-        elif key == "presetName":
-            suggest = "preset_name"
-        elif key == "stretchMode":
-            suggest = "stretch_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventEncodingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventEncodingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventEncodingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encoding_type: Optional[str] = None,
                  key_frame_interval: Optional[str] = None,
@@ -5752,29 +4471,6 @@ class LiveEventInputResponse(dict):
     """
     The live event input.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "streamingProtocol":
-            suggest = "streaming_protocol"
-        elif key == "accessControl":
-            suggest = "access_control"
-        elif key == "accessToken":
-            suggest = "access_token"
-        elif key == "keyFrameIntervalDuration":
-            suggest = "key_frame_interval_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  streaming_protocol: str,
                  access_control: Optional['outputs.LiveEventInputAccessControlResponse'] = None,
@@ -5892,23 +4588,6 @@ class LiveEventOutputTranscriptionTrackResponse(dict):
     """
     Describes a transcription track in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "trackName":
-            suggest = "track_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventOutputTranscriptionTrackResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventOutputTranscriptionTrackResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventOutputTranscriptionTrackResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  track_name: str):
         """
@@ -5954,29 +4633,6 @@ class LiveEventPreviewResponse(dict):
     """
     Live event preview settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessControl":
-            suggest = "access_control"
-        elif key == "alternativeMediaId":
-            suggest = "alternative_media_id"
-        elif key == "previewLocator":
-            suggest = "preview_locator"
-        elif key == "streamingPolicyName":
-            suggest = "streaming_policy_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventPreviewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventPreviewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventPreviewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_control: Optional['outputs.LiveEventPreviewAccessControlResponse'] = None,
                  alternative_media_id: Optional[str] = None,
@@ -6048,25 +4704,6 @@ class LiveEventTranscriptionResponse(dict):
     """
     Describes the transcription tracks in the output of a live event, generated using speech-to-text transcription. This property is reserved for future use, any value set on this property will be ignored.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inputTrackSelection":
-            suggest = "input_track_selection"
-        elif key == "outputTranscriptionTrack":
-            suggest = "output_transcription_track"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventTranscriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventTranscriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventTranscriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  input_track_selection: Optional[Sequence['outputs.LiveEventInputTrackSelectionResponse']] = None,
                  language: Optional[str] = None,
@@ -6111,25 +4748,6 @@ class LiveEventTranscriptionResponse(dict):
 
 @pulumi.output_type
 class MediaServiceIdentityResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaServiceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaServiceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaServiceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -6173,27 +4791,6 @@ class Mp4FormatResponse(dict):
     """
     Describes the properties for an output ISO MP4 file.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filenamePattern":
-            suggest = "filename_pattern"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "outputFiles":
-            suggest = "output_files"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Mp4FormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Mp4FormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Mp4FormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filename_pattern: str,
                  odata_type: str,
@@ -6241,27 +4838,6 @@ class MultiBitrateFormatResponse(dict):
     """
     Describes the properties for producing a collection of GOP aligned multi-bitrate files. The default behavior is to produce one output file for each video layer which is muxed together with all the audios. The exact output files produced can be controlled by specifying the outputFiles collection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filenamePattern":
-            suggest = "filename_pattern"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "outputFiles":
-            suggest = "output_files"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MultiBitrateFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MultiBitrateFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MultiBitrateFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filename_pattern: str,
                  odata_type: str,
@@ -6309,23 +4885,6 @@ class NoEncryptionResponse(dict):
     """
     Class for NoEncryption scheme
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enabledProtocols":
-            suggest = "enabled_protocols"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NoEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NoEncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NoEncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled_protocols: Optional['outputs.EnabledProtocolsResponse'] = None):
         """
@@ -6371,25 +4930,6 @@ class PngFormatResponse(dict):
     """
     Describes the settings for producing PNG thumbnails.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filenamePattern":
-            suggest = "filename_pattern"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PngFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PngFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PngFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filename_pattern: str,
                  odata_type: str):
@@ -6425,29 +4965,6 @@ class PngImageResponse(dict):
     """
     Describes the properties for producing a series of PNG images from the input video.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "keyFrameInterval":
-            suggest = "key_frame_interval"
-        elif key == "stretchMode":
-            suggest = "stretch_mode"
-        elif key == "syncMode":
-            suggest = "sync_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PngImageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PngImageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PngImageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  start: str,
@@ -6567,23 +5084,6 @@ class PngLayerResponse(dict):
     """
     Describes the settings to produce a PNG image from the input video.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PngLayerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PngLayerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PngLayerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  height: Optional[str] = None,
@@ -6644,31 +5144,6 @@ class PresentationTimeRangeResponse(dict):
     """
     The presentation time range, this is asset related and not recommended for Account Filter.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTimestamp":
-            suggest = "end_timestamp"
-        elif key == "forceEndTimestamp":
-            suggest = "force_end_timestamp"
-        elif key == "liveBackoffDuration":
-            suggest = "live_backoff_duration"
-        elif key == "presentationWindowDuration":
-            suggest = "presentation_window_duration"
-        elif key == "startTimestamp":
-            suggest = "start_timestamp"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PresentationTimeRangeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PresentationTimeRangeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PresentationTimeRangeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_timestamp: Optional[float] = None,
                  force_end_timestamp: Optional[bool] = None,
@@ -6774,23 +5249,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -6897,27 +5355,6 @@ class SelectAudioTrackByAttributeResponse(dict):
     """
     Select audio tracks from the input by specifying an attribute and an attribute filter.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "channelMapping":
-            suggest = "channel_mapping"
-        elif key == "filterValue":
-            suggest = "filter_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SelectAudioTrackByAttributeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SelectAudioTrackByAttributeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SelectAudioTrackByAttributeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  attribute: str,
                  filter: str,
@@ -6988,27 +5425,6 @@ class SelectAudioTrackByIdResponse(dict):
     """
     Select audio tracks from the input by specifying a track identifier.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "trackId":
-            suggest = "track_id"
-        elif key == "channelMapping":
-            suggest = "channel_mapping"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SelectAudioTrackByIdResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SelectAudioTrackByIdResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SelectAudioTrackByIdResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  track_id: float,
@@ -7056,25 +5472,6 @@ class SelectVideoTrackByAttributeResponse(dict):
     """
     Select video tracks from the input by specifying an attribute and an attribute filter.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "filterValue":
-            suggest = "filter_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SelectVideoTrackByAttributeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SelectVideoTrackByAttributeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SelectVideoTrackByAttributeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  attribute: str,
                  filter: str,
@@ -7133,25 +5530,6 @@ class SelectVideoTrackByIdResponse(dict):
     """
     Select video tracks from the input by specifying a track identifier.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "trackId":
-            suggest = "track_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SelectVideoTrackByIdResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SelectVideoTrackByIdResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SelectVideoTrackByIdResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  track_id: float):
@@ -7187,23 +5565,6 @@ class StandardEncoderPresetResponse(dict):
     """
     Describes all the settings to be used when encoding the input video with the Standard Encoder.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StandardEncoderPresetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StandardEncoderPresetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StandardEncoderPresetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  codecs: Sequence[Any],
                  formats: Sequence[Any],
@@ -7331,25 +5692,6 @@ class StreamingLocatorContentKeyResponse(dict):
     """
     Class for content key in Streaming Locator
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyName":
-            suggest = "policy_name"
-        elif key == "labelReferenceInStreamingPolicy":
-            suggest = "label_reference_in_streaming_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StreamingLocatorContentKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StreamingLocatorContentKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StreamingLocatorContentKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  policy_name: str,
@@ -7474,23 +5816,6 @@ class StreamingPolicyContentKeyResponse(dict):
     """
     Class to specify properties of content key
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyName":
-            suggest = "policy_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StreamingPolicyContentKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StreamingPolicyContentKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StreamingPolicyContentKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  label: Optional[str] = None,
                  policy_name: Optional[str] = None,
@@ -7538,25 +5863,6 @@ class StreamingPolicyContentKeysResponse(dict):
     """
     Class to specify properties of all content keys in Streaming Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultKey":
-            suggest = "default_key"
-        elif key == "keyToTrackMappings":
-            suggest = "key_to_track_mappings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StreamingPolicyContentKeysResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StreamingPolicyContentKeysResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StreamingPolicyContentKeysResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_key: Optional['outputs.DefaultKeyResponse'] = None,
                  key_to_track_mappings: Optional[Sequence['outputs.StreamingPolicyContentKeyResponse']] = None):
@@ -7592,25 +5898,6 @@ class StreamingPolicyFairPlayConfigurationResponse(dict):
     """
     Class to specify configurations of FairPlay in Streaming Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowPersistentLicense":
-            suggest = "allow_persistent_license"
-        elif key == "customLicenseAcquisitionUrlTemplate":
-            suggest = "custom_license_acquisition_url_template"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StreamingPolicyFairPlayConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StreamingPolicyFairPlayConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StreamingPolicyFairPlayConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_persistent_license: bool,
                  custom_license_acquisition_url_template: Optional[str] = None):
@@ -7645,25 +5932,6 @@ class StreamingPolicyPlayReadyConfigurationResponse(dict):
     """
     Class to specify configurations of PlayReady in Streaming Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customLicenseAcquisitionUrlTemplate":
-            suggest = "custom_license_acquisition_url_template"
-        elif key == "playReadyCustomAttributes":
-            suggest = "play_ready_custom_attributes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StreamingPolicyPlayReadyConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StreamingPolicyPlayReadyConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StreamingPolicyPlayReadyConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_license_acquisition_url_template: Optional[str] = None,
                  play_ready_custom_attributes: Optional[str] = None):
@@ -7699,23 +5967,6 @@ class StreamingPolicyWidevineConfigurationResponse(dict):
     """
     Class to specify configurations of Widevine in Streaming Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customLicenseAcquisitionUrlTemplate":
-            suggest = "custom_license_acquisition_url_template"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StreamingPolicyWidevineConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StreamingPolicyWidevineConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StreamingPolicyWidevineConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_license_acquisition_url_template: Optional[str] = None):
         """
@@ -7739,33 +5990,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -7894,23 +6118,6 @@ class TrackSelectionResponse(dict):
     """
     Class to select a track
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "trackSelections":
-            suggest = "track_selections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TrackSelectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TrackSelectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TrackSelectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  track_selections: Optional[Sequence['outputs.TrackPropertyConditionResponse']] = None):
         """
@@ -7934,25 +6141,6 @@ class TransformOutputResponse(dict):
     """
     Describes the properties of a TransformOutput, which are the rules to be applied while generating the desired output.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "onError":
-            suggest = "on_error"
-        elif key == "relativePriority":
-            suggest = "relative_priority"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TransformOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TransformOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TransformOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  preset: Any,
                  on_error: Optional[str] = None,
@@ -7999,27 +6187,6 @@ class TransportStreamFormatResponse(dict):
     """
     Describes the properties for generating an MPEG-2 Transport Stream (ISO/IEC 13818-1) output video file(s).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filenamePattern":
-            suggest = "filename_pattern"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "outputFiles":
-            suggest = "output_files"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TransportStreamFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TransportStreamFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TransportStreamFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filename_pattern: str,
                  odata_type: str,
@@ -8067,23 +6234,6 @@ class UtcClipTimeResponse(dict):
     """
     Specifies the clip time as a Utc time position in the media file.  The Utc time can point to a different position depending on whether the media file starts from a timestamp of zero or not.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UtcClipTimeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UtcClipTimeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UtcClipTimeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  time: str):
@@ -8119,29 +6269,6 @@ class VideoAnalyzerPresetResponse(dict):
     """
     A video analyzer preset that extracts insights (rich metadata) from both audio and video, and outputs a JSON format file.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "audioLanguage":
-            suggest = "audio_language"
-        elif key == "experimentalOptions":
-            suggest = "experimental_options"
-        elif key == "insightsToExtract":
-            suggest = "insights_to_extract"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VideoAnalyzerPresetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VideoAnalyzerPresetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VideoAnalyzerPresetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  audio_language: Optional[str] = None,
@@ -8214,33 +6341,6 @@ class VideoOverlayResponse(dict):
     """
     Describes the properties of a video overlay.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inputLabel":
-            suggest = "input_label"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "audioGainLevel":
-            suggest = "audio_gain_level"
-        elif key == "cropRectangle":
-            suggest = "crop_rectangle"
-        elif key == "fadeInDuration":
-            suggest = "fade_in_duration"
-        elif key == "fadeOutDuration":
-            suggest = "fade_out_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VideoOverlayResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VideoOverlayResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VideoOverlayResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  input_label: str,
                  odata_type: str,
@@ -8372,29 +6472,6 @@ class VideoResponse(dict):
     """
     Describes the basic properties for encoding the input video.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "keyFrameInterval":
-            suggest = "key_frame_interval"
-        elif key == "stretchMode":
-            suggest = "stretch_mode"
-        elif key == "syncMode":
-            suggest = "sync_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VideoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VideoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VideoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  key_frame_interval: Optional[str] = None,
@@ -8467,23 +6544,6 @@ class VideoTrackDescriptorResponse(dict):
     """
     A TrackSelection to select video tracks.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VideoTrackDescriptorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VideoTrackDescriptorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VideoTrackDescriptorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str):
         """

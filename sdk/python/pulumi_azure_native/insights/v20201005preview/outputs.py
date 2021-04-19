@@ -24,25 +24,6 @@ class HeaderFieldResponse(dict):
     """
     A header to add to the WebTest.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "headerFieldName":
-            suggest = "header_field_name"
-        elif key == "headerFieldValue":
-            suggest = "header_field_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HeaderFieldResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HeaderFieldResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HeaderFieldResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  header_field_name: Optional[str] = None,
                  header_field_value: Optional[str] = None):
@@ -101,23 +82,6 @@ class WebTestPropertiesResponseConfiguration(dict):
     """
     An XML configuration specification for a WebTest.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "webTest":
-            suggest = "web_test"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebTestPropertiesResponseConfiguration. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebTestPropertiesResponseConfiguration.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebTestPropertiesResponseConfiguration.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  web_test: Optional[str] = None):
         """
@@ -141,27 +105,6 @@ class WebTestPropertiesResponseContentValidation(dict):
     """
     The collection of content validation properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contentMatch":
-            suggest = "content_match"
-        elif key == "ignoreCase":
-            suggest = "ignore_case"
-        elif key == "passIfTextFound":
-            suggest = "pass_if_text_found"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebTestPropertiesResponseContentValidation. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebTestPropertiesResponseContentValidation.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebTestPropertiesResponseContentValidation.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  content_match: Optional[str] = None,
                  ignore_case: Optional[bool] = None,
@@ -209,31 +152,6 @@ class WebTestPropertiesResponseRequest(dict):
     """
     The collection of request properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "followRedirects":
-            suggest = "follow_redirects"
-        elif key == "httpVerb":
-            suggest = "http_verb"
-        elif key == "parseDependentRequests":
-            suggest = "parse_dependent_requests"
-        elif key == "requestBody":
-            suggest = "request_body"
-        elif key == "requestUrl":
-            suggest = "request_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebTestPropertiesResponseRequest. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebTestPropertiesResponseRequest.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebTestPropertiesResponseRequest.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  follow_redirects: Optional[bool] = None,
                  headers: Optional[Sequence['outputs.HeaderFieldResponse']] = None,
@@ -317,31 +235,6 @@ class WebTestPropertiesResponseValidationRules(dict):
     """
     The collection of validation rule properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contentValidation":
-            suggest = "content_validation"
-        elif key == "expectedHttpStatusCode":
-            suggest = "expected_http_status_code"
-        elif key == "ignoreHttpsStatusCode":
-            suggest = "ignore_https_status_code"
-        elif key == "sSLCertRemainingLifetimeCheck":
-            suggest = "s_sl_cert_remaining_lifetime_check"
-        elif key == "sSLCheck":
-            suggest = "s_sl_check"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebTestPropertiesResponseValidationRules. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebTestPropertiesResponseValidationRules.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebTestPropertiesResponseValidationRules.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  content_validation: Optional['outputs.WebTestPropertiesResponseContentValidation'] = None,
                  expected_http_status_code: Optional[int] = None,

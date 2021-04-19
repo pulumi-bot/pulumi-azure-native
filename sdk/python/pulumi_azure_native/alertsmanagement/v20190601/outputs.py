@@ -20,27 +20,6 @@ class ActionGroupsInformationResponse(dict):
     """
     The Action Groups information, used by the alert rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupIds":
-            suggest = "group_ids"
-        elif key == "customEmailSubject":
-            suggest = "custom_email_subject"
-        elif key == "customWebhookPayload":
-            suggest = "custom_webhook_payload"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionGroupsInformationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActionGroupsInformationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActionGroupsInformationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_ids: Sequence[str],
                  custom_email_subject: Optional[str] = None,
@@ -87,25 +66,6 @@ class DetectorResponse(dict):
     """
     The detector information. By default this is not populated, unless it's specified in expandDetector
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imagePaths":
-            suggest = "image_paths"
-        elif key == "supportedResourceTypes":
-            suggest = "supported_resource_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DetectorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DetectorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DetectorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  description: Optional[str] = None,

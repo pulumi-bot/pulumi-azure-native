@@ -95,23 +95,6 @@ class BuildArgumentResponse(dict):
     """
     Properties of a build argument.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isSecret":
-            suggest = "is_secret"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BuildArgumentResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BuildArgumentResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BuildArgumentResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -170,39 +153,6 @@ class DockerBuildStepResponse(dict):
     """
     The Docker build step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baseImageDependencies":
-            suggest = "base_image_dependencies"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "baseImageTrigger":
-            suggest = "base_image_trigger"
-        elif key == "buildArguments":
-            suggest = "build_arguments"
-        elif key == "contextPath":
-            suggest = "context_path"
-        elif key == "dockerFilePath":
-            suggest = "docker_file_path"
-        elif key == "imageNames":
-            suggest = "image_names"
-        elif key == "isPushEnabled":
-            suggest = "is_push_enabled"
-        elif key == "noCache":
-            suggest = "no_cache"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DockerBuildStepResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DockerBuildStepResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DockerBuildStepResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  base_image_dependencies: Sequence['outputs.BaseImageDependencyResponse'],
                  provisioning_state: str,
@@ -349,23 +299,6 @@ class PlatformPropertiesResponse(dict):
     """
     The platform properties against which the build has to happen.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "osType":
-            suggest = "os_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PlatformPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PlatformPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PlatformPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  os_type: str,
                  cpu: Optional[int] = None):
@@ -400,27 +333,6 @@ class SourceControlAuthInfoResponse(dict):
     """
     The authorization properties for accessing the source code repository.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expiresIn":
-            suggest = "expires_in"
-        elif key == "refreshToken":
-            suggest = "refresh_token"
-        elif key == "tokenType":
-            suggest = "token_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SourceControlAuthInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SourceControlAuthInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SourceControlAuthInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  token: str,
                  expires_in: Optional[int] = None,
@@ -491,29 +403,6 @@ class SourceRepositoryPropertiesResponse(dict):
     """
     The properties of the source code repository.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "repositoryUrl":
-            suggest = "repository_url"
-        elif key == "sourceControlType":
-            suggest = "source_control_type"
-        elif key == "isCommitTriggerEnabled":
-            suggest = "is_commit_trigger_enabled"
-        elif key == "sourceControlAuthProperties":
-            suggest = "source_control_auth_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SourceRepositoryPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SourceRepositoryPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SourceRepositoryPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  repository_url: str,
                  source_control_type: str,

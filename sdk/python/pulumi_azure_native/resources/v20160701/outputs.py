@@ -31,23 +31,6 @@ class AliasPathTypeResponse(dict):
     """
     The type of the paths for alias. 
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiVersions":
-            suggest = "api_versions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AliasPathTypeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AliasPathTypeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AliasPathTypeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  api_versions: Optional[Sequence[str]] = None,
                  path: Optional[str] = None):
@@ -118,25 +101,6 @@ class BasicDependencyResponse(dict):
     """
     Deployment dependency information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceName":
-            suggest = "resource_name"
-        elif key == "resourceType":
-            suggest = "resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BasicDependencyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BasicDependencyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BasicDependencyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  resource_name: Optional[str] = None,
@@ -184,27 +148,6 @@ class DependencyResponse(dict):
     """
     Deployment dependency information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "resourceName":
-            suggest = "resource_name"
-        elif key == "resourceType":
-            suggest = "resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DependencyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DependencyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DependencyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  depends_on: Optional[Sequence['outputs.BasicDependencyResponse']] = None,
                  id: Optional[str] = None,
@@ -264,29 +207,6 @@ class DeploymentPropertiesExtendedResponse(dict):
     """
     Deployment properties with additional details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "correlationId":
-            suggest = "correlation_id"
-        elif key == "parametersLink":
-            suggest = "parameters_link"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "templateLink":
-            suggest = "template_link"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeploymentPropertiesExtendedResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeploymentPropertiesExtendedResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeploymentPropertiesExtendedResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  correlation_id: Optional[str] = None,
                  dependencies: Optional[Sequence['outputs.DependencyResponse']] = None,
@@ -430,25 +350,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -494,23 +395,6 @@ class ParametersLinkResponse(dict):
     """
     Entity representing the reference to the deployment parameters.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contentVersion":
-            suggest = "content_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParametersLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParametersLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParametersLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  uri: str,
                  content_version: Optional[str] = None):
@@ -545,23 +429,6 @@ class PlanResponse(dict):
     """
     Plan for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "promotionCode":
-            suggest = "promotion_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PlanResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  product: Optional[str] = None,
@@ -621,25 +488,6 @@ class ProviderResourceTypeResponse(dict):
     """
     Resource type managed by the resource provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiVersions":
-            suggest = "api_versions"
-        elif key == "resourceType":
-            suggest = "resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProviderResourceTypeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProviderResourceTypeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProviderResourceTypeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aliases: Optional[Sequence['outputs.AliasTypeResponse']] = None,
                  api_versions: Optional[Sequence[str]] = None,
@@ -711,25 +559,6 @@ class ProviderResponse(dict):
     """
     Resource provider information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "registrationState":
-            suggest = "registration_state"
-        elif key == "resourceTypes":
-            suggest = "resource_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProviderResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProviderResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProviderResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  namespace: Optional[str] = None,
@@ -789,23 +618,6 @@ class ResourceGroupPropertiesResponse(dict):
     """
     The resource group properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceGroupPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceGroupPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceGroupPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str):
         """
@@ -911,23 +723,6 @@ class TemplateLinkResponse(dict):
     """
     Entity representing the reference to the template.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contentVersion":
-            suggest = "content_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TemplateLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TemplateLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TemplateLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  uri: str,
                  content_version: Optional[str] = None):

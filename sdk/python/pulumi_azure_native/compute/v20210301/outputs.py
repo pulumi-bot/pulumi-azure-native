@@ -58,35 +58,6 @@ class CloudServiceExtensionPropertiesResponse(dict):
     """
     Extension Properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "autoUpgradeMinorVersion":
-            suggest = "auto_upgrade_minor_version"
-        elif key == "forceUpdateTag":
-            suggest = "force_update_tag"
-        elif key == "protectedSettings":
-            suggest = "protected_settings"
-        elif key == "protectedSettingsFromKeyVault":
-            suggest = "protected_settings_from_key_vault"
-        elif key == "rolesAppliedTo":
-            suggest = "roles_applied_to"
-        elif key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudServiceExtensionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudServiceExtensionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudServiceExtensionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  auto_upgrade_minor_version: Optional[bool] = None,
@@ -221,25 +192,6 @@ class CloudServiceNetworkProfileResponse(dict):
     """
     Network Profile for the cloud service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "loadBalancerConfigurations":
-            suggest = "load_balancer_configurations"
-        elif key == "swappableCloudService":
-            suggest = "swappable_cloud_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudServiceNetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudServiceNetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudServiceNetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  load_balancer_configurations: Optional[Sequence['outputs.LoadBalancerConfigurationResponse']] = None,
                  swappable_cloud_service: Optional['outputs.SubResourceResponse'] = None):
@@ -298,43 +250,6 @@ class CloudServicePropertiesResponse(dict):
     """
     Cloud service properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "uniqueId":
-            suggest = "unique_id"
-        elif key == "allowModelOverride":
-            suggest = "allow_model_override"
-        elif key == "configurationUrl":
-            suggest = "configuration_url"
-        elif key == "extensionProfile":
-            suggest = "extension_profile"
-        elif key == "networkProfile":
-            suggest = "network_profile"
-        elif key == "osProfile":
-            suggest = "os_profile"
-        elif key == "packageUrl":
-            suggest = "package_url"
-        elif key == "roleProfile":
-            suggest = "role_profile"
-        elif key == "startCloudService":
-            suggest = "start_cloud_service"
-        elif key == "upgradeMode":
-            suggest = "upgrade_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudServicePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudServicePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudServicePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  unique_id: str,
@@ -602,25 +517,6 @@ class CloudServiceRoleSkuResponse(dict):
 
 @pulumi.output_type
 class CloudServiceVaultAndSecretReferenceResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "secretUrl":
-            suggest = "secret_url"
-        elif key == "sourceVault":
-            suggest = "source_vault"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudServiceVaultAndSecretReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudServiceVaultAndSecretReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudServiceVaultAndSecretReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  secret_url: Optional[str] = None,
                  source_vault: Optional['outputs.SubResourceResponse'] = None):
@@ -645,23 +541,6 @@ class CloudServiceVaultCertificateResponse(dict):
     """
     Describes a single certificate reference in a Key Vault, and where the certificate should reside on the role instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateUrl":
-            suggest = "certificate_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudServiceVaultCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudServiceVaultCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudServiceVaultCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_url: Optional[str] = None):
         """
@@ -685,25 +564,6 @@ class CloudServiceVaultSecretGroupResponse(dict):
     """
     Describes a set of certificates which are all in the same Key Vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceVault":
-            suggest = "source_vault"
-        elif key == "vaultCertificates":
-            suggest = "vault_certificates"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudServiceVaultSecretGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudServiceVaultSecretGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudServiceVaultSecretGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_vault: Optional['outputs.SubResourceResponse'] = None,
                  vault_certificates: Optional[Sequence['outputs.CloudServiceVaultCertificateResponse']] = None):
@@ -771,23 +631,6 @@ class ExtensionResponse(dict):
 
 @pulumi.output_type
 class LoadBalancerConfigurationPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "frontendIPConfigurations":
-            suggest = "frontend_ip_configurations"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LoadBalancerConfigurationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LoadBalancerConfigurationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  frontend_ip_configurations: Sequence['outputs.LoadBalancerFrontendIPConfigurationResponse']):
         """
@@ -854,25 +697,6 @@ class LoadBalancerFrontendIPConfigurationPropertiesResponse(dict):
     """
     Describes a cloud service IP Configuration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "publicIPAddress":
-            suggest = "public_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerFrontendIPConfigurationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LoadBalancerFrontendIPConfigurationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LoadBalancerFrontendIPConfigurationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_ip_address: Optional[str] = None,
                  public_ip_address: Optional['outputs.SubResourceResponse'] = None,

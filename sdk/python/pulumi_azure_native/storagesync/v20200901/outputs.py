@@ -35,29 +35,6 @@ class CloudTieringCachePerformanceResponse(dict):
     """
     Server endpoint cloud tiering status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cacheHitBytes":
-            suggest = "cache_hit_bytes"
-        elif key == "cacheHitBytesPercent":
-            suggest = "cache_hit_bytes_percent"
-        elif key == "cacheMissBytes":
-            suggest = "cache_miss_bytes"
-        elif key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudTieringCachePerformanceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudTieringCachePerformanceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudTieringCachePerformanceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cache_hit_bytes: float,
                  cache_hit_bytes_percent: int,
@@ -113,25 +90,6 @@ class CloudTieringDatePolicyStatusResponse(dict):
     """
     Status of the date policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-        elif key == "tieredFilesMostRecentAccessTimestamp":
-            suggest = "tiered_files_most_recent_access_timestamp"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudTieringDatePolicyStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudTieringDatePolicyStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudTieringDatePolicyStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_updated_timestamp: str,
                  tiered_files_most_recent_access_timestamp: str):
@@ -165,25 +123,6 @@ class CloudTieringFilesNotTieringResponse(dict):
     """
     Server endpoint cloud tiering status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-        elif key == "totalFileCount":
-            suggest = "total_file_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudTieringFilesNotTieringResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudTieringFilesNotTieringResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudTieringFilesNotTieringResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  errors: Sequence['outputs.FilesNotTieringErrorResponse'],
                  last_updated_timestamp: str,
@@ -228,33 +167,6 @@ class CloudTieringSpaceSavingsResponse(dict):
     """
     Server endpoint cloud tiering status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cachedSizeBytes":
-            suggest = "cached_size_bytes"
-        elif key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-        elif key == "spaceSavingsBytes":
-            suggest = "space_savings_bytes"
-        elif key == "spaceSavingsPercent":
-            suggest = "space_savings_percent"
-        elif key == "totalSizeCloudBytes":
-            suggest = "total_size_cloud_bytes"
-        elif key == "volumeSizeBytes":
-            suggest = "volume_size_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudTieringSpaceSavingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudTieringSpaceSavingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudTieringSpaceSavingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cached_size_bytes: float,
                  last_updated_timestamp: str,
@@ -332,27 +244,6 @@ class CloudTieringVolumeFreeSpacePolicyStatusResponse(dict):
     """
     Status of the volume free space policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "currentVolumeFreeSpacePercent":
-            suggest = "current_volume_free_space_percent"
-        elif key == "effectiveVolumeFreeSpacePolicy":
-            suggest = "effective_volume_free_space_policy"
-        elif key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudTieringVolumeFreeSpacePolicyStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudTieringVolumeFreeSpacePolicyStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudTieringVolumeFreeSpacePolicyStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  current_volume_free_space_percent: int,
                  effective_volume_free_space_policy: int,
@@ -397,25 +288,6 @@ class FilesNotTieringErrorResponse(dict):
     """
     Files not tiering error object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "errorCode":
-            suggest = "error_code"
-        elif key == "fileCount":
-            suggest = "file_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FilesNotTieringErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FilesNotTieringErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FilesNotTieringErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error_code: int,
                  file_count: float):
@@ -449,27 +321,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     The Private Endpoint Connection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -570,23 +421,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -634,25 +468,6 @@ class ServerEndpointBackgroundDataDownloadActivityResponse(dict):
     """
     Background data download activity object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "downloadedBytes":
-            suggest = "downloaded_bytes"
-        elif key == "percentProgress":
-            suggest = "percent_progress"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointBackgroundDataDownloadActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointBackgroundDataDownloadActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointBackgroundDataDownloadActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  downloaded_bytes: float,
                  percent_progress: int,
@@ -697,39 +512,6 @@ class ServerEndpointCloudTieringStatusResponse(dict):
     """
     Server endpoint cloud tiering status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cachePerformance":
-            suggest = "cache_performance"
-        elif key == "datePolicyStatus":
-            suggest = "date_policy_status"
-        elif key == "filesNotTiering":
-            suggest = "files_not_tiering"
-        elif key == "healthLastUpdatedTimestamp":
-            suggest = "health_last_updated_timestamp"
-        elif key == "lastCloudTieringResult":
-            suggest = "last_cloud_tiering_result"
-        elif key == "lastSuccessTimestamp":
-            suggest = "last_success_timestamp"
-        elif key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-        elif key == "spaceSavings":
-            suggest = "space_savings"
-        elif key == "volumeFreeSpacePolicyStatus":
-            suggest = "volume_free_space_policy_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointCloudTieringStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointCloudTieringStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointCloudTieringStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cache_performance: 'outputs.CloudTieringCachePerformanceResponse',
                  date_policy_status: 'outputs.CloudTieringDatePolicyStatusResponse',
@@ -851,27 +633,6 @@ class ServerEndpointFilesNotSyncingErrorResponse(dict):
     """
     Files not syncing error object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "errorCode":
-            suggest = "error_code"
-        elif key == "persistentCount":
-            suggest = "persistent_count"
-        elif key == "transientCount":
-            suggest = "transient_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointFilesNotSyncingErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointFilesNotSyncingErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointFilesNotSyncingErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error_code: int,
                  persistent_count: float,
@@ -916,23 +677,6 @@ class ServerEndpointRecallErrorResponse(dict):
     """
     Server endpoint recall error object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "errorCode":
-            suggest = "error_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointRecallErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointRecallErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointRecallErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: float,
                  error_code: int):
@@ -966,27 +710,6 @@ class ServerEndpointRecallStatusResponse(dict):
     """
     Server endpoint recall status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-        elif key == "recallErrors":
-            suggest = "recall_errors"
-        elif key == "totalRecallErrorsCount":
-            suggest = "total_recall_errors_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointRecallStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointRecallStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointRecallStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_updated_timestamp: str,
                  recall_errors: Sequence['outputs.ServerEndpointRecallErrorResponse'],
@@ -1031,33 +754,6 @@ class ServerEndpointSyncActivityStatusResponse(dict):
     """
     Sync Session status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appliedBytes":
-            suggest = "applied_bytes"
-        elif key == "appliedItemCount":
-            suggest = "applied_item_count"
-        elif key == "perItemErrorCount":
-            suggest = "per_item_error_count"
-        elif key == "syncMode":
-            suggest = "sync_mode"
-        elif key == "totalBytes":
-            suggest = "total_bytes"
-        elif key == "totalItemCount":
-            suggest = "total_item_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointSyncActivityStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointSyncActivityStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointSyncActivityStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  applied_bytes: float,
                  applied_item_count: float,
@@ -1146,37 +842,6 @@ class ServerEndpointSyncSessionStatusResponse(dict):
     """
     Sync Session status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filesNotSyncingErrors":
-            suggest = "files_not_syncing_errors"
-        elif key == "lastSyncMode":
-            suggest = "last_sync_mode"
-        elif key == "lastSyncPerItemErrorCount":
-            suggest = "last_sync_per_item_error_count"
-        elif key == "lastSyncResult":
-            suggest = "last_sync_result"
-        elif key == "lastSyncSuccessTimestamp":
-            suggest = "last_sync_success_timestamp"
-        elif key == "lastSyncTimestamp":
-            suggest = "last_sync_timestamp"
-        elif key == "persistentFilesNotSyncingCount":
-            suggest = "persistent_files_not_syncing_count"
-        elif key == "transientFilesNotSyncingCount":
-            suggest = "transient_files_not_syncing_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointSyncSessionStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointSyncSessionStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointSyncSessionStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  files_not_syncing_errors: Sequence['outputs.ServerEndpointFilesNotSyncingErrorResponse'],
                  last_sync_mode: str,
@@ -1276,45 +941,6 @@ class ServerEndpointSyncStatusResponse(dict):
     """
     Server Endpoint sync status
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backgroundDataDownloadActivity":
-            suggest = "background_data_download_activity"
-        elif key == "combinedHealth":
-            suggest = "combined_health"
-        elif key == "downloadActivity":
-            suggest = "download_activity"
-        elif key == "downloadHealth":
-            suggest = "download_health"
-        elif key == "downloadStatus":
-            suggest = "download_status"
-        elif key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-        elif key == "offlineDataTransferStatus":
-            suggest = "offline_data_transfer_status"
-        elif key == "syncActivity":
-            suggest = "sync_activity"
-        elif key == "totalPersistentFilesNotSyncingCount":
-            suggest = "total_persistent_files_not_syncing_count"
-        elif key == "uploadActivity":
-            suggest = "upload_activity"
-        elif key == "uploadHealth":
-            suggest = "upload_health"
-        elif key == "uploadStatus":
-            suggest = "upload_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointSyncStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointSyncStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointSyncStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  background_data_download_activity: 'outputs.ServerEndpointBackgroundDataDownloadActivityResponse',
                  combined_health: str,

@@ -20,29 +20,6 @@ class OfferDetailResponse(dict):
     """
     Confluent Offer detail
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "planId":
-            suggest = "plan_id"
-        elif key == "planName":
-            suggest = "plan_name"
-        elif key == "publisherId":
-            suggest = "publisher_id"
-        elif key == "termUnit":
-            suggest = "term_unit"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OfferDetailResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OfferDetailResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OfferDetailResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  plan_id: Optional[str] = None,
@@ -126,33 +103,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -236,27 +186,6 @@ class UserDetailResponse(dict):
     """
     Subscriber detail
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-        elif key == "firstName":
-            suggest = "first_name"
-        elif key == "lastName":
-            suggest = "last_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserDetailResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserDetailResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserDetailResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_address: Optional[str] = None,
                  first_name: Optional[str] = None,

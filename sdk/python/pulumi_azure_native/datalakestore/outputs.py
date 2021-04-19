@@ -24,23 +24,6 @@ class EncryptionConfigResponse(dict):
     """
     The encryption configuration for the account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultMetaInfo":
-            suggest = "key_vault_meta_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  key_vault_meta_info: Optional['outputs.KeyVaultMetaInfoResponse'] = None):
@@ -75,25 +58,6 @@ class EncryptionIdentityResponse(dict):
     """
     The encryption identity properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -138,25 +102,6 @@ class FirewallRuleResponse(dict):
     """
     Data Lake Store firewall rule information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endIpAddress":
-            suggest = "end_ip_address"
-        elif key == "startIpAddress":
-            suggest = "start_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FirewallRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FirewallRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FirewallRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_ip_address: str,
                  id: str,
@@ -223,27 +168,6 @@ class KeyVaultMetaInfoResponse(dict):
     """
     Metadata information used by account encryption.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encryptionKeyName":
-            suggest = "encryption_key_name"
-        elif key == "encryptionKeyVersion":
-            suggest = "encryption_key_version"
-        elif key == "keyVaultResourceId":
-            suggest = "key_vault_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultMetaInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultMetaInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultMetaInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encryption_key_name: str,
                  encryption_key_version: str,
@@ -288,23 +212,6 @@ class TrustedIdProviderResponse(dict):
     """
     Data Lake Store trusted identity provider information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "idProvider":
-            suggest = "id_provider"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TrustedIdProviderResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TrustedIdProviderResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TrustedIdProviderResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  id_provider: str,
@@ -360,23 +267,6 @@ class VirtualNetworkRuleResponse(dict):
     """
     Data Lake Store virtual network rule information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetId":
-            suggest = "subnet_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,

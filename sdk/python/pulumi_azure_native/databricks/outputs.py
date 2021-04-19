@@ -31,23 +31,6 @@ class AddressSpaceResponse(dict):
     """
     AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "addressPrefixes":
-            suggest = "address_prefixes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AddressSpaceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AddressSpaceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AddressSpaceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address_prefixes: Optional[Sequence[str]] = None):
         """
@@ -71,23 +54,6 @@ class CreatedByResponse(dict):
     """
     Provides details of the entity that created/updated the workspace.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationId":
-            suggest = "application_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CreatedByResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CreatedByResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CreatedByResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  application_id: str,
                  oid: str,
@@ -132,29 +98,6 @@ class EncryptionResponse(dict):
     """
     The object that contains details of encryption used on the workspace.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyName":
-            suggest = "key_name"
-        elif key == "keySource":
-            suggest = "key_source"
-        elif key == "keyVaultUri":
-            suggest = "key_vault_uri"
-        elif key == "keyVersion":
-            suggest = "key_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_name: Optional[str] = None,
                  key_source: Optional[str] = None,
@@ -216,25 +159,6 @@ class ManagedIdentityConfigurationResponse(dict):
     """
     The Managed Identity details for storage account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedIdentityConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedIdentityConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedIdentityConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -425,51 +349,6 @@ class WorkspaceCustomParametersResponse(dict):
     """
     Custom Parameters used for Cluster Creation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceTags":
-            suggest = "resource_tags"
-        elif key == "amlWorkspaceId":
-            suggest = "aml_workspace_id"
-        elif key == "customPrivateSubnetName":
-            suggest = "custom_private_subnet_name"
-        elif key == "customPublicSubnetName":
-            suggest = "custom_public_subnet_name"
-        elif key == "customVirtualNetworkId":
-            suggest = "custom_virtual_network_id"
-        elif key == "enableNoPublicIp":
-            suggest = "enable_no_public_ip"
-        elif key == "loadBalancerBackendPoolName":
-            suggest = "load_balancer_backend_pool_name"
-        elif key == "loadBalancerId":
-            suggest = "load_balancer_id"
-        elif key == "natGatewayName":
-            suggest = "nat_gateway_name"
-        elif key == "prepareEncryption":
-            suggest = "prepare_encryption"
-        elif key == "publicIpName":
-            suggest = "public_ip_name"
-        elif key == "requireInfrastructureEncryption":
-            suggest = "require_infrastructure_encryption"
-        elif key == "storageAccountName":
-            suggest = "storage_account_name"
-        elif key == "storageAccountSkuName":
-            suggest = "storage_account_sku_name"
-        elif key == "vnetAddressPrefix":
-            suggest = "vnet_address_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkspaceCustomParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkspaceCustomParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkspaceCustomParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_tags: 'outputs.WorkspaceCustomObjectParameterResponse',
                  aml_workspace_id: Optional['outputs.WorkspaceCustomStringParameterResponse'] = None,
@@ -739,25 +618,6 @@ class WorkspaceProviderAuthorizationResponse(dict):
     """
     The workspace provider authorization.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "roleDefinitionId":
-            suggest = "role_definition_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkspaceProviderAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkspaceProviderAuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkspaceProviderAuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  role_definition_id: str):

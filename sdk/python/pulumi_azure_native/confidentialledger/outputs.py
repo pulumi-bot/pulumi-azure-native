@@ -22,27 +22,6 @@ class AADBasedSecurityPrincipalResponse(dict):
     """
     AAD based security principal with associated Ledger RoleName
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ledgerRoleName":
-            suggest = "ledger_role_name"
-        elif key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AADBasedSecurityPrincipalResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AADBasedSecurityPrincipalResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AADBasedSecurityPrincipalResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ledger_role_name: Optional[str] = None,
                  principal_id: Optional[str] = None,
@@ -90,23 +69,6 @@ class CertBasedSecurityPrincipalResponse(dict):
     """
     Cert based security principal with Ledger RoleName
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ledgerRoleName":
-            suggest = "ledger_role_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertBasedSecurityPrincipalResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertBasedSecurityPrincipalResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertBasedSecurityPrincipalResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cert: Optional[str] = None,
                  ledger_role_name: Optional[str] = None):
@@ -142,39 +104,6 @@ class LedgerPropertiesResponse(dict):
     """
     Additional Confidential Ledger properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "identityServiceUri":
-            suggest = "identity_service_uri"
-        elif key == "ledgerInternalNamespace":
-            suggest = "ledger_internal_namespace"
-        elif key == "ledgerName":
-            suggest = "ledger_name"
-        elif key == "ledgerUri":
-            suggest = "ledger_uri"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "aadBasedSecurityPrincipals":
-            suggest = "aad_based_security_principals"
-        elif key == "certBasedSecurityPrincipals":
-            suggest = "cert_based_security_principals"
-        elif key == "ledgerStorageAccount":
-            suggest = "ledger_storage_account"
-        elif key == "ledgerType":
-            suggest = "ledger_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LedgerPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LedgerPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LedgerPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  identity_service_uri: str,
                  ledger_internal_namespace: str,
@@ -289,33 +218,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

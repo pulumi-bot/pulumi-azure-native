@@ -20,31 +20,6 @@ class ClusterNodeResponse(dict):
     """
     Cluster node details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "coreCount":
-            suggest = "core_count"
-        elif key == "memoryInGiB":
-            suggest = "memory_in_gi_b"
-        elif key == "osName":
-            suggest = "os_name"
-        elif key == "osVersion":
-            suggest = "os_version"
-        elif key == "serialNumber":
-            suggest = "serial_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterNodeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterNodeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  core_count: float,
                  id: float,
@@ -155,29 +130,6 @@ class ClusterReportedPropertiesResponse(dict):
     """
     Properties reported by cluster agent.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterId":
-            suggest = "cluster_id"
-        elif key == "clusterName":
-            suggest = "cluster_name"
-        elif key == "clusterVersion":
-            suggest = "cluster_version"
-        elif key == "lastUpdated":
-            suggest = "last_updated"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterReportedPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterReportedPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterReportedPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_id: str,
                  cluster_name: str,

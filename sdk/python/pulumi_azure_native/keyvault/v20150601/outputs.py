@@ -22,27 +22,6 @@ class AccessPolicyEntryResponse(dict):
     """
     An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectId":
-            suggest = "object_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "applicationId":
-            suggest = "application_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyEntryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AccessPolicyEntryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AccessPolicyEntryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_id: str,
                  permissions: 'outputs.PermissionsResponse',
@@ -179,35 +158,6 @@ class VaultPropertiesResponse(dict):
     """
     Properties of the vault
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessPolicies":
-            suggest = "access_policies"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "enableSoftDelete":
-            suggest = "enable_soft_delete"
-        elif key == "enabledForDeployment":
-            suggest = "enabled_for_deployment"
-        elif key == "enabledForDiskEncryption":
-            suggest = "enabled_for_disk_encryption"
-        elif key == "enabledForTemplateDeployment":
-            suggest = "enabled_for_template_deployment"
-        elif key == "vaultUri":
-            suggest = "vault_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_policies: Sequence['outputs.AccessPolicyEntryResponse'],
                  sku: 'outputs.SkuResponse',

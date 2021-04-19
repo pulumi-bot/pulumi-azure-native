@@ -33,23 +33,6 @@ class AdditionalFeaturesServerConfigurationsResponse(dict):
     """
     Additional SQL Server feature settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isRServicesEnabled":
-            suggest = "is_r_services_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdditionalFeaturesServerConfigurationsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdditionalFeaturesServerConfigurationsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdditionalFeaturesServerConfigurationsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_r_services_enabled: Optional[bool] = None):
         """
@@ -73,39 +56,6 @@ class AutoBackupSettingsResponse(dict):
     """
     Configure backups for databases in your SQL virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupScheduleType":
-            suggest = "backup_schedule_type"
-        elif key == "backupSystemDbs":
-            suggest = "backup_system_dbs"
-        elif key == "enableEncryption":
-            suggest = "enable_encryption"
-        elif key == "fullBackupFrequency":
-            suggest = "full_backup_frequency"
-        elif key == "fullBackupStartTime":
-            suggest = "full_backup_start_time"
-        elif key == "fullBackupWindowHours":
-            suggest = "full_backup_window_hours"
-        elif key == "logBackupFrequency":
-            suggest = "log_backup_frequency"
-        elif key == "retentionPeriod":
-            suggest = "retention_period"
-        elif key == "storageAccountUrl":
-            suggest = "storage_account_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoBackupSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoBackupSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoBackupSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_schedule_type: Optional[str] = None,
                  backup_system_dbs: Optional[bool] = None,
@@ -237,27 +187,6 @@ class AutoPatchingSettingsResponse(dict):
     """
     Set a patching window during which Windows and SQL patches will be applied.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dayOfWeek":
-            suggest = "day_of_week"
-        elif key == "maintenanceWindowDuration":
-            suggest = "maintenance_window_duration"
-        elif key == "maintenanceWindowStartingHour":
-            suggest = "maintenance_window_starting_hour"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoPatchingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoPatchingSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoPatchingSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  day_of_week: Optional[str] = None,
                  enable: Optional[bool] = None,
@@ -317,27 +246,6 @@ class KeyVaultCredentialSettingsResponse(dict):
     """
     Configure your SQL virtual machine to be able to connect to the Azure Key Vault service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureKeyVaultUrl":
-            suggest = "azure_key_vault_url"
-        elif key == "credentialName":
-            suggest = "credential_name"
-        elif key == "servicePrincipalName":
-            suggest = "service_principal_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultCredentialSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultCredentialSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultCredentialSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_key_vault_url: Optional[str] = None,
                  credential_name: Optional[str] = None,
@@ -397,31 +305,6 @@ class LoadBalancerConfigurationResponse(dict):
     """
     A load balancer configuration for an availability group listener.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "loadBalancerResourceId":
-            suggest = "load_balancer_resource_id"
-        elif key == "privateIpAddress":
-            suggest = "private_ip_address"
-        elif key == "probePort":
-            suggest = "probe_port"
-        elif key == "publicIpAddressResourceId":
-            suggest = "public_ip_address_resource_id"
-        elif key == "sqlVirtualMachineInstances":
-            suggest = "sql_virtual_machine_instances"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LoadBalancerConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LoadBalancerConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  load_balancer_resource_id: Optional[str] = None,
                  private_ip_address: Optional['outputs.PrivateIPAddressResponse'] = None,
@@ -493,25 +376,6 @@ class PrivateIPAddressResponse(dict):
     """
     A private IP address bound to the availability group listener.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "subnetResourceId":
-            suggest = "subnet_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateIPAddressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateIPAddressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateIPAddressResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_address: Optional[str] = None,
                  subnet_resource_id: Optional[str] = None):
@@ -547,25 +411,6 @@ class ResourceIdentityResponse(dict):
     """
     Azure Active Directory identity configuration for a resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -611,23 +456,6 @@ class SQLStorageSettingsResponse(dict):
     """
     Set disk storage settings for SQL Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultFilePath":
-            suggest = "default_file_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SQLStorageSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SQLStorageSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SQLStorageSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_file_path: Optional[str] = None,
                  luns: Optional[Sequence[int]] = None):
@@ -663,29 +491,6 @@ class ServerConfigurationsManagementSettingsResponse(dict):
     """
     Set the connectivity, storage and workload settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalFeaturesServerConfigurations":
-            suggest = "additional_features_server_configurations"
-        elif key == "sqlConnectivityUpdateSettings":
-            suggest = "sql_connectivity_update_settings"
-        elif key == "sqlStorageUpdateSettings":
-            suggest = "sql_storage_update_settings"
-        elif key == "sqlWorkloadTypeUpdateSettings":
-            suggest = "sql_workload_type_update_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerConfigurationsManagementSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerConfigurationsManagementSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerConfigurationsManagementSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  additional_features_server_configurations: Optional['outputs.AdditionalFeaturesServerConfigurationsResponse'] = None,
                  sql_connectivity_update_settings: Optional['outputs.SqlConnectivityUpdateSettingsResponse'] = None,
@@ -745,23 +550,6 @@ class SqlConnectivityUpdateSettingsResponse(dict):
     """
     Set the access level and network port settings for SQL Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectivityType":
-            suggest = "connectivity_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlConnectivityUpdateSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlConnectivityUpdateSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlConnectivityUpdateSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connectivity_type: Optional[str] = None,
                  port: Optional[int] = None):
@@ -797,27 +585,6 @@ class SqlStorageUpdateSettingsResponse(dict):
     """
     Set disk storage settings for SQL Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskConfigurationType":
-            suggest = "disk_configuration_type"
-        elif key == "diskCount":
-            suggest = "disk_count"
-        elif key == "startingDeviceId":
-            suggest = "starting_device_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlStorageUpdateSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlStorageUpdateSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlStorageUpdateSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_configuration_type: Optional[str] = None,
                  disk_count: Optional[int] = None,
@@ -865,23 +632,6 @@ class SqlWorkloadTypeUpdateSettingsResponse(dict):
     """
     Set workload type to optimize storage for SQL Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sqlWorkloadType":
-            suggest = "sql_workload_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlWorkloadTypeUpdateSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlWorkloadTypeUpdateSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlWorkloadTypeUpdateSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  sql_workload_type: Optional[str] = None):
         """
@@ -905,31 +655,6 @@ class StorageConfigurationSettingsResponse(dict):
     """
     Storage Configurations for SQL Data, Log and TempDb.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskConfigurationType":
-            suggest = "disk_configuration_type"
-        elif key == "sqlDataSettings":
-            suggest = "sql_data_settings"
-        elif key == "sqlLogSettings":
-            suggest = "sql_log_settings"
-        elif key == "sqlTempDbSettings":
-            suggest = "sql_temp_db_settings"
-        elif key == "storageWorkloadType":
-            suggest = "storage_workload_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageConfigurationSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageConfigurationSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageConfigurationSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_configuration_type: Optional[str] = None,
                  sql_data_settings: Optional['outputs.SQLStorageSettingsResponse'] = None,
@@ -1001,27 +726,6 @@ class WsfcDomainCredentialsResponse(dict):
     """
     Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterBootstrapAccountPassword":
-            suggest = "cluster_bootstrap_account_password"
-        elif key == "clusterOperatorAccountPassword":
-            suggest = "cluster_operator_account_password"
-        elif key == "sqlServiceAccountPassword":
-            suggest = "sql_service_account_password"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WsfcDomainCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WsfcDomainCredentialsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WsfcDomainCredentialsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_bootstrap_account_password: Optional[str] = None,
                  cluster_operator_account_password: Optional[str] = None,
@@ -1069,35 +773,6 @@ class WsfcDomainProfileResponse(dict):
     """
     Active Directory account details to operate Windows Server Failover Cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterBootstrapAccount":
-            suggest = "cluster_bootstrap_account"
-        elif key == "clusterOperatorAccount":
-            suggest = "cluster_operator_account"
-        elif key == "domainFqdn":
-            suggest = "domain_fqdn"
-        elif key == "fileShareWitnessPath":
-            suggest = "file_share_witness_path"
-        elif key == "ouPath":
-            suggest = "ou_path"
-        elif key == "sqlServiceAccount":
-            suggest = "sql_service_account"
-        elif key == "storageAccountUrl":
-            suggest = "storage_account_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WsfcDomainProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WsfcDomainProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WsfcDomainProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_bootstrap_account: Optional[str] = None,
                  cluster_operator_account: Optional[str] = None,

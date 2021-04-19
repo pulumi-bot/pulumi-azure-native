@@ -24,25 +24,6 @@ class AclResponse(dict):
     """
     Access Control List (ACL) for an iSCSI target portal group
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "initiatorIqn":
-            suggest = "initiator_iqn"
-        elif key == "mappedLuns":
-            suggest = "mapped_luns"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AclResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AclResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AclResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  initiator_iqn: str,
                  mapped_luns: Sequence[str],
@@ -98,23 +79,6 @@ class AttributesResponse(dict):
     """
     Attributes of a iSCSI target portal group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "prodModeWriteProtect":
-            suggest = "prod_mode_write_protect"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AttributesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AttributesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AttributesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication: bool,
                  prod_mode_write_protect: bool):
@@ -170,23 +134,6 @@ class IscsiLunResponse(dict):
     """
     LUN to expose the Azure Managed Disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "managedDiskAzureResourceId":
-            suggest = "managed_disk_azure_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IscsiLunResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IscsiLunResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IscsiLunResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  managed_disk_azure_resource_id: str,
                  name: str):
@@ -220,33 +167,6 @@ class SystemMetadataResponse(dict):
     """
     Resource metadata required by ARM RPC.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemMetadataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemMetadataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemMetadataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

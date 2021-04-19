@@ -118,23 +118,6 @@ class AdditionalCapabilitiesResponse(dict):
     """
     Enables or disables a capability on the virtual machine or virtual machine scale set.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ultraSSDEnabled":
-            suggest = "ultra_ssd_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdditionalCapabilitiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdditionalCapabilitiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdditionalCapabilitiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ultra_ssd_enabled: Optional[bool] = None):
         """
@@ -158,27 +141,6 @@ class AdditionalUnattendContentResponse(dict):
     """
     Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "componentName":
-            suggest = "component_name"
-        elif key == "passName":
-            suggest = "pass_name"
-        elif key == "settingName":
-            suggest = "setting_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdditionalUnattendContentResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdditionalUnattendContentResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdditionalUnattendContentResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  component_name: Optional[str] = None,
                  content: Optional[str] = None,
@@ -261,25 +223,6 @@ class AutomaticOSUpgradePolicyResponse(dict):
     """
     The configuration parameters used for performing automatic OS upgrade.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "disableAutomaticRollback":
-            suggest = "disable_automatic_rollback"
-        elif key == "enableAutomaticOSUpgrade":
-            suggest = "enable_automatic_os_upgrade"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutomaticOSUpgradePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutomaticOSUpgradePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutomaticOSUpgradePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disable_automatic_rollback: Optional[bool] = None,
                  enable_automatic_os_upgrade: Optional[bool] = None):
@@ -315,23 +258,6 @@ class AutomaticRepairsPolicyResponse(dict):
     """
     Specifies the configuration parameters for automatic repairs on the virtual machine scale set.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "gracePeriod":
-            suggest = "grace_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutomaticRepairsPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutomaticRepairsPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutomaticRepairsPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  grace_period: Optional[str] = None):
@@ -367,23 +293,6 @@ class BillingProfileResponse(dict):
     """
     Specifies the billing related details of a Azure Spot VM or VMSS. <br><br>Minimum api-version: 2019-03-01.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxPrice":
-            suggest = "max_price"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BillingProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BillingProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BillingProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_price: Optional[float] = None):
         """
@@ -407,25 +316,6 @@ class BootDiagnosticsInstanceViewResponse(dict):
     """
     The instance view of a virtual machine boot diagnostics.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "consoleScreenshotBlobUri":
-            suggest = "console_screenshot_blob_uri"
-        elif key == "serialConsoleLogBlobUri":
-            suggest = "serial_console_log_blob_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BootDiagnosticsInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BootDiagnosticsInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BootDiagnosticsInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  console_screenshot_blob_uri: str,
                  serial_console_log_blob_uri: str,
@@ -470,23 +360,6 @@ class BootDiagnosticsResponse(dict):
     """
     Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. <br><br> You can easily view the output of your console log. <br><br> Azure also enables you to see a screenshot of the VM from the hypervisor.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "storageUri":
-            suggest = "storage_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BootDiagnosticsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BootDiagnosticsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BootDiagnosticsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  storage_uri: Optional[str] = None):
@@ -522,23 +395,6 @@ class DataDiskImageEncryptionResponse(dict):
     """
     Contains encryption settings for a data disk image.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskEncryptionSetId":
-            suggest = "disk_encryption_set_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataDiskImageEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataDiskImageEncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataDiskImageEncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lun: int,
                  disk_encryption_set_id: Optional[str] = None):
@@ -573,35 +429,6 @@ class DataDiskResponse(dict):
     """
     Describes a data disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createOption":
-            suggest = "create_option"
-        elif key == "diskIOPSReadWrite":
-            suggest = "disk_iops_read_write"
-        elif key == "diskMBpsReadWrite":
-            suggest = "disk_m_bps_read_write"
-        elif key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "managedDisk":
-            suggest = "managed_disk"
-        elif key == "toBeDetached":
-            suggest = "to_be_detached"
-        elif key == "writeAcceleratorEnabled":
-            suggest = "write_accelerator_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  create_option: str,
                  disk_iops_read_write: float,
@@ -753,23 +580,6 @@ class DedicatedHostAllocatableVMResponse(dict):
     """
     Represents the dedicated host unutilized capacity in terms of a specific VM size.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DedicatedHostAllocatableVMResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DedicatedHostAllocatableVMResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DedicatedHostAllocatableVMResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[float] = None,
                  vm_size: Optional[str] = None):
@@ -805,23 +615,6 @@ class DedicatedHostAvailableCapacityResponse(dict):
     """
     Dedicated host unutilized capacity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allocatableVMs":
-            suggest = "allocatable_vms"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DedicatedHostAvailableCapacityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DedicatedHostAvailableCapacityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DedicatedHostAvailableCapacityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allocatable_vms: Optional[Sequence['outputs.DedicatedHostAllocatableVMResponse']] = None):
         """
@@ -845,25 +638,6 @@ class DedicatedHostInstanceViewResponse(dict):
     """
     The instance view of a dedicated host.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assetId":
-            suggest = "asset_id"
-        elif key == "availableCapacity":
-            suggest = "available_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DedicatedHostInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DedicatedHostInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DedicatedHostInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  asset_id: str,
                  available_capacity: Optional['outputs.DedicatedHostAvailableCapacityResponse'] = None,
@@ -910,23 +684,6 @@ class DiagnosticsProfileResponse(dict):
     """
     Specifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bootDiagnostics":
-            suggest = "boot_diagnostics"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiagnosticsProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiagnosticsProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiagnosticsProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  boot_diagnostics: Optional['outputs.BootDiagnosticsResponse'] = None):
         """
@@ -985,23 +742,6 @@ class DisallowedResponse(dict):
     """
     Describes the disallowed disk types.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskTypes":
-            suggest = "disk_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DisallowedResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DisallowedResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DisallowedResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_types: Optional[Sequence[str]] = None):
         """
@@ -1048,25 +788,6 @@ class DiskEncryptionSettingsResponse(dict):
     """
     Describes a Encryption Settings for a Disk
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskEncryptionKey":
-            suggest = "disk_encryption_key"
-        elif key == "keyEncryptionKey":
-            suggest = "key_encryption_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiskEncryptionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiskEncryptionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiskEncryptionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_encryption_key: Optional['outputs.KeyVaultSecretReferenceResponse'] = None,
                  enabled: Optional[bool] = None,
@@ -1114,23 +835,6 @@ class DiskInstanceViewResponse(dict):
     """
     The instance view of the disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encryptionSettings":
-            suggest = "encryption_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiskInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiskInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiskInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encryption_settings: Optional[Sequence['outputs.DiskEncryptionSettingsResponse']] = None,
                  name: Optional[str] = None,
@@ -1178,25 +882,6 @@ class EncryptionImagesResponse(dict):
     """
     Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataDiskImages":
-            suggest = "data_disk_images"
-        elif key == "osDiskImage":
-            suggest = "os_disk_image"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionImagesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionImagesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionImagesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_disk_images: Optional[Sequence['outputs.DataDiskImageEncryptionResponse']] = None,
                  os_disk_image: Optional['outputs.OSDiskImageEncryptionResponse'] = None):
@@ -1232,37 +917,6 @@ class GalleryApplicationVersionPublishingProfileResponse(dict):
     """
     The publishing profile of a gallery image version.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publishedDate":
-            suggest = "published_date"
-        elif key == "enableHealthCheck":
-            suggest = "enable_health_check"
-        elif key == "endOfLifeDate":
-            suggest = "end_of_life_date"
-        elif key == "excludeFromLatest":
-            suggest = "exclude_from_latest"
-        elif key == "manageActions":
-            suggest = "manage_actions"
-        elif key == "replicaCount":
-            suggest = "replica_count"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-        elif key == "targetRegions":
-            suggest = "target_regions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GalleryApplicationVersionPublishingProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GalleryApplicationVersionPublishingProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GalleryApplicationVersionPublishingProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  published_date: str,
                  source: 'outputs.UserArtifactSourceResponse',
@@ -1399,25 +1053,6 @@ class GalleryDataDiskImageResponse(dict):
     """
     This is the data disk image.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sizeInGB":
-            suggest = "size_in_gb"
-        elif key == "hostCaching":
-            suggest = "host_caching"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GalleryDataDiskImageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GalleryDataDiskImageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GalleryDataDiskImageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lun: int,
                  size_in_gb: int,
@@ -1475,23 +1110,6 @@ class GalleryIdentifierResponse(dict):
     """
     Describes the gallery unique name.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "uniqueName":
-            suggest = "unique_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GalleryIdentifierResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GalleryIdentifierResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GalleryIdentifierResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  unique_name: str):
         """
@@ -1558,33 +1176,6 @@ class GalleryImageVersionPublishingProfileResponse(dict):
     """
     The publishing profile of a gallery Image Version.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publishedDate":
-            suggest = "published_date"
-        elif key == "endOfLifeDate":
-            suggest = "end_of_life_date"
-        elif key == "excludeFromLatest":
-            suggest = "exclude_from_latest"
-        elif key == "replicaCount":
-            suggest = "replica_count"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-        elif key == "targetRegions":
-            suggest = "target_regions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GalleryImageVersionPublishingProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GalleryImageVersionPublishingProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GalleryImageVersionPublishingProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  published_date: str,
                  end_of_life_date: Optional[str] = None,
@@ -1667,25 +1258,6 @@ class GalleryImageVersionStorageProfileResponse(dict):
     """
     This is the storage profile of a Gallery Image Version.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataDiskImages":
-            suggest = "data_disk_images"
-        elif key == "osDiskImage":
-            suggest = "os_disk_image"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GalleryImageVersionStorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GalleryImageVersionStorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GalleryImageVersionStorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_disk_images: Optional[Sequence['outputs.GalleryDataDiskImageResponse']] = None,
                  os_disk_image: Optional['outputs.GalleryOSDiskImageResponse'] = None,
@@ -1733,25 +1305,6 @@ class GalleryOSDiskImageResponse(dict):
     """
     This is the OS disk image.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sizeInGB":
-            suggest = "size_in_gb"
-        elif key == "hostCaching":
-            suggest = "host_caching"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GalleryOSDiskImageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GalleryOSDiskImageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GalleryOSDiskImageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  size_in_gb: int,
                  host_caching: Optional[str] = None,
@@ -1798,23 +1351,6 @@ class HardwareProfileResponse(dict):
     """
     Specifies the hardware settings for the virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HardwareProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HardwareProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HardwareProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  vm_size: Optional[str] = None):
         """
@@ -1838,31 +1374,6 @@ class ImageDataDiskResponse(dict):
     """
     Describes a data disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blobUri":
-            suggest = "blob_uri"
-        elif key == "diskEncryptionSet":
-            suggest = "disk_encryption_set"
-        elif key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "managedDisk":
-            suggest = "managed_disk"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageDataDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageDataDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageDataDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lun: int,
                  blob_uri: Optional[str] = None,
@@ -1969,35 +1480,6 @@ class ImageOSDiskResponse(dict):
     """
     Describes an Operating System disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "osState":
-            suggest = "os_state"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "blobUri":
-            suggest = "blob_uri"
-        elif key == "diskEncryptionSet":
-            suggest = "disk_encryption_set"
-        elif key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "managedDisk":
-            suggest = "managed_disk"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageOSDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageOSDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageOSDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  os_state: str,
                  os_type: str,
@@ -2162,23 +1644,6 @@ class ImageReferenceResponse(dict):
     """
     Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "exactVersion":
-            suggest = "exact_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  exact_version: str,
                  id: Optional[str] = None,
@@ -2261,27 +1726,6 @@ class ImageStorageProfileResponse(dict):
     """
     Describes a storage profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataDisks":
-            suggest = "data_disks"
-        elif key == "osDisk":
-            suggest = "os_disk"
-        elif key == "zoneResilient":
-            suggest = "zone_resilient"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageStorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageStorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageStorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_disks: Optional[Sequence['outputs.ImageDataDiskResponse']] = None,
                  os_disk: Optional['outputs.ImageOSDiskResponse'] = None,
@@ -2329,23 +1773,6 @@ class InstanceViewStatusResponse(dict):
     """
     Instance view status.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InstanceViewStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InstanceViewStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InstanceViewStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: Optional[str] = None,
                  display_status: Optional[str] = None,
@@ -2417,25 +1844,6 @@ class KeyVaultKeyReferenceResponse(dict):
     """
     Describes a reference to Key Vault Key
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyUrl":
-            suggest = "key_url"
-        elif key == "sourceVault":
-            suggest = "source_vault"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultKeyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultKeyReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultKeyReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_url: str,
                  source_vault: 'outputs.SubResourceResponse'):
@@ -2469,25 +1877,6 @@ class KeyVaultSecretReferenceResponse(dict):
     """
     Describes a reference to Key Vault Secret
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "secretUrl":
-            suggest = "secret_url"
-        elif key == "sourceVault":
-            suggest = "source_vault"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultSecretReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultSecretReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultSecretReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  secret_url: str,
                  source_vault: 'outputs.SubResourceResponse'):
@@ -2521,25 +1910,6 @@ class LinuxConfigurationResponse(dict):
     """
     Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <br><br> For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "disablePasswordAuthentication":
-            suggest = "disable_password_authentication"
-        elif key == "provisionVMAgent":
-            suggest = "provision_vm_agent"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinuxConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinuxConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinuxConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disable_password_authentication: Optional[bool] = None,
                  provision_vm_agent: Optional[bool] = None,
@@ -2609,35 +1979,6 @@ class MaintenanceRedeployStatusResponse(dict):
     """
     Maintenance Operation Status.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isCustomerInitiatedMaintenanceAllowed":
-            suggest = "is_customer_initiated_maintenance_allowed"
-        elif key == "lastOperationMessage":
-            suggest = "last_operation_message"
-        elif key == "lastOperationResultCode":
-            suggest = "last_operation_result_code"
-        elif key == "maintenanceWindowEndTime":
-            suggest = "maintenance_window_end_time"
-        elif key == "maintenanceWindowStartTime":
-            suggest = "maintenance_window_start_time"
-        elif key == "preMaintenanceWindowEndTime":
-            suggest = "pre_maintenance_window_end_time"
-        elif key == "preMaintenanceWindowStartTime":
-            suggest = "pre_maintenance_window_start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MaintenanceRedeployStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MaintenanceRedeployStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MaintenanceRedeployStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_customer_initiated_maintenance_allowed: Optional[bool] = None,
                  last_operation_message: Optional[str] = None,
@@ -2733,25 +2074,6 @@ class ManagedDiskParametersResponse(dict):
     """
     The parameters of a managed disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskEncryptionSet":
-            suggest = "disk_encryption_set"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedDiskParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedDiskParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedDiskParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_encryption_set: Optional['outputs.DiskEncryptionSetParametersResponse'] = None,
                  id: Optional[str] = None,
@@ -2834,23 +2156,6 @@ class NetworkProfileResponse(dict):
     """
     Specifies the network interfaces of the virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkInterfaces":
-            suggest = "network_interfaces"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  network_interfaces: Optional[Sequence['outputs.NetworkInterfaceReferenceResponse']] = None):
         """
@@ -2874,23 +2179,6 @@ class OSDiskImageEncryptionResponse(dict):
     """
     Contains encryption settings for an OS disk image.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskEncryptionSetId":
-            suggest = "disk_encryption_set_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSDiskImageEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSDiskImageEncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSDiskImageEncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_encryption_set_id: Optional[str] = None):
         """
@@ -2914,35 +2202,6 @@ class OSDiskResponse(dict):
     """
     Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createOption":
-            suggest = "create_option"
-        elif key == "diffDiskSettings":
-            suggest = "diff_disk_settings"
-        elif key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "encryptionSettings":
-            suggest = "encryption_settings"
-        elif key == "managedDisk":
-            suggest = "managed_disk"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "writeAcceleratorEnabled":
-            suggest = "write_accelerator_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  create_option: str,
                  caching: Optional[str] = None,
@@ -3085,37 +2344,6 @@ class OSProfileResponse(dict):
     """
     Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminPassword":
-            suggest = "admin_password"
-        elif key == "adminUsername":
-            suggest = "admin_username"
-        elif key == "allowExtensionOperations":
-            suggest = "allow_extension_operations"
-        elif key == "computerName":
-            suggest = "computer_name"
-        elif key == "customData":
-            suggest = "custom_data"
-        elif key == "linuxConfiguration":
-            suggest = "linux_configuration"
-        elif key == "requireGuestProvisionSignal":
-            suggest = "require_guest_provision_signal"
-        elif key == "windowsConfiguration":
-            suggest = "windows_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_password: Optional[str] = None,
                  admin_username: Optional[str] = None,
@@ -3235,23 +2463,6 @@ class PlanResponse(dict):
     """
     Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "promotionCode":
-            suggest = "promotion_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PlanResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  product: Optional[str] = None,
@@ -3311,23 +2522,6 @@ class RecommendedMachineConfigurationResponse(dict):
     """
     The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vCPUs":
-            suggest = "v_cpus"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecommendedMachineConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecommendedMachineConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecommendedMachineConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  memory: Optional['outputs.ResourceRangeResponse'] = None,
                  v_cpus: Optional['outputs.ResourceRangeResponse'] = None):
@@ -3418,23 +2612,6 @@ class ReplicationStatusResponse(dict):
     """
     This is the replication status of the gallery Image Version.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aggregatedState":
-            suggest = "aggregated_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReplicationStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReplicationStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReplicationStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aggregated_state: str,
                  summary: Sequence['outputs.RegionalReplicationStatusResponse']):
@@ -3503,29 +2680,6 @@ class RollingUpgradePolicyResponse(dict):
     """
     The configuration parameters used while performing a rolling upgrade.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxBatchInstancePercent":
-            suggest = "max_batch_instance_percent"
-        elif key == "maxUnhealthyInstancePercent":
-            suggest = "max_unhealthy_instance_percent"
-        elif key == "maxUnhealthyUpgradedInstancePercent":
-            suggest = "max_unhealthy_upgraded_instance_percent"
-        elif key == "pauseTimeBetweenBatches":
-            suggest = "pause_time_between_batches"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RollingUpgradePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RollingUpgradePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RollingUpgradePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_batch_instance_percent: Optional[int] = None,
                  max_unhealthy_instance_percent: Optional[int] = None,
@@ -3605,23 +2759,6 @@ class ScaleInPolicyResponse(dict):
 
 @pulumi.output_type
 class ScheduledEventsProfileResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "terminateNotificationProfile":
-            suggest = "terminate_notification_profile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduledEventsProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduledEventsProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduledEventsProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  terminate_notification_profile: Optional['outputs.TerminateNotificationProfileResponse'] = None):
         """
@@ -3691,23 +2828,6 @@ class SshConfigurationResponse(dict):
     """
     SSH configuration for Linux based VMs running on Azure
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicKeys":
-            suggest = "public_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SshConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SshConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SshConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_keys: Optional[Sequence['outputs.SshPublicKeyResponse']] = None):
         """
@@ -3731,23 +2851,6 @@ class SshPublicKeyResponse(dict):
     """
     Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyData":
-            suggest = "key_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SshPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SshPublicKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SshPublicKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_data: Optional[str] = None,
                  path: Optional[str] = None):
@@ -3783,27 +2886,6 @@ class StorageProfileResponse(dict):
     """
     Specifies the storage settings for the virtual machine disks.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataDisks":
-            suggest = "data_disks"
-        elif key == "imageReference":
-            suggest = "image_reference"
-        elif key == "osDisk":
-            suggest = "os_disk"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_disks: Optional[Sequence['outputs.DataDiskResponse']] = None,
                  image_reference: Optional['outputs.ImageReferenceResponse'] = None,
@@ -3885,23 +2967,6 @@ class SubResourceResponse(dict):
 
 @pulumi.output_type
 class SubResourceWithColocationStatusResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "colocationStatus":
-            suggest = "colocation_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubResourceWithColocationStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubResourceWithColocationStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubResourceWithColocationStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  colocation_status: Optional['outputs.InstanceViewStatusResponse'] = None,
                  id: Optional[str] = None):
@@ -3936,25 +3001,6 @@ class TargetRegionResponse(dict):
     """
     Describes the target region information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "regionalReplicaCount":
-            suggest = "regional_replica_count"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TargetRegionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TargetRegionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TargetRegionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  encryption: Optional['outputs.EncryptionImagesResponse'] = None,
@@ -4010,23 +3056,6 @@ class TargetRegionResponse(dict):
 
 @pulumi.output_type
 class TerminateNotificationProfileResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "notBeforeTimeout":
-            suggest = "not_before_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TerminateNotificationProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TerminateNotificationProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TerminateNotificationProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable: Optional[bool] = None,
                  not_before_timeout: Optional[str] = None):
@@ -4061,25 +3090,6 @@ class UpgradePolicyResponse(dict):
     """
     Describes an upgrade policy - automatic, manual, or rolling.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "automaticOSUpgradePolicy":
-            suggest = "automatic_os_upgrade_policy"
-        elif key == "rollingUpgradePolicy":
-            suggest = "rolling_upgrade_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UpgradePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UpgradePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UpgradePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  automatic_os_upgrade_policy: Optional['outputs.AutomaticOSUpgradePolicyResponse'] = None,
                  mode: Optional[str] = None,
@@ -4168,25 +3178,6 @@ class UserArtifactSourceResponse(dict):
     """
     The source image from which the Image Version is going to be created.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mediaLink":
-            suggest = "media_link"
-        elif key == "defaultConfigurationLink":
-            suggest = "default_configuration_link"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserArtifactSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserArtifactSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserArtifactSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  media_link: str,
                  default_configuration_link: Optional[str] = None):
@@ -4221,25 +3212,6 @@ class VaultCertificateResponse(dict):
     """
     Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateStore":
-            suggest = "certificate_store"
-        elif key == "certificateUrl":
-            suggest = "certificate_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_store: Optional[str] = None,
                  certificate_url: Optional[str] = None):
@@ -4275,25 +3247,6 @@ class VaultSecretGroupResponse(dict):
     """
     Describes a set of certificates which are all in the same Key Vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceVault":
-            suggest = "source_vault"
-        elif key == "vaultCertificates":
-            suggest = "vault_certificates"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultSecretGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultSecretGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultSecretGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_vault: Optional['outputs.SubResourceResponse'] = None,
                  vault_certificates: Optional[Sequence['outputs.VaultCertificateResponse']] = None):
@@ -4352,25 +3305,6 @@ class VirtualMachineAgentInstanceViewResponse(dict):
     """
     The instance view of the VM Agent running on the virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "extensionHandlers":
-            suggest = "extension_handlers"
-        elif key == "vmAgentVersion":
-            suggest = "vm_agent_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineAgentInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineAgentInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineAgentInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  extension_handlers: Optional[Sequence['outputs.VirtualMachineExtensionHandlerInstanceViewResponse']] = None,
                  statuses: Optional[Sequence['outputs.InstanceViewStatusResponse']] = None,
@@ -4418,23 +3352,6 @@ class VirtualMachineExtensionHandlerInstanceViewResponse(dict):
     """
     The instance view of a virtual machine extension handler.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineExtensionHandlerInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineExtensionHandlerInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineExtensionHandlerInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  status: Optional['outputs.InstanceViewStatusResponse'] = None,
                  type: Optional[str] = None,
@@ -4482,23 +3399,6 @@ class VirtualMachineExtensionInstanceViewResponse(dict):
     """
     The instance view of a virtual machine extension.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineExtensionInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  statuses: Optional[Sequence['outputs.InstanceViewStatusResponse']] = None,
@@ -4570,33 +3470,6 @@ class VirtualMachineExtensionResponse(dict):
     """
     Describes a Virtual Machine Extension.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "autoUpgradeMinorVersion":
-            suggest = "auto_upgrade_minor_version"
-        elif key == "forceUpdateTag":
-            suggest = "force_update_tag"
-        elif key == "instanceView":
-            suggest = "instance_view"
-        elif key == "protectedSettings":
-            suggest = "protected_settings"
-        elif key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineExtensionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineExtensionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineExtensionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  location: str,
@@ -4781,27 +3654,6 @@ class VirtualMachineIdentityResponse(dict):
     """
     Identity for the virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -4856,25 +3708,6 @@ class VirtualMachineIdentityResponse(dict):
 
 @pulumi.output_type
 class VirtualMachineIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -4907,41 +3740,6 @@ class VirtualMachineInstanceViewResponse(dict):
     """
     The instance view of a virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bootDiagnostics":
-            suggest = "boot_diagnostics"
-        elif key == "computerName":
-            suggest = "computer_name"
-        elif key == "hyperVGeneration":
-            suggest = "hyper_v_generation"
-        elif key == "maintenanceRedeployStatus":
-            suggest = "maintenance_redeploy_status"
-        elif key == "osName":
-            suggest = "os_name"
-        elif key == "osVersion":
-            suggest = "os_version"
-        elif key == "platformFaultDomain":
-            suggest = "platform_fault_domain"
-        elif key == "platformUpdateDomain":
-            suggest = "platform_update_domain"
-        elif key == "rdpThumbPrint":
-            suggest = "rdp_thumb_print"
-        elif key == "vmAgent":
-            suggest = "vm_agent"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  boot_diagnostics: Optional['outputs.BootDiagnosticsInstanceViewResponse'] = None,
                  computer_name: Optional[str] = None,
@@ -5109,33 +3907,6 @@ class VirtualMachineScaleSetDataDiskResponse(dict):
     """
     Describes a virtual machine scale set data disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createOption":
-            suggest = "create_option"
-        elif key == "diskIOPSReadWrite":
-            suggest = "disk_iops_read_write"
-        elif key == "diskMBpsReadWrite":
-            suggest = "disk_m_bps_read_write"
-        elif key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "managedDisk":
-            suggest = "managed_disk"
-        elif key == "writeAcceleratorEnabled":
-            suggest = "write_accelerator_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetDataDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetDataDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetDataDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  create_option: str,
                  lun: int,
@@ -5276,33 +4047,6 @@ class VirtualMachineScaleSetExtensionResponse(dict):
     """
     Describes a Virtual Machine Scale Set Extension.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "autoUpgradeMinorVersion":
-            suggest = "auto_upgrade_minor_version"
-        elif key == "forceUpdateTag":
-            suggest = "force_update_tag"
-        elif key == "protectedSettings":
-            suggest = "protected_settings"
-        elif key == "provisionAfterExtensions":
-            suggest = "provision_after_extensions"
-        elif key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetExtensionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetExtensionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetExtensionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  provisioning_state: str,
@@ -5443,33 +4187,6 @@ class VirtualMachineScaleSetIPConfigurationResponse(dict):
     """
     Describes a virtual machine scale set network profile's IP configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationGatewayBackendAddressPools":
-            suggest = "application_gateway_backend_address_pools"
-        elif key == "applicationSecurityGroups":
-            suggest = "application_security_groups"
-        elif key == "loadBalancerBackendAddressPools":
-            suggest = "load_balancer_backend_address_pools"
-        elif key == "loadBalancerInboundNatPools":
-            suggest = "load_balancer_inbound_nat_pools"
-        elif key == "privateIPAddressVersion":
-            suggest = "private_ip_address_version"
-        elif key == "publicIPAddressConfiguration":
-            suggest = "public_ip_address_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetIPConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetIPConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetIPConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  application_gateway_backend_address_pools: Optional[Sequence['outputs.SubResourceResponse']] = None,
@@ -5600,27 +4317,6 @@ class VirtualMachineScaleSetIdentityResponse(dict):
     """
     Identity for the virtual machine scale set.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -5675,25 +4371,6 @@ class VirtualMachineScaleSetIdentityResponse(dict):
 
 @pulumi.output_type
 class VirtualMachineScaleSetIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -5726,23 +4403,6 @@ class VirtualMachineScaleSetIpTagResponse(dict):
     """
     Contains the IP tag associated with the public IP address.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipTagType":
-            suggest = "ip_tag_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetIpTagResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetIpTagResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetIpTagResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_tag_type: Optional[str] = None,
                  tag: Optional[str] = None):
@@ -5778,25 +4438,6 @@ class VirtualMachineScaleSetManagedDiskParametersResponse(dict):
     """
     Describes the parameters of a ScaleSet managed disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskEncryptionSet":
-            suggest = "disk_encryption_set"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetManagedDiskParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetManagedDiskParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetManagedDiskParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_encryption_set: Optional['outputs.DiskEncryptionSetParametersResponse'] = None,
                  storage_account_type: Optional[str] = None):
@@ -5832,23 +4473,6 @@ class VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse(dict):
     """
     Describes a virtual machines scale sets network configuration's DNS settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsServers":
-            suggest = "dns_servers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dns_servers: Optional[Sequence[str]] = None):
         """
@@ -5872,31 +4496,6 @@ class VirtualMachineScaleSetNetworkConfigurationResponse(dict):
     """
     Describes a virtual machine scale set network profile's network configurations.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipConfigurations":
-            suggest = "ip_configurations"
-        elif key == "dnsSettings":
-            suggest = "dns_settings"
-        elif key == "enableAcceleratedNetworking":
-            suggest = "enable_accelerated_networking"
-        elif key == "enableIPForwarding":
-            suggest = "enable_ip_forwarding"
-        elif key == "networkSecurityGroup":
-            suggest = "network_security_group"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetNetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetNetworkConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetNetworkConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_configurations: Sequence['outputs.VirtualMachineScaleSetIPConfigurationResponse'],
                  name: str,
@@ -6002,25 +4601,6 @@ class VirtualMachineScaleSetNetworkProfileResponse(dict):
     """
     Describes a virtual machine scale set network profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthProbe":
-            suggest = "health_probe"
-        elif key == "networkInterfaceConfigurations":
-            suggest = "network_interface_configurations"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetNetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetNetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetNetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  health_probe: Optional['outputs.ApiEntityReferenceResponse'] = None,
                  network_interface_configurations: Optional[Sequence['outputs.VirtualMachineScaleSetNetworkConfigurationResponse']] = None):
@@ -6056,35 +4636,6 @@ class VirtualMachineScaleSetOSDiskResponse(dict):
     """
     Describes a virtual machine scale set operating system disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createOption":
-            suggest = "create_option"
-        elif key == "diffDiskSettings":
-            suggest = "diff_disk_settings"
-        elif key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "managedDisk":
-            suggest = "managed_disk"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "vhdContainers":
-            suggest = "vhd_containers"
-        elif key == "writeAcceleratorEnabled":
-            suggest = "write_accelerator_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetOSDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetOSDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetOSDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  create_option: str,
                  caching: Optional[str] = None,
@@ -6215,33 +4766,6 @@ class VirtualMachineScaleSetOSProfileResponse(dict):
     """
     Describes a virtual machine scale set OS profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminPassword":
-            suggest = "admin_password"
-        elif key == "adminUsername":
-            suggest = "admin_username"
-        elif key == "computerNamePrefix":
-            suggest = "computer_name_prefix"
-        elif key == "customData":
-            suggest = "custom_data"
-        elif key == "linuxConfiguration":
-            suggest = "linux_configuration"
-        elif key == "windowsConfiguration":
-            suggest = "windows_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetOSProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetOSProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetOSProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_password: Optional[str] = None,
                  admin_username: Optional[str] = None,
@@ -6337,23 +4861,6 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse(dict
     """
     Describes a virtual machines scale sets network configuration's DNS settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "domainNameLabel":
-            suggest = "domain_name_label"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  domain_name_label: str):
         """
@@ -6376,31 +4883,6 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationResponse(dict):
     """
     Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsSettings":
-            suggest = "dns_settings"
-        elif key == "idleTimeoutInMinutes":
-            suggest = "idle_timeout_in_minutes"
-        elif key == "ipTags":
-            suggest = "ip_tags"
-        elif key == "publicIPAddressVersion":
-            suggest = "public_ip_address_version"
-        elif key == "publicIPPrefix":
-            suggest = "public_ip_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetPublicIPAddressConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetPublicIPAddressConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetPublicIPAddressConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  dns_settings: Optional['outputs.VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse'] = None,
@@ -6483,27 +4965,6 @@ class VirtualMachineScaleSetStorageProfileResponse(dict):
     """
     Describes a virtual machine scale set storage profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataDisks":
-            suggest = "data_disks"
-        elif key == "imageReference":
-            suggest = "image_reference"
-        elif key == "osDisk":
-            suggest = "os_disk"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetStorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetStorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetStorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_disks: Optional[Sequence['outputs.VirtualMachineScaleSetDataDiskResponse']] = None,
                  image_reference: Optional['outputs.ImageReferenceResponse'] = None,
@@ -6551,37 +5012,6 @@ class VirtualMachineScaleSetVMInstanceViewResponse(dict):
     """
     The instance view of a virtual machine scale set VM.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmHealth":
-            suggest = "vm_health"
-        elif key == "bootDiagnostics":
-            suggest = "boot_diagnostics"
-        elif key == "maintenanceRedeployStatus":
-            suggest = "maintenance_redeploy_status"
-        elif key == "placementGroupId":
-            suggest = "placement_group_id"
-        elif key == "platformFaultDomain":
-            suggest = "platform_fault_domain"
-        elif key == "platformUpdateDomain":
-            suggest = "platform_update_domain"
-        elif key == "rdpThumbPrint":
-            suggest = "rdp_thumb_print"
-        elif key == "vmAgent":
-            suggest = "vm_agent"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetVMInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetVMInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetVMInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  vm_health: 'outputs.VirtualMachineHealthStatusResponse',
                  boot_diagnostics: Optional['outputs.BootDiagnosticsInstanceViewResponse'] = None,
@@ -6724,23 +5154,6 @@ class VirtualMachineScaleSetVMNetworkProfileConfigurationResponse(dict):
     """
     Describes a virtual machine scale set VM network profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkInterfaceConfigurations":
-            suggest = "network_interface_configurations"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetVMNetworkProfileConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetVMNetworkProfileConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetVMNetworkProfileConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  network_interface_configurations: Optional[Sequence['outputs.VirtualMachineScaleSetNetworkConfigurationResponse']] = None):
         """
@@ -6764,39 +5177,6 @@ class VirtualMachineScaleSetVMProfileResponse(dict):
     """
     Describes a virtual machine scale set virtual machine profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "billingProfile":
-            suggest = "billing_profile"
-        elif key == "diagnosticsProfile":
-            suggest = "diagnostics_profile"
-        elif key == "evictionPolicy":
-            suggest = "eviction_policy"
-        elif key == "extensionProfile":
-            suggest = "extension_profile"
-        elif key == "licenseType":
-            suggest = "license_type"
-        elif key == "networkProfile":
-            suggest = "network_profile"
-        elif key == "osProfile":
-            suggest = "os_profile"
-        elif key == "scheduledEventsProfile":
-            suggest = "scheduled_events_profile"
-        elif key == "storageProfile":
-            suggest = "storage_profile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetVMProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetVMProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetVMProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  billing_profile: Optional['outputs.BillingProfileResponse'] = None,
                  diagnostics_profile: Optional['outputs.DiagnosticsProfileResponse'] = None,
@@ -6928,25 +5308,6 @@ class VirtualMachineScaleSetVMProtectionPolicyResponse(dict):
     """
     The protection policy of a virtual machine scale set VM.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "protectFromScaleIn":
-            suggest = "protect_from_scale_in"
-        elif key == "protectFromScaleSetActions":
-            suggest = "protect_from_scale_set_actions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineScaleSetVMProtectionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineScaleSetVMProtectionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineScaleSetVMProtectionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  protect_from_scale_in: Optional[bool] = None,
                  protect_from_scale_set_actions: Optional[bool] = None):
@@ -7005,23 +5366,6 @@ class WinRMListenerResponse(dict):
     """
     Describes Protocol and thumbprint of Windows Remote Management listener
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateUrl":
-            suggest = "certificate_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WinRMListenerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WinRMListenerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WinRMListenerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_url: Optional[str] = None,
                  protocol: Optional[str] = None):
@@ -7057,31 +5401,6 @@ class WindowsConfigurationResponse(dict):
     """
     Specifies Windows operating system settings on the virtual machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalUnattendContent":
-            suggest = "additional_unattend_content"
-        elif key == "enableAutomaticUpdates":
-            suggest = "enable_automatic_updates"
-        elif key == "provisionVMAgent":
-            suggest = "provision_vm_agent"
-        elif key == "timeZone":
-            suggest = "time_zone"
-        elif key == "winRM":
-            suggest = "win_rm"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WindowsConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WindowsConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WindowsConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  additional_unattend_content: Optional[Sequence['outputs.AdditionalUnattendContentResponse']] = None,
                  enable_automatic_updates: Optional[bool] = None,

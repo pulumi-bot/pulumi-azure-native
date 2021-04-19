@@ -57,27 +57,6 @@ class ManagedNetworkGroupResponse(dict):
     """
     The Managed Network Group resource
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "managementGroups":
-            suggest = "management_groups"
-        elif key == "virtualNetworks":
-            suggest = "virtual_networks"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedNetworkGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedNetworkGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedNetworkGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -216,23 +195,6 @@ class ManagedNetworkPeeringPolicyPropertiesResponse(dict):
     """
     Properties of a Managed Network Peering Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedNetworkPeeringPolicyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedNetworkPeeringPolicyPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedNetworkPeeringPolicyPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  provisioning_state: str,
@@ -404,25 +366,6 @@ class ScopeResponse(dict):
     """
     Scope of a Managed Network
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "managementGroups":
-            suggest = "management_groups"
-        elif key == "virtualNetworks":
-            suggest = "virtual_networks"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScopeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScopeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScopeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  management_groups: Optional[Sequence['outputs.ResourceIdResponse']] = None,
                  subnets: Optional[Sequence['outputs.ResourceIdResponse']] = None,

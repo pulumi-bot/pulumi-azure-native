@@ -34,23 +34,6 @@ class AkamaiAccessControlResponse(dict):
     """
     Akamai access control
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "akamaiSignatureHeaderAuthenticationKeyList":
-            suggest = "akamai_signature_header_authentication_key_list"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AkamaiAccessControlResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AkamaiAccessControlResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AkamaiAccessControlResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  akamai_signature_header_authentication_key_list: Optional[Sequence['outputs.AkamaiSignatureHeaderAuthenticationKeyResponse']] = None):
         """
@@ -74,23 +57,6 @@ class AkamaiSignatureHeaderAuthenticationKeyResponse(dict):
     """
     Akamai Signature Header authentication key.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "base64Key":
-            suggest = "base64_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AkamaiSignatureHeaderAuthenticationKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AkamaiSignatureHeaderAuthenticationKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AkamaiSignatureHeaderAuthenticationKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  base64_key: Optional[str] = None,
                  expiration: Optional[str] = None,
@@ -138,25 +104,6 @@ class CrossSiteAccessPoliciesResponse(dict):
     """
     The client access policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientAccessPolicy":
-            suggest = "client_access_policy"
-        elif key == "crossDomainPolicy":
-            suggest = "cross_domain_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CrossSiteAccessPoliciesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CrossSiteAccessPoliciesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CrossSiteAccessPoliciesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_access_policy: Optional[str] = None,
                  cross_domain_policy: Optional[str] = None):
@@ -192,23 +139,6 @@ class HlsResponse(dict):
     """
     The HLS configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fragmentsPerTsSegment":
-            suggest = "fragments_per_ts_segment"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HlsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HlsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HlsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fragments_per_ts_segment: Optional[int] = None):
         """
@@ -255,23 +185,6 @@ class IPRangeResponse(dict):
     """
     The IP address range in the CIDR scheme.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetPrefixLength":
-            suggest = "subnet_prefix_length"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPRangeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPRangeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPRangeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  name: Optional[str] = None,
@@ -319,25 +232,6 @@ class LiveEventEncodingResponse(dict):
     """
     The Live Event encoding.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encodingType":
-            suggest = "encoding_type"
-        elif key == "presetName":
-            suggest = "preset_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventEncodingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventEncodingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventEncodingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encoding_type: Optional[str] = None,
                  preset_name: Optional[str] = None):
@@ -431,29 +325,6 @@ class LiveEventInputResponse(dict):
     """
     The Live Event input.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "streamingProtocol":
-            suggest = "streaming_protocol"
-        elif key == "accessControl":
-            suggest = "access_control"
-        elif key == "accessToken":
-            suggest = "access_token"
-        elif key == "keyFrameIntervalDuration":
-            suggest = "key_frame_interval_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventInputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventInputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventInputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  streaming_protocol: str,
                  access_control: Optional['outputs.LiveEventInputAccessControlResponse'] = None,
@@ -571,23 +442,6 @@ class LiveEventOutputTranscriptionTrackResponse(dict):
     """
     Describes a transcription track in the output of a Live Event, generated using speech-to-text transcription.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "trackName":
-            suggest = "track_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventOutputTranscriptionTrackResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventOutputTranscriptionTrackResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventOutputTranscriptionTrackResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  track_name: str):
         """
@@ -633,29 +487,6 @@ class LiveEventPreviewResponse(dict):
     """
     The Live Event preview.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessControl":
-            suggest = "access_control"
-        elif key == "alternativeMediaId":
-            suggest = "alternative_media_id"
-        elif key == "previewLocator":
-            suggest = "preview_locator"
-        elif key == "streamingPolicyName":
-            suggest = "streaming_policy_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventPreviewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventPreviewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventPreviewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_control: Optional['outputs.LiveEventPreviewAccessControlResponse'] = None,
                  alternative_media_id: Optional[str] = None,
@@ -727,25 +558,6 @@ class LiveEventTranscriptionResponse(dict):
     """
     Describes the transcription tracks in the output of a Live Event, generated using speech-to-text transcription.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inputTrackSelection":
-            suggest = "input_track_selection"
-        elif key == "outputTranscriptionTrack":
-            suggest = "output_transcription_track"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LiveEventTranscriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LiveEventTranscriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LiveEventTranscriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  input_track_selection: Optional[Sequence['outputs.LiveEventInputTrackSelectionResponse']] = None,
                  language: Optional[str] = None,
