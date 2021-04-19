@@ -27,27 +27,6 @@ class NetworkProfileResponse(dict):
     """
     Represents the OpenShift networking configuration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "peerVnetId":
-            suggest = "peer_vnet_id"
-        elif key == "vnetCidr":
-            suggest = "vnet_cidr"
-        elif key == "vnetId":
-            suggest = "vnet_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  peer_vnet_id: Optional[str] = None,
                  vnet_cidr: Optional[str] = None,
@@ -97,27 +76,6 @@ class OpenShiftManagedClusterAADIdentityProviderResponse(dict):
     """
     Defines the Identity provider for MS AAD.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "customerAdminGroupId":
-            suggest = "customer_admin_group_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OpenShiftManagedClusterAADIdentityProviderResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OpenShiftManagedClusterAADIdentityProviderResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OpenShiftManagedClusterAADIdentityProviderResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kind: str,
                  client_id: Optional[str] = None,
@@ -190,27 +148,6 @@ class OpenShiftManagedClusterAgentPoolProfileResponse(dict):
     """
     Defines the configuration of the OpenShift cluster VMs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmSize":
-            suggest = "vm_size"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "subnetCidr":
-            suggest = "subnet_cidr"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OpenShiftManagedClusterAgentPoolProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OpenShiftManagedClusterAgentPoolProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OpenShiftManagedClusterAgentPoolProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: int,
                  name: str,
@@ -293,23 +230,6 @@ class OpenShiftManagedClusterAuthProfileResponse(dict):
     """
     Defines all possible authentication profiles for the OpenShift cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "identityProviders":
-            suggest = "identity_providers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OpenShiftManagedClusterAuthProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OpenShiftManagedClusterAuthProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OpenShiftManagedClusterAuthProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  identity_providers: Optional[Sequence['outputs.OpenShiftManagedClusterIdentityProviderResponse']] = None):
         """
@@ -368,27 +288,6 @@ class OpenShiftManagedClusterMasterPoolProfileResponse(dict):
     """
     OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmSize":
-            suggest = "vm_size"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "subnetCidr":
-            suggest = "subnet_cidr"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OpenShiftManagedClusterMasterPoolProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OpenShiftManagedClusterMasterPoolProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OpenShiftManagedClusterMasterPoolProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: int,
                  vm_size: str,
@@ -458,23 +357,6 @@ class OpenShiftManagedClusterMonitorProfileResponse(dict):
     """
     Defines the configuration for Log Analytics integration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "workspaceResourceID":
-            suggest = "workspace_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OpenShiftManagedClusterMonitorProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OpenShiftManagedClusterMonitorProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OpenShiftManagedClusterMonitorProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  workspace_resource_id: Optional[str] = None):
@@ -510,23 +392,6 @@ class OpenShiftRouterProfileResponse(dict):
     """
     Represents an OpenShift router
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicSubdomain":
-            suggest = "public_subdomain"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OpenShiftRouterProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OpenShiftRouterProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OpenShiftRouterProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fqdn: str,
                  public_subdomain: str,
@@ -572,23 +437,6 @@ class PurchasePlanResponse(dict):
     """
     Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "promotionCode":
-            suggest = "promotion_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PurchasePlanResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PurchasePlanResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PurchasePlanResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  product: Optional[str] = None,

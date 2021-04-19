@@ -31,25 +31,6 @@ class BudgetTimePeriodResponse(dict):
     """
     The start and end date for a budget.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "startDate":
-            suggest = "start_date"
-        elif key == "endDate":
-            suggest = "end_date"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BudgetTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BudgetTimePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BudgetTimePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  start_date: str,
                  end_date: Optional[str] = None):
@@ -164,27 +145,6 @@ class NotificationResponse(dict):
     """
     The notification associated with a budget.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contactEmails":
-            suggest = "contact_emails"
-        elif key == "contactGroups":
-            suggest = "contact_groups"
-        elif key == "contactRoles":
-            suggest = "contact_roles"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NotificationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NotificationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NotificationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  contact_emails: Sequence[str],
                  enabled: bool,
@@ -482,27 +442,6 @@ class ReportConfigFilterResponse(dict):
     """
     The filter expression to be used in the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "and":
-            suggest = "and_"
-        elif key == "not":
-            suggest = "not_"
-        elif key == "or":
-            suggest = "or_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  and_: Optional[Sequence['outputs.ReportConfigFilterResponse']] = None,
                  dimension: Optional['outputs.ReportConfigComparisonExpressionResponse'] = None,
@@ -641,23 +580,6 @@ class ReportConfigTimePeriodResponse(dict):
     """
     The start and end date for pulling data for the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigTimePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigTimePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: str):

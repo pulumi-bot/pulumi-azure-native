@@ -20,37 +20,6 @@ class ServerEndpointHealthResponse(dict):
     """
     ServerEndpoint Health object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "combinedHealth":
-            suggest = "combined_health"
-        elif key == "currentProgress":
-            suggest = "current_progress"
-        elif key == "downloadHealth":
-            suggest = "download_health"
-        elif key == "downloadStatus":
-            suggest = "download_status"
-        elif key == "lastUpdatedTimestamp":
-            suggest = "last_updated_timestamp"
-        elif key == "offlineDataTransferStatus":
-            suggest = "offline_data_transfer_status"
-        elif key == "uploadHealth":
-            suggest = "upload_health"
-        elif key == "uploadStatus":
-            suggest = "upload_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerEndpointHealthResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerEndpointHealthResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerEndpointHealthResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  combined_health: Optional[str] = None,
                  current_progress: Optional['outputs.SyncProgressStatusResponse'] = None,
@@ -158,35 +127,6 @@ class SyncProgressStatusResponse(dict):
     """
     Sync Session status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appliedBytes":
-            suggest = "applied_bytes"
-        elif key == "appliedItemCount":
-            suggest = "applied_item_count"
-        elif key == "perItemErrorCount":
-            suggest = "per_item_error_count"
-        elif key == "progressTimestamp":
-            suggest = "progress_timestamp"
-        elif key == "syncDirection":
-            suggest = "sync_direction"
-        elif key == "totalBytes":
-            suggest = "total_bytes"
-        elif key == "totalItemCount":
-            suggest = "total_item_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncProgressStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncProgressStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncProgressStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  applied_bytes: Optional[int] = None,
                  applied_item_count: Optional[int] = None,
@@ -282,29 +222,6 @@ class SyncSessionStatusResponse(dict):
     """
     Sync Session status object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastSyncPerItemErrorCount":
-            suggest = "last_sync_per_item_error_count"
-        elif key == "lastSyncResult":
-            suggest = "last_sync_result"
-        elif key == "lastSyncSuccessTimestamp":
-            suggest = "last_sync_success_timestamp"
-        elif key == "lastSyncTimestamp":
-            suggest = "last_sync_timestamp"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncSessionStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncSessionStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncSessionStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_sync_per_item_error_count: Optional[int] = None,
                  last_sync_result: Optional[int] = None,

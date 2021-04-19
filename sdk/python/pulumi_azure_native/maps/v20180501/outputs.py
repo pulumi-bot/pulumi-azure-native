@@ -18,23 +18,6 @@ class MapsAccountPropertiesResponse(dict):
     """
     Additional Map account properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "xMsClientId":
-            suggest = "x_ms_client_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MapsAccountPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MapsAccountPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MapsAccountPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  x_ms_client_id: Optional[str] = None):
         """

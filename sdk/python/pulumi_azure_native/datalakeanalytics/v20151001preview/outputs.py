@@ -24,29 +24,6 @@ class ComputePolicyResponse(dict):
     """
     Data Lake Analytics compute policy information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxDegreeOfParallelismPerJob":
-            suggest = "max_degree_of_parallelism_per_job"
-        elif key == "minPriorityPerJob":
-            suggest = "min_priority_per_job"
-        elif key == "objectId":
-            suggest = "object_id"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComputePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComputePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComputePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  max_degree_of_parallelism_per_job: int,
@@ -190,25 +167,6 @@ class FirewallRuleResponse(dict):
     """
     Data Lake Analytics firewall rule information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endIpAddress":
-            suggest = "end_ip_address"
-        elif key == "startIpAddress":
-            suggest = "start_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FirewallRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FirewallRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FirewallRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_ip_address: str,
                  id: str,
@@ -272,31 +230,6 @@ class FirewallRuleResponse(dict):
 
 @pulumi.output_type
 class HiveMetastoreResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "nestedResourceProvisioningState":
-            suggest = "nested_resource_provisioning_state"
-        elif key == "runtimeVersion":
-            suggest = "runtime_version"
-        elif key == "serverUri":
-            suggest = "server_uri"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HiveMetastoreResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HiveMetastoreResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HiveMetastoreResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_name: str,
                  id: str,
@@ -483,25 +416,6 @@ class VirtualNetworkRuleResponse(dict):
     """
     Data Lake Analytics  VirtualNetwork Rule information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetId":
-            suggest = "subnet_id"
-        elif key == "virtualNetworkRuleState":
-            suggest = "virtual_network_rule_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,

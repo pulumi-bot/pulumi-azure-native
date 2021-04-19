@@ -71,23 +71,6 @@ class AutoPausePropertiesResponse(dict):
     """
     Auto-pausing properties of a Big Data pool powered by Apache Spark
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "delayInMinutes":
-            suggest = "delay_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoPausePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoPausePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoPausePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  delay_in_minutes: Optional[int] = None,
                  enabled: Optional[bool] = None):
@@ -123,25 +106,6 @@ class AutoScalePropertiesResponse(dict):
     """
     Auto-scaling properties of a Big Data pool powered by Apache Spark
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxNodeCount":
-            suggest = "max_node_count"
-        elif key == "minNodeCount":
-            suggest = "min_node_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoScalePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoScalePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoScalePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  max_node_count: Optional[int] = None,
@@ -234,25 +198,6 @@ class CmdkeySetupResponse(dict):
     """
     The custom setup of running cmdkey commands.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetName":
-            suggest = "target_name"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CmdkeySetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CmdkeySetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CmdkeySetupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  password: 'outputs.SecureStringResponse',
                  target_name: Any,
@@ -310,25 +255,6 @@ class ComponentSetupResponse(dict):
     """
     The custom setup of installing 3rd party components.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "componentName":
-            suggest = "component_name"
-        elif key == "licenseKey":
-            suggest = "license_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComponentSetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComponentSetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComponentSetupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  component_name: str,
                  type: str,
@@ -410,23 +336,6 @@ class DataLakeStorageAccountDetailsResponse(dict):
     """
     Details of the data lake storage account associated with the workspace
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountUrl":
-            suggest = "account_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataLakeStorageAccountDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataLakeStorageAccountDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataLakeStorageAccountDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_url: Optional[str] = None,
                  filesystem: Optional[str] = None):
@@ -485,23 +394,6 @@ class EncryptionDetailsResponse(dict):
     """
     Details of the encryption associated with the workspace
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "doubleEncryptionEnabled":
-            suggest = "double_encryption_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  double_encryption_enabled: bool,
                  cmk: Optional['outputs.CustomerManagedKeyDetailsResponse'] = None):
@@ -536,23 +428,6 @@ class EntityReferenceResponse(dict):
     """
     The entity reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EntityReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EntityReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EntityReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: Optional[str] = None,
                  type: Optional[str] = None):
@@ -588,25 +463,6 @@ class EnvironmentVariableSetupResponse(dict):
     """
     The custom setup of setting environment variable.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "variableName":
-            suggest = "variable_name"
-        elif key == "variableValue":
-            suggest = "variable_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnvironmentVariableSetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnvironmentVariableSetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnvironmentVariableSetupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  variable_name: str,
@@ -653,31 +509,6 @@ class IntegrationRuntimeComputePropertiesResponse(dict):
     """
     The compute resource properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataFlowProperties":
-            suggest = "data_flow_properties"
-        elif key == "maxParallelExecutionsPerNode":
-            suggest = "max_parallel_executions_per_node"
-        elif key == "nodeSize":
-            suggest = "node_size"
-        elif key == "numberOfNodes":
-            suggest = "number_of_nodes"
-        elif key == "vNetProperties":
-            suggest = "v_net_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeComputePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeComputePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeComputePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_flow_properties: Optional['outputs.IntegrationRuntimeDataFlowPropertiesResponse'] = None,
                  location: Optional[str] = None,
@@ -761,25 +592,6 @@ class IntegrationRuntimeCustomSetupScriptPropertiesResponse(dict):
     """
     Custom setup script properties for a managed dedicated integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blobContainerUri":
-            suggest = "blob_container_uri"
-        elif key == "sasToken":
-            suggest = "sas_token"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeCustomSetupScriptPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeCustomSetupScriptPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeCustomSetupScriptPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  blob_container_uri: Optional[str] = None,
                  sas_token: Optional['outputs.SecureStringResponse'] = None):
@@ -815,27 +627,6 @@ class IntegrationRuntimeDataFlowPropertiesResponse(dict):
     """
     Data flow properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "coreCount":
-            suggest = "core_count"
-        elif key == "timeToLive":
-            suggest = "time_to_live"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeDataFlowPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeDataFlowPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeDataFlowPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: Optional[str] = None,
                  core_count: Optional[int] = None,
@@ -883,25 +674,6 @@ class IntegrationRuntimeDataProxyPropertiesResponse(dict):
     """
     Data proxy properties for a managed dedicated integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "stagingLinkedService":
-            suggest = "staging_linked_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeDataProxyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeDataProxyPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeDataProxyPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connect_via: Optional['outputs.EntityReferenceResponse'] = None,
                  path: Optional[str] = None,
@@ -949,29 +721,6 @@ class IntegrationRuntimeSsisCatalogInfoResponse(dict):
     """
     Catalog information for managed dedicated integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "catalogAdminPassword":
-            suggest = "catalog_admin_password"
-        elif key == "catalogAdminUserName":
-            suggest = "catalog_admin_user_name"
-        elif key == "catalogPricingTier":
-            suggest = "catalog_pricing_tier"
-        elif key == "catalogServerEndpoint":
-            suggest = "catalog_server_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeSsisCatalogInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeSsisCatalogInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeSsisCatalogInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  catalog_admin_password: Optional['outputs.SecureStringResponse'] = None,
                  catalog_admin_user_name: Optional[str] = None,
@@ -1031,31 +780,6 @@ class IntegrationRuntimeSsisPropertiesResponse(dict):
     """
     SSIS properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "catalogInfo":
-            suggest = "catalog_info"
-        elif key == "customSetupScriptProperties":
-            suggest = "custom_setup_script_properties"
-        elif key == "dataProxyProperties":
-            suggest = "data_proxy_properties"
-        elif key == "expressCustomSetupProperties":
-            suggest = "express_custom_setup_properties"
-        elif key == "licenseType":
-            suggest = "license_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeSsisPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeSsisPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeSsisPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  catalog_info: Optional['outputs.IntegrationRuntimeSsisCatalogInfoResponse'] = None,
                  custom_setup_script_properties: Optional['outputs.IntegrationRuntimeCustomSetupScriptPropertiesResponse'] = None,
@@ -1139,25 +863,6 @@ class IntegrationRuntimeVNetPropertiesResponse(dict):
     """
     VNet properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicIPs":
-            suggest = "public_ips"
-        elif key == "vNetId":
-            suggest = "v_net_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeVNetPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeVNetPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeVNetPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_ips: Optional[Sequence[str]] = None,
                  subnet: Optional[str] = None,
@@ -1205,29 +910,6 @@ class LibraryInfoResponse(dict):
     """
     Library/package information of a Big Data pool powered by Apache Spark
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "creatorId":
-            suggest = "creator_id"
-        elif key == "provisioningStatus":
-            suggest = "provisioning_status"
-        elif key == "uploadedTimestamp":
-            suggest = "uploaded_timestamp"
-        elif key == "containerName":
-            suggest = "container_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LibraryInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LibraryInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LibraryInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  creator_id: str,
                  provisioning_status: str,
@@ -1366,23 +1048,6 @@ class LinkedIntegrationRuntimeKeyAuthorizationResponse(dict):
     """
     The key authorization type integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationType":
-            suggest = "authorization_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinkedIntegrationRuntimeKeyAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinkedIntegrationRuntimeKeyAuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinkedIntegrationRuntimeKeyAuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorization_type: str,
                  key: 'outputs.SecureStringResponse'):
@@ -1418,25 +1083,6 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse(dict):
     """
     The role based access control (RBAC) authorization type integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationType":
-            suggest = "authorization_type"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinkedIntegrationRuntimeRbacAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinkedIntegrationRuntimeRbacAuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinkedIntegrationRuntimeRbacAuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorization_type: str,
                  resource_id: str):
@@ -1538,25 +1184,6 @@ class ManagedIdentityResponse(dict):
     """
     The workspace managed identity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -1779,25 +1406,6 @@ class ManagedIntegrationRuntimeResponse(dict):
     """
     Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeProperties":
-            suggest = "compute_properties"
-        elif key == "ssisProperties":
-            suggest = "ssis_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedIntegrationRuntimeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedIntegrationRuntimeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedIntegrationRuntimeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  state: str,
                  type: str,
@@ -1959,27 +1567,6 @@ class ManagedVirtualNetworkSettingsResponse(dict):
     """
     Managed Virtual Network Settings
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedAadTenantIdsForLinking":
-            suggest = "allowed_aad_tenant_ids_for_linking"
-        elif key == "linkedAccessCheckOnTargetResource":
-            suggest = "linked_access_check_on_target_resource"
-        elif key == "preventDataExfiltration":
-            suggest = "prevent_data_exfiltration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedVirtualNetworkSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedVirtualNetworkSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedVirtualNetworkSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_aad_tenant_ids_for_linking: Optional[Sequence[str]] = None,
                  linked_access_check_on_target_resource: Optional[bool] = None,
@@ -2027,27 +1614,6 @@ class PrivateEndpointConnectionForPrivateLinkHubBasicResponse(dict):
     """
     Private Endpoint Connection For Private Link Hub - Basic
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionForPrivateLinkHubBasicResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionForPrivateLinkHubBasicResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionForPrivateLinkHubBasicResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  provisioning_state: str,
@@ -2105,27 +1671,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     A private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -2227,23 +1772,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     Connection state details of the private endpoint
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: Optional[str] = None,
@@ -2290,23 +1818,6 @@ class PurviewConfigurationResponse(dict):
     """
     Purview Configuration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "purviewResourceId":
-            suggest = "purview_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PurviewConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PurviewConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PurviewConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  purview_resource_id: Optional[str] = None):
         """
@@ -2574,23 +2085,6 @@ class SelfHostedIntegrationRuntimeResponse(dict):
     """
     Self-hosted integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedInfo":
-            suggest = "linked_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SelfHostedIntegrationRuntimeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SelfHostedIntegrationRuntimeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SelfHostedIntegrationRuntimeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  description: Optional[str] = None,
@@ -3612,33 +3106,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -3722,23 +3189,6 @@ class VirtualNetworkProfileResponse(dict):
     """
     Virtual Network Profile
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeSubnetId":
-            suggest = "compute_subnet_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_subnet_id: Optional[str] = None):
         """
@@ -3762,25 +3212,6 @@ class VulnerabilityAssessmentRecurringScansPropertiesResponse(dict):
     """
     Properties of a Vulnerability Assessment recurring scans.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailSubscriptionAdmins":
-            suggest = "email_subscription_admins"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VulnerabilityAssessmentRecurringScansPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VulnerabilityAssessmentRecurringScansPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VulnerabilityAssessmentRecurringScansPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_subscription_admins: Optional[bool] = None,
                  emails: Optional[Sequence[str]] = None,
@@ -3830,23 +3261,6 @@ class WorkspaceKeyDetailsResponse(dict):
     """
     Details of the customer managed key associated with the workspace
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultUrl":
-            suggest = "key_vault_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkspaceKeyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkspaceKeyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkspaceKeyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault_url: Optional[str] = None,
                  name: Optional[str] = None):
@@ -3882,37 +3296,6 @@ class WorkspaceRepositoryConfigurationResponse(dict):
     """
     Git integration settings
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "collaborationBranch":
-            suggest = "collaboration_branch"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "lastCommitId":
-            suggest = "last_commit_id"
-        elif key == "projectName":
-            suggest = "project_name"
-        elif key == "repositoryName":
-            suggest = "repository_name"
-        elif key == "rootFolder":
-            suggest = "root_folder"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkspaceRepositoryConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkspaceRepositoryConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkspaceRepositoryConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: Optional[str] = None,
                  collaboration_branch: Optional[str] = None,

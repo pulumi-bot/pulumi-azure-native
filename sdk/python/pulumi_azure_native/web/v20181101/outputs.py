@@ -81,27 +81,6 @@ class ApplicationLogsConfigResponse(dict):
     """
     Application logs configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureBlobStorage":
-            suggest = "azure_blob_storage"
-        elif key == "azureTableStorage":
-            suggest = "azure_table_storage"
-        elif key == "fileSystem":
-            suggest = "file_system"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationLogsConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationLogsConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationLogsConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_blob_storage: Optional['outputs.AzureBlobStorageApplicationLogsConfigResponse'] = None,
                  azure_table_storage: Optional['outputs.AzureTableStorageApplicationLogsConfigResponse'] = None,
@@ -149,27 +128,6 @@ class AutoHealActionsResponse(dict):
     """
     Actions which to take by the auto-heal module when a rule is triggered.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionType":
-            suggest = "action_type"
-        elif key == "customAction":
-            suggest = "custom_action"
-        elif key == "minProcessExecutionTime":
-            suggest = "min_process_execution_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoHealActionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoHealActionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoHealActionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_type: Optional[str] = None,
                  custom_action: Optional['outputs.AutoHealCustomActionResponse'] = None,
@@ -291,27 +249,6 @@ class AutoHealTriggersResponse(dict):
     """
     Triggers for auto-heal.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateBytesInKB":
-            suggest = "private_bytes_in_kb"
-        elif key == "slowRequests":
-            suggest = "slow_requests"
-        elif key == "statusCodes":
-            suggest = "status_codes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoHealTriggersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoHealTriggersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoHealTriggersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_bytes_in_kb: Optional[int] = None,
                  requests: Optional['outputs.RequestsBasedTriggerResponse'] = None,
@@ -371,25 +308,6 @@ class AzureBlobStorageApplicationLogsConfigResponse(dict):
     """
     Application logs azure blob storage configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionInDays":
-            suggest = "retention_in_days"
-        elif key == "sasUrl":
-            suggest = "sas_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobStorageApplicationLogsConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobStorageApplicationLogsConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobStorageApplicationLogsConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  level: Optional[str] = None,
                  retention_in_days: Optional[int] = None,
@@ -441,25 +359,6 @@ class AzureBlobStorageHttpLogsConfigResponse(dict):
     """
     Http logs to azure blob storage configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionInDays":
-            suggest = "retention_in_days"
-        elif key == "sasUrl":
-            suggest = "sas_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobStorageHttpLogsConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobStorageHttpLogsConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobStorageHttpLogsConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  retention_in_days: Optional[int] = None,
@@ -511,29 +410,6 @@ class AzureStorageInfoValueResponse(dict):
     """
     Azure Files or Blob Storage access information value for dictionary storage.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKey":
-            suggest = "access_key"
-        elif key == "accountName":
-            suggest = "account_name"
-        elif key == "mountPath":
-            suggest = "mount_path"
-        elif key == "shareName":
-            suggest = "share_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureStorageInfoValueResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureStorageInfoValueResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureStorageInfoValueResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  state: str,
                  access_key: Optional[str] = None,
@@ -616,23 +492,6 @@ class AzureTableStorageApplicationLogsConfigResponse(dict):
     """
     Application logs to Azure table storage configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sasUrl":
-            suggest = "sas_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureTableStorageApplicationLogsConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureTableStorageApplicationLogsConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureTableStorageApplicationLogsConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  sas_url: str,
                  level: Optional[str] = None):
@@ -667,33 +526,6 @@ class BackupScheduleResponse(dict):
     """
     Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "frequencyInterval":
-            suggest = "frequency_interval"
-        elif key == "frequencyUnit":
-            suggest = "frequency_unit"
-        elif key == "keepAtLeastOneBackup":
-            suggest = "keep_at_least_one_backup"
-        elif key == "lastExecutionTime":
-            suggest = "last_execution_time"
-        elif key == "retentionPeriodInDays":
-            suggest = "retention_period_in_days"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackupScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackupScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackupScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  frequency_interval: int,
                  frequency_unit: str,
@@ -780,23 +612,6 @@ class ConnStringInfoResponse(dict):
     """
     Database connection string information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnStringInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnStringInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnStringInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Optional[str] = None,
                  name: Optional[str] = None,
@@ -877,25 +692,6 @@ class CorsSettingsResponse(dict):
     """
     Cross-Origin Resource Sharing (CORS) settings for the app.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedOrigins":
-            suggest = "allowed_origins"
-        elif key == "supportCredentials":
-            suggest = "support_credentials"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CorsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CorsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CorsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_origins: Optional[Sequence[str]] = None,
                  support_credentials: Optional[bool] = None):
@@ -937,27 +733,6 @@ class DatabaseBackupSettingResponse(dict):
     """
     Database backup settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseType":
-            suggest = "database_type"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectionStringName":
-            suggest = "connection_string_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseBackupSettingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseBackupSettingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseBackupSettingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_type: str,
                  connection_string: Optional[str] = None,
@@ -1037,23 +812,6 @@ class ExperimentsResponse(dict):
     """
     Routing rules in production experiments.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "rampUpRules":
-            suggest = "ramp_up_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExperimentsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExperimentsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExperimentsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ramp_up_rules: Optional[Sequence['outputs.RampUpRuleResponse']] = None):
         """
@@ -1102,25 +860,6 @@ class FileSystemHttpLogsConfigResponse(dict):
     """
     Http logs to file system configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionInDays":
-            suggest = "retention_in_days"
-        elif key == "retentionInMb":
-            suggest = "retention_in_mb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileSystemHttpLogsConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileSystemHttpLogsConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileSystemHttpLogsConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  retention_in_days: Optional[int] = None,
@@ -1176,23 +915,6 @@ class GeoDistributionResponse(dict):
     """
     A global distribution definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "numberOfWorkers":
-            suggest = "number_of_workers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GeoDistributionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GeoDistributionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GeoDistributionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  location: Optional[str] = None,
                  number_of_workers: Optional[int] = None):
@@ -1229,23 +951,6 @@ class HandlerMappingResponse(dict):
     The IIS handler mappings used to define which handler processes HTTP requests with certain extension. 
     For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "scriptProcessor":
-            suggest = "script_processor"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HandlerMappingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HandlerMappingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HandlerMappingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  arguments: Optional[str] = None,
                  extension: Optional[str] = None,
@@ -1294,29 +999,6 @@ class HostNameSslStateResponse(dict):
     """
     SSL-enabled hostname.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hostType":
-            suggest = "host_type"
-        elif key == "sslState":
-            suggest = "ssl_state"
-        elif key == "toUpdate":
-            suggest = "to_update"
-        elif key == "virtualIP":
-            suggest = "virtual_ip"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HostNameSslStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HostNameSslStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HostNameSslStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host_type: Optional[str] = None,
                  name: Optional[str] = None,
@@ -1445,25 +1127,6 @@ class HttpLogsConfigResponse(dict):
     """
     Http logs configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureBlobStorage":
-            suggest = "azure_blob_storage"
-        elif key == "fileSystem":
-            suggest = "file_system"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HttpLogsConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HttpLogsConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HttpLogsConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_blob_storage: Optional['outputs.AzureBlobStorageHttpLogsConfigResponse'] = None,
                  file_system: Optional['outputs.FileSystemHttpLogsConfigResponse'] = None):
@@ -1499,31 +1162,6 @@ class IpSecurityRestrictionResponse(dict):
     """
     IP security restriction on an app.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "subnetMask":
-            suggest = "subnet_mask"
-        elif key == "subnetTrafficTag":
-            suggest = "subnet_traffic_tag"
-        elif key == "vnetSubnetResourceId":
-            suggest = "vnet_subnet_resource_id"
-        elif key == "vnetTrafficTag":
-            suggest = "vnet_traffic_tag"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IpSecurityRestrictionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IpSecurityRestrictionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IpSecurityRestrictionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  description: Optional[str] = None,
@@ -1661,27 +1299,6 @@ class ManagedServiceIdentityResponse(dict):
     """
     Managed service identity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedServiceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -1736,25 +1353,6 @@ class ManagedServiceIdentityResponse(dict):
 
 @pulumi.output_type
 class ManagedServiceIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedServiceIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedServiceIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedServiceIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -1822,29 +1420,6 @@ class PushSettingsResponse(dict):
     """
     Push settings for the App.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isPushEnabled":
-            suggest = "is_push_enabled"
-        elif key == "dynamicTagsJson":
-            suggest = "dynamic_tags_json"
-        elif key == "tagWhitelistJson":
-            suggest = "tag_whitelist_json"
-        elif key == "tagsRequiringAuth":
-            suggest = "tags_requiring_auth"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PushSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PushSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PushSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  is_push_enabled: bool,
@@ -1954,35 +1529,6 @@ class RampUpRuleResponse(dict):
     """
     Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionHostName":
-            suggest = "action_host_name"
-        elif key == "changeDecisionCallbackUrl":
-            suggest = "change_decision_callback_url"
-        elif key == "changeIntervalInMinutes":
-            suggest = "change_interval_in_minutes"
-        elif key == "changeStep":
-            suggest = "change_step"
-        elif key == "maxReroutePercentage":
-            suggest = "max_reroute_percentage"
-        elif key == "minReroutePercentage":
-            suggest = "min_reroute_percentage"
-        elif key == "reroutePercentage":
-            suggest = "reroute_percentage"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RampUpRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RampUpRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RampUpRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_host_name: Optional[str] = None,
                  change_decision_callback_url: Optional[str] = None,
@@ -2096,23 +1642,6 @@ class RequestsBasedTriggerResponse(dict):
     """
     Trigger based on total requests.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timeInterval":
-            suggest = "time_interval"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RequestsBasedTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RequestsBasedTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RequestsBasedTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  time_interval: Optional[str] = None):
@@ -2148,119 +1677,6 @@ class SiteConfigResponse(dict):
     """
     Configuration of an App Service app.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "machineKey":
-            suggest = "machine_key"
-        elif key == "alwaysOn":
-            suggest = "always_on"
-        elif key == "apiDefinition":
-            suggest = "api_definition"
-        elif key == "appCommandLine":
-            suggest = "app_command_line"
-        elif key == "appSettings":
-            suggest = "app_settings"
-        elif key == "autoHealEnabled":
-            suggest = "auto_heal_enabled"
-        elif key == "autoHealRules":
-            suggest = "auto_heal_rules"
-        elif key == "autoSwapSlotName":
-            suggest = "auto_swap_slot_name"
-        elif key == "azureStorageAccounts":
-            suggest = "azure_storage_accounts"
-        elif key == "connectionStrings":
-            suggest = "connection_strings"
-        elif key == "defaultDocuments":
-            suggest = "default_documents"
-        elif key == "detailedErrorLoggingEnabled":
-            suggest = "detailed_error_logging_enabled"
-        elif key == "documentRoot":
-            suggest = "document_root"
-        elif key == "ftpsState":
-            suggest = "ftps_state"
-        elif key == "handlerMappings":
-            suggest = "handler_mappings"
-        elif key == "http20Enabled":
-            suggest = "http20_enabled"
-        elif key == "httpLoggingEnabled":
-            suggest = "http_logging_enabled"
-        elif key == "ipSecurityRestrictions":
-            suggest = "ip_security_restrictions"
-        elif key == "javaContainer":
-            suggest = "java_container"
-        elif key == "javaContainerVersion":
-            suggest = "java_container_version"
-        elif key == "javaVersion":
-            suggest = "java_version"
-        elif key == "linuxFxVersion":
-            suggest = "linux_fx_version"
-        elif key == "loadBalancing":
-            suggest = "load_balancing"
-        elif key == "localMySqlEnabled":
-            suggest = "local_my_sql_enabled"
-        elif key == "logsDirectorySizeLimit":
-            suggest = "logs_directory_size_limit"
-        elif key == "managedPipelineMode":
-            suggest = "managed_pipeline_mode"
-        elif key == "managedServiceIdentityId":
-            suggest = "managed_service_identity_id"
-        elif key == "minTlsVersion":
-            suggest = "min_tls_version"
-        elif key == "netFrameworkVersion":
-            suggest = "net_framework_version"
-        elif key == "nodeVersion":
-            suggest = "node_version"
-        elif key == "numberOfWorkers":
-            suggest = "number_of_workers"
-        elif key == "phpVersion":
-            suggest = "php_version"
-        elif key == "publishingUsername":
-            suggest = "publishing_username"
-        elif key == "pythonVersion":
-            suggest = "python_version"
-        elif key == "remoteDebuggingEnabled":
-            suggest = "remote_debugging_enabled"
-        elif key == "remoteDebuggingVersion":
-            suggest = "remote_debugging_version"
-        elif key == "requestTracingEnabled":
-            suggest = "request_tracing_enabled"
-        elif key == "requestTracingExpirationTime":
-            suggest = "request_tracing_expiration_time"
-        elif key == "reservedInstanceCount":
-            suggest = "reserved_instance_count"
-        elif key == "scmIpSecurityRestrictions":
-            suggest = "scm_ip_security_restrictions"
-        elif key == "scmIpSecurityRestrictionsUseMain":
-            suggest = "scm_ip_security_restrictions_use_main"
-        elif key == "scmType":
-            suggest = "scm_type"
-        elif key == "tracingOptions":
-            suggest = "tracing_options"
-        elif key == "use32BitWorkerProcess":
-            suggest = "use32_bit_worker_process"
-        elif key == "virtualApplications":
-            suggest = "virtual_applications"
-        elif key == "vnetName":
-            suggest = "vnet_name"
-        elif key == "webSocketsEnabled":
-            suggest = "web_sockets_enabled"
-        elif key == "windowsFxVersion":
-            suggest = "windows_fx_version"
-        elif key == "xManagedServiceIdentityId":
-            suggest = "x_managed_service_identity_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SiteConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SiteConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SiteConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  machine_key: 'outputs.SiteMachineKeyResponse',
                  always_on: Optional[bool] = None,
@@ -2915,27 +2331,6 @@ class SiteLimitsResponse(dict):
     """
     Metric limits set on an app.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxDiskSizeInMb":
-            suggest = "max_disk_size_in_mb"
-        elif key == "maxMemoryInMb":
-            suggest = "max_memory_in_mb"
-        elif key == "maxPercentageCpu":
-            suggest = "max_percentage_cpu"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SiteLimitsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SiteLimitsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SiteLimitsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_disk_size_in_mb: Optional[float] = None,
                  max_memory_in_mb: Optional[float] = None,
@@ -2983,25 +2378,6 @@ class SiteMachineKeyResponse(dict):
     """
     MachineKey of an app.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "decryptionKey":
-            suggest = "decryption_key"
-        elif key == "validationKey":
-            suggest = "validation_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SiteMachineKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SiteMachineKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SiteMachineKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  decryption: Optional[str] = None,
                  decryption_key: Optional[str] = None,
@@ -3061,27 +2437,6 @@ class SlotSwapStatusResponse(dict):
     """
     The status of the last successful slot swap operation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationSlotName":
-            suggest = "destination_slot_name"
-        elif key == "sourceSlotName":
-            suggest = "source_slot_name"
-        elif key == "timestampUtc":
-            suggest = "timestamp_utc"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SlotSwapStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SlotSwapStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SlotSwapStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  destination_slot_name: str,
                  source_slot_name: str,
@@ -3126,25 +2481,6 @@ class SlowRequestsBasedTriggerResponse(dict):
     """
     Trigger based on request execution time.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timeInterval":
-            suggest = "time_interval"
-        elif key == "timeTaken":
-            suggest = "time_taken"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SlowRequestsBasedTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SlowRequestsBasedTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SlowRequestsBasedTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  time_interval: Optional[str] = None,
@@ -3192,27 +2528,6 @@ class StatusCodesBasedTriggerResponse(dict):
     """
     Trigger based on status code.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subStatus":
-            suggest = "sub_status"
-        elif key == "timeInterval":
-            suggest = "time_interval"
-        elif key == "win32Status":
-            suggest = "win32_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StatusCodesBasedTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StatusCodesBasedTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StatusCodesBasedTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  status: Optional[int] = None,
@@ -3284,29 +2599,6 @@ class VirtualApplicationResponse(dict):
     """
     Virtual application in an app.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "physicalPath":
-            suggest = "physical_path"
-        elif key == "preloadEnabled":
-            suggest = "preload_enabled"
-        elif key == "virtualDirectories":
-            suggest = "virtual_directories"
-        elif key == "virtualPath":
-            suggest = "virtual_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualApplicationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualApplicationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualApplicationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  physical_path: Optional[str] = None,
                  preload_enabled: Optional[bool] = None,
@@ -3366,25 +2658,6 @@ class VirtualDirectoryResponse(dict):
     """
     Directory for virtual application.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "physicalPath":
-            suggest = "physical_path"
-        elif key == "virtualPath":
-            suggest = "virtual_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualDirectoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualDirectoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualDirectoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  physical_path: Optional[str] = None,
                  virtual_path: Optional[str] = None):
@@ -3420,27 +2693,6 @@ class VnetRouteResponse(dict):
     """
     Virtual Network route contract used to pass routing information for a Virtual Network.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endAddress":
-            suggest = "end_address"
-        elif key == "routeType":
-            suggest = "route_type"
-        elif key == "startAddress":
-            suggest = "start_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VnetRouteResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VnetRouteResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VnetRouteResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,

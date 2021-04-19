@@ -44,23 +44,6 @@ class NetworkInterfaceResponse(dict):
     """
     The network interface definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIpAddress":
-            suggest = "private_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkInterfaceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkInterfaceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  private_ip_address: Optional[str] = None):
@@ -92,23 +75,6 @@ class NetworkInterfaceResponse(dict):
 
 @pulumi.output_type
 class NetworkProfileResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkInterfaces":
-            suggest = "network_interfaces"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  network_interfaces: Optional[Sequence['outputs.NetworkInterfaceResponse']] = None,
                  subnet: Optional['outputs.ApiEntityReferenceResponse'] = None):

@@ -115,27 +115,6 @@ class FirewallRuleResponse(dict):
     """
     Ip range for firewall rules
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endIpAddress":
-            suggest = "end_ip_address"
-        elif key == "ruleName":
-            suggest = "rule_name"
-        elif key == "startIpAddress":
-            suggest = "start_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FirewallRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FirewallRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FirewallRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_ip_address: Optional[str] = None,
                  rule_name: Optional[str] = None,

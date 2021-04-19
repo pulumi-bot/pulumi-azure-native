@@ -41,23 +41,6 @@ class PrivateEndpointPropertyResponse(dict):
 
 @pulumi.output_type
 class PrivateLinkServiceConnectionStatePropertyResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -101,27 +84,6 @@ class ServerPrivateEndpointConnectionPropertiesResponse(dict):
     """
     Properties of a private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerPrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerPrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerPrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.PrivateEndpointPropertyResponse'] = None,
@@ -198,23 +160,6 @@ class ServerPrivateEndpointConnectionResponse(dict):
 
 @pulumi.output_type
 class ServerPrivateLinkServiceConnectionStatePropertyResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerPrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerPrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerPrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -328,29 +273,6 @@ class StorageProfileResponse(dict):
     """
     Storage Profile properties of a server
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupRetentionDays":
-            suggest = "backup_retention_days"
-        elif key == "geoRedundantBackup":
-            suggest = "geo_redundant_backup"
-        elif key == "storageAutogrow":
-            suggest = "storage_autogrow"
-        elif key == "storageMB":
-            suggest = "storage_mb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_retention_days: Optional[int] = None,
                  geo_redundant_backup: Optional[str] = None,

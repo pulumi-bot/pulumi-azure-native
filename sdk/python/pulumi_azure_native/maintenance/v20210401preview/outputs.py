@@ -23,27 +23,6 @@ class InputLinuxParametersResponse(dict):
     """
     Input properties for patching a Linux machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "classificationsToInclude":
-            suggest = "classifications_to_include"
-        elif key == "packageNameMasksToExclude":
-            suggest = "package_name_masks_to_exclude"
-        elif key == "packageNameMasksToInclude":
-            suggest = "package_name_masks_to_include"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InputLinuxParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InputLinuxParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InputLinuxParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  classifications_to_include: Optional[Sequence[str]] = None,
                  package_name_masks_to_exclude: Optional[Sequence[str]] = None,
@@ -91,31 +70,6 @@ class InputPatchConfigurationResponse(dict):
     """
     Input configuration for a patch run
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linuxParameters":
-            suggest = "linux_parameters"
-        elif key == "postTasks":
-            suggest = "post_tasks"
-        elif key == "preTasks":
-            suggest = "pre_tasks"
-        elif key == "rebootSetting":
-            suggest = "reboot_setting"
-        elif key == "windowsParameters":
-            suggest = "windows_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InputPatchConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InputPatchConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InputPatchConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linux_parameters: Optional['outputs.InputLinuxParametersResponse'] = None,
                  post_tasks: Optional[Sequence['outputs.TaskPropertiesResponse']] = None,
@@ -187,27 +141,6 @@ class InputWindowsParametersResponse(dict):
     """
     Input properties for patching a Windows machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "classificationsToInclude":
-            suggest = "classifications_to_include"
-        elif key == "kbNumbersToExclude":
-            suggest = "kb_numbers_to_exclude"
-        elif key == "kbNumbersToInclude":
-            suggest = "kb_numbers_to_include"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InputWindowsParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InputWindowsParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InputWindowsParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  classifications_to_include: Optional[Sequence[str]] = None,
                  kb_numbers_to_exclude: Optional[Sequence[str]] = None,
@@ -255,33 +188,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -365,23 +271,6 @@ class TaskPropertiesResponse(dict):
     """
     Task properties of the software update configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "taskScope":
-            suggest = "task_scope"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TaskPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TaskPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TaskPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  parameters: Optional[Mapping[str, str]] = None,
                  source: Optional[str] = None,

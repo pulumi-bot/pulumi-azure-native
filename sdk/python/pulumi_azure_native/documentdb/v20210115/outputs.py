@@ -71,23 +71,6 @@ __all__ = [
 
 @pulumi.output_type
 class ApiPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serverVersion":
-            suggest = "server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  server_version: Optional[str] = None):
         """
@@ -107,23 +90,6 @@ class ApiPropertiesResponse(dict):
 
 @pulumi.output_type
 class AutoscaleSettingsResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxThroughput":
-            suggest = "max_throughput"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscaleSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscaleSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_throughput: Optional[int] = None):
         """
@@ -166,23 +132,6 @@ class CapabilityResponse(dict):
 
 @pulumi.output_type
 class CassandraKeyspaceGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraKeyspaceGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraKeyspaceGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraKeyspaceGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -291,25 +240,6 @@ class CassandraSchemaResponse(dict):
     """
     Cosmos DB Cassandra table schema
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterKeys":
-            suggest = "cluster_keys"
-        elif key == "partitionKeys":
-            suggest = "partition_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraSchemaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraSchemaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraSchemaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_keys: Optional[Sequence['outputs.ClusterKeyResponse']] = None,
                  columns: Optional[Sequence['outputs.ColumnResponse']] = None,
@@ -354,23 +284,6 @@ class CassandraSchemaResponse(dict):
 
 @pulumi.output_type
 class CassandraTableGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraTableGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraTableGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraTableGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -402,25 +315,6 @@ class CassandraTableGetPropertiesResponseOptions(dict):
 
 @pulumi.output_type
 class CassandraTableGetPropertiesResponseResource(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "analyticalStorageTtl":
-            suggest = "analytical_storage_ttl"
-        elif key == "defaultTtl":
-            suggest = "default_ttl"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraTableGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraTableGetPropertiesResponseResource.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraTableGetPropertiesResponseResource.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -511,23 +405,6 @@ class ClusterKeyResponse(dict):
     """
     Cosmos DB Cassandra table cluster key
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "orderBy":
-            suggest = "order_by"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  order_by: Optional[str] = None):
@@ -629,25 +506,6 @@ class ConflictResolutionPolicyResponse(dict):
     """
     The conflict resolution policy for the container.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "conflictResolutionPath":
-            suggest = "conflict_resolution_path"
-        elif key == "conflictResolutionProcedure":
-            suggest = "conflict_resolution_procedure"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConflictResolutionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConflictResolutionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConflictResolutionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  conflict_resolution_path: Optional[str] = None,
                  conflict_resolution_procedure: Optional[str] = None,
@@ -697,27 +555,6 @@ class ConsistencyPolicyResponse(dict):
     """
     The consistency policy for the Cosmos DB database account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultConsistencyLevel":
-            suggest = "default_consistency_level"
-        elif key == "maxIntervalInSeconds":
-            suggest = "max_interval_in_seconds"
-        elif key == "maxStalenessPrefix":
-            suggest = "max_staleness_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConsistencyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConsistencyPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConsistencyPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_consistency_level: str,
                  max_interval_in_seconds: Optional[int] = None,
@@ -764,23 +601,6 @@ class ContainerPartitionKeyResponse(dict):
     """
     The configuration of the partition key to be used for partitioning data into multiple partitions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "systemKey":
-            suggest = "system_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerPartitionKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerPartitionKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerPartitionKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  system_key: bool,
                  kind: Optional[str] = None,
@@ -865,31 +685,6 @@ class CorsPolicyResponse(dict):
     """
     The CORS policy for the Cosmos DB database account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedOrigins":
-            suggest = "allowed_origins"
-        elif key == "allowedHeaders":
-            suggest = "allowed_headers"
-        elif key == "allowedMethods":
-            suggest = "allowed_methods"
-        elif key == "exposedHeaders":
-            suggest = "exposed_headers"
-        elif key == "maxAgeInSeconds":
-            suggest = "max_age_in_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CorsPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CorsPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CorsPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_origins: str,
                  allowed_headers: Optional[str] = None,
@@ -1012,25 +807,6 @@ class FailoverPolicyResponse(dict):
     """
     The failover policy for a given region of a database account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPriority":
-            suggest = "failover_priority"
-        elif key == "locationName":
-            suggest = "location_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FailoverPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FailoverPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FailoverPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  failover_priority: Optional[int] = None,
@@ -1074,23 +850,6 @@ class FailoverPolicyResponse(dict):
 
 @pulumi.output_type
 class GremlinDatabaseGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GremlinDatabaseGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GremlinDatabaseGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GremlinDatabaseGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -1173,23 +932,6 @@ class GremlinDatabaseGetPropertiesResponseResource(dict):
 
 @pulumi.output_type
 class GremlinGraphGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GremlinGraphGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GremlinGraphGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GremlinGraphGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -1221,31 +963,6 @@ class GremlinGraphGetPropertiesResponseOptions(dict):
 
 @pulumi.output_type
 class GremlinGraphGetPropertiesResponseResource(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "conflictResolutionPolicy":
-            suggest = "conflict_resolution_policy"
-        elif key == "defaultTtl":
-            suggest = "default_ttl"
-        elif key == "indexingPolicy":
-            suggest = "indexing_policy"
-        elif key == "partitionKey":
-            suggest = "partition_key"
-        elif key == "uniqueKeyPolicy":
-            suggest = "unique_key_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GremlinGraphGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GremlinGraphGetPropertiesResponseResource.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GremlinGraphGetPropertiesResponseResource.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -1395,23 +1112,6 @@ class IndexesResponse(dict):
     """
     The indexes for the path.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataType":
-            suggest = "data_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IndexesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IndexesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IndexesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_type: Optional[str] = None,
                  kind: Optional[str] = None,
@@ -1463,31 +1163,6 @@ class IndexingPolicyResponse(dict):
     """
     Cosmos DB indexing policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "compositeIndexes":
-            suggest = "composite_indexes"
-        elif key == "excludedPaths":
-            suggest = "excluded_paths"
-        elif key == "includedPaths":
-            suggest = "included_paths"
-        elif key == "indexingMode":
-            suggest = "indexing_mode"
-        elif key == "spatialIndexes":
-            suggest = "spatial_indexes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IndexingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IndexingPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IndexingPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  automatic: Optional[bool] = None,
                  composite_indexes: Optional[Sequence[Sequence['outputs.CompositePathResponse']]] = None,
@@ -1573,23 +1248,6 @@ class IpAddressOrRangeResponse(dict):
     """
     IpAddressOrRange object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipAddressOrRange":
-            suggest = "ip_address_or_range"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IpAddressOrRangeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IpAddressOrRangeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IpAddressOrRangeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_address_or_range: Optional[str] = None):
         """
@@ -1613,31 +1271,6 @@ class LocationResponse(dict):
     """
     A region in which the Azure Cosmos DB database account is deployed.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "documentEndpoint":
-            suggest = "document_endpoint"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "failoverPriority":
-            suggest = "failover_priority"
-        elif key == "isZoneRedundant":
-            suggest = "is_zone_redundant"
-        elif key == "locationName":
-            suggest = "location_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  document_endpoint: str,
                  id: str,
@@ -1718,27 +1351,6 @@ class ManagedServiceIdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedServiceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedServiceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -1793,25 +1405,6 @@ class ManagedServiceIdentityResponse(dict):
 
 @pulumi.output_type
 class ManagedServiceIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedServiceIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedServiceIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedServiceIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -1841,23 +1434,6 @@ class ManagedServiceIdentityResponseUserAssignedIdentities(dict):
 
 @pulumi.output_type
 class MongoDBCollectionGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDBCollectionGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDBCollectionGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDBCollectionGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -1889,25 +1465,6 @@ class MongoDBCollectionGetPropertiesResponseOptions(dict):
 
 @pulumi.output_type
 class MongoDBCollectionGetPropertiesResponseResource(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "analyticalStorageTtl":
-            suggest = "analytical_storage_ttl"
-        elif key == "shardKey":
-            suggest = "shard_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDBCollectionGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDBCollectionGetPropertiesResponseResource.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDBCollectionGetPropertiesResponseResource.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -1995,23 +1552,6 @@ class MongoDBCollectionGetPropertiesResponseResource(dict):
 
 @pulumi.output_type
 class MongoDBDatabaseGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDBDatabaseGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDBDatabaseGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDBDatabaseGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -2120,23 +1660,6 @@ class MongoIndexOptionsResponse(dict):
     """
     Cosmos DB MongoDB collection index options
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expireAfterSeconds":
-            suggest = "expire_after_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoIndexOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoIndexOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoIndexOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  expire_after_seconds: Optional[int] = None,
                  unique: Optional[bool] = None):
@@ -2207,23 +1730,6 @@ class PeriodicModeBackupPolicyResponse(dict):
     """
     The object representing periodic mode backup policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "periodicModeProperties":
-            suggest = "periodic_mode_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeriodicModeBackupPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeriodicModeBackupPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeriodicModeBackupPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  periodic_mode_properties: Optional['outputs.PeriodicModePropertiesResponse'] = None):
@@ -2260,25 +1766,6 @@ class PeriodicModePropertiesResponse(dict):
     """
     Configuration values for periodic mode backup
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupIntervalInMinutes":
-            suggest = "backup_interval_in_minutes"
-        elif key == "backupRetentionIntervalInHours":
-            suggest = "backup_retention_interval_in_hours"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeriodicModePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeriodicModePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeriodicModePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_interval_in_minutes: Optional[int] = None,
                  backup_retention_interval_in_hours: Optional[int] = None):
@@ -2314,29 +1801,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     A private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupId":
-            suggest = "group_id"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -2452,23 +1916,6 @@ class PrivateLinkServiceConnectionStatePropertyResponse(dict):
     """
     Connection State of the Private Endpoint Connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: Optional[str] = None,
@@ -2543,23 +1990,6 @@ class SpatialSpecResponse(dict):
 
 @pulumi.output_type
 class SqlContainerGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlContainerGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlContainerGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlContainerGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -2591,33 +2021,6 @@ class SqlContainerGetPropertiesResponseOptions(dict):
 
 @pulumi.output_type
 class SqlContainerGetPropertiesResponseResource(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "analyticalStorageTtl":
-            suggest = "analytical_storage_ttl"
-        elif key == "conflictResolutionPolicy":
-            suggest = "conflict_resolution_policy"
-        elif key == "defaultTtl":
-            suggest = "default_ttl"
-        elif key == "indexingPolicy":
-            suggest = "indexing_policy"
-        elif key == "partitionKey":
-            suggest = "partition_key"
-        elif key == "uniqueKeyPolicy":
-            suggest = "unique_key_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlContainerGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlContainerGetPropertiesResponseResource.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlContainerGetPropertiesResponseResource.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -2741,23 +2144,6 @@ class SqlContainerGetPropertiesResponseResource(dict):
 
 @pulumi.output_type
 class SqlDatabaseGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlDatabaseGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlDatabaseGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlDatabaseGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -2927,25 +2313,6 @@ class SqlStoredProcedureGetPropertiesResponseResource(dict):
 
 @pulumi.output_type
 class SqlTriggerGetPropertiesResponseResource(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "triggerOperation":
-            suggest = "trigger_operation"
-        elif key == "triggerType":
-            suggest = "trigger_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlTriggerGetPropertiesResponseResource. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlTriggerGetPropertiesResponseResource.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlTriggerGetPropertiesResponseResource.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  id: str,
@@ -3096,23 +2463,6 @@ class SqlUserDefinedFunctionGetPropertiesResponseResource(dict):
 
 @pulumi.output_type
 class TableGetPropertiesResponseOptions(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleSettings":
-            suggest = "autoscale_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TableGetPropertiesResponseOptions. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TableGetPropertiesResponseOptions.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TableGetPropertiesResponseOptions.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_settings: Optional['outputs.AutoscaleSettingsResponse'] = None,
                  throughput: Optional[int] = None):
@@ -3198,23 +2548,6 @@ class UniqueKeyPolicyResponse(dict):
     """
     The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "uniqueKeys":
-            suggest = "unique_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UniqueKeyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UniqueKeyPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UniqueKeyPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  unique_keys: Optional[Sequence['outputs.UniqueKeyResponse']] = None):
         """
@@ -3261,23 +2594,6 @@ class VirtualNetworkRuleResponse(dict):
     """
     Virtual Network ACL Rule object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ignoreMissingVNetServiceEndpoint":
-            suggest = "ignore_missing_v_net_service_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  ignore_missing_v_net_service_endpoint: Optional[bool] = None):

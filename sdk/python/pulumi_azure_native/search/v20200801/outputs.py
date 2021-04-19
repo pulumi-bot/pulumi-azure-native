@@ -29,25 +29,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -115,23 +96,6 @@ class NetworkRuleSetResponse(dict):
     """
     Network specific rules that determine how the Azure Cognitive Search service may be reached.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipRules":
-            suggest = "ip_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ip_rules: Optional[Sequence['outputs.IpRuleResponse']] = None):
         """
@@ -155,25 +119,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_endpoint: Optional['outputs.PrivateEndpointConnectionPropertiesResponsePrivateEndpoint'] = None,
                  private_link_service_connection_state: Optional['outputs.PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState'] = None):
@@ -232,23 +177,6 @@ class PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionSta
     """
     Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -387,31 +315,6 @@ class SharedPrivateLinkResourcePropertiesResponse(dict):
     """
     Describes the properties of an existing Shared Private Link Resource managed by the Azure Cognitive Search service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupId":
-            suggest = "group_id"
-        elif key == "privateLinkResourceId":
-            suggest = "private_link_resource_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "requestMessage":
-            suggest = "request_message"
-        elif key == "resourceRegion":
-            suggest = "resource_region"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharedPrivateLinkResourcePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharedPrivateLinkResourcePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharedPrivateLinkResourcePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_id: Optional[str] = None,
                  private_link_resource_id: Optional[str] = None,

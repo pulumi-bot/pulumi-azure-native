@@ -49,29 +49,6 @@ class AdditionalLocationResponse(dict):
     """
     Description of an additional API Management resource location.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "gatewayRegionalUrl":
-            suggest = "gateway_regional_url"
-        elif key == "privateIPAddresses":
-            suggest = "private_ip_addresses"
-        elif key == "publicIPAddresses":
-            suggest = "public_ip_addresses"
-        elif key == "virtualNetworkConfiguration":
-            suggest = "virtual_network_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdditionalLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdditionalLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdditionalLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  gateway_regional_url: str,
                  location: str,
@@ -150,25 +127,6 @@ class ApiManagementServiceIdentityResponse(dict):
     """
     Identity properties of the Api Management service resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiManagementServiceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiManagementServiceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiManagementServiceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -247,27 +205,6 @@ class ApiVersionSetContractDetailsResponse(dict):
     """
     An API Version Set contains the common configuration for a set of API Versions relating 
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "versionHeaderName":
-            suggest = "version_header_name"
-        elif key == "versionQueryName":
-            suggest = "version_query_name"
-        elif key == "versioningScheme":
-            suggest = "versioning_scheme"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiVersionSetContractDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiVersionSetContractDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiVersionSetContractDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  id: Optional[str] = None,
@@ -351,23 +288,6 @@ class AuthenticationSettingsContractResponse(dict):
     """
     API Authentication Settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "oAuth2":
-            suggest = "o_auth2"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AuthenticationSettingsContractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AuthenticationSettingsContractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AuthenticationSettingsContractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  o_auth2: Optional['outputs.OAuth2AuthenticationSettingsContractResponse'] = None,
                  openid: Optional['outputs.OpenIdAuthenticationSettingsContractResponse'] = None):
@@ -495,23 +415,6 @@ class BackendPropertiesResponse(dict):
     """
     Properties specific to the Backend Type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serviceFabricCluster":
-            suggest = "service_fabric_cluster"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackendPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackendPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackendPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  service_fabric_cluster: Optional['outputs.BackendServiceFabricClusterPropertiesResponse'] = None):
         """
@@ -581,31 +484,6 @@ class BackendServiceFabricClusterPropertiesResponse(dict):
     """
     Properties of the Service Fabric Type Backend.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCertificatethumbprint":
-            suggest = "client_certificatethumbprint"
-        elif key == "managementEndpoints":
-            suggest = "management_endpoints"
-        elif key == "maxPartitionResolutionRetries":
-            suggest = "max_partition_resolution_retries"
-        elif key == "serverCertificateThumbprints":
-            suggest = "server_certificate_thumbprints"
-        elif key == "serverX509Names":
-            suggest = "server_x509_names"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackendServiceFabricClusterPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackendServiceFabricClusterPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackendServiceFabricClusterPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_certificatethumbprint: str,
                  management_endpoints: Sequence[str],
@@ -675,25 +553,6 @@ class BackendTlsPropertiesResponse(dict):
     """
     Properties controlling TLS Certificate Validation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "validateCertificateChain":
-            suggest = "validate_certificate_chain"
-        elif key == "validateCertificateName":
-            suggest = "validate_certificate_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackendTlsPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackendTlsPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackendTlsPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  validate_certificate_chain: Optional[bool] = None,
                  validate_certificate_name: Optional[bool] = None):
@@ -756,27 +615,6 @@ class CertificateConfigurationResponse(dict):
     """
     Certificate configuration which consist of non-trusted intermediates and root certificates.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "storeName":
-            suggest = "store_name"
-        elif key == "certificatePassword":
-            suggest = "certificate_password"
-        elif key == "encodedCertificate":
-            suggest = "encoded_certificate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  store_name: str,
                  certificate: Optional['outputs.CertificateInformationResponse'] = None,
@@ -926,27 +764,6 @@ class GroupContractPropertiesResponse(dict):
     """
     Group contract Properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "builtIn":
-            suggest = "built_in"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "externalId":
-            suggest = "external_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GroupContractPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GroupContractPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GroupContractPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  built_in: bool,
                  display_name: str,
@@ -1016,33 +833,6 @@ class HostnameConfigurationResponse(dict):
     """
     Custom hostname configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hostName":
-            suggest = "host_name"
-        elif key == "certificatePassword":
-            suggest = "certificate_password"
-        elif key == "defaultSslBinding":
-            suggest = "default_ssl_binding"
-        elif key == "encodedCertificate":
-            suggest = "encoded_certificate"
-        elif key == "keyVaultId":
-            suggest = "key_vault_id"
-        elif key == "negotiateClientCertificate":
-            suggest = "negotiate_client_certificate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HostnameConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HostnameConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HostnameConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host_name: str,
                  type: str,
@@ -1187,23 +977,6 @@ class OAuth2AuthenticationSettingsContractResponse(dict):
     """
     API OAuth2 Authentication settings details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationServerId":
-            suggest = "authorization_server_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OAuth2AuthenticationSettingsContractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OAuth2AuthenticationSettingsContractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OAuth2AuthenticationSettingsContractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorization_server_id: Optional[str] = None,
                  scope: Optional[str] = None):
@@ -1239,25 +1012,6 @@ class OpenIdAuthenticationSettingsContractResponse(dict):
     """
     API OAuth2 Authentication settings details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bearerTokenSendingMethods":
-            suggest = "bearer_token_sending_methods"
-        elif key == "openidProviderId":
-            suggest = "openid_provider_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OpenIdAuthenticationSettingsContractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OpenIdAuthenticationSettingsContractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OpenIdAuthenticationSettingsContractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bearer_token_sending_methods: Optional[Sequence[str]] = None,
                  openid_provider_id: Optional[str] = None):
@@ -1293,23 +1047,6 @@ class ParameterContractResponse(dict):
     """
     Operation parameters details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultValue":
-            suggest = "default_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParameterContractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParameterContractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParameterContractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -1426,29 +1163,6 @@ class RepresentationContractResponse(dict):
     """
     Operation request/response representation details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contentType":
-            suggest = "content_type"
-        elif key == "formParameters":
-            suggest = "form_parameters"
-        elif key == "schemaId":
-            suggest = "schema_id"
-        elif key == "typeName":
-            suggest = "type_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RepresentationContractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RepresentationContractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RepresentationContractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  content_type: str,
                  form_parameters: Optional[Sequence['outputs.ParameterContractResponse']] = None,
@@ -1519,23 +1233,6 @@ class RequestContractResponse(dict):
     """
     Operation request details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "queryParameters":
-            suggest = "query_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RequestContractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RequestContractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RequestContractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  headers: Optional[Sequence['outputs.ParameterContractResponse']] = None,
@@ -1595,23 +1292,6 @@ class ResponseContractResponse(dict):
     """
     Operation response details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "statusCode":
-            suggest = "status_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResponseContractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResponseContractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResponseContractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  status_code: int,
                  description: Optional[str] = None,
@@ -1670,23 +1350,6 @@ class SamplingSettingsResponse(dict):
     """
     Sampling settings for Diagnostic.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "samplingType":
-            suggest = "sampling_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SamplingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SamplingSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SamplingSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  percentage: Optional[float] = None,
                  sampling_type: Optional[str] = None):
@@ -1825,23 +1488,6 @@ class VirtualNetworkConfigurationResponse(dict):
     """
     Configuration of a virtual network to which API Management service is deployed.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetResourceId":
-            suggest = "subnet_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  subnetname: str,
                  vnetid: str,
@@ -1887,23 +1533,6 @@ class X509CertificateNameResponse(dict):
     """
     Properties of server X509Names.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "issuerCertificateThumbprint":
-            suggest = "issuer_certificate_thumbprint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in X509CertificateNameResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        X509CertificateNameResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        X509CertificateNameResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  issuer_certificate_thumbprint: Optional[str] = None,
                  name: Optional[str] = None):

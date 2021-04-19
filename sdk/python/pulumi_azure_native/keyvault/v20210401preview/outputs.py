@@ -39,27 +39,6 @@ class AccessPolicyEntryResponse(dict):
     """
     An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectId":
-            suggest = "object_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "applicationId":
-            suggest = "application_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyEntryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AccessPolicyEntryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AccessPolicyEntryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_id: str,
                  permissions: 'outputs.PermissionsResponse',
@@ -160,27 +139,6 @@ class MHSMNetworkRuleSetResponse(dict):
     """
     A set of rules governing the network accessibility of a managed hsm pool.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultAction":
-            suggest = "default_action"
-        elif key == "ipRules":
-            suggest = "ip_rules"
-        elif key == "virtualNetworkRules":
-            suggest = "virtual_network_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MHSMNetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MHSMNetworkRuleSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MHSMNetworkRuleSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bypass: Optional[str] = None,
                  default_action: Optional[str] = None,
@@ -240,27 +198,6 @@ class MHSMPrivateEndpointConnectionItemResponse(dict):
     """
     Private endpoint connection item.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MHSMPrivateEndpointConnectionItemResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MHSMPrivateEndpointConnectionItemResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MHSMPrivateEndpointConnectionItemResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.MHSMPrivateEndpointResponse'] = None,
@@ -329,23 +266,6 @@ class MHSMPrivateLinkServiceConnectionStateResponse(dict):
     """
     An object that represents the approval state of the private link connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MHSMPrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MHSMPrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MHSMPrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -415,47 +335,6 @@ class ManagedHsmPropertiesResponse(dict):
     """
     Properties of the managed HSM Pool
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hsmUri":
-            suggest = "hsm_uri"
-        elif key == "privateEndpointConnections":
-            suggest = "private_endpoint_connections"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "scheduledPurgeDate":
-            suggest = "scheduled_purge_date"
-        elif key == "statusMessage":
-            suggest = "status_message"
-        elif key == "createMode":
-            suggest = "create_mode"
-        elif key == "enablePurgeProtection":
-            suggest = "enable_purge_protection"
-        elif key == "enableSoftDelete":
-            suggest = "enable_soft_delete"
-        elif key == "initialAdminObjectIds":
-            suggest = "initial_admin_object_ids"
-        elif key == "networkAcls":
-            suggest = "network_acls"
-        elif key == "publicNetworkAccess":
-            suggest = "public_network_access"
-        elif key == "softDeleteRetentionInDays":
-            suggest = "soft_delete_retention_in_days"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedHsmPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedHsmPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedHsmPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  hsm_uri: str,
                  private_endpoint_connections: Sequence['outputs.MHSMPrivateEndpointConnectionItemResponse'],
@@ -657,27 +536,6 @@ class NetworkRuleSetResponse(dict):
     """
     A set of rules governing the network accessibility of a vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultAction":
-            suggest = "default_action"
-        elif key == "ipRules":
-            suggest = "ip_rules"
-        elif key == "virtualNetworkRules":
-            suggest = "virtual_network_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bypass: Optional[str] = None,
                  default_action: Optional[str] = None,
@@ -796,27 +654,6 @@ class PrivateEndpointConnectionItemResponse(dict):
     """
     Private endpoint connection item.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionItemResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionItemResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionItemResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None,
@@ -885,23 +722,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     An object that represents the approval state of the private link connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -949,23 +769,6 @@ class SecretAttributesResponse(dict):
     """
     The secret management attributes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "notBefore":
-            suggest = "not_before"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SecretAttributesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SecretAttributesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SecretAttributesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created: float,
                  updated: float,
@@ -1035,27 +838,6 @@ class SecretPropertiesResponse(dict):
     """
     Properties of the secret
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "secretUri":
-            suggest = "secret_uri"
-        elif key == "secretUriWithVersion":
-            suggest = "secret_uri_with_version"
-        elif key == "contentType":
-            suggest = "content_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SecretPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SecretPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SecretPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  secret_uri: str,
                  secret_uri_with_version: str,
@@ -1158,33 +940,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the key vault resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -1268,49 +1023,6 @@ class VaultPropertiesResponse(dict):
     """
     Properties of the vault
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateEndpointConnections":
-            suggest = "private_endpoint_connections"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "accessPolicies":
-            suggest = "access_policies"
-        elif key == "createMode":
-            suggest = "create_mode"
-        elif key == "enablePurgeProtection":
-            suggest = "enable_purge_protection"
-        elif key == "enableRbacAuthorization":
-            suggest = "enable_rbac_authorization"
-        elif key == "enableSoftDelete":
-            suggest = "enable_soft_delete"
-        elif key == "enabledForDeployment":
-            suggest = "enabled_for_deployment"
-        elif key == "enabledForDiskEncryption":
-            suggest = "enabled_for_disk_encryption"
-        elif key == "enabledForTemplateDeployment":
-            suggest = "enabled_for_template_deployment"
-        elif key == "networkAcls":
-            suggest = "network_acls"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "softDeleteRetentionInDays":
-            suggest = "soft_delete_retention_in_days"
-        elif key == "vaultUri":
-            suggest = "vault_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_endpoint_connections: Sequence['outputs.PrivateEndpointConnectionItemResponse'],
                  sku: 'outputs.SkuResponse',

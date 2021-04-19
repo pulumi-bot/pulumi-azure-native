@@ -29,27 +29,6 @@ class AzureActiveDirectoryResponse(dict):
     """
     The settings to enable AAD authentication on the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientApplication":
-            suggest = "client_application"
-        elif key == "clusterApplication":
-            suggest = "cluster_application"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureActiveDirectoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureActiveDirectoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureActiveDirectoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_application: Optional[str] = None,
                  cluster_application: Optional[str] = None,
@@ -97,27 +76,6 @@ class ClientCertificateResponse(dict):
     """
     Client Certificate definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isAdmin":
-            suggest = "is_admin"
-        elif key == "commonName":
-            suggest = "common_name"
-        elif key == "issuerThumbprint":
-            suggest = "issuer_thumbprint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClientCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClientCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClientCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_admin: bool,
                  common_name: Optional[str] = None,
@@ -176,25 +134,6 @@ class EndpointRangeDescriptionResponse(dict):
     """
     Port range details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endPort":
-            suggest = "end_port"
-        elif key == "startPort":
-            suggest = "start_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EndpointRangeDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EndpointRangeDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EndpointRangeDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_port: int,
                  start_port: int):
@@ -228,29 +167,6 @@ class LoadBalancingRuleResponse(dict):
     """
     Describes a load balancing rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendPort":
-            suggest = "backend_port"
-        elif key == "frontendPort":
-            suggest = "frontend_port"
-        elif key == "probeProtocol":
-            suggest = "probe_protocol"
-        elif key == "probeRequestPath":
-            suggest = "probe_request_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LoadBalancingRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LoadBalancingRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LoadBalancingRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_port: int,
                  frontend_port: int,
@@ -429,33 +345,6 @@ class VMSSExtensionResponse(dict):
     """
     Specifies set of extensions that should be installed onto the virtual machines.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-        elif key == "autoUpgradeMinorVersion":
-            suggest = "auto_upgrade_minor_version"
-        elif key == "forceUpdateTag":
-            suggest = "force_update_tag"
-        elif key == "protectedSettings":
-            suggest = "protected_settings"
-        elif key == "provisionAfterExtensions":
-            suggest = "provision_after_extensions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMSSExtensionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMSSExtensionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMSSExtensionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  provisioning_state: str,
@@ -582,25 +471,6 @@ class VaultCertificateResponse(dict):
     """
     Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateStore":
-            suggest = "certificate_store"
-        elif key == "certificateUrl":
-            suggest = "certificate_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_store: str,
                  certificate_url: str):
@@ -634,25 +504,6 @@ class VaultSecretGroupResponse(dict):
     """
     Specifies set of certificates that should be installed onto the virtual machines.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceVault":
-            suggest = "source_vault"
-        elif key == "vaultCertificates":
-            suggest = "vault_certificates"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultSecretGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultSecretGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultSecretGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_vault: 'outputs.SubResourceResponse',
                  vault_certificates: Sequence['outputs.VaultCertificateResponse']):

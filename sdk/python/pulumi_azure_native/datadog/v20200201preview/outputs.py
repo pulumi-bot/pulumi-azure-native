@@ -262,25 +262,6 @@ class DatadogOrganizationPropertiesResponse(dict):
 
 @pulumi.output_type
 class IdentityPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -348,35 +329,6 @@ class MonitorPropertiesResponse(dict):
     """
     Properties specific to the monitor resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "liftrResourceCategory":
-            suggest = "liftr_resource_category"
-        elif key == "liftrResourcePreference":
-            suggest = "liftr_resource_preference"
-        elif key == "marketplaceSubscriptionStatus":
-            suggest = "marketplace_subscription_status"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "datadogOrganizationProperties":
-            suggest = "datadog_organization_properties"
-        elif key == "monitoringStatus":
-            suggest = "monitoring_status"
-        elif key == "userInfo":
-            suggest = "user_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MonitorPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MonitorPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MonitorPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  liftr_resource_category: str,
                  liftr_resource_preference: int,
@@ -549,25 +501,6 @@ class UserInfoResponse(dict):
     """
     User info
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-        elif key == "phoneNumber":
-            suggest = "phone_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_address: Optional[str] = None,
                  name: Optional[str] = None,

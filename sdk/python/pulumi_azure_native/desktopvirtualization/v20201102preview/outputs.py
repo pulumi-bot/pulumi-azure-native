@@ -20,33 +20,6 @@ class MsixPackageApplicationsResponse(dict):
     """
     Schema for MSIX Package Application properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appId":
-            suggest = "app_id"
-        elif key == "appUserModelID":
-            suggest = "app_user_model_id"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "iconImageName":
-            suggest = "icon_image_name"
-        elif key == "rawIcon":
-            suggest = "raw_icon"
-        elif key == "rawPng":
-            suggest = "raw_png"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MsixPackageApplicationsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MsixPackageApplicationsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MsixPackageApplicationsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  app_id: Optional[str] = None,
                  app_user_model_id: Optional[str] = None,
@@ -142,25 +115,6 @@ class MsixPackageDependenciesResponse(dict):
     """
     Schema for MSIX Package Dependencies properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependencyName":
-            suggest = "dependency_name"
-        elif key == "minVersion":
-            suggest = "min_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MsixPackageDependenciesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MsixPackageDependenciesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MsixPackageDependenciesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dependency_name: Optional[str] = None,
                  min_version: Optional[str] = None,
@@ -208,25 +162,6 @@ class RegistrationInfoResponse(dict):
     """
     Represents a RegistrationInfo definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expirationTime":
-            suggest = "expiration_time"
-        elif key == "registrationTokenOperation":
-            suggest = "registration_token_operation"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RegistrationInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RegistrationInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RegistrationInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  expiration_time: Optional[str] = None,
                  registration_token_operation: Optional[str] = None,

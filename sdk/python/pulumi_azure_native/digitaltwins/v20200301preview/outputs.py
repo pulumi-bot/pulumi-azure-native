@@ -43,33 +43,6 @@ class EventGridResponse(dict):
     """
     properties related to eventgrid.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKey1":
-            suggest = "access_key1"
-        elif key == "accessKey2":
-            suggest = "access_key2"
-        elif key == "createdTime":
-            suggest = "created_time"
-        elif key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "topicEndpoint":
-            suggest = "topic_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventGridResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventGridResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventGridResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_key1: str,
                  access_key2: str,
@@ -162,31 +135,6 @@ class EventHubResponse(dict):
     """
     properties related to eventhub.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionStringPrimaryKey":
-            suggest = "connection_string_primary_key"
-        elif key == "connectionStringSecondaryKey":
-            suggest = "connection_string_secondary_key"
-        elif key == "createdTime":
-            suggest = "created_time"
-        elif key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventHubResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventHubResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventHubResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string_primary_key: str,
                  connection_string_secondary_key: str,
@@ -267,31 +215,6 @@ class ServiceBusResponse(dict):
     """
     properties related to servicebus.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdTime":
-            suggest = "created_time"
-        elif key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "primaryConnectionString":
-            suggest = "primary_connection_string"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "secondaryConnectionString":
-            suggest = "secondary_connection_string"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceBusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceBusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceBusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_time: str,
                  endpoint_type: str,

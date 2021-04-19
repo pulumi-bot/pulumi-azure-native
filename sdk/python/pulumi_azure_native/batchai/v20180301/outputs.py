@@ -60,25 +60,6 @@ class AppInsightsReferenceResponse(dict):
     """
     Specifies Azure Application Insights information for performance counters reporting.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instrumentationKey":
-            suggest = "instrumentation_key"
-        elif key == "instrumentationKeySecretReference":
-            suggest = "instrumentation_key_secret_reference"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AppInsightsReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AppInsightsReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AppInsightsReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  component: 'outputs.ResourceIdResponse',
                  instrumentation_key: Optional[str] = None,
@@ -121,27 +102,6 @@ class AutoScaleSettingsResponse(dict):
     """
     The system automatically scales the cluster up and down (within minimumNodeCount and maximumNodeCount) based on the pending and running jobs on the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maximumNodeCount":
-            suggest = "maximum_node_count"
-        elif key == "minimumNodeCount":
-            suggest = "minimum_node_count"
-        elif key == "initialNodeCount":
-            suggest = "initial_node_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoScaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoScaleSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoScaleSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  maximum_node_count: int,
                  minimum_node_count: int,
@@ -177,29 +137,6 @@ class AzureBlobFileSystemReferenceResponse(dict):
     """
     Provides required information, for the service to be able to mount Azure Blob Storage container on the cluster nodes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "containerName":
-            suggest = "container_name"
-        elif key == "relativeMountPath":
-            suggest = "relative_mount_path"
-        elif key == "mountOptions":
-            suggest = "mount_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFileSystemReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFileSystemReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFileSystemReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: str,
                  container_name: str,
@@ -255,31 +192,6 @@ class AzureFileShareReferenceResponse(dict):
     """
     Details of the Azure File Share to mount on the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "azureFileUrl":
-            suggest = "azure_file_url"
-        elif key == "relativeMountPath":
-            suggest = "relative_mount_path"
-        elif key == "directoryMode":
-            suggest = "directory_mode"
-        elif key == "fileMode":
-            suggest = "file_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFileShareReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFileShareReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFileShareReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: str,
                  azure_file_url: str,
@@ -355,25 +267,6 @@ class AzureStorageCredentialsInfoResponse(dict):
     """
     Credentials to access Azure File Share.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountKey":
-            suggest = "account_key"
-        elif key == "accountKeySecretReference":
-            suggest = "account_key_secret_reference"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureStorageCredentialsInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureStorageCredentialsInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureStorageCredentialsInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_key: Optional[str] = None,
                  account_key_secret_reference: Optional['outputs.KeyVaultSecretReferenceResponse'] = None):
@@ -456,33 +349,6 @@ class CNTKsettingsResponse(dict):
     """
     Specifies the settings for CNTK (aka Microsoft Cognitive Toolkit) job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandLineArgs":
-            suggest = "command_line_args"
-        elif key == "configFilePath":
-            suggest = "config_file_path"
-        elif key == "languageType":
-            suggest = "language_type"
-        elif key == "processCount":
-            suggest = "process_count"
-        elif key == "pythonInterpreterPath":
-            suggest = "python_interpreter_path"
-        elif key == "pythonScriptFilePath":
-            suggest = "python_script_file_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CNTKsettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CNTKsettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CNTKsettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command_line_args: Optional[str] = None,
                  config_file_path: Optional[str] = None,
@@ -562,31 +428,6 @@ class CaffeSettingsResponse(dict):
     """
     Specifies the settings for Caffe job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandLineArgs":
-            suggest = "command_line_args"
-        elif key == "configFilePath":
-            suggest = "config_file_path"
-        elif key == "processCount":
-            suggest = "process_count"
-        elif key == "pythonInterpreterPath":
-            suggest = "python_interpreter_path"
-        elif key == "pythonScriptFilePath":
-            suggest = "python_script_file_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CaffeSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CaffeSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CaffeSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command_line_args: Optional[str] = None,
                  config_file_path: Optional[str] = None,
@@ -654,29 +495,6 @@ class ChainerSettingsResponse(dict):
     """
     Specifies the settings for Chainer job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pythonScriptFilePath":
-            suggest = "python_script_file_path"
-        elif key == "commandLineArgs":
-            suggest = "command_line_args"
-        elif key == "processCount":
-            suggest = "process_count"
-        elif key == "pythonInterpreterPath":
-            suggest = "python_interpreter_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ChainerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ChainerSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ChainerSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  python_script_file_path: str,
                  command_line_args: Optional[str] = None,
@@ -723,23 +541,6 @@ class ContainerSettingsResponse(dict):
     """
     Settings for the container to be downloaded.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imageSourceRegistry":
-            suggest = "image_source_registry"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  image_source_registry: 'outputs.ImageSourceRegistryResponse'):
         """
@@ -762,23 +563,6 @@ class CustomToolkitSettingsResponse(dict):
     """
     Specifies the settings for a custom tool kit job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandLine":
-            suggest = "command_line"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomToolkitSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomToolkitSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomToolkitSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command_line: Optional[str] = None):
         """
@@ -798,29 +582,6 @@ class DataDisksResponse(dict):
     """
     Settings for the data disk which would be created for the File Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskCount":
-            suggest = "disk_count"
-        elif key == "diskSizeInGB":
-            suggest = "disk_size_in_gb"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-        elif key == "cachingType":
-            suggest = "caching_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataDisksResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataDisksResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataDisksResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_count: int,
                  disk_size_in_gb: int,
@@ -888,23 +649,6 @@ class EnvironmentVariableWithSecretValueResponse(dict):
     """
     A collection of environment variables with secret values to set.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "valueSecretReference":
-            suggest = "value_secret_reference"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnvironmentVariableWithSecretValueResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnvironmentVariableWithSecretValueResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnvironmentVariableWithSecretValueResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None,
@@ -1008,29 +752,6 @@ class FileServerReferenceResponse(dict):
     """
     Provides required information, for the service to be able to mount Azure FileShare on the cluster nodes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileServer":
-            suggest = "file_server"
-        elif key == "relativeMountPath":
-            suggest = "relative_mount_path"
-        elif key == "mountOptions":
-            suggest = "mount_options"
-        elif key == "sourceDirectory":
-            suggest = "source_directory"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileServerReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileServerReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileServerReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_server: 'outputs.ResourceIdResponse',
                  relative_mount_path: str,
@@ -1084,23 +805,6 @@ class ImageReferenceResponse(dict):
     """
     The image reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "virtualMachineImageId":
-            suggest = "virtual_machine_image_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  offer: str,
                  publisher: str,
@@ -1153,23 +857,6 @@ class ImageSourceRegistryResponse(dict):
     """
     Details of the container image such as name, URL and credentials.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serverUrl":
-            suggest = "server_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageSourceRegistryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageSourceRegistryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageSourceRegistryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  image: str,
                  credentials: Optional['outputs.PrivateRegistryCredentialsResponse'] = None,
@@ -1237,23 +924,6 @@ class JobPreparationResponse(dict):
     """
     Specifies the settings for job preparation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandLine":
-            suggest = "command_line"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobPreparationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobPreparationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobPreparationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command_line: str):
         """
@@ -1276,23 +946,6 @@ class JobPropertiesResponseConstraints(dict):
     """
     Constraints associated with the Job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxWallClockTime":
-            suggest = "max_wall_clock_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobPropertiesResponseConstraints. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobPropertiesResponseConstraints.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobPropertiesResponseConstraints.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_wall_clock_time: Optional[str] = None):
         """
@@ -1318,27 +971,6 @@ class JobPropertiesResponseExecutionInfo(dict):
     """
     Contains information about the execution of a job in the Azure Batch service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "startTime":
-            suggest = "start_time"
-        elif key == "endTime":
-            suggest = "end_time"
-        elif key == "exitCode":
-            suggest = "exit_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobPropertiesResponseExecutionInfo. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobPropertiesResponseExecutionInfo.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobPropertiesResponseExecutionInfo.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  start_time: str,
                  end_time: Optional[str] = None,
@@ -1393,25 +1025,6 @@ class KeyVaultSecretReferenceResponse(dict):
     """
     Describes a reference to Key Vault Secret.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "secretUrl":
-            suggest = "secret_url"
-        elif key == "sourceVault":
-            suggest = "source_vault"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultSecretReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultSecretReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultSecretReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  secret_url: str,
                  source_vault: 'outputs.ResourceIdResponse'):
@@ -1441,25 +1054,6 @@ class ManualScaleSettingsResponse(dict):
     """
     Manual scale settings for the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetNodeCount":
-            suggest = "target_node_count"
-        elif key == "nodeDeallocationOption":
-            suggest = "node_deallocation_option"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManualScaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManualScaleSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManualScaleSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target_node_count: int,
                  node_deallocation_option: Optional[str] = None):
@@ -1498,29 +1092,6 @@ class MountSettingsResponse(dict):
     """
     Details of the File Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileServerInternalIP":
-            suggest = "file_server_internal_ip"
-        elif key == "fileServerPublicIP":
-            suggest = "file_server_public_ip"
-        elif key == "fileServerType":
-            suggest = "file_server_type"
-        elif key == "mountPoint":
-            suggest = "mount_point"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MountSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MountSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MountSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_server_internal_ip: Optional[str] = None,
                  file_server_public_ip: Optional[str] = None,
@@ -1564,29 +1135,6 @@ class MountVolumesResponse(dict):
     """
     Details of volumes to mount on the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureBlobFileSystems":
-            suggest = "azure_blob_file_systems"
-        elif key == "azureFileShares":
-            suggest = "azure_file_shares"
-        elif key == "fileServers":
-            suggest = "file_servers"
-        elif key == "unmanagedFileSystems":
-            suggest = "unmanaged_file_systems"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MountVolumesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MountVolumesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MountVolumesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_blob_file_systems: Optional[Sequence['outputs.AzureBlobFileSystemReferenceResponse']] = None,
                  azure_file_shares: Optional[Sequence['outputs.AzureFileShareReferenceResponse']] = None,
@@ -1665,27 +1213,6 @@ class NodeSetupResponse(dict):
     """
     Use this to prepare the VM. NOTE: The volumes specified in mountVolumes are mounted first and then the setupTask is run. Therefore the setup task can use local mountPaths in its execution.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mountVolumes":
-            suggest = "mount_volumes"
-        elif key == "performanceCountersSettings":
-            suggest = "performance_counters_settings"
-        elif key == "setupTask":
-            suggest = "setup_task"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NodeSetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NodeSetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NodeSetupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  mount_volumes: Optional['outputs.MountVolumesResponse'] = None,
                  performance_counters_settings: Optional['outputs.PerformanceCountersSettingsResponse'] = None,
@@ -1733,31 +1260,6 @@ class NodeStateCountsResponse(dict):
     """
     Counts of various compute node states on the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "idleNodeCount":
-            suggest = "idle_node_count"
-        elif key == "leavingNodeCount":
-            suggest = "leaving_node_count"
-        elif key == "preparingNodeCount":
-            suggest = "preparing_node_count"
-        elif key == "runningNodeCount":
-            suggest = "running_node_count"
-        elif key == "unusableNodeCount":
-            suggest = "unusable_node_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NodeStateCountsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NodeStateCountsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NodeStateCountsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  idle_node_count: int,
                  leaving_node_count: int,
@@ -1804,27 +1306,6 @@ class OutputDirectoryResponse(dict):
     """
     Output directory for the job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pathPrefix":
-            suggest = "path_prefix"
-        elif key == "createNew":
-            suggest = "create_new"
-        elif key == "pathSuffix":
-            suggest = "path_suffix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OutputDirectoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OutputDirectoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OutputDirectoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  path_prefix: str,
@@ -1898,23 +1379,6 @@ class PerformanceCountersSettingsResponse(dict):
     """
     Performance counters reporting settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "appInsightsReference":
-            suggest = "app_insights_reference"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PerformanceCountersSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PerformanceCountersSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PerformanceCountersSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  app_insights_reference: 'outputs.AppInsightsReferenceResponse'):
         """
@@ -1937,23 +1401,6 @@ class PrivateRegistryCredentialsResponse(dict):
     """
     Credentials to access a container image in a private repository.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "passwordSecretReference":
-            suggest = "password_secret_reference"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateRegistryCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateRegistryCredentialsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateRegistryCredentialsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  username: str,
                  password: Optional[str] = None,
@@ -1996,31 +1443,6 @@ class PyTorchSettingsResponse(dict):
     """
     Specifies the settings for pyTorch job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pythonScriptFilePath":
-            suggest = "python_script_file_path"
-        elif key == "commandLineArgs":
-            suggest = "command_line_args"
-        elif key == "communicationBackend":
-            suggest = "communication_backend"
-        elif key == "processCount":
-            suggest = "process_count"
-        elif key == "pythonInterpreterPath":
-            suggest = "python_interpreter_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PyTorchSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PyTorchSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PyTorchSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  python_script_file_path: str,
                  command_line_args: Optional[str] = None,
@@ -2141,23 +1563,6 @@ class ScaleSettingsResponse(dict):
     """
     At least one of manual or autoScale settings must be specified. Only one of manual or autoScale settings can be specified. If autoScale settings are specified, the system automatically scales the cluster up and down (within the supplied limits) based on the pending jobs on the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoScale":
-            suggest = "auto_scale"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScaleSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScaleSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  auto_scale: Optional['outputs.AutoScaleSettingsResponse'] = None,
                  manual: Optional['outputs.ManualScaleSettingsResponse'] = None):
@@ -2193,31 +1598,6 @@ class SetupTaskResponse(dict):
     """
     Specifies a setup task which can be used to customize the compute nodes of the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandLine":
-            suggest = "command_line"
-        elif key == "stdOutErrPathPrefix":
-            suggest = "std_out_err_path_prefix"
-        elif key == "stdOutErrPathSuffix":
-            suggest = "std_out_err_path_suffix"
-        elif key == "environmentVariables":
-            suggest = "environment_variables"
-        elif key == "runElevated":
-            suggest = "run_elevated"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SetupTaskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SetupTaskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SetupTaskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command_line: str,
                  std_out_err_path_prefix: str,
@@ -2292,25 +1672,6 @@ class SshConfigurationResponse(dict):
     """
     SSH configuration settings for the VM
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userAccountSettings":
-            suggest = "user_account_settings"
-        elif key == "publicIPsToAllow":
-            suggest = "public_ips_to_allow"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SshConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SshConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SshConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  user_account_settings: 'outputs.UserAccountSettingsResponse',
                  public_ips_to_allow: Optional[Sequence[str]] = None):
@@ -2345,35 +1706,6 @@ class TensorFlowSettingsResponse(dict):
     """
     Specifies the settings for TensorFlow job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pythonScriptFilePath":
-            suggest = "python_script_file_path"
-        elif key == "masterCommandLineArgs":
-            suggest = "master_command_line_args"
-        elif key == "parameterServerCommandLineArgs":
-            suggest = "parameter_server_command_line_args"
-        elif key == "parameterServerCount":
-            suggest = "parameter_server_count"
-        elif key == "pythonInterpreterPath":
-            suggest = "python_interpreter_path"
-        elif key == "workerCommandLineArgs":
-            suggest = "worker_command_line_args"
-        elif key == "workerCount":
-            suggest = "worker_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TensorFlowSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TensorFlowSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TensorFlowSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  python_script_file_path: str,
                  master_command_line_args: Optional[str] = None,
@@ -2456,25 +1788,6 @@ class UnmanagedFileSystemReferenceResponse(dict):
     """
     Details of the file system to mount on the compute cluster nodes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mountCommand":
-            suggest = "mount_command"
-        elif key == "relativeMountPath":
-            suggest = "relative_mount_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UnmanagedFileSystemReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UnmanagedFileSystemReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UnmanagedFileSystemReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  mount_command: str,
                  relative_mount_path: str):
@@ -2504,27 +1817,6 @@ class UserAccountSettingsResponse(dict):
     """
     Settings for user account that gets created on each on the nodes of a cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminUserName":
-            suggest = "admin_user_name"
-        elif key == "adminUserPassword":
-            suggest = "admin_user_password"
-        elif key == "adminUserSshPublicKey":
-            suggest = "admin_user_ssh_public_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserAccountSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserAccountSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserAccountSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_user_name: str,
                  admin_user_password: Optional[str] = None,
@@ -2559,23 +1851,6 @@ class VirtualMachineConfigurationResponse(dict):
     """
     Settings for OS image.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imageReference":
-            suggest = "image_reference"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  image_reference: Optional['outputs.ImageReferenceResponse'] = None):
         """

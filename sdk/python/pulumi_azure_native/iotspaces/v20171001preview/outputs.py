@@ -21,29 +21,6 @@ class IoTSpacesPropertiesResponse(dict):
     """
     The properties of an IoTSpaces instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "managementApiUrl":
-            suggest = "management_api_url"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "webPortalUrl":
-            suggest = "web_portal_url"
-        elif key == "storageContainer":
-            suggest = "storage_container"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IoTSpacesPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IoTSpacesPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IoTSpacesPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  management_api_url: str,
                  provisioning_state: str,
@@ -122,29 +99,6 @@ class StorageContainerPropertiesResponse(dict):
     """
     The properties of the Azure Storage Container for file archive.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "containerName":
-            suggest = "container_name"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageContainerPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageContainerPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageContainerPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Optional[str] = None,
                  container_name: Optional[str] = None,

@@ -27,27 +27,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     Properties of a private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.PrivateEndpointPropertyResponse'] = None,
@@ -110,23 +89,6 @@ class PrivateEndpointPropertyResponse(dict):
 
 @pulumi.output_type
 class PrivateLinkServiceConnectionStatePropertyResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -170,25 +132,6 @@ class ResourceIdentityResponse(dict):
     """
     Azure Active Directory identity configuration for a resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -337,23 +280,6 @@ class SyncGroupSchemaResponse(dict):
     """
     Properties of sync group schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "masterSyncMemberName":
-            suggest = "master_sync_member_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  master_sync_member_name: Optional[str] = None,
                  tables: Optional[Sequence['outputs.SyncGroupSchemaTableResponse']] = None):
@@ -389,27 +315,6 @@ class SyncGroupSchemaTableColumnResponse(dict):
     """
     Properties of column in sync group table.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSize":
-            suggest = "data_size"
-        elif key == "dataType":
-            suggest = "data_type"
-        elif key == "quotedName":
-            suggest = "quoted_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaTableColumnResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaTableColumnResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaTableColumnResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_size: Optional[str] = None,
                  data_type: Optional[str] = None,
@@ -457,23 +362,6 @@ class SyncGroupSchemaTableResponse(dict):
     """
     Properties of table in sync group schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "quotedName":
-            suggest = "quoted_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaTableResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaTableResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaTableResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  columns: Optional[Sequence['outputs.SyncGroupSchemaTableColumnResponse']] = None,
                  quoted_name: Optional[str] = None):

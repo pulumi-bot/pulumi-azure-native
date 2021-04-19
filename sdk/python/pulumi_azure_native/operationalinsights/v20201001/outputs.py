@@ -27,29 +27,6 @@ class AssociatedWorkspaceResponse(dict):
     """
     The list of Log Analytics workspaces associated with the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "associateDate":
-            suggest = "associate_date"
-        elif key == "resourceId":
-            suggest = "resource_id"
-        elif key == "workspaceId":
-            suggest = "workspace_id"
-        elif key == "workspaceName":
-            suggest = "workspace_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AssociatedWorkspaceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AssociatedWorkspaceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AssociatedWorkspaceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  associate_date: str,
                  resource_id: str,
@@ -105,27 +82,6 @@ class CapacityReservationPropertiesResponse(dict):
     """
     The Capacity Reservation properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastSkuUpdate":
-            suggest = "last_sku_update"
-        elif key == "maxCapacity":
-            suggest = "max_capacity"
-        elif key == "minCapacity":
-            suggest = "min_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CapacityReservationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CapacityReservationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CapacityReservationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_sku_update: str,
                  max_capacity: float,
@@ -205,27 +161,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -282,29 +217,6 @@ class KeyVaultPropertiesResponse(dict):
     """
     The key vault properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyName":
-            suggest = "key_name"
-        elif key == "keyRsaSize":
-            suggest = "key_rsa_size"
-        elif key == "keyVaultUri":
-            suggest = "key_vault_uri"
-        elif key == "keyVersion":
-            suggest = "key_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_name: Optional[str] = None,
                  key_rsa_size: Optional[int] = None,
@@ -364,25 +276,6 @@ class PrivateLinkScopedResourceResponse(dict):
     """
     The private link scope resource reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-        elif key == "scopeId":
-            suggest = "scope_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkScopedResourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkScopedResourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkScopedResourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_id: Optional[str] = None,
                  scope_id: Optional[str] = None):
@@ -418,25 +311,6 @@ class UserIdentityPropertiesResponse(dict):
     """
     User assigned identity properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserIdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserIdentityPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserIdentityPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -470,27 +344,6 @@ class WorkspaceCappingResponse(dict):
     """
     The daily volume cap for ingestion.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataIngestionStatus":
-            suggest = "data_ingestion_status"
-        elif key == "quotaNextResetTime":
-            suggest = "quota_next_reset_time"
-        elif key == "dailyQuotaGb":
-            suggest = "daily_quota_gb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkspaceCappingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkspaceCappingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkspaceCappingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_ingestion_status: str,
                  quota_next_reset_time: str,
@@ -536,27 +389,6 @@ class WorkspaceSkuResponse(dict):
     """
     The SKU (tier) of a workspace.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastSkuUpdate":
-            suggest = "last_sku_update"
-        elif key == "maxCapacityReservationLevel":
-            suggest = "max_capacity_reservation_level"
-        elif key == "capacityReservationLevel":
-            suggest = "capacity_reservation_level"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkspaceSkuResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkspaceSkuResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkspaceSkuResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_sku_update: str,
                  max_capacity_reservation_level: int,

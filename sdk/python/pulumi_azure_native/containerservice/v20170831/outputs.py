@@ -24,33 +24,6 @@ class ContainerServiceAgentPoolProfileResponse(dict):
     """
     Profile for the container service agent pool.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmSize":
-            suggest = "vm_size"
-        elif key == "dnsPrefix":
-            suggest = "dns_prefix"
-        elif key == "osDiskSizeGB":
-            suggest = "os_disk_size_gb"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "storageProfile":
-            suggest = "storage_profile"
-        elif key == "vnetSubnetID":
-            suggest = "vnet_subnet_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceAgentPoolProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceAgentPoolProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceAgentPoolProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fqdn: str,
                  name: str,
@@ -181,23 +154,6 @@ class ContainerServiceLinuxProfileResponse(dict):
     """
     Profile for Linux VMs in the container service cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminUsername":
-            suggest = "admin_username"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceLinuxProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceLinuxProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceLinuxProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_username: str,
                  ssh: 'outputs.ContainerServiceSshConfigurationResponse'):
@@ -231,25 +187,6 @@ class ContainerServiceServicePrincipalProfileResponse(dict):
     """
     Information about a service principal identity for the cluster to use for manipulating Azure APIs. Either secret or keyVaultSecretRef must be specified.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "keyVaultSecretRef":
-            suggest = "key_vault_secret_ref"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceServicePrincipalProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceServicePrincipalProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceServicePrincipalProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  key_vault_secret_ref: Optional['outputs.KeyVaultSecretRefResponse'] = None,
@@ -296,23 +233,6 @@ class ContainerServiceSshConfigurationResponse(dict):
     """
     SSH configuration for Linux-based VMs running on Azure.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicKeys":
-            suggest = "public_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceSshConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceSshConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceSshConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_keys: Sequence['outputs.ContainerServiceSshPublicKeyResponse']):
         """
@@ -335,23 +255,6 @@ class ContainerServiceSshPublicKeyResponse(dict):
     """
     Contains information about SSH certificate public key data.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyData":
-            suggest = "key_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceSshPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceSshPublicKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceSshPublicKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_data: str):
         """
@@ -374,25 +277,6 @@ class KeyVaultSecretRefResponse(dict):
     """
     Reference to a secret stored in Azure Key Vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "secretName":
-            suggest = "secret_name"
-        elif key == "vaultID":
-            suggest = "vault_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultSecretRefResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultSecretRefResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultSecretRefResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  secret_name: str,
                  vault_id: str,

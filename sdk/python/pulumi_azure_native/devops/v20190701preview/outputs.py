@@ -24,23 +24,6 @@ class AuthorizationResponse(dict):
     """
     Authorization info used to access a resource (like code repository).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationType":
-            suggest = "authorization_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorization_type: str,
                  parameters: Optional[Mapping[str, str]] = None):
@@ -109,25 +92,6 @@ class CodeRepositoryResponse(dict):
     """
     Repository containing the source code for a pipeline.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultBranch":
-            suggest = "default_branch"
-        elif key == "repositoryType":
-            suggest = "repository_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CodeRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CodeRepositoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CodeRepositoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_branch: str,
                  id: str,

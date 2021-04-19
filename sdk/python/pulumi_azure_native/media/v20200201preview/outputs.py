@@ -25,25 +25,6 @@ class MediaGraphAssetSinkResponse(dict):
     """
     Asset sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assetName":
-            suggest = "asset_name"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaGraphAssetSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaGraphAssetSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaGraphAssetSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  asset_name: str,
                  inputs: Sequence[str],
@@ -101,23 +82,6 @@ class MediaGraphClearEndpointResponse(dict):
     """
     An endpoint to connect to with no encryption in transit.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaGraphClearEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaGraphClearEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaGraphClearEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  url: str,
@@ -165,23 +129,6 @@ class MediaGraphPemCertificateListResponse(dict):
     """
     A list of PEM formatted certificates.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaGraphPemCertificateListResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaGraphPemCertificateListResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaGraphPemCertificateListResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificates: Sequence[str],
                  odata_type: str):
@@ -217,23 +164,6 @@ class MediaGraphRtspSourceResponse(dict):
     """
     RTSP source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaGraphRtspSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaGraphRtspSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaGraphRtspSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint: Any,
                  name: str,
@@ -291,27 +221,6 @@ class MediaGraphTlsEndpointResponse(dict):
     """
     An endpoint which must be connected over TLS/SSL.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "trustedCertificates":
-            suggest = "trusted_certificates"
-        elif key == "validationOptions":
-            suggest = "validation_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaGraphTlsEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaGraphTlsEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaGraphTlsEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  url: str,
@@ -383,25 +292,6 @@ class MediaGraphTlsValidationOptionsResponse(dict):
     """
     Options for controlling the authentication of TLS endpoints.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ignoreHostname":
-            suggest = "ignore_hostname"
-        elif key == "ignoreSignature":
-            suggest = "ignore_signature"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaGraphTlsValidationOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaGraphTlsValidationOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaGraphTlsValidationOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ignore_hostname: bool,
                  ignore_signature: bool):
@@ -435,23 +325,6 @@ class MediaGraphUsernamePasswordCredentialsResponse(dict):
     """
     Username/password credential pair.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MediaGraphUsernamePasswordCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MediaGraphUsernamePasswordCredentialsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MediaGraphUsernamePasswordCredentialsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  password: str,

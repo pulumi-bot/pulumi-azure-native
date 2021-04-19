@@ -24,23 +24,6 @@ class CacheHealthResponse(dict):
     """
     An indication of Cache health. Gives more information about health than just that related to provisioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "statusDescription":
-            suggest = "status_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheHealthResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheHealthResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheHealthResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  state: Optional[str] = None,
                  status_description: Optional[str] = None):
@@ -99,31 +82,6 @@ class CacheUpgradeStatusResponse(dict):
     """
     Properties describing the software upgrade state of the Cache.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "currentFirmwareVersion":
-            suggest = "current_firmware_version"
-        elif key == "firmwareUpdateDeadline":
-            suggest = "firmware_update_deadline"
-        elif key == "firmwareUpdateStatus":
-            suggest = "firmware_update_status"
-        elif key == "lastFirmwareUpdate":
-            suggest = "last_firmware_update"
-        elif key == "pendingFirmwareVersion":
-            suggest = "pending_firmware_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheUpgradeStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheUpgradeStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheUpgradeStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  current_firmware_version: str,
                  firmware_update_deadline: str,
@@ -213,27 +171,6 @@ class NamespaceJunctionResponse(dict):
     """
     A namespace junction.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "namespacePath":
-            suggest = "namespace_path"
-        elif key == "nfsExport":
-            suggest = "nfs_export"
-        elif key == "targetPath":
-            suggest = "target_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NamespaceJunctionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NamespaceJunctionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NamespaceJunctionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  namespace_path: Optional[str] = None,
                  nfs_export: Optional[str] = None,
@@ -281,23 +218,6 @@ class Nfs3TargetResponse(dict):
     """
     An NFSv3 mount point for use as a Storage Target.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "usageModel":
-            suggest = "usage_model"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Nfs3TargetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Nfs3TargetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Nfs3TargetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target: Optional[str] = None,
                  usage_model: Optional[str] = None):
@@ -333,23 +253,6 @@ class UnknownTargetResponse(dict):
     """
     Storage container for use as an Unknown Storage Target.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "unknownMap":
-            suggest = "unknown_map"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UnknownTargetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UnknownTargetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UnknownTargetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  unknown_map: Optional[Mapping[str, str]] = None):
         """

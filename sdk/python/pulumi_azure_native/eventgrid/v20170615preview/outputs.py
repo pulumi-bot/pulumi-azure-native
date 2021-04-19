@@ -19,27 +19,6 @@ class EventSubscriptionDestinationResponse(dict):
     """
     Information about the destination for an event subscription
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointBaseUrl":
-            suggest = "endpoint_base_url"
-        elif key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "endpointUrl":
-            suggest = "endpoint_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventSubscriptionDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventSubscriptionDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventSubscriptionDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_base_url: str,
                  endpoint_type: Optional[str] = None,
@@ -86,29 +65,6 @@ class EventSubscriptionFilterResponse(dict):
     """
     Filter for the Event Subscription
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "includedEventTypes":
-            suggest = "included_event_types"
-        elif key == "isSubjectCaseSensitive":
-            suggest = "is_subject_case_sensitive"
-        elif key == "subjectBeginsWith":
-            suggest = "subject_begins_with"
-        elif key == "subjectEndsWith":
-            suggest = "subject_ends_with"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventSubscriptionFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventSubscriptionFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventSubscriptionFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  included_event_types: Optional[Sequence[str]] = None,
                  is_subject_case_sensitive: Optional[bool] = None,

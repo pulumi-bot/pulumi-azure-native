@@ -23,23 +23,6 @@ class AuthorizationResponse(dict):
     """
     Authorization info used to access a resource (like code repository).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationType":
-            suggest = "authorization_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorization_type: str,
                  parameters: Optional[Mapping[str, str]] = None):
@@ -74,23 +57,6 @@ class BootstrapConfigurationResponse(dict):
     """
     Configuration used to bootstrap a Pipeline.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceRepository":
-            suggest = "source_repository"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BootstrapConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BootstrapConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BootstrapConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  template: 'outputs.PipelineTemplateResponse',
                  source_repository: Optional['outputs.CodeRepositoryResponse'] = None):
@@ -125,25 +91,6 @@ class CodeRepositoryResponse(dict):
     """
     Repository containing the source code for a pipeline.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultBranch":
-            suggest = "default_branch"
-        elif key == "repositoryType":
-            suggest = "repository_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CodeRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CodeRepositoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CodeRepositoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_branch: str,
                  id: str,
@@ -246,33 +193,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

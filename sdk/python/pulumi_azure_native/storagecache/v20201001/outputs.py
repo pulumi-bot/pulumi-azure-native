@@ -39,33 +39,6 @@ class CacheActiveDirectorySettingsResponse(dict):
     """
     Active Directory settings used to join a cache to a domain.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cacheNetBiosName":
-            suggest = "cache_net_bios_name"
-        elif key == "domainJoined":
-            suggest = "domain_joined"
-        elif key == "domainName":
-            suggest = "domain_name"
-        elif key == "domainNetBiosName":
-            suggest = "domain_net_bios_name"
-        elif key == "primaryDnsIpAddress":
-            suggest = "primary_dns_ip_address"
-        elif key == "secondaryDnsIpAddress":
-            suggest = "secondary_dns_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheActiveDirectorySettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheActiveDirectorySettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheActiveDirectorySettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cache_net_bios_name: str,
                  domain_joined: str,
@@ -189,25 +162,6 @@ class CacheDirectorySettingsResponse(dict):
     """
     Cache Directory Services settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "activeDirectory":
-            suggest = "active_directory"
-        elif key == "usernameDownload":
-            suggest = "username_download"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheDirectorySettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheDirectorySettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheDirectorySettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  active_directory: Optional['outputs.CacheActiveDirectorySettingsResponse'] = None,
                  username_download: Optional['outputs.CacheUsernameDownloadSettingsResponse'] = None):
@@ -243,23 +197,6 @@ class CacheEncryptionSettingsResponse(dict):
     """
     Cache encryption settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyEncryptionKey":
-            suggest = "key_encryption_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheEncryptionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheEncryptionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheEncryptionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_encryption_key: Optional['outputs.KeyVaultKeyReferenceResponse'] = None):
         """
@@ -283,23 +220,6 @@ class CacheHealthResponse(dict):
     """
     An indication of Cache health. Gives more information about health than just that related to provisioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "statusDescription":
-            suggest = "status_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheHealthResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheHealthResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheHealthResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  state: Optional[str] = None,
                  status_description: Optional[str] = None):
@@ -335,25 +255,6 @@ class CacheIdentityResponse(dict):
     """
     Cache identity properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -399,23 +300,6 @@ class CacheNetworkSettingsResponse(dict):
     """
     Cache network settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "utilityAddresses":
-            suggest = "utility_addresses"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheNetworkSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheNetworkSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheNetworkSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  utility_addresses: Sequence[str],
                  mtu: Optional[int] = None):
@@ -475,23 +359,6 @@ class CacheSecuritySettingsResponse(dict):
     """
     Cache security settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessPolicies":
-            suggest = "access_policies"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheSecuritySettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheSecuritySettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheSecuritySettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_policies: Optional[Sequence['outputs.NfsAccessPolicyResponse']] = None):
         """
@@ -515,31 +382,6 @@ class CacheUpgradeStatusResponse(dict):
     """
     Properties describing the software upgrade state of the Cache.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "currentFirmwareVersion":
-            suggest = "current_firmware_version"
-        elif key == "firmwareUpdateDeadline":
-            suggest = "firmware_update_deadline"
-        elif key == "firmwareUpdateStatus":
-            suggest = "firmware_update_status"
-        elif key == "lastFirmwareUpdate":
-            suggest = "last_firmware_update"
-        elif key == "pendingFirmwareVersion":
-            suggest = "pending_firmware_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheUpgradeStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheUpgradeStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheUpgradeStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  current_firmware_version: str,
                  firmware_update_deadline: str,
@@ -606,43 +448,6 @@ class CacheUsernameDownloadSettingsResponse(dict):
     """
     Settings for Extended Groups username and group download.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "usernameDownloaded":
-            suggest = "username_downloaded"
-        elif key == "autoDownloadCertificate":
-            suggest = "auto_download_certificate"
-        elif key == "caCertificateURI":
-            suggest = "ca_certificate_uri"
-        elif key == "encryptLdapConnection":
-            suggest = "encrypt_ldap_connection"
-        elif key == "extendedGroups":
-            suggest = "extended_groups"
-        elif key == "groupFileURI":
-            suggest = "group_file_uri"
-        elif key == "ldapBaseDN":
-            suggest = "ldap_base_dn"
-        elif key == "ldapServer":
-            suggest = "ldap_server"
-        elif key == "requireValidCertificate":
-            suggest = "require_valid_certificate"
-        elif key == "userFileURI":
-            suggest = "user_file_uri"
-        elif key == "usernameSource":
-            suggest = "username_source"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheUsernameDownloadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheUsernameDownloadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheUsernameDownloadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  username_downloaded: str,
                  auto_download_certificate: Optional[bool] = None,
@@ -799,25 +604,6 @@ class CacheUsernameDownloadSettingsResponseCredentials(dict):
     """
     When present, these are the credentials for the secure LDAP connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bindDn":
-            suggest = "bind_dn"
-        elif key == "bindPassword":
-            suggest = "bind_password"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheUsernameDownloadSettingsResponseCredentials. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheUsernameDownloadSettingsResponseCredentials.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheUsernameDownloadSettingsResponseCredentials.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bind_dn: Optional[str] = None,
                  bind_password: Optional[str] = None):
@@ -876,25 +662,6 @@ class KeyVaultKeyReferenceResponse(dict):
     """
     Describes a reference to Key Vault Key.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyUrl":
-            suggest = "key_url"
-        elif key == "sourceVault":
-            suggest = "source_vault"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultKeyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultKeyReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultKeyReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_url: str,
                  source_vault: 'outputs.KeyVaultKeyReferenceResponseSourceVault'):
@@ -951,29 +718,6 @@ class NamespaceJunctionResponse(dict):
     """
     A namespace junction.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "namespacePath":
-            suggest = "namespace_path"
-        elif key == "nfsAccessPolicy":
-            suggest = "nfs_access_policy"
-        elif key == "nfsExport":
-            suggest = "nfs_export"
-        elif key == "targetPath":
-            suggest = "target_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NamespaceJunctionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NamespaceJunctionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NamespaceJunctionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  namespace_path: Optional[str] = None,
                  nfs_access_policy: Optional[str] = None,
@@ -1033,23 +777,6 @@ class Nfs3TargetResponse(dict):
     """
     Properties pertaining to the Nfs3Target
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "usageModel":
-            suggest = "usage_model"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Nfs3TargetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Nfs3TargetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Nfs3TargetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target: Optional[str] = None,
                  usage_model: Optional[str] = None):
@@ -1085,23 +812,6 @@ class NfsAccessPolicyResponse(dict):
     """
     A set of rules describing access policies applied to NFSv3 clients of the cache.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessRules":
-            suggest = "access_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NfsAccessPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NfsAccessPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NfsAccessPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_rules: Sequence['outputs.NfsAccessRuleResponse'],
                  name: str):
@@ -1135,29 +845,6 @@ class NfsAccessRuleResponse(dict):
     """
     Rule to place restrictions on portions of the cache namespace being presented to clients.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "anonymousGID":
-            suggest = "anonymous_gid"
-        elif key == "anonymousUID":
-            suggest = "anonymous_uid"
-        elif key == "rootSquash":
-            suggest = "root_squash"
-        elif key == "submountAccess":
-            suggest = "submount_access"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NfsAccessRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NfsAccessRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NfsAccessRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access: str,
                  scope: str,
@@ -1267,33 +954,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -1377,23 +1037,6 @@ class UnknownTargetResponse(dict):
     """
     Properties pertaining to the UnknownTarget
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "unknownMap":
-            suggest = "unknown_map"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UnknownTargetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UnknownTargetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UnknownTargetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  unknown_map: Optional[Mapping[str, str]] = None):
         """

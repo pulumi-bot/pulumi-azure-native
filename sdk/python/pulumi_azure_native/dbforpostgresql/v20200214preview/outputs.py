@@ -23,25 +23,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -87,29 +68,6 @@ class MaintenanceWindowResponse(dict):
     """
     Maintenance window of a server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customWindow":
-            suggest = "custom_window"
-        elif key == "dayOfWeek":
-            suggest = "day_of_week"
-        elif key == "startHour":
-            suggest = "start_hour"
-        elif key == "startMinute":
-            suggest = "start_minute"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MaintenanceWindowResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MaintenanceWindowResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_window: Optional[str] = None,
                  day_of_week: Optional[int] = None,
@@ -166,23 +124,6 @@ class MaintenanceWindowResponse(dict):
 
 @pulumi.output_type
 class ServerPropertiesResponseDelegatedSubnetArguments(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetArmResourceId":
-            suggest = "subnet_arm_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerPropertiesResponseDelegatedSubnetArguments. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerPropertiesResponseDelegatedSubnetArguments.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerPropertiesResponseDelegatedSubnetArguments.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  subnet_arm_resource_id: Optional[str] = None):
         """
@@ -202,23 +143,6 @@ class ServerPropertiesResponseDelegatedSubnetArguments(dict):
 
 @pulumi.output_type
 class ServerPropertiesResponsePrivateDnsZoneArguments(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateDnsZoneArmResourceId":
-            suggest = "private_dns_zone_arm_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerPropertiesResponsePrivateDnsZoneArguments. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerPropertiesResponsePrivateDnsZoneArguments.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerPropertiesResponsePrivateDnsZoneArguments.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_dns_zone_arm_resource_id: Optional[str] = None):
         """
@@ -274,25 +198,6 @@ class StorageProfileResponse(dict):
     """
     Storage Profile properties of a server
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupRetentionDays":
-            suggest = "backup_retention_days"
-        elif key == "storageMB":
-            suggest = "storage_mb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_retention_days: Optional[int] = None,
                  storage_mb: Optional[int] = None):

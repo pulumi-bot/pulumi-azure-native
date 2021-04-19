@@ -69,29 +69,6 @@ class CacheExpirationActionParametersResponse(dict):
     """
     Defines the parameters for the cache expiration action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cacheBehavior":
-            suggest = "cache_behavior"
-        elif key == "cacheType":
-            suggest = "cache_type"
-        elif key == "odataType":
-            suggest = "odata_type"
-        elif key == "cacheDuration":
-            suggest = "cache_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheExpirationActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheExpirationActionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheExpirationActionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cache_behavior: str,
                  cache_type: str,
@@ -144,27 +121,6 @@ class CacheKeyQueryStringActionParametersResponse(dict):
     """
     Defines the parameters for the cache-key query string action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "queryStringBehavior":
-            suggest = "query_string_behavior"
-        elif key == "queryParameters":
-            suggest = "query_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheKeyQueryStringActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheKeyQueryStringActionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheKeyQueryStringActionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  query_string_behavior: str,
@@ -206,27 +162,6 @@ class CookiesMatchConditionParametersResponse(dict):
     """
     Defines the parameters for Cookies match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CookiesMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CookiesMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CookiesMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -304,27 +239,6 @@ class DeepCreatedOriginGroupResponse(dict):
     """
     The origin group for CDN content which is added when creating a CDN endpoint. Traffic is sent to the origins within the origin group based on origin health.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthProbeSettings":
-            suggest = "health_probe_settings"
-        elif key == "responseBasedOriginErrorDetectionSettings":
-            suggest = "response_based_origin_error_detection_settings"
-        elif key == "trafficRestorationTimeToHealedOrNewEndpointsInMinutes":
-            suggest = "traffic_restoration_time_to_healed_or_new_endpoints_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeepCreatedOriginGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeepCreatedOriginGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeepCreatedOriginGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  origins: Sequence['outputs.ResourceReferenceResponse'],
@@ -394,29 +308,6 @@ class DeepCreatedOriginResponse(dict):
     """
     The main origin of CDN content which is added when creating a CDN endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hostName":
-            suggest = "host_name"
-        elif key == "httpPort":
-            suggest = "http_port"
-        elif key == "httpsPort":
-            suggest = "https_port"
-        elif key == "originHostHeader":
-            suggest = "origin_host_header"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeepCreatedOriginResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeepCreatedOriginResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeepCreatedOriginResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host_name: str,
                  name: str,
@@ -1243,25 +1134,6 @@ class GeoFilterResponse(dict):
     """
     Rules defining user's geo access within a CDN endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryCodes":
-            suggest = "country_codes"
-        elif key == "relativePath":
-            suggest = "relative_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GeoFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GeoFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GeoFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: str,
                  country_codes: Sequence[str],
@@ -1306,27 +1178,6 @@ class HeaderActionParametersResponse(dict):
     """
     Defines the parameters for the request header action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "headerAction":
-            suggest = "header_action"
-        elif key == "headerName":
-            suggest = "header_name"
-        elif key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HeaderActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HeaderActionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HeaderActionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  header_action: str,
                  header_name: str,
@@ -1379,29 +1230,6 @@ class HealthProbeParametersResponse(dict):
     """
     The JSON object that contains the properties to send health probes to origin.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "probeIntervalInSeconds":
-            suggest = "probe_interval_in_seconds"
-        elif key == "probePath":
-            suggest = "probe_path"
-        elif key == "probeProtocol":
-            suggest = "probe_protocol"
-        elif key == "probeRequestType":
-            suggest = "probe_request_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthProbeParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthProbeParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthProbeParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  probe_interval_in_seconds: Optional[int] = None,
                  probe_path: Optional[str] = None,
@@ -1496,27 +1324,6 @@ class HttpVersionMatchConditionParametersResponse(dict):
     """
     Defines the parameters for HttpVersion match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HttpVersionMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HttpVersionMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HttpVersionMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -1570,27 +1377,6 @@ class IsDeviceMatchConditionParametersResponse(dict):
     """
     Defines the parameters for IsDevice match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IsDeviceMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IsDeviceMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IsDeviceMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -1656,25 +1442,6 @@ class OriginGroupOverrideActionParametersResponse(dict):
     """
     Defines the parameters for the Origin Group override action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "originGroup":
-            suggest = "origin_group"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OriginGroupOverrideActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OriginGroupOverrideActionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OriginGroupOverrideActionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  origin_group: 'outputs.ResourceReferenceResponse'):
@@ -1739,27 +1506,6 @@ class PostArgsMatchConditionParametersResponse(dict):
     """
     Defines the parameters for PostArgs match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PostArgsMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PostArgsMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PostArgsMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -1837,27 +1583,6 @@ class QueryStringMatchConditionParametersResponse(dict):
     """
     Defines the parameters for QueryString match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QueryStringMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QueryStringMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QueryStringMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -1923,27 +1648,6 @@ class RemoteAddressMatchConditionParametersResponse(dict):
     """
     Defines the parameters for RemoteAddress match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RemoteAddressMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RemoteAddressMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RemoteAddressMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2009,27 +1713,6 @@ class RequestBodyMatchConditionParametersResponse(dict):
     """
     Defines the parameters for RequestBody match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RequestBodyMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RequestBodyMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RequestBodyMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2095,27 +1778,6 @@ class RequestHeaderMatchConditionParametersResponse(dict):
     """
     Defines the parameters for RequestHeader match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RequestHeaderMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RequestHeaderMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RequestHeaderMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2193,27 +1855,6 @@ class RequestMethodMatchConditionParametersResponse(dict):
     """
     Defines the parameters for RequestMethod match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RequestMethodMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RequestMethodMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RequestMethodMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2267,27 +1908,6 @@ class RequestSchemeMatchConditionParametersResponse(dict):
     """
     Defines the parameters for RequestScheme match conditions 
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RequestSchemeMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RequestSchemeMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RequestSchemeMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2341,27 +1961,6 @@ class RequestUriMatchConditionParametersResponse(dict):
     """
     Defines the parameters for RequestUri match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RequestUriMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RequestUriMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RequestUriMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2450,27 +2049,6 @@ class ResponseBasedOriginErrorDetectionParametersResponse(dict):
     """
     The JSON object that contains the properties to determine origin health using real requests/responses.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpErrorRanges":
-            suggest = "http_error_ranges"
-        elif key == "responseBasedDetectedErrorTypes":
-            suggest = "response_based_detected_error_types"
-        elif key == "responseBasedFailoverThresholdPercentage":
-            suggest = "response_based_failover_threshold_percentage"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResponseBasedOriginErrorDetectionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResponseBasedOriginErrorDetectionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResponseBasedOriginErrorDetectionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  http_error_ranges: Optional[Sequence['outputs.HttpErrorRangeParametersResponse']] = None,
                  response_based_detected_error_types: Optional[str] = None,
@@ -2541,27 +2119,6 @@ class UrlFileExtensionMatchConditionParametersResponse(dict):
     """
     Defines the parameters for UrlFileExtension match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UrlFileExtensionMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UrlFileExtensionMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UrlFileExtensionMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2627,27 +2184,6 @@ class UrlFileNameMatchConditionParametersResponse(dict):
     """
     Defines the parameters for UrlFilename match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UrlFileNameMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UrlFileNameMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UrlFileNameMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2713,27 +2249,6 @@ class UrlPathMatchConditionParametersResponse(dict):
     """
     Defines the parameters for UrlPath match conditions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "matchValues":
-            suggest = "match_values"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UrlPathMatchConditionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UrlPathMatchConditionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UrlPathMatchConditionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  operator: str,
@@ -2799,35 +2314,6 @@ class UrlRedirectActionParametersResponse(dict):
     """
     Defines the parameters for the url redirect action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "redirectType":
-            suggest = "redirect_type"
-        elif key == "customFragment":
-            suggest = "custom_fragment"
-        elif key == "customHostname":
-            suggest = "custom_hostname"
-        elif key == "customPath":
-            suggest = "custom_path"
-        elif key == "customQueryString":
-            suggest = "custom_query_string"
-        elif key == "destinationProtocol":
-            suggest = "destination_protocol"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UrlRedirectActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UrlRedirectActionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UrlRedirectActionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  redirect_type: str,
@@ -2952,27 +2438,6 @@ class UrlRewriteActionParametersResponse(dict):
     """
     Defines the parameters for the url rewrite action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "sourcePattern":
-            suggest = "source_pattern"
-        elif key == "preserveUnmatchedPath":
-            suggest = "preserve_unmatched_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UrlRewriteActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UrlRewriteActionParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UrlRewriteActionParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  destination: str,
                  odata_type: str,

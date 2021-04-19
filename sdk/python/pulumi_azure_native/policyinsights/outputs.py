@@ -25,23 +25,6 @@ class AttestationEvidenceResponse(dict):
     """
     A piece of evidence supporting the compliance state set in the attestation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceUri":
-            suggest = "source_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AttestationEvidenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AttestationEvidenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AttestationEvidenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  source_uri: Optional[str] = None):
@@ -231,27 +214,6 @@ class RemediationDeploymentSummaryResponse(dict):
     """
     The deployment status summary for all deployments created by the remediation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failedDeployments":
-            suggest = "failed_deployments"
-        elif key == "successfulDeployments":
-            suggest = "successful_deployments"
-        elif key == "totalDeployments":
-            suggest = "total_deployments"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RemediationDeploymentSummaryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RemediationDeploymentSummaryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RemediationDeploymentSummaryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failed_deployments: int,
                  successful_deployments: int,
@@ -319,33 +281,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

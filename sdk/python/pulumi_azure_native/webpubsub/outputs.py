@@ -58,27 +58,6 @@ class EventHandlerTemplateResponse(dict):
     """
     EventHandler template item settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "urlTemplate":
-            suggest = "url_template"
-        elif key == "systemEventPattern":
-            suggest = "system_event_pattern"
-        elif key == "userEventPattern":
-            suggest = "user_event_pattern"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventHandlerTemplateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventHandlerTemplateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventHandlerTemplateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  url_template: str,
                  auth: Optional['outputs.UpstreamAuthSettingsResponse'] = None,
@@ -153,27 +132,6 @@ class ManagedIdentityResponse(dict):
     """
     A class represent managed identities used for request and response
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -341,29 +299,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     A private endpoint connection to an azure resource
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "systemData":
-            suggest = "system_data"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -477,23 +412,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     Connection state of the private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -625,31 +543,6 @@ class SharedPrivateLinkResourceResponse(dict):
     """
     Describes a Shared Private Link Resource
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupId":
-            suggest = "group_id"
-        elif key == "privateLinkResourceId":
-            suggest = "private_link_resource_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "systemData":
-            suggest = "system_data"
-        elif key == "requestMessage":
-            suggest = "request_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharedPrivateLinkResourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharedPrivateLinkResourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharedPrivateLinkResourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_id: str,
                  id: str,
@@ -761,33 +654,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -871,23 +737,6 @@ class UpstreamAuthSettingsResponse(dict):
     """
     Upstream auth settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "managedIdentity":
-            suggest = "managed_identity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UpstreamAuthSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UpstreamAuthSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UpstreamAuthSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  managed_identity: Optional['outputs.ManagedIdentitySettingsResponse'] = None,
                  type: Optional[str] = None):
@@ -923,25 +772,6 @@ class UserAssignedIdentityPropertyResponse(dict):
     """
     Properties of user assigned identity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserAssignedIdentityPropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserAssignedIdentityPropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserAssignedIdentityPropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -1028,27 +858,6 @@ class WebPubSubNetworkACLsResponse(dict):
     """
     Network ACLs for the resource
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultAction":
-            suggest = "default_action"
-        elif key == "privateEndpoints":
-            suggest = "private_endpoints"
-        elif key == "publicNetwork":
-            suggest = "public_network"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebPubSubNetworkACLsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebPubSubNetworkACLsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebPubSubNetworkACLsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_action: Optional[str] = None,
                  private_endpoints: Optional[Sequence['outputs.PrivateEndpointACLResponse']] = None,
@@ -1098,23 +907,6 @@ class WebPubSubTlsSettingsResponse(dict):
     """
     TLS settings for the resource
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientCertEnabled":
-            suggest = "client_cert_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebPubSubTlsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebPubSubTlsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebPubSubTlsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_cert_enabled: Optional[bool] = None):
         """

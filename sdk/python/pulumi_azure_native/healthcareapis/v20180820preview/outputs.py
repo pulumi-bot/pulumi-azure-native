@@ -24,25 +24,6 @@ class ResourceResponseIdentity(dict):
     """
     Setting indicating whether the service has a managed identity associated with it.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceResponseIdentity. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceResponseIdentity.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceResponseIdentity.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -88,23 +69,6 @@ class ServiceAccessPolicyEntryResponse(dict):
     """
     An access policy entry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectId":
-            suggest = "object_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceAccessPolicyEntryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceAccessPolicyEntryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceAccessPolicyEntryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_id: str):
         """
@@ -127,23 +91,6 @@ class ServiceAuthenticationConfigurationInfoResponse(dict):
     """
     Authentication configuration information
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "smartProxyEnabled":
-            suggest = "smart_proxy_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceAuthenticationConfigurationInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceAuthenticationConfigurationInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceAuthenticationConfigurationInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  audience: Optional[str] = None,
                  authority: Optional[str] = None,
@@ -191,25 +138,6 @@ class ServiceCorsConfigurationInfoResponse(dict):
     """
     The settings for the CORS configuration of the service instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowCredentials":
-            suggest = "allow_credentials"
-        elif key == "maxAge":
-            suggest = "max_age"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceCorsConfigurationInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceCorsConfigurationInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceCorsConfigurationInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_credentials: Optional[bool] = None,
                  headers: Optional[Sequence[str]] = None,
@@ -281,23 +209,6 @@ class ServiceCosmosDbConfigurationInfoResponse(dict):
     """
     The settings for the Cosmos DB database backing the service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "offerThroughput":
-            suggest = "offer_throughput"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceCosmosDbConfigurationInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceCosmosDbConfigurationInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceCosmosDbConfigurationInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  offer_throughput: Optional[int] = None):
         """
@@ -321,31 +232,6 @@ class ServicesPropertiesResponse(dict):
     """
     The properties of a service instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "accessPolicies":
-            suggest = "access_policies"
-        elif key == "authenticationConfiguration":
-            suggest = "authentication_configuration"
-        elif key == "corsConfiguration":
-            suggest = "cors_configuration"
-        elif key == "cosmosDbConfiguration":
-            suggest = "cosmos_db_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServicesPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServicesPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServicesPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  access_policies: Optional[Sequence['outputs.ServiceAccessPolicyEntryResponse']] = None,
