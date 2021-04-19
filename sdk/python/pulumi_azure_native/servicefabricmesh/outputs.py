@@ -55,27 +55,6 @@ class AddRemoveReplicaScalingMechanismResponse(dict):
     """
     Describes the horizontal auto scaling mechanism that adds or removes replicas (containers or container groups).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxCount":
-            suggest = "max_count"
-        elif key == "minCount":
-            suggest = "min_count"
-        elif key == "scaleIncrement":
-            suggest = "scale_increment"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AddRemoveReplicaScalingMechanismResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AddRemoveReplicaScalingMechanismResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AddRemoveReplicaScalingMechanismResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kind: str,
                  max_count: int,
@@ -133,23 +112,6 @@ class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse(d
     """
     Describes parameters for creating application-scoped volumes provided by Service Fabric Volume Disks
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sizeDisk":
-            suggest = "size_disk"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kind: str,
                  size_disk: str,
@@ -197,27 +159,6 @@ class ApplicationScopedVolumeResponse(dict):
     """
     Describes a volume whose lifetime is scoped to the application's lifetime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "creationParameters":
-            suggest = "creation_parameters"
-        elif key == "destinationPath":
-            suggest = "destination_path"
-        elif key == "readOnly":
-            suggest = "read_only"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationScopedVolumeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationScopedVolumeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationScopedVolumeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  creation_parameters: 'outputs.ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse',
                  destination_path: str,
@@ -353,27 +294,6 @@ class AverageLoadScalingTriggerResponse(dict):
     """
     Describes the average load trigger used for auto scaling.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lowerLoadThreshold":
-            suggest = "lower_load_threshold"
-        elif key == "scaleIntervalInSeconds":
-            suggest = "scale_interval_in_seconds"
-        elif key == "upperLoadThreshold":
-            suggest = "upper_load_threshold"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AverageLoadScalingTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AverageLoadScalingTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AverageLoadScalingTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kind: str,
                  lower_load_threshold: float,
@@ -442,29 +362,6 @@ class AzureInternalMonitoringPipelineSinkDescriptionResponse(dict):
     """
     Diagnostics settings for Geneva.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "autoKeyConfigUrl":
-            suggest = "auto_key_config_url"
-        elif key == "fluentdConfigUrl":
-            suggest = "fluentd_config_url"
-        elif key == "maConfigUrl":
-            suggest = "ma_config_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureInternalMonitoringPipelineSinkDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureInternalMonitoringPipelineSinkDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureInternalMonitoringPipelineSinkDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kind: str,
                  account_name: Optional[str] = None,
@@ -573,31 +470,6 @@ class ContainerCodePackagePropertiesResponse(dict):
     """
     Describes a container and its runtime properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceView":
-            suggest = "instance_view"
-        elif key == "environmentVariables":
-            suggest = "environment_variables"
-        elif key == "imageRegistryCredential":
-            suggest = "image_registry_credential"
-        elif key == "reliableCollectionsRefs":
-            suggest = "reliable_collections_refs"
-        elif key == "volumeRefs":
-            suggest = "volume_refs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerCodePackagePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerCodePackagePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerCodePackagePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  image: str,
                  instance_view: 'outputs.ContainerInstanceViewResponse',
@@ -785,25 +657,6 @@ class ContainerEventResponse(dict):
     """
     A container event.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "firstTimestamp":
-            suggest = "first_timestamp"
-        elif key == "lastTimestamp":
-            suggest = "last_timestamp"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerEventResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerEventResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerEventResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  first_timestamp: Optional[str] = None,
@@ -887,27 +740,6 @@ class ContainerInstanceViewResponse(dict):
     """
     Runtime information of a container instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "currentState":
-            suggest = "current_state"
-        elif key == "previousState":
-            suggest = "previous_state"
-        elif key == "restartCount":
-            suggest = "restart_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  current_state: Optional['outputs.ContainerStateResponse'] = None,
                  events: Optional[Sequence['outputs.ContainerEventResponse']] = None,
@@ -1000,29 +832,6 @@ class ContainerStateResponse(dict):
     """
     The container state.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "detailStatus":
-            suggest = "detail_status"
-        elif key == "exitCode":
-            suggest = "exit_code"
-        elif key == "finishTime":
-            suggest = "finish_time"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  detail_status: Optional[str] = None,
                  exit_code: Optional[str] = None,
@@ -1094,23 +903,6 @@ class DiagnosticsDescriptionResponse(dict):
     """
     Describes the diagnostics options available
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultSinkRefs":
-            suggest = "default_sink_refs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiagnosticsDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiagnosticsDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiagnosticsDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_sink_refs: Optional[Sequence[str]] = None,
                  enabled: Optional[bool] = None,
@@ -1158,23 +950,6 @@ class DiagnosticsRefResponse(dict):
     """
     Reference to sinks in DiagnosticsDescription.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sinkRefs":
-            suggest = "sink_refs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiagnosticsRefResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiagnosticsRefResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiagnosticsRefResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  sink_refs: Optional[Sequence[str]] = None):
@@ -1302,27 +1077,6 @@ class GatewayDestinationResponse(dict):
     """
     Describes destination endpoint for routing traffic.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationName":
-            suggest = "application_name"
-        elif key == "endpointName":
-            suggest = "endpoint_name"
-        elif key == "serviceName":
-            suggest = "service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GatewayDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GatewayDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GatewayDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  application_name: str,
                  endpoint_name: str,
@@ -1658,23 +1412,6 @@ class NetworkRefResponse(dict):
     """
     Describes a network reference in a service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointRefs":
-            suggest = "endpoint_refs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRefResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRefResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRefResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_refs: Optional[Sequence['outputs.EndpointRefResponse']] = None,
                  name: Optional[str] = None):
@@ -1710,25 +1447,6 @@ class NetworkResourcePropertiesResponse(dict):
     """
     Describes properties of a network resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "statusDetails":
-            suggest = "status_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkResourcePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkResourcePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkResourcePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kind: str,
                  provisioning_state: str,
@@ -1798,23 +1516,6 @@ class ReliableCollectionsRefResponse(dict):
     """
     Specifying this parameter adds support for reliable collections
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "doNotPersistState":
-            suggest = "do_not_persist_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReliableCollectionsRefResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReliableCollectionsRefResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReliableCollectionsRefResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  do_not_persist_state: Optional[bool] = None):
@@ -1849,23 +1550,6 @@ class ResourceLimitsResponse(dict):
     """
     This type describes the resource limits for a given container. It describes the most amount of resources a container is allowed to use before being restarted.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "memoryInGB":
-            suggest = "memory_in_gb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceLimitsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceLimitsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceLimitsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cpu: Optional[float] = None,
                  memory_in_gb: Optional[float] = None):
@@ -1901,23 +1585,6 @@ class ResourceRequestsResponse(dict):
     """
     This type describes the requested resources for a given container. It describes the least amount of resources required for the container. A container can consume more than requested resources up to the specified limits before being restarted. Currently, the requested resources are treated as limits.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "memoryInGB":
-            suggest = "memory_in_gb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceRequestsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceRequestsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceRequestsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cpu: float,
                  memory_in_gb: float):
@@ -1985,27 +1652,6 @@ class SecretResourcePropertiesResponse(dict):
     """
     Describes the properties of a secret resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "statusDetails":
-            suggest = "status_details"
-        elif key == "contentType":
-            suggest = "content_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SecretResourcePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SecretResourcePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SecretResourcePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kind: str,
                  provisioning_state: str,
@@ -2087,39 +1733,6 @@ class ServiceResourceDescriptionResponse(dict):
     """
     This type describes a service resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "codePackages":
-            suggest = "code_packages"
-        elif key == "healthState":
-            suggest = "health_state"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "statusDetails":
-            suggest = "status_details"
-        elif key == "unhealthyEvaluation":
-            suggest = "unhealthy_evaluation"
-        elif key == "autoScalingPolicies":
-            suggest = "auto_scaling_policies"
-        elif key == "networkRefs":
-            suggest = "network_refs"
-        elif key == "replicaCount":
-            suggest = "replica_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceResourceDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceResourceDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceResourceDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code_packages: Sequence['outputs.ContainerCodePackagePropertiesResponse'],
                  health_state: str,
@@ -2381,27 +1994,6 @@ class VolumeProviderParametersAzureFileResponse(dict):
     """
     This type describes a volume provided by an Azure Files file share.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "shareName":
-            suggest = "share_name"
-        elif key == "accountKey":
-            suggest = "account_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VolumeProviderParametersAzureFileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VolumeProviderParametersAzureFileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VolumeProviderParametersAzureFileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: str,
                  share_name: str,
@@ -2447,25 +2039,6 @@ class VolumeReferenceResponse(dict):
     """
     Describes a reference to a volume resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationPath":
-            suggest = "destination_path"
-        elif key == "readOnly":
-            suggest = "read_only"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VolumeReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VolumeReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VolumeReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  destination_path: str,
                  name: str,

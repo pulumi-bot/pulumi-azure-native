@@ -34,25 +34,6 @@ class ImageTemplateFileCustomizerResponse(dict):
     """
     Uploads files to VMs (Linux, Windows). Corresponds to Packer file provisioner
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sha256Checksum":
-            suggest = "sha256_checksum"
-        elif key == "sourceUri":
-            suggest = "source_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateFileCustomizerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateFileCustomizerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateFileCustomizerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  destination: Optional[str] = None,
@@ -125,23 +106,6 @@ class ImageTemplateIdentityResponse(dict):
     """
     Identity for the image template.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: Optional[str] = None,
                  user_assigned_identities: Optional[Mapping[str, 'outputs.ImageTemplateIdentityResponseUserAssignedIdentities']] = None):
@@ -174,25 +138,6 @@ class ImageTemplateIdentityResponse(dict):
 
 @pulumi.output_type
 class ImageTemplateIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -225,25 +170,6 @@ class ImageTemplateIsoSourceResponse(dict):
     """
     Describes an image source that is an installation ISO. Currently only supports Red Hat Enterprise Linux 7.2-7.5 ISO's.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sha256Checksum":
-            suggest = "sha256_checksum"
-        elif key == "sourceUri":
-            suggest = "source_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateIsoSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateIsoSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateIsoSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  sha256_checksum: str,
                  source_uri: str,
@@ -290,29 +216,6 @@ class ImageTemplateLastRunStatusResponse(dict):
     """
     Describes the latest status of running an image template
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "runState":
-            suggest = "run_state"
-        elif key == "runSubState":
-            suggest = "run_sub_state"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateLastRunStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateLastRunStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateLastRunStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_time: Optional[str] = None,
                  message: Optional[str] = None,
@@ -384,27 +287,6 @@ class ImageTemplateManagedImageDistributorResponse(dict):
     """
     Distribute as a Managed Disk Image.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imageId":
-            suggest = "image_id"
-        elif key == "runOutputName":
-            suggest = "run_output_name"
-        elif key == "artifactTags":
-            suggest = "artifact_tags"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateManagedImageDistributorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateManagedImageDistributorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateManagedImageDistributorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  image_id: str,
                  location: str,
@@ -474,23 +356,6 @@ class ImageTemplateManagedImageSourceResponse(dict):
     """
     Describes an image source that is a managed image in customer subscription.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imageId":
-            suggest = "image_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateManagedImageSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateManagedImageSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateManagedImageSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  image_id: str,
                  type: str):
@@ -598,29 +463,6 @@ class ImageTemplatePowerShellCustomizerResponse(dict):
     """
     Runs the specified PowerShell on the VM (Windows). Corresponds to Packer powershell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "runElevated":
-            suggest = "run_elevated"
-        elif key == "scriptUri":
-            suggest = "script_uri"
-        elif key == "sha256Checksum":
-            suggest = "sha256_checksum"
-        elif key == "validExitCodes":
-            suggest = "valid_exit_codes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplatePowerShellCustomizerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplatePowerShellCustomizerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplatePowerShellCustomizerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  inline: Optional[Sequence[str]] = None,
@@ -717,27 +559,6 @@ class ImageTemplateRestartCustomizerResponse(dict):
     """
     Reboots a VM and waits for it to come back online (Windows). Corresponds to Packer windows-restart provisioner
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "restartCheckCommand":
-            suggest = "restart_check_command"
-        elif key == "restartCommand":
-            suggest = "restart_command"
-        elif key == "restartTimeout":
-            suggest = "restart_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateRestartCustomizerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateRestartCustomizerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateRestartCustomizerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  name: Optional[str] = None,
@@ -810,29 +631,6 @@ class ImageTemplateSharedImageDistributorResponse(dict):
     """
     Distribute via Shared Image Gallery.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "galleryImageId":
-            suggest = "gallery_image_id"
-        elif key == "replicationRegions":
-            suggest = "replication_regions"
-        elif key == "runOutputName":
-            suggest = "run_output_name"
-        elif key == "artifactTags":
-            suggest = "artifact_tags"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateSharedImageDistributorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateSharedImageDistributorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateSharedImageDistributorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  gallery_image_id: str,
                  replication_regions: Sequence[str],
@@ -902,23 +700,6 @@ class ImageTemplateSharedImageVersionSourceResponse(dict):
     """
     Describes an image source that is an image version in a shared image gallery.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "imageVersionId":
-            suggest = "image_version_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateSharedImageVersionSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateSharedImageVersionSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateSharedImageVersionSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  image_version_id: str,
                  type: str):
@@ -954,25 +735,6 @@ class ImageTemplateShellCustomizerResponse(dict):
     """
     Runs a shell script during the customization phase (Linux). Corresponds to Packer shell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "scriptUri":
-            suggest = "script_uri"
-        elif key == "sha256Checksum":
-            suggest = "sha256_checksum"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateShellCustomizerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateShellCustomizerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateShellCustomizerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  inline: Optional[Sequence[str]] = None,
@@ -1045,25 +807,6 @@ class ImageTemplateVhdDistributorResponse(dict):
     """
     Distribute via VHD in a storage account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "runOutputName":
-            suggest = "run_output_name"
-        elif key == "artifactTags":
-            suggest = "artifact_tags"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateVhdDistributorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateVhdDistributorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateVhdDistributorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  run_output_name: str,
                  type: str,
@@ -1111,23 +854,6 @@ class ImageTemplateVmProfileResponse(dict):
     """
     Describes the virtual machine used to build, customize and capture images
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageTemplateVmProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageTemplateVmProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageTemplateVmProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  vm_size: Optional[str] = None):
         """
@@ -1151,23 +877,6 @@ class ProvisioningErrorResponse(dict):
     """
     Describes the error happened when create or update an image template
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningErrorCode":
-            suggest = "provisioning_error_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProvisioningErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProvisioningErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProvisioningErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  message: Optional[str] = None,
                  provisioning_error_code: Optional[str] = None):

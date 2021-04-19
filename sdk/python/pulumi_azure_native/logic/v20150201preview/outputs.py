@@ -51,27 +51,6 @@ class ContentHashResponse(dict):
 
 @pulumi.output_type
 class ContentLinkResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contentHash":
-            suggest = "content_hash"
-        elif key == "contentSize":
-            suggest = "content_size"
-        elif key == "contentVersion":
-            suggest = "content_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContentLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContentLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContentLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  content_hash: Optional['outputs.ContentHashResponse'] = None,
                  content_size: Optional[float] = None,

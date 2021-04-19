@@ -30,27 +30,6 @@ class AzureActiveDirectoryResponse(dict):
     """
     The settings to enable AAD authentication on the cluster
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientApplication":
-            suggest = "client_application"
-        elif key == "clusterApplication":
-            suggest = "cluster_application"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureActiveDirectoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureActiveDirectoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureActiveDirectoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_application: Optional[str] = None,
                  cluster_application: Optional[str] = None,
@@ -98,25 +77,6 @@ class CertificateDescriptionResponse(dict):
     """
     Certificate details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "thumbprintSecondary":
-            suggest = "thumbprint_secondary"
-        elif key == "x509StoreName":
-            suggest = "x509_store_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificateDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificateDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificateDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  thumbprint: str,
                  thumbprint_secondary: Optional[str] = None,
@@ -163,27 +123,6 @@ class ClientCertificateCommonNameResponse(dict):
     """
     Client certificate details using common name
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateCommonName":
-            suggest = "certificate_common_name"
-        elif key == "certificateIssuerThumbprint":
-            suggest = "certificate_issuer_thumbprint"
-        elif key == "isAdmin":
-            suggest = "is_admin"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClientCertificateCommonNameResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClientCertificateCommonNameResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClientCertificateCommonNameResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_common_name: str,
                  certificate_issuer_thumbprint: str,
@@ -228,25 +167,6 @@ class ClientCertificateThumbprintResponse(dict):
     """
     Client certificate details using thumbprint
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateThumbprint":
-            suggest = "certificate_thumbprint"
-        elif key == "isAdmin":
-            suggest = "is_admin"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClientCertificateThumbprintResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClientCertificateThumbprintResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClientCertificateThumbprintResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_thumbprint: str,
                  is_admin: bool):
@@ -280,25 +200,6 @@ class ClusterHealthPolicyResponse(dict):
     """
     Defines a health policy used to evaluate the health of the cluster or of a cluster node.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxPercentUnhealthyApplications":
-            suggest = "max_percent_unhealthy_applications"
-        elif key == "maxPercentUnhealthyNodes":
-            suggest = "max_percent_unhealthy_nodes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterHealthPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterHealthPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterHealthPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_percent_unhealthy_applications: Optional[int] = None,
                  max_percent_unhealthy_nodes: Optional[int] = None):
@@ -334,27 +235,6 @@ class ClusterUpgradeDeltaHealthPolicyResponse(dict):
     """
     Delta health policy for the cluster
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxPercentDeltaUnhealthyApplications":
-            suggest = "max_percent_delta_unhealthy_applications"
-        elif key == "maxPercentDeltaUnhealthyNodes":
-            suggest = "max_percent_delta_unhealthy_nodes"
-        elif key == "maxPercentUpgradeDomainDeltaUnhealthyNodes":
-            suggest = "max_percent_upgrade_domain_delta_unhealthy_nodes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradeDeltaHealthPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterUpgradeDeltaHealthPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterUpgradeDeltaHealthPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_percent_delta_unhealthy_applications: int,
                  max_percent_delta_unhealthy_nodes: int,
@@ -399,41 +279,6 @@ class ClusterUpgradePolicyResponse(dict):
     """
     Cluster upgrade policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthCheckRetryTimeout":
-            suggest = "health_check_retry_timeout"
-        elif key == "healthCheckStableDuration":
-            suggest = "health_check_stable_duration"
-        elif key == "healthCheckWaitDuration":
-            suggest = "health_check_wait_duration"
-        elif key == "healthPolicy":
-            suggest = "health_policy"
-        elif key == "upgradeDomainTimeout":
-            suggest = "upgrade_domain_timeout"
-        elif key == "upgradeReplicaSetCheckTimeout":
-            suggest = "upgrade_replica_set_check_timeout"
-        elif key == "upgradeTimeout":
-            suggest = "upgrade_timeout"
-        elif key == "deltaHealthPolicy":
-            suggest = "delta_health_policy"
-        elif key == "forceRestart":
-            suggest = "force_restart"
-        elif key == "overrideUserUpgradePolicy":
-            suggest = "override_user_upgrade_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterUpgradePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterUpgradePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterUpgradePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  health_check_retry_timeout: str,
                  health_check_stable_duration: str,
@@ -558,25 +403,6 @@ class ClusterVersionDetailsResponse(dict):
     """
     The detail of the ServiceFabric runtime version result
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "codeVersion":
-            suggest = "code_version"
-        elif key == "supportExpiryUtc":
-            suggest = "support_expiry_utc"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterVersionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterVersionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterVersionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code_version: Optional[str] = None,
                  environment: Optional[str] = None,
@@ -624,31 +450,6 @@ class DiagnosticsStorageAccountConfigResponse(dict):
     """
     Diagnostics storage account config
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blobEndpoint":
-            suggest = "blob_endpoint"
-        elif key == "protectedAccountKeyName":
-            suggest = "protected_account_key_name"
-        elif key == "queueEndpoint":
-            suggest = "queue_endpoint"
-        elif key == "storageAccountName":
-            suggest = "storage_account_name"
-        elif key == "tableEndpoint":
-            suggest = "table_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiagnosticsStorageAccountConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiagnosticsStorageAccountConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiagnosticsStorageAccountConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  blob_endpoint: str,
                  protected_account_key_name: str,
@@ -715,25 +516,6 @@ class EndpointRangeDescriptionResponse(dict):
     """
     Port range details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endPort":
-            suggest = "end_port"
-        elif key == "startPort":
-            suggest = "start_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EndpointRangeDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EndpointRangeDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EndpointRangeDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_port: int,
                  start_port: int):
@@ -767,39 +549,6 @@ class NodeTypeDescriptionResponse(dict):
     """
     Describes a node type in the cluster, each node type represents sub set of nodes in the cluster
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientConnectionEndpointPort":
-            suggest = "client_connection_endpoint_port"
-        elif key == "httpGatewayEndpointPort":
-            suggest = "http_gateway_endpoint_port"
-        elif key == "isPrimary":
-            suggest = "is_primary"
-        elif key == "vmInstanceCount":
-            suggest = "vm_instance_count"
-        elif key == "applicationPorts":
-            suggest = "application_ports"
-        elif key == "durabilityLevel":
-            suggest = "durability_level"
-        elif key == "ephemeralPorts":
-            suggest = "ephemeral_ports"
-        elif key == "placementProperties":
-            suggest = "placement_properties"
-        elif key == "reverseProxyEndpointPort":
-            suggest = "reverse_proxy_endpoint_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NodeTypeDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NodeTypeDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NodeTypeDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_connection_endpoint_port: int,
                  http_gateway_endpoint_port: int,

@@ -27,25 +27,6 @@ class ActivityLogAlertActionGroupResponse(dict):
     """
     A pointer to an Azure Action Group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroupId":
-            suggest = "action_group_id"
-        elif key == "webhookProperties":
-            suggest = "webhook_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActivityLogAlertActionGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActivityLogAlertActionGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActivityLogAlertActionGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_group_id: str,
                  webhook_properties: Optional[Mapping[str, str]] = None):
@@ -80,23 +61,6 @@ class ActivityLogAlertActionListResponse(dict):
     """
     A list of activity log alert actions.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroups":
-            suggest = "action_groups"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActivityLogAlertActionListResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActivityLogAlertActionListResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActivityLogAlertActionListResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_groups: Optional[Sequence['outputs.ActivityLogAlertActionGroupResponse']] = None):
         """
@@ -120,23 +84,6 @@ class ActivityLogAlertAllOfConditionResponse(dict):
     """
     An Activity Log alert condition that is met when all its member conditions are met.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allOf":
-            suggest = "all_of"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActivityLogAlertAllOfConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActivityLogAlertAllOfConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActivityLogAlertAllOfConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  all_of: Sequence['outputs.ActivityLogAlertLeafConditionResponse']):
         """
@@ -192,31 +139,6 @@ class AutomationRunbookReceiverResponse(dict):
     """
     The Azure Automation Runbook notification receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "automationAccountId":
-            suggest = "automation_account_id"
-        elif key == "isGlobalRunbook":
-            suggest = "is_global_runbook"
-        elif key == "runbookName":
-            suggest = "runbook_name"
-        elif key == "webhookResourceId":
-            suggest = "webhook_resource_id"
-        elif key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutomationRunbookReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutomationRunbookReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutomationRunbookReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  automation_account_id: str,
                  is_global_runbook: bool,
@@ -296,23 +218,6 @@ class AzureAppPushReceiverResponse(dict):
     """
     The Azure mobile App push notification receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureAppPushReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureAppPushReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureAppPushReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_address: str,
                  name: str):
@@ -346,23 +251,6 @@ class EmailReceiverResponse(dict):
     """
     An email receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EmailReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EmailReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EmailReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_address: str,
                  name: str,
@@ -407,27 +295,6 @@ class ItsmReceiverResponse(dict):
     """
     An Itsm receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionId":
-            suggest = "connection_id"
-        elif key == "ticketConfiguration":
-            suggest = "ticket_configuration"
-        elif key == "workspaceId":
-            suggest = "workspace_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ItsmReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ItsmReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ItsmReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_id: str,
                  name: str,
@@ -494,25 +361,6 @@ class SmsReceiverResponse(dict):
     """
     An SMS receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryCode":
-            suggest = "country_code"
-        elif key == "phoneNumber":
-            suggest = "phone_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SmsReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SmsReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SmsReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  country_code: str,
                  name: str,
@@ -568,23 +416,6 @@ class WebhookReceiverResponse(dict):
     """
     A webhook receiver.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebhookReceiverResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebhookReceiverResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebhookReceiverResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  service_uri: str):

@@ -41,27 +41,6 @@ class AssignmentPrincipalResponse(dict):
     """
     The AssignmentPrincipal
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "principalType":
-            suggest = "principal_type"
-        elif key == "principalMetadata":
-            suggest = "principal_metadata"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AssignmentPrincipalResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AssignmentPrincipalResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AssignmentPrincipalResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  principal_type: str,
@@ -141,25 +120,6 @@ class ConnectorMappingCompleteOperationResponse(dict):
     """
     The complete operation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "completionOperationType":
-            suggest = "completion_operation_type"
-        elif key == "destinationFolder":
-            suggest = "destination_folder"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorMappingCompleteOperationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorMappingCompleteOperationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorMappingCompleteOperationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  completion_operation_type: Optional[str] = None,
                  destination_folder: Optional[str] = None):
@@ -195,25 +155,6 @@ class ConnectorMappingErrorManagementResponse(dict):
     """
     The error management.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "errorManagementType":
-            suggest = "error_management_type"
-        elif key == "errorLimit":
-            suggest = "error_limit"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorMappingErrorManagementResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorMappingErrorManagementResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorMappingErrorManagementResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error_management_type: str,
                  error_limit: Optional[int] = None):
@@ -248,33 +189,6 @@ class ConnectorMappingFormatResponse(dict):
     """
     Connector mapping property format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "formatType":
-            suggest = "format_type"
-        elif key == "acceptLanguage":
-            suggest = "accept_language"
-        elif key == "arraySeparator":
-            suggest = "array_separator"
-        elif key == "columnDelimiter":
-            suggest = "column_delimiter"
-        elif key == "quoteCharacter":
-            suggest = "quote_character"
-        elif key == "quoteEscapeCharacter":
-            suggest = "quote_escape_character"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorMappingFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorMappingFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorMappingFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  format_type: str,
                  accept_language: Optional[str] = None,
@@ -357,31 +271,6 @@ class ConnectorMappingPropertiesResponse(dict):
     """
     The connector mapping properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "completeOperation":
-            suggest = "complete_operation"
-        elif key == "errorManagement":
-            suggest = "error_management"
-        elif key == "fileFilter":
-            suggest = "file_filter"
-        elif key == "folderPath":
-            suggest = "folder_path"
-        elif key == "hasHeader":
-            suggest = "has_header"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorMappingPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorMappingPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorMappingPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  availability: 'outputs.ConnectorMappingAvailabilityResponse',
                  complete_operation: 'outputs.ConnectorMappingCompleteOperationResponse',
@@ -484,29 +373,6 @@ class ConnectorMappingStructureResponse(dict):
     """
     Connector mapping property structure.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "columnName":
-            suggest = "column_name"
-        elif key == "propertyName":
-            suggest = "property_name"
-        elif key == "customFormatSpecifier":
-            suggest = "custom_format_specifier"
-        elif key == "isEncrypted":
-            suggest = "is_encrypted"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorMappingStructureResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorMappingStructureResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorMappingStructureResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  column_name: str,
                  property_name: str,
@@ -564,25 +430,6 @@ class DataSourcePrecedenceResponse(dict):
     """
     The data source precedence is a way to know the precedence of each data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSourceReferenceId":
-            suggest = "data_source_reference_id"
-        elif key == "dataSourceType":
-            suggest = "data_source_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataSourcePrecedenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataSourcePrecedenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataSourcePrecedenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_source_reference_id: str,
                  data_source_type: str,
@@ -661,27 +508,6 @@ class HubBillingInfoFormatResponse(dict):
     """
     Hub billing info.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxUnits":
-            suggest = "max_units"
-        elif key == "minUnits":
-            suggest = "min_units"
-        elif key == "skuName":
-            suggest = "sku_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HubBillingInfoFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HubBillingInfoFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HubBillingInfoFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_units: Optional[int] = None,
                  min_units: Optional[int] = None,
@@ -729,23 +555,6 @@ class KpiAliasResponse(dict):
     """
     The KPI alias.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aliasName":
-            suggest = "alias_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KpiAliasResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KpiAliasResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KpiAliasResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  alias_name: str,
                  expression: str):
@@ -779,23 +588,6 @@ class KpiExtractResponse(dict):
     """
     The KPI extract.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "extractName":
-            suggest = "extract_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KpiExtractResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KpiExtractResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KpiExtractResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  expression: str,
                  extract_name: str):
@@ -829,27 +621,6 @@ class KpiGroupByMetadataResponse(dict):
     """
     The KPI GroupBy field metadata.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-        elif key == "fieldName":
-            suggest = "field_name"
-        elif key == "fieldType":
-            suggest = "field_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KpiGroupByMetadataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KpiGroupByMetadataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KpiGroupByMetadataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_name: Optional[Mapping[str, str]] = None,
                  field_name: Optional[str] = None,
@@ -897,23 +668,6 @@ class KpiParticipantProfilesMetadataResponse(dict):
     """
     The KPI participant profile metadata.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeName":
-            suggest = "type_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KpiParticipantProfilesMetadataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KpiParticipantProfilesMetadataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KpiParticipantProfilesMetadataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type_name: str):
         """
@@ -936,27 +690,6 @@ class KpiThresholdsResponse(dict):
     """
     Defines the KPI Threshold limits.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "increasingKpi":
-            suggest = "increasing_kpi"
-        elif key == "lowerLimit":
-            suggest = "lower_limit"
-        elif key == "upperLimit":
-            suggest = "upper_limit"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KpiThresholdsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KpiThresholdsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KpiThresholdsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  increasing_kpi: bool,
                  lower_limit: float,
@@ -1001,25 +734,6 @@ class ParticipantPropertyReferenceResponse(dict):
     """
     The participant property reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "interactionPropertyName":
-            suggest = "interaction_property_name"
-        elif key == "profilePropertyName":
-            suggest = "profile_property_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParticipantPropertyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParticipantPropertyReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParticipantPropertyReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  interaction_property_name: str,
                  profile_property_name: str):
@@ -1053,23 +767,6 @@ class ProfileEnumValidValuesFormatResponse(dict):
     """
     Valid enum values in case of an enum property.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "localizedValueNames":
-            suggest = "localized_value_names"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProfileEnumValidValuesFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProfileEnumValidValuesFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProfileEnumValidValuesFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  localized_value_names: Optional[Mapping[str, str]] = None,
                  value: Optional[int] = None):
@@ -1105,53 +802,6 @@ class PropertyDefinitionResponse(dict):
     """
     Property definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSourcePrecedenceRules":
-            suggest = "data_source_precedence_rules"
-        elif key == "fieldName":
-            suggest = "field_name"
-        elif key == "fieldType":
-            suggest = "field_type"
-        elif key == "arrayValueSeparator":
-            suggest = "array_value_separator"
-        elif key == "enumValidValues":
-            suggest = "enum_valid_values"
-        elif key == "isArray":
-            suggest = "is_array"
-        elif key == "isAvailableInGraph":
-            suggest = "is_available_in_graph"
-        elif key == "isEnum":
-            suggest = "is_enum"
-        elif key == "isFlagEnum":
-            suggest = "is_flag_enum"
-        elif key == "isImage":
-            suggest = "is_image"
-        elif key == "isLocalizedString":
-            suggest = "is_localized_string"
-        elif key == "isName":
-            suggest = "is_name"
-        elif key == "isRequired":
-            suggest = "is_required"
-        elif key == "maxLength":
-            suggest = "max_length"
-        elif key == "propertyId":
-            suggest = "property_id"
-        elif key == "schemaItemPropLink":
-            suggest = "schema_item_prop_link"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PropertyDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PropertyDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PropertyDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_source_precedence_rules: Sequence['outputs.DataSourcePrecedenceResponse'],
                  field_name: str,
@@ -1352,27 +1002,6 @@ class RelationshipLinkFieldMappingResponse(dict):
     """
     The fields mapping for Relationships.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "interactionFieldName":
-            suggest = "interaction_field_name"
-        elif key == "relationshipFieldName":
-            suggest = "relationship_field_name"
-        elif key == "linkType":
-            suggest = "link_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RelationshipLinkFieldMappingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RelationshipLinkFieldMappingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RelationshipLinkFieldMappingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  interaction_field_name: str,
                  relationship_field_name: str,
@@ -1418,25 +1047,6 @@ class RelationshipTypeFieldMappingResponse(dict):
     """
     Map a field of profile to its corresponding StrongId in Related Profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "profileFieldName":
-            suggest = "profile_field_name"
-        elif key == "relatedProfileKeyProperty":
-            suggest = "related_profile_key_property"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RelationshipTypeFieldMappingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RelationshipTypeFieldMappingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RelationshipTypeFieldMappingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  profile_field_name: str,
                  related_profile_key_property: str):
@@ -1470,23 +1080,6 @@ class RelationshipTypeMappingResponse(dict):
     """
     Maps fields in Profile to their corresponding StrongIds in Related Profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fieldMappings":
-            suggest = "field_mappings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RelationshipTypeMappingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RelationshipTypeMappingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RelationshipTypeMappingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  field_mappings: Sequence['outputs.RelationshipTypeFieldMappingResponse']):
         """
@@ -1544,27 +1137,6 @@ class StrongIdResponse(dict):
     """
     Property/Properties which represent a unique ID.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyPropertyNames":
-            suggest = "key_property_names"
-        elif key == "strongIdName":
-            suggest = "strong_id_name"
-        elif key == "displayName":
-            suggest = "display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StrongIdResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StrongIdResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StrongIdResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_property_names: Sequence[str],
                  strong_id_name: str,
@@ -1622,29 +1194,6 @@ class TypePropertiesMappingResponse(dict):
     """
     Metadata for a Link's property mapping.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "interactionTypePropertyName":
-            suggest = "interaction_type_property_name"
-        elif key == "profileTypePropertyName":
-            suggest = "profile_type_property_name"
-        elif key == "isProfileTypeId":
-            suggest = "is_profile_type_id"
-        elif key == "linkType":
-            suggest = "link_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TypePropertiesMappingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TypePropertiesMappingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TypePropertiesMappingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  interaction_type_property_name: str,
                  profile_type_property_name: str,

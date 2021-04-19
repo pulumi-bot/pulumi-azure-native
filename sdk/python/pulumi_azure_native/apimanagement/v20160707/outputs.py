@@ -23,27 +23,6 @@ class AdditionalRegionResponse(dict):
     """
     Description of an additional API Management resource location.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "skuType":
-            suggest = "sku_type"
-        elif key == "staticIPs":
-            suggest = "static_ips"
-        elif key == "skuUnitCount":
-            suggest = "sku_unit_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdditionalRegionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdditionalRegionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdditionalRegionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  location: str,
                  sku_type: str,
@@ -238,23 +217,6 @@ class VirtualNetworkConfigurationResponse(dict):
     """
     Configuration of a virtual network to which API Management service is deployed.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetResourceId":
-            suggest = "subnet_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  subnetname: str,
                  vnetid: str,

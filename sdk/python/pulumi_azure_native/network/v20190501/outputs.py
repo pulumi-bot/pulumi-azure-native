@@ -32,27 +32,6 @@ class BackendPoolResponse(dict):
     """
     A backend pool is a collection of backends that can be routed to.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceState":
-            suggest = "resource_state"
-        elif key == "healthProbeSettings":
-            suggest = "health_probe_settings"
-        elif key == "loadBalancingSettings":
-            suggest = "load_balancing_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackendPoolResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackendPoolResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackendPoolResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_state: str,
                  type: str,
@@ -146,25 +125,6 @@ class BackendPoolsSettingsResponse(dict):
     """
     Settings that apply to all backend pools.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enforceCertificateNameCheck":
-            suggest = "enforce_certificate_name_check"
-        elif key == "sendRecvTimeoutSeconds":
-            suggest = "send_recv_timeout_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackendPoolsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackendPoolsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackendPoolsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enforce_certificate_name_check: Optional[str] = None,
                  send_recv_timeout_seconds: Optional[int] = None):
@@ -202,29 +162,6 @@ class BackendResponse(dict):
     """
     Backend address of a frontDoor load balancer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendHostHeader":
-            suggest = "backend_host_header"
-        elif key == "enabledState":
-            suggest = "enabled_state"
-        elif key == "httpPort":
-            suggest = "http_port"
-        elif key == "httpsPort":
-            suggest = "https_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackendResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackendResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackendResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  backend_host_header: Optional[str] = None,
@@ -320,25 +257,6 @@ class CacheConfigurationResponse(dict):
     """
     Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dynamicCompression":
-            suggest = "dynamic_compression"
-        elif key == "queryParameterStripDirective":
-            suggest = "query_parameter_strip_directive"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CacheConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CacheConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CacheConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dynamic_compression: Optional[str] = None,
                  query_parameter_strip_directive: Optional[str] = None):
@@ -374,33 +292,6 @@ class CustomHttpsConfigurationResponse(dict):
     """
     Https settings for a domain
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateSource":
-            suggest = "certificate_source"
-        elif key == "minimumTlsVersion":
-            suggest = "minimum_tls_version"
-        elif key == "protocolType":
-            suggest = "protocol_type"
-        elif key == "certificateType":
-            suggest = "certificate_type"
-        elif key == "secretName":
-            suggest = "secret_name"
-        elif key == "secretVersion":
-            suggest = "secret_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomHttpsConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomHttpsConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomHttpsConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_source: str,
                  minimum_tls_version: str,
@@ -493,31 +384,6 @@ class ForwardingConfigurationResponse(dict):
     """
     Describes Forwarding Route.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "backendPool":
-            suggest = "backend_pool"
-        elif key == "cacheConfiguration":
-            suggest = "cache_configuration"
-        elif key == "customForwardingPath":
-            suggest = "custom_forwarding_path"
-        elif key == "forwardingProtocol":
-            suggest = "forwarding_protocol"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ForwardingConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ForwardingConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ForwardingConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  backend_pool: Optional['outputs.SubResourceResponse'] = None,
@@ -590,37 +456,6 @@ class FrontendEndpointResponse(dict):
     """
     A frontend endpoint used for routing.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customHttpsConfiguration":
-            suggest = "custom_https_configuration"
-        elif key == "customHttpsProvisioningState":
-            suggest = "custom_https_provisioning_state"
-        elif key == "customHttpsProvisioningSubstate":
-            suggest = "custom_https_provisioning_substate"
-        elif key == "resourceState":
-            suggest = "resource_state"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "sessionAffinityEnabledState":
-            suggest = "session_affinity_enabled_state"
-        elif key == "sessionAffinityTtlSeconds":
-            suggest = "session_affinity_ttl_seconds"
-        elif key == "webApplicationFirewallPolicyLink":
-            suggest = "web_application_firewall_policy_link"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FrontendEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FrontendEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FrontendEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_https_configuration: 'outputs.CustomHttpsConfigurationResponse',
                  custom_https_provisioning_state: str,
@@ -782,29 +617,6 @@ class HealthProbeSettingsModelResponse(dict):
     """
     Load balancing settings for a backend pool
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceState":
-            suggest = "resource_state"
-        elif key == "enabledState":
-            suggest = "enabled_state"
-        elif key == "healthProbeMethod":
-            suggest = "health_probe_method"
-        elif key == "intervalInSeconds":
-            suggest = "interval_in_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthProbeSettingsModelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthProbeSettingsModelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthProbeSettingsModelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_state: str,
                  type: str,
@@ -947,29 +759,6 @@ class LoadBalancingSettingsModelResponse(dict):
     """
     Load balancing settings for a backend pool
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceState":
-            suggest = "resource_state"
-        elif key == "additionalLatencyMilliseconds":
-            suggest = "additional_latency_milliseconds"
-        elif key == "sampleSize":
-            suggest = "sample_size"
-        elif key == "successfulSamplesRequired":
-            suggest = "successful_samples_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LoadBalancingSettingsModelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LoadBalancingSettingsModelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LoadBalancingSettingsModelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_state: str,
                  type: str,
@@ -1063,35 +852,6 @@ class RedirectConfigurationResponse(dict):
     """
     Describes Redirect Route.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "customFragment":
-            suggest = "custom_fragment"
-        elif key == "customHost":
-            suggest = "custom_host"
-        elif key == "customPath":
-            suggest = "custom_path"
-        elif key == "customQueryString":
-            suggest = "custom_query_string"
-        elif key == "redirectProtocol":
-            suggest = "redirect_protocol"
-        elif key == "redirectType":
-            suggest = "redirect_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RedirectConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RedirectConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RedirectConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  custom_fragment: Optional[str] = None,
@@ -1188,33 +948,6 @@ class RoutingRuleResponse(dict):
     """
     A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceState":
-            suggest = "resource_state"
-        elif key == "acceptedProtocols":
-            suggest = "accepted_protocols"
-        elif key == "enabledState":
-            suggest = "enabled_state"
-        elif key == "frontendEndpoints":
-            suggest = "frontend_endpoints"
-        elif key == "patternsToMatch":
-            suggest = "patterns_to_match"
-        elif key == "routeConfiguration":
-            suggest = "route_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutingRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutingRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutingRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_state: str,
                  type: str,

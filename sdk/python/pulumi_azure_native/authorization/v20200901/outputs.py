@@ -25,25 +25,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -89,23 +70,6 @@ class NonComplianceMessageResponse(dict):
     """
     A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyDefinitionReferenceId":
-            suggest = "policy_definition_reference_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NonComplianceMessageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NonComplianceMessageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NonComplianceMessageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  message: str,
                  policy_definition_reference_id: Optional[str] = None):
@@ -140,25 +104,6 @@ class ParameterDefinitionsValueResponse(dict):
     """
     The definition of a parameter that can be provided to the policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedValues":
-            suggest = "allowed_values"
-        elif key == "defaultValue":
-            suggest = "default_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParameterDefinitionsValueResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParameterDefinitionsValueResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParameterDefinitionsValueResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_values: Optional[Sequence[Any]] = None,
                  default_value: Optional[Any] = None,
@@ -218,27 +163,6 @@ class ParameterDefinitionsValueResponseMetadata(dict):
     """
     General metadata for the parameter.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assignPermissions":
-            suggest = "assign_permissions"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "strongType":
-            suggest = "strong_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParameterDefinitionsValueResponseMetadata. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParameterDefinitionsValueResponseMetadata.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParameterDefinitionsValueResponseMetadata.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  assign_permissions: Optional[bool] = None,
                  description: Optional[str] = None,
@@ -321,25 +245,6 @@ class PolicyDefinitionGroupResponse(dict):
     """
     The policy definition group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalMetadataId":
-            suggest = "additional_metadata_id"
-        elif key == "displayName":
-            suggest = "display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyDefinitionGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyDefinitionGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyDefinitionGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  additional_metadata_id: Optional[str] = None,
@@ -410,27 +315,6 @@ class PolicyDefinitionReferenceResponse(dict):
     """
     The policy definition reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyDefinitionId":
-            suggest = "policy_definition_id"
-        elif key == "groupNames":
-            suggest = "group_names"
-        elif key == "policyDefinitionReferenceId":
-            suggest = "policy_definition_reference_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyDefinitionReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyDefinitionReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyDefinitionReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  policy_definition_id: str,
                  group_names: Optional[Sequence[str]] = None,

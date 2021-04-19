@@ -44,23 +44,6 @@ class CertificatePropertiesResponse(dict):
     """
     The description of an X509 CA Certificate.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isVerified":
-            suggest = "is_verified"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificatePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificatePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificatePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created: str,
                  expiry: str,
@@ -150,25 +133,6 @@ class CloudToDevicePropertiesResponse(dict):
     """
     The IoT hub cloud-to-device messaging properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultTtlAsIso8601":
-            suggest = "default_ttl_as_iso8601"
-        elif key == "maxDeliveryCount":
-            suggest = "max_delivery_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudToDevicePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudToDevicePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudToDevicePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_ttl_as_iso8601: Optional[str] = None,
                  feedback: Optional['outputs.FeedbackPropertiesResponse'] = None,
@@ -216,23 +180,6 @@ class EnrichmentPropertiesResponse(dict):
     """
     The properties of an enrichment that your IoT hub applies to messages delivered to endpoints.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointNames":
-            suggest = "endpoint_names"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnrichmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnrichmentPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnrichmentPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_names: Sequence[str],
                  key: str,
@@ -277,27 +224,6 @@ class EventHubPropertiesResponse(dict):
     """
     The properties of the provisioned Event Hub-compatible endpoint used by the IoT hub.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "partitionIds":
-            suggest = "partition_ids"
-        elif key == "partitionCount":
-            suggest = "partition_count"
-        elif key == "retentionTimeInDays":
-            suggest = "retention_time_in_days"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventHubPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventHubPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventHubPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint: str,
                  partition_ids: Sequence[str],
@@ -366,25 +292,6 @@ class FallbackRoutePropertiesResponse(dict):
     """
     The properties of the fallback route. IoT Hub uses these properties when it routes messages to the fallback endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointNames":
-            suggest = "endpoint_names"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FallbackRoutePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FallbackRoutePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FallbackRoutePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_names: Sequence[str],
                  is_enabled: bool,
@@ -453,27 +360,6 @@ class FeedbackPropertiesResponse(dict):
     """
     The properties of the feedback queue for cloud-to-device messages.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lockDurationAsIso8601":
-            suggest = "lock_duration_as_iso8601"
-        elif key == "maxDeliveryCount":
-            suggest = "max_delivery_count"
-        elif key == "ttlAsIso8601":
-            suggest = "ttl_as_iso8601"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeedbackPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FeedbackPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FeedbackPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lock_duration_as_iso8601: Optional[str] = None,
                  max_delivery_count: Optional[int] = None,
@@ -556,47 +442,6 @@ class IotHubPropertiesResponse(dict):
     """
     The properties of an IoT hub.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hostName":
-            suggest = "host_name"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "authorizationPolicies":
-            suggest = "authorization_policies"
-        elif key == "cloudToDevice":
-            suggest = "cloud_to_device"
-        elif key == "enableFileUploadNotifications":
-            suggest = "enable_file_upload_notifications"
-        elif key == "eventHubEndpoints":
-            suggest = "event_hub_endpoints"
-        elif key == "ipFilterRules":
-            suggest = "ip_filter_rules"
-        elif key == "messagingEndpoints":
-            suggest = "messaging_endpoints"
-        elif key == "minTlsVersion":
-            suggest = "min_tls_version"
-        elif key == "networkRuleSets":
-            suggest = "network_rule_sets"
-        elif key == "privateEndpointConnections":
-            suggest = "private_endpoint_connections"
-        elif key == "publicNetworkAccess":
-            suggest = "public_network_access"
-        elif key == "storageEndpoints":
-            suggest = "storage_endpoints"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IotHubPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IotHubPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IotHubPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host_name: str,
                  locations: Sequence['outputs.IotHubLocationDescriptionResponse'],
@@ -865,25 +710,6 @@ class IpFilterRuleResponse(dict):
     """
     The IP filter rules for the IoT hub.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filterName":
-            suggest = "filter_name"
-        elif key == "ipMask":
-            suggest = "ip_mask"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IpFilterRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IpFilterRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IpFilterRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: str,
                  filter_name: str,
@@ -928,27 +754,6 @@ class MessagingEndpointPropertiesResponse(dict):
     """
     The properties of the messaging endpoints used by this IoT hub.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lockDurationAsIso8601":
-            suggest = "lock_duration_as_iso8601"
-        elif key == "maxDeliveryCount":
-            suggest = "max_delivery_count"
-        elif key == "ttlAsIso8601":
-            suggest = "ttl_as_iso8601"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MessagingEndpointPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MessagingEndpointPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MessagingEndpointPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lock_duration_as_iso8601: Optional[str] = None,
                  max_delivery_count: Optional[int] = None,
@@ -996,25 +801,6 @@ class NetworkRuleSetIpRuleResponse(dict):
     """
     IP Rule to be applied as part of Network Rule Set
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filterName":
-            suggest = "filter_name"
-        elif key == "ipMask":
-            suggest = "ip_mask"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetIpRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRuleSetIpRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRuleSetIpRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filter_name: str,
                  ip_mask: str,
@@ -1062,27 +848,6 @@ class NetworkRuleSetPropertiesResponse(dict):
     """
     Network Rule Set Properties of IotHub
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applyToBuiltInEventHubEndpoint":
-            suggest = "apply_to_built_in_event_hub_endpoint"
-        elif key == "ipRules":
-            suggest = "ip_rules"
-        elif key == "defaultAction":
-            suggest = "default_action"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRuleSetPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRuleSetPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  apply_to_built_in_event_hub_endpoint: bool,
                  ip_rules: Sequence['outputs.NetworkRuleSetIpRuleResponse'],
@@ -1130,25 +895,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     The properties of a private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_link_service_connection_state: 'outputs.PrivateLinkServiceConnectionStateResponse',
                  private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None):
@@ -1260,23 +1006,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     The current state of a private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: str,
                  status: str,
@@ -1322,25 +1051,6 @@ class RoutePropertiesResponse(dict):
     """
     The properties of a routing rule that your IoT hub uses to route messages to endpoints.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointNames":
-            suggest = "endpoint_names"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_names: Sequence[str],
                  is_enabled: bool,
@@ -1408,29 +1118,6 @@ class RoutingEndpointsResponse(dict):
     """
     The properties related to the custom endpoints to which your IoT hub routes messages based on the routing rules. A maximum of 10 custom endpoints are allowed across all endpoint types for paid hubs and only 1 custom endpoint is allowed across all endpoint types for free hubs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventHubs":
-            suggest = "event_hubs"
-        elif key == "serviceBusQueues":
-            suggest = "service_bus_queues"
-        elif key == "serviceBusTopics":
-            suggest = "service_bus_topics"
-        elif key == "storageContainers":
-            suggest = "storage_containers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutingEndpointsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutingEndpointsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutingEndpointsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_hubs: Optional[Sequence['outputs.RoutingEventHubPropertiesResponse']] = None,
                  service_bus_queues: Optional[Sequence['outputs.RoutingServiceBusQueueEndpointPropertiesResponse']] = None,
@@ -1490,33 +1177,6 @@ class RoutingEventHubPropertiesResponse(dict):
     """
     The properties related to an event hub endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "endpointUri":
-            suggest = "endpoint_uri"
-        elif key == "entityPath":
-            suggest = "entity_path"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutingEventHubPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutingEventHubPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutingEventHubPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  authentication_type: Optional[str] = None,
@@ -1623,23 +1283,6 @@ class RoutingPropertiesResponse(dict):
     """
     The routing related properties of the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fallbackRoute":
-            suggest = "fallback_route"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutingPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutingPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutingPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoints: Optional['outputs.RoutingEndpointsResponse'] = None,
                  enrichments: Optional[Sequence['outputs.EnrichmentPropertiesResponse']] = None,
@@ -1699,33 +1342,6 @@ class RoutingServiceBusQueueEndpointPropertiesResponse(dict):
     """
     The properties related to service bus queue endpoint types.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "endpointUri":
-            suggest = "endpoint_uri"
-        elif key == "entityPath":
-            suggest = "entity_path"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutingServiceBusQueueEndpointPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutingServiceBusQueueEndpointPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutingServiceBusQueueEndpointPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  authentication_type: Optional[str] = None,
@@ -1832,33 +1448,6 @@ class RoutingServiceBusTopicEndpointPropertiesResponse(dict):
     """
     The properties related to service bus topic endpoint types.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "endpointUri":
-            suggest = "endpoint_uri"
-        elif key == "entityPath":
-            suggest = "entity_path"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutingServiceBusTopicEndpointPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutingServiceBusTopicEndpointPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutingServiceBusTopicEndpointPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  authentication_type: Optional[str] = None,
@@ -1965,39 +1554,6 @@ class RoutingStorageContainerPropertiesResponse(dict):
     """
     The properties related to a storage container endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "containerName":
-            suggest = "container_name"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "batchFrequencyInSeconds":
-            suggest = "batch_frequency_in_seconds"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "endpointUri":
-            suggest = "endpoint_uri"
-        elif key == "fileNameFormat":
-            suggest = "file_name_format"
-        elif key == "maxChunkSizeInBytes":
-            suggest = "max_chunk_size_in_bytes"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoutingStorageContainerPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoutingStorageContainerPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoutingStorageContainerPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  container_name: str,
                  name: str,
@@ -2151,27 +1707,6 @@ class SharedAccessSignatureAuthorizationRuleResponse(dict):
     """
     The properties of an IoT hub shared access policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyName":
-            suggest = "key_name"
-        elif key == "primaryKey":
-            suggest = "primary_key"
-        elif key == "secondaryKey":
-            suggest = "secondary_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharedAccessSignatureAuthorizationRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharedAccessSignatureAuthorizationRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharedAccessSignatureAuthorizationRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_name: str,
                  rights: str,
@@ -2229,29 +1764,6 @@ class StorageEndpointPropertiesResponse(dict):
     """
     The properties of the Azure Storage endpoint for file upload.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "containerName":
-            suggest = "container_name"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "sasTtlAsIso8601":
-            suggest = "sas_ttl_as_iso8601"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageEndpointPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageEndpointPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageEndpointPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: str,
                  container_name: str,

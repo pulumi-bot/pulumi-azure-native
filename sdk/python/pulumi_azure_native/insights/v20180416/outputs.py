@@ -27,27 +27,6 @@ class AlertingActionResponse(dict):
     """
     Specify action need to be taken when rule type is Alert
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-        elif key == "aznsAction":
-            suggest = "azns_action"
-        elif key == "throttlingInMin":
-            suggest = "throttling_in_min"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AlertingActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AlertingActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AlertingActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  odata_type: str,
                  severity: str,
@@ -118,27 +97,6 @@ class AzNsActionGroupResponse(dict):
     """
     Azure action group
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroup":
-            suggest = "action_group"
-        elif key == "customWebhookPayload":
-            suggest = "custom_webhook_payload"
-        elif key == "emailSubject":
-            suggest = "email_subject"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzNsActionGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzNsActionGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzNsActionGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_group: Optional[Sequence[str]] = None,
                  custom_webhook_payload: Optional[str] = None,
@@ -186,23 +144,6 @@ class CriteriaResponse(dict):
     """
     Specifies the criteria for converting log to metric.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "metricName":
-            suggest = "metric_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  metric_name: str,
                  dimensions: Optional[Sequence['outputs.DimensionResponse']] = None):
@@ -281,27 +222,6 @@ class LogMetricTriggerResponse(dict):
     """
     A log metrics trigger descriptor.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "metricColumn":
-            suggest = "metric_column"
-        elif key == "metricTriggerType":
-            suggest = "metric_trigger_type"
-        elif key == "thresholdOperator":
-            suggest = "threshold_operator"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogMetricTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogMetricTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogMetricTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  metric_column: Optional[str] = None,
                  metric_trigger_type: Optional[str] = None,
@@ -361,23 +281,6 @@ class LogToMetricActionResponse(dict):
     """
     Specify action need to be taken when rule type is converting log to metric
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "odataType":
-            suggest = "odata_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogToMetricActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogToMetricActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogToMetricActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  criteria: Sequence['outputs.CriteriaResponse'],
                  odata_type: str):
@@ -413,25 +316,6 @@ class ScheduleResponse(dict):
     """
     Defines how often to run the search and the time interval.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "frequencyInMinutes":
-            suggest = "frequency_in_minutes"
-        elif key == "timeWindowInMinutes":
-            suggest = "time_window_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  frequency_in_minutes: int,
                  time_window_in_minutes: int):
@@ -465,27 +349,6 @@ class SourceResponse(dict):
     """
     Specifies the log search query.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSourceId":
-            suggest = "data_source_id"
-        elif key == "authorizedResources":
-            suggest = "authorized_resources"
-        elif key == "queryType":
-            suggest = "query_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_source_id: str,
                  authorized_resources: Optional[Sequence[str]] = None,
@@ -544,25 +407,6 @@ class TriggerConditionResponse(dict):
     """
     The condition that results in the Log Search rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "thresholdOperator":
-            suggest = "threshold_operator"
-        elif key == "metricTrigger":
-            suggest = "metric_trigger"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TriggerConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TriggerConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TriggerConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  threshold: float,
                  threshold_operator: str,

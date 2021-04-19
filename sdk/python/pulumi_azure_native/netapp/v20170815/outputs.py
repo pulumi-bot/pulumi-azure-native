@@ -21,29 +21,6 @@ class ActiveDirectoryResponse(dict):
     """
     Active Directory
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "activeDirectoryId":
-            suggest = "active_directory_id"
-        elif key == "dNS":
-            suggest = "d_ns"
-        elif key == "organizationalUnit":
-            suggest = "organizational_unit"
-        elif key == "sMBServerName":
-            suggest = "s_mb_server_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActiveDirectoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActiveDirectoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActiveDirectoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  active_directory_id: Optional[str] = None,
                  d_ns: Optional[str] = None,
@@ -151,29 +128,6 @@ class ExportPolicyRuleResponse(dict):
     """
     Volume Export Policy Rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedClients":
-            suggest = "allowed_clients"
-        elif key == "ruleIndex":
-            suggest = "rule_index"
-        elif key == "unixReadOnly":
-            suggest = "unix_read_only"
-        elif key == "unixReadWrite":
-            suggest = "unix_read_write"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportPolicyRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportPolicyRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportPolicyRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_clients: Optional[str] = None,
                  cifs: Optional[bool] = None,

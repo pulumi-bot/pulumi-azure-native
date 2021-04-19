@@ -72,23 +72,6 @@ class OSProfileResponse(dict):
     """
     Specifies the operating system settings for the hybrid machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computerName":
-            suggest = "computer_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  computer_name: str):
         """

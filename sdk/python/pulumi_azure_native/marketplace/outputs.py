@@ -15,31 +15,6 @@ __all__ = [
 
 @pulumi.output_type
 class PlanResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "altStackReference":
-            suggest = "alt_stack_reference"
-        elif key == "planDisplayName":
-            suggest = "plan_display_name"
-        elif key == "planId":
-            suggest = "plan_id"
-        elif key == "skuId":
-            suggest = "sku_id"
-        elif key == "stackType":
-            suggest = "stack_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PlanResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  alt_stack_reference: str,
                  plan_display_name: str,

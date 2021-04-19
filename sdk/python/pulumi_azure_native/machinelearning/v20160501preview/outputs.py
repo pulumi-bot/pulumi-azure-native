@@ -43,27 +43,6 @@ class AssetItemResponse(dict):
     """
     Information about an asset associated with the web service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "locationInfo":
-            suggest = "location_info"
-        elif key == "inputPorts":
-            suggest = "input_ports"
-        elif key == "outputPorts":
-            suggest = "output_ports"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AssetItemResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AssetItemResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AssetItemResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  location_info: 'outputs.AssetLocationResponse',
                  name: str,
@@ -202,25 +181,6 @@ class ColumnSpecificationResponse(dict):
     """
     Swagger 2.0 schema for a column within the data table representing a web service input or output. See Swagger specification: http://swagger.io/specification/
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "xMsIsnullable":
-            suggest = "x_ms_isnullable"
-        elif key == "xMsIsordered":
-            suggest = "x_ms_isordered"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ColumnSpecificationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ColumnSpecificationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ColumnSpecificationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  enum: Optional[Sequence[Any]] = None,
@@ -291,41 +251,6 @@ class CommitmentPlanPropertiesResponse(dict):
     """
     Properties of an Azure ML commitment plan.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "chargeForOverage":
-            suggest = "charge_for_overage"
-        elif key == "chargeForPlan":
-            suggest = "charge_for_plan"
-        elif key == "creationDate":
-            suggest = "creation_date"
-        elif key == "includedQuantities":
-            suggest = "included_quantities"
-        elif key == "maxAssociationLimit":
-            suggest = "max_association_limit"
-        elif key == "maxCapacityLimit":
-            suggest = "max_capacity_limit"
-        elif key == "minCapacityLimit":
-            suggest = "min_capacity_limit"
-        elif key == "planMeter":
-            suggest = "plan_meter"
-        elif key == "refillFrequencyInDays":
-            suggest = "refill_frequency_in_days"
-        elif key == "suspendPlanOnOverage":
-            suggest = "suspend_plan_on_overage"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommitmentPlanPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommitmentPlanPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommitmentPlanPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  charge_for_overage: bool,
                  charge_for_plan: bool,
@@ -503,23 +428,6 @@ class ExampleRequestResponse(dict):
     """
     Sample input data for the service's input(s).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "globalParameters":
-            suggest = "global_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExampleRequestResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExampleRequestResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExampleRequestResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  global_parameters: Optional[Mapping[str, Any]] = None,
                  inputs: Optional[Mapping[str, Sequence[Sequence[Any]]]] = None):
@@ -555,29 +463,6 @@ class GraphEdgeResponse(dict):
     """
     Defines an edge within the web service's graph.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceNodeId":
-            suggest = "source_node_id"
-        elif key == "sourcePortId":
-            suggest = "source_port_id"
-        elif key == "targetNodeId":
-            suggest = "target_node_id"
-        elif key == "targetPortId":
-            suggest = "target_port_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GraphEdgeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GraphEdgeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GraphEdgeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_node_id: Optional[str] = None,
                  source_port_id: Optional[str] = None,
@@ -637,27 +522,6 @@ class GraphNodeResponse(dict):
     """
     Specifies a node in the web service graph. The node can either be an input, output or asset node, so only one of the corresponding id properties is populated at any given time.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assetId":
-            suggest = "asset_id"
-        elif key == "inputId":
-            suggest = "input_id"
-        elif key == "outputId":
-            suggest = "output_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GraphNodeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GraphNodeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GraphNodeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  asset_id: Optional[str] = None,
                  input_id: Optional[str] = None,
@@ -717,23 +581,6 @@ class GraphPackageResponse(dict):
     """
     Defines the graph of modules making up the machine learning solution.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "graphParameters":
-            suggest = "graph_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GraphPackageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GraphPackageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GraphPackageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  edges: Optional[Sequence['outputs.GraphEdgeResponse']] = None,
                  graph_parameters: Optional[Mapping[str, 'outputs.GraphParameterResponse']] = None,
@@ -781,25 +628,6 @@ class GraphParameterLinkResponse(dict):
     """
     Association link for a graph global parameter to a node in the graph.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nodeId":
-            suggest = "node_id"
-        elif key == "parameterKey":
-            suggest = "parameter_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GraphParameterLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GraphParameterLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GraphParameterLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  node_id: str,
                  parameter_key: str):
@@ -925,23 +753,6 @@ class ModeValueInfoResponse(dict):
     """
     Nested parameter definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "interfaceString":
-            suggest = "interface_string"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ModeValueInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ModeValueInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ModeValueInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  interface_string: Optional[str] = None,
                  parameters: Optional[Sequence['outputs.ModuleAssetParameterResponse']] = None):
@@ -977,25 +788,6 @@ class ModuleAssetParameterResponse(dict):
     """
     Parameter definition for a module asset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "modeValuesInfo":
-            suggest = "mode_values_info"
-        elif key == "parameterType":
-            suggest = "parameter_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ModuleAssetParameterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ModuleAssetParameterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ModuleAssetParameterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  mode_values_info: Optional[Mapping[str, 'outputs.ModeValueInfoResponse']] = None,
                  name: Optional[str] = None,
@@ -1068,25 +860,6 @@ class PlanQuantityResponse(dict):
     """
     Represents the quantity a commitment plan provides of a metered resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "includedQuantityMeter":
-            suggest = "included_quantity_meter"
-        elif key == "overageMeter":
-            suggest = "overage_meter"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PlanQuantityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PlanQuantityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PlanQuantityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowance: float,
                  amount: float,
@@ -1142,23 +915,6 @@ class RealtimeConfigurationResponse(dict):
     """
     Holds the available configuration options for an Azure ML web service endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentCalls":
-            suggest = "max_concurrent_calls"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RealtimeConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RealtimeConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RealtimeConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_concurrent_calls: Optional[int] = None):
         """
@@ -1430,45 +1186,6 @@ class WebServicePropertiesForGraphResponse(dict):
     """
     Properties specific to a Graph based web service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdOn":
-            suggest = "created_on"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "packageType":
-            suggest = "package_type"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "swaggerLocation":
-            suggest = "swagger_location"
-        elif key == "commitmentPlan":
-            suggest = "commitment_plan"
-        elif key == "exampleRequest":
-            suggest = "example_request"
-        elif key == "exposeSampleData":
-            suggest = "expose_sample_data"
-        elif key == "machineLearningWorkspace":
-            suggest = "machine_learning_workspace"
-        elif key == "readOnly":
-            suggest = "read_only"
-        elif key == "realtimeConfiguration":
-            suggest = "realtime_configuration"
-        elif key == "storageAccount":
-            suggest = "storage_account"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebServicePropertiesForGraphResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebServicePropertiesForGraphResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebServicePropertiesForGraphResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_on: str,
                  modified_on: str,

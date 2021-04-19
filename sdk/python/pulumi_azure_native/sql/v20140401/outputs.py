@@ -23,25 +23,6 @@ class OperationImpactResponse(dict):
     """
     The impact of an operation, both in absolute and relative terms.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "changeValueAbsolute":
-            suggest = "change_value_absolute"
-        elif key == "changeValueRelative":
-            suggest = "change_value_relative"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OperationImpactResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OperationImpactResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OperationImpactResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  change_value_absolute: float,
                  change_value_relative: float,
@@ -97,33 +78,6 @@ class RecommendedIndexResponse(dict):
     """
     Represents a database recommended index.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "estimatedImpact":
-            suggest = "estimated_impact"
-        elif key == "includedColumns":
-            suggest = "included_columns"
-        elif key == "indexScript":
-            suggest = "index_script"
-        elif key == "indexType":
-            suggest = "index_type"
-        elif key == "lastModified":
-            suggest = "last_modified"
-        elif key == "reportedImpact":
-            suggest = "reported_impact"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecommendedIndexResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecommendedIndexResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecommendedIndexResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: str,
                  columns: Sequence[str],
@@ -300,57 +254,6 @@ class ServiceTierAdvisorResponse(dict):
     """
     Represents a Service Tier Advisor.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "activeTimeRatio":
-            suggest = "active_time_ratio"
-        elif key == "avgDtu":
-            suggest = "avg_dtu"
-        elif key == "currentServiceLevelObjective":
-            suggest = "current_service_level_objective"
-        elif key == "currentServiceLevelObjectiveId":
-            suggest = "current_service_level_objective_id"
-        elif key == "databaseSizeBasedRecommendationServiceLevelObjective":
-            suggest = "database_size_based_recommendation_service_level_objective"
-        elif key == "databaseSizeBasedRecommendationServiceLevelObjectiveId":
-            suggest = "database_size_based_recommendation_service_level_objective_id"
-        elif key == "disasterPlanBasedRecommendationServiceLevelObjective":
-            suggest = "disaster_plan_based_recommendation_service_level_objective"
-        elif key == "disasterPlanBasedRecommendationServiceLevelObjectiveId":
-            suggest = "disaster_plan_based_recommendation_service_level_objective_id"
-        elif key == "maxDtu":
-            suggest = "max_dtu"
-        elif key == "maxSizeInGB":
-            suggest = "max_size_in_gb"
-        elif key == "minDtu":
-            suggest = "min_dtu"
-        elif key == "observationPeriodEnd":
-            suggest = "observation_period_end"
-        elif key == "observationPeriodStart":
-            suggest = "observation_period_start"
-        elif key == "overallRecommendationServiceLevelObjective":
-            suggest = "overall_recommendation_service_level_objective"
-        elif key == "overallRecommendationServiceLevelObjectiveId":
-            suggest = "overall_recommendation_service_level_objective_id"
-        elif key == "serviceLevelObjectiveUsageMetrics":
-            suggest = "service_level_objective_usage_metrics"
-        elif key == "usageBasedRecommendationServiceLevelObjective":
-            suggest = "usage_based_recommendation_service_level_objective"
-        elif key == "usageBasedRecommendationServiceLevelObjectiveId":
-            suggest = "usage_based_recommendation_service_level_objective_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceTierAdvisorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceTierAdvisorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceTierAdvisorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  active_time_ratio: float,
                  avg_dtu: float,
@@ -604,27 +507,6 @@ class SloUsageMetricResponse(dict):
     """
     A Slo Usage Metric.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inRangeTimeRatio":
-            suggest = "in_range_time_ratio"
-        elif key == "serviceLevelObjective":
-            suggest = "service_level_objective"
-        elif key == "serviceLevelObjectiveId":
-            suggest = "service_level_objective_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SloUsageMetricResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SloUsageMetricResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SloUsageMetricResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  in_range_time_ratio: float,
                  service_level_objective: str,

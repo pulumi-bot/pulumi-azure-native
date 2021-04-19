@@ -70,25 +70,6 @@ class ElasticPoolPerDatabaseSettingsResponse(dict):
     """
     Per database settings of an elastic pool.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxCapacity":
-            suggest = "max_capacity"
-        elif key == "minCapacity":
-            suggest = "min_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElasticPoolPerDatabaseSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElasticPoolPerDatabaseSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElasticPoolPerDatabaseSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_capacity: Optional[float] = None,
                  min_capacity: Optional[float] = None):
@@ -124,23 +105,6 @@ class FailoverGroupReadOnlyEndpointResponse(dict):
     """
     Read-only endpoint of the failover group instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPolicy":
-            suggest = "failover_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FailoverGroupReadOnlyEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FailoverGroupReadOnlyEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FailoverGroupReadOnlyEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failover_policy: Optional[str] = None):
         """
@@ -164,25 +128,6 @@ class FailoverGroupReadWriteEndpointResponse(dict):
     """
     Read-write endpoint of the failover group instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPolicy":
-            suggest = "failover_policy"
-        elif key == "failoverWithDataLossGracePeriodMinutes":
-            suggest = "failover_with_data_loss_grace_period_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FailoverGroupReadWriteEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FailoverGroupReadWriteEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FailoverGroupReadWriteEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failover_policy: str,
                  failover_with_data_loss_grace_period_minutes: Optional[int] = None):
@@ -217,23 +162,6 @@ class InstanceFailoverGroupReadOnlyEndpointResponse(dict):
     """
     Read-only endpoint of the failover group instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPolicy":
-            suggest = "failover_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InstanceFailoverGroupReadOnlyEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InstanceFailoverGroupReadOnlyEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InstanceFailoverGroupReadOnlyEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failover_policy: Optional[str] = None):
         """
@@ -257,25 +185,6 @@ class InstanceFailoverGroupReadWriteEndpointResponse(dict):
     """
     Read-write endpoint of the failover group instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPolicy":
-            suggest = "failover_policy"
-        elif key == "failoverWithDataLossGracePeriodMinutes":
-            suggest = "failover_with_data_loss_grace_period_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InstanceFailoverGroupReadWriteEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InstanceFailoverGroupReadWriteEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InstanceFailoverGroupReadWriteEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failover_policy: str,
                  failover_with_data_loss_grace_period_minutes: Optional[int] = None):
@@ -310,25 +219,6 @@ class JobScheduleResponse(dict):
     """
     Scheduling properties of a job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  end_time: Optional[str] = None,
@@ -456,31 +346,6 @@ class JobStepExecutionOptionsResponse(dict):
     """
     The execution options of a job step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "initialRetryIntervalSeconds":
-            suggest = "initial_retry_interval_seconds"
-        elif key == "maximumRetryIntervalSeconds":
-            suggest = "maximum_retry_interval_seconds"
-        elif key == "retryAttempts":
-            suggest = "retry_attempts"
-        elif key == "retryIntervalBackoffMultiplier":
-            suggest = "retry_interval_backoff_multiplier"
-        elif key == "timeoutSeconds":
-            suggest = "timeout_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobStepExecutionOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobStepExecutionOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobStepExecutionOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  initial_retry_interval_seconds: Optional[int] = None,
                  maximum_retry_interval_seconds: Optional[int] = None,
@@ -562,33 +427,6 @@ class JobStepOutputResponse(dict):
     """
     The output configuration of a job step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "serverName":
-            suggest = "server_name"
-        elif key == "tableName":
-            suggest = "table_name"
-        elif key == "resourceGroupName":
-            suggest = "resource_group_name"
-        elif key == "schemaName":
-            suggest = "schema_name"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobStepOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobStepOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobStepOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  credential: str,
                  database_name: str,
@@ -696,33 +534,6 @@ class JobTargetResponse(dict):
     """
     A job target, for example a specific database or a container of databases that is evaluated during job execution.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "elasticPoolName":
-            suggest = "elastic_pool_name"
-        elif key == "membershipType":
-            suggest = "membership_type"
-        elif key == "refreshCredential":
-            suggest = "refresh_credential"
-        elif key == "serverName":
-            suggest = "server_name"
-        elif key == "shardMapName":
-            suggest = "shard_map_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobTargetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobTargetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobTargetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  database_name: Optional[str] = None,
@@ -819,25 +630,6 @@ class ManagedInstancePairInfoResponse(dict):
     """
     Pairs of Managed Instances in the failover group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "partnerManagedInstanceId":
-            suggest = "partner_managed_instance_id"
-        elif key == "primaryManagedInstanceId":
-            suggest = "primary_managed_instance_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedInstancePairInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedInstancePairInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedInstancePairInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  partner_managed_instance_id: Optional[str] = None,
                  primary_managed_instance_id: Optional[str] = None):
@@ -906,27 +698,6 @@ class ManagedInstancePrivateEndpointConnectionPropertiesResponse(dict):
     """
     Properties of a private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedInstancePrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedInstancePrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedInstancePrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.ManagedInstancePrivateEndpointPropertyResponse'] = None,
@@ -989,23 +760,6 @@ class ManagedInstancePrivateEndpointPropertyResponse(dict):
 
 @pulumi.output_type
 class ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -1049,23 +803,6 @@ class PartnerInfoResponse(dict):
     """
     Partner server information for the failover group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "replicationRole":
-            suggest = "replication_role"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PartnerInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PartnerInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PartnerInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  location: str,
@@ -1110,23 +847,6 @@ class PartnerRegionInfoResponse(dict):
     """
     Partner region information for the failover group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "replicationRole":
-            suggest = "replication_role"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PartnerRegionInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PartnerRegionInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PartnerRegionInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  replication_role: str,
                  location: Optional[str] = None):
@@ -1161,27 +881,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     Properties of a private endpoint connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.PrivateEndpointPropertyResponse'] = None,
@@ -1244,23 +943,6 @@ class PrivateEndpointPropertyResponse(dict):
 
 @pulumi.output_type
 class PrivateLinkServiceConnectionStatePropertyResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStatePropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStatePropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -1304,25 +986,6 @@ class ResourceIdentityResponse(dict):
     """
     Azure Active Directory identity configuration for a resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -1368,23 +1031,6 @@ class ServerInfoResponse(dict):
     """
     Server info for the server trust group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serverId":
-            suggest = "server_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServerInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServerInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServerInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  server_id: str):
         """
@@ -1510,23 +1156,6 @@ class SyncGroupSchemaResponse(dict):
     """
     Properties of sync group schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "masterSyncMemberName":
-            suggest = "master_sync_member_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  master_sync_member_name: Optional[str] = None,
                  tables: Optional[Sequence['outputs.SyncGroupSchemaTableResponse']] = None):
@@ -1562,27 +1191,6 @@ class SyncGroupSchemaTableColumnResponse(dict):
     """
     Properties of column in sync group table.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSize":
-            suggest = "data_size"
-        elif key == "dataType":
-            suggest = "data_type"
-        elif key == "quotedName":
-            suggest = "quoted_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaTableColumnResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaTableColumnResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaTableColumnResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_size: Optional[str] = None,
                  data_type: Optional[str] = None,
@@ -1630,23 +1238,6 @@ class SyncGroupSchemaTableResponse(dict):
     """
     Properties of table in sync group schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "quotedName":
-            suggest = "quoted_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncGroupSchemaTableResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncGroupSchemaTableResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncGroupSchemaTableResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  columns: Optional[Sequence['outputs.SyncGroupSchemaTableColumnResponse']] = None,
                  quoted_name: Optional[str] = None):
@@ -1682,33 +1273,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -1792,25 +1356,6 @@ class VulnerabilityAssessmentRecurringScansPropertiesResponse(dict):
     """
     Properties of a Vulnerability Assessment recurring scans.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailSubscriptionAdmins":
-            suggest = "email_subscription_admins"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VulnerabilityAssessmentRecurringScansPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VulnerabilityAssessmentRecurringScansPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VulnerabilityAssessmentRecurringScansPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_subscription_admins: Optional[bool] = None,
                  emails: Optional[Sequence[str]] = None,

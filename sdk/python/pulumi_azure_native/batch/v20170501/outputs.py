@@ -20,27 +20,6 @@ class ApplicationPackageResponse(dict):
     """
     An application package which represents a particular version of an application.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastActivationTime":
-            suggest = "last_activation_time"
-        elif key == "storageUrl":
-            suggest = "storage_url"
-        elif key == "storageUrlExpiry":
-            suggest = "storage_url_expiry"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationPackageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationPackageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationPackageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  format: str,
                  id: str,
@@ -129,25 +108,6 @@ class AutoStoragePropertiesResponse(dict):
     """
     Contains information about the auto-storage account associated with a Batch account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastKeySync":
-            suggest = "last_key_sync"
-        elif key == "storageAccountId":
-            suggest = "storage_account_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoStoragePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoStoragePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoStoragePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_key_sync: str,
                  storage_account_id: str):

@@ -32,27 +32,6 @@ class ConnectorCollectionErrorInfoResponse(dict):
     """
     Details of any error encountered on last collection attempt
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "errorCode":
-            suggest = "error_code"
-        elif key == "errorMessage":
-            suggest = "error_message"
-        elif key == "errorStartTime":
-            suggest = "error_start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorCollectionErrorInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorCollectionErrorInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorCollectionErrorInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error_code: str,
                  error_message: str,
@@ -97,27 +76,6 @@ class ConnectorCollectionInfoResponse(dict):
     """
     Collection and ingestion information
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastRun":
-            suggest = "last_run"
-        elif key == "lastUpdated":
-            suggest = "last_updated"
-        elif key == "sourceLastUpdated":
-            suggest = "source_last_updated"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorCollectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorCollectionInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorCollectionInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_run: str,
                  last_updated: str,
@@ -345,23 +303,6 @@ class ReportDefinitionResponse(dict):
     """
     The definition of a report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timePeriod":
-            suggest = "time_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  timeframe: str,
                  type: str,
@@ -419,25 +360,6 @@ class ReportDeliveryDestinationResponse(dict):
     """
     The destination information for the delivery of the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-        elif key == "rootFolderPath":
-            suggest = "root_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportDeliveryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportDeliveryDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportDeliveryDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  container: str,
                  resource_id: str,
@@ -505,27 +427,6 @@ class ReportFilterResponse(dict):
     """
     The filter expression to be used in the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "and":
-            suggest = "and_"
-        elif key == "not":
-            suggest = "not_"
-        elif key == "or":
-            suggest = "or_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  and_: Optional[Sequence['outputs.ReportFilterResponse']] = None,
                  dimension: Optional['outputs.ReportComparisonExpressionResponse'] = None,
@@ -630,23 +531,6 @@ class ReportRecurrencePeriodResponse(dict):
     """
     The start and end date for recurrence schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportRecurrencePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportRecurrencePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportRecurrencePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: Optional[str] = None):
@@ -681,23 +565,6 @@ class ReportScheduleResponse(dict):
     """
     The schedule associated with a report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recurrencePeriod":
-            suggest = "recurrence_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  recurrence: str,
                  recurrence_period: Optional['outputs.ReportRecurrencePeriodResponse'] = None,
@@ -744,23 +611,6 @@ class ReportTimePeriodResponse(dict):
     """
     The start and end date for pulling data for the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportTimePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportTimePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: str):

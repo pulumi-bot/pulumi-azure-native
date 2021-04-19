@@ -25,27 +25,6 @@ class AdmCredentialResponse(dict):
     """
     Description of a NotificationHub AdmCredential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authTokenUrl":
-            suggest = "auth_token_url"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdmCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdmCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdmCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  auth_token_url: Optional[str] = None,
                  client_id: Optional[str] = None,
@@ -93,25 +72,6 @@ class ApnsCredentialResponse(dict):
     """
     Description of a NotificationHub ApnsCredential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apnsCertificate":
-            suggest = "apns_certificate"
-        elif key == "certificateKey":
-            suggest = "certificate_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApnsCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApnsCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApnsCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  apns_certificate: Optional[str] = None,
                  certificate_key: Optional[str] = None,
@@ -171,27 +131,6 @@ class BaiduCredentialResponse(dict):
     """
     Description of a NotificationHub BaiduCredential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baiduApiKey":
-            suggest = "baidu_api_key"
-        elif key == "baiduEndPoint":
-            suggest = "baidu_end_point"
-        elif key == "baiduSecretKey":
-            suggest = "baidu_secret_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BaiduCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BaiduCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BaiduCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  baidu_api_key: Optional[str] = None,
                  baidu_end_point: Optional[str] = None,
@@ -239,25 +178,6 @@ class GcmCredentialResponse(dict):
     """
     Description of a NotificationHub GcmCredential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "gcmEndpoint":
-            suggest = "gcm_endpoint"
-        elif key == "googleApiKey":
-            suggest = "google_api_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GcmCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GcmCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GcmCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  gcm_endpoint: Optional[str] = None,
                  google_api_key: Optional[str] = None):
@@ -293,25 +213,6 @@ class MpnsCredentialResponse(dict):
     """
     Description of a NotificationHub MpnsCredential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateKey":
-            suggest = "certificate_key"
-        elif key == "mpnsCertificate":
-            suggest = "mpns_certificate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MpnsCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MpnsCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MpnsCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_key: Optional[str] = None,
                  mpns_certificate: Optional[str] = None,
@@ -452,27 +353,6 @@ class WnsCredentialResponse(dict):
     """
     Description of a NotificationHub WnsCredential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "packageSid":
-            suggest = "package_sid"
-        elif key == "secretKey":
-            suggest = "secret_key"
-        elif key == "windowsLiveEndpoint":
-            suggest = "windows_live_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WnsCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WnsCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WnsCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  package_sid: Optional[str] = None,
                  secret_key: Optional[str] = None,

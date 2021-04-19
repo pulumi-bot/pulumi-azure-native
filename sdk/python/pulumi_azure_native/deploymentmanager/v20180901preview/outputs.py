@@ -90,23 +90,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "identityIds":
-            suggest = "identity_ids"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  identity_ids: Sequence[str],
                  type: str):
@@ -173,23 +156,6 @@ class PrePostStepResponse(dict):
     """
     The properties that define a step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "stepId":
-            suggest = "step_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrePostStepResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrePostStepResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrePostStepResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  step_id: str):
         """
@@ -435,23 +401,6 @@ class SasAuthenticationResponse(dict):
     """
     Defines the properties to access the artifacts using an Azure Storage SAS URI.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sasUri":
-            suggest = "sas_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SasAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SasAuthenticationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SasAuthenticationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  sas_uri: str,
                  type: str):
@@ -544,29 +493,6 @@ class ServiceUnitArtifactsResponse(dict):
     """
     Defines the artifacts of a service unit.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "parametersArtifactSourceRelativePath":
-            suggest = "parameters_artifact_source_relative_path"
-        elif key == "parametersUri":
-            suggest = "parameters_uri"
-        elif key == "templateArtifactSourceRelativePath":
-            suggest = "template_artifact_source_relative_path"
-        elif key == "templateUri":
-            suggest = "template_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceUnitArtifactsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceUnitArtifactsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceUnitArtifactsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  parameters_artifact_source_relative_path: Optional[str] = None,
                  parameters_uri: Optional[str] = None,
@@ -773,29 +699,6 @@ class StepResponse(dict):
     """
     The properties that define an Azure Deployment Manager step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deploymentTargetId":
-            suggest = "deployment_target_id"
-        elif key == "dependsOnStepGroups":
-            suggest = "depends_on_step_groups"
-        elif key == "postDeploymentSteps":
-            suggest = "post_deployment_steps"
-        elif key == "preDeploymentSteps":
-            suggest = "pre_deployment_steps"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StepResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StepResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StepResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  deployment_target_id: str,
                  name: str,
@@ -887,23 +790,6 @@ class WaitStepPropertiesResponse(dict):
     """
     Defines the properties of a Wait step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "stepType":
-            suggest = "step_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WaitStepPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WaitStepPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WaitStepPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  step_type: str,
                  attributes: Optional['outputs.WaitStepAttributesResponse'] = None):

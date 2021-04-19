@@ -103,25 +103,6 @@ class DashboardPartsResponsePosition(dict):
     """
     The dashboard's part position.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "colSpan":
-            suggest = "col_span"
-        elif key == "rowSpan":
-            suggest = "row_span"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DashboardPartsResponsePosition. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DashboardPartsResponsePosition.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DashboardPartsResponsePosition.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  col_span: int,
                  row_span: int,

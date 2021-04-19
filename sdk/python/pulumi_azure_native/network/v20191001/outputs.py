@@ -51,31 +51,6 @@ class CustomRuleResponse(dict):
     """
     Defines contents of a web application rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "matchConditions":
-            suggest = "match_conditions"
-        elif key == "ruleType":
-            suggest = "rule_type"
-        elif key == "enabledState":
-            suggest = "enabled_state"
-        elif key == "rateLimitDurationInMinutes":
-            suggest = "rate_limit_duration_in_minutes"
-        elif key == "rateLimitThreshold":
-            suggest = "rate_limit_threshold"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: str,
                  match_conditions: Sequence['outputs.FrontDoorMatchConditionResponse'],
@@ -179,23 +154,6 @@ class FrontDoorManagedRuleGroupOverrideResponse(dict):
     """
     Defines a managed rule group override setting.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleGroupName":
-            suggest = "rule_group_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FrontDoorManagedRuleGroupOverrideResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FrontDoorManagedRuleGroupOverrideResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FrontDoorManagedRuleGroupOverrideResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_group_name: str,
                  exclusions: Optional[Sequence['outputs.ManagedRuleExclusionResponse']] = None,
@@ -242,25 +200,6 @@ class FrontDoorManagedRuleOverrideResponse(dict):
     """
     Defines a managed rule group override setting.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleId":
-            suggest = "rule_id"
-        elif key == "enabledState":
-            suggest = "enabled_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FrontDoorManagedRuleOverrideResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FrontDoorManagedRuleOverrideResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FrontDoorManagedRuleOverrideResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_id: str,
                  action: Optional[str] = None,
@@ -319,27 +258,6 @@ class FrontDoorManagedRuleSetResponse(dict):
     """
     Defines a managed rule set.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ruleSetType":
-            suggest = "rule_set_type"
-        elif key == "ruleSetVersion":
-            suggest = "rule_set_version"
-        elif key == "ruleGroupOverrides":
-            suggest = "rule_group_overrides"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FrontDoorManagedRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FrontDoorManagedRuleSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FrontDoorManagedRuleSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  rule_set_type: str,
                  rule_set_version: str,
@@ -397,27 +315,6 @@ class FrontDoorMatchConditionResponse(dict):
     """
     Define a match condition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "matchValue":
-            suggest = "match_value"
-        elif key == "matchVariable":
-            suggest = "match_variable"
-        elif key == "negateCondition":
-            suggest = "negate_condition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FrontDoorMatchConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FrontDoorMatchConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FrontDoorMatchConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  match_value: Sequence[str],
                  match_variable: str,
@@ -498,29 +395,6 @@ class FrontDoorPolicySettingsResponse(dict):
     """
     Defines top-level WebApplicationFirewallPolicy configuration settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customBlockResponseBody":
-            suggest = "custom_block_response_body"
-        elif key == "customBlockResponseStatusCode":
-            suggest = "custom_block_response_status_code"
-        elif key == "enabledState":
-            suggest = "enabled_state"
-        elif key == "redirectUrl":
-            suggest = "redirect_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FrontDoorPolicySettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FrontDoorPolicySettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FrontDoorPolicySettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_block_response_body: Optional[str] = None,
                  custom_block_response_status_code: Optional[int] = None,
@@ -615,25 +489,6 @@ class ManagedRuleExclusionResponse(dict):
     """
     Exclude variables from managed rule evaluation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "matchVariable":
-            suggest = "match_variable"
-        elif key == "selectorMatchOperator":
-            suggest = "selector_match_operator"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedRuleExclusionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedRuleExclusionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedRuleExclusionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  match_variable: str,
                  selector: str,
@@ -678,23 +533,6 @@ class ManagedRuleSetListResponse(dict):
     """
     Defines the list of managed rule sets for the policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "managedRuleSets":
-            suggest = "managed_rule_sets"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedRuleSetListResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedRuleSetListResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedRuleSetListResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  managed_rule_sets: Optional[Sequence['outputs.FrontDoorManagedRuleSetResponse']] = None):
         """

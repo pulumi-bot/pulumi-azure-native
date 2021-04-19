@@ -71,25 +71,6 @@ class ClusterProfileResponse(dict):
     """
     ClusterProfile represents a cluster profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pullSecret":
-            suggest = "pull_secret"
-        elif key == "resourceGroupId":
-            suggest = "resource_group_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  domain: Optional[str] = None,
                  pull_secret: Optional[str] = None,
@@ -219,25 +200,6 @@ class MasterProfileResponse(dict):
     """
     MasterProfile represents a master profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetId":
-            suggest = "subnet_id"
-        elif key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MasterProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MasterProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MasterProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  subnet_id: Optional[str] = None,
                  vm_size: Optional[str] = None):
@@ -273,25 +235,6 @@ class NetworkProfileResponse(dict):
     """
     NetworkProfile represents a network profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "podCidr":
-            suggest = "pod_cidr"
-        elif key == "serviceCidr":
-            suggest = "service_cidr"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  pod_cidr: Optional[str] = None,
                  service_cidr: Optional[str] = None):
@@ -327,25 +270,6 @@ class ServicePrincipalProfileResponse(dict):
     """
     ServicePrincipalProfile represents a service principal profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServicePrincipalProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServicePrincipalProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServicePrincipalProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None):
@@ -381,27 +305,6 @@ class WorkerProfileResponse(dict):
     """
     WorkerProfile represents a worker profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "subnetId":
-            suggest = "subnet_id"
-        elif key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkerProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkerProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkerProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[int] = None,
                  disk_size_gb: Optional[int] = None,

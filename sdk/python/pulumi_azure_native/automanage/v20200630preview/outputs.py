@@ -24,25 +24,6 @@ class AccountIdentityResponse(dict):
     """
     Identity for the Automanage account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AccountIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AccountIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AccountIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -88,23 +69,6 @@ class ConfigurationProfileAssignmentComplianceResponse(dict):
     """
     The compliance status for the configuration profile assignment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "updateStatus":
-            suggest = "update_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigurationProfileAssignmentComplianceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigurationProfileAssignmentComplianceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigurationProfileAssignmentComplianceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  update_status: str):
         """
@@ -127,31 +91,6 @@ class ConfigurationProfileAssignmentPropertiesResponse(dict):
     """
     Automanage configuration profile assignment properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "accountId":
-            suggest = "account_id"
-        elif key == "configurationProfile":
-            suggest = "configuration_profile"
-        elif key == "configurationProfilePreferenceId":
-            suggest = "configuration_profile_preference_id"
-        elif key == "targetId":
-            suggest = "target_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigurationProfileAssignmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigurationProfileAssignmentPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigurationProfileAssignmentPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  account_id: Optional[str] = None,
@@ -234,31 +173,6 @@ class ConfigurationProfilePreferenceAntiMalwareResponse(dict):
     """
     Automanage configuration profile Antimalware preferences.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableRealTimeProtection":
-            suggest = "enable_real_time_protection"
-        elif key == "runScheduledScan":
-            suggest = "run_scheduled_scan"
-        elif key == "scanDay":
-            suggest = "scan_day"
-        elif key == "scanTimeInMinutes":
-            suggest = "scan_time_in_minutes"
-        elif key == "scanType":
-            suggest = "scan_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigurationProfilePreferenceAntiMalwareResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigurationProfilePreferenceAntiMalwareResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigurationProfilePreferenceAntiMalwareResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_real_time_protection: Optional[str] = None,
                  exclusions: Optional[Any] = None,
@@ -342,25 +256,6 @@ class ConfigurationProfilePreferencePropertiesResponse(dict):
     """
     Automanage configuration profile preference properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "antiMalware":
-            suggest = "anti_malware"
-        elif key == "vmBackup":
-            suggest = "vm_backup"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigurationProfilePreferencePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigurationProfilePreferencePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigurationProfilePreferencePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  anti_malware: Optional['outputs.ConfigurationProfilePreferenceAntiMalwareResponse'] = None,
                  vm_backup: Optional['outputs.ConfigurationProfilePreferenceVmBackupResponse'] = None):
@@ -396,29 +291,6 @@ class ConfigurationProfilePreferenceVmBackupResponse(dict):
     """
     Automanage configuration profile VM Backup preferences.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instantRpRetentionRangeInDays":
-            suggest = "instant_rp_retention_range_in_days"
-        elif key == "retentionPolicy":
-            suggest = "retention_policy"
-        elif key == "schedulePolicy":
-            suggest = "schedule_policy"
-        elif key == "timeZone":
-            suggest = "time_zone"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigurationProfilePreferenceVmBackupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigurationProfilePreferenceVmBackupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigurationProfilePreferenceVmBackupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instant_rp_retention_range_in_days: Optional[int] = None,
                  retention_policy: Optional[str] = None,

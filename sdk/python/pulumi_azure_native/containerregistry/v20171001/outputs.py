@@ -340,23 +340,6 @@ class IPRuleResponse(dict):
     """
     IP rule with specific IP or IP range in CIDR format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "iPAddressOrRange":
-            suggest = "i_p_address_or_range"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  i_p_address_or_range: str,
                  action: Optional[str] = None):
@@ -393,27 +376,6 @@ class NetworkRuleSetResponse(dict):
     """
     The network rule set for a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultAction":
-            suggest = "default_action"
-        elif key == "ipRules":
-            suggest = "ip_rules"
-        elif key == "virtualNetworkRules":
-            suggest = "virtual_network_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_action: str,
                  ip_rules: Optional[Sequence['outputs.IPRuleResponse']] = None,
@@ -636,23 +598,6 @@ class StatusResponse(dict):
     """
     The status of an Azure resource at the time the operation was called.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_status: str,
                  message: str,
@@ -838,23 +783,6 @@ class VirtualNetworkRuleResponse(dict):
     """
     Virtual network rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "virtualNetworkResourceId":
-            suggest = "virtual_network_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  virtual_network_resource_id: str,
                  action: Optional[str] = None):

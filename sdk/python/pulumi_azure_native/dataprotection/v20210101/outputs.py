@@ -50,23 +50,6 @@ class AbsoluteDeleteOptionResponse(dict):
     """
     Delete option with duration
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AbsoluteDeleteOptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AbsoluteDeleteOptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AbsoluteDeleteOptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  duration: str,
                  object_type: str):
@@ -102,23 +85,6 @@ class AdhocBasedTaggingCriteriaResponse(dict):
     """
     Adhoc backup tagging criteria
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "tagInfo":
-            suggest = "tag_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdhocBasedTaggingCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdhocBasedTaggingCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdhocBasedTaggingCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  tag_info: Optional['outputs.RetentionTagResponse'] = None):
         """
@@ -142,25 +108,6 @@ class AdhocBasedTriggerContextResponse(dict):
     """
     Adhoc trigger context
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-        elif key == "taggingCriteria":
-            suggest = "tagging_criteria"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AdhocBasedTriggerContextResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AdhocBasedTriggerContextResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AdhocBasedTriggerContextResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_type: str,
                  tagging_criteria: 'outputs.AdhocBasedTaggingCriteriaResponse'):
@@ -196,25 +143,6 @@ class AzureBackupParamsResponse(dict):
     """
     Azure backup parameters
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupType":
-            suggest = "backup_type"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBackupParamsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBackupParamsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBackupParamsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_type: str,
                  object_type: str):
@@ -250,27 +178,6 @@ class AzureBackupRuleResponse(dict):
     """
     Azure backup rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataStore":
-            suggest = "data_store"
-        elif key == "objectType":
-            suggest = "object_type"
-        elif key == "backupParameters":
-            suggest = "backup_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBackupRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBackupRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBackupRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_store: 'outputs.DataStoreInfoBaseResponse',
                  name: str,
@@ -336,27 +243,6 @@ class AzureOperationalStoreParametersResponse(dict):
     """
     Parameters for Operational-Tier DataStore
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataStoreType":
-            suggest = "data_store_type"
-        elif key == "objectType":
-            suggest = "object_type"
-        elif key == "resourceGroupId":
-            suggest = "resource_group_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureOperationalStoreParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureOperationalStoreParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureOperationalStoreParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_store_type: str,
                  object_type: str,
@@ -404,25 +290,6 @@ class AzureRetentionRuleResponse(dict):
     """
     Azure retention rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-        elif key == "isDefault":
-            suggest = "is_default"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureRetentionRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureRetentionRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureRetentionRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lifecycles: Sequence['outputs.SourceLifeCycleResponse'],
                  name: str,
@@ -469,39 +336,6 @@ class BackupInstanceResponse(dict):
     """
     Backup Instance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "currentProtectionState":
-            suggest = "current_protection_state"
-        elif key == "dataSourceInfo":
-            suggest = "data_source_info"
-        elif key == "objectType":
-            suggest = "object_type"
-        elif key == "policyInfo":
-            suggest = "policy_info"
-        elif key == "protectionErrorDetails":
-            suggest = "protection_error_details"
-        elif key == "protectionStatus":
-            suggest = "protection_status"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "dataSourceSetInfo":
-            suggest = "data_source_set_info"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackupInstanceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackupInstanceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackupInstanceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  current_protection_state: str,
                  data_source_info: 'outputs.DatasourceResponse',
@@ -610,27 +444,6 @@ class BackupPolicyResponse(dict):
     """
     Rule based backup policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "datasourceTypes":
-            suggest = "datasource_types"
-        elif key == "objectType":
-            suggest = "object_type"
-        elif key == "policyRules":
-            suggest = "policy_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackupPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackupPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackupPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  datasource_types: Sequence[str],
                  object_type: str,
@@ -677,23 +490,6 @@ class BackupScheduleResponse(dict):
     """
     Schedule for backup
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "repeatingTimeIntervals":
-            suggest = "repeating_time_intervals"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackupScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackupScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackupScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  repeating_time_intervals: Sequence[str]):
         """
@@ -716,25 +512,6 @@ class BackupVaultResponse(dict):
     """
     Backup Vault
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "storageSettings":
-            suggest = "storage_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BackupVaultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BackupVaultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BackupVaultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  storage_settings: Sequence['outputs.StorageSettingResponse']):
@@ -768,23 +545,6 @@ class CopyOnExpiryOptionResponse(dict):
     """
     Copy on Expiry Option
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CopyOnExpiryOptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CopyOnExpiryOptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CopyOnExpiryOptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_type: str):
         """
@@ -809,23 +569,6 @@ class CustomCopyOptionResponse(dict):
     """
     Duration based custom options to copy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomCopyOptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomCopyOptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomCopyOptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_type: str,
                  duration: Optional[str] = None):
@@ -862,25 +605,6 @@ class DataStoreInfoBaseResponse(dict):
     """
     DataStoreInfo base
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataStoreType":
-            suggest = "data_store_type"
-        elif key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataStoreInfoBaseResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataStoreInfoBaseResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataStoreInfoBaseResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_store_type: str,
                  object_type: str):
@@ -914,35 +638,6 @@ class DatasourceResponse(dict):
     """
     Datasource to be backed up
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceID":
-            suggest = "resource_id"
-        elif key == "datasourceType":
-            suggest = "datasource_type"
-        elif key == "objectType":
-            suggest = "object_type"
-        elif key == "resourceLocation":
-            suggest = "resource_location"
-        elif key == "resourceName":
-            suggest = "resource_name"
-        elif key == "resourceType":
-            suggest = "resource_type"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_id: str,
                  datasource_type: Optional[str] = None,
@@ -1037,35 +732,6 @@ class DatasourceSetResponse(dict):
     """
     DatasourceSet details of datasource to be backed up
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceID":
-            suggest = "resource_id"
-        elif key == "datasourceType":
-            suggest = "datasource_type"
-        elif key == "objectType":
-            suggest = "object_type"
-        elif key == "resourceLocation":
-            suggest = "resource_location"
-        elif key == "resourceName":
-            suggest = "resource_name"
-        elif key == "resourceType":
-            suggest = "resource_type"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasourceSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasourceSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasourceSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_id: str,
                  datasource_type: Optional[str] = None,
@@ -1160,23 +826,6 @@ class DayResponse(dict):
     """
     Day of the week
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isLast":
-            suggest = "is_last"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DayResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DayResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DayResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  date: Optional[int] = None,
                  is_last: Optional[bool] = None):
@@ -1212,25 +861,6 @@ class DppIdentityDetailsResponse(dict):
     """
     Identity details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DppIdentityDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DppIdentityDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DppIdentityDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -1276,23 +906,6 @@ class ImmediateCopyOptionResponse(dict):
     """
     Immediate copy Option
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImmediateCopyOptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImmediateCopyOptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImmediateCopyOptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_type: str):
         """
@@ -1317,25 +930,6 @@ class InnerErrorResponse(dict):
     """
     Inner Error
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalInfo":
-            suggest = "additional_info"
-        elif key == "embeddedInnerError":
-            suggest = "embedded_inner_error"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InnerErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InnerErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InnerErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  additional_info: Optional[Mapping[str, str]] = None,
                  code: Optional[str] = None,
@@ -1383,27 +977,6 @@ class PolicyInfoResponse(dict):
     """
     Policy Info in backupInstance
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyId":
-            suggest = "policy_id"
-        elif key == "policyVersion":
-            suggest = "policy_version"
-        elif key == "policyParameters":
-            suggest = "policy_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  policy_id: str,
                  policy_version: str,
@@ -1441,23 +1014,6 @@ class PolicyParametersResponse(dict):
     """
     Parameters in Policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataStoreParametersList":
-            suggest = "data_store_parameters_list"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyParametersResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyParametersResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyParametersResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_store_parameters_list: Optional[Sequence['outputs.AzureOperationalStoreParametersResponse']] = None):
         """
@@ -1481,23 +1037,6 @@ class ProtectionStatusDetailsResponse(dict):
     """
     Protection status details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "errorDetails":
-            suggest = "error_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProtectionStatusDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProtectionStatusDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProtectionStatusDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error_details: Optional['outputs.UserFacingErrorResponse'] = None,
                  status: Optional[str] = None):
@@ -1533,25 +1072,6 @@ class RetentionTagResponse(dict):
     """
     Retention tag
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eTag":
-            suggest = "e_tag"
-        elif key == "tagName":
-            suggest = "tag_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RetentionTagResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RetentionTagResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RetentionTagResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  e_tag: str,
                  id: str,
@@ -1596,35 +1116,6 @@ class ScheduleBasedBackupCriteriaResponse(dict):
     """
     Schedule based backup criteria
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-        elif key == "absoluteCriteria":
-            suggest = "absolute_criteria"
-        elif key == "daysOfMonth":
-            suggest = "days_of_month"
-        elif key == "daysOfTheWeek":
-            suggest = "days_of_the_week"
-        elif key == "monthsOfYear":
-            suggest = "months_of_year"
-        elif key == "scheduleTimes":
-            suggest = "schedule_times"
-        elif key == "weeksOfTheMonth":
-            suggest = "weeks_of_the_month"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleBasedBackupCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleBasedBackupCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleBasedBackupCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_type: str,
                  absolute_criteria: Optional[Sequence[str]] = None,
@@ -1723,25 +1214,6 @@ class ScheduleBasedTriggerContextResponse(dict):
     """
     Schedule based trigger context
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectType":
-            suggest = "object_type"
-        elif key == "taggingCriteria":
-            suggest = "tagging_criteria"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleBasedTriggerContextResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleBasedTriggerContextResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleBasedTriggerContextResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_type: str,
                  schedule: 'outputs.BackupScheduleResponse',
@@ -1788,27 +1260,6 @@ class SourceLifeCycleResponse(dict):
     """
     Source LifeCycle
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteAfter":
-            suggest = "delete_after"
-        elif key == "sourceDataStore":
-            suggest = "source_data_store"
-        elif key == "targetDataStoreCopySettings":
-            suggest = "target_data_store_copy_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SourceLifeCycleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SourceLifeCycleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SourceLifeCycleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  delete_after: 'outputs.AbsoluteDeleteOptionResponse',
                  source_data_store: 'outputs.DataStoreInfoBaseResponse',
@@ -1850,23 +1301,6 @@ class StorageSettingResponse(dict):
     """
     Storage setting
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "datastoreType":
-            suggest = "datastore_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageSettingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageSettingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageSettingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  datastore_type: Optional[str] = None,
                  type: Optional[str] = None):
@@ -1902,33 +1336,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -2012,27 +1419,6 @@ class TaggingCriteriaResponse(dict):
     """
     Tagging criteria
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isDefault":
-            suggest = "is_default"
-        elif key == "tagInfo":
-            suggest = "tag_info"
-        elif key == "taggingPriority":
-            suggest = "tagging_priority"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TaggingCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TaggingCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TaggingCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_default: bool,
                  tag_info: 'outputs.RetentionTagResponse',
@@ -2089,25 +1475,6 @@ class TargetCopySettingResponse(dict):
     """
     Target copy settings
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyAfter":
-            suggest = "copy_after"
-        elif key == "dataStore":
-            suggest = "data_store"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TargetCopySettingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TargetCopySettingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TargetCopySettingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  copy_after: Any,
                  data_store: 'outputs.DataStoreInfoBaseResponse'):
@@ -2141,29 +1508,6 @@ class UserFacingErrorResponse(dict):
     """
     Error object used by layers that have access to localized content, and propagate that to user
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "innerError":
-            suggest = "inner_error"
-        elif key == "isRetryable":
-            suggest = "is_retryable"
-        elif key == "isUserError":
-            suggest = "is_user_error"
-        elif key == "recommendedAction":
-            suggest = "recommended_action"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserFacingErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserFacingErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserFacingErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: Optional[str] = None,
                  details: Optional[Sequence['outputs.UserFacingErrorResponse']] = None,

@@ -85,25 +85,6 @@ class CassandraSchemaResponse(dict):
     """
     Cosmos DB Cassandra table schema
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterKeys":
-            suggest = "cluster_keys"
-        elif key == "partitionKeys":
-            suggest = "partition_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraSchemaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraSchemaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraSchemaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_keys: Optional[Sequence['outputs.ClusterKeyResponse']] = None,
                  columns: Optional[Sequence['outputs.ColumnResponse']] = None,
@@ -151,23 +132,6 @@ class ClusterKeyResponse(dict):
     """
     Cosmos DB Cassandra table cluster key
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "orderBy":
-            suggest = "order_by"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  order_by: Optional[str] = None):
@@ -238,25 +202,6 @@ class ConflictResolutionPolicyResponse(dict):
     """
     The conflict resolution policy for the container.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "conflictResolutionPath":
-            suggest = "conflict_resolution_path"
-        elif key == "conflictResolutionProcedure":
-            suggest = "conflict_resolution_procedure"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConflictResolutionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConflictResolutionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConflictResolutionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  conflict_resolution_path: Optional[str] = None,
                  conflict_resolution_procedure: Optional[str] = None,
@@ -306,27 +251,6 @@ class ConsistencyPolicyResponse(dict):
     """
     The consistency policy for the Cosmos DB database account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultConsistencyLevel":
-            suggest = "default_consistency_level"
-        elif key == "maxIntervalInSeconds":
-            suggest = "max_interval_in_seconds"
-        elif key == "maxStalenessPrefix":
-            suggest = "max_staleness_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConsistencyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConsistencyPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConsistencyPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_consistency_level: str,
                  max_interval_in_seconds: Optional[int] = None,
@@ -462,25 +386,6 @@ class FailoverPolicyResponse(dict):
     """
     The failover policy for a given region of a database account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failoverPriority":
-            suggest = "failover_priority"
-        elif key == "locationName":
-            suggest = "location_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FailoverPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FailoverPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FailoverPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  failover_priority: Optional[int] = None,
@@ -562,23 +467,6 @@ class IndexesResponse(dict):
     """
     The indexes for the path.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataType":
-            suggest = "data_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IndexesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IndexesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IndexesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_type: Optional[str] = None,
                  kind: Optional[str] = None,
@@ -630,27 +518,6 @@ class IndexingPolicyResponse(dict):
     """
     Cosmos DB indexing policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "excludedPaths":
-            suggest = "excluded_paths"
-        elif key == "includedPaths":
-            suggest = "included_paths"
-        elif key == "indexingMode":
-            suggest = "indexing_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IndexingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IndexingPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IndexingPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  automatic: Optional[bool] = None,
                  excluded_paths: Optional[Sequence['outputs.ExcludedPathResponse']] = None,
@@ -712,31 +579,6 @@ class LocationResponse(dict):
     """
     A region in which the Azure Cosmos DB database account is deployed.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "documentEndpoint":
-            suggest = "document_endpoint"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "failoverPriority":
-            suggest = "failover_priority"
-        elif key == "isZoneRedundant":
-            suggest = "is_zone_redundant"
-        elif key == "locationName":
-            suggest = "location_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  document_endpoint: str,
                  id: str,
@@ -840,23 +682,6 @@ class MongoIndexOptionsResponse(dict):
     """
     Cosmos DB MongoDB collection index options
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expireAfterSeconds":
-            suggest = "expire_after_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoIndexOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoIndexOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoIndexOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  expire_after_seconds: Optional[int] = None,
                  unique: Optional[bool] = None):
@@ -927,23 +752,6 @@ class UniqueKeyPolicyResponse(dict):
     """
     The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "uniqueKeys":
-            suggest = "unique_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UniqueKeyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UniqueKeyPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UniqueKeyPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  unique_keys: Optional[Sequence['outputs.UniqueKeyResponse']] = None):
         """
@@ -990,23 +798,6 @@ class VirtualNetworkRuleResponse(dict):
     """
     Virtual Network ACL Rule object
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ignoreMissingVNetServiceEndpoint":
-            suggest = "ignore_missing_v_net_service_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  ignore_missing_v_net_service_endpoint: Optional[bool] = None):

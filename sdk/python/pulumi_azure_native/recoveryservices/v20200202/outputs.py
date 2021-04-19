@@ -32,25 +32,6 @@ class CmkKekIdentityResponse(dict):
     """
     The details of the identity used for CMK
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "useSystemAssignedIdentity":
-            suggest = "use_system_assigned_identity"
-        elif key == "userAssignedIdentity":
-            suggest = "user_assigned_identity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CmkKekIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CmkKekIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CmkKekIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  use_system_assigned_identity: Optional[bool] = None,
                  user_assigned_identity: Optional[str] = None):
@@ -86,23 +67,6 @@ class CmkKeyVaultPropertiesResponse(dict):
     """
     The properties of the Key Vault which hosts CMK
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyUri":
-            suggest = "key_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CmkKeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CmkKeyVaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CmkKeyVaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_uri: Optional[str] = None):
         """
@@ -126,27 +90,6 @@ class IdentityDataResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -203,27 +146,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     Private Endpoint Connection Response Properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None,
                  private_link_service_connection_state: Optional['outputs.PrivateLinkServiceConnectionStateResponse'] = None,
@@ -326,23 +248,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     Private Link Service Connection State
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionRequired":
-            suggest = "action_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -412,35 +317,6 @@ class UpgradeDetailsResponse(dict):
     """
     Details for upgrading vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTimeUtc":
-            suggest = "end_time_utc"
-        elif key == "lastUpdatedTimeUtc":
-            suggest = "last_updated_time_utc"
-        elif key == "operationId":
-            suggest = "operation_id"
-        elif key == "previousResourceId":
-            suggest = "previous_resource_id"
-        elif key == "startTimeUtc":
-            suggest = "start_time_utc"
-        elif key == "triggerType":
-            suggest = "trigger_type"
-        elif key == "upgradedResourceId":
-            suggest = "upgraded_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UpgradeDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UpgradeDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UpgradeDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_time_utc: str,
                  last_updated_time_utc: str,
@@ -551,25 +427,6 @@ class UserIdentityResponse(dict):
     """
     A resource identity that is managed by the user of the service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -603,27 +460,6 @@ class VaultPrivateEndpointConnectionResponse(dict):
     """
     Private Endpoint Connection Response Properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_endpoint: 'outputs.PrivateEndpointResponse',
                  private_link_service_connection_state: 'outputs.VaultPrivateLinkServiceConnectionStateResponse',
@@ -668,23 +504,6 @@ class VaultPrivateLinkServiceConnectionStateResponse(dict):
     """
     Gets or sets private link service connection state.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -729,31 +548,6 @@ class VaultPropertiesResponse(dict):
     """
     Properties of the vault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateEndpointConnections":
-            suggest = "private_endpoint_connections"
-        elif key == "privateEndpointStateForBackup":
-            suggest = "private_endpoint_state_for_backup"
-        elif key == "privateEndpointStateForSiteRecovery":
-            suggest = "private_endpoint_state_for_site_recovery"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "upgradeDetails":
-            suggest = "upgrade_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_endpoint_connections: Sequence['outputs.PrivateEndpointConnectionVaultPropertiesResponse'],
                  private_endpoint_state_for_backup: str,
@@ -833,27 +627,6 @@ class VaultPropertiesResponseEncryption(dict):
     """
     Customer Managed Key details of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "infrastructureEncryption":
-            suggest = "infrastructure_encryption"
-        elif key == "kekIdentity":
-            suggest = "kek_identity"
-        elif key == "keyVaultProperties":
-            suggest = "key_vault_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VaultPropertiesResponseEncryption. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VaultPropertiesResponseEncryption.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VaultPropertiesResponseEncryption.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  infrastructure_encryption: Optional[str] = None,
                  kek_identity: Optional['outputs.CmkKekIdentityResponse'] = None,

@@ -31,35 +31,6 @@ __all__ = [
 
 @pulumi.output_type
 class ApiConnectionDefinitionResponseProperties(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "changedTime":
-            suggest = "changed_time"
-        elif key == "createdTime":
-            suggest = "created_time"
-        elif key == "customParameterValues":
-            suggest = "custom_parameter_values"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "nonSecretParameterValues":
-            suggest = "non_secret_parameter_values"
-        elif key == "parameterValues":
-            suggest = "parameter_values"
-        elif key == "testLinks":
-            suggest = "test_links"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiConnectionDefinitionResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiConnectionDefinitionResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiConnectionDefinitionResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  api: Optional['outputs.ApiReferenceResponse'] = None,
                  changed_time: Optional[str] = None,
@@ -174,23 +145,6 @@ class ApiConnectionTestLinkResponse(dict):
     """
     API connection properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "requestUri":
-            suggest = "request_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiConnectionTestLinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiConnectionTestLinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiConnectionTestLinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  method: Optional[str] = None,
                  request_uri: Optional[str] = None):
@@ -226,23 +180,6 @@ class ApiOAuthSettingsParameterResponse(dict):
     """
     OAuth settings for the API
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "uiDefinition":
-            suggest = "ui_definition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiOAuthSettingsParameterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiOAuthSettingsParameterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiOAuthSettingsParameterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  options: Optional[Any] = None,
                  ui_definition: Optional[Any] = None,
@@ -290,31 +227,6 @@ class ApiOAuthSettingsResponse(dict):
     """
     OAuth settings for the connection provider
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "customParameters":
-            suggest = "custom_parameters"
-        elif key == "identityProvider":
-            suggest = "identity_provider"
-        elif key == "redirectUrl":
-            suggest = "redirect_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiOAuthSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiOAuthSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiOAuthSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
@@ -407,27 +319,6 @@ class ApiOAuthSettingsResponse(dict):
 
 @pulumi.output_type
 class ApiReferenceResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "brandColor":
-            suggest = "brand_color"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "iconUri":
-            suggest = "icon_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  brand_color: Optional[str] = None,
                  description: Optional[str] = None,
@@ -534,23 +425,6 @@ class ApiResourceBackendServiceResponse(dict):
     """
     The API backend service
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serviceUrl":
-            suggest = "service_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiResourceBackendServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiResourceBackendServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiResourceBackendServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  service_url: Optional[str] = None):
         """
@@ -574,25 +448,6 @@ class ApiResourceDefinitionsResponse(dict):
     """
     API Definitions
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "modifiedSwaggerUrl":
-            suggest = "modified_swagger_url"
-        elif key == "originalSwaggerUrl":
-            suggest = "original_swagger_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApiResourceDefinitionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApiResourceDefinitionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApiResourceDefinitionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  modified_swagger_url: Optional[str] = None,
                  original_swagger_url: Optional[str] = None):
@@ -729,31 +584,6 @@ class ConnectionErrorResponse(dict):
 
 @pulumi.output_type
 class ConnectionGatewayDefinitionResponseProperties(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backendUri":
-            suggest = "backend_uri"
-        elif key == "connectionGatewayInstallation":
-            suggest = "connection_gateway_installation"
-        elif key == "contactInformation":
-            suggest = "contact_information"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "machineName":
-            suggest = "machine_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionGatewayDefinitionResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionGatewayDefinitionResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionGatewayDefinitionResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backend_uri: Optional[str] = None,
                  connection_gateway_installation: Optional['outputs.ConnectionGatewayReferenceResponse'] = None,
@@ -907,23 +737,6 @@ class ConnectionParameterResponse(dict):
     """
     Connection provider parameters
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "oAuthSettings":
-            suggest = "o_auth_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionParameterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionParameterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionParameterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  o_auth_settings: Optional['outputs.ApiOAuthSettingsResponse'] = None,
                  type: Optional[str] = None):
@@ -1065,39 +878,6 @@ class CustomApiPropertiesDefinitionResponse(dict):
     """
     Custom API properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiDefinitions":
-            suggest = "api_definitions"
-        elif key == "apiType":
-            suggest = "api_type"
-        elif key == "backendService":
-            suggest = "backend_service"
-        elif key == "brandColor":
-            suggest = "brand_color"
-        elif key == "connectionParameters":
-            suggest = "connection_parameters"
-        elif key == "displayName":
-            suggest = "display_name"
-        elif key == "iconUri":
-            suggest = "icon_uri"
-        elif key == "runtimeUrls":
-            suggest = "runtime_urls"
-        elif key == "wsdlDefinition":
-            suggest = "wsdl_definition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomApiPropertiesDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomApiPropertiesDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomApiPropertiesDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  api_definitions: Optional['outputs.ApiResourceDefinitionsResponse'] = None,
                  api_type: Optional[str] = None,
@@ -1253,23 +1033,6 @@ class WsdlDefinitionResponse(dict):
     """
     The WSDL definition
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "importMethod":
-            suggest = "import_method"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WsdlDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WsdlDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WsdlDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  import_method: Optional[str] = None,
@@ -1329,25 +1092,6 @@ class WsdlServiceResponse(dict):
     """
     The service with name and endpoint names
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "qualifiedName":
-            suggest = "qualified_name"
-        elif key == "endpointQualifiedNames":
-            suggest = "endpoint_qualified_names"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WsdlServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WsdlServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WsdlServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  qualified_name: str,
                  endpoint_qualified_names: Optional[Sequence[str]] = None):

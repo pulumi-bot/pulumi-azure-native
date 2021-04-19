@@ -57,33 +57,6 @@ class ConfigurationSettingResponse(dict):
     """
     Configuration setting of LCM (Local Configuration Manager).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionAfterReboot":
-            suggest = "action_after_reboot"
-        elif key == "allowModuleOverwrite":
-            suggest = "allow_module_overwrite"
-        elif key == "configurationMode":
-            suggest = "configuration_mode"
-        elif key == "configurationModeFrequencyMins":
-            suggest = "configuration_mode_frequency_mins"
-        elif key == "rebootIfNeeded":
-            suggest = "reboot_if_needed"
-        elif key == "refreshFrequencyMins":
-            suggest = "refresh_frequency_mins"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigurationSettingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigurationSettingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigurationSettingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_after_reboot: Optional[str] = None,
                  allow_module_overwrite: Optional[bool] = None,
@@ -171,33 +144,6 @@ class GuestConfigurationAssignmentPropertiesResponse(dict):
     """
     Guest configuration assignment properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assignmentHash":
-            suggest = "assignment_hash"
-        elif key == "complianceStatus":
-            suggest = "compliance_status"
-        elif key == "lastComplianceStatusChecked":
-            suggest = "last_compliance_status_checked"
-        elif key == "latestReportId":
-            suggest = "latest_report_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "guestConfiguration":
-            suggest = "guest_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GuestConfigurationAssignmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GuestConfigurationAssignmentPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GuestConfigurationAssignmentPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  assignment_hash: str,
                  compliance_status: str,
@@ -288,29 +234,6 @@ class GuestConfigurationNavigationResponse(dict):
     """
     Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contentHash":
-            suggest = "content_hash"
-        elif key == "contentUri":
-            suggest = "content_uri"
-        elif key == "configurationParameter":
-            suggest = "configuration_parameter"
-        elif key == "configurationSetting":
-            suggest = "configuration_setting"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GuestConfigurationNavigationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GuestConfigurationNavigationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GuestConfigurationNavigationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  content_hash: str,
                  content_uri: str,

@@ -54,27 +54,6 @@ class ApplicationGetEndpointResponse(dict):
     """
     Gets the application SSH endpoint
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationPort":
-            suggest = "destination_port"
-        elif key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "publicPort":
-            suggest = "public_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGetEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGetEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGetEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  destination_port: Optional[int] = None,
                  location: Optional[str] = None,
@@ -134,33 +113,6 @@ class ApplicationGetHttpsEndpointResponse(dict):
     """
     Gets the application HTTP endpoints.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicPort":
-            suggest = "public_port"
-        elif key == "accessModes":
-            suggest = "access_modes"
-        elif key == "destinationPort":
-            suggest = "destination_port"
-        elif key == "disableGatewayAuth":
-            suggest = "disable_gateway_auth"
-        elif key == "privateIPAddress":
-            suggest = "private_ip_address"
-        elif key == "subDomainSuffix":
-            suggest = "sub_domain_suffix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationGetHttpsEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationGetHttpsEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationGetHttpsEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  location: str,
                  public_port: int,
@@ -254,41 +206,6 @@ class ApplicationPropertiesResponse(dict):
     """
     The HDInsight cluster application GET response.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationState":
-            suggest = "application_state"
-        elif key == "createdDate":
-            suggest = "created_date"
-        elif key == "marketplaceIdentifier":
-            suggest = "marketplace_identifier"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "applicationType":
-            suggest = "application_type"
-        elif key == "computeProfile":
-            suggest = "compute_profile"
-        elif key == "httpsEndpoints":
-            suggest = "https_endpoints"
-        elif key == "installScriptActions":
-            suggest = "install_script_actions"
-        elif key == "sshEndpoints":
-            suggest = "ssh_endpoints"
-        elif key == "uninstallScriptActions":
-            suggest = "uninstall_script_actions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  application_state: str,
                  created_date: str,
@@ -428,25 +345,6 @@ class AutoscaleCapacityResponse(dict):
     """
     The load-based autoscale request parameters
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxInstanceCount":
-            suggest = "max_instance_count"
-        elif key == "minInstanceCount":
-            suggest = "min_instance_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscaleCapacityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscaleCapacityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscaleCapacityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_instance_count: Optional[int] = None,
                  min_instance_count: Optional[int] = None):
@@ -482,23 +380,6 @@ class AutoscaleRecurrenceResponse(dict):
     """
     Schedule-based autoscale request parameters
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timeZone":
-            suggest = "time_zone"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscaleRecurrenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscaleRecurrenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscaleRecurrenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  schedule: Optional[Sequence['outputs.AutoscaleScheduleResponse']] = None,
                  time_zone: Optional[str] = None):
@@ -569,23 +450,6 @@ class AutoscaleScheduleResponse(dict):
     """
     Parameters for a schedule-based autoscale rule, consisting of an array of days + a time and capacity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timeAndCapacity":
-            suggest = "time_and_capacity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscaleScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscaleScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscaleScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  days: Optional[Sequence[str]] = None,
                  time_and_capacity: Optional['outputs.AutoscaleTimeAndCapacityResponse'] = None):
@@ -621,25 +485,6 @@ class AutoscaleTimeAndCapacityResponse(dict):
     """
     Time and capacity request parameters
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxInstanceCount":
-            suggest = "max_instance_count"
-        elif key == "minInstanceCount":
-            suggest = "min_instance_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscaleTimeAndCapacityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscaleTimeAndCapacityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscaleTimeAndCapacityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_instance_count: Optional[int] = None,
                  min_instance_count: Optional[int] = None,
@@ -687,25 +532,6 @@ class ClientGroupInfoResponse(dict):
     """
     The information of AAD security group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupId":
-            suggest = "group_id"
-        elif key == "groupName":
-            suggest = "group_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClientGroupInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClientGroupInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClientGroupInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_id: Optional[str] = None,
                  group_name: Optional[str] = None):
@@ -741,23 +567,6 @@ class ClusterDefinitionResponse(dict):
     """
     The cluster definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "componentVersion":
-            suggest = "component_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  component_version: Optional[Mapping[str, str]] = None,
@@ -817,61 +626,6 @@ class ClusterGetPropertiesResponse(dict):
     """
     The properties of cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterDefinition":
-            suggest = "cluster_definition"
-        elif key == "clusterHdpVersion":
-            suggest = "cluster_hdp_version"
-        elif key == "clusterId":
-            suggest = "cluster_id"
-        elif key == "clusterState":
-            suggest = "cluster_state"
-        elif key == "clusterVersion":
-            suggest = "cluster_version"
-        elif key == "computeIsolationProperties":
-            suggest = "compute_isolation_properties"
-        elif key == "computeProfile":
-            suggest = "compute_profile"
-        elif key == "connectivityEndpoints":
-            suggest = "connectivity_endpoints"
-        elif key == "createdDate":
-            suggest = "created_date"
-        elif key == "diskEncryptionProperties":
-            suggest = "disk_encryption_properties"
-        elif key == "encryptionInTransitProperties":
-            suggest = "encryption_in_transit_properties"
-        elif key == "excludedServicesConfig":
-            suggest = "excluded_services_config"
-        elif key == "kafkaRestProperties":
-            suggest = "kafka_rest_properties"
-        elif key == "minSupportedTlsVersion":
-            suggest = "min_supported_tls_version"
-        elif key == "networkProperties":
-            suggest = "network_properties"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "quotaInfo":
-            suggest = "quota_info"
-        elif key == "securityProfile":
-            suggest = "security_profile"
-        elif key == "storageProfile":
-            suggest = "storage_profile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterGetPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterGetPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterGetPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_definition: 'outputs.ClusterDefinitionResponse',
                  cluster_hdp_version: Optional[str] = None,
@@ -1146,27 +900,6 @@ class ClusterIdentityResponse(dict):
     """
     Identity for the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -1221,27 +954,6 @@ class ClusterIdentityResponse(dict):
 
 @pulumi.output_type
 class ClusterIdentityResponseUserAssignedIdentities(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClusterIdentityResponseUserAssignedIdentities. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClusterIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClusterIdentityResponseUserAssignedIdentities.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str,
@@ -1286,25 +998,6 @@ class ComputeIsolationPropertiesResponse(dict):
     """
     The compute isolation properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableComputeIsolation":
-            suggest = "enable_compute_isolation"
-        elif key == "hostSku":
-            suggest = "host_sku"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComputeIsolationPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComputeIsolationPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComputeIsolationPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_compute_isolation: Optional[bool] = None,
                  host_sku: Optional[str] = None):
@@ -1365,23 +1058,6 @@ class ConnectivityEndpointResponse(dict):
     """
     The connectivity properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateIPAddress":
-            suggest = "private_ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectivityEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectivityEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectivityEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  location: Optional[str] = None,
                  name: Optional[str] = None,
@@ -1453,27 +1129,6 @@ class DataDisksGroupsResponse(dict):
     """
     The data disks groups for the role.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskSizeGB":
-            suggest = "disk_size_gb"
-        elif key == "storageAccountType":
-            suggest = "storage_account_type"
-        elif key == "disksPerNode":
-            suggest = "disks_per_node"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataDisksGroupsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataDisksGroupsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataDisksGroupsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_size_gb: int,
                  storage_account_type: str,
@@ -1519,33 +1174,6 @@ class DiskEncryptionPropertiesResponse(dict):
     """
     The disk encryption properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encryptionAlgorithm":
-            suggest = "encryption_algorithm"
-        elif key == "encryptionAtHost":
-            suggest = "encryption_at_host"
-        elif key == "keyName":
-            suggest = "key_name"
-        elif key == "keyVersion":
-            suggest = "key_version"
-        elif key == "msiResourceId":
-            suggest = "msi_resource_id"
-        elif key == "vaultUri":
-            suggest = "vault_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiskEncryptionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiskEncryptionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiskEncryptionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encryption_algorithm: Optional[str] = None,
                  encryption_at_host: Optional[bool] = None,
@@ -1631,23 +1259,6 @@ class EncryptionInTransitPropertiesResponse(dict):
     """
     The encryption-in-transit properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isEncryptionInTransitEnabled":
-            suggest = "is_encryption_in_transit_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionInTransitPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionInTransitPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionInTransitPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_encryption_in_transit_enabled: Optional[bool] = None):
         """
@@ -1708,25 +1319,6 @@ class ExcludedServicesConfigResponse(dict):
     """
     The configuration that services will be excluded when creating cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "excludedServicesConfigId":
-            suggest = "excluded_services_config_id"
-        elif key == "excludedServicesList":
-            suggest = "excluded_services_list"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExcludedServicesConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExcludedServicesConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExcludedServicesConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  excluded_services_config_id: Optional[str] = None,
                  excluded_services_list: Optional[str] = None):
@@ -1762,23 +1354,6 @@ class HardwareProfileResponse(dict):
     """
     The hardware profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HardwareProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HardwareProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HardwareProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  vm_size: Optional[str] = None):
         """
@@ -1802,25 +1377,6 @@ class KafkaRestPropertiesResponse(dict):
     """
     The kafka rest proxy configuration which contains AAD security group information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientGroupInfo":
-            suggest = "client_group_info"
-        elif key == "configurationOverride":
-            suggest = "configuration_override"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KafkaRestPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KafkaRestPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KafkaRestPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_group_info: Optional['outputs.ClientGroupInfoResponse'] = None,
                  configuration_override: Optional[Mapping[str, str]] = None):
@@ -1856,23 +1412,6 @@ class LinuxOperatingSystemProfileResponse(dict):
     """
     The ssh username, password, and ssh public key.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sshProfile":
-            suggest = "ssh_profile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinuxOperatingSystemProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinuxOperatingSystemProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinuxOperatingSystemProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  password: Optional[str] = None,
                  ssh_profile: Optional['outputs.SshProfileResponse'] = None,
@@ -1920,25 +1459,6 @@ class NetworkPropertiesResponse(dict):
     """
     The network properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLink":
-            suggest = "private_link"
-        elif key == "resourceProviderConnection":
-            suggest = "resource_provider_connection"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_link: Optional[str] = None,
                  resource_provider_connection: Optional[str] = None):
@@ -1974,23 +1494,6 @@ class OsProfileResponse(dict):
     """
     The Linux operation systems profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linuxOperatingSystemProfile":
-            suggest = "linux_operating_system_profile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OsProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OsProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OsProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linux_operating_system_profile: Optional['outputs.LinuxOperatingSystemProfileResponse'] = None):
         """
@@ -2014,23 +1517,6 @@ class QuotaInfoResponse(dict):
     """
     The quota properties for the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "coresUsed":
-            suggest = "cores_used"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QuotaInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QuotaInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QuotaInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cores_used: Optional[int] = None):
         """
@@ -2054,41 +1540,6 @@ class RoleResponse(dict):
     """
     Describes a role on the cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleConfiguration":
-            suggest = "autoscale_configuration"
-        elif key == "dataDisksGroups":
-            suggest = "data_disks_groups"
-        elif key == "encryptDataDisks":
-            suggest = "encrypt_data_disks"
-        elif key == "hardwareProfile":
-            suggest = "hardware_profile"
-        elif key == "minInstanceCount":
-            suggest = "min_instance_count"
-        elif key == "osProfile":
-            suggest = "os_profile"
-        elif key == "scriptActions":
-            suggest = "script_actions"
-        elif key == "targetInstanceCount":
-            suggest = "target_instance_count"
-        elif key == "vMGroupName":
-            suggest = "v_m_group_name"
-        elif key == "virtualNetworkProfile":
-            suggest = "virtual_network_profile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_configuration: Optional['outputs.AutoscaleResponse'] = None,
                  data_disks_groups: Optional[Sequence['outputs.DataDisksGroupsResponse']] = None,
@@ -2234,23 +1685,6 @@ class RuntimeScriptActionResponse(dict):
     """
     Describes a script action on a running cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationName":
-            suggest = "application_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuntimeScriptActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuntimeScriptActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuntimeScriptActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  application_name: str,
                  name: str,
@@ -2362,37 +1796,6 @@ class SecurityProfileResponse(dict):
     """
     The security profile which contains Ssh public key for the HDInsight cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aaddsResourceId":
-            suggest = "aadds_resource_id"
-        elif key == "clusterUsersGroupDNs":
-            suggest = "cluster_users_group_dns"
-        elif key == "directoryType":
-            suggest = "directory_type"
-        elif key == "domainUserPassword":
-            suggest = "domain_user_password"
-        elif key == "domainUsername":
-            suggest = "domain_username"
-        elif key == "ldapsUrls":
-            suggest = "ldaps_urls"
-        elif key == "msiResourceId":
-            suggest = "msi_resource_id"
-        elif key == "organizationalUnitDN":
-            suggest = "organizational_unit_dn"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SecurityProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SecurityProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aadds_resource_id: Optional[str] = None,
                  cluster_users_group_dns: Optional[Sequence[str]] = None,
@@ -2512,23 +1915,6 @@ class SshProfileResponse(dict):
     """
     The list of SSH public keys.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicKeys":
-            suggest = "public_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SshProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SshProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SshProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_keys: Optional[Sequence['outputs.SshPublicKeyResponse']] = None):
         """
@@ -2552,23 +1938,6 @@ class SshPublicKeyResponse(dict):
     """
     The SSH public key for the cluster nodes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "certificateData":
-            suggest = "certificate_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SshPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SshPublicKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SshPublicKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  certificate_data: Optional[str] = None):
         """
@@ -2592,29 +1961,6 @@ class StorageAccountResponse(dict):
     """
     The storage Account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileSystem":
-            suggest = "file_system"
-        elif key == "isDefault":
-            suggest = "is_default"
-        elif key == "msiResourceId":
-            suggest = "msi_resource_id"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageAccountResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageAccountResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageAccountResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  container: Optional[str] = None,
                  file_system: Optional[str] = None,

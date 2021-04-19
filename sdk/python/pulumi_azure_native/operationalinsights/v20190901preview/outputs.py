@@ -18,23 +18,6 @@ class LogAnalyticsQueryPackQueryPropertiesResponseRelated(dict):
     """
     The related metadata items for the function.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceTypes":
-            suggest = "resource_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogAnalyticsQueryPackQueryPropertiesResponseRelated. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogAnalyticsQueryPackQueryPropertiesResponseRelated.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogAnalyticsQueryPackQueryPropertiesResponseRelated.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  categories: Optional[Sequence[str]] = None,
                  resource_types: Optional[Sequence[str]] = None,
@@ -82,33 +65,6 @@ class SystemDataResponse(dict):
     """
     Read only system data
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

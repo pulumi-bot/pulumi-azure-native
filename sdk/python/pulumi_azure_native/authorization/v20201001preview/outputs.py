@@ -20,23 +20,6 @@ __all__ = [
 
 @pulumi.output_type
 class PolicyAssignmentPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "roleDefinition":
-            suggest = "role_definition"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyAssignmentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyAssignmentPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyAssignmentPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  policy: Optional['outputs.PolicyAssignmentPropertiesResponsePolicy'] = None,
                  role_definition: Optional['outputs.PolicyAssignmentPropertiesResponseRoleDefinition'] = None,
@@ -83,25 +66,6 @@ class PolicyAssignmentPropertiesResponsePolicy(dict):
     """
     Details of the policy
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedDateTime":
-            suggest = "last_modified_date_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyAssignmentPropertiesResponsePolicy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyAssignmentPropertiesResponsePolicy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyAssignmentPropertiesResponsePolicy.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_modified_by: 'outputs.PrincipalResponse',
                  id: Optional[str] = None,
@@ -148,23 +112,6 @@ class PolicyAssignmentPropertiesResponseRoleDefinition(dict):
     """
     Details of role definition
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyAssignmentPropertiesResponseRoleDefinition. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyAssignmentPropertiesResponseRoleDefinition.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyAssignmentPropertiesResponseRoleDefinition.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_name: Optional[str] = None,
                  id: Optional[str] = None,
@@ -212,23 +159,6 @@ class PolicyAssignmentPropertiesResponseScope(dict):
     """
     Details of the resource scope
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyAssignmentPropertiesResponseScope. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyAssignmentPropertiesResponseScope.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyAssignmentPropertiesResponseScope.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_name: Optional[str] = None,
                  id: Optional[str] = None,
@@ -276,23 +206,6 @@ class PrincipalResponse(dict):
     """
     The name of the entity last modified it
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrincipalResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrincipalResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrincipalResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_name: Optional[str] = None,
                  email: Optional[str] = None,

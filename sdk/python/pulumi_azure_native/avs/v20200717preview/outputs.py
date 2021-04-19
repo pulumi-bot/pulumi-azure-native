@@ -24,29 +24,6 @@ class CircuitResponse(dict):
     """
     An ExpressRoute Circuit
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expressRouteID":
-            suggest = "express_route_id"
-        elif key == "expressRoutePrivatePeeringID":
-            suggest = "express_route_private_peering_id"
-        elif key == "primarySubnet":
-            suggest = "primary_subnet"
-        elif key == "secondarySubnet":
-            suggest = "secondary_subnet"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CircuitResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CircuitResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CircuitResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  express_route_id: str,
                  express_route_private_peering_id: str,
@@ -102,25 +79,6 @@ class EndpointsResponse(dict):
     """
     Endpoint addresses
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "hcxCloudManager":
-            suggest = "hcx_cloud_manager"
-        elif key == "nsxtManager":
-            suggest = "nsxt_manager"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EndpointsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EndpointsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EndpointsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  hcx_cloud_manager: str,
                  nsxt_manager: str,
@@ -165,29 +123,6 @@ class IdentitySourceResponse(dict):
     """
     vCenter Single Sign On Identity Source
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baseGroupDN":
-            suggest = "base_group_dn"
-        elif key == "baseUserDN":
-            suggest = "base_user_dn"
-        elif key == "primaryServer":
-            suggest = "primary_server"
-        elif key == "secondaryServer":
-            suggest = "secondary_server"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentitySourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentitySourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentitySourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  alias: Optional[str] = None,
                  base_group_dn: Optional[str] = None,
@@ -319,27 +254,6 @@ class ManagementClusterResponse(dict):
     """
     The properties of a management cluster
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterId":
-            suggest = "cluster_id"
-        elif key == "clusterSize":
-            suggest = "cluster_size"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagementClusterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagementClusterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagementClusterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_id: int,
                  cluster_size: int,
@@ -417,23 +331,6 @@ class WorkloadNetworkSegmentPortVifResponse(dict):
     """
     Ports and any VIF attached to segment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "portName":
-            suggest = "port_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkloadNetworkSegmentPortVifResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkloadNetworkSegmentPortVifResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkloadNetworkSegmentPortVifResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  port_name: Optional[str] = None):
         """
@@ -457,25 +354,6 @@ class WorkloadNetworkSegmentSubnetResponse(dict):
     """
     Subnet configuration for segment
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dhcpRanges":
-            suggest = "dhcp_ranges"
-        elif key == "gatewayAddress":
-            suggest = "gateway_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkloadNetworkSegmentSubnetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkloadNetworkSegmentSubnetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkloadNetworkSegmentSubnetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dhcp_ranges: Optional[Sequence[str]] = None,
                  gateway_address: Optional[str] = None):

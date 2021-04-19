@@ -21,23 +21,6 @@ class LogSettingsResponse(dict):
     """
     Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionPolicy":
-            suggest = "retention_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: bool,
                  category: Optional[str] = None,
@@ -84,25 +67,6 @@ class MetricSettingsResponse(dict):
     """
     Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retentionPolicy":
-            suggest = "retention_policy"
-        elif key == "timeGrain":
-            suggest = "time_grain"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MetricSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MetricSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MetricSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: bool,
                  category: Optional[str] = None,

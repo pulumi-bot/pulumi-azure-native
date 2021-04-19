@@ -511,23 +511,6 @@ class StatusResponse(dict):
     """
     The status of an Azure resource at the time the operation was called.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_status: str,
                  message: str,

@@ -17,25 +17,6 @@ class StorageAccountPropertiesResponse(dict):
     """
     The properties of a storage account for a machine learning team account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKey":
-            suggest = "access_key"
-        elif key == "storageAccountId":
-            suggest = "storage_account_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageAccountPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageAccountPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageAccountPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_key: str,
                  storage_account_id: str):
