@@ -30,29 +30,6 @@ class DeliveryPackageInformationResponse(dict):
     """
     Contains information about the delivery package being shipped by the customer to the Microsoft data center.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "carrierName":
-            suggest = "carrier_name"
-        elif key == "trackingNumber":
-            suggest = "tracking_number"
-        elif key == "driveCount":
-            suggest = "drive_count"
-        elif key == "shipDate":
-            suggest = "ship_date"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeliveryPackageInformationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeliveryPackageInformationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeliveryPackageInformationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  carrier_name: str,
                  tracking_number: str,
@@ -145,43 +122,6 @@ class DriveStatusResponse(dict):
     """
     Provides information about the drive's status
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bitLockerKey":
-            suggest = "bit_locker_key"
-        elif key == "bytesSucceeded":
-            suggest = "bytes_succeeded"
-        elif key == "copyStatus":
-            suggest = "copy_status"
-        elif key == "driveHeaderHash":
-            suggest = "drive_header_hash"
-        elif key == "driveId":
-            suggest = "drive_id"
-        elif key == "errorLogUri":
-            suggest = "error_log_uri"
-        elif key == "manifestFile":
-            suggest = "manifest_file"
-        elif key == "manifestHash":
-            suggest = "manifest_hash"
-        elif key == "manifestUri":
-            suggest = "manifest_uri"
-        elif key == "percentComplete":
-            suggest = "percent_complete"
-        elif key == "verboseLogUri":
-            suggest = "verbose_log_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DriveStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DriveStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DriveStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bit_locker_key: Optional[str] = None,
                  bytes_succeeded: Optional[float] = None,
@@ -337,27 +277,6 @@ class EncryptionKeyDetailsResponse(dict):
     """
     Specifies the encryption key properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "kekType":
-            suggest = "kek_type"
-        elif key == "kekUrl":
-            suggest = "kek_url"
-        elif key == "kekVaultResourceID":
-            suggest = "kek_vault_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionKeyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionKeyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionKeyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kek_type: Optional[str] = None,
                  kek_url: Optional[str] = None,
@@ -407,27 +326,6 @@ class ExportResponse(dict):
     """
     A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blobListBlobPath":
-            suggest = "blob_list_blob_path"
-        elif key == "blobPath":
-            suggest = "blob_path"
-        elif key == "blobPathPrefix":
-            suggest = "blob_path_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  blob_list_blob_path: Optional[str] = None,
                  blob_path: Optional[Sequence[str]] = None,
@@ -475,25 +373,6 @@ class IdentityDetailsResponse(dict):
     """
     Specifies the identity properties. 
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -541,53 +420,6 @@ class JobDetailsResponse(dict):
     """
     Specifies the job properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupDriveManifest":
-            suggest = "backup_drive_manifest"
-        elif key == "cancelRequested":
-            suggest = "cancel_requested"
-        elif key == "deliveryPackage":
-            suggest = "delivery_package"
-        elif key == "diagnosticsPath":
-            suggest = "diagnostics_path"
-        elif key == "driveList":
-            suggest = "drive_list"
-        elif key == "encryptionKey":
-            suggest = "encryption_key"
-        elif key == "incompleteBlobListUri":
-            suggest = "incomplete_blob_list_uri"
-        elif key == "jobType":
-            suggest = "job_type"
-        elif key == "logLevel":
-            suggest = "log_level"
-        elif key == "percentComplete":
-            suggest = "percent_complete"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "returnAddress":
-            suggest = "return_address"
-        elif key == "returnPackage":
-            suggest = "return_package"
-        elif key == "returnShipping":
-            suggest = "return_shipping"
-        elif key == "shippingInformation":
-            suggest = "shipping_information"
-        elif key == "storageAccountId":
-            suggest = "storage_account_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_drive_manifest: Optional[bool] = None,
                  cancel_requested: Optional[bool] = None,
@@ -815,29 +647,6 @@ class PackageInformationResponse(dict):
     """
     Contains information about the package being shipped by the customer to the Microsoft data center.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "carrierName":
-            suggest = "carrier_name"
-        elif key == "driveCount":
-            suggest = "drive_count"
-        elif key == "shipDate":
-            suggest = "ship_date"
-        elif key == "trackingNumber":
-            suggest = "tracking_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PackageInformationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PackageInformationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PackageInformationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  carrier_name: str,
                  drive_count: float,
@@ -893,33 +702,6 @@ class ReturnAddressResponse(dict):
     """
     Specifies the return address information for the job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryOrRegion":
-            suggest = "country_or_region"
-        elif key == "postalCode":
-            suggest = "postal_code"
-        elif key == "recipientName":
-            suggest = "recipient_name"
-        elif key == "streetAddress1":
-            suggest = "street_address1"
-        elif key == "stateOrProvince":
-            suggest = "state_or_province"
-        elif key == "streetAddress2":
-            suggest = "street_address2"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReturnAddressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReturnAddressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReturnAddressResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  city: str,
                  country_or_region: str,
@@ -1032,25 +814,6 @@ class ReturnShippingResponse(dict):
     """
     Specifies the return carrier and customer's account with the carrier.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "carrierAccountNumber":
-            suggest = "carrier_account_number"
-        elif key == "carrierName":
-            suggest = "carrier_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReturnShippingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReturnShippingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReturnShippingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  carrier_account_number: str,
                  carrier_name: str):
@@ -1084,35 +847,6 @@ class ShippingInformationResponse(dict):
     """
     Contains information about the Microsoft datacenter to which the drives should be shipped.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalInformation":
-            suggest = "additional_information"
-        elif key == "countryOrRegion":
-            suggest = "country_or_region"
-        elif key == "postalCode":
-            suggest = "postal_code"
-        elif key == "recipientName":
-            suggest = "recipient_name"
-        elif key == "stateOrProvince":
-            suggest = "state_or_province"
-        elif key == "streetAddress1":
-            suggest = "street_address1"
-        elif key == "streetAddress2":
-            suggest = "street_address2"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ShippingInformationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ShippingInformationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ShippingInformationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  additional_information: str,
                  city: Optional[str] = None,
@@ -1231,33 +965,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

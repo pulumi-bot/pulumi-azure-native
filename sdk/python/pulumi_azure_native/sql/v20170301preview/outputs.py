@@ -47,25 +47,6 @@ class JobScheduleResponse(dict):
     """
     Scheduling properties of a job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  end_time: Optional[str] = None,
@@ -193,31 +174,6 @@ class JobStepExecutionOptionsResponse(dict):
     """
     The execution options of a job step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "initialRetryIntervalSeconds":
-            suggest = "initial_retry_interval_seconds"
-        elif key == "maximumRetryIntervalSeconds":
-            suggest = "maximum_retry_interval_seconds"
-        elif key == "retryAttempts":
-            suggest = "retry_attempts"
-        elif key == "retryIntervalBackoffMultiplier":
-            suggest = "retry_interval_backoff_multiplier"
-        elif key == "timeoutSeconds":
-            suggest = "timeout_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobStepExecutionOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobStepExecutionOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobStepExecutionOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  initial_retry_interval_seconds: Optional[int] = None,
                  maximum_retry_interval_seconds: Optional[int] = None,
@@ -299,33 +255,6 @@ class JobStepOutputResponse(dict):
     """
     The output configuration of a job step.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "serverName":
-            suggest = "server_name"
-        elif key == "tableName":
-            suggest = "table_name"
-        elif key == "resourceGroupName":
-            suggest = "resource_group_name"
-        elif key == "schemaName":
-            suggest = "schema_name"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobStepOutputResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobStepOutputResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobStepOutputResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  credential: str,
                  database_name: str,
@@ -433,33 +362,6 @@ class JobTargetResponse(dict):
     """
     A job target, for example a specific database or a container of databases that is evaluated during job execution.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "elasticPoolName":
-            suggest = "elastic_pool_name"
-        elif key == "membershipType":
-            suggest = "membership_type"
-        elif key == "refreshCredential":
-            suggest = "refresh_credential"
-        elif key == "serverName":
-            suggest = "server_name"
-        elif key == "shardMapName":
-            suggest = "shard_map_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobTargetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobTargetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobTargetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  database_name: Optional[str] = None,
@@ -626,25 +528,6 @@ class VulnerabilityAssessmentRecurringScansPropertiesResponse(dict):
     """
     Properties of a Vulnerability Assessment recurring scans.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailSubscriptionAdmins":
-            suggest = "email_subscription_admins"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VulnerabilityAssessmentRecurringScansPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VulnerabilityAssessmentRecurringScansPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VulnerabilityAssessmentRecurringScansPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email_subscription_admins: Optional[bool] = None,
                  emails: Optional[Sequence[str]] = None,

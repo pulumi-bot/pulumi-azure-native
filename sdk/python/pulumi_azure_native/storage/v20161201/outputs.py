@@ -25,23 +25,6 @@ class CustomDomainResponse(dict):
     """
     The custom domain assigned to this storage account. This can be set via Update.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "useSubDomainName":
-            suggest = "use_sub_domain_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomDomainResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomDomainResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomDomainResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  use_sub_domain_name: Optional[bool] = None):
@@ -76,23 +59,6 @@ class EncryptionResponse(dict):
     """
     The encryption settings on the storage account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keySource":
-            suggest = "key_source"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_source: str,
                  services: Optional['outputs.EncryptionServicesResponse'] = None):
@@ -127,23 +93,6 @@ class EncryptionServiceResponse(dict):
     """
     A service that allows server-side encryption to be used.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastEnabledTime":
-            suggest = "last_enabled_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_enabled_time: str,
                  enabled: Optional[bool] = None):

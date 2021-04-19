@@ -33,29 +33,6 @@ class ArmIdentityResponse(dict):
     """
     The set of ARM identities associated with the IoT DPS resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "identityType":
-            suggest = "identity_type"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ArmIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ArmIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ArmIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -113,25 +90,6 @@ class ArmUserIdentityResponse(dict):
     """
     The ARM UserAssigned identity information
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ArmUserIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ArmUserIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ArmUserIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str):
@@ -165,23 +123,6 @@ class CertificatePropertiesResponse(dict):
     """
     The description of an X509 CA Certificate.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isVerified":
-            suggest = "is_verified"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CertificatePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CertificatePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CertificatePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created: str,
                  expiry: str,
@@ -259,23 +200,6 @@ class EncryptionKeyIdentityResponse(dict):
     """
     The properties of the identity used to access the key encryption key in KeyVault.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userAssignedIdentity":
-            suggest = "user_assigned_identity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionKeyIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionKeyIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionKeyIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  user_assigned_identity: Optional[str] = None):
         """
@@ -299,25 +223,6 @@ class EncryptionPropertiesDescriptionResponse(dict):
     """
     The customer-managed encryption key (CMK) properties for the IoT DPS instance.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keySource":
-            suggest = "key_source"
-        elif key == "keyVaultProperties":
-            suggest = "key_vault_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionPropertiesDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionPropertiesDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionPropertiesDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  identity: Optional['outputs.EncryptionKeyIdentityResponse'] = None,
                  key_source: Optional[str] = None,
@@ -365,41 +270,6 @@ class IotDpsPropertiesDescriptionResponse(dict):
     """
     the service specific properties of a provisioning service, including keys, linked iot hubs, current state, and system generated properties such as hostname and idScope
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deviceProvisioningHostName":
-            suggest = "device_provisioning_host_name"
-        elif key == "idScope":
-            suggest = "id_scope"
-        elif key == "serviceOperationsHostName":
-            suggest = "service_operations_host_name"
-        elif key == "allocationPolicy":
-            suggest = "allocation_policy"
-        elif key == "authorizationPolicies":
-            suggest = "authorization_policies"
-        elif key == "iotHubs":
-            suggest = "iot_hubs"
-        elif key == "ipFilterRules":
-            suggest = "ip_filter_rules"
-        elif key == "privateEndpointConnections":
-            suggest = "private_endpoint_connections"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "publicNetworkAccess":
-            suggest = "public_network_access"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IotDpsPropertiesDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IotDpsPropertiesDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IotDpsPropertiesDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  device_provisioning_host_name: str,
                  id_scope: str,
@@ -598,27 +468,6 @@ class IotHubDefinitionDescriptionResponse(dict):
     """
     Description of the IoT hub.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "allocationWeight":
-            suggest = "allocation_weight"
-        elif key == "applyAllocationPolicy":
-            suggest = "apply_allocation_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IotHubDefinitionDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IotHubDefinitionDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IotHubDefinitionDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: str,
                  location: str,
@@ -687,23 +536,6 @@ class KeyVaultKeyPropertiesResponse(dict):
     """
     The properties of the KeyVault key.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyIdentifier":
-            suggest = "key_identifier"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultKeyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultKeyPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultKeyPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_identifier: Optional[str] = None):
         """
@@ -727,25 +559,6 @@ class PrivateEndpointConnectionPropertiesResponse(dict):
     """
     The properties of a private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  private_link_service_connection_state: 'outputs.PrivateLinkServiceConnectionStateResponse',
                  private_endpoint: Optional['outputs.PrivateEndpointResponse'] = None):
@@ -857,23 +670,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     The current state of a private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  description: str,
                  status: str,
@@ -919,27 +715,6 @@ class SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse(dict
     """
     Description of the shared access key.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyName":
-            suggest = "key_name"
-        elif key == "primaryKey":
-            suggest = "primary_key"
-        elif key == "secondaryKey":
-            suggest = "secondary_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_name: str,
                  rights: str,
@@ -997,25 +772,6 @@ class TargetIpFilterRuleResponse(dict):
     """
     The IP filter rules for a provisioning Service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filterName":
-            suggest = "filter_name"
-        elif key == "ipMask":
-            suggest = "ip_mask"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TargetIpFilterRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TargetIpFilterRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TargetIpFilterRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action: str,
                  filter_name: str,

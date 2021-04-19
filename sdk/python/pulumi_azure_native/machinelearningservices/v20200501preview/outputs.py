@@ -99,57 +99,6 @@ class ACIServiceResponseResponse(dict):
     """
     The response for an ACI service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "modelConfigMap":
-            suggest = "model_config_map"
-        elif key == "scoringUri":
-            suggest = "scoring_uri"
-        elif key == "swaggerUri":
-            suggest = "swagger_uri"
-        elif key == "appInsightsEnabled":
-            suggest = "app_insights_enabled"
-        elif key == "authEnabled":
-            suggest = "auth_enabled"
-        elif key == "containerResourceRequirements":
-            suggest = "container_resource_requirements"
-        elif key == "dataCollection":
-            suggest = "data_collection"
-        elif key == "deploymentType":
-            suggest = "deployment_type"
-        elif key == "encryptionProperties":
-            suggest = "encryption_properties"
-        elif key == "environmentImageRequest":
-            suggest = "environment_image_request"
-        elif key == "kvTags":
-            suggest = "kv_tags"
-        elif key == "publicFqdn":
-            suggest = "public_fqdn"
-        elif key == "publicIp":
-            suggest = "public_ip"
-        elif key == "sslCertificate":
-            suggest = "ssl_certificate"
-        elif key == "sslEnabled":
-            suggest = "ssl_enabled"
-        elif key == "sslKey":
-            suggest = "ssl_key"
-        elif key == "vnetConfiguration":
-            suggest = "vnet_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ACIServiceResponseResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ACIServiceResponseResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ACIServiceResponseResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  error: 'outputs.ServiceResponseBaseResponseError',
@@ -457,25 +406,6 @@ class ACIServiceResponseResponseDataCollection(dict):
     """
     Details of the data collection options specified.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventHubEnabled":
-            suggest = "event_hub_enabled"
-        elif key == "storageEnabled":
-            suggest = "storage_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ACIServiceResponseResponseDataCollection. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ACIServiceResponseResponseDataCollection.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ACIServiceResponseResponseDataCollection.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_hub_enabled: Optional[bool] = None,
                  storage_enabled: Optional[bool] = None):
@@ -511,27 +441,6 @@ class ACIServiceResponseResponseEncryptionProperties(dict):
     """
     The encryption properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyName":
-            suggest = "key_name"
-        elif key == "keyVersion":
-            suggest = "key_version"
-        elif key == "vaultBaseUrl":
-            suggest = "vault_base_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ACIServiceResponseResponseEncryptionProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ACIServiceResponseResponseEncryptionProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ACIServiceResponseResponseEncryptionProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_name: str,
                  key_version: str,
@@ -576,27 +485,6 @@ class ACIServiceResponseResponseEnvironmentImageRequest(dict):
     """
     The Environment, models and assets used for inferencing.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "driverProgram":
-            suggest = "driver_program"
-        elif key == "environmentReference":
-            suggest = "environment_reference"
-        elif key == "modelIds":
-            suggest = "model_ids"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ACIServiceResponseResponseEnvironmentImageRequest. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ACIServiceResponseResponseEnvironmentImageRequest.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ACIServiceResponseResponseEnvironmentImageRequest.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  assets: Optional[Sequence['outputs.ImageAssetResponse']] = None,
                  driver_program: Optional[str] = None,
@@ -680,25 +568,6 @@ class ACIServiceResponseResponseVnetConfiguration(dict):
     """
     The virtual network configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subnetName":
-            suggest = "subnet_name"
-        elif key == "vnetName":
-            suggest = "vnet_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ACIServiceResponseResponseVnetConfiguration. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ACIServiceResponseResponseVnetConfiguration.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ACIServiceResponseResponseVnetConfiguration.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  subnet_name: Optional[str] = None,
                  vnet_name: Optional[str] = None):
@@ -778,37 +647,6 @@ class AKSResponse(dict):
     """
     A Machine Learning compute based on AKS.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "createdOn":
-            suggest = "created_on"
-        elif key == "isAttachedCompute":
-            suggest = "is_attached_compute"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "provisioningErrors":
-            suggest = "provisioning_errors"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "computeLocation":
-            suggest = "compute_location"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  created_on: str,
@@ -936,33 +774,6 @@ class AKSResponseProperties(dict):
     """
     AKS properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "systemServices":
-            suggest = "system_services"
-        elif key == "agentCount":
-            suggest = "agent_count"
-        elif key == "agentVMSize":
-            suggest = "agent_vm_size"
-        elif key == "aksNetworkingConfiguration":
-            suggest = "aks_networking_configuration"
-        elif key == "clusterFqdn":
-            suggest = "cluster_fqdn"
-        elif key == "sslConfiguration":
-            suggest = "ssl_configuration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  system_services: Sequence['outputs.SystemServiceResponse'],
                  agent_count: Optional[int] = None,
@@ -1045,65 +856,6 @@ class AKSServiceResponseResponse(dict):
     """
     The response for an AKS service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "deploymentStatus":
-            suggest = "deployment_status"
-        elif key == "modelConfigMap":
-            suggest = "model_config_map"
-        elif key == "scoringUri":
-            suggest = "scoring_uri"
-        elif key == "swaggerUri":
-            suggest = "swagger_uri"
-        elif key == "aadAuthEnabled":
-            suggest = "aad_auth_enabled"
-        elif key == "appInsightsEnabled":
-            suggest = "app_insights_enabled"
-        elif key == "authEnabled":
-            suggest = "auth_enabled"
-        elif key == "autoScaler":
-            suggest = "auto_scaler"
-        elif key == "computeName":
-            suggest = "compute_name"
-        elif key == "containerResourceRequirements":
-            suggest = "container_resource_requirements"
-        elif key == "dataCollection":
-            suggest = "data_collection"
-        elif key == "deploymentType":
-            suggest = "deployment_type"
-        elif key == "environmentImageRequest":
-            suggest = "environment_image_request"
-        elif key == "isDefault":
-            suggest = "is_default"
-        elif key == "kvTags":
-            suggest = "kv_tags"
-        elif key == "livenessProbeRequirements":
-            suggest = "liveness_probe_requirements"
-        elif key == "maxConcurrentRequestsPerContainer":
-            suggest = "max_concurrent_requests_per_container"
-        elif key == "maxQueueWaitMs":
-            suggest = "max_queue_wait_ms"
-        elif key == "numReplicas":
-            suggest = "num_replicas"
-        elif key == "scoringTimeoutMs":
-            suggest = "scoring_timeout_ms"
-        elif key == "trafficPercentile":
-            suggest = "traffic_percentile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSServiceResponseResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSServiceResponseResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSServiceResponseResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  deployment_status: 'outputs.AKSServiceResponseResponseDeploymentStatus',
@@ -1458,31 +1210,6 @@ class AKSServiceResponseResponseAutoScaler(dict):
     """
     The auto scaler properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoscaleEnabled":
-            suggest = "autoscale_enabled"
-        elif key == "maxReplicas":
-            suggest = "max_replicas"
-        elif key == "minReplicas":
-            suggest = "min_replicas"
-        elif key == "refreshPeriodInSeconds":
-            suggest = "refresh_period_in_seconds"
-        elif key == "targetUtilization":
-            suggest = "target_utilization"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSServiceResponseResponseAutoScaler. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSServiceResponseResponseAutoScaler.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSServiceResponseResponseAutoScaler.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  autoscale_enabled: Optional[bool] = None,
                  max_replicas: Optional[int] = None,
@@ -1554,25 +1281,6 @@ class AKSServiceResponseResponseDataCollection(dict):
     """
     Details of the data collection options specified.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventHubEnabled":
-            suggest = "event_hub_enabled"
-        elif key == "storageEnabled":
-            suggest = "storage_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSServiceResponseResponseDataCollection. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSServiceResponseResponseDataCollection.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSServiceResponseResponseDataCollection.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_hub_enabled: Optional[bool] = None,
                  storage_enabled: Optional[bool] = None):
@@ -1608,27 +1316,6 @@ class AKSServiceResponseResponseDeploymentStatus(dict):
     """
     The deployment status.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "availableReplicas":
-            suggest = "available_replicas"
-        elif key == "desiredReplicas":
-            suggest = "desired_replicas"
-        elif key == "updatedReplicas":
-            suggest = "updated_replicas"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSServiceResponseResponseDeploymentStatus. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSServiceResponseResponseDeploymentStatus.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSServiceResponseResponseDeploymentStatus.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  available_replicas: Optional[int] = None,
                  desired_replicas: Optional[int] = None,
@@ -1688,27 +1375,6 @@ class AKSServiceResponseResponseEnvironmentImageRequest(dict):
     """
     The Environment, models and assets used for inferencing.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "driverProgram":
-            suggest = "driver_program"
-        elif key == "environmentReference":
-            suggest = "environment_reference"
-        elif key == "modelIds":
-            suggest = "model_ids"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSServiceResponseResponseEnvironmentImageRequest. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSServiceResponseResponseEnvironmentImageRequest.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSServiceResponseResponseEnvironmentImageRequest.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  assets: Optional[Sequence['outputs.ImageAssetResponse']] = None,
                  driver_program: Optional[str] = None,
@@ -1792,31 +1458,6 @@ class AKSServiceResponseResponseLivenessProbeRequirements(dict):
     """
     The liveness probe requirements.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failureThreshold":
-            suggest = "failure_threshold"
-        elif key == "initialDelaySeconds":
-            suggest = "initial_delay_seconds"
-        elif key == "periodSeconds":
-            suggest = "period_seconds"
-        elif key == "successThreshold":
-            suggest = "success_threshold"
-        elif key == "timeoutSeconds":
-            suggest = "timeout_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSServiceResponseResponseLivenessProbeRequirements. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSServiceResponseResponseLivenessProbeRequirements.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSServiceResponseResponseLivenessProbeRequirements.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  failure_threshold: Optional[int] = None,
                  initial_delay_seconds: Optional[int] = None,
@@ -1888,31 +1529,6 @@ class AKSVariantResponseResponse(dict):
     """
     The response for an AKS variant.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "deploymentType":
-            suggest = "deployment_type"
-        elif key == "isDefault":
-            suggest = "is_default"
-        elif key == "kvTags":
-            suggest = "kv_tags"
-        elif key == "trafficPercentile":
-            suggest = "traffic_percentile"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AKSVariantResponseResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AKSVariantResponseResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AKSVariantResponseResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  error: 'outputs.ServiceResponseBaseResponseError',
@@ -2043,29 +1659,6 @@ class AksNetworkingConfigurationResponse(dict):
     """
     Advance configuration for AKS networking
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsServiceIP":
-            suggest = "dns_service_ip"
-        elif key == "dockerBridgeCidr":
-            suggest = "docker_bridge_cidr"
-        elif key == "serviceCidr":
-            suggest = "service_cidr"
-        elif key == "subnetId":
-            suggest = "subnet_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AksNetworkingConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AksNetworkingConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AksNetworkingConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dns_service_ip: Optional[str] = None,
                  docker_bridge_cidr: Optional[str] = None,
@@ -2202,37 +1795,6 @@ class AmlComputeResponse(dict):
     """
     An Azure Machine Learning compute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "createdOn":
-            suggest = "created_on"
-        elif key == "isAttachedCompute":
-            suggest = "is_attached_compute"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "provisioningErrors":
-            suggest = "provisioning_errors"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "computeLocation":
-            suggest = "compute_location"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmlComputeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmlComputeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmlComputeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  created_on: str,
@@ -2360,41 +1922,6 @@ class AmlComputeResponseProperties(dict):
     """
     AML Compute properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allocationState":
-            suggest = "allocation_state"
-        elif key == "allocationStateTransitionTime":
-            suggest = "allocation_state_transition_time"
-        elif key == "currentNodeCount":
-            suggest = "current_node_count"
-        elif key == "nodeStateCounts":
-            suggest = "node_state_counts"
-        elif key == "targetNodeCount":
-            suggest = "target_node_count"
-        elif key == "remoteLoginPortPublicAccess":
-            suggest = "remote_login_port_public_access"
-        elif key == "scaleSettings":
-            suggest = "scale_settings"
-        elif key == "userAccountCredentials":
-            suggest = "user_account_credentials"
-        elif key == "vmPriority":
-            suggest = "vm_priority"
-        elif key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmlComputeResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmlComputeResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmlComputeResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allocation_state: str,
                  allocation_state_transition_time: str,
@@ -2543,43 +2070,6 @@ class AmlComputeResponseProperties(dict):
 
 @pulumi.output_type
 class AzureDataLakeSectionResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorityUrl":
-            suggest = "authority_url"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "credentialType":
-            suggest = "credential_type"
-        elif key == "isCertAuth":
-            suggest = "is_cert_auth"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-        elif key == "serviceDataAccessAuthIdentity":
-            suggest = "service_data_access_auth_identity"
-        elif key == "storeName":
-            suggest = "store_name"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeSectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeSectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeSectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authority_url: Optional[str] = None,
                  certificate: Optional[str] = None,
@@ -2743,51 +2233,6 @@ class AzureDataLakeSectionResponse(dict):
 
 @pulumi.output_type
 class AzureMySqlSectionResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorityUrl":
-            suggest = "authority_url"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "credentialType":
-            suggest = "credential_type"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "isCertAuth":
-            suggest = "is_cert_auth"
-        elif key == "portNumber":
-            suggest = "port_number"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-        elif key == "serverName":
-            suggest = "server_name"
-        elif key == "serviceDataAccessAuthIdentity":
-            suggest = "service_data_access_auth_identity"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userId":
-            suggest = "user_id"
-        elif key == "userPassword":
-            suggest = "user_password"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlSectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMySqlSectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMySqlSectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authority_url: Optional[str] = None,
                  certificate: Optional[str] = None,
@@ -3011,53 +2456,6 @@ class AzureMySqlSectionResponse(dict):
 
 @pulumi.output_type
 class AzurePostgreSqlSectionResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorityUrl":
-            suggest = "authority_url"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "credentialType":
-            suggest = "credential_type"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "isCertAuth":
-            suggest = "is_cert_auth"
-        elif key == "portNumber":
-            suggest = "port_number"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-        elif key == "serverName":
-            suggest = "server_name"
-        elif key == "serviceDataAccessAuthIdentity":
-            suggest = "service_data_access_auth_identity"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userId":
-            suggest = "user_id"
-        elif key == "userPassword":
-            suggest = "user_password"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlSectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzurePostgreSqlSectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzurePostgreSqlSectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authority_url: Optional[str] = None,
                  certificate: Optional[str] = None,
@@ -3293,51 +2691,6 @@ class AzurePostgreSqlSectionResponse(dict):
 
 @pulumi.output_type
 class AzureSqlDatabaseSectionResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorityUrl":
-            suggest = "authority_url"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "credentialType":
-            suggest = "credential_type"
-        elif key == "databaseName":
-            suggest = "database_name"
-        elif key == "isCertAuth":
-            suggest = "is_cert_auth"
-        elif key == "portNumber":
-            suggest = "port_number"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-        elif key == "serverName":
-            suggest = "server_name"
-        elif key == "serviceDataAccessAuthIdentity":
-            suggest = "service_data_access_auth_identity"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userId":
-            suggest = "user_id"
-        elif key == "userPassword":
-            suggest = "user_password"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlDatabaseSectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlDatabaseSectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlDatabaseSectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authority_url: Optional[str] = None,
                  certificate: Optional[str] = None,
@@ -3561,45 +2914,6 @@ class AzureSqlDatabaseSectionResponse(dict):
 
 @pulumi.output_type
 class AzureStorageSectionResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountKey":
-            suggest = "account_key"
-        elif key == "accountName":
-            suggest = "account_name"
-        elif key == "areWorkspaceManagedIdentitiesAllowed":
-            suggest = "are_workspace_managed_identities_allowed"
-        elif key == "blobCacheTimeout":
-            suggest = "blob_cache_timeout"
-        elif key == "clientCredentials":
-            suggest = "client_credentials"
-        elif key == "containerName":
-            suggest = "container_name"
-        elif key == "credentialType":
-            suggest = "credential_type"
-        elif key == "isSas":
-            suggest = "is_sas"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "sasToken":
-            suggest = "sas_token"
-        elif key == "serviceDataAccessAuthIdentity":
-            suggest = "service_data_access_auth_identity"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureStorageSectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureStorageSectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureStorageSectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_key: Optional[str] = None,
                  account_name: Optional[str] = None,
@@ -3783,39 +3097,6 @@ class AzureStorageSectionResponse(dict):
 
 @pulumi.output_type
 class ClientCredentialsResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorityUrl":
-            suggest = "authority_url"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "isCertAuth":
-            suggest = "is_cert_auth"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "resourceUri":
-            suggest = "resource_uri"
-        elif key == "serviceDataAccessAuthIdentity":
-            suggest = "service_data_access_auth_identity"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClientCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClientCredentialsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClientCredentialsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authority_url: Optional[str] = None,
                  certificate: Optional[str] = None,
@@ -3958,23 +3239,6 @@ class ContainerResourceRequirementsResponse(dict):
     """
     The resource requirements for the container (cpu and memory).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "memoryInGB":
-            suggest = "memory_in_gb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerResourceRequirementsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerResourceRequirementsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerResourceRequirementsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cpu: Optional[float] = None,
                  fpga: Optional[int] = None,
@@ -4034,37 +3298,6 @@ class DataFactoryResponse(dict):
     """
     A DataFactory compute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "createdOn":
-            suggest = "created_on"
-        elif key == "isAttachedCompute":
-            suggest = "is_attached_compute"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "provisioningErrors":
-            suggest = "provisioning_errors"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "computeLocation":
-            suggest = "compute_location"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataFactoryResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataFactoryResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataFactoryResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  created_on: str,
@@ -4180,37 +3413,6 @@ class DataLakeAnalyticsResponse(dict):
     """
     A DataLakeAnalytics compute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "createdOn":
-            suggest = "created_on"
-        elif key == "isAttachedCompute":
-            suggest = "is_attached_compute"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "provisioningErrors":
-            suggest = "provisioning_errors"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "computeLocation":
-            suggest = "compute_location"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataLakeAnalyticsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataLakeAnalyticsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataLakeAnalyticsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  created_on: str,
@@ -4331,23 +3533,6 @@ class DataLakeAnalyticsResponse(dict):
 
 @pulumi.output_type
 class DataLakeAnalyticsResponseProperties(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataLakeStoreAccountName":
-            suggest = "data_lake_store_account_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataLakeAnalyticsResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataLakeAnalyticsResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataLakeAnalyticsResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_lake_store_account_name: Optional[str] = None):
         """
@@ -4370,37 +3555,6 @@ class DatabricksResponse(dict):
     """
     A DataFactory compute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "createdOn":
-            suggest = "created_on"
-        elif key == "isAttachedCompute":
-            suggest = "is_attached_compute"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "provisioningErrors":
-            suggest = "provisioning_errors"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "computeLocation":
-            suggest = "compute_location"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabricksResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabricksResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabricksResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  created_on: str,
@@ -4521,23 +3675,6 @@ class DatabricksResponse(dict):
 
 @pulumi.output_type
 class DatabricksResponseProperties(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databricksAccessToken":
-            suggest = "databricks_access_token"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabricksResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabricksResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabricksResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  databricks_access_token: Optional[str] = None):
         """
@@ -4595,35 +3732,6 @@ class DatasetResponse(dict):
     """
     Machine Learning dataset object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdTime":
-            suggest = "created_time"
-        elif key == "datasetId":
-            suggest = "dataset_id"
-        elif key == "datasetType":
-            suggest = "dataset_type"
-        elif key == "defaultCompute":
-            suggest = "default_compute"
-        elif key == "isVisible":
-            suggest = "is_visible"
-        elif key == "modifiedTime":
-            suggest = "modified_time"
-        elif key == "datasetState":
-            suggest = "dataset_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_time: str,
                  dataset_id: str,
@@ -4769,37 +3877,6 @@ class DatasetResponseDataPath(dict):
     """
      Datastore and reference to location of data such as relativePath, Sql Query and etc.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureFilePath":
-            suggest = "azure_file_path"
-        elif key == "datastoreName":
-            suggest = "datastore_name"
-        elif key == "httpUrl":
-            suggest = "http_url"
-        elif key == "partitionFormat":
-            suggest = "partition_format"
-        elif key == "partitionFormatIgnoreError":
-            suggest = "partition_format_ignore_error"
-        elif key == "relativePath":
-            suggest = "relative_path"
-        elif key == "additionalProperties":
-            suggest = "additional_properties"
-        elif key == "sqlDataPath":
-            suggest = "sql_data_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetResponseDataPath. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetResponseDataPath.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetResponseDataPath.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_file_path: str,
                  datastore_name: str,
@@ -4912,45 +3989,6 @@ class DatasetResponseLatest(dict):
     """
     Last created Dataset definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdTime":
-            suggest = "created_time"
-        elif key == "datasetId":
-            suggest = "dataset_id"
-        elif key == "fileType":
-            suggest = "file_type"
-        elif key == "modifiedTime":
-            suggest = "modified_time"
-        elif key == "partitionFormatInPath":
-            suggest = "partition_format_in_path"
-        elif key == "savedDatasetId":
-            suggest = "saved_dataset_id"
-        elif key == "telemetryInfo":
-            suggest = "telemetry_info"
-        elif key == "useDescriptionTagsFromDefinition":
-            suggest = "use_description_tags_from_definition"
-        elif key == "versionId":
-            suggest = "version_id"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "dataPath":
-            suggest = "data_path"
-        elif key == "datasetDefinitionState":
-            suggest = "dataset_definition_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetResponseLatest. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetResponseLatest.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetResponseLatest.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_time: str,
                  dataflow: str,
@@ -5164,29 +4202,6 @@ class DatasetResponseSqlDataPath(dict):
     """
     Sql Query/Table/Stored Procedure details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sqlQuery":
-            suggest = "sql_query"
-        elif key == "sqlStoredProcedureName":
-            suggest = "sql_stored_procedure_name"
-        elif key == "sqlTableName":
-            suggest = "sql_table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetResponseSqlDataPath. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetResponseSqlDataPath.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetResponseSqlDataPath.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  query_timeout: float,
                  sql_query: str,
@@ -5242,23 +4257,6 @@ class DatasetStateResponse(dict):
     """
     Dataset state
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deprecatedBy":
-            suggest = "deprecated_by"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  etag: str,
                  deprecated_by: Optional['outputs.DatasetStateResponseDeprecatedBy'] = None,
@@ -5305,25 +4303,6 @@ class DatasetStateResponseDeprecatedBy(dict):
     """
     Reference to better Dataset or a Definition
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "datasetId":
-            suggest = "dataset_id"
-        elif key == "definitionVersion":
-            suggest = "definition_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetStateResponseDeprecatedBy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetStateResponseDeprecatedBy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetStateResponseDeprecatedBy.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dataset_id: str,
                  definition_version: Optional[str] = None):
@@ -5358,47 +4337,6 @@ class DatastoreResponse(dict):
     """
     Machine Learning datastore object.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdTime":
-            suggest = "created_time"
-        elif key == "modifiedBy":
-            suggest = "modified_by"
-        elif key == "modifiedTime":
-            suggest = "modified_time"
-        elif key == "azureDataLakeSection":
-            suggest = "azure_data_lake_section"
-        elif key == "azureMySqlSection":
-            suggest = "azure_my_sql_section"
-        elif key == "azurePostgreSqlSection":
-            suggest = "azure_postgre_sql_section"
-        elif key == "azureSqlDatabaseSection":
-            suggest = "azure_sql_database_section"
-        elif key == "azureStorageSection":
-            suggest = "azure_storage_section"
-        elif key == "dataStoreType":
-            suggest = "data_store_type"
-        elif key == "glusterFsSection":
-            suggest = "gluster_fs_section"
-        elif key == "hasBeenValidated":
-            suggest = "has_been_validated"
-        elif key == "linkedInfo":
-            suggest = "linked_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatastoreResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatastoreResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatastoreResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_by: 'outputs.UserInfoResponse',
                  created_time: str,
@@ -5576,23 +4514,6 @@ class DatastoreResponse(dict):
 
 @pulumi.output_type
 class EncryptionPropertyResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultProperties":
-            suggest = "key_vault_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionPropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionPropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionPropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault_properties: 'outputs.KeyVaultPropertiesResponse',
                  status: str):
@@ -5625,25 +4546,6 @@ class EnvironmentImageResponseResponseEnvironment(dict):
     """
     The details of the AZURE ML environment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "environmentVariables":
-            suggest = "environment_variables"
-        elif key == "inferencingStackVersion":
-            suggest = "inferencing_stack_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnvironmentImageResponseResponseEnvironment. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnvironmentImageResponseResponseEnvironment.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnvironmentImageResponseResponseEnvironment.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  docker: Optional['outputs.ModelEnvironmentDefinitionResponseResponseDocker'] = None,
                  environment_variables: Optional[Mapping[str, str]] = None,
@@ -5863,25 +4765,6 @@ class GlusterFsSectionResponse(dict):
     """
     Data specific to GlusterFS.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serverAddress":
-            suggest = "server_address"
-        elif key == "volumeName":
-            suggest = "volume_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GlusterFsSectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GlusterFsSectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GlusterFsSectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  server_address: str,
                  volume_name: str):
@@ -5915,37 +4798,6 @@ class HDInsightResponse(dict):
     """
     A HDInsight compute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "createdOn":
-            suggest = "created_on"
-        elif key == "isAttachedCompute":
-            suggest = "is_attached_compute"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "provisioningErrors":
-            suggest = "provisioning_errors"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "computeLocation":
-            suggest = "compute_location"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  created_on: str,
@@ -6066,25 +4918,6 @@ class HDInsightResponse(dict):
 
 @pulumi.output_type
 class HDInsightResponseProperties(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "administratorAccount":
-            suggest = "administrator_account"
-        elif key == "sshPort":
-            suggest = "ssh_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  administrator_account: Optional['outputs.VirtualMachineSshCredentialsResponse'] = None,
@@ -6131,27 +4964,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -6209,23 +5021,6 @@ class ImageAssetResponse(dict):
     """
     An Image asset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mimeType":
-            suggest = "mime_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImageAssetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImageAssetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImageAssetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  mime_type: Optional[str] = None,
@@ -6282,27 +5077,6 @@ class ImageAssetResponse(dict):
 
 @pulumi.output_type
 class KeyVaultPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyIdentifier":
-            suggest = "key_identifier"
-        elif key == "keyVaultArmId":
-            suggest = "key_vault_arm_id"
-        elif key == "identityClientId":
-            suggest = "identity_client_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_identifier: str,
                  key_vault_arm_id: str,
@@ -6347,25 +5121,6 @@ class LinkedInfoResponse(dict):
     """
     Info about origin if it is linked.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedId":
-            suggest = "linked_id"
-        elif key == "linkedResourceName":
-            suggest = "linked_resource_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinkedInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinkedInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinkedInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_id: Optional[str] = None,
                  linked_resource_name: Optional[str] = None,
@@ -6413,25 +5168,6 @@ class LinkedWorkspacePropsResponse(dict):
     """
     LinkedWorkspace specific properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedWorkspaceResourceId":
-            suggest = "linked_workspace_resource_id"
-        elif key == "userAssignedIdentityResourceId":
-            suggest = "user_assigned_identity_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinkedWorkspacePropsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinkedWorkspacePropsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinkedWorkspacePropsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_workspace_resource_id: Optional[str] = None,
                  user_assigned_identity_resource_id: Optional[str] = None):
@@ -6508,27 +5244,6 @@ class ModelEnvironmentDefinitionResponseResponseDocker(dict):
     """
     The definition of a Docker container.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baseDockerfile":
-            suggest = "base_dockerfile"
-        elif key == "baseImage":
-            suggest = "base_image"
-        elif key == "baseImageRegistry":
-            suggest = "base_image_registry"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ModelEnvironmentDefinitionResponseResponseDocker. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ModelEnvironmentDefinitionResponseResponseDocker.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ModelEnvironmentDefinitionResponseResponseDocker.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  base_dockerfile: Optional[str] = None,
                  base_image: Optional[str] = None,
@@ -6576,29 +5291,6 @@ class ModelEnvironmentDefinitionResponseResponsePython(dict):
     """
     Settings for a Python environment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baseCondaEnvironment":
-            suggest = "base_conda_environment"
-        elif key == "condaDependencies":
-            suggest = "conda_dependencies"
-        elif key == "interpreterPath":
-            suggest = "interpreter_path"
-        elif key == "userManagedDependencies":
-            suggest = "user_managed_dependencies"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ModelEnvironmentDefinitionResponseResponsePython. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ModelEnvironmentDefinitionResponseResponsePython.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ModelEnvironmentDefinitionResponseResponsePython.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  base_conda_environment: Optional[str] = None,
                  conda_dependencies: Optional[Any] = None,
@@ -6654,37 +5346,6 @@ class ModelEnvironmentDefinitionResponseResponseR(dict):
     """
     Settings for a R environment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bioConductorPackages":
-            suggest = "bio_conductor_packages"
-        elif key == "cranPackages":
-            suggest = "cran_packages"
-        elif key == "customUrlPackages":
-            suggest = "custom_url_packages"
-        elif key == "gitHubPackages":
-            suggest = "git_hub_packages"
-        elif key == "rVersion":
-            suggest = "r_version"
-        elif key == "rscriptPath":
-            suggest = "rscript_path"
-        elif key == "snapshotDate":
-            suggest = "snapshot_date"
-        elif key == "userManaged":
-            suggest = "user_managed"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ModelEnvironmentDefinitionResponseResponseR. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ModelEnvironmentDefinitionResponseResponseR.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ModelEnvironmentDefinitionResponseResponseR.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bio_conductor_packages: Optional[Sequence[str]] = None,
                  cran_packages: Optional[Sequence['outputs.RCranPackageResponse']] = None,
@@ -6794,23 +5455,6 @@ class ModelEnvironmentDefinitionResponseResponseSpark(dict):
     """
     The configuration for a Spark environment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "precachePackages":
-            suggest = "precache_packages"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ModelEnvironmentDefinitionResponseResponseSpark. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ModelEnvironmentDefinitionResponseResponseSpark.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ModelEnvironmentDefinitionResponseResponseSpark.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  packages: Optional[Sequence['outputs.SparkMavenPackageResponse']] = None,
                  precache_packages: Optional[bool] = None,
@@ -6858,45 +5502,6 @@ class ModelResponse(dict):
     """
     An Azure Machine Learning Model.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mimeType":
-            suggest = "mime_type"
-        elif key == "createdTime":
-            suggest = "created_time"
-        elif key == "derivedModelIds":
-            suggest = "derived_model_ids"
-        elif key == "experimentName":
-            suggest = "experiment_name"
-        elif key == "frameworkVersion":
-            suggest = "framework_version"
-        elif key == "kvTags":
-            suggest = "kv_tags"
-        elif key == "modifiedTime":
-            suggest = "modified_time"
-        elif key == "parentModelId":
-            suggest = "parent_model_id"
-        elif key == "resourceRequirements":
-            suggest = "resource_requirements"
-        elif key == "runId":
-            suggest = "run_id"
-        elif key == "sampleInputData":
-            suggest = "sample_input_data"
-        elif key == "sampleOutputData":
-            suggest = "sample_output_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ModelResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ModelResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ModelResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  mime_type: str,
                  name: str,
@@ -7157,33 +5762,6 @@ class NodeStateCountsResponse(dict):
     """
     Counts of various compute node states on the amlCompute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "idleNodeCount":
-            suggest = "idle_node_count"
-        elif key == "leavingNodeCount":
-            suggest = "leaving_node_count"
-        elif key == "preemptedNodeCount":
-            suggest = "preempted_node_count"
-        elif key == "preparingNodeCount":
-            suggest = "preparing_node_count"
-        elif key == "runningNodeCount":
-            suggest = "running_node_count"
-        elif key == "unusableNodeCount":
-            suggest = "unusable_node_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NodeStateCountsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NodeStateCountsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NodeStateCountsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  idle_node_count: int,
                  leaving_node_count: int,
@@ -7280,27 +5858,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     The Private Endpoint Connection resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -7449,23 +6006,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     A collection of information about the state of the connection between service consumer and provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -7612,27 +6152,6 @@ class ScaleSettingsResponse(dict):
     """
     scale settings for AML Compute
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxNodeCount":
-            suggest = "max_node_count"
-        elif key == "minNodeCount":
-            suggest = "min_node_count"
-        elif key == "nodeIdleTimeBeforeScaleDown":
-            suggest = "node_idle_time_before_scale_down"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScaleSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScaleSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScaleSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_node_count: int,
                  min_node_count: Optional[int] = None,
@@ -7722,27 +6241,6 @@ class ServiceResponseBaseResponseError(dict):
 
 @pulumi.output_type
 class SharedPrivateLinkResourceResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupId":
-            suggest = "group_id"
-        elif key == "privateLinkResourceId":
-            suggest = "private_link_resource_id"
-        elif key == "requestMessage":
-            suggest = "request_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharedPrivateLinkResourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharedPrivateLinkResourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharedPrivateLinkResourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -7936,25 +6434,6 @@ class SystemServiceResponse(dict):
     """
     A system service running on a compute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicIpAddress":
-            suggest = "public_ip_address"
-        elif key == "systemServiceType":
-            suggest = "system_service_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_ip_address: str,
                  system_service_type: str,
@@ -7999,27 +6478,6 @@ class UserAccountCredentialsResponse(dict):
     """
     Settings for user account that gets created on each on the nodes of a compute.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminUserName":
-            suggest = "admin_user_name"
-        elif key == "adminUserPassword":
-            suggest = "admin_user_password"
-        elif key == "adminUserSshPublicKey":
-            suggest = "admin_user_ssh_public_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserAccountCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserAccountCredentialsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserAccountCredentialsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_user_name: str,
                  admin_user_password: Optional[str] = None,
@@ -8066,27 +6524,6 @@ class UserAssignedIdentityResponse(dict):
     """
     User Assigned Identity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserAssignedIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserAssignedIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserAssignedIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: str,
                  principal_id: str,
@@ -8131,35 +6568,6 @@ class UserInfoResponse(dict):
     """
     User who created.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userAltSecId":
-            suggest = "user_alt_sec_id"
-        elif key == "userIdp":
-            suggest = "user_idp"
-        elif key == "userIss":
-            suggest = "user_iss"
-        elif key == "userName":
-            suggest = "user_name"
-        elif key == "userObjectId":
-            suggest = "user_object_id"
-        elif key == "userPuId":
-            suggest = "user_pu_id"
-        elif key == "userTenantId":
-            suggest = "user_tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  user_alt_sec_id: Optional[str] = None,
                  user_idp: Optional[str] = None,
@@ -8255,37 +6663,6 @@ class VirtualMachineResponse(dict):
     """
     A Machine Learning compute based on Azure Virtual Machines.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "createdOn":
-            suggest = "created_on"
-        elif key == "isAttachedCompute":
-            suggest = "is_attached_compute"
-        elif key == "modifiedOn":
-            suggest = "modified_on"
-        elif key == "provisioningErrors":
-            suggest = "provisioning_errors"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "computeLocation":
-            suggest = "compute_location"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: str,
                  created_on: str,
@@ -8406,27 +6783,6 @@ class VirtualMachineResponse(dict):
 
 @pulumi.output_type
 class VirtualMachineResponseProperties(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "administratorAccount":
-            suggest = "administrator_account"
-        elif key == "sshPort":
-            suggest = "ssh_port"
-        elif key == "virtualMachineSize":
-            suggest = "virtual_machine_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineResponseProperties. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineResponseProperties.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineResponseProperties.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  administrator_account: Optional['outputs.VirtualMachineSshCredentialsResponse'] = None,
@@ -8485,25 +6841,6 @@ class VirtualMachineSshCredentialsResponse(dict):
     """
     Admin credentials for virtual machine
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "privateKeyData":
-            suggest = "private_key_data"
-        elif key == "publicKeyData":
-            suggest = "public_key_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineSshCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualMachineSshCredentialsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualMachineSshCredentialsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  password: Optional[str] = None,
                  private_key_data: Optional[str] = None,

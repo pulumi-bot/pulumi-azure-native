@@ -78,23 +78,6 @@ class LocationDataResponse(dict):
     """
     Metadata pertaining to the geographic location of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "countryOrRegion":
-            suggest = "country_or_region"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LocationDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LocationDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LocationDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  city: Optional[str] = None,
@@ -153,23 +136,6 @@ class MachineExtensionInstanceViewResponse(dict):
     """
     Describes the Machine Extension Instance View.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionInstanceViewResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  status: Optional['outputs.MachineExtensionInstanceViewResponseStatus'] = None,
@@ -229,23 +195,6 @@ class MachineExtensionInstanceViewResponseStatus(dict):
     """
     Instance view status.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionInstanceViewResponseStatus. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionInstanceViewResponseStatus.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: Optional[str] = None,
                  display_status: Optional[str] = None,
@@ -317,23 +266,6 @@ class MachineExtensionPropertiesResponseInstanceView(dict):
     """
     The machine extension instance view.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeHandlerVersion":
-            suggest = "type_handler_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineExtensionPropertiesResponseInstanceView. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineExtensionPropertiesResponseInstanceView.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineExtensionPropertiesResponseInstanceView.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  status: Optional['outputs.MachineExtensionInstanceViewResponseStatus'] = None,
@@ -393,23 +325,6 @@ class MachinePropertiesResponseOsProfile(dict):
     """
     Specifies the operating system settings for the hybrid machine.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computerName":
-            suggest = "computer_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachinePropertiesResponseOsProfile. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachinePropertiesResponseOsProfile.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachinePropertiesResponseOsProfile.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  computer_name: str):
         """
@@ -429,25 +344,6 @@ class MachinePropertiesResponseOsProfile(dict):
 
 @pulumi.output_type
 class MachineResponseIdentity(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MachineResponseIdentity. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MachineResponseIdentity.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MachineResponseIdentity.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,

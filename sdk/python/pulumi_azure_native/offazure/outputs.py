@@ -21,25 +21,6 @@ class MasterSitePropertiesResponse(dict):
     """
     Class for site properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowMultipleSites":
-            suggest = "allow_multiple_sites"
-        elif key == "publicNetworkAccess":
-            suggest = "public_network_access"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MasterSitePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MasterSitePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MasterSitePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allow_multiple_sites: Optional[bool] = None,
                  public_network_access: Optional[str] = None,
@@ -87,27 +68,6 @@ class SiteAgentPropertiesResponse(dict):
     """
     Class for site agent properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastHeartBeatUtc":
-            suggest = "last_heart_beat_utc"
-        elif key == "keyVaultId":
-            suggest = "key_vault_id"
-        elif key == "keyVaultUri":
-            suggest = "key_vault_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SiteAgentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SiteAgentPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SiteAgentPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  last_heart_beat_utc: str,
@@ -176,31 +136,6 @@ class SitePropertiesResponse(dict):
     """
     Class for site properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serviceEndpoint":
-            suggest = "service_endpoint"
-        elif key == "agentDetails":
-            suggest = "agent_details"
-        elif key == "applianceName":
-            suggest = "appliance_name"
-        elif key == "discoverySolutionId":
-            suggest = "discovery_solution_id"
-        elif key == "servicePrincipalIdentityDetails":
-            suggest = "service_principal_identity_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SitePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SitePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SitePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  service_endpoint: str,
                  agent_details: Optional['outputs.SiteAgentPropertiesResponse'] = None,
@@ -271,31 +206,6 @@ class SiteSpnPropertiesResponse(dict):
     """
     Class for site properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aadAuthority":
-            suggest = "aad_authority"
-        elif key == "applicationId":
-            suggest = "application_id"
-        elif key == "objectId":
-            suggest = "object_id"
-        elif key == "rawCertData":
-            suggest = "raw_cert_data"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SiteSpnPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SiteSpnPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SiteSpnPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aad_authority: Optional[str] = None,
                  application_id: Optional[str] = None,

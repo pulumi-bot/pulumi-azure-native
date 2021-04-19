@@ -40,23 +40,6 @@ class BoolEqualsAdvancedFilterResponse(dict):
     """
     BoolEquals Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BoolEqualsAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BoolEqualsAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BoolEqualsAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -105,25 +88,6 @@ class EventHubEventSubscriptionDestinationResponse(dict):
     """
     Information about the event hub destination for an event subscription
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventHubEventSubscriptionDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventHubEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventHubEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_type: str,
                  resource_id: Optional[str] = None):
@@ -160,31 +124,6 @@ class EventSubscriptionFilterResponse(dict):
     """
     Filter for the Event Subscription
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "advancedFilters":
-            suggest = "advanced_filters"
-        elif key == "includedEventTypes":
-            suggest = "included_event_types"
-        elif key == "isSubjectCaseSensitive":
-            suggest = "is_subject_case_sensitive"
-        elif key == "subjectBeginsWith":
-            suggest = "subject_begins_with"
-        elif key == "subjectEndsWith":
-            suggest = "subject_ends_with"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventSubscriptionFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventSubscriptionFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventSubscriptionFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  advanced_filters: Optional[Sequence[Any]] = None,
                  included_event_types: Optional[Sequence[str]] = None,
@@ -268,25 +207,6 @@ class HybridConnectionEventSubscriptionDestinationResponse(dict):
     """
     Information about the HybridConnection destination for an event subscription.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HybridConnectionEventSubscriptionDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HybridConnectionEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HybridConnectionEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_type: str,
                  resource_id: Optional[str] = None):
@@ -323,23 +243,6 @@ class JsonFieldResponse(dict):
     """
     This is used to express the source of an input schema mapping for a single target field in the Event Grid Event schema. This is currently used in the mappings for the 'id','topic' and 'eventTime' properties. This represents a field in the input event schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceField":
-            suggest = "source_field"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonFieldResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonFieldResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonFieldResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_field: Optional[str] = None):
         """
@@ -363,25 +266,6 @@ class JsonFieldWithDefaultResponse(dict):
     """
     This is used to express the source of an input schema mapping for a single target field in the Event Grid Event schema. This is currently used in the mappings for the 'subject','eventType' and 'dataVersion' properties. This represents a field in the input event schema along with a default value to be used, and at least one of these two properties should be provided.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultValue":
-            suggest = "default_value"
-        elif key == "sourceField":
-            suggest = "source_field"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonFieldWithDefaultResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonFieldWithDefaultResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonFieldWithDefaultResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_value: Optional[str] = None,
                  source_field: Optional[str] = None):
@@ -417,29 +301,6 @@ class JsonInputSchemaMappingResponse(dict):
     """
     This enables publishing to Event Grid using a custom input schema. This can be used to map properties from a custom input JSON schema to the Event Grid event schema.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataVersion":
-            suggest = "data_version"
-        elif key == "eventTime":
-            suggest = "event_time"
-        elif key == "eventType":
-            suggest = "event_type"
-        elif key == "inputSchemaMappingType":
-            suggest = "input_schema_mapping_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonInputSchemaMappingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonInputSchemaMappingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonInputSchemaMappingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_version: Optional['outputs.JsonFieldWithDefaultResponse'] = None,
                  event_time: Optional['outputs.JsonFieldResponse'] = None,
@@ -537,23 +398,6 @@ class NumberGreaterThanAdvancedFilterResponse(dict):
     """
     NumberGreaterThan Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NumberGreaterThanAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NumberGreaterThanAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NumberGreaterThanAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -602,23 +446,6 @@ class NumberGreaterThanOrEqualsAdvancedFilterResponse(dict):
     """
     NumberGreaterThanOrEquals Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NumberGreaterThanOrEqualsAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NumberGreaterThanOrEqualsAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NumberGreaterThanOrEqualsAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -667,23 +494,6 @@ class NumberInAdvancedFilterResponse(dict):
     """
     NumberIn filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NumberInAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NumberInAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NumberInAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -732,23 +542,6 @@ class NumberLessThanAdvancedFilterResponse(dict):
     """
     NumberLessThan Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NumberLessThanAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NumberLessThanAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NumberLessThanAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -797,23 +590,6 @@ class NumberLessThanOrEqualsAdvancedFilterResponse(dict):
     """
     NumberLessThanOrEquals Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NumberLessThanOrEqualsAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NumberLessThanOrEqualsAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NumberLessThanOrEqualsAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -862,23 +638,6 @@ class NumberNotInAdvancedFilterResponse(dict):
     """
     NumberNotIn Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NumberNotInAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NumberNotInAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NumberNotInAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -927,25 +686,6 @@ class RetryPolicyResponse(dict):
     """
     Information about the retry policy for an event subscription
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventTimeToLiveInMinutes":
-            suggest = "event_time_to_live_in_minutes"
-        elif key == "maxDeliveryAttempts":
-            suggest = "max_delivery_attempts"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RetryPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RetryPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RetryPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  event_time_to_live_in_minutes: Optional[int] = None,
                  max_delivery_attempts: Optional[int] = None):
@@ -981,27 +721,6 @@ class StorageBlobDeadLetterDestinationResponse(dict):
     """
     Information about the storage blob based dead letter destination.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "blobContainerName":
-            suggest = "blob_container_name"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageBlobDeadLetterDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageBlobDeadLetterDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageBlobDeadLetterDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_type: str,
                  blob_container_name: Optional[str] = None,
@@ -1050,27 +769,6 @@ class StorageQueueEventSubscriptionDestinationResponse(dict):
     """
     Information about the storage queue destination for an event subscription.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "queueName":
-            suggest = "queue_name"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageQueueEventSubscriptionDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageQueueEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageQueueEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_type: str,
                  queue_name: Optional[str] = None,
@@ -1119,23 +817,6 @@ class StringBeginsWithAdvancedFilterResponse(dict):
     """
     StringBeginsWith Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StringBeginsWithAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StringBeginsWithAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StringBeginsWithAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -1184,23 +865,6 @@ class StringContainsAdvancedFilterResponse(dict):
     """
     StringContains Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StringContainsAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StringContainsAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StringContainsAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -1249,23 +913,6 @@ class StringEndsWithAdvancedFilterResponse(dict):
     """
     StringEndsWith Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StringEndsWithAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StringEndsWithAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StringEndsWithAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -1314,23 +961,6 @@ class StringInAdvancedFilterResponse(dict):
     """
     StringIn Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StringInAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StringInAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StringInAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -1379,23 +1009,6 @@ class StringNotInAdvancedFilterResponse(dict):
     """
     StringNotIn Filter
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "operatorType":
-            suggest = "operator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StringNotInAdvancedFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StringNotInAdvancedFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StringNotInAdvancedFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  operator_type: str,
                  key: Optional[str] = None,
@@ -1444,27 +1057,6 @@ class WebHookEventSubscriptionDestinationResponse(dict):
     """
     Information about the webhook destination for an event subscription
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointBaseUrl":
-            suggest = "endpoint_base_url"
-        elif key == "endpointType":
-            suggest = "endpoint_type"
-        elif key == "endpointUrl":
-            suggest = "endpoint_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebHookEventSubscriptionDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebHookEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebHookEventSubscriptionDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_base_url: str,
                  endpoint_type: str,

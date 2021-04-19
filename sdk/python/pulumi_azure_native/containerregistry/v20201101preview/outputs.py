@@ -108,23 +108,6 @@ class ActorResponse(dict):
 
 @pulumi.output_type
 class EncryptionPropertyResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultProperties":
-            suggest = "key_vault_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionPropertyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionPropertyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionPropertyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault_properties: Optional['outputs.KeyVaultPropertiesResponse'] = None,
                  status: Optional[str] = None):
@@ -443,23 +426,6 @@ class ExportPipelineTargetPropertiesResponse(dict):
     """
     The properties of the export pipeline target.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultUri":
-            suggest = "key_vault_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportPipelineTargetPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportPipelineTargetPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportPipelineTargetPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault_uri: str,
                  type: Optional[str] = None,
@@ -510,23 +476,6 @@ class IPRuleResponse(dict):
     """
     IP rule with specific IP or IP range in CIDR format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "iPAddressOrRange":
-            suggest = "i_p_address_or_range"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  i_p_address_or_range: str,
                  action: Optional[str] = None):
@@ -563,27 +512,6 @@ class IdentityPropertiesResponse(dict):
     """
     Managed identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: Optional[str] = None,
                  tenant_id: Optional[str] = None,
@@ -649,23 +577,6 @@ class ImportPipelineSourcePropertiesResponse(dict):
     """
     The properties of the import pipeline source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyVaultUri":
-            suggest = "key_vault_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImportPipelineSourcePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImportPipelineSourcePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImportPipelineSourcePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_vault_uri: str,
                  type: Optional[str] = None,
@@ -715,29 +626,6 @@ class ImportPipelineSourcePropertiesResponse(dict):
 
 @pulumi.output_type
 class KeyVaultPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyRotationEnabled":
-            suggest = "key_rotation_enabled"
-        elif key == "lastKeyRotationTimestamp":
-            suggest = "last_key_rotation_timestamp"
-        elif key == "versionedKeyIdentifier":
-            suggest = "versioned_key_identifier"
-        elif key == "keyIdentifier":
-            suggest = "key_identifier"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KeyVaultPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KeyVaultPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_rotation_enabled: bool,
                  last_key_rotation_timestamp: str,
@@ -805,25 +693,6 @@ class LoggingPropertiesResponse(dict):
     """
     The logging properties of the connected registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "auditLogStatus":
-            suggest = "audit_log_status"
-        elif key == "logLevel":
-            suggest = "log_level"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LoggingPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LoggingPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LoggingPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  audit_log_status: Optional[str] = None,
                  log_level: Optional[str] = None):
@@ -896,27 +765,6 @@ class NetworkRuleSetResponse(dict):
     """
     The network rule set for a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultAction":
-            suggest = "default_action"
-        elif key == "ipRules":
-            suggest = "ip_rules"
-        elif key == "virtualNetworkRules":
-            suggest = "virtual_network_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkRuleSetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  default_action: str,
                  ip_rules: Optional[Sequence['outputs.IPRuleResponse']] = None,
@@ -965,23 +813,6 @@ class ParentPropertiesResponse(dict):
     """
     The properties of the connected registry parent.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "syncProperties":
-            suggest = "sync_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParentPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParentPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParentPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  sync_properties: 'outputs.SyncPropertiesResponse',
                  id: Optional[str] = None):
@@ -1016,25 +847,6 @@ class PipelineRunRequestResponse(dict):
     """
     The request properties provided for a pipeline run.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "catalogDigest":
-            suggest = "catalog_digest"
-        elif key == "pipelineResourceId":
-            suggest = "pipeline_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelineRunRequestResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelineRunRequestResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelineRunRequestResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  artifacts: Optional[Sequence[str]] = None,
                  catalog_digest: Optional[str] = None,
@@ -1112,31 +924,6 @@ class PipelineRunResponseResponse(dict):
     """
     The response properties returned for a pipeline run.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "catalogDigest":
-            suggest = "catalog_digest"
-        elif key == "finishTime":
-            suggest = "finish_time"
-        elif key == "importedArtifacts":
-            suggest = "imported_artifacts"
-        elif key == "pipelineRunErrorMessage":
-            suggest = "pipeline_run_error_message"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelineRunResponseResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelineRunResponseResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelineRunResponseResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  catalog_digest: Optional[str] = None,
                  finish_time: Optional[str] = None,
@@ -1370,23 +1157,6 @@ class PipelineSourceTriggerPropertiesResponse(dict):
 
 @pulumi.output_type
 class PipelineTriggerDescriptorResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceTrigger":
-            suggest = "source_trigger"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelineTriggerDescriptorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelineTriggerDescriptorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelineTriggerDescriptorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_trigger: Optional['outputs.PipelineSourceTriggerDescriptorResponse'] = None):
         """
@@ -1406,23 +1176,6 @@ class PipelineTriggerDescriptorResponse(dict):
 
 @pulumi.output_type
 class PipelineTriggerPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceTrigger":
-            suggest = "source_trigger"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelineTriggerPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelineTriggerPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelineTriggerPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_trigger: Optional['outputs.PipelineSourceTriggerPropertiesResponse'] = None):
         """
@@ -1445,27 +1198,6 @@ class PoliciesResponse(dict):
     """
     The policies for a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "quarantinePolicy":
-            suggest = "quarantine_policy"
-        elif key == "retentionPolicy":
-            suggest = "retention_policy"
-        elif key == "trustPolicy":
-            suggest = "trust_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PoliciesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PoliciesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PoliciesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  quarantine_policy: Optional['outputs.QuarantinePolicyResponse'] = None,
                  retention_policy: Optional['outputs.RetentionPolicyResponse'] = None,
@@ -1513,29 +1245,6 @@ class PrivateEndpointConnectionResponse(dict):
     """
     An object that represents a private endpoint connection for a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "systemData":
-            suggest = "system_data"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  name: str,
@@ -1649,23 +1358,6 @@ class PrivateLinkServiceConnectionStateResponse(dict):
     """
     The state of a private link service connection.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkServiceConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkServiceConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -1863,23 +1555,6 @@ class RetentionPolicyResponse(dict):
     """
     The retention policy for a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastUpdatedTime":
-            suggest = "last_updated_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RetentionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RetentionPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RetentionPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_updated_time: str,
                  days: Optional[int] = None,
@@ -1998,23 +1673,6 @@ class StatusDetailPropertiesResponse(dict):
     """
     The status detail properties of the connected registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "correlationId":
-            suggest = "correlation_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StatusDetailPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StatusDetailPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StatusDetailPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  code: str,
                  correlation_id: str,
@@ -2081,23 +1739,6 @@ class StatusResponse(dict):
     """
     The status of an Azure resource at the time the operation was called.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayStatus":
-            suggest = "display_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_status: str,
                  message: str,
@@ -2142,31 +1783,6 @@ class SyncPropertiesResponse(dict):
     """
     The sync properties of the connected registry with its parent.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "gatewayEndpoint":
-            suggest = "gateway_endpoint"
-        elif key == "lastSyncTime":
-            suggest = "last_sync_time"
-        elif key == "messageTtl":
-            suggest = "message_ttl"
-        elif key == "tokenId":
-            suggest = "token_id"
-        elif key == "syncWindow":
-            suggest = "sync_window"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyncPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyncPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyncPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  gateway_endpoint: str,
                  last_sync_time: str,
@@ -2246,33 +1862,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -2541,23 +2130,6 @@ class TokenCertificateResponse(dict):
     """
     The properties of a certificate used for authenticating a token.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encodedPemCertificate":
-            suggest = "encoded_pem_certificate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TokenCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TokenCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TokenCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encoded_pem_certificate: Optional[str] = None,
                  expiry: Optional[str] = None,
@@ -2640,23 +2212,6 @@ class TokenPasswordResponse(dict):
     """
     The password that will be used for authenticating the token of a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "creationTime":
-            suggest = "creation_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TokenPasswordResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TokenPasswordResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TokenPasswordResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  value: str,
                  creation_time: Optional[str] = None,
@@ -2751,25 +2306,6 @@ class TrustPolicyResponse(dict):
 
 @pulumi.output_type
 class UserIdentityPropertiesResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "principalId":
-            suggest = "principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserIdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserIdentityPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserIdentityPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Optional[str] = None,
                  principal_id: Optional[str] = None):
@@ -2804,23 +2340,6 @@ class VirtualNetworkRuleResponse(dict):
     """
     Virtual network rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "virtualNetworkResourceId":
-            suggest = "virtual_network_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualNetworkRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VirtualNetworkRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  virtual_network_resource_id: str,
                  action: Optional[str] = None):

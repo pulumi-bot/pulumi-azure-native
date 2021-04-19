@@ -56,25 +56,6 @@ class CostAllocationRuleDetailsResponse(dict):
     """
     Resource details of the cost allocation rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sourceResources":
-            suggest = "source_resources"
-        elif key == "targetResources":
-            suggest = "target_resources"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CostAllocationRuleDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CostAllocationRuleDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CostAllocationRuleDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  source_resources: Optional[Sequence['outputs.SourceCostAllocationResourceResponse']] = None,
                  target_resources: Optional[Sequence['outputs.TargetCostAllocationResourceResponse']] = None):
@@ -110,25 +91,6 @@ class CostAllocationRulePropertiesResponse(dict):
     """
     The properties of a cost allocation rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdDate":
-            suggest = "created_date"
-        elif key == "updatedDate":
-            suggest = "updated_date"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CostAllocationRulePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CostAllocationRulePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CostAllocationRulePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_date: str,
                  details: 'outputs.CostAllocationRuleDetailsResponse',
@@ -196,23 +158,6 @@ class SourceCostAllocationResourceResponse(dict):
     """
     Source resources for cost allocation
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceType":
-            suggest = "resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SourceCostAllocationResourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SourceCostAllocationResourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SourceCostAllocationResourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  resource_type: str,
@@ -257,25 +202,6 @@ class TargetCostAllocationResourceResponse(dict):
     """
     Target resources for cost allocation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyType":
-            suggest = "policy_type"
-        elif key == "resourceType":
-            suggest = "resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TargetCostAllocationResourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TargetCostAllocationResourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TargetCostAllocationResourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  policy_type: str,

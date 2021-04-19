@@ -27,25 +27,6 @@ class ContainerServiceAgentPoolProfileResponse(dict):
     """
     Profile for the container service agent pool.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsPrefix":
-            suggest = "dns_prefix"
-        elif key == "vmSize":
-            suggest = "vm_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceAgentPoolProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceAgentPoolProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceAgentPoolProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dns_prefix: str,
                  fqdn: str,
@@ -110,23 +91,6 @@ class ContainerServiceAgentPoolProfileResponse(dict):
 
 @pulumi.output_type
 class ContainerServiceDiagnosticsProfileResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vmDiagnostics":
-            suggest = "vm_diagnostics"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceDiagnosticsProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceDiagnosticsProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceDiagnosticsProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  vm_diagnostics: 'outputs.ContainerServiceVMDiagnosticsResponse'):
         """
@@ -148,23 +112,6 @@ class ContainerServiceLinuxProfileResponse(dict):
     """
     Profile for Linux VMs in the container service cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminUsername":
-            suggest = "admin_username"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceLinuxProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceLinuxProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceLinuxProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_username: str,
                  ssh: 'outputs.ContainerServiceSshConfigurationResponse'):
@@ -198,23 +145,6 @@ class ContainerServiceMasterProfileResponse(dict):
     """
     Profile for the container service master.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dnsPrefix":
-            suggest = "dns_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceMasterProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceMasterProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceMasterProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dns_prefix: str,
                  fqdn: str,
@@ -262,23 +192,6 @@ class ContainerServiceOrchestratorProfileResponse(dict):
     """
     Profile for the container service orchestrator.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "orchestratorType":
-            suggest = "orchestrator_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceOrchestratorProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceOrchestratorProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceOrchestratorProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  orchestrator_type: str):
         """
@@ -301,23 +214,6 @@ class ContainerServiceSshConfigurationResponse(dict):
     """
     SSH configuration for Linux-based VMs running on Azure.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicKeys":
-            suggest = "public_keys"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceSshConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceSshConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceSshConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_keys: Sequence['outputs.ContainerServiceSshPublicKeyResponse']):
         """
@@ -340,23 +236,6 @@ class ContainerServiceSshPublicKeyResponse(dict):
     """
     Contains information about SSH certificate public key data.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyData":
-            suggest = "key_data"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceSshPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceSshPublicKeyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceSshPublicKeyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_data: str):
         """
@@ -379,23 +258,6 @@ class ContainerServiceVMDiagnosticsResponse(dict):
     """
     Profile for diagnostics on the container service VMs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "storageUri":
-            suggest = "storage_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceVMDiagnosticsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceVMDiagnosticsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceVMDiagnosticsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enabled: bool,
                  storage_uri: str):
@@ -429,25 +291,6 @@ class ContainerServiceWindowsProfileResponse(dict):
     """
     Profile for Windows VMs in the container service cluster.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminPassword":
-            suggest = "admin_password"
-        elif key == "adminUsername":
-            suggest = "admin_username"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContainerServiceWindowsProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContainerServiceWindowsProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContainerServiceWindowsProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  admin_password: str,
                  admin_username: str):

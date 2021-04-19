@@ -49,25 +49,6 @@ class AddressDetailsResponse(dict):
     """
     Address details for an order.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "forwardAddress":
-            suggest = "forward_address"
-        elif key == "returnAddress":
-            suggest = "return_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AddressDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AddressDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AddressDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  forward_address: 'outputs.AddressPropertiesResponse',
                  return_address: 'outputs.AddressPropertiesResponse'):
@@ -101,25 +82,6 @@ class AddressPropertiesResponse(dict):
     """
     Address Properties
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contactDetails":
-            suggest = "contact_details"
-        elif key == "shippingAddress":
-            suggest = "shipping_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AddressPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AddressPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AddressPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  contact_details: 'outputs.ContactDetailsResponse',
                  shipping_address: Optional['outputs.ShippingAddressResponse'] = None):
@@ -352,27 +314,6 @@ class ContactDetailsResponse(dict):
     """
     Contact Details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contactName":
-            suggest = "contact_name"
-        elif key == "emailList":
-            suggest = "email_list"
-        elif key == "phoneExtension":
-            suggest = "phone_extension"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ContactDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ContactDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ContactDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  contact_name: str,
                  email_list: Sequence[str],
@@ -551,25 +492,6 @@ class DeviceDetailsResponse(dict):
     """
     Device details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deviceHistory":
-            suggest = "device_history"
-        elif key == "serialNumber":
-            suggest = "serial_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeviceDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeviceDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeviceDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  device_history: Sequence[str],
                  serial_number: str):
@@ -603,23 +525,6 @@ class EncryptionPreferencesResponse(dict):
     """
     Preferences related to the double encryption
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "doubleEncryptionStatus":
-            suggest = "double_encryption_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionPreferencesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionPreferencesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionPreferencesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  double_encryption_status: Optional[str] = None):
         """
@@ -676,23 +581,6 @@ class ErrorDetailResponse(dict):
     """
     The error detail.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalInfo":
-            suggest = "additional_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ErrorDetailResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ErrorDetailResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ErrorDetailResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  additional_info: Sequence['outputs.ErrorAdditionalInfoResponse'],
                  code: str,
@@ -792,29 +680,6 @@ class HierarchyInformationResponse(dict):
     """
     Holds details about product hierarchy information
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "configurationName":
-            suggest = "configuration_name"
-        elif key == "productFamilyName":
-            suggest = "product_family_name"
-        elif key == "productLineName":
-            suggest = "product_line_name"
-        elif key == "productName":
-            suggest = "product_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HierarchyInformationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HierarchyInformationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HierarchyInformationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  configuration_name: Optional[str] = None,
                  product_family_name: Optional[str] = None,
@@ -940,23 +805,6 @@ class ManagementResourceDetailsResponse(dict):
     """
     Management resource details to link device
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "managementResourceArmId":
-            suggest = "management_resource_arm_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagementResourceDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagementResourceDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagementResourceDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  management_resource_arm_id: str):
         """
@@ -1023,25 +871,6 @@ class NotificationPreferenceResponse(dict):
     """
     Notification preference for a job stage.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sendNotification":
-            suggest = "send_notification"
-        elif key == "stageName":
-            suggest = "stage_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NotificationPreferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NotificationPreferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NotificationPreferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  send_notification: bool,
                  stage_name: str):
@@ -1075,49 +904,6 @@ class OrderItemDetailsResponse(dict):
     """
     Order item details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "cancellationReason":
-            suggest = "cancellation_reason"
-        elif key == "cancellationStatus":
-            suggest = "cancellation_status"
-        elif key == "currentStage":
-            suggest = "current_stage"
-        elif key == "deletionStatus":
-            suggest = "deletion_status"
-        elif key == "forwardShippingDetails":
-            suggest = "forward_shipping_details"
-        elif key == "managementRpDetails":
-            suggest = "management_rp_details"
-        elif key == "orderItemStageHistory":
-            suggest = "order_item_stage_history"
-        elif key == "orderItemType":
-            suggest = "order_item_type"
-        elif key == "productDetails":
-            suggest = "product_details"
-        elif key == "returnReason":
-            suggest = "return_reason"
-        elif key == "returnStatus":
-            suggest = "return_status"
-        elif key == "reverseShippingDetails":
-            suggest = "reverse_shipping_details"
-        elif key == "managementResourceDetails":
-            suggest = "management_resource_details"
-        elif key == "notificationEmailList":
-            suggest = "notification_email_list"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OrderItemDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OrderItemDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OrderItemDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cancellation_reason: str,
                  cancellation_status: str,
@@ -1308,27 +1094,6 @@ class PreferencesResponse(dict):
     """
     Preferences related to the order
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encryptionPreferences":
-            suggest = "encryption_preferences"
-        elif key == "notificationPreferences":
-            suggest = "notification_preferences"
-        elif key == "transportPreferences":
-            suggest = "transport_preferences"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PreferencesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PreferencesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PreferencesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encryption_preferences: Optional['outputs.EncryptionPreferencesResponse'] = None,
                  notification_preferences: Optional[Sequence['outputs.NotificationPreferenceResponse']] = None,
@@ -1376,25 +1141,6 @@ class ProductDetailsResponse(dict):
     """
     Represents product details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deviceDetails":
-            suggest = "device_details"
-        elif key == "hierarchyInformation":
-            suggest = "hierarchy_information"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProductDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProductDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProductDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  device_details: Sequence['outputs.DeviceDetailsResponse'],
                  hierarchy_information: 'outputs.HierarchyInformationResponse',
@@ -1737,37 +1483,6 @@ class ShippingAddressResponse(dict):
     """
     Shipping address where customer wishes to receive the device.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "streetAddress1":
-            suggest = "street_address1"
-        elif key == "addressType":
-            suggest = "address_type"
-        elif key == "companyName":
-            suggest = "company_name"
-        elif key == "postalCode":
-            suggest = "postal_code"
-        elif key == "stateOrProvince":
-            suggest = "state_or_province"
-        elif key == "streetAddress2":
-            suggest = "street_address2"
-        elif key == "streetAddress3":
-            suggest = "street_address3"
-        elif key == "zipExtendedCode":
-            suggest = "zip_extended_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ShippingAddressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ShippingAddressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ShippingAddressResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  country: str,
                  street_address1: str,
@@ -1897,29 +1612,6 @@ class ShippingDetailsResponse(dict):
     """
     Package shipping details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "carrierDisplayName":
-            suggest = "carrier_display_name"
-        elif key == "carrierName":
-            suggest = "carrier_name"
-        elif key == "trackingId":
-            suggest = "tracking_id"
-        elif key == "trackingUrl":
-            suggest = "tracking_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ShippingDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ShippingDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ShippingDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  carrier_display_name: str,
                  carrier_name: str,
@@ -2008,29 +1700,6 @@ class StageDetailsResponse(dict):
     """
     Resource stage details
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-        elif key == "stageName":
-            suggest = "stage_name"
-        elif key == "stageStatus":
-            suggest = "stage_status"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StageDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StageDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StageDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  display_name: str,
                  stage_name: str,
@@ -2086,33 +1755,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -2196,23 +1838,6 @@ class TransportPreferencesResponse(dict):
     """
     Preferences related to the shipment logistics of the sku
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "preferredShipmentType":
-            suggest = "preferred_shipment_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TransportPreferencesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TransportPreferencesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TransportPreferencesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  preferred_shipment_type: str):
         """

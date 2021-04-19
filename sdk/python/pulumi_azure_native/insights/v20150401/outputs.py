@@ -76,23 +76,6 @@ class AutoscaleProfileResponse(dict):
     """
     Autoscale profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fixedDate":
-            suggest = "fixed_date"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AutoscaleProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AutoscaleProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AutoscaleProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  capacity: 'outputs.ScaleCapacityResponse',
                  name: str,
@@ -161,27 +144,6 @@ class EmailNotificationResponse(dict):
     """
     Email notification of an autoscale event.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "customEmails":
-            suggest = "custom_emails"
-        elif key == "sendToSubscriptionAdministrator":
-            suggest = "send_to_subscription_administrator"
-        elif key == "sendToSubscriptionCoAdministrators":
-            suggest = "send_to_subscription_co_administrators"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EmailNotificationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EmailNotificationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EmailNotificationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  custom_emails: Optional[Sequence[str]] = None,
                  send_to_subscription_administrator: Optional[bool] = None,
@@ -229,33 +191,6 @@ class MetricTriggerResponse(dict):
     """
     The trigger that results in a scaling action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "metricName":
-            suggest = "metric_name"
-        elif key == "metricResourceUri":
-            suggest = "metric_resource_uri"
-        elif key == "timeAggregation":
-            suggest = "time_aggregation"
-        elif key == "timeGrain":
-            suggest = "time_grain"
-        elif key == "timeWindow":
-            suggest = "time_window"
-        elif key == "metricNamespace":
-            suggest = "metric_namespace"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MetricTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MetricTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MetricTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  metric_name: str,
                  metric_resource_uri: str,
@@ -412,23 +347,6 @@ class RecurrentScheduleResponse(dict):
     """
     The scheduling constraints for when the profile begins.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timeZone":
-            suggest = "time_zone"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecurrentScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecurrentScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecurrentScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  days: Sequence[str],
                  hours: Sequence[int],
@@ -586,23 +504,6 @@ class ScaleRuleMetricDimensionResponse(dict):
     """
     Specifies an auto scale rule metric dimension.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dimensionName":
-            suggest = "dimension_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScaleRuleMetricDimensionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScaleRuleMetricDimensionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScaleRuleMetricDimensionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dimension_name: str,
                  operator: str,
@@ -647,25 +548,6 @@ class ScaleRuleResponse(dict):
     """
     A rule that provide the triggers and parameters for the scaling action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "metricTrigger":
-            suggest = "metric_trigger"
-        elif key == "scaleAction":
-            suggest = "scale_action"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScaleRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScaleRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScaleRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  metric_trigger: 'outputs.MetricTriggerResponse',
                  scale_action: 'outputs.ScaleActionResponse'):
@@ -699,23 +581,6 @@ class TimeWindowResponse(dict):
     """
     A specific date-time for the profile.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timeZone":
-            suggest = "time_zone"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TimeWindowResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TimeWindowResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TimeWindowResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end: str,
                  start: str,
@@ -761,23 +626,6 @@ class WebhookNotificationResponse(dict):
     """
     Webhook notification of an autoscale event.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebhookNotificationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebhookNotificationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebhookNotificationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  properties: Optional[Mapping[str, str]] = None,
                  service_uri: Optional[str] = None):

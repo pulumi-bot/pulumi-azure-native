@@ -20,23 +20,6 @@ class CustomRPActionRouteDefinitionResponse(dict):
     """
     The route definition for an action implemented by the custom resource provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "routingType":
-            suggest = "routing_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomRPActionRouteDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomRPActionRouteDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomRPActionRouteDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint: str,
                  name: str,
@@ -82,23 +65,6 @@ class CustomRPResourceTypeRouteDefinitionResponse(dict):
     """
     The route definition for a resource implemented by the custom resource provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "routingType":
-            suggest = "routing_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomRPResourceTypeRouteDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomRPResourceTypeRouteDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomRPResourceTypeRouteDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint: str,
                  name: str,
@@ -144,23 +110,6 @@ class CustomRPValidationsResponse(dict):
     """
     A validation to apply on custom resource provider requests.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "validationType":
-            suggest = "validation_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomRPValidationsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomRPValidationsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomRPValidationsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  specification: str,
                  validation_type: Optional[str] = None):

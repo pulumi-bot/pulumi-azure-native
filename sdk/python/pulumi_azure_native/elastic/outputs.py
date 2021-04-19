@@ -29,33 +29,6 @@ class ElasticCloudDeploymentResponse(dict):
     """
     Details of the user's elastic deployment associated with the monitor resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureSubscriptionId":
-            suggest = "azure_subscription_id"
-        elif key == "deploymentId":
-            suggest = "deployment_id"
-        elif key == "elasticsearchRegion":
-            suggest = "elasticsearch_region"
-        elif key == "elasticsearchServiceUrl":
-            suggest = "elasticsearch_service_url"
-        elif key == "kibanaServiceUrl":
-            suggest = "kibana_service_url"
-        elif key == "kibanaSsoUrl":
-            suggest = "kibana_sso_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElasticCloudDeploymentResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElasticCloudDeploymentResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElasticCloudDeploymentResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_subscription_id: str,
                  deployment_id: str,
@@ -144,25 +117,6 @@ class ElasticCloudUserResponse(dict):
     """
     Details of the user's elastic account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "elasticCloudSsoDefaultUrl":
-            suggest = "elastic_cloud_sso_default_url"
-        elif key == "emailAddress":
-            suggest = "email_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElasticCloudUserResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElasticCloudUserResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElasticCloudUserResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  elastic_cloud_sso_default_url: str,
                  email_address: str,
@@ -207,25 +161,6 @@ class ElasticPropertiesResponse(dict):
     """
     Elastic Resource Properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "elasticCloudDeployment":
-            suggest = "elastic_cloud_deployment"
-        elif key == "elasticCloudUser":
-            suggest = "elastic_cloud_user"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElasticPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElasticPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElasticPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  elastic_cloud_deployment: Optional['outputs.ElasticCloudDeploymentResponse'] = None,
                  elastic_cloud_user: Optional['outputs.ElasticCloudUserResponse'] = None):
@@ -308,25 +243,6 @@ class IdentityPropertiesResponse(dict):
     """
     Identity properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -372,29 +288,6 @@ class LogRulesResponse(dict):
     """
     Set of rules for sending logs for the Monitor resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filteringTags":
-            suggest = "filtering_tags"
-        elif key == "sendAadLogs":
-            suggest = "send_aad_logs"
-        elif key == "sendActivityLogs":
-            suggest = "send_activity_logs"
-        elif key == "sendSubscriptionLogs":
-            suggest = "send_subscription_logs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogRulesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogRulesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogRulesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  filtering_tags: Optional[Sequence['outputs.FilteringTagResponse']] = None,
                  send_aad_logs: Optional[bool] = None,
@@ -454,31 +347,6 @@ class MonitorPropertiesResponse(dict):
     """
     Properties specific to the monitor resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "liftrResourceCategory":
-            suggest = "liftr_resource_category"
-        elif key == "liftrResourcePreference":
-            suggest = "liftr_resource_preference"
-        elif key == "elasticProperties":
-            suggest = "elastic_properties"
-        elif key == "monitoringStatus":
-            suggest = "monitoring_status"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MonitorPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MonitorPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MonitorPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  liftr_resource_category: str,
                  liftr_resource_preference: int,
@@ -591,25 +459,6 @@ class MonitoringTagRulesPropertiesResponse(dict):
     """
     Definition of the properties for a TagRules resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "logRules":
-            suggest = "log_rules"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MonitoringTagRulesPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MonitoringTagRulesPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MonitoringTagRulesPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  log_rules: Optional['outputs.LogRulesResponse'] = None,
                  provisioning_state: Optional[str] = None):
@@ -667,33 +516,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,

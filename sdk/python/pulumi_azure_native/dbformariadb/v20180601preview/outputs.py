@@ -20,25 +20,6 @@ class ResourceIdentityResponse(dict):
     """
     Azure Active Directory identity configuration for a resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -154,29 +135,6 @@ class StorageProfileResponse(dict):
     """
     Storage Profile properties of a server
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "backupRetentionDays":
-            suggest = "backup_retention_days"
-        elif key == "geoRedundantBackup":
-            suggest = "geo_redundant_backup"
-        elif key == "storageAutogrow":
-            suggest = "storage_autogrow"
-        elif key == "storageMB":
-            suggest = "storage_mb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageProfileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageProfileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  backup_retention_days: Optional[int] = None,
                  geo_redundant_backup: Optional[str] = None,

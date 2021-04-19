@@ -106,23 +106,6 @@ class SignalRCorsSettingsResponse(dict):
     """
     Cross-Origin Resource Sharing (CORS) settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedOrigins":
-            suggest = "allowed_origins"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SignalRCorsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SignalRCorsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SignalRCorsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_origins: Optional[Sequence[str]] = None):
         """

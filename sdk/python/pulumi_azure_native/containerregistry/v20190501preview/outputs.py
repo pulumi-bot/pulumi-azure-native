@@ -23,25 +23,6 @@ class ActiveDirectoryObjectResponse(dict):
     """
     The Active Directory Object that will be used for authenticating the token of a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "objectId":
-            suggest = "object_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActiveDirectoryObjectResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActiveDirectoryObjectResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActiveDirectoryObjectResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  object_id: Optional[str] = None,
                  tenant_id: Optional[str] = None):
@@ -77,33 +58,6 @@ class SystemDataResponse(dict):
     """
     Metadata pertaining to creation and last modification of the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "createdByType":
-            suggest = "created_by_type"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "lastModifiedByType":
-            suggest = "last_modified_by_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystemDataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystemDataResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: Optional[str] = None,
                  created_by: Optional[str] = None,
@@ -187,23 +141,6 @@ class TokenCertificateResponse(dict):
     """
     The properties of a certificate used for authenticating a token.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encodedPemCertificate":
-            suggest = "encoded_pem_certificate"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TokenCertificateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TokenCertificateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TokenCertificateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  encoded_pem_certificate: Optional[str] = None,
                  expiry: Optional[str] = None,
@@ -259,23 +196,6 @@ class TokenCredentialsPropertiesResponse(dict):
     """
     The properties of the credentials that can be used for authenticating the token.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "activeDirectoryObject":
-            suggest = "active_directory_object"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TokenCredentialsPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TokenCredentialsPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TokenCredentialsPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  active_directory_object: Optional['outputs.ActiveDirectoryObjectResponse'] = None,
                  certificates: Optional[Sequence['outputs.TokenCertificateResponse']] = None,
@@ -315,23 +235,6 @@ class TokenPasswordResponse(dict):
     """
     The password that will be used for authenticating the token of a container registry.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "creationTime":
-            suggest = "creation_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TokenPasswordResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TokenPasswordResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TokenPasswordResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  value: str,
                  creation_time: Optional[str] = None,

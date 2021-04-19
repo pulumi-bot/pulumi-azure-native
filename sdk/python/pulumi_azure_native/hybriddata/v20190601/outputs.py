@@ -20,25 +20,6 @@ class CustomerSecretResponse(dict):
     """
     The pair of customer secret.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyIdentifier":
-            suggest = "key_identifier"
-        elif key == "keyValue":
-            suggest = "key_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomerSecretResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomerSecretResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomerSecretResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  algorithm: str,
                  key_identifier: str,
@@ -83,23 +64,6 @@ class ScheduleResponse(dict):
     """
     Schedule for the job run.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyList":
-            suggest = "policy_list"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  policy_list: Optional[Sequence[str]] = None):

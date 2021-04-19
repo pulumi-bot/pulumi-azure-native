@@ -19,23 +19,6 @@ class CustomDomainResponse(dict):
     """
     The custom domain assigned to this storage account. This can be set via Update.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "useSubDomainName":
-            suggest = "use_sub_domain_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomDomainResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomDomainResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomDomainResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  use_sub_domain_name: Optional[bool] = None):

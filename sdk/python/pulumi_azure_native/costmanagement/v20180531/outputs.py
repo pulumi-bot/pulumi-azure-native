@@ -201,23 +201,6 @@ class ReportConfigDefinitionResponse(dict):
     """
     The definition of a report config.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "timePeriod":
-            suggest = "time_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  timeframe: str,
                  type: str,
@@ -275,25 +258,6 @@ class ReportConfigDeliveryDestinationResponse(dict):
     """
     The destination information for the delivery of the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-        elif key == "rootFolderPath":
-            suggest = "root_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigDeliveryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigDeliveryDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigDeliveryDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  container: str,
                  resource_id: str,
@@ -361,27 +325,6 @@ class ReportConfigFilterResponse(dict):
     """
     The filter expression to be used in the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "and":
-            suggest = "and_"
-        elif key == "not":
-            suggest = "not_"
-        elif key == "or":
-            suggest = "or_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  and_: Optional[Sequence['outputs.ReportConfigFilterResponse']] = None,
                  dimension: Optional['outputs.ReportConfigComparisonExpressionResponse'] = None,
@@ -453,23 +396,6 @@ class ReportConfigGroupingResponse(dict):
     """
     The group by expression to be used in the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "columnType":
-            suggest = "column_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigGroupingResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigGroupingResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigGroupingResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  column_type: str,
                  name: str):
@@ -503,23 +429,6 @@ class ReportConfigRecurrencePeriodResponse(dict):
     """
     The start and end date for recurrence schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigRecurrencePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigRecurrencePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigRecurrencePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: Optional[str] = None):
@@ -554,23 +463,6 @@ class ReportConfigScheduleResponse(dict):
     """
     The schedule associated with a report config.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recurrencePeriod":
-            suggest = "recurrence_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  recurrence: str,
                  recurrence_period: 'outputs.ReportConfigRecurrencePeriodResponse',
@@ -616,23 +508,6 @@ class ReportConfigTimePeriodResponse(dict):
     """
     The start and end date for pulling data for the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigTimePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigTimePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: str):

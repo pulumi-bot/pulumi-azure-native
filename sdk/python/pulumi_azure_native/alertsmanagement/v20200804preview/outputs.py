@@ -22,25 +22,6 @@ class HealthAlertActionResponse(dict):
     """
     An alert action.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroupId":
-            suggest = "action_group_id"
-        elif key == "webHookProperties":
-            suggest = "web_hook_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthAlertActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthAlertActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthAlertActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_group_id: Optional[str] = None,
                  web_hook_properties: Optional[Mapping[str, str]] = None):
@@ -76,23 +57,6 @@ class HealthAlertCriteriaResponse(dict):
     """
     Specifies the resource health alert criteria for a single resource that has multiple metric criteria.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allOf":
-            suggest = "all_of"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthAlertCriteriaResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthAlertCriteriaResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthAlertCriteriaResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  all_of: Optional[Sequence['outputs.VmGuestHealthAlertCriterionResponse']] = None):
         """
@@ -116,23 +80,6 @@ class HealthStateResponse(dict):
     """
     Specifies the health state to alert on and the corresponding severity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthStateName":
-            suggest = "health_state_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  health_state_name: str,
                  severity: float):
@@ -166,27 +113,6 @@ class VmGuestHealthAlertCriterionResponse(dict):
     """
     Specifies the health alert criteria to alert on.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthStates":
-            suggest = "health_states"
-        elif key == "monitorNames":
-            suggest = "monitor_names"
-        elif key == "monitorTypes":
-            suggest = "monitor_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VmGuestHealthAlertCriterionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VmGuestHealthAlertCriterionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VmGuestHealthAlertCriterionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  health_states: Sequence['outputs.HealthStateResponse'],
                  namespace: str,

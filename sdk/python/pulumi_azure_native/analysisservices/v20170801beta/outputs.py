@@ -23,27 +23,6 @@ class GatewayDetailsResponse(dict):
     """
     The gateway details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dmtsClusterUri":
-            suggest = "dmts_cluster_uri"
-        elif key == "gatewayObjectId":
-            suggest = "gateway_object_id"
-        elif key == "gatewayResourceId":
-            suggest = "gateway_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GatewayDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GatewayDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GatewayDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dmts_cluster_uri: str,
                  gateway_object_id: str,
@@ -89,27 +68,6 @@ class IPv4FirewallRuleResponse(dict):
     """
     The detail of firewall rule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "firewallRuleName":
-            suggest = "firewall_rule_name"
-        elif key == "rangeEnd":
-            suggest = "range_end"
-        elif key == "rangeStart":
-            suggest = "range_start"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPv4FirewallRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPv4FirewallRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPv4FirewallRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  firewall_rule_name: Optional[str] = None,
                  range_end: Optional[str] = None,
@@ -157,25 +115,6 @@ class IPv4FirewallSettingsResponse(dict):
     """
     An array of firewall rules.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enablePowerBIService":
-            suggest = "enable_power_bi_service"
-        elif key == "firewallRules":
-            suggest = "firewall_rules"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IPv4FirewallSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IPv4FirewallSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IPv4FirewallSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_power_bi_service: Optional[bool] = None,
                  firewall_rules: Optional[Sequence['outputs.IPv4FirewallRuleResponse']] = None):

@@ -28,25 +28,6 @@ class DataCollectionRuleResponseDataSources(dict):
     The specification of data sources. 
     This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "performanceCounters":
-            suggest = "performance_counters"
-        elif key == "windowsEventLogs":
-            suggest = "windows_event_logs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataCollectionRuleResponseDataSources. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataCollectionRuleResponseDataSources.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataCollectionRuleResponseDataSources.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  extensions: Optional[Sequence['outputs.ExtensionDataSourceResponse']] = None,
                  performance_counters: Optional[Sequence['outputs.PerfCounterDataSourceResponse']] = None,
@@ -107,25 +88,6 @@ class DataCollectionRuleResponseDestinations(dict):
     """
     The specification of destinations.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureMonitorMetrics":
-            suggest = "azure_monitor_metrics"
-        elif key == "logAnalytics":
-            suggest = "log_analytics"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataCollectionRuleResponseDestinations. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataCollectionRuleResponseDestinations.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataCollectionRuleResponseDestinations.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  azure_monitor_metrics: Optional['outputs.DestinationsSpecResponseAzureMonitorMetrics'] = None,
                  log_analytics: Optional[Sequence['outputs.LogAnalyticsDestinationResponse']] = None):
@@ -222,27 +184,6 @@ class ExtensionDataSourceResponse(dict):
     Definition of which data will be collected from a separate VM extension that integrates with the Azure Monitor Agent.
     Collected from either Windows and Linux machines, depending on which extension is defined.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "extensionName":
-            suggest = "extension_name"
-        elif key == "extensionSettings":
-            suggest = "extension_settings"
-        elif key == "inputDataSources":
-            suggest = "input_data_sources"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExtensionDataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExtensionDataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExtensionDataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  extension_name: str,
                  extension_settings: Optional[Any] = None,
@@ -318,25 +259,6 @@ class LogAnalyticsDestinationResponse(dict):
     """
     Log Analytics destination.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "workspaceId":
-            suggest = "workspace_id"
-        elif key == "workspaceResourceId":
-            suggest = "workspace_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogAnalyticsDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogAnalyticsDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogAnalyticsDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  workspace_id: str,
                  name: Optional[str] = None,
@@ -386,25 +308,6 @@ class PerfCounterDataSourceResponse(dict):
     Definition of which performance counters will be collected and how they will be collected by this data collection rule.
     Collected from both Windows and Linux machines where the counter is present.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "counterSpecifiers":
-            suggest = "counter_specifiers"
-        elif key == "samplingFrequencyInSeconds":
-            suggest = "sampling_frequency_in_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PerfCounterDataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PerfCounterDataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PerfCounterDataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  counter_specifiers: Optional[Sequence[str]] = None,
                  name: Optional[str] = None,
@@ -474,25 +377,6 @@ class SyslogDataSourceResponse(dict):
     Definition of which syslog data will be collected and how it will be collected.
     Only collected from Linux machines.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "facilityNames":
-            suggest = "facility_names"
-        elif key == "logLevels":
-            suggest = "log_levels"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SyslogDataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SyslogDataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SyslogDataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  facility_names: Optional[Sequence[str]] = None,
                  log_levels: Optional[Sequence[str]] = None,
@@ -558,23 +442,6 @@ class WindowsEventLogDataSourceResponse(dict):
     Definition of which Windows Event Log events will be collected and how they will be collected.
     Only collected from Windows machines.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "xPathQueries":
-            suggest = "x_path_queries"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WindowsEventLogDataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WindowsEventLogDataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WindowsEventLogDataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  streams: Optional[Sequence[str]] = None,

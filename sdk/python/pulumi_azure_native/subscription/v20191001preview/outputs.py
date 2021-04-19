@@ -18,25 +18,6 @@ class PutAliasResponsePropertiesResponse(dict):
     """
     Put subscription creation result properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "subscriptionId":
-            suggest = "subscription_id"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PutAliasResponsePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PutAliasResponsePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PutAliasResponsePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  subscription_id: str,
                  provisioning_state: Optional[str] = None):

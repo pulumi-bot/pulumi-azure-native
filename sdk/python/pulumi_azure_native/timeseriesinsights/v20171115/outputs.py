@@ -81,23 +81,6 @@ class IngressEnvironmentStatusResponse(dict):
     """
     An object that represents the status of ingress on an environment.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "stateDetails":
-            suggest = "state_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IngressEnvironmentStatusResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IngressEnvironmentStatusResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IngressEnvironmentStatusResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  state_details: 'outputs.EnvironmentStateDetailsResponse',
                  state: Optional[str] = None):

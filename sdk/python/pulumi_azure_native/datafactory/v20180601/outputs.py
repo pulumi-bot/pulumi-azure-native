@@ -560,23 +560,6 @@ class ActivityDependencyResponse(dict):
     """
     Activity dependency information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependencyConditions":
-            suggest = "dependency_conditions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActivityDependencyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActivityDependencyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActivityDependencyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  activity: str,
                  dependency_conditions: Sequence[str]):
@@ -610,27 +593,6 @@ class ActivityPolicyResponse(dict):
     """
     Execution policy for an activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "retryIntervalInSeconds":
-            suggest = "retry_interval_in_seconds"
-        elif key == "secureInput":
-            suggest = "secure_input"
-        elif key == "secureOutput":
-            suggest = "secure_output"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActivityPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActivityPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActivityPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  retry: Optional[Any] = None,
                  retry_interval_in_seconds: Optional[int] = None,
@@ -737,41 +699,6 @@ class AmazonMWSLinkedServiceResponse(dict):
     """
     Amazon Marketplace Web Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKeyId":
-            suggest = "access_key_id"
-        elif key == "marketplaceID":
-            suggest = "marketplace_id"
-        elif key == "sellerID":
-            suggest = "seller_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "mwsAuthToken":
-            suggest = "mws_auth_token"
-        elif key == "secretKey":
-            suggest = "secret_key"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonMWSLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonMWSLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonMWSLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_key_id: Any,
                  endpoint: Any,
@@ -960,25 +887,6 @@ class AmazonMWSObjectDatasetResponse(dict):
     """
     Amazon Marketplace Web Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonMWSObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonMWSObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonMWSObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -1098,31 +1006,6 @@ class AmazonMWSSourceResponse(dict):
     """
     A copy activity Amazon Marketplace Web Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonMWSSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonMWSSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonMWSSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -1219,25 +1102,6 @@ class AmazonRedshiftLinkedServiceResponse(dict):
     """
     Linked service for Amazon Redshift.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonRedshiftLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonRedshiftLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonRedshiftLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database: Any,
                  server: Any,
@@ -1380,33 +1244,6 @@ class AmazonRedshiftSourceResponse(dict):
     """
     A copy activity source for Amazon Redshift Source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "redshiftUnloadSettings":
-            suggest = "redshift_unload_settings"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonRedshiftSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonRedshiftSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonRedshiftSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -1515,25 +1352,6 @@ class AmazonRedshiftTableDatasetResponse(dict):
     """
     The Amazon Redshift table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonRedshiftTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonRedshiftTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonRedshiftTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -1665,33 +1483,6 @@ class AmazonS3CompatibleLinkedServiceResponse(dict):
     """
     Linked service for Amazon S3 Compatible.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKeyId":
-            suggest = "access_key_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "forcePathStyle":
-            suggest = "force_path_style"
-        elif key == "secretAccessKey":
-            suggest = "secret_access_key"
-        elif key == "serviceUrl":
-            suggest = "service_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonS3CompatibleLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonS3CompatibleLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonS3CompatibleLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  access_key_id: Optional[Any] = None,
@@ -1824,27 +1615,6 @@ class AmazonS3CompatibleLocationResponse(dict):
     """
     The location of Amazon S3 Compatible dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonS3CompatibleLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonS3CompatibleLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonS3CompatibleLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[Any] = None,
@@ -1917,39 +1687,6 @@ class AmazonS3CompatibleReadSettingsResponse(dict):
     """
     Amazon S3 Compatible read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonS3CompatibleReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonS3CompatibleReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonS3CompatibleReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -2106,29 +1843,6 @@ class AmazonS3DatasetResponse(dict):
     """
     A single Amazon Simple Storage Service (S3) object or a set of S3 objects.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonS3DatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonS3DatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonS3DatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bucket_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -2331,35 +2045,6 @@ class AmazonS3LinkedServiceResponse(dict):
     """
     Linked service for Amazon S3.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKeyId":
-            suggest = "access_key_id"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "secretAccessKey":
-            suggest = "secret_access_key"
-        elif key == "serviceUrl":
-            suggest = "service_url"
-        elif key == "sessionToken":
-            suggest = "session_token"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonS3LinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonS3LinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonS3LinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  access_key_id: Optional[Any] = None,
@@ -2504,27 +2189,6 @@ class AmazonS3LocationResponse(dict):
     """
     The location of amazon S3 dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonS3LocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonS3LocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonS3LocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[Any] = None,
@@ -2597,39 +2261,6 @@ class AmazonS3ReadSettingsResponse(dict):
     """
     Amazon S3 read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AmazonS3ReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AmazonS3ReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AmazonS3ReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -2786,27 +2417,6 @@ class AppendVariableActivityResponse(dict):
     """
     Append value for a Variable of type Array.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-        elif key == "variableName":
-            suggest = "variable_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AppendVariableActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AppendVariableActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AppendVariableActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -2920,27 +2530,6 @@ class AvroDatasetResponse(dict):
     """
     Avro dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "avroCompressionCodec":
-            suggest = "avro_compression_codec"
-        elif key == "avroCompressionLevel":
-            suggest = "avro_compression_level"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AvroDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AvroDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AvroDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -3123,35 +2712,6 @@ class AvroSinkResponse(dict):
     """
     A copy activity Avro sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AvroSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AvroSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AvroSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  format_settings: Optional['outputs.AvroWriteSettingsResponse'] = None,
@@ -3260,31 +2820,6 @@ class AvroSourceResponse(dict):
     """
     A copy activity Avro source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AvroSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AvroSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AvroSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -3369,29 +2904,6 @@ class AvroWriteSettingsResponse(dict):
     """
     Avro write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileNamePrefix":
-            suggest = "file_name_prefix"
-        elif key == "maxRowsPerFile":
-            suggest = "max_rows_per_file"
-        elif key == "recordName":
-            suggest = "record_name"
-        elif key == "recordNamespace":
-            suggest = "record_namespace"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AvroWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AvroWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AvroWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name_prefix: Optional[Any] = None,
@@ -3499,35 +3011,6 @@ class AzureBatchLinkedServiceResponse(dict):
     """
     Azure Batch linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "batchUri":
-            suggest = "batch_uri"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "poolName":
-            suggest = "pool_name"
-        elif key == "accessKey":
-            suggest = "access_key"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBatchLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBatchLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBatchLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: Any,
                  batch_uri: Any,
@@ -3668,33 +3151,6 @@ class AzureBlobDatasetResponse(dict):
     """
     The Azure Blob storage.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "tableRootLocation":
-            suggest = "table_root_location"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -3886,27 +3342,6 @@ class AzureBlobFSDatasetResponse(dict):
     """
     The Azure Data Lake Storage Gen2 storage.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFSDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFSDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFSDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -4062,33 +3497,6 @@ class AzureBlobFSLinkedServiceResponse(dict):
     """
     Azure Data Lake Storage Gen2 linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountKey":
-            suggest = "account_key"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFSLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFSLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFSLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -4244,27 +3652,6 @@ class AzureBlobFSLocationResponse(dict):
     """
     The location of azure blobFS dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "fileSystem":
-            suggest = "file_system"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFSLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFSLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFSLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -4325,39 +3712,6 @@ class AzureBlobFSReadSettingsResponse(dict):
     """
     Azure blobFS read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFSReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFSReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFSReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -4502,33 +3856,6 @@ class AzureBlobFSSinkResponse(dict):
     """
     A copy activity Azure Data Lake Storage Gen2 sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFSSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFSSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFSSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -4625,31 +3952,6 @@ class AzureBlobFSSourceResponse(dict):
     """
     A copy activity Azure BlobFS source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "skipHeaderLineCount":
-            suggest = "skip_header_line_count"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "treatEmptyAsNull":
-            suggest = "treat_empty_as_null"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFSSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFSSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFSSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -4746,27 +4048,6 @@ class AzureBlobFSWriteSettingsResponse(dict):
     """
     Azure blobFS write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blockSizeInMB":
-            suggest = "block_size_in_mb"
-        elif key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobFSWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobFSWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobFSWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  block_size_in_mb: Optional[Any] = None,
@@ -4827,43 +4108,6 @@ class AzureBlobStorageLinkedServiceResponse(dict):
     """
     The azure blob storage linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountKey":
-            suggest = "account_key"
-        elif key == "accountKind":
-            suggest = "account_kind"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "sasToken":
-            suggest = "sas_token"
-        elif key == "sasUri":
-            suggest = "sas_uri"
-        elif key == "serviceEndpoint":
-            suggest = "service_endpoint"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobStorageLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobStorageLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobStorageLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  account_key: Optional['outputs.AzureKeyVaultSecretReferenceResponse'] = None,
@@ -5068,25 +4312,6 @@ class AzureBlobStorageLocationResponse(dict):
     """
     The location of azure blob dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobStorageLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobStorageLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobStorageLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  container: Optional[Any] = None,
@@ -5147,39 +4372,6 @@ class AzureBlobStorageReadSettingsResponse(dict):
     """
     Azure blob read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobStorageReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobStorageReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobStorageReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -5336,27 +4528,6 @@ class AzureBlobStorageWriteSettingsResponse(dict):
     """
     Azure blob write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blockSizeInMB":
-            suggest = "block_size_in_mb"
-        elif key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureBlobStorageWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureBlobStorageWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureBlobStorageWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  block_size_in_mb: Optional[Any] = None,
@@ -5417,29 +4588,6 @@ class AzureDataExplorerCommandActivityResponse(dict):
     """
     Azure Data Explorer command activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commandTimeout":
-            suggest = "command_timeout"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataExplorerCommandActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataExplorerCommandActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataExplorerCommandActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command: Any,
                  name: str,
@@ -5558,27 +4706,6 @@ class AzureDataExplorerLinkedServiceResponse(dict):
     """
     Azure Data Explorer (Kusto) linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataExplorerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataExplorerLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataExplorerLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database: Any,
                  endpoint: Any,
@@ -5709,37 +4836,6 @@ class AzureDataExplorerSinkResponse(dict):
     """
     A copy activity Azure Data Explorer sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "flushImmediately":
-            suggest = "flush_immediately"
-        elif key == "ingestionMappingAsJson":
-            suggest = "ingestion_mapping_as_json"
-        elif key == "ingestionMappingName":
-            suggest = "ingestion_mapping_name"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataExplorerSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataExplorerSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataExplorerSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  flush_immediately: Optional[Any] = None,
@@ -5860,33 +4956,6 @@ class AzureDataExplorerSourceResponse(dict):
     """
     A copy activity Azure Data Explorer (Kusto) source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "noTruncation":
-            suggest = "no_truncation"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataExplorerSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataExplorerSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataExplorerSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  query: Any,
                  type: str,
@@ -5994,23 +5063,6 @@ class AzureDataExplorerTableDatasetResponse(dict):
     """
     The Azure Data Explorer (Kusto) dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataExplorerTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataExplorerTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataExplorerTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -6130,37 +5182,6 @@ class AzureDataLakeAnalyticsLinkedServiceResponse(dict):
     """
     Azure Data Lake Analytics linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "dataLakeAnalyticsUri":
-            suggest = "data_lake_analytics_uri"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "resourceGroupName":
-            suggest = "resource_group_name"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeAnalyticsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeAnalyticsLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeAnalyticsLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: Any,
                  tenant: Any,
@@ -6327,27 +5348,6 @@ class AzureDataLakeStoreDatasetResponse(dict):
     """
     Azure Data Lake Store dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeStoreDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeStoreDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -6503,39 +5503,6 @@ class AzureDataLakeStoreLinkedServiceResponse(dict):
     """
     Azure Data Lake Store linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataLakeStoreUri":
-            suggest = "data_lake_store_uri"
-        elif key == "accountName":
-            suggest = "account_name"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "resourceGroupName":
-            suggest = "resource_group_name"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeStoreLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeStoreLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_lake_store_uri: Any,
                  type: str,
@@ -6715,25 +5682,6 @@ class AzureDataLakeStoreLocationResponse(dict):
     """
     The location of azure data lake store dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeStoreLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeStoreLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -6782,43 +5730,6 @@ class AzureDataLakeStoreReadSettingsResponse(dict):
     """
     Azure data lake store read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "listAfter":
-            suggest = "list_after"
-        elif key == "listBefore":
-            suggest = "list_before"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeStoreReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeStoreReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -6987,35 +5898,6 @@ class AzureDataLakeStoreSinkResponse(dict):
     """
     A copy activity Azure Data Lake Store sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "enableAdlsSingleFileParallel":
-            suggest = "enable_adls_single_file_parallel"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeStoreSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeStoreSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -7124,27 +6006,6 @@ class AzureDataLakeStoreSourceResponse(dict):
     """
     A copy activity Azure Data Lake source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeStoreSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeStoreSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -7217,27 +6078,6 @@ class AzureDataLakeStoreWriteSettingsResponse(dict):
     """
     Azure data lake store write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "expiryDateTime":
-            suggest = "expiry_date_time"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDataLakeStoreWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDataLakeStoreWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDataLakeStoreWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -7298,23 +6138,6 @@ class AzureDatabricksDeltaLakeDatasetResponse(dict):
     """
     Azure Databricks Delta Lake dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksDeltaLakeDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDatabricksDeltaLakeDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDatabricksDeltaLakeDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -7446,25 +6269,6 @@ class AzureDatabricksDeltaLakeExportCommandResponse(dict):
     """
     Azure Databricks Delta Lake export command settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dateFormat":
-            suggest = "date_format"
-        elif key == "timestampFormat":
-            suggest = "timestamp_format"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksDeltaLakeExportCommandResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDatabricksDeltaLakeExportCommandResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDatabricksDeltaLakeExportCommandResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  date_format: Optional[Any] = None,
@@ -7513,25 +6317,6 @@ class AzureDatabricksDeltaLakeImportCommandResponse(dict):
     """
     Azure Databricks Delta Lake import command settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dateFormat":
-            suggest = "date_format"
-        elif key == "timestampFormat":
-            suggest = "timestamp_format"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksDeltaLakeImportCommandResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDatabricksDeltaLakeImportCommandResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDatabricksDeltaLakeImportCommandResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  date_format: Optional[Any] = None,
@@ -7580,29 +6365,6 @@ class AzureDatabricksDeltaLakeLinkedServiceResponse(dict):
     """
     Azure Databricks Delta Lake linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessToken":
-            suggest = "access_token"
-        elif key == "clusterId":
-            suggest = "cluster_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksDeltaLakeLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDatabricksDeltaLakeLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDatabricksDeltaLakeLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  domain: Any,
                  type: str,
@@ -7722,35 +6484,6 @@ class AzureDatabricksDeltaLakeSinkResponse(dict):
     """
     A copy activity Azure Databricks Delta Lake sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "importSettings":
-            suggest = "import_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksDeltaLakeSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDatabricksDeltaLakeSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDatabricksDeltaLakeSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  import_settings: Optional['outputs.AzureDatabricksDeltaLakeImportCommandResponse'] = None,
@@ -7859,29 +6592,6 @@ class AzureDatabricksDeltaLakeSourceResponse(dict):
     """
     A copy activity Azure Databricks Delta Lake source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "exportSettings":
-            suggest = "export_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksDeltaLakeSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDatabricksDeltaLakeSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDatabricksDeltaLakeSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  export_settings: Optional['outputs.AzureDatabricksDeltaLakeExportCommandResponse'] = None,
@@ -7966,55 +6676,6 @@ class AzureDatabricksLinkedServiceResponse(dict):
     """
     Azure Databricks linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessToken":
-            suggest = "access_token"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "existingClusterId":
-            suggest = "existing_cluster_id"
-        elif key == "instancePoolId":
-            suggest = "instance_pool_id"
-        elif key == "newClusterCustomTags":
-            suggest = "new_cluster_custom_tags"
-        elif key == "newClusterDriverNodeType":
-            suggest = "new_cluster_driver_node_type"
-        elif key == "newClusterEnableElasticDisk":
-            suggest = "new_cluster_enable_elastic_disk"
-        elif key == "newClusterInitScripts":
-            suggest = "new_cluster_init_scripts"
-        elif key == "newClusterLogDestination":
-            suggest = "new_cluster_log_destination"
-        elif key == "newClusterNodeType":
-            suggest = "new_cluster_node_type"
-        elif key == "newClusterNumOfWorker":
-            suggest = "new_cluster_num_of_worker"
-        elif key == "newClusterSparkConf":
-            suggest = "new_cluster_spark_conf"
-        elif key == "newClusterSparkEnvVars":
-            suggest = "new_cluster_spark_env_vars"
-        elif key == "newClusterVersion":
-            suggest = "new_cluster_version"
-        elif key == "policyId":
-            suggest = "policy_id"
-        elif key == "workspaceResourceId":
-            suggest = "workspace_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureDatabricksLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureDatabricksLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureDatabricksLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  domain: Any,
                  type: str,
@@ -8302,37 +6963,6 @@ class AzureFileStorageLinkedServiceResponse(dict):
     """
     Azure File Storage linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountKey":
-            suggest = "account_key"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "fileShare":
-            suggest = "file_share"
-        elif key == "sasToken":
-            suggest = "sas_token"
-        elif key == "sasUri":
-            suggest = "sas_uri"
-        elif key == "userId":
-            suggest = "user_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFileStorageLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFileStorageLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFileStorageLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  account_key: Optional['outputs.AzureKeyVaultSecretReferenceResponse'] = None,
@@ -8525,25 +7155,6 @@ class AzureFileStorageLocationResponse(dict):
     """
     The location of file server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFileStorageLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFileStorageLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFileStorageLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -8592,39 +7203,6 @@ class AzureFileStorageReadSettingsResponse(dict):
     """
     Azure File Storage read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFileStorageReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFileStorageReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFileStorageReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -8781,25 +7359,6 @@ class AzureFileStorageWriteSettingsResponse(dict):
     """
     Azure File Storage write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFileStorageWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFileStorageWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFileStorageWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -8848,29 +7407,6 @@ class AzureFunctionActivityResponse(dict):
     """
     Azure Function activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "functionName":
-            suggest = "function_name"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFunctionActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFunctionActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFunctionActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  function_name: Any,
                  method: str,
@@ -9012,29 +7548,6 @@ class AzureFunctionLinkedServiceResponse(dict):
     """
     Azure Function linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "functionAppUrl":
-            suggest = "function_app_url"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "functionKey":
-            suggest = "function_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFunctionLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFunctionLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFunctionLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  function_app_url: Any,
                  type: str,
@@ -9142,25 +7655,6 @@ class AzureKeyVaultLinkedServiceResponse(dict):
     """
     Azure Key Vault linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baseUrl":
-            suggest = "base_url"
-        elif key == "connectVia":
-            suggest = "connect_via"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureKeyVaultLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureKeyVaultLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureKeyVaultLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  base_url: Any,
                  type: str,
@@ -9244,25 +7738,6 @@ class AzureKeyVaultSecretReferenceResponse(dict):
     """
     Azure Key Vault secret reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "secretName":
-            suggest = "secret_name"
-        elif key == "secretVersion":
-            suggest = "secret_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureKeyVaultSecretReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureKeyVaultSecretReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureKeyVaultSecretReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  secret_name: Any,
                  store: 'outputs.LinkedServiceReferenceResponse',
@@ -9321,33 +7796,6 @@ class AzureMLBatchExecutionActivityResponse(dict):
     """
     Azure ML Batch Execution activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "globalParameters":
-            suggest = "global_parameters"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-        elif key == "webServiceInputs":
-            suggest = "web_service_inputs"
-        elif key == "webServiceOutputs":
-            suggest = "web_service_outputs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMLBatchExecutionActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMLBatchExecutionActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMLBatchExecutionActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -9479,41 +7927,6 @@ class AzureMLExecutePipelineActivityResponse(dict):
     """
     Azure ML Execute Pipeline activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "continueOnStepFailure":
-            suggest = "continue_on_step_failure"
-        elif key == "dataPathAssignments":
-            suggest = "data_path_assignments"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "experimentName":
-            suggest = "experiment_name"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "mlParentRunId":
-            suggest = "ml_parent_run_id"
-        elif key == "mlPipelineEndpointId":
-            suggest = "ml_pipeline_endpoint_id"
-        elif key == "mlPipelineId":
-            suggest = "ml_pipeline_id"
-        elif key == "mlPipelineParameters":
-            suggest = "ml_pipeline_parameters"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMLExecutePipelineActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMLExecutePipelineActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMLExecutePipelineActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -9705,35 +8118,6 @@ class AzureMLLinkedServiceResponse(dict):
     """
     Azure ML Studio Web Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiKey":
-            suggest = "api_key"
-        elif key == "mlEndpoint":
-            suggest = "ml_endpoint"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "updateResourceEndpoint":
-            suggest = "update_resource_endpoint"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMLLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMLLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMLLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  api_key: Any,
                  ml_endpoint: Any,
@@ -9888,35 +8272,6 @@ class AzureMLServiceLinkedServiceResponse(dict):
     """
     Azure ML Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mlWorkspaceName":
-            suggest = "ml_workspace_name"
-        elif key == "resourceGroupName":
-            suggest = "resource_group_name"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMLServiceLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMLServiceLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMLServiceLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  ml_workspace_name: Any,
                  resource_group_name: Any,
@@ -10070,33 +8425,6 @@ class AzureMLUpdateResourceActivityResponse(dict):
     """
     Azure ML Update Resource management activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "trainedModelFilePath":
-            suggest = "trained_model_file_path"
-        elif key == "trainedModelLinkedServiceName":
-            suggest = "trained_model_linked_service_name"
-        elif key == "trainedModelName":
-            suggest = "trained_model_name"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMLUpdateResourceActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMLUpdateResourceActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMLUpdateResourceActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  trained_model_file_path: Any,
@@ -10225,25 +8553,6 @@ class AzureMLWebServiceFileResponse(dict):
     """
     Azure ML WebService Input/Output file
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filePath":
-            suggest = "file_path"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMLWebServiceFileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMLWebServiceFileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMLWebServiceFileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_path: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse'):
@@ -10277,27 +8586,6 @@ class AzureMariaDBLinkedServiceResponse(dict):
     """
     Azure Database for MariaDB linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMariaDBLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMariaDBLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMariaDBLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -10406,31 +8694,6 @@ class AzureMariaDBSourceResponse(dict):
     """
     A copy activity Azure MariaDB source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMariaDBSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMariaDBSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMariaDBSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -10527,25 +8790,6 @@ class AzureMariaDBTableDatasetResponse(dict):
     """
     Azure Database for MariaDB dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMariaDBTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMariaDBTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMariaDBTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -10665,27 +8909,6 @@ class AzureMySqlLinkedServiceResponse(dict):
     """
     Azure MySQL database linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMySqlLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMySqlLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -10793,33 +9016,6 @@ class AzureMySqlSinkResponse(dict):
     """
     A copy activity Azure MySql sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMySqlSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMySqlSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -10916,31 +9112,6 @@ class AzureMySqlSourceResponse(dict):
     """
     A copy activity Azure MySQL source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMySqlSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMySqlSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -11037,25 +9208,6 @@ class AzureMySqlTableDatasetResponse(dict):
     """
     The Azure MySQL database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureMySqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureMySqlTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureMySqlTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -11187,27 +9339,6 @@ class AzurePostgreSqlLinkedServiceResponse(dict):
     """
     Azure PostgreSQL linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzurePostgreSqlLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzurePostgreSqlLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -11316,33 +9447,6 @@ class AzurePostgreSqlSinkResponse(dict):
     """
     A copy activity Azure PostgreSQL sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzurePostgreSqlSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzurePostgreSqlSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -11439,31 +9543,6 @@ class AzurePostgreSqlSourceResponse(dict):
     """
     A copy activity Azure PostgreSQL source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzurePostgreSqlSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzurePostgreSqlSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -11560,25 +9639,6 @@ class AzurePostgreSqlTableDatasetResponse(dict):
     """
     Azure PostgreSQL dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzurePostgreSqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzurePostgreSqlTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzurePostgreSqlTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -11710,31 +9770,6 @@ class AzureQueueSinkResponse(dict):
     """
     A copy activity Azure Queue sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureQueueSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureQueueSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureQueueSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -11819,25 +9854,6 @@ class AzureSearchIndexDatasetResponse(dict):
     """
     The Azure Search Index.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "indexName":
-            suggest = "index_name"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSearchIndexDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSearchIndexDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSearchIndexDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  index_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -11956,33 +9972,6 @@ class AzureSearchIndexSinkResponse(dict):
     """
     A copy activity Azure Search Index sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSearchIndexSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSearchIndexSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSearchIndexSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -12079,25 +10068,6 @@ class AzureSearchLinkedServiceResponse(dict):
     """
     Linked service for Windows Azure Search Service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSearchLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSearchLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSearchLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -12205,33 +10175,6 @@ class AzureSqlDWLinkedServiceResponse(dict):
     """
     Azure SQL Data Warehouse linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlDWLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlDWLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlDWLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -12387,25 +10330,6 @@ class AzureSqlDWTableDatasetResponse(dict):
     """
     The Azure SQL Data Warehouse dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlDWTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlDWTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlDWTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -12537,35 +10461,6 @@ class AzureSqlDatabaseLinkedServiceResponse(dict):
     """
     Microsoft Azure SQL Database linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "alwaysEncryptedSettings":
-            suggest = "always_encrypted_settings"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlDatabaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlDatabaseLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlDatabaseLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -12733,35 +10628,6 @@ class AzureSqlMILinkedServiceResponse(dict):
     """
     Azure SQL Managed Instance linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "alwaysEncryptedSettings":
-            suggest = "always_encrypted_settings"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlMILinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlMILinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlMILinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -12929,25 +10795,6 @@ class AzureSqlMITableDatasetResponse(dict):
     """
     The Azure SQL Managed Instance dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlMITableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlMITableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlMITableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -13079,43 +10926,6 @@ class AzureSqlSinkResponse(dict):
     """
     A copy activity Azure SQL sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "sqlWriterStoredProcedureName":
-            suggest = "sql_writer_stored_procedure_name"
-        elif key == "sqlWriterTableType":
-            suggest = "sql_writer_table_type"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-        elif key == "storedProcedureTableTypeParameterName":
-            suggest = "stored_procedure_table_type_parameter_name"
-        elif key == "tableOption":
-            suggest = "table_option"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -13272,43 +11082,6 @@ class AzureSqlSourceResponse(dict):
     """
     A copy activity Azure SQL source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "produceAdditionalTypes":
-            suggest = "produce_additional_types"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "sqlReaderQuery":
-            suggest = "sql_reader_query"
-        elif key == "sqlReaderStoredProcedureName":
-            suggest = "sql_reader_stored_procedure_name"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -13465,25 +11238,6 @@ class AzureSqlTableDatasetResponse(dict):
     """
     The Azure SQL Server database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureSqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureSqlTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureSqlTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -13615,33 +11369,6 @@ class AzureStorageLinkedServiceResponse(dict):
     """
     The storage account linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountKey":
-            suggest = "account_key"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "sasToken":
-            suggest = "sas_token"
-        elif key == "sasUri":
-            suggest = "sas_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureStorageLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureStorageLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureStorageLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  account_key: Optional['outputs.AzureKeyVaultSecretReferenceResponse'] = None,
@@ -13774,25 +11501,6 @@ class AzureTableDatasetResponse(dict):
     """
     The Azure Table storage dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -13911,39 +11619,6 @@ class AzureTableSinkResponse(dict):
     """
     A copy activity Azure Table sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "azureTableDefaultPartitionKeyValue":
-            suggest = "azure_table_default_partition_key_value"
-        elif key == "azureTableInsertType":
-            suggest = "azure_table_insert_type"
-        elif key == "azureTablePartitionKeyName":
-            suggest = "azure_table_partition_key_name"
-        elif key == "azureTableRowKeyName":
-            suggest = "azure_table_row_key_name"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureTableSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureTableSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureTableSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  azure_table_default_partition_key_value: Optional[Any] = None,
@@ -14076,35 +11751,6 @@ class AzureTableSourceResponse(dict):
     """
     A copy activity Azure Table source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "azureTableSourceIgnoreTableNotFound":
-            suggest = "azure_table_source_ignore_table_not_found"
-        elif key == "azureTableSourceQuery":
-            suggest = "azure_table_source_query"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureTableSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureTableSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureTableSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -14213,33 +11859,6 @@ class AzureTableStorageLinkedServiceResponse(dict):
     """
     The azure table storage linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountKey":
-            suggest = "account_key"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "sasToken":
-            suggest = "sas_token"
-        elif key == "sasUri":
-            suggest = "sas_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureTableStorageLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureTableStorageLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureTableStorageLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  account_key: Optional['outputs.AzureKeyVaultSecretReferenceResponse'] = None,
@@ -14372,23 +11991,6 @@ class BinaryDatasetResponse(dict):
     """
     Binary dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BinaryDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BinaryDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BinaryDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -14519,23 +12121,6 @@ class BinaryReadSettingsResponse(dict):
     """
     Binary read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "compressionProperties":
-            suggest = "compression_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BinaryReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BinaryReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BinaryReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  compression_properties: Optional[Any] = None):
@@ -14572,33 +12157,6 @@ class BinarySinkResponse(dict):
     """
     A copy activity Binary sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BinarySinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BinarySinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BinarySinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -14695,31 +12253,6 @@ class BinarySourceResponse(dict):
     """
     A copy activity Binary source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BinarySourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BinarySourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BinarySourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  format_settings: Optional['outputs.BinaryReadSettingsResponse'] = None,
@@ -14804,29 +12337,6 @@ class BlobEventsTriggerResponse(dict):
     """
     Trigger that runs every time a Blob event occurs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "runtimeState":
-            suggest = "runtime_state"
-        elif key == "blobPathBeginsWith":
-            suggest = "blob_path_begins_with"
-        elif key == "blobPathEndsWith":
-            suggest = "blob_path_ends_with"
-        elif key == "ignoreEmptyBlobs":
-            suggest = "ignore_empty_blobs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BlobEventsTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BlobEventsTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BlobEventsTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  events: Sequence[str],
                  runtime_state: str,
@@ -14956,39 +12466,6 @@ class BlobSinkResponse(dict):
     """
     A copy activity Azure Blob sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blobWriterAddHeader":
-            suggest = "blob_writer_add_header"
-        elif key == "blobWriterDateTimeFormat":
-            suggest = "blob_writer_date_time_format"
-        elif key == "blobWriterOverwriteFiles":
-            suggest = "blob_writer_overwrite_files"
-        elif key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BlobSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BlobSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BlobSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  blob_writer_add_header: Optional[Any] = None,
@@ -15121,31 +12598,6 @@ class BlobSourceResponse(dict):
     """
     A copy activity Azure Blob source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "skipHeaderLineCount":
-            suggest = "skip_header_line_count"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "treatEmptyAsNull":
-            suggest = "treat_empty_as_null"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BlobSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BlobSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BlobSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -15242,29 +12694,6 @@ class BlobTriggerResponse(dict):
     """
     Trigger that runs every time the selected Blob container changes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "folderPath":
-            suggest = "folder_path"
-        elif key == "linkedService":
-            suggest = "linked_service"
-        elif key == "maxConcurrency":
-            suggest = "max_concurrency"
-        elif key == "runtimeState":
-            suggest = "runtime_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BlobTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BlobTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BlobTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  folder_path: str,
                  linked_service: 'outputs.LinkedServiceReferenceResponse',
@@ -15369,23 +12798,6 @@ class CMKIdentityDefinitionResponse(dict):
     """
     Managed Identity used for CMK.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userAssignedIdentity":
-            suggest = "user_assigned_identity"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CMKIdentityDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CMKIdentityDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CMKIdentityDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  user_assigned_identity: Optional[str] = None):
         """
@@ -15409,27 +12821,6 @@ class CassandraLinkedServiceResponse(dict):
     """
     Linked service for Cassandra data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -15573,33 +12964,6 @@ class CassandraSourceResponse(dict):
     """
     A copy activity source for a Cassandra database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "consistencyLevel":
-            suggest = "consistency_level"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -15708,25 +13072,6 @@ class CassandraTableDatasetResponse(dict):
     """
     The Cassandra database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CassandraTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CassandraTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CassandraTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -15858,27 +13203,6 @@ class ChainingTriggerResponse(dict):
     """
     Trigger that allows the referenced pipeline to depend on other pipeline runs based on runDimension Name/Value pairs. Upstream pipelines should declare the same runDimension Name and their runs should have the values for those runDimensions. The referenced pipeline run would be triggered if the values for the runDimension match for all upstream pipeline runs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "runDimension":
-            suggest = "run_dimension"
-        elif key == "runtimeState":
-            suggest = "runtime_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ChainingTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ChainingTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ChainingTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  depends_on: Sequence['outputs.PipelineReferenceResponse'],
                  pipeline: 'outputs.TriggerPipelineReferenceResponse',
@@ -15971,25 +13295,6 @@ class CmdkeySetupResponse(dict):
     """
     The custom setup of running cmdkey commands.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetName":
-            suggest = "target_name"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CmdkeySetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CmdkeySetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CmdkeySetupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  password: Any,
                  target_name: Any,
@@ -16047,25 +13352,6 @@ class CommonDataServiceForAppsEntityDatasetResponse(dict):
     """
     The Common Data Service for Apps entity dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "entityName":
-            suggest = "entity_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommonDataServiceForAppsEntityDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommonDataServiceForAppsEntityDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommonDataServiceForAppsEntityDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -16185,41 +13471,6 @@ class CommonDataServiceForAppsLinkedServiceResponse(dict):
     """
     Common Data Service for Apps linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "deploymentType":
-            suggest = "deployment_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "organizationName":
-            suggest = "organization_name"
-        elif key == "servicePrincipalCredential":
-            suggest = "service_principal_credential"
-        elif key == "servicePrincipalCredentialType":
-            suggest = "service_principal_credential_type"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommonDataServiceForAppsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommonDataServiceForAppsLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommonDataServiceForAppsLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  deployment_type: str,
@@ -16434,37 +13685,6 @@ class CommonDataServiceForAppsSinkResponse(dict):
     """
     A copy activity Common Data Service for Apps sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "writeBehavior":
-            suggest = "write_behavior"
-        elif key == "alternateKeyName":
-            suggest = "alternate_key_name"
-        elif key == "ignoreNullValues":
-            suggest = "ignore_null_values"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommonDataServiceForAppsSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommonDataServiceForAppsSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommonDataServiceForAppsSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  write_behavior: str,
@@ -16584,29 +13804,6 @@ class CommonDataServiceForAppsSourceResponse(dict):
     """
     A copy activity Common Data Service for Apps source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommonDataServiceForAppsSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommonDataServiceForAppsSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommonDataServiceForAppsSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -16691,25 +13888,6 @@ class ComponentSetupResponse(dict):
     """
     The custom setup of installing 3rd party components.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "componentName":
-            suggest = "component_name"
-        elif key == "licenseKey":
-            suggest = "license_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ComponentSetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ComponentSetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ComponentSetupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  component_name: str,
                  type: str,
@@ -16757,35 +13935,6 @@ class ConcurLinkedServiceResponse(dict):
     """
     Concur Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionProperties":
-            suggest = "connection_properties"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConcurLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConcurLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConcurLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Any,
                  type: str,
@@ -16952,25 +14101,6 @@ class ConcurObjectDatasetResponse(dict):
     """
     Concur Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConcurObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConcurObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConcurObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -17090,31 +14220,6 @@ class ConcurSourceResponse(dict):
     """
     A copy activity Concur Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConcurSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConcurSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConcurSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -17211,23 +14316,6 @@ class ConnectionStatePropertiesResponse(dict):
     """
     The connection state of a managed private endpoint
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionStatePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionStatePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionStatePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: str,
                  description: str,
@@ -17272,25 +14360,6 @@ class ControlActivityResponse(dict):
     """
     Base class for all control activities like IfCondition, ForEach , Until.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ControlActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ControlActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ControlActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -17362,25 +14431,6 @@ class CopyActivityLogSettingsResponse(dict):
     """
     Settings for copy activity log.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableReliableLogging":
-            suggest = "enable_reliable_logging"
-        elif key == "logLevel":
-            suggest = "log_level"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CopyActivityLogSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CopyActivityLogSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CopyActivityLogSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_reliable_logging: Optional[Any] = None,
                  log_level: Optional[Any] = None):
@@ -17416,49 +14466,6 @@ class CopyActivityResponse(dict):
     """
     Copy activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataIntegrationUnits":
-            suggest = "data_integration_units"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "enableSkipIncompatibleRow":
-            suggest = "enable_skip_incompatible_row"
-        elif key == "enableStaging":
-            suggest = "enable_staging"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "logSettings":
-            suggest = "log_settings"
-        elif key == "logStorageSettings":
-            suggest = "log_storage_settings"
-        elif key == "parallelCopies":
-            suggest = "parallel_copies"
-        elif key == "preserveRules":
-            suggest = "preserve_rules"
-        elif key == "redirectIncompatibleRowSettings":
-            suggest = "redirect_incompatible_row_settings"
-        elif key == "skipErrorFile":
-            suggest = "skip_error_file"
-        elif key == "stagingSettings":
-            suggest = "staging_settings"
-        elif key == "userProperties":
-            suggest = "user_properties"
-        elif key == "validateDataConsistency":
-            suggest = "validate_data_consistency"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CopyActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CopyActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CopyActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  sink: Any,
@@ -17756,41 +14763,6 @@ class CosmosDbLinkedServiceResponse(dict):
     """
     Microsoft Azure Cosmos Database (CosmosDB) linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountEndpoint":
-            suggest = "account_endpoint"
-        elif key == "accountKey":
-            suggest = "account_key"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionMode":
-            suggest = "connection_mode"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalCredential":
-            suggest = "service_principal_credential"
-        elif key == "servicePrincipalCredentialType":
-            suggest = "service_principal_credential_type"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  account_endpoint: Optional[Any] = None,
@@ -17995,23 +14967,6 @@ class CosmosDbMongoDbApiCollectionDatasetResponse(dict):
     """
     The CosmosDB (MongoDB API) database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbMongoDbApiCollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbMongoDbApiCollectionDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbMongoDbApiCollectionDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  collection: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -18130,25 +15085,6 @@ class CosmosDbMongoDbApiLinkedServiceResponse(dict):
     """
     Linked service for CosmosDB (MongoDB API) data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbMongoDbApiLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbMongoDbApiLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbMongoDbApiLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  database: Any,
@@ -18243,33 +15179,6 @@ class CosmosDbMongoDbApiSinkResponse(dict):
     """
     A copy activity sink for a CosmosDB (MongoDB API) database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbMongoDbApiSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbMongoDbApiSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbMongoDbApiSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -18366,35 +15275,6 @@ class CosmosDbMongoDbApiSourceResponse(dict):
     """
     A copy activity source for a CosmosDB (MongoDB API) database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "batchSize":
-            suggest = "batch_size"
-        elif key == "cursorMethods":
-            suggest = "cursor_methods"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbMongoDbApiSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbMongoDbApiSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbMongoDbApiSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -18515,25 +15395,6 @@ class CosmosDbSqlApiCollectionDatasetResponse(dict):
     """
     Microsoft Azure CosmosDB (SQL API) Collection dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "collectionName":
-            suggest = "collection_name"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbSqlApiCollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbSqlApiCollectionDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbSqlApiCollectionDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  collection_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -18652,33 +15513,6 @@ class CosmosDbSqlApiSinkResponse(dict):
     """
     A copy activity Azure CosmosDB (SQL API) Collection sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbSqlApiSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbSqlApiSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbSqlApiSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -18775,35 +15609,6 @@ class CosmosDbSqlApiSourceResponse(dict):
     """
     A copy activity Azure CosmosDB (SQL API) Collection source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "detectDatetime":
-            suggest = "detect_datetime"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "pageSize":
-            suggest = "page_size"
-        elif key == "preferredRegions":
-            suggest = "preferred_regions"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CosmosDbSqlApiSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CosmosDbSqlApiSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CosmosDbSqlApiSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -18924,29 +15729,6 @@ class CouchbaseLinkedServiceResponse(dict):
     """
     Couchbase server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "credString":
-            suggest = "cred_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CouchbaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CouchbaseLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CouchbaseLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -19055,31 +15837,6 @@ class CouchbaseSourceResponse(dict):
     """
     A copy activity Couchbase server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CouchbaseSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CouchbaseSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CouchbaseSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -19176,25 +15933,6 @@ class CouchbaseTableDatasetResponse(dict):
     """
     Couchbase server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CouchbaseTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CouchbaseTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CouchbaseTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -19314,23 +16052,6 @@ class CustomActivityReferenceObjectResponse(dict):
     """
     Reference objects for custom activity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServices":
-            suggest = "linked_services"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomActivityReferenceObjectResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomActivityReferenceObjectResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomActivityReferenceObjectResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  datasets: Optional[Sequence['outputs.DatasetReferenceResponse']] = None,
                  linked_services: Optional[Sequence['outputs.LinkedServiceReferenceResponse']] = None):
@@ -19366,39 +16087,6 @@ class CustomActivityResponse(dict):
     """
     Custom activity type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoUserSpecification":
-            suggest = "auto_user_specification"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "extendedProperties":
-            suggest = "extended_properties"
-        elif key == "folderPath":
-            suggest = "folder_path"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "referenceObjects":
-            suggest = "reference_objects"
-        elif key == "resourceLinkedService":
-            suggest = "resource_linked_service"
-        elif key == "retentionTimeInDays":
-            suggest = "retention_time_in_days"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  command: Any,
                  name: str,
@@ -19577,23 +16265,6 @@ class CustomDataSourceLinkedServiceResponse(dict):
     """
     Custom linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomDataSourceLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomDataSourceLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomDataSourceLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -19666,23 +16337,6 @@ class CustomDatasetResponse(dict):
     """
     The custom dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -19790,27 +16444,6 @@ class CustomEventsTriggerResponse(dict):
     """
     Trigger that runs every time a custom event is received.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "runtimeState":
-            suggest = "runtime_state"
-        elif key == "subjectBeginsWith":
-            suggest = "subject_begins_with"
-        elif key == "subjectEndsWith":
-            suggest = "subject_ends_with"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CustomEventsTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CustomEventsTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CustomEventsTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  events: Sequence[Any],
                  runtime_state: str,
@@ -19928,25 +16561,6 @@ class DWCopyCommandDefaultValueResponse(dict):
     """
     Default value.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "columnName":
-            suggest = "column_name"
-        elif key == "defaultValue":
-            suggest = "default_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DWCopyCommandDefaultValueResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DWCopyCommandDefaultValueResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DWCopyCommandDefaultValueResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  column_name: Optional[Any] = None,
                  default_value: Optional[Any] = None):
@@ -19982,25 +16596,6 @@ class DWCopyCommandSettingsResponse(dict):
     """
     DW Copy Command settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalOptions":
-            suggest = "additional_options"
-        elif key == "defaultValues":
-            suggest = "default_values"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DWCopyCommandSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DWCopyCommandSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DWCopyCommandSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  additional_options: Optional[Mapping[str, str]] = None,
                  default_values: Optional[Sequence['outputs.DWCopyCommandDefaultValueResponse']] = None):
@@ -20036,25 +16631,6 @@ class DataFlowReferenceResponse(dict):
     """
     Data flow reference type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-        elif key == "datasetParameters":
-            suggest = "dataset_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataFlowReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataFlowReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataFlowReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -20123,25 +16699,6 @@ class DataFlowSinkResponse(dict):
     """
     Transformation for data flow sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedService":
-            suggest = "linked_service"
-        elif key == "schemaLinkedService":
-            suggest = "schema_linked_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataFlowSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataFlowSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataFlowSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  dataset: Optional['outputs.DatasetReferenceResponse'] = None,
@@ -20212,25 +16769,6 @@ class DataFlowSourceResponse(dict):
     """
     Transformation for data flow source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedService":
-            suggest = "linked_service"
-        elif key == "schemaLinkedService":
-            suggest = "schema_linked_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataFlowSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataFlowSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataFlowSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  dataset: Optional['outputs.DatasetReferenceResponse'] = None,
@@ -20301,25 +16839,6 @@ class DataFlowStagingInfoResponse(dict):
     """
     Staging info for execute data flow activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "folderPath":
-            suggest = "folder_path"
-        elif key == "linkedService":
-            suggest = "linked_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataFlowStagingInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataFlowStagingInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataFlowStagingInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  folder_path: Optional[Any] = None,
                  linked_service: Optional['outputs.LinkedServiceReferenceResponse'] = None):
@@ -20355,37 +16874,6 @@ class DataLakeAnalyticsUSQLActivityResponse(dict):
     """
     Data Lake Analytics U-SQL activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "scriptLinkedService":
-            suggest = "script_linked_service"
-        elif key == "scriptPath":
-            suggest = "script_path"
-        elif key == "compilationMode":
-            suggest = "compilation_mode"
-        elif key == "degreeOfParallelism":
-            suggest = "degree_of_parallelism"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "runtimeVersion":
-            suggest = "runtime_version"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataLakeAnalyticsUSQLActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataLakeAnalyticsUSQLActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataLakeAnalyticsUSQLActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  script_linked_service: 'outputs.LinkedServiceReferenceResponse',
@@ -20563,31 +17051,6 @@ class DatabricksNotebookActivityResponse(dict):
     """
     DatabricksNotebook activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "notebookPath":
-            suggest = "notebook_path"
-        elif key == "baseParameters":
-            suggest = "base_parameters"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabricksNotebookActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabricksNotebookActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabricksNotebookActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  notebook_path: Any,
@@ -20718,29 +17181,6 @@ class DatabricksSparkJarActivityResponse(dict):
     """
     DatabricksSparkJar activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mainClassName":
-            suggest = "main_class_name"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabricksSparkJarActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabricksSparkJarActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabricksSparkJarActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  main_class_name: Any,
                  name: str,
@@ -20871,29 +17311,6 @@ class DatabricksSparkPythonActivityResponse(dict):
     """
     DatabricksSparkPython activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pythonFile":
-            suggest = "python_file"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabricksSparkPythonActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabricksSparkPythonActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabricksSparkPythonActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  python_file: Any,
@@ -21120,23 +17537,6 @@ class DatasetReferenceResponse(dict):
     """
     Dataset reference type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -21301,33 +17701,6 @@ class Db2LinkedServiceResponse(dict):
     """
     Linked service for DB2 data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "certificateCommonName":
-            suggest = "certificate_common_name"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "packageCollection":
-            suggest = "package_collection"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Db2LinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Db2LinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Db2LinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -21508,31 +17881,6 @@ class Db2SourceResponse(dict):
     """
     A copy activity source for Db2 databases.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Db2SourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Db2SourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Db2SourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -21629,25 +17977,6 @@ class Db2TableDatasetResponse(dict):
     """
     The Db2 table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Db2TableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Db2TableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Db2TableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -21779,35 +18108,6 @@ class DeleteActivityResponse(dict):
     """
     Delete activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "enableLogging":
-            suggest = "enable_logging"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "logStorageSettings":
-            suggest = "log_storage_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DeleteActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DeleteActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DeleteActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
                  name: str,
@@ -21974,41 +18274,6 @@ class DelimitedTextDatasetResponse(dict):
     """
     Delimited text dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "columnDelimiter":
-            suggest = "column_delimiter"
-        elif key == "compressionCodec":
-            suggest = "compression_codec"
-        elif key == "compressionLevel":
-            suggest = "compression_level"
-        elif key == "encodingName":
-            suggest = "encoding_name"
-        elif key == "escapeChar":
-            suggest = "escape_char"
-        elif key == "firstRowAsHeader":
-            suggest = "first_row_as_header"
-        elif key == "nullValue":
-            suggest = "null_value"
-        elif key == "quoteChar":
-            suggest = "quote_char"
-        elif key == "rowDelimiter":
-            suggest = "row_delimiter"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DelimitedTextDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DelimitedTextDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DelimitedTextDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -22231,25 +18496,6 @@ class DelimitedTextReadSettingsResponse(dict):
     """
     Delimited text read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "compressionProperties":
-            suggest = "compression_properties"
-        elif key == "skipLineCount":
-            suggest = "skip_line_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DelimitedTextReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DelimitedTextReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DelimitedTextReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  compression_properties: Optional[Any] = None,
@@ -22298,35 +18544,6 @@ class DelimitedTextSinkResponse(dict):
     """
     A copy activity DelimitedText sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DelimitedTextSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DelimitedTextSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DelimitedTextSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  format_settings: Optional['outputs.DelimitedTextWriteSettingsResponse'] = None,
@@ -22435,33 +18652,6 @@ class DelimitedTextSourceResponse(dict):
     """
     A copy activity DelimitedText source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DelimitedTextSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DelimitedTextSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DelimitedTextSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -22558,29 +18748,6 @@ class DelimitedTextWriteSettingsResponse(dict):
     """
     Delimited text write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileExtension":
-            suggest = "file_extension"
-        elif key == "fileNamePrefix":
-            suggest = "file_name_prefix"
-        elif key == "maxRowsPerFile":
-            suggest = "max_rows_per_file"
-        elif key == "quoteAllText":
-            suggest = "quote_all_text"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DelimitedTextWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DelimitedTextWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DelimitedTextWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_extension: Any,
                  type: str,
@@ -22652,27 +18819,6 @@ class DistcpSettingsResponse(dict):
     """
     Distcp settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceManagerEndpoint":
-            suggest = "resource_manager_endpoint"
-        elif key == "tempScriptPath":
-            suggest = "temp_script_path"
-        elif key == "distcpOptions":
-            suggest = "distcp_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DistcpSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DistcpSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DistcpSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_manager_endpoint: Any,
                  temp_script_path: Any,
@@ -22718,25 +18864,6 @@ class DocumentDbCollectionDatasetResponse(dict):
     """
     Microsoft Azure Document Database Collection dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "collectionName":
-            suggest = "collection_name"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DocumentDbCollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DocumentDbCollectionDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DocumentDbCollectionDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  collection_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -22855,35 +18982,6 @@ class DocumentDbCollectionSinkResponse(dict):
     """
     A copy activity Document Database Collection sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "nestingSeparator":
-            suggest = "nesting_separator"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DocumentDbCollectionSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DocumentDbCollectionSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DocumentDbCollectionSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -22992,33 +19090,6 @@ class DocumentDbCollectionSourceResponse(dict):
     """
     A copy activity Document Database Collection source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "nestingSeparator":
-            suggest = "nesting_separator"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DocumentDbCollectionSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DocumentDbCollectionSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DocumentDbCollectionSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -23127,27 +19198,6 @@ class DrillLinkedServiceResponse(dict):
     """
     Drill server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DrillLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DrillLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DrillLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -23256,31 +19306,6 @@ class DrillSourceResponse(dict):
     """
     A copy activity Drill server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DrillSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DrillSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DrillSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -23377,25 +19402,6 @@ class DrillTableDatasetResponse(dict):
     """
     Drill server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DrillTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DrillTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DrillTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -23527,31 +19533,6 @@ class DynamicsAXLinkedServiceResponse(dict):
     """
     Dynamics AX linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aadResourceId":
-            suggest = "aad_resource_id"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsAXLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsAXLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsAXLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aad_resource_id: Any,
                  service_principal_id: Any,
@@ -23691,23 +19672,6 @@ class DynamicsAXResourceDatasetResponse(dict):
     """
     The path of the Dynamics AX OData entity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsAXResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsAXResourceDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsAXResourceDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  path: Any,
@@ -23826,33 +19790,6 @@ class DynamicsAXSourceResponse(dict):
     """
     A copy activity Dynamics AX source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsAXSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsAXSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsAXSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -23961,25 +19898,6 @@ class DynamicsCrmEntityDatasetResponse(dict):
     """
     The Dynamics CRM entity dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "entityName":
-            suggest = "entity_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsCrmEntityDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsCrmEntityDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsCrmEntityDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -24099,41 +20017,6 @@ class DynamicsCrmLinkedServiceResponse(dict):
     """
     Dynamics CRM linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "deploymentType":
-            suggest = "deployment_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "organizationName":
-            suggest = "organization_name"
-        elif key == "servicePrincipalCredential":
-            suggest = "service_principal_credential"
-        elif key == "servicePrincipalCredentialType":
-            suggest = "service_principal_credential_type"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsCrmLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsCrmLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsCrmLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  deployment_type: str,
@@ -24348,37 +20231,6 @@ class DynamicsCrmSinkResponse(dict):
     """
     A copy activity Dynamics CRM sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "writeBehavior":
-            suggest = "write_behavior"
-        elif key == "alternateKeyName":
-            suggest = "alternate_key_name"
-        elif key == "ignoreNullValues":
-            suggest = "ignore_null_values"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsCrmSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsCrmSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsCrmSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  write_behavior: str,
@@ -24498,29 +20350,6 @@ class DynamicsCrmSourceResponse(dict):
     """
     A copy activity Dynamics CRM source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsCrmSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsCrmSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsCrmSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -24605,25 +20434,6 @@ class DynamicsEntityDatasetResponse(dict):
     """
     The Dynamics entity dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "entityName":
-            suggest = "entity_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsEntityDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsEntityDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsEntityDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -24743,41 +20553,6 @@ class DynamicsLinkedServiceResponse(dict):
     """
     Dynamics linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "deploymentType":
-            suggest = "deployment_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "organizationName":
-            suggest = "organization_name"
-        elif key == "servicePrincipalCredential":
-            suggest = "service_principal_credential"
-        elif key == "servicePrincipalCredentialType":
-            suggest = "service_principal_credential_type"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "serviceUri":
-            suggest = "service_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  deployment_type: str,
@@ -24992,37 +20767,6 @@ class DynamicsSinkResponse(dict):
     """
     A copy activity Dynamics sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "writeBehavior":
-            suggest = "write_behavior"
-        elif key == "alternateKeyName":
-            suggest = "alternate_key_name"
-        elif key == "ignoreNullValues":
-            suggest = "ignore_null_values"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  write_behavior: str,
@@ -25142,29 +20886,6 @@ class DynamicsSourceResponse(dict):
     """
     A copy activity Dynamics source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DynamicsSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DynamicsSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DynamicsSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -25249,31 +20970,6 @@ class EloquaLinkedServiceResponse(dict):
     """
     Eloqua server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EloquaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EloquaLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EloquaLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint: Any,
                  type: str,
@@ -25428,25 +21124,6 @@ class EloquaObjectDatasetResponse(dict):
     """
     Eloqua server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EloquaObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EloquaObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EloquaObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -25566,31 +21243,6 @@ class EloquaSourceResponse(dict):
     """
     A copy activity Eloqua server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EloquaSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EloquaSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EloquaSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -25687,27 +21339,6 @@ class EncryptionConfigurationResponse(dict):
     """
     Definition of CMK for the factory.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "keyName":
-            suggest = "key_name"
-        elif key == "vaultBaseUrl":
-            suggest = "vault_base_url"
-        elif key == "keyVersion":
-            suggest = "key_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  key_name: str,
                  vault_base_url: str,
@@ -25765,23 +21396,6 @@ class EntityReferenceResponse(dict):
     """
     The entity reference.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EntityReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EntityReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EntityReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: Optional[str] = None,
                  type: Optional[str] = None):
@@ -25817,25 +21431,6 @@ class EnvironmentVariableSetupResponse(dict):
     """
     The custom setup of setting environment variable.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "variableName":
-            suggest = "variable_name"
-        elif key == "variableValue":
-            suggest = "variable_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnvironmentVariableSetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EnvironmentVariableSetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EnvironmentVariableSetupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  variable_name: str,
@@ -25882,29 +21477,6 @@ class ExcelDatasetResponse(dict):
     """
     Excel dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "sheetName":
-            suggest = "sheet_name"
-        elif key == "firstRowAsHeader":
-            suggest = "first_row_as_header"
-        elif key == "nullValue":
-            suggest = "null_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExcelDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExcelDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExcelDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -26082,31 +21654,6 @@ class ExcelSourceResponse(dict):
     """
     A copy activity excel source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExcelSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExcelSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExcelSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -26191,37 +21738,6 @@ class ExecuteDataFlowActivityResponse(dict):
     """
     Execute data flow activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataFlow":
-            suggest = "data_flow"
-        elif key == "continueOnError":
-            suggest = "continue_on_error"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "integrationRuntime":
-            suggest = "integration_runtime"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "runConcurrently":
-            suggest = "run_concurrently"
-        elif key == "traceLevel":
-            suggest = "trace_level"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExecuteDataFlowActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExecuteDataFlowActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExecuteDataFlowActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_flow: 'outputs.DataFlowReferenceResponse',
                  name: str,
@@ -26400,25 +21916,6 @@ class ExecuteDataFlowActivityTypePropertiesResponseCompute(dict):
     """
     Compute properties for data flow activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "coreCount":
-            suggest = "core_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExecuteDataFlowActivityTypePropertiesResponseCompute. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExecuteDataFlowActivityTypePropertiesResponseCompute.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExecuteDataFlowActivityTypePropertiesResponseCompute.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: Optional[Any] = None,
                  core_count: Optional[Any] = None):
@@ -26454,27 +21951,6 @@ class ExecutePipelineActivityResponse(dict):
     """
     Execute pipeline activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-        elif key == "waitOnCompletion":
-            suggest = "wait_on_completion"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExecutePipelineActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExecutePipelineActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExecutePipelineActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  pipeline: 'outputs.PipelineReferenceResponse',
@@ -26581,49 +22057,6 @@ class ExecuteSSISPackageActivityResponse(dict):
     """
     Execute SSIS package activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "packageLocation":
-            suggest = "package_location"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "environmentPath":
-            suggest = "environment_path"
-        elif key == "executionCredential":
-            suggest = "execution_credential"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "logLocation":
-            suggest = "log_location"
-        elif key == "loggingLevel":
-            suggest = "logging_level"
-        elif key == "packageConnectionManagers":
-            suggest = "package_connection_managers"
-        elif key == "packageParameters":
-            suggest = "package_parameters"
-        elif key == "projectConnectionManagers":
-            suggest = "project_connection_managers"
-        elif key == "projectParameters":
-            suggest = "project_parameters"
-        elif key == "propertyOverrides":
-            suggest = "property_overrides"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExecuteSSISPackageActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExecuteSSISPackageActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExecuteSSISPackageActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connect_via: 'outputs.IntegrationRuntimeReferenceResponse',
                  name: str,
@@ -26861,27 +22294,6 @@ class ExecutionActivityResponse(dict):
     """
     Base class for all execution activities.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExecutionActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExecutionActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExecutionActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -27010,33 +22422,6 @@ class FactoryGitHubConfigurationResponse(dict):
     """
     Factory's GitHub repo information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "collaborationBranch":
-            suggest = "collaboration_branch"
-        elif key == "repositoryName":
-            suggest = "repository_name"
-        elif key == "rootFolder":
-            suggest = "root_folder"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "lastCommitId":
-            suggest = "last_commit_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FactoryGitHubConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FactoryGitHubConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FactoryGitHubConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: str,
                  collaboration_branch: str,
@@ -27129,27 +22514,6 @@ class FactoryIdentityResponse(dict):
     """
     Identity properties of the factory resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FactoryIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FactoryIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FactoryIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -27206,35 +22570,6 @@ class FactoryVSTSConfigurationResponse(dict):
     """
     Factory's VSTS repo information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountName":
-            suggest = "account_name"
-        elif key == "collaborationBranch":
-            suggest = "collaboration_branch"
-        elif key == "projectName":
-            suggest = "project_name"
-        elif key == "repositoryName":
-            suggest = "repository_name"
-        elif key == "rootFolder":
-            suggest = "root_folder"
-        elif key == "lastCommitId":
-            suggest = "last_commit_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FactoryVSTSConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FactoryVSTSConfigurationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FactoryVSTSConfigurationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_name: str,
                  collaboration_branch: str,
@@ -27338,27 +22673,6 @@ class FileServerLinkedServiceResponse(dict):
     """
     File system linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userId":
-            suggest = "user_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileServerLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileServerLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -27478,25 +22792,6 @@ class FileServerLocationResponse(dict):
     """
     The location of file server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileServerLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileServerLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileServerLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -27545,41 +22840,6 @@ class FileServerReadSettingsResponse(dict):
     """
     File server read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileFilter":
-            suggest = "file_filter"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileServerReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileServerReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileServerReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -27736,25 +22996,6 @@ class FileServerWriteSettingsResponse(dict):
     """
     File server write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileServerWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileServerWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileServerWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -27803,33 +23044,6 @@ class FileShareDatasetResponse(dict):
     """
     An on-premises file system dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "fileFilter":
-            suggest = "file_filter"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileShareDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileShareDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileShareDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -28021,33 +23235,6 @@ class FileSystemSinkResponse(dict):
     """
     A copy activity file system sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileSystemSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileSystemSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileSystemSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -28144,29 +23331,6 @@ class FileSystemSourceResponse(dict):
     """
     A copy activity file system source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileSystemSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileSystemSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileSystemSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -28251,25 +23415,6 @@ class FilterActivityResponse(dict):
     """
     Filter and return results from input array based on the conditions.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FilterActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FilterActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FilterActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  condition: 'outputs.ExpressionResponse',
                  items: 'outputs.ExpressionResponse',
@@ -28363,29 +23508,6 @@ class ForEachActivityResponse(dict):
     """
     This activity is used for iterating over a collection and execute given activities.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "batchCount":
-            suggest = "batch_count"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "isSequential":
-            suggest = "is_sequential"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ForEachActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ForEachActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ForEachActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  activities: Sequence[Any],
                  items: 'outputs.ExpressionResponse',
@@ -28503,37 +23625,6 @@ class FtpReadSettingsResponse(dict):
     """
     Ftp read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "useBinaryTransfer":
-            suggest = "use_binary_transfer"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FtpReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FtpReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FtpReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -28666,33 +23757,6 @@ class FtpServerLinkedServiceResponse(dict):
     """
     A FTP server Linked Service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableServerCertificateValidation":
-            suggest = "enable_server_certificate_validation"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FtpServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FtpServerLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FtpServerLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -28860,25 +23924,6 @@ class FtpServerLocationResponse(dict):
     """
     The location of ftp server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FtpServerLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FtpServerLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FtpServerLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -28927,33 +23972,6 @@ class GetMetadataActivityResponse(dict):
     """
     Activity to get metadata of dataset
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "fieldList":
-            suggest = "field_list"
-        elif key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GetMetadataActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GetMetadataActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GetMetadataActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
                  name: str,
@@ -29129,43 +24147,6 @@ class GoogleAdWordsLinkedServiceResponse(dict):
     """
     Google AdWords service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "clientCustomerID":
-            suggest = "client_customer_id"
-        elif key == "developerToken":
-            suggest = "developer_token"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "keyFilePath":
-            suggest = "key_file_path"
-        elif key == "refreshToken":
-            suggest = "refresh_token"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-        elif key == "useSystemTrustStore":
-            suggest = "use_system_trust_store"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleAdWordsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleAdWordsLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleAdWordsLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  client_customer_id: Any,
@@ -29367,25 +24348,6 @@ class GoogleAdWordsObjectDatasetResponse(dict):
     """
     Google AdWords service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleAdWordsObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleAdWordsObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleAdWordsObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -29505,31 +24467,6 @@ class GoogleAdWordsSourceResponse(dict):
     """
     A copy activity Google AdWords service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleAdWordsSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleAdWordsSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleAdWordsSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -29626,43 +24563,6 @@ class GoogleBigQueryLinkedServiceResponse(dict):
     """
     Google BigQuery service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "additionalProjects":
-            suggest = "additional_projects"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "keyFilePath":
-            suggest = "key_file_path"
-        elif key == "refreshToken":
-            suggest = "refresh_token"
-        elif key == "requestGoogleDriveScope":
-            suggest = "request_google_drive_scope"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-        elif key == "useSystemTrustStore":
-            suggest = "use_system_trust_store"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleBigQueryLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleBigQueryLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleBigQueryLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  project: Any,
@@ -29877,25 +24777,6 @@ class GoogleBigQueryObjectDatasetResponse(dict):
     """
     Google BigQuery service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleBigQueryObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleBigQueryObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleBigQueryObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -30039,31 +24920,6 @@ class GoogleBigQuerySourceResponse(dict):
     """
     A copy activity Google BigQuery service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleBigQuerySourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleBigQuerySourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleBigQuerySourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -30160,31 +25016,6 @@ class GoogleCloudStorageLinkedServiceResponse(dict):
     """
     Linked service for Google Cloud Storage.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKeyId":
-            suggest = "access_key_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "secretAccessKey":
-            suggest = "secret_access_key"
-        elif key == "serviceUrl":
-            suggest = "service_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudStorageLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleCloudStorageLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleCloudStorageLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  access_key_id: Optional[Any] = None,
@@ -30305,27 +25136,6 @@ class GoogleCloudStorageLocationResponse(dict):
     """
     The location of Google Cloud Storage dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudStorageLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleCloudStorageLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleCloudStorageLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[Any] = None,
@@ -30398,39 +25208,6 @@ class GoogleCloudStorageReadSettingsResponse(dict):
     """
     Google Cloud Storage read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudStorageReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleCloudStorageReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleCloudStorageReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -30587,27 +25364,6 @@ class GreenplumLinkedServiceResponse(dict):
     """
     Greenplum Database linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GreenplumLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GreenplumLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GreenplumLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -30716,31 +25472,6 @@ class GreenplumSourceResponse(dict):
     """
     A copy activity Greenplum Database source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GreenplumSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GreenplumSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GreenplumSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -30837,25 +25568,6 @@ class GreenplumTableDatasetResponse(dict):
     """
     Greenplum Database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GreenplumTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GreenplumTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GreenplumTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -30987,37 +25699,6 @@ class HBaseLinkedServiceResponse(dict):
     """
     HBase server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "allowHostNameCNMismatch":
-            suggest = "allow_host_name_cn_mismatch"
-        elif key == "allowSelfSignedServerCert":
-            suggest = "allow_self_signed_server_cert"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "httpPath":
-            suggest = "http_path"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HBaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HBaseLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HBaseLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -31220,25 +25901,6 @@ class HBaseObjectDatasetResponse(dict):
     """
     HBase server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HBaseObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HBaseObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HBaseObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -31358,31 +26020,6 @@ class HBaseSourceResponse(dict):
     """
     A copy activity HBase server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HBaseSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HBaseSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HBaseSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -31479,37 +26116,6 @@ class HDInsightHiveActivityResponse(dict):
     """
     HDInsight Hive activity type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "getDebugInfo":
-            suggest = "get_debug_info"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "scriptLinkedService":
-            suggest = "script_linked_service"
-        elif key == "scriptPath":
-            suggest = "script_path"
-        elif key == "storageLinkedServices":
-            suggest = "storage_linked_services"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightHiveActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightHiveActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightHiveActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -31701,37 +26307,6 @@ class HDInsightLinkedServiceResponse(dict):
     """
     HDInsight linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterUri":
-            suggest = "cluster_uri"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "fileSystem":
-            suggest = "file_system"
-        elif key == "hcatalogLinkedServiceName":
-            suggest = "hcatalog_linked_service_name"
-        elif key == "isEspEnabled":
-            suggest = "is_esp_enabled"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_uri: Any,
                  type: str,
@@ -31899,39 +26474,6 @@ class HDInsightMapReduceActivityResponse(dict):
     """
     HDInsight MapReduce activity type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "className":
-            suggest = "class_name"
-        elif key == "jarFilePath":
-            suggest = "jar_file_path"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "getDebugInfo":
-            suggest = "get_debug_info"
-        elif key == "jarLibs":
-            suggest = "jar_libs"
-        elif key == "jarLinkedService":
-            suggest = "jar_linked_service"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "storageLinkedServices":
-            suggest = "storage_linked_services"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightMapReduceActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightMapReduceActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightMapReduceActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  class_name: Any,
                  jar_file_path: Any,
@@ -32121,85 +26663,6 @@ class HDInsightOnDemandLinkedServiceResponse(dict):
     """
     HDInsight ondemand linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterResourceGroup":
-            suggest = "cluster_resource_group"
-        elif key == "clusterSize":
-            suggest = "cluster_size"
-        elif key == "hostSubscriptionId":
-            suggest = "host_subscription_id"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "timeToLive":
-            suggest = "time_to_live"
-        elif key == "additionalLinkedServiceNames":
-            suggest = "additional_linked_service_names"
-        elif key == "clusterNamePrefix":
-            suggest = "cluster_name_prefix"
-        elif key == "clusterPassword":
-            suggest = "cluster_password"
-        elif key == "clusterSshPassword":
-            suggest = "cluster_ssh_password"
-        elif key == "clusterSshUserName":
-            suggest = "cluster_ssh_user_name"
-        elif key == "clusterType":
-            suggest = "cluster_type"
-        elif key == "clusterUserName":
-            suggest = "cluster_user_name"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "coreConfiguration":
-            suggest = "core_configuration"
-        elif key == "dataNodeSize":
-            suggest = "data_node_size"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "hBaseConfiguration":
-            suggest = "h_base_configuration"
-        elif key == "hcatalogLinkedServiceName":
-            suggest = "hcatalog_linked_service_name"
-        elif key == "hdfsConfiguration":
-            suggest = "hdfs_configuration"
-        elif key == "headNodeSize":
-            suggest = "head_node_size"
-        elif key == "hiveConfiguration":
-            suggest = "hive_configuration"
-        elif key == "mapReduceConfiguration":
-            suggest = "map_reduce_configuration"
-        elif key == "oozieConfiguration":
-            suggest = "oozie_configuration"
-        elif key == "scriptActions":
-            suggest = "script_actions"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "sparkVersion":
-            suggest = "spark_version"
-        elif key == "stormConfiguration":
-            suggest = "storm_configuration"
-        elif key == "subnetName":
-            suggest = "subnet_name"
-        elif key == "virtualNetworkId":
-            suggest = "virtual_network_id"
-        elif key == "yarnConfiguration":
-            suggest = "yarn_configuration"
-        elif key == "zookeeperNodeSize":
-            suggest = "zookeeper_node_size"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightOnDemandLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightOnDemandLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightOnDemandLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  cluster_resource_group: Any,
                  cluster_size: Any,
@@ -32661,35 +27124,6 @@ class HDInsightPigActivityResponse(dict):
     """
     HDInsight Pig activity type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "getDebugInfo":
-            suggest = "get_debug_info"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "scriptLinkedService":
-            suggest = "script_linked_service"
-        elif key == "scriptPath":
-            suggest = "script_path"
-        elif key == "storageLinkedServices":
-            suggest = "storage_linked_services"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightPigActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightPigActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightPigActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -32857,41 +27291,6 @@ class HDInsightSparkActivityResponse(dict):
     """
     HDInsight Spark activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entryFilePath":
-            suggest = "entry_file_path"
-        elif key == "rootPath":
-            suggest = "root_path"
-        elif key == "className":
-            suggest = "class_name"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "getDebugInfo":
-            suggest = "get_debug_info"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "proxyUser":
-            suggest = "proxy_user"
-        elif key == "sparkConfig":
-            suggest = "spark_config"
-        elif key == "sparkJobLinkedService":
-            suggest = "spark_job_linked_service"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightSparkActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightSparkActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightSparkActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  entry_file_path: Any,
                  name: str,
@@ -33081,37 +27480,6 @@ class HDInsightStreamingActivityResponse(dict):
     """
     HDInsight streaming activity type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filePaths":
-            suggest = "file_paths"
-        elif key == "commandEnvironment":
-            suggest = "command_environment"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "fileLinkedService":
-            suggest = "file_linked_service"
-        elif key == "getDebugInfo":
-            suggest = "get_debug_info"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "storageLinkedServices":
-            suggest = "storage_linked_services"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HDInsightStreamingActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HDInsightStreamingActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HDInsightStreamingActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  file_paths: Sequence[Any],
                  input: Any,
@@ -33346,29 +27714,6 @@ class HdfsLinkedServiceResponse(dict):
     """
     Hadoop Distributed File System (HDFS) linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HdfsLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HdfsLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HdfsLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -33500,25 +27845,6 @@ class HdfsLocationResponse(dict):
     """
     The location of HDFS.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HdfsLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HdfsLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HdfsLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -33567,41 +27893,6 @@ class HdfsReadSettingsResponse(dict):
     """
     HDFS read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "distcpSettings":
-            suggest = "distcp_settings"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HdfsReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HdfsReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HdfsReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -33758,29 +28049,6 @@ class HdfsSourceResponse(dict):
     """
     A copy activity HDFS source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "distcpSettings":
-            suggest = "distcp_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HdfsSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HdfsSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HdfsSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  distcp_settings: Optional['outputs.DistcpSettingsResponse'] = None,
@@ -33865,49 +28133,6 @@ class HiveLinkedServiceResponse(dict):
     """
     Hive Server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "allowHostNameCNMismatch":
-            suggest = "allow_host_name_cn_mismatch"
-        elif key == "allowSelfSignedServerCert":
-            suggest = "allow_self_signed_server_cert"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "httpPath":
-            suggest = "http_path"
-        elif key == "serverType":
-            suggest = "server_type"
-        elif key == "serviceDiscoveryMode":
-            suggest = "service_discovery_mode"
-        elif key == "thriftTransportProtocol":
-            suggest = "thrift_transport_protocol"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-        elif key == "useNativeQuery":
-            suggest = "use_native_query"
-        elif key == "useSystemTrustStore":
-            suggest = "use_system_trust_store"
-        elif key == "zooKeeperNameSpace":
-            suggest = "zoo_keeper_name_space"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HiveLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HiveLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HiveLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -34182,25 +28407,6 @@ class HiveObjectDatasetResponse(dict):
     """
     Hive Server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HiveObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HiveObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HiveObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -34332,31 +28538,6 @@ class HiveSourceResponse(dict):
     """
     A copy activity Hive Server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HiveSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HiveSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HiveSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -34453,31 +28634,6 @@ class HttpDatasetResponse(dict):
     """
     A file in an HTTP web server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "additionalHeaders":
-            suggest = "additional_headers"
-        elif key == "relativeUrl":
-            suggest = "relative_url"
-        elif key == "requestBody":
-            suggest = "request_body"
-        elif key == "requestMethod":
-            suggest = "request_method"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HttpDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HttpDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HttpDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -34661,37 +28817,6 @@ class HttpLinkedServiceResponse(dict):
     """
     Linked service for an HTTP source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authHeaders":
-            suggest = "auth_headers"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "certThumbprint":
-            suggest = "cert_thumbprint"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "embeddedCertData":
-            suggest = "embedded_cert_data"
-        elif key == "enableServerCertificateValidation":
-            suggest = "enable_server_certificate_validation"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HttpLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HttpLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HttpLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -34871,35 +28996,6 @@ class HttpReadSettingsResponse(dict):
     """
     Sftp read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalHeaders":
-            suggest = "additional_headers"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "requestBody":
-            suggest = "request_body"
-        elif key == "requestMethod":
-            suggest = "request_method"
-        elif key == "requestTimeout":
-            suggest = "request_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HttpReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HttpReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HttpReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_headers: Optional[Any] = None,
@@ -35008,27 +29104,6 @@ class HttpServerLocationResponse(dict):
     """
     The location of http server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-        elif key == "relativeUrl":
-            suggest = "relative_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HttpServerLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HttpServerLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HttpServerLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -35089,29 +29164,6 @@ class HttpSourceResponse(dict):
     """
     A copy activity source for an HTTP file.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HttpSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HttpSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HttpSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  http_request_timeout: Optional[Any] = None,
@@ -35184,39 +29236,6 @@ class HubspotLinkedServiceResponse(dict):
     """
     Hubspot Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "accessToken":
-            suggest = "access_token"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "refreshToken":
-            suggest = "refresh_token"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HubspotLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HubspotLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HubspotLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Any,
                  type: str,
@@ -35384,25 +29403,6 @@ class HubspotObjectDatasetResponse(dict):
     """
     Hubspot Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HubspotObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HubspotObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HubspotObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -35522,31 +29522,6 @@ class HubspotSourceResponse(dict):
     """
     A copy activity Hubspot Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HubspotSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HubspotSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HubspotSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -35643,29 +29618,6 @@ class IfConditionActivityResponse(dict):
     """
     This activity evaluates a boolean expression and executes either the activities under the ifTrueActivities property or the ifFalseActivities property depending on the result of the expression.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "ifFalseActivities":
-            suggest = "if_false_activities"
-        elif key == "ifTrueActivities":
-            suggest = "if_true_activities"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IfConditionActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IfConditionActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IfConditionActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  expression: 'outputs.ExpressionResponse',
                  name: str,
@@ -35772,37 +29724,6 @@ class ImpalaLinkedServiceResponse(dict):
     """
     Impala server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "allowHostNameCNMismatch":
-            suggest = "allow_host_name_cn_mismatch"
-        elif key == "allowSelfSignedServerCert":
-            suggest = "allow_self_signed_server_cert"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-        elif key == "useSystemTrustStore":
-            suggest = "use_system_trust_store"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImpalaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImpalaLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImpalaLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -36005,25 +29926,6 @@ class ImpalaObjectDatasetResponse(dict):
     """
     Impala server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImpalaObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImpalaObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImpalaObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -36155,31 +30057,6 @@ class ImpalaSourceResponse(dict):
     """
     A copy activity Impala server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ImpalaSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ImpalaSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ImpalaSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -36276,31 +30153,6 @@ class InformixLinkedServiceResponse(dict):
     """
     Informix linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InformixLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InformixLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InformixLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -36444,33 +30296,6 @@ class InformixSinkResponse(dict):
     """
     A copy activity Informix sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InformixSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InformixSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InformixSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -36567,31 +30392,6 @@ class InformixSourceResponse(dict):
     """
     A copy activity source for Informix.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InformixSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InformixSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InformixSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -36688,25 +30488,6 @@ class InformixTableDatasetResponse(dict):
     """
     The Informix table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InformixTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InformixTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InformixTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -36826,31 +30607,6 @@ class IntegrationRuntimeComputePropertiesResponse(dict):
     """
     The compute resource properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataFlowProperties":
-            suggest = "data_flow_properties"
-        elif key == "maxParallelExecutionsPerNode":
-            suggest = "max_parallel_executions_per_node"
-        elif key == "nodeSize":
-            suggest = "node_size"
-        elif key == "numberOfNodes":
-            suggest = "number_of_nodes"
-        elif key == "vNetProperties":
-            suggest = "v_net_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeComputePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeComputePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeComputePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_flow_properties: Optional['outputs.IntegrationRuntimeDataFlowPropertiesResponse'] = None,
                  location: Optional[str] = None,
@@ -36934,25 +30690,6 @@ class IntegrationRuntimeCustomSetupScriptPropertiesResponse(dict):
     """
     Custom setup script properties for a managed dedicated integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blobContainerUri":
-            suggest = "blob_container_uri"
-        elif key == "sasToken":
-            suggest = "sas_token"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeCustomSetupScriptPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeCustomSetupScriptPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeCustomSetupScriptPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  blob_container_uri: Optional[str] = None,
                  sas_token: Optional['outputs.SecureStringResponse'] = None):
@@ -36988,27 +30725,6 @@ class IntegrationRuntimeDataFlowPropertiesResponse(dict):
     """
     Data flow properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeType":
-            suggest = "compute_type"
-        elif key == "coreCount":
-            suggest = "core_count"
-        elif key == "timeToLive":
-            suggest = "time_to_live"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeDataFlowPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeDataFlowPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeDataFlowPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  compute_type: Optional[str] = None,
                  core_count: Optional[int] = None,
@@ -37056,25 +30772,6 @@ class IntegrationRuntimeDataProxyPropertiesResponse(dict):
     """
     Data proxy properties for a managed dedicated integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "stagingLinkedService":
-            suggest = "staging_linked_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeDataProxyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeDataProxyPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeDataProxyPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connect_via: Optional['outputs.EntityReferenceResponse'] = None,
                  path: Optional[str] = None,
@@ -37122,23 +30819,6 @@ class IntegrationRuntimeReferenceResponse(dict):
     """
     Integration runtime reference type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -37184,31 +30864,6 @@ class IntegrationRuntimeSsisCatalogInfoResponse(dict):
     """
     Catalog information for managed dedicated integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "catalogAdminPassword":
-            suggest = "catalog_admin_password"
-        elif key == "catalogAdminUserName":
-            suggest = "catalog_admin_user_name"
-        elif key == "catalogPricingTier":
-            suggest = "catalog_pricing_tier"
-        elif key == "catalogServerEndpoint":
-            suggest = "catalog_server_endpoint"
-        elif key == "dualStandbyPairName":
-            suggest = "dual_standby_pair_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeSsisCatalogInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeSsisCatalogInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeSsisCatalogInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  catalog_admin_password: Optional['outputs.SecureStringResponse'] = None,
                  catalog_admin_user_name: Optional[str] = None,
@@ -37280,33 +30935,6 @@ class IntegrationRuntimeSsisPropertiesResponse(dict):
     """
     SSIS properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "catalogInfo":
-            suggest = "catalog_info"
-        elif key == "customSetupScriptProperties":
-            suggest = "custom_setup_script_properties"
-        elif key == "dataProxyProperties":
-            suggest = "data_proxy_properties"
-        elif key == "expressCustomSetupProperties":
-            suggest = "express_custom_setup_properties"
-        elif key == "licenseType":
-            suggest = "license_type"
-        elif key == "packageStores":
-            suggest = "package_stores"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeSsisPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeSsisPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeSsisPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  catalog_info: Optional['outputs.IntegrationRuntimeSsisCatalogInfoResponse'] = None,
                  custom_setup_script_properties: Optional['outputs.IntegrationRuntimeCustomSetupScriptPropertiesResponse'] = None,
@@ -37402,25 +31030,6 @@ class IntegrationRuntimeVNetPropertiesResponse(dict):
     """
     VNet properties for managed integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "publicIPs":
-            suggest = "public_ips"
-        elif key == "vNetId":
-            suggest = "v_net_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntegrationRuntimeVNetPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntegrationRuntimeVNetPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntegrationRuntimeVNetPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  public_ips: Optional[Sequence[str]] = None,
                  subnet: Optional[str] = None,
@@ -37468,31 +31077,6 @@ class JiraLinkedServiceResponse(dict):
     """
     Jira Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JiraLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JiraLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JiraLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -37659,25 +31243,6 @@ class JiraObjectDatasetResponse(dict):
     """
     Jira Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JiraObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JiraObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JiraObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -37797,31 +31362,6 @@ class JiraSourceResponse(dict):
     """
     A copy activity Jira Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JiraSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JiraSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JiraSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -37918,25 +31458,6 @@ class JsonDatasetResponse(dict):
     """
     Json dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "encodingName":
-            suggest = "encoding_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -38079,31 +31600,6 @@ class JsonFormatResponse(dict):
     """
     The data stored in JSON format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encodingName":
-            suggest = "encoding_name"
-        elif key == "filePattern":
-            suggest = "file_pattern"
-        elif key == "jsonNodeReference":
-            suggest = "json_node_reference"
-        elif key == "jsonPathDefinition":
-            suggest = "json_path_definition"
-        elif key == "nestingSeparator":
-            suggest = "nesting_separator"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  deserializer: Optional[Any] = None,
@@ -38212,23 +31708,6 @@ class JsonReadSettingsResponse(dict):
     """
     Json read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "compressionProperties":
-            suggest = "compression_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  compression_properties: Optional[Any] = None):
@@ -38265,35 +31744,6 @@ class JsonSinkResponse(dict):
     """
     A copy activity Json sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  format_settings: Optional['outputs.JsonWriteSettingsResponse'] = None,
@@ -38402,33 +31852,6 @@ class JsonSourceResponse(dict):
     """
     A copy activity Json source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -38525,23 +31948,6 @@ class JsonWriteSettingsResponse(dict):
     """
     Json write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filePattern":
-            suggest = "file_pattern"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JsonWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JsonWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JsonWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_pattern: Optional[str] = None):
@@ -38578,23 +31984,6 @@ class LinkedIntegrationRuntimeKeyAuthorizationResponse(dict):
     """
     The key authorization type integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationType":
-            suggest = "authorization_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinkedIntegrationRuntimeKeyAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinkedIntegrationRuntimeKeyAuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinkedIntegrationRuntimeKeyAuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorization_type: str,
                  key: 'outputs.SecureStringResponse'):
@@ -38630,25 +32019,6 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse(dict):
     """
     The role based access control (RBAC) authorization type integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authorizationType":
-            suggest = "authorization_type"
-        elif key == "resourceId":
-            suggest = "resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinkedIntegrationRuntimeRbacAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinkedIntegrationRuntimeRbacAuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinkedIntegrationRuntimeRbacAuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authorization_type: str,
                  resource_id: str):
@@ -38750,23 +32120,6 @@ class LinkedServiceReferenceResponse(dict):
     """
     Linked service reference type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LinkedServiceReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LinkedServiceReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LinkedServiceReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -38812,23 +32165,6 @@ class LogLocationSettingsResponse(dict):
     """
     Log location settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogLocationSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogLocationSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogLocationSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  path: Optional[Any] = None):
@@ -38863,27 +32199,6 @@ class LogSettingsResponse(dict):
     """
     Log settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "logLocationSettings":
-            suggest = "log_location_settings"
-        elif key == "copyActivityLogSettings":
-            suggest = "copy_activity_log_settings"
-        elif key == "enableCopyActivityLog":
-            suggest = "enable_copy_activity_log"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  log_location_settings: 'outputs.LogLocationSettingsResponse',
                  copy_activity_log_settings: Optional['outputs.CopyActivityLogSettingsResponse'] = None,
@@ -38930,27 +32245,6 @@ class LogStorageSettingsResponse(dict):
     """
     (Deprecated. Please use LogSettings) Log storage settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "enableReliableLogging":
-            suggest = "enable_reliable_logging"
-        elif key == "logLevel":
-            suggest = "log_level"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LogStorageSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LogStorageSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LogStorageSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  enable_reliable_logging: Optional[Any] = None,
@@ -39009,29 +32303,6 @@ class LookupActivityResponse(dict):
     """
     Lookup activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "firstRowOnly":
-            suggest = "first_row_only"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LookupActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LookupActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LookupActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
                  name: str,
@@ -39161,33 +32432,6 @@ class MagentoLinkedServiceResponse(dict):
     """
     Magento server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessToken":
-            suggest = "access_token"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MagentoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MagentoLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MagentoLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -39331,25 +32575,6 @@ class MagentoObjectDatasetResponse(dict):
     """
     Magento server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MagentoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MagentoObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MagentoObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -39469,31 +32694,6 @@ class MagentoSourceResponse(dict):
     """
     A copy activity Magento server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MagentoSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MagentoSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MagentoSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -39767,27 +32967,6 @@ class ManagedIntegrationRuntimeResponse(dict):
     """
     Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeProperties":
-            suggest = "compute_properties"
-        elif key == "managedVirtualNetwork":
-            suggest = "managed_virtual_network"
-        elif key == "ssisProperties":
-            suggest = "ssis_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedIntegrationRuntimeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedIntegrationRuntimeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedIntegrationRuntimeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  state: str,
                  type: str,
@@ -39961,31 +33140,6 @@ class ManagedPrivateEndpointResponse(dict):
     """
     Properties of a managed private endpoint
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isReserved":
-            suggest = "is_reserved"
-        elif key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "connectionState":
-            suggest = "connection_state"
-        elif key == "groupId":
-            suggest = "group_id"
-        elif key == "privateLinkResourceId":
-            suggest = "private_link_resource_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedPrivateEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedPrivateEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedPrivateEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  is_reserved: bool,
                  provisioning_state: str,
@@ -40067,23 +33221,6 @@ class ManagedVirtualNetworkReferenceResponse(dict):
     """
     Managed Virtual Network reference type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedVirtualNetworkReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedVirtualNetworkReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedVirtualNetworkReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: str,
                  type: str):
@@ -40226,27 +33363,6 @@ class MariaDBLinkedServiceResponse(dict):
     """
     MariaDB server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MariaDBLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MariaDBLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MariaDBLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -40355,31 +33471,6 @@ class MariaDBSourceResponse(dict):
     """
     A copy activity MariaDB server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MariaDBSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MariaDBSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MariaDBSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -40476,25 +33567,6 @@ class MariaDBTableDatasetResponse(dict):
     """
     MariaDB server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MariaDBTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MariaDBTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MariaDBTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -40614,35 +33686,6 @@ class MarketoLinkedServiceResponse(dict):
     """
     Marketo server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MarketoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MarketoLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MarketoLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Any,
                  endpoint: Any,
@@ -40797,25 +33840,6 @@ class MarketoObjectDatasetResponse(dict):
     """
     Marketo server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MarketoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MarketoObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MarketoObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -40935,31 +33959,6 @@ class MarketoSourceResponse(dict):
     """
     A copy activity Marketo server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MarketoSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MarketoSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MarketoSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -41056,31 +34055,6 @@ class MicrosoftAccessLinkedServiceResponse(dict):
     """
     Microsoft Access linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MicrosoftAccessLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MicrosoftAccessLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MicrosoftAccessLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -41224,33 +34198,6 @@ class MicrosoftAccessSinkResponse(dict):
     """
     A copy activity Microsoft Access sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MicrosoftAccessSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MicrosoftAccessSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MicrosoftAccessSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -41347,29 +34294,6 @@ class MicrosoftAccessSourceResponse(dict):
     """
     A copy activity source for Microsoft Access.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MicrosoftAccessSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MicrosoftAccessSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MicrosoftAccessSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -41454,25 +34378,6 @@ class MicrosoftAccessTableDatasetResponse(dict):
     """
     The Microsoft Access table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MicrosoftAccessTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MicrosoftAccessTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MicrosoftAccessTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -41592,23 +34497,6 @@ class MongoDbAtlasCollectionDatasetResponse(dict):
     """
     The MongoDB Atlas database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbAtlasCollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbAtlasCollectionDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbAtlasCollectionDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  collection: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -41727,25 +34615,6 @@ class MongoDbAtlasLinkedServiceResponse(dict):
     """
     Linked service for MongoDB Atlas data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbAtlasLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbAtlasLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbAtlasLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  database: Any,
@@ -41840,33 +34709,6 @@ class MongoDbAtlasSinkResponse(dict):
     """
     A copy activity MongoDB Atlas sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbAtlasSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbAtlasSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbAtlasSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -41963,35 +34805,6 @@ class MongoDbAtlasSourceResponse(dict):
     """
     A copy activity source for a MongoDB Atlas database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "batchSize":
-            suggest = "batch_size"
-        elif key == "cursorMethods":
-            suggest = "cursor_methods"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbAtlasSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbAtlasSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbAtlasSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -42112,25 +34925,6 @@ class MongoDbCollectionDatasetResponse(dict):
     """
     The MongoDB database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "collectionName":
-            suggest = "collection_name"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbCollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbCollectionDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbCollectionDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  collection_name: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -42308,35 +35102,6 @@ class MongoDbLinkedServiceResponse(dict):
     """
     Linked service for MongoDb data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "databaseName":
-            suggest = "database_name"
-        elif key == "allowSelfSignedServerCert":
-            suggest = "allow_self_signed_server_cert"
-        elif key == "authSource":
-            suggest = "auth_source"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database_name: Any,
                  server: Any,
@@ -42527,29 +35292,6 @@ class MongoDbSourceResponse(dict):
     """
     A copy activity source for a MongoDB database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -42634,23 +35376,6 @@ class MongoDbV2CollectionDatasetResponse(dict):
     """
     The MongoDB database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbV2CollectionDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbV2CollectionDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbV2CollectionDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  collection: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -42769,25 +35494,6 @@ class MongoDbV2LinkedServiceResponse(dict):
     """
     Linked service for MongoDB data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbV2LinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbV2LinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbV2LinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  database: Any,
@@ -42882,33 +35588,6 @@ class MongoDbV2SinkResponse(dict):
     """
     A copy activity MongoDB sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbV2SinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbV2SinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbV2SinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -43005,35 +35684,6 @@ class MongoDbV2SourceResponse(dict):
     """
     A copy activity source for a MongoDB database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "batchSize":
-            suggest = "batch_size"
-        elif key == "cursorMethods":
-            suggest = "cursor_methods"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MongoDbV2SourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MongoDbV2SourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MongoDbV2SourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -43154,23 +35804,6 @@ class MultiplePipelineTriggerResponse(dict):
     """
     Base class for all triggers that support one to many model for trigger to pipeline.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "runtimeState":
-            suggest = "runtime_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MultiplePipelineTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MultiplePipelineTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MultiplePipelineTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  runtime_state: str,
                  type: str,
@@ -43242,27 +35875,6 @@ class MySqlLinkedServiceResponse(dict):
     """
     Linked service for MySQL data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MySqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MySqlLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MySqlLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -43370,31 +35982,6 @@ class MySqlSourceResponse(dict):
     """
     A copy activity source for MySQL databases.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MySqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MySqlSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MySqlSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -43491,25 +36078,6 @@ class MySqlTableDatasetResponse(dict):
     """
     The MySQL table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MySqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MySqlTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MySqlTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -43629,27 +36197,6 @@ class NetezzaLinkedServiceResponse(dict):
     """
     Netezza linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetezzaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetezzaLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetezzaLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -43758,27 +36305,6 @@ class NetezzaPartitionSettingsResponse(dict):
     """
     The settings that will be leveraged for Netezza source partitioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "partitionColumnName":
-            suggest = "partition_column_name"
-        elif key == "partitionLowerBound":
-            suggest = "partition_lower_bound"
-        elif key == "partitionUpperBound":
-            suggest = "partition_upper_bound"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetezzaPartitionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetezzaPartitionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetezzaPartitionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  partition_column_name: Optional[Any] = None,
                  partition_lower_bound: Optional[Any] = None,
@@ -43826,35 +36352,6 @@ class NetezzaSourceResponse(dict):
     """
     A copy activity Netezza source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetezzaSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetezzaSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetezzaSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -43975,25 +36472,6 @@ class NetezzaTableDatasetResponse(dict):
     """
     Netezza dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetezzaTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetezzaTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetezzaTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -44125,45 +36603,6 @@ class ODataLinkedServiceResponse(dict):
     """
     Open Data Protocol (OData) linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aadResourceId":
-            suggest = "aad_resource_id"
-        elif key == "aadServicePrincipalCredentialType":
-            suggest = "aad_service_principal_credential_type"
-        elif key == "authHeaders":
-            suggest = "auth_headers"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalEmbeddedCert":
-            suggest = "service_principal_embedded_cert"
-        elif key == "servicePrincipalEmbeddedCertPassword":
-            suggest = "service_principal_embedded_cert_password"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ODataLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ODataLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ODataLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -44403,23 +36842,6 @@ class ODataResourceDatasetResponse(dict):
     """
     The Open Data Protocol (OData) resource dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ODataResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ODataResourceDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ODataResourceDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -44539,31 +36961,6 @@ class ODataSourceResponse(dict):
     """
     A copy activity source for OData source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ODataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ODataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ODataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -44660,31 +37057,6 @@ class OdbcLinkedServiceResponse(dict):
     """
     Open Database Connectivity (ODBC) linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OdbcLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OdbcLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OdbcLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -44828,33 +37200,6 @@ class OdbcSinkResponse(dict):
     """
     A copy activity ODBC sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OdbcSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OdbcSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OdbcSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -44951,31 +37296,6 @@ class OdbcSourceResponse(dict):
     """
     A copy activity source for ODBC databases.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OdbcSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OdbcSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OdbcSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -45072,25 +37392,6 @@ class OdbcTableDatasetResponse(dict):
     """
     The ODBC table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OdbcTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OdbcTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OdbcTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -45210,25 +37511,6 @@ class Office365DatasetResponse(dict):
     """
     The Office365 account.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Office365DatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Office365DatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Office365DatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -45359,33 +37641,6 @@ class Office365LinkedServiceResponse(dict):
     """
     Office365 linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "office365TenantId":
-            suggest = "office365_tenant_id"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "servicePrincipalTenantId":
-            suggest = "service_principal_tenant_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Office365LinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Office365LinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Office365LinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  office365_tenant_id: Any,
                  service_principal_id: Any,
@@ -45514,39 +37769,6 @@ class Office365SourceResponse(dict):
     """
     A copy activity source for an Office 365 service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedGroups":
-            suggest = "allowed_groups"
-        elif key == "dateFilterColumn":
-            suggest = "date_filter_column"
-        elif key == "endTime":
-            suggest = "end_time"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "outputColumns":
-            suggest = "output_columns"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "startTime":
-            suggest = "start_time"
-        elif key == "userScopeFilterUri":
-            suggest = "user_scope_filter_uri"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in Office365SourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        Office365SourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        Office365SourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  allowed_groups: Optional[Any] = None,
@@ -45679,31 +37901,6 @@ class OracleCloudStorageLinkedServiceResponse(dict):
     """
     Linked service for Oracle Cloud Storage.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKeyId":
-            suggest = "access_key_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "secretAccessKey":
-            suggest = "secret_access_key"
-        elif key == "serviceUrl":
-            suggest = "service_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleCloudStorageLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleCloudStorageLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleCloudStorageLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  access_key_id: Optional[Any] = None,
@@ -45824,27 +38021,6 @@ class OracleCloudStorageLocationResponse(dict):
     """
     The location of Oracle Cloud Storage dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleCloudStorageLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleCloudStorageLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleCloudStorageLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[Any] = None,
@@ -45917,39 +38093,6 @@ class OracleCloudStorageReadSettingsResponse(dict):
     """
     Oracle Cloud Storage read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleCloudStorageReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleCloudStorageReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleCloudStorageReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -46106,27 +38249,6 @@ class OracleLinkedServiceResponse(dict):
     """
     Oracle database.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -46234,29 +38356,6 @@ class OraclePartitionSettingsResponse(dict):
     """
     The settings that will be leveraged for Oracle source partitioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "partitionColumnName":
-            suggest = "partition_column_name"
-        elif key == "partitionLowerBound":
-            suggest = "partition_lower_bound"
-        elif key == "partitionNames":
-            suggest = "partition_names"
-        elif key == "partitionUpperBound":
-            suggest = "partition_upper_bound"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OraclePartitionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OraclePartitionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OraclePartitionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  partition_column_name: Optional[Any] = None,
                  partition_lower_bound: Optional[Any] = None,
@@ -46316,31 +38415,6 @@ class OracleServiceCloudLinkedServiceResponse(dict):
     """
     Oracle Service Cloud linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleServiceCloudLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleServiceCloudLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleServiceCloudLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  password: Any,
@@ -46494,25 +38568,6 @@ class OracleServiceCloudObjectDatasetResponse(dict):
     """
     Oracle Service Cloud dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleServiceCloudObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleServiceCloudObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleServiceCloudObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -46632,31 +38687,6 @@ class OracleServiceCloudSourceResponse(dict):
     """
     A copy activity Oracle Service Cloud source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleServiceCloudSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleServiceCloudSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleServiceCloudSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -46753,33 +38783,6 @@ class OracleSinkResponse(dict):
     """
     A copy activity Oracle sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -46876,37 +38879,6 @@ class OracleSourceResponse(dict):
     """
     A copy activity Oracle source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "oracleReaderQuery":
-            suggest = "oracle_reader_query"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -47027,25 +38999,6 @@ class OracleTableDatasetResponse(dict):
     """
     The on-premises Oracle database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OracleTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OracleTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OracleTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -47177,25 +39130,6 @@ class OrcDatasetResponse(dict):
     """
     ORC dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "orcCompressionCodec":
-            suggest = "orc_compression_codec"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OrcDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OrcDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OrcDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -47370,35 +39304,6 @@ class OrcSinkResponse(dict):
     """
     A copy activity ORC sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OrcSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OrcSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OrcSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  format_settings: Optional['outputs.OrcWriteSettingsResponse'] = None,
@@ -47507,31 +39412,6 @@ class OrcSourceResponse(dict):
     """
     A copy activity ORC source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OrcSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OrcSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OrcSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -47616,25 +39496,6 @@ class OrcWriteSettingsResponse(dict):
     """
     Orc write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileNamePrefix":
-            suggest = "file_name_prefix"
-        elif key == "maxRowsPerFile":
-            suggest = "max_rows_per_file"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OrcWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OrcWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OrcWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name_prefix: Optional[Any] = None,
@@ -47683,23 +39544,6 @@ class PackageStoreResponse(dict):
     """
     Package store for the SSIS integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "packageStoreLinkedService":
-            suggest = "package_store_linked_service"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PackageStoreResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PackageStoreResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PackageStoreResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  package_store_linked_service: 'outputs.EntityReferenceResponse'):
@@ -47733,23 +39577,6 @@ class ParameterSpecificationResponse(dict):
     """
     Definition of a single parameter for an entity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultValue":
-            suggest = "default_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParameterSpecificationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParameterSpecificationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParameterSpecificationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  default_value: Optional[Any] = None):
@@ -47784,25 +39611,6 @@ class ParquetDatasetResponse(dict):
     """
     Parquet dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "compressionCodec":
-            suggest = "compression_codec"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParquetDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParquetDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParquetDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -47977,35 +39785,6 @@ class ParquetSinkResponse(dict):
     """
     A copy activity Parquet sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParquetSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParquetSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParquetSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  format_settings: Optional['outputs.ParquetWriteSettingsResponse'] = None,
@@ -48114,31 +39893,6 @@ class ParquetSourceResponse(dict):
     """
     A copy activity Parquet source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParquetSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParquetSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParquetSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -48223,25 +39977,6 @@ class ParquetWriteSettingsResponse(dict):
     """
     Parquet write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileNamePrefix":
-            suggest = "file_name_prefix"
-        elif key == "maxRowsPerFile":
-            suggest = "max_rows_per_file"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ParquetWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ParquetWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ParquetWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name_prefix: Optional[Any] = None,
@@ -48290,35 +40025,6 @@ class PaypalLinkedServiceResponse(dict):
     """
     Paypal Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PaypalLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PaypalLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PaypalLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Any,
                  host: Any,
@@ -48473,25 +40179,6 @@ class PaypalObjectDatasetResponse(dict):
     """
     Paypal Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PaypalObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PaypalObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PaypalObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -48611,31 +40298,6 @@ class PaypalSourceResponse(dict):
     """
     A copy activity Paypal Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PaypalSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PaypalSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PaypalSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -48732,39 +40394,6 @@ class PhoenixLinkedServiceResponse(dict):
     """
     Phoenix server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "allowHostNameCNMismatch":
-            suggest = "allow_host_name_cn_mismatch"
-        elif key == "allowSelfSignedServerCert":
-            suggest = "allow_self_signed_server_cert"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "httpPath":
-            suggest = "http_path"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-        elif key == "useSystemTrustStore":
-            suggest = "use_system_trust_store"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PhoenixLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PhoenixLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PhoenixLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -48979,25 +40608,6 @@ class PhoenixObjectDatasetResponse(dict):
     """
     Phoenix server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PhoenixObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PhoenixObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PhoenixObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -49129,31 +40739,6 @@ class PhoenixSourceResponse(dict):
     """
     A copy activity Phoenix server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PhoenixSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PhoenixSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PhoenixSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -49273,23 +40858,6 @@ class PipelinePolicyResponse(dict):
     """
     Pipeline Policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "elapsedTimeMetric":
-            suggest = "elapsed_time_metric"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelinePolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelinePolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelinePolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  elapsed_time_metric: Optional['outputs.PipelineElapsedTimeMetricPolicyResponse'] = None):
         """
@@ -49313,23 +40881,6 @@ class PipelineReferenceResponse(dict):
     """
     Pipeline reference type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelineReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelineReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelineReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: str,
                  type: str,
@@ -49398,29 +40949,6 @@ class PolybaseSettingsResponse(dict):
     """
     PolyBase settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "rejectSampleValue":
-            suggest = "reject_sample_value"
-        elif key == "rejectType":
-            suggest = "reject_type"
-        elif key == "rejectValue":
-            suggest = "reject_value"
-        elif key == "useTypeDefault":
-            suggest = "use_type_default"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolybaseSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolybaseSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolybaseSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reject_sample_value: Optional[Any] = None,
                  reject_type: Optional[str] = None,
@@ -49480,27 +41008,6 @@ class PostgreSqlLinkedServiceResponse(dict):
     """
     Linked service for PostgreSQL data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PostgreSqlLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PostgreSqlLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PostgreSqlLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -49608,31 +41115,6 @@ class PostgreSqlSourceResponse(dict):
     """
     A copy activity source for PostgreSQL databases.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PostgreSqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PostgreSqlSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PostgreSqlSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -49729,25 +41211,6 @@ class PostgreSqlTableDatasetResponse(dict):
     """
     The PostgreSQL table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PostgreSqlTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PostgreSqlTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PostgreSqlTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -49879,41 +41342,6 @@ class PrestoLinkedServiceResponse(dict):
     """
     Presto server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "serverVersion":
-            suggest = "server_version"
-        elif key == "allowHostNameCNMismatch":
-            suggest = "allow_host_name_cn_mismatch"
-        elif key == "allowSelfSignedServerCert":
-            suggest = "allow_self_signed_server_cert"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "timeZoneID":
-            suggest = "time_zone_id"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-        elif key == "useSystemTrustStore":
-            suggest = "use_system_trust_store"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrestoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrestoLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrestoLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  catalog: Any,
@@ -50150,25 +41578,6 @@ class PrestoObjectDatasetResponse(dict):
     """
     Presto server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrestoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrestoObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrestoObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -50300,31 +41709,6 @@ class PrestoSourceResponse(dict):
     """
     A copy activity Presto server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrestoSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrestoSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrestoSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -50421,23 +41805,6 @@ class PrivateLinkConnectionStateResponse(dict):
     """
     The state of a private link connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionsRequired":
-            suggest = "actions_required"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrivateLinkConnectionStateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrivateLinkConnectionStateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrivateLinkConnectionStateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  actions_required: Optional[str] = None,
                  description: Optional[str] = None,
@@ -50485,39 +41852,6 @@ class QuickBooksLinkedServiceResponse(dict):
     """
     QuickBooks server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessToken":
-            suggest = "access_token"
-        elif key == "accessTokenSecret":
-            suggest = "access_token_secret"
-        elif key == "companyId":
-            suggest = "company_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionProperties":
-            suggest = "connection_properties"
-        elif key == "consumerKey":
-            suggest = "consumer_key"
-        elif key == "consumerSecret":
-            suggest = "consumer_secret"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QuickBooksLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QuickBooksLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QuickBooksLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  access_token: Optional[Any] = None,
@@ -50698,25 +42032,6 @@ class QuickBooksObjectDatasetResponse(dict):
     """
     QuickBooks server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QuickBooksObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QuickBooksObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QuickBooksObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -50836,31 +42151,6 @@ class QuickBooksSourceResponse(dict):
     """
     A copy activity QuickBooks server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QuickBooksSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QuickBooksSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QuickBooksSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -50992,27 +42282,6 @@ class RecurrenceScheduleResponse(dict):
     """
     The recurrence schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "monthDays":
-            suggest = "month_days"
-        elif key == "monthlyOccurrences":
-            suggest = "monthly_occurrences"
-        elif key == "weekDays":
-            suggest = "week_days"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecurrenceScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecurrenceScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecurrenceScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  hours: Optional[Sequence[int]] = None,
                  minutes: Optional[Sequence[int]] = None,
@@ -51084,23 +42353,6 @@ class RedirectIncompatibleRowSettingsResponse(dict):
     """
     Redirect incompatible row settings
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RedirectIncompatibleRowSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RedirectIncompatibleRowSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RedirectIncompatibleRowSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: Any,
                  path: Optional[Any] = None):
@@ -51135,25 +42387,6 @@ class RedshiftUnloadSettingsResponse(dict):
     """
     The Amazon S3 settings needed for the interim Amazon S3 when copying from Amazon Redshift with unload. With this, data from Amazon Redshift source will be unloaded into S3 first and then copied into the targeted sink from the interim S3.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "s3LinkedServiceName":
-            suggest = "s3_linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RedshiftUnloadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RedshiftUnloadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RedshiftUnloadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bucket_name: Any,
                  s3_linked_service_name: 'outputs.LinkedServiceReferenceResponse'):
@@ -51187,29 +42420,6 @@ class RelationalSourceResponse(dict):
     """
     A copy activity source for various relational databases.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RelationalSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RelationalSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RelationalSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -51294,25 +42504,6 @@ class RelationalTableDatasetResponse(dict):
     """
     The relational table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RelationalTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RelationalTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RelationalTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -51432,27 +42623,6 @@ class RemotePrivateEndpointConnectionResponse(dict):
     """
     A remote private endpoint connection
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "provisioningState":
-            suggest = "provisioning_state"
-        elif key == "privateEndpoint":
-            suggest = "private_endpoint"
-        elif key == "privateLinkServiceConnectionState":
-            suggest = "private_link_service_connection_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RemotePrivateEndpointConnectionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RemotePrivateEndpointConnectionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RemotePrivateEndpointConnectionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  provisioning_state: str,
                  private_endpoint: Optional['outputs.ArmIdWrapperResponse'] = None,
@@ -51495,31 +42665,6 @@ class RerunTumblingWindowTriggerResponse(dict):
     """
     Trigger that schedules pipeline reruns for all fixed time interval windows from a requested start time to requested end time.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "parentTrigger":
-            suggest = "parent_trigger"
-        elif key == "requestedEndTime":
-            suggest = "requested_end_time"
-        elif key == "requestedStartTime":
-            suggest = "requested_start_time"
-        elif key == "rerunConcurrency":
-            suggest = "rerun_concurrency"
-        elif key == "runtimeState":
-            suggest = "runtime_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RerunTumblingWindowTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RerunTumblingWindowTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RerunTumblingWindowTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  parent_trigger: Any,
                  requested_end_time: str,
@@ -51623,35 +42768,6 @@ class ResponsysLinkedServiceResponse(dict):
     """
     Responsys linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResponsysLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResponsysLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResponsysLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Any,
                  endpoint: Any,
@@ -51806,25 +42922,6 @@ class ResponsysObjectDatasetResponse(dict):
     """
     Responsys dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResponsysObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResponsysObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResponsysObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -51944,31 +43041,6 @@ class ResponsysSourceResponse(dict):
     """
     A copy activity Responsys source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResponsysSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResponsysSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResponsysSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -52065,33 +43137,6 @@ class RestResourceDatasetResponse(dict):
     """
     A Rest service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "additionalHeaders":
-            suggest = "additional_headers"
-        elif key == "paginationRules":
-            suggest = "pagination_rules"
-        elif key == "relativeUrl":
-            suggest = "relative_url"
-        elif key == "requestBody":
-            suggest = "request_body"
-        elif key == "requestMethod":
-            suggest = "request_method"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RestResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RestResourceDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RestResourceDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -52259,41 +43304,6 @@ class RestServiceLinkedServiceResponse(dict):
     """
     Rest Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "aadResourceId":
-            suggest = "aad_resource_id"
-        elif key == "authHeaders":
-            suggest = "auth_headers"
-        elif key == "azureCloudType":
-            suggest = "azure_cloud_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableServerCertificateValidation":
-            suggest = "enable_server_certificate_validation"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RestServiceLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RestServiceLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RestServiceLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  type: str,
@@ -52508,41 +43518,6 @@ class RestSinkResponse(dict):
     """
     A copy activity Rest service Sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalHeaders":
-            suggest = "additional_headers"
-        elif key == "httpCompressionType":
-            suggest = "http_compression_type"
-        elif key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "requestInterval":
-            suggest = "request_interval"
-        elif key == "requestMethod":
-            suggest = "request_method"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RestSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RestSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RestSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_headers: Optional[Any] = None,
@@ -52687,41 +43662,6 @@ class RestSourceResponse(dict):
     """
     A copy activity Rest service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "additionalHeaders":
-            suggest = "additional_headers"
-        elif key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "paginationRules":
-            suggest = "pagination_rules"
-        elif key == "requestBody":
-            suggest = "request_body"
-        elif key == "requestInterval":
-            suggest = "request_interval"
-        elif key == "requestMethod":
-            suggest = "request_method"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RestSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RestSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RestSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -52866,23 +43806,6 @@ class RetryPolicyResponse(dict):
     """
     Execution policy for an activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "intervalInSeconds":
-            suggest = "interval_in_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RetryPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RetryPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RetryPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  count: Optional[Any] = None,
                  interval_in_seconds: Optional[int] = None):
@@ -52918,23 +43841,6 @@ class SSISAccessCredentialResponse(dict):
     """
     SSIS access credential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SSISAccessCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SSISAccessCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SSISAccessCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  domain: Any,
                  password: Any,
@@ -52979,29 +43885,6 @@ class SSISChildPackageResponse(dict):
     """
     SSIS embedded child package.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "packageContent":
-            suggest = "package_content"
-        elif key == "packagePath":
-            suggest = "package_path"
-        elif key == "packageLastModifiedDate":
-            suggest = "package_last_modified_date"
-        elif key == "packageName":
-            suggest = "package_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SSISChildPackageResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SSISChildPackageResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SSISChildPackageResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  package_content: Any,
                  package_path: Any,
@@ -53059,23 +43942,6 @@ class SSISExecutionCredentialResponse(dict):
     """
     SSIS package execution credential.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SSISExecutionCredentialResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SSISExecutionCredentialResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SSISExecutionCredentialResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  domain: Any,
                  password: 'outputs.SecureStringResponse',
@@ -53142,27 +44008,6 @@ class SSISLogLocationResponse(dict):
     """
     SSIS package execution log location
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "logPath":
-            suggest = "log_path"
-        elif key == "accessCredential":
-            suggest = "access_credential"
-        elif key == "logRefreshInterval":
-            suggest = "log_refresh_interval"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SSISLogLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SSISLogLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SSISLogLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  log_path: Any,
                  type: str,
@@ -53220,39 +44065,6 @@ class SSISPackageLocationResponse(dict):
     """
     SSIS package location.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessCredential":
-            suggest = "access_credential"
-        elif key == "childPackages":
-            suggest = "child_packages"
-        elif key == "configurationAccessCredential":
-            suggest = "configuration_access_credential"
-        elif key == "configurationPath":
-            suggest = "configuration_path"
-        elif key == "packageContent":
-            suggest = "package_content"
-        elif key == "packageLastModifiedDate":
-            suggest = "package_last_modified_date"
-        elif key == "packageName":
-            suggest = "package_name"
-        elif key == "packagePassword":
-            suggest = "package_password"
-        elif key == "packagePath":
-            suggest = "package_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SSISPackageLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SSISPackageLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SSISPackageLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  access_credential: Optional['outputs.SSISAccessCredentialResponse'] = None,
                  child_packages: Optional[Sequence['outputs.SSISChildPackageResponse']] = None,
@@ -53384,23 +44196,6 @@ class SSISPropertyOverrideResponse(dict):
     """
     SSIS property override.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isSensitive":
-            suggest = "is_sensitive"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SSISPropertyOverrideResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SSISPropertyOverrideResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SSISPropertyOverrideResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  value: Any,
                  is_sensitive: Optional[bool] = None):
@@ -53435,31 +44230,6 @@ class SalesforceLinkedServiceResponse(dict):
     """
     Linked service for Salesforce.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiVersion":
-            suggest = "api_version"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "environmentUrl":
-            suggest = "environment_url"
-        elif key == "securityToken":
-            suggest = "security_token"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -53604,37 +44374,6 @@ class SalesforceMarketingCloudLinkedServiceResponse(dict):
     """
     Salesforce Marketing Cloud linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionProperties":
-            suggest = "connection_properties"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceMarketingCloudLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceMarketingCloudLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceMarketingCloudLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -53791,25 +44530,6 @@ class SalesforceMarketingCloudObjectDatasetResponse(dict):
     """
     Salesforce Marketing Cloud dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceMarketingCloudObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceMarketingCloudObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceMarketingCloudObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -53929,31 +44649,6 @@ class SalesforceMarketingCloudSourceResponse(dict):
     """
     A copy activity Salesforce Marketing Cloud source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceMarketingCloudSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceMarketingCloudSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceMarketingCloudSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -54050,25 +44745,6 @@ class SalesforceObjectDatasetResponse(dict):
     """
     The Salesforce object dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "objectApiName":
-            suggest = "object_api_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -54188,33 +44864,6 @@ class SalesforceServiceCloudLinkedServiceResponse(dict):
     """
     Linked service for Salesforce Service Cloud.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiVersion":
-            suggest = "api_version"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "environmentUrl":
-            suggest = "environment_url"
-        elif key == "extendedProperties":
-            suggest = "extended_properties"
-        elif key == "securityToken":
-            suggest = "security_token"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceServiceCloudLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceServiceCloudLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceServiceCloudLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -54371,25 +45020,6 @@ class SalesforceServiceCloudObjectDatasetResponse(dict):
     """
     The Salesforce Service Cloud object dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "objectApiName":
-            suggest = "object_api_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceServiceCloudObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceServiceCloudObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceServiceCloudObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -54509,37 +45139,6 @@ class SalesforceServiceCloudSinkResponse(dict):
     """
     A copy activity Salesforce Service Cloud sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "externalIdFieldName":
-            suggest = "external_id_field_name"
-        elif key == "ignoreNullValues":
-            suggest = "ignore_null_values"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceServiceCloudSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceServiceCloudSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceServiceCloudSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  external_id_field_name: Optional[Any] = None,
@@ -54660,31 +45259,6 @@ class SalesforceServiceCloudSourceResponse(dict):
     """
     A copy activity Salesforce Service Cloud source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "readBehavior":
-            suggest = "read_behavior"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceServiceCloudSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceServiceCloudSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceServiceCloudSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -54781,37 +45355,6 @@ class SalesforceSinkResponse(dict):
     """
     A copy activity Salesforce sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "externalIdFieldName":
-            suggest = "external_id_field_name"
-        elif key == "ignoreNullValues":
-            suggest = "ignore_null_values"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  external_id_field_name: Optional[Any] = None,
@@ -54932,33 +45475,6 @@ class SalesforceSourceResponse(dict):
     """
     A copy activity Salesforce source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "readBehavior":
-            suggest = "read_behavior"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SalesforceSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SalesforceSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SalesforceSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -55067,31 +45583,6 @@ class SapBWLinkedServiceResponse(dict):
     """
     SAP Business Warehouse Linked Service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "systemNumber":
-            suggest = "system_number"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapBWLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapBWLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapBWLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  client_id: Any,
                  server: Any,
@@ -55233,23 +45724,6 @@ class SapBwCubeDatasetResponse(dict):
     """
     The SAP BW cube dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapBwCubeDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapBwCubeDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapBwCubeDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -55357,31 +45831,6 @@ class SapBwSourceResponse(dict):
     """
     A copy activity source for SapBW server via MDX.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapBwSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapBwSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapBwSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -55478,25 +45927,6 @@ class SapCloudForCustomerLinkedServiceResponse(dict):
     """
     Linked service for SAP Cloud for Customer.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapCloudForCustomerLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapCloudForCustomerLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  url: Any,
@@ -55616,23 +46046,6 @@ class SapCloudForCustomerResourceDatasetResponse(dict):
     """
     The path of the SAP Cloud for Customer OData entity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapCloudForCustomerResourceDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapCloudForCustomerResourceDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  path: Any,
@@ -55751,35 +46164,6 @@ class SapCloudForCustomerSinkResponse(dict):
     """
     A copy activity SAP Cloud for Customer sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-        elif key == "writeBehavior":
-            suggest = "write_behavior"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapCloudForCustomerSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapCloudForCustomerSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  http_request_timeout: Optional[Any] = None,
@@ -55888,33 +46272,6 @@ class SapCloudForCustomerSourceResponse(dict):
     """
     A copy activity source for SAP Cloud for Customer source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapCloudForCustomerSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapCloudForCustomerSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapCloudForCustomerSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -56023,25 +46380,6 @@ class SapEccLinkedServiceResponse(dict):
     """
     Linked service for SAP ERP Central Component(SAP ECC).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapEccLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapEccLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapEccLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  url: str,
@@ -56161,23 +46499,6 @@ class SapEccResourceDatasetResponse(dict):
     """
     The path of the SAP ECC OData entity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapEccResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapEccResourceDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapEccResourceDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  path: Any,
@@ -56296,33 +46617,6 @@ class SapEccSourceResponse(dict):
     """
     A copy activity source for SAP ECC source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapEccSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapEccSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapEccSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -56431,31 +46725,6 @@ class SapHanaLinkedServiceResponse(dict):
     """
     SAP HANA Linked Service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapHanaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapHanaLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapHanaLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -56600,23 +46869,6 @@ class SapHanaPartitionSettingsResponse(dict):
     """
     The settings that will be leveraged for SAP HANA source partitioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "partitionColumnName":
-            suggest = "partition_column_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapHanaPartitionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapHanaPartitionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapHanaPartitionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  partition_column_name: Optional[Any] = None):
         """
@@ -56640,37 +46892,6 @@ class SapHanaSourceResponse(dict):
     """
     A copy activity source for SAP HANA source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "packetSize":
-            suggest = "packet_size"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapHanaSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapHanaSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapHanaSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -56803,23 +47024,6 @@ class SapHanaTableDatasetResponse(dict):
     """
     SAP HANA Table properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapHanaTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapHanaTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapHanaTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -56939,39 +47143,6 @@ class SapOpenHubLinkedServiceResponse(dict):
     """
     SAP Business Warehouse Open Hub Destination Linked Service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "logonGroup":
-            suggest = "logon_group"
-        elif key == "messageServer":
-            suggest = "message_server"
-        elif key == "messageServerService":
-            suggest = "message_server_service"
-        elif key == "systemId":
-            suggest = "system_id"
-        elif key == "systemNumber":
-            suggest = "system_number"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapOpenHubLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapOpenHubLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapOpenHubLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -57176,39 +47347,6 @@ class SapOpenHubSourceResponse(dict):
     """
     A copy activity source for SAP Business Warehouse Open Hub Destination source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "baseRequestId":
-            suggest = "base_request_id"
-        elif key == "customRfcReadTableFunctionModule":
-            suggest = "custom_rfc_read_table_function_module"
-        elif key == "excludeLastRequest":
-            suggest = "exclude_last_request"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sapDataColumnDelimiter":
-            suggest = "sap_data_column_delimiter"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapOpenHubSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapOpenHubSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapOpenHubSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -57341,29 +47479,6 @@ class SapOpenHubTableDatasetResponse(dict):
     """
     Sap Business Warehouse Open Hub Destination Table properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "openHubDestinationName":
-            suggest = "open_hub_destination_name"
-        elif key == "baseRequestId":
-            suggest = "base_request_id"
-        elif key == "excludeLastRequest":
-            suggest = "exclude_last_request"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapOpenHubTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapOpenHubTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapOpenHubTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  open_hub_destination_name: Any,
@@ -57506,49 +47621,6 @@ class SapTableLinkedServiceResponse(dict):
     """
     SAP Table Linked Service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "logonGroup":
-            suggest = "logon_group"
-        elif key == "messageServer":
-            suggest = "message_server"
-        elif key == "messageServerService":
-            suggest = "message_server_service"
-        elif key == "sncLibraryPath":
-            suggest = "snc_library_path"
-        elif key == "sncMode":
-            suggest = "snc_mode"
-        elif key == "sncMyName":
-            suggest = "snc_my_name"
-        elif key == "sncPartnerName":
-            suggest = "snc_partner_name"
-        elif key == "sncQop":
-            suggest = "snc_qop"
-        elif key == "systemId":
-            suggest = "system_id"
-        elif key == "systemNumber":
-            suggest = "system_number"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapTableLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapTableLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapTableLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -57813,29 +47885,6 @@ class SapTablePartitionSettingsResponse(dict):
     """
     The settings that will be leveraged for SAP table source partitioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxPartitionsNumber":
-            suggest = "max_partitions_number"
-        elif key == "partitionColumnName":
-            suggest = "partition_column_name"
-        elif key == "partitionLowerBound":
-            suggest = "partition_lower_bound"
-        elif key == "partitionUpperBound":
-            suggest = "partition_upper_bound"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapTablePartitionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapTablePartitionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapTablePartitionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_partitions_number: Optional[Any] = None,
                  partition_column_name: Optional[Any] = None,
@@ -57895,25 +47944,6 @@ class SapTableResourceDatasetResponse(dict):
     """
     SAP Table Resource properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapTableResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapTableResourceDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapTableResourceDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  table_name: Any,
@@ -58032,49 +48062,6 @@ class SapTableSourceResponse(dict):
     """
     A copy activity source for SAP Table source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "batchSize":
-            suggest = "batch_size"
-        elif key == "customRfcReadTableFunctionModule":
-            suggest = "custom_rfc_read_table_function_module"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "rfcTableFields":
-            suggest = "rfc_table_fields"
-        elif key == "rfcTableOptions":
-            suggest = "rfc_table_options"
-        elif key == "rowCount":
-            suggest = "row_count"
-        elif key == "rowSkips":
-            suggest = "row_skips"
-        elif key == "sapDataColumnDelimiter":
-            suggest = "sap_data_column_delimiter"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SapTableSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SapTableSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SapTableSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -58267,27 +48254,6 @@ class ScheduleTriggerRecurrenceResponse(dict):
     """
     The workflow trigger recurrence.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endTime":
-            suggest = "end_time"
-        elif key == "startTime":
-            suggest = "start_time"
-        elif key == "timeZone":
-            suggest = "time_zone"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleTriggerRecurrenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleTriggerRecurrenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleTriggerRecurrenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_time: Optional[str] = None,
                  frequency: Optional[str] = None,
@@ -58371,23 +48337,6 @@ class ScheduleTriggerResponse(dict):
     """
     Trigger that creates pipeline runs periodically, on schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "runtimeState":
-            suggest = "runtime_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ScheduleTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ScheduleTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ScheduleTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  recurrence: 'outputs.ScheduleTriggerRecurrenceResponse',
                  runtime_state: str,
@@ -58817,23 +48766,6 @@ class SelfHostedIntegrationRuntimeResponse(dict):
     """
     Self-hosted integration runtime.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedInfo":
-            suggest = "linked_info"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SelfHostedIntegrationRuntimeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SelfHostedIntegrationRuntimeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SelfHostedIntegrationRuntimeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  description: Optional[str] = None,
@@ -59106,37 +49038,6 @@ class ServiceNowLinkedServiceResponse(dict):
     """
     ServiceNow server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceNowLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceNowLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceNowLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  endpoint: Any,
@@ -59327,25 +49228,6 @@ class ServiceNowObjectDatasetResponse(dict):
     """
     ServiceNow server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceNowObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceNowObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceNowObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -59465,31 +49347,6 @@ class ServiceNowSourceResponse(dict):
     """
     A copy activity ServiceNow server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceNowSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceNowSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceNowSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -59586,27 +49443,6 @@ class SetVariableActivityResponse(dict):
     """
     Set value for a Variable.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-        elif key == "variableName":
-            suggest = "variable_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SetVariableActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SetVariableActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SetVariableActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -59702,25 +49538,6 @@ class SftpLocationResponse(dict):
     """
     The location of SFTP dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "folderPath":
-            suggest = "folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SftpLocationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SftpLocationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SftpLocationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  file_name: Optional[Any] = None,
@@ -59769,39 +49586,6 @@ class SftpReadSettingsResponse(dict):
     """
     Sftp read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deleteFilesAfterCompletion":
-            suggest = "delete_files_after_completion"
-        elif key == "enablePartitionDiscovery":
-            suggest = "enable_partition_discovery"
-        elif key == "fileListPath":
-            suggest = "file_list_path"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "modifiedDatetimeEnd":
-            suggest = "modified_datetime_end"
-        elif key == "modifiedDatetimeStart":
-            suggest = "modified_datetime_start"
-        elif key == "partitionRootPath":
-            suggest = "partition_root_path"
-        elif key == "wildcardFileName":
-            suggest = "wildcard_file_name"
-        elif key == "wildcardFolderPath":
-            suggest = "wildcard_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SftpReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SftpReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SftpReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  delete_files_after_completion: Optional[Any] = None,
@@ -59946,39 +49730,6 @@ class SftpServerLinkedServiceResponse(dict):
     """
     A linked service for an SSH File Transfer Protocol (SFTP) server. 
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "hostKeyFingerprint":
-            suggest = "host_key_fingerprint"
-        elif key == "passPhrase":
-            suggest = "pass_phrase"
-        elif key == "privateKeyContent":
-            suggest = "private_key_content"
-        elif key == "privateKeyPath":
-            suggest = "private_key_path"
-        elif key == "skipHostKeyValidation":
-            suggest = "skip_host_key_validation"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SftpServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SftpServerLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SftpServerLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -60182,29 +49933,6 @@ class SftpWriteSettingsResponse(dict):
     """
     Sftp write settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "copyBehavior":
-            suggest = "copy_behavior"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "operationTimeout":
-            suggest = "operation_timeout"
-        elif key == "useTempFileRename":
-            suggest = "use_temp_file_rename"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SftpWriteSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SftpWriteSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SftpWriteSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  copy_behavior: Optional[Any] = None,
@@ -60277,33 +50005,6 @@ class SharePointOnlineListLinkedServiceResponse(dict):
     """
     SharePoint Online List linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-        elif key == "siteUrl":
-            suggest = "site_url"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharePointOnlineListLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharePointOnlineListLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharePointOnlineListLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  service_principal_id: Any,
                  service_principal_key: Any,
@@ -60432,25 +50133,6 @@ class SharePointOnlineListResourceDatasetResponse(dict):
     """
     The sharepoint online list resource dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "listName":
-            suggest = "list_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharePointOnlineListResourceDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharePointOnlineListResourceDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharePointOnlineListResourceDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -60570,29 +50252,6 @@ class SharePointOnlineListSourceResponse(dict):
     """
     A copy activity source for sharePoint online list source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpRequestTimeout":
-            suggest = "http_request_timeout"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SharePointOnlineListSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SharePointOnlineListSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SharePointOnlineListSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  http_request_timeout: Optional[Any] = None,
@@ -60677,33 +50336,6 @@ class ShopifyLinkedServiceResponse(dict):
     """
     Shopify Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessToken":
-            suggest = "access_token"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ShopifyLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ShopifyLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ShopifyLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  host: Any,
                  type: str,
@@ -60847,25 +50479,6 @@ class ShopifyObjectDatasetResponse(dict):
     """
     Shopify Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ShopifyObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ShopifyObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ShopifyObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -60985,31 +50598,6 @@ class ShopifySourceResponse(dict):
     """
     A copy activity Shopify Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ShopifySourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ShopifySourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ShopifySourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -61106,25 +50694,6 @@ class SkipErrorFileResponse(dict):
     """
     Skip error file.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataInconsistency":
-            suggest = "data_inconsistency"
-        elif key == "fileMissing":
-            suggest = "file_missing"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SkipErrorFileResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SkipErrorFileResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SkipErrorFileResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_inconsistency: Optional[Any] = None,
                  file_missing: Optional[Any] = None):
@@ -61160,23 +50729,6 @@ class SnowflakeDatasetResponse(dict):
     """
     The snowflake dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SnowflakeDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SnowflakeDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SnowflakeDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -61296,25 +50848,6 @@ class SnowflakeExportCopyCommandResponse(dict):
     """
     Snowflake export command settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalCopyOptions":
-            suggest = "additional_copy_options"
-        elif key == "additionalFormatOptions":
-            suggest = "additional_format_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SnowflakeExportCopyCommandResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SnowflakeExportCopyCommandResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SnowflakeExportCopyCommandResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_copy_options: Optional[Mapping[str, Any]] = None,
@@ -61363,25 +50896,6 @@ class SnowflakeImportCopyCommandResponse(dict):
     """
     Snowflake import command settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalCopyOptions":
-            suggest = "additional_copy_options"
-        elif key == "additionalFormatOptions":
-            suggest = "additional_format_options"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SnowflakeImportCopyCommandResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SnowflakeImportCopyCommandResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SnowflakeImportCopyCommandResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_copy_options: Optional[Mapping[str, Any]] = None,
@@ -61430,27 +50944,6 @@ class SnowflakeLinkedServiceResponse(dict):
     """
     Snowflake linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SnowflakeLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SnowflakeLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SnowflakeLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -61558,35 +51051,6 @@ class SnowflakeSinkResponse(dict):
     """
     A copy activity snowflake sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "importSettings":
-            suggest = "import_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SnowflakeSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SnowflakeSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SnowflakeSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  import_settings: Optional['outputs.SnowflakeImportCopyCommandResponse'] = None,
@@ -61695,29 +51159,6 @@ class SnowflakeSourceResponse(dict):
     """
     A copy activity snowflake source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "exportSettings":
-            suggest = "export_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SnowflakeSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SnowflakeSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SnowflakeSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  export_settings: Optional['outputs.SnowflakeExportCopyCommandResponse'] = None,
@@ -61802,43 +51243,6 @@ class SparkLinkedServiceResponse(dict):
     """
     Spark Server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "allowHostNameCNMismatch":
-            suggest = "allow_host_name_cn_mismatch"
-        elif key == "allowSelfSignedServerCert":
-            suggest = "allow_self_signed_server_cert"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "enableSsl":
-            suggest = "enable_ssl"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "httpPath":
-            suggest = "http_path"
-        elif key == "serverType":
-            suggest = "server_type"
-        elif key == "thriftTransportProtocol":
-            suggest = "thrift_transport_protocol"
-        elif key == "trustedCertPath":
-            suggest = "trusted_cert_path"
-        elif key == "useSystemTrustStore":
-            suggest = "use_system_trust_store"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SparkLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SparkLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SparkLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  host: Any,
@@ -62076,25 +51480,6 @@ class SparkObjectDatasetResponse(dict):
     """
     Spark Server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SparkObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SparkObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SparkObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -62226,31 +51611,6 @@ class SparkSourceResponse(dict):
     """
     A copy activity Spark Server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SparkSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SparkSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SparkSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -62347,27 +51707,6 @@ class SqlAlwaysEncryptedPropertiesResponse(dict):
     """
     Sql always encrypted properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "alwaysEncryptedAkvAuthType":
-            suggest = "always_encrypted_akv_auth_type"
-        elif key == "servicePrincipalId":
-            suggest = "service_principal_id"
-        elif key == "servicePrincipalKey":
-            suggest = "service_principal_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlAlwaysEncryptedPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlAlwaysEncryptedPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlAlwaysEncryptedPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  always_encrypted_akv_auth_type: str,
                  service_principal_id: Optional[Any] = None,
@@ -62414,43 +51753,6 @@ class SqlDWSinkResponse(dict):
     """
     A copy activity SQL Data Warehouse sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowCopyCommand":
-            suggest = "allow_copy_command"
-        elif key == "allowPolyBase":
-            suggest = "allow_poly_base"
-        elif key == "copyCommandSettings":
-            suggest = "copy_command_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "polyBaseSettings":
-            suggest = "poly_base_settings"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "tableOption":
-            suggest = "table_option"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlDWSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlDWSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlDWSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  allow_copy_command: Optional[Any] = None,
@@ -62607,41 +51909,6 @@ class SqlDWSourceResponse(dict):
     """
     A copy activity SQL Data Warehouse source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "sqlReaderQuery":
-            suggest = "sql_reader_query"
-        elif key == "sqlReaderStoredProcedureName":
-            suggest = "sql_reader_stored_procedure_name"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlDWSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlDWSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlDWSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -62786,43 +52053,6 @@ class SqlMISinkResponse(dict):
     """
     A copy activity Azure SQL Managed Instance sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "sqlWriterStoredProcedureName":
-            suggest = "sql_writer_stored_procedure_name"
-        elif key == "sqlWriterTableType":
-            suggest = "sql_writer_table_type"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-        elif key == "storedProcedureTableTypeParameterName":
-            suggest = "stored_procedure_table_type_parameter_name"
-        elif key == "tableOption":
-            suggest = "table_option"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlMISinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlMISinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlMISinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -62979,43 +52209,6 @@ class SqlMISourceResponse(dict):
     """
     A copy activity Azure SQL Managed Instance source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "produceAdditionalTypes":
-            suggest = "produce_additional_types"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "sqlReaderQuery":
-            suggest = "sql_reader_query"
-        elif key == "sqlReaderStoredProcedureName":
-            suggest = "sql_reader_stored_procedure_name"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlMISourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlMISourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlMISourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -63172,27 +52365,6 @@ class SqlPartitionSettingsResponse(dict):
     """
     The settings that will be leveraged for Sql source partitioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "partitionColumnName":
-            suggest = "partition_column_name"
-        elif key == "partitionLowerBound":
-            suggest = "partition_lower_bound"
-        elif key == "partitionUpperBound":
-            suggest = "partition_upper_bound"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlPartitionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlPartitionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlPartitionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  partition_column_name: Optional[Any] = None,
                  partition_lower_bound: Optional[Any] = None,
@@ -63240,31 +52412,6 @@ class SqlServerLinkedServiceResponse(dict):
     """
     SQL Server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionString":
-            suggest = "connection_string"
-        elif key == "alwaysEncryptedSettings":
-            suggest = "always_encrypted_settings"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "userName":
-            suggest = "user_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlServerLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlServerLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlServerLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  connection_string: Any,
                  type: str,
@@ -63396,43 +52543,6 @@ class SqlServerSinkResponse(dict):
     """
     A copy activity SQL server sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "sqlWriterStoredProcedureName":
-            suggest = "sql_writer_stored_procedure_name"
-        elif key == "sqlWriterTableType":
-            suggest = "sql_writer_table_type"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-        elif key == "storedProcedureTableTypeParameterName":
-            suggest = "stored_procedure_table_type_parameter_name"
-        elif key == "tableOption":
-            suggest = "table_option"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlServerSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlServerSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlServerSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -63589,43 +52699,6 @@ class SqlServerSourceResponse(dict):
     """
     A copy activity SQL server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "produceAdditionalTypes":
-            suggest = "produce_additional_types"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "sqlReaderQuery":
-            suggest = "sql_reader_query"
-        elif key == "sqlReaderStoredProcedureName":
-            suggest = "sql_reader_stored_procedure_name"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlServerSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlServerSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlServerSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -63782,31 +52855,6 @@ class SqlServerStoredProcedureActivityResponse(dict):
     """
     SQL stored procedure activity type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "storedProcedureName":
-            suggest = "stored_procedure_name"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlServerStoredProcedureActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlServerStoredProcedureActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlServerStoredProcedureActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  name: str,
@@ -63924,25 +52972,6 @@ class SqlServerTableDatasetResponse(dict):
     """
     The on-premises SQL Server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlServerTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlServerTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlServerTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -64074,43 +53103,6 @@ class SqlSinkResponse(dict):
     """
     A copy activity SQL sink.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "preCopyScript":
-            suggest = "pre_copy_script"
-        elif key == "sinkRetryCount":
-            suggest = "sink_retry_count"
-        elif key == "sinkRetryWait":
-            suggest = "sink_retry_wait"
-        elif key == "sqlWriterStoredProcedureName":
-            suggest = "sql_writer_stored_procedure_name"
-        elif key == "sqlWriterTableType":
-            suggest = "sql_writer_table_type"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-        elif key == "storedProcedureTableTypeParameterName":
-            suggest = "stored_procedure_table_type_parameter_name"
-        elif key == "tableOption":
-            suggest = "table_option"
-        elif key == "writeBatchSize":
-            suggest = "write_batch_size"
-        elif key == "writeBatchTimeout":
-            suggest = "write_batch_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlSinkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlSinkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlSinkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  max_concurrent_connections: Optional[Any] = None,
@@ -64267,43 +53259,6 @@ class SqlSourceResponse(dict):
     """
     A copy activity SQL source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "isolationLevel":
-            suggest = "isolation_level"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "sqlReaderQuery":
-            suggest = "sql_reader_query"
-        elif key == "sqlReaderStoredProcedureName":
-            suggest = "sql_reader_stored_procedure_name"
-        elif key == "storedProcedureParameters":
-            suggest = "stored_procedure_parameters"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SqlSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SqlSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SqlSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -64460,39 +53415,6 @@ class SquareLinkedServiceResponse(dict):
     """
     Square Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientId":
-            suggest = "client_id"
-        elif key == "clientSecret":
-            suggest = "client_secret"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionProperties":
-            suggest = "connection_properties"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "redirectUri":
-            suggest = "redirect_uri"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SquareLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SquareLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SquareLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -64673,25 +53595,6 @@ class SquareObjectDatasetResponse(dict):
     """
     Square Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SquareObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SquareObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SquareObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -64811,31 +53714,6 @@ class SquareSourceResponse(dict):
     """
     A copy activity Square Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SquareSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SquareSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SquareSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -65601,25 +54479,6 @@ class StagingSettingsResponse(dict):
     """
     Staging settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "enableCompression":
-            suggest = "enable_compression"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StagingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StagingSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StagingSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  enable_compression: Optional[Any] = None,
@@ -65701,27 +54560,6 @@ class SwitchActivityResponse(dict):
     """
     This activity evaluates an expression and executes activities under the cases property that correspond to the expression evaluation expected in the equals property.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultActivities":
-            suggest = "default_activities"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SwitchActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SwitchActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SwitchActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  on: 'outputs.ExpressionResponse',
@@ -65863,27 +54701,6 @@ class SybaseLinkedServiceResponse(dict):
     """
     Linked service for Sybase data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SybaseLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SybaseLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SybaseLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  database: Any,
                  server: Any,
@@ -66038,31 +54855,6 @@ class SybaseSourceResponse(dict):
     """
     A copy activity source for Sybase databases.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SybaseSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SybaseSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SybaseSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -66159,25 +54951,6 @@ class SybaseTableDatasetResponse(dict):
     """
     The Sybase table dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SybaseTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SybaseTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SybaseTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -66297,31 +55070,6 @@ class TabularSourceResponse(dict):
     """
     Copy activity sources of tabular type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TabularSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TabularSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TabularSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -66406,23 +55154,6 @@ class TarGZipReadSettingsResponse(dict):
     """
     The TarGZip compression read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "preserveCompressionFileNameAsFolder":
-            suggest = "preserve_compression_file_name_as_folder"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TarGZipReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TarGZipReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TarGZipReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  preserve_compression_file_name_as_folder: Optional[Any] = None):
@@ -66459,23 +55190,6 @@ class TarReadSettingsResponse(dict):
     """
     The Tar compression read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "preserveCompressionFileNameAsFolder":
-            suggest = "preserve_compression_file_name_as_folder"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TarReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TarReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TarReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  preserve_compression_file_name_as_folder: Optional[Any] = None):
@@ -66512,29 +55226,6 @@ class TeradataLinkedServiceResponse(dict):
     """
     Linked service for Teradata data source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TeradataLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TeradataLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TeradataLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -66679,27 +55370,6 @@ class TeradataPartitionSettingsResponse(dict):
     """
     The settings that will be leveraged for teradata source partitioning.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "partitionColumnName":
-            suggest = "partition_column_name"
-        elif key == "partitionLowerBound":
-            suggest = "partition_lower_bound"
-        elif key == "partitionUpperBound":
-            suggest = "partition_upper_bound"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TeradataPartitionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TeradataPartitionSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TeradataPartitionSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  partition_column_name: Optional[Any] = None,
                  partition_lower_bound: Optional[Any] = None,
@@ -66747,35 +55417,6 @@ class TeradataSourceResponse(dict):
     """
     A copy activity Teradata source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "partitionOption":
-            suggest = "partition_option"
-        elif key == "partitionSettings":
-            suggest = "partition_settings"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TeradataSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TeradataSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TeradataSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -66896,23 +55537,6 @@ class TeradataTableDatasetResponse(dict):
     """
     The Teradata database dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TeradataTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TeradataTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TeradataTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -67044,39 +55668,6 @@ class TextFormatResponse(dict):
     """
     The data stored in text format.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "columnDelimiter":
-            suggest = "column_delimiter"
-        elif key == "encodingName":
-            suggest = "encoding_name"
-        elif key == "escapeChar":
-            suggest = "escape_char"
-        elif key == "firstRowAsHeader":
-            suggest = "first_row_as_header"
-        elif key == "nullValue":
-            suggest = "null_value"
-        elif key == "quoteChar":
-            suggest = "quote_char"
-        elif key == "rowDelimiter":
-            suggest = "row_delimiter"
-        elif key == "skipLineCount":
-            suggest = "skip_line_count"
-        elif key == "treatEmptyAsNull":
-            suggest = "treat_empty_as_null"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TextFormatResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TextFormatResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TextFormatResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  column_delimiter: Optional[Any] = None,
@@ -67267,23 +55858,6 @@ class TriggerDependencyReferenceResponse(dict):
     """
     Trigger referenced dependency.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceTrigger":
-            suggest = "reference_trigger"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TriggerDependencyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TriggerDependencyReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TriggerDependencyReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_trigger: 'outputs.TriggerReferenceResponse',
                  type: str):
@@ -67319,23 +55893,6 @@ class TriggerPipelineReferenceResponse(dict):
     """
     Pipeline that needs to be triggered with the given parameters.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "pipelineReference":
-            suggest = "pipeline_reference"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TriggerPipelineReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TriggerPipelineReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TriggerPipelineReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  parameters: Optional[Mapping[str, Any]] = None,
                  pipeline_reference: Optional['outputs.PipelineReferenceResponse'] = None):
@@ -67371,23 +55928,6 @@ class TriggerReferenceResponse(dict):
     """
     Trigger reference type.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceName":
-            suggest = "reference_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TriggerReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TriggerReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TriggerReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_name: str,
                  type: str):
@@ -67421,23 +55961,6 @@ class TumblingWindowTriggerDependencyReferenceResponse(dict):
     """
     Referenced tumbling window trigger dependency.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "referenceTrigger":
-            suggest = "reference_trigger"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TumblingWindowTriggerDependencyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TumblingWindowTriggerDependencyReferenceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TumblingWindowTriggerDependencyReferenceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  reference_trigger: 'outputs.TriggerReferenceResponse',
                  type: str,
@@ -67497,33 +56020,6 @@ class TumblingWindowTriggerResponse(dict):
     """
     Trigger that schedules pipeline runs for all fixed time interval windows from a start time without gaps and also supports backfill scenarios (when start time is in the past).
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxConcurrency":
-            suggest = "max_concurrency"
-        elif key == "runtimeState":
-            suggest = "runtime_state"
-        elif key == "startTime":
-            suggest = "start_time"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "endTime":
-            suggest = "end_time"
-        elif key == "retryPolicy":
-            suggest = "retry_policy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TumblingWindowTriggerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TumblingWindowTriggerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TumblingWindowTriggerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  frequency: str,
                  interval: int,
@@ -67686,25 +56182,6 @@ class UntilActivityResponse(dict):
     """
     This activity executes inner activities until the specified boolean expression results to true or timeout is reached, whichever is earlier.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UntilActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UntilActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UntilActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  activities: Sequence[Any],
                  expression: 'outputs.ExpressionResponse',
@@ -67914,29 +56391,6 @@ class ValidationActivityResponse(dict):
     """
     This activity verifies that an external resource exists.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "childItems":
-            suggest = "child_items"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "minimumSize":
-            suggest = "minimum_size"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ValidationActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ValidationActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ValidationActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
                  name: str,
@@ -68067,23 +56521,6 @@ class VariableSpecificationResponse(dict):
     """
     Definition of a single variable for a Pipeline.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultValue":
-            suggest = "default_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VariableSpecificationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VariableSpecificationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VariableSpecificationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  default_value: Optional[Any] = None):
@@ -68118,27 +56555,6 @@ class VerticaLinkedServiceResponse(dict):
     """
     Vertica linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionString":
-            suggest = "connection_string"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VerticaLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VerticaLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VerticaLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -68247,31 +56663,6 @@ class VerticaSourceResponse(dict):
     """
     A copy activity Vertica source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VerticaSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VerticaSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VerticaSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -68368,25 +56759,6 @@ class VerticaTableDatasetResponse(dict):
     """
     Vertica dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VerticaTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VerticaTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VerticaTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -68518,27 +56890,6 @@ class WaitActivityResponse(dict):
     """
     This activity suspends pipeline execution for the specified interval.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "waitTimeInSeconds":
-            suggest = "wait_time_in_seconds"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WaitActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WaitActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WaitActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -68621,23 +56972,6 @@ class WebActivityAuthenticationResponse(dict):
     """
     Web activity authentication properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "userTenant":
-            suggest = "user_tenant"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebActivityAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebActivityAuthenticationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebActivityAuthenticationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  password: Optional[Any] = None,
@@ -68720,31 +57054,6 @@ class WebActivityResponse(dict):
     """
     Web activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "linkedServices":
-            suggest = "linked_services"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  method: str,
                  name: str,
@@ -68934,23 +57243,6 @@ class WebAnonymousAuthenticationResponse(dict):
     """
     A WebLinkedService that uses anonymous authentication to communicate with an HTTP endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebAnonymousAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebAnonymousAuthenticationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebAnonymousAuthenticationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  url: Any):
@@ -68986,23 +57278,6 @@ class WebBasicAuthenticationResponse(dict):
     """
     A WebLinkedService that uses basic authentication to communicate with an HTTP endpoint.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebBasicAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebBasicAuthenticationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebBasicAuthenticationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  password: Any,
@@ -69060,23 +57335,6 @@ class WebClientCertificateAuthenticationResponse(dict):
     """
     A WebLinkedService that uses client certificate based authentication to communicate with an HTTP endpoint. This scheme follows mutual authentication; the server must also provide valid credentials to the client.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebClientCertificateAuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebClientCertificateAuthenticationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebClientCertificateAuthenticationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  authentication_type: str,
                  password: Any,
@@ -69134,27 +57392,6 @@ class WebHookActivityResponse(dict):
     """
     WebHook activity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dependsOn":
-            suggest = "depends_on"
-        elif key == "reportStatusOnCallBack":
-            suggest = "report_status_on_call_back"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebHookActivityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebHookActivityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebHookActivityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  method: str,
                  name: str,
@@ -69308,25 +57545,6 @@ class WebLinkedServiceResponse(dict):
     """
     Web linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "typeProperties":
-            suggest = "type_properties"
-        elif key == "connectVia":
-            suggest = "connect_via"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  type_properties: Any,
@@ -69410,29 +57628,6 @@ class WebSourceResponse(dict):
     """
     A copy activity source for web page table.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -69505,23 +57700,6 @@ class WebTableDatasetResponse(dict):
     """
     The dataset points to a HTML table in the web page.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WebTableDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WebTableDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WebTableDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  index: Any,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
@@ -69652,37 +57830,6 @@ class XeroLinkedServiceResponse(dict):
     """
     Xero Service linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionProperties":
-            suggest = "connection_properties"
-        elif key == "consumerKey":
-            suggest = "consumer_key"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "privateKey":
-            suggest = "private_key"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in XeroLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        XeroLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        XeroLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  annotations: Optional[Sequence[Any]] = None,
@@ -69853,25 +58000,6 @@ class XeroObjectDatasetResponse(dict):
     """
     Xero Service dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in XeroObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        XeroObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        XeroObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -69991,31 +58119,6 @@ class XeroSourceResponse(dict):
     """
     A copy activity Xero Service source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in XeroSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        XeroSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        XeroSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -70112,27 +58215,6 @@ class XmlDatasetResponse(dict):
     """
     Xml dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "encodingName":
-            suggest = "encoding_name"
-        elif key == "nullValue":
-            suggest = "null_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in XmlDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        XmlDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        XmlDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  location: Any,
@@ -70287,29 +58369,6 @@ class XmlReadSettingsResponse(dict):
     """
     Xml read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "compressionProperties":
-            suggest = "compression_properties"
-        elif key == "detectDataType":
-            suggest = "detect_data_type"
-        elif key == "namespacePrefixes":
-            suggest = "namespace_prefixes"
-        elif key == "validationMode":
-            suggest = "validation_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in XmlReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        XmlReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        XmlReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  compression_properties: Optional[Any] = None,
@@ -70394,33 +58453,6 @@ class XmlSourceResponse(dict):
     """
     A copy activity Xml source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "formatSettings":
-            suggest = "format_settings"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-        elif key == "storeSettings":
-            suggest = "store_settings"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in XmlSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        XmlSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        XmlSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,
@@ -70517,23 +58549,6 @@ class ZipDeflateReadSettingsResponse(dict):
     """
     The ZipDeflate compression read settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "preserveZipFileNameAsFolder":
-            suggest = "preserve_zip_file_name_as_folder"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ZipDeflateReadSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ZipDeflateReadSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ZipDeflateReadSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  preserve_zip_file_name_as_folder: Optional[Any] = None):
@@ -70570,35 +58585,6 @@ class ZohoLinkedServiceResponse(dict):
     """
     Zoho server linked service.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessToken":
-            suggest = "access_token"
-        elif key == "connectVia":
-            suggest = "connect_via"
-        elif key == "connectionProperties":
-            suggest = "connection_properties"
-        elif key == "encryptedCredential":
-            suggest = "encrypted_credential"
-        elif key == "useEncryptedEndpoints":
-            suggest = "use_encrypted_endpoints"
-        elif key == "useHostVerification":
-            suggest = "use_host_verification"
-        elif key == "usePeerVerification":
-            suggest = "use_peer_verification"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ZohoLinkedServiceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ZohoLinkedServiceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ZohoLinkedServiceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  access_token: Optional[Any] = None,
@@ -70755,25 +58741,6 @@ class ZohoObjectDatasetResponse(dict):
     """
     Zoho server dataset.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkedServiceName":
-            suggest = "linked_service_name"
-        elif key == "tableName":
-            suggest = "table_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ZohoObjectDatasetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ZohoObjectDatasetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ZohoObjectDatasetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  linked_service_name: 'outputs.LinkedServiceReferenceResponse',
                  type: str,
@@ -70893,31 +58860,6 @@ class ZohoSourceResponse(dict):
     """
     A copy activity Zoho server source.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalColumns":
-            suggest = "additional_columns"
-        elif key == "maxConcurrentConnections":
-            suggest = "max_concurrent_connections"
-        elif key == "queryTimeout":
-            suggest = "query_timeout"
-        elif key == "sourceRetryCount":
-            suggest = "source_retry_count"
-        elif key == "sourceRetryWait":
-            suggest = "source_retry_wait"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ZohoSourceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ZohoSourceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ZohoSourceResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  additional_columns: Optional[Sequence['outputs.AdditionalColumnsResponse']] = None,

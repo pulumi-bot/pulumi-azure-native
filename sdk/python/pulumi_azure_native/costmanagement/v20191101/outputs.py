@@ -41,25 +41,6 @@ class ExportDefinitionResponse(dict):
     """
     The definition of a query.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataSet":
-            suggest = "data_set"
-        elif key == "timePeriod":
-            suggest = "time_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  timeframe: str,
                  type: str,
@@ -117,25 +98,6 @@ class ExportDeliveryDestinationResponse(dict):
     """
     The destination information for the delivery of the export. To allow access to a storage account, you must register the account's subscription with the Microsoft.CostManagementExports resource provider. This is required once per subscription. When creating an export in the Azure portal, it is done automatically, however API users need to register the subscription. For more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services .
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-        elif key == "rootFolderPath":
-            suggest = "root_folder_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportDeliveryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportDeliveryDestinationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportDeliveryDestinationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  container: str,
                  resource_id: str,
@@ -203,23 +165,6 @@ class ExportRecurrencePeriodResponse(dict):
     """
     The start and end date for recurrence schedule.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportRecurrencePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportRecurrencePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportRecurrencePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: Optional[str] = None):
@@ -254,23 +199,6 @@ class ExportScheduleResponse(dict):
     """
     The schedule associated with a export.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recurrencePeriod":
-            suggest = "recurrence_period"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ExportScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ExportScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ExportScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  recurrence: str,
                  recurrence_period: Optional['outputs.ExportRecurrencePeriodResponse'] = None,
@@ -570,25 +498,6 @@ class QueryFilterResponse(dict):
     """
     The filter expression to be used in the export.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "and":
-            suggest = "and_"
-        elif key == "or":
-            suggest = "or_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QueryFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QueryFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QueryFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  and_: Optional[Sequence['outputs.QueryFilterResponse']] = None,
                  dimensions: Optional['outputs.QueryComparisonExpressionResponse'] = None,
@@ -681,23 +590,6 @@ class QueryTimePeriodResponse(dict):
     """
     The start and end date for pulling data for the query.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in QueryTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        QueryTimePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        QueryTimePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: str):
@@ -914,29 +806,6 @@ class ReportConfigFilterResponse(dict):
     """
     The filter expression to be used in the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "and":
-            suggest = "and_"
-        elif key == "or":
-            suggest = "or_"
-        elif key == "tagKey":
-            suggest = "tag_key"
-        elif key == "tagValue":
-            suggest = "tag_value"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  and_: Optional[Sequence['outputs.ReportConfigFilterResponse']] = None,
                  dimensions: Optional['outputs.ReportConfigComparisonExpressionResponse'] = None,
@@ -1087,23 +956,6 @@ class ReportConfigTimePeriodResponse(dict):
     """
     The start and end date for pulling data for the report.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "from":
-            suggest = "from_"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReportConfigTimePeriodResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReportConfigTimePeriodResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReportConfigTimePeriodResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  from_: str,
                  to: str):

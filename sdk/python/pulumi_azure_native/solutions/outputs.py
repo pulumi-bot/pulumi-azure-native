@@ -83,25 +83,6 @@ class ApplicationAuthorizationResponse(dict):
     """
     The managed application provider authorization.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "roleDefinitionId":
-            suggest = "role_definition_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationAuthorizationResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationAuthorizationResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  role_definition_id: str):
@@ -135,23 +116,6 @@ class ApplicationBillingDetailsDefinitionResponse(dict):
     """
     Managed application billing details definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceUsageId":
-            suggest = "resource_usage_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationBillingDetailsDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationBillingDetailsDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationBillingDetailsDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  resource_usage_id: Optional[str] = None):
         """
@@ -175,23 +139,6 @@ class ApplicationClientDetailsResponse(dict):
     """
     The application client details to track the entity creating/updating the managed app resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "applicationId":
-            suggest = "application_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationClientDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationClientDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationClientDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  application_id: Optional[str] = None,
                  oid: Optional[str] = None,
@@ -283,23 +230,6 @@ class ApplicationDeploymentPolicyResponse(dict):
     """
     Managed application deployment policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deploymentMode":
-            suggest = "deployment_mode"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationDeploymentPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationDeploymentPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationDeploymentPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  deployment_mode: str):
         """
@@ -322,29 +252,6 @@ class ApplicationJitAccessPolicyResponse(dict):
     """
     Managed application Jit access policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "jitAccessEnabled":
-            suggest = "jit_access_enabled"
-        elif key == "jitApprovalMode":
-            suggest = "jit_approval_mode"
-        elif key == "jitApprovers":
-            suggest = "jit_approvers"
-        elif key == "maximumJitAccessDuration":
-            suggest = "maximum_jit_access_duration"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationJitAccessPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationJitAccessPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationJitAccessPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  jit_access_enabled: bool,
                  jit_approval_mode: Optional[str] = None,
@@ -448,23 +355,6 @@ class ApplicationNotificationPolicyResponse(dict):
     """
     Managed application notification policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "notificationEndpoints":
-            suggest = "notification_endpoints"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationNotificationPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationNotificationPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationNotificationPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  notification_endpoints: Sequence['outputs.ApplicationNotificationEndpointResponse']):
         """
@@ -487,23 +377,6 @@ class ApplicationPackageContactResponse(dict):
     """
     The application package contact information.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "contactName":
-            suggest = "contact_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationPackageContactResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationPackageContactResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationPackageContactResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  email: str,
                  phone: str,
@@ -549,23 +422,6 @@ class ApplicationPackageLockingPolicyDefinitionResponse(dict):
     """
     Managed application locking policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedActions":
-            suggest = "allowed_actions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationPackageLockingPolicyDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationPackageLockingPolicyDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationPackageLockingPolicyDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_actions: Optional[Sequence[str]] = None):
         """
@@ -589,25 +445,6 @@ class ApplicationPackageSupportUrlsResponse(dict):
     """
     The appliance package support URLs.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "governmentCloud":
-            suggest = "government_cloud"
-        elif key == "publicAzure":
-            suggest = "public_azure"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationPackageSupportUrlsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationPackageSupportUrlsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationPackageSupportUrlsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  government_cloud: Optional[str] = None,
                  public_azure: Optional[str] = None):
@@ -643,23 +480,6 @@ class ApplicationPolicyResponse(dict):
     """
     Managed application policy.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "policyDefinitionId":
-            suggest = "policy_definition_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  parameters: Optional[str] = None,
@@ -707,27 +527,6 @@ class IdentityResponse(dict):
     """
     Identity for the resource.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-        elif key == "userAssignedIdentities":
-            suggest = "user_assigned_identities"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str,
@@ -785,23 +584,6 @@ class JitApproverDefinitionResponse(dict):
     """
     JIT approver definition.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "displayName":
-            suggest = "display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JitApproverDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JitApproverDefinitionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JitApproverDefinitionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: str,
                  display_name: Optional[str] = None,
@@ -848,25 +630,6 @@ class JitAuthorizationPoliciesResponse(dict):
     """
     The JIT authorization policies.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "roleDefinitionId":
-            suggest = "role_definition_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JitAuthorizationPoliciesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JitAuthorizationPoliciesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JitAuthorizationPoliciesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  role_definition_id: str):
@@ -900,23 +663,6 @@ class JitSchedulingPolicyResponse(dict):
     """
     The JIT scheduling policies.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JitSchedulingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JitSchedulingPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JitSchedulingPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  duration: str,
                  start_time: str,
@@ -957,23 +703,6 @@ class PlanResponse(dict):
     """
     Plan for the managed application.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "promotionCode":
-            suggest = "promotion_code"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PlanResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PlanResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
                  product: str,
@@ -1123,25 +852,6 @@ class UserAssignedResourceIdentityResponse(dict):
     """
     Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserAssignedResourceIdentityResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        UserAssignedResourceIdentityResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        UserAssignedResourceIdentityResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  principal_id: str,
                  tenant_id: str):

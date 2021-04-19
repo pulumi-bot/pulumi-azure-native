@@ -91,33 +91,6 @@ class A2APolicyDetailsResponse(dict):
     """
     A2A specific policy details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "appConsistentFrequencyInMinutes":
-            suggest = "app_consistent_frequency_in_minutes"
-        elif key == "crashConsistentFrequencyInMinutes":
-            suggest = "crash_consistent_frequency_in_minutes"
-        elif key == "multiVmSyncStatus":
-            suggest = "multi_vm_sync_status"
-        elif key == "recoveryPointHistory":
-            suggest = "recovery_point_history"
-        elif key == "recoveryPointThresholdInMinutes":
-            suggest = "recovery_point_threshold_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in A2APolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        A2APolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        A2APolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  app_consistent_frequency_in_minutes: Optional[int] = None,
@@ -202,59 +175,6 @@ class A2AProtectedDiskDetailsResponse(dict):
     """
     A2A protected disk details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataPendingAtSourceAgentInMB":
-            suggest = "data_pending_at_source_agent_in_mb"
-        elif key == "dataPendingInStagingStorageAccountInMB":
-            suggest = "data_pending_in_staging_storage_account_in_mb"
-        elif key == "dekKeyVaultArmId":
-            suggest = "dek_key_vault_arm_id"
-        elif key == "diskCapacityInBytes":
-            suggest = "disk_capacity_in_bytes"
-        elif key == "diskName":
-            suggest = "disk_name"
-        elif key == "diskType":
-            suggest = "disk_type"
-        elif key == "diskUri":
-            suggest = "disk_uri"
-        elif key == "isDiskEncrypted":
-            suggest = "is_disk_encrypted"
-        elif key == "isDiskKeyEncrypted":
-            suggest = "is_disk_key_encrypted"
-        elif key == "kekKeyVaultArmId":
-            suggest = "kek_key_vault_arm_id"
-        elif key == "keyIdentifier":
-            suggest = "key_identifier"
-        elif key == "monitoringJobType":
-            suggest = "monitoring_job_type"
-        elif key == "monitoringPercentageCompletion":
-            suggest = "monitoring_percentage_completion"
-        elif key == "primaryDiskAzureStorageAccountId":
-            suggest = "primary_disk_azure_storage_account_id"
-        elif key == "primaryStagingAzureStorageAccountId":
-            suggest = "primary_staging_azure_storage_account_id"
-        elif key == "recoveryAzureStorageAccountId":
-            suggest = "recovery_azure_storage_account_id"
-        elif key == "recoveryDiskUri":
-            suggest = "recovery_disk_uri"
-        elif key == "resyncRequired":
-            suggest = "resync_required"
-        elif key == "secretIdentifier":
-            suggest = "secret_identifier"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in A2AProtectedDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        A2AProtectedDiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        A2AProtectedDiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_pending_at_source_agent_in_mb: Optional[float] = None,
                  data_pending_in_staging_storage_account_in_mb: Optional[float] = None,
@@ -494,63 +414,6 @@ class A2AProtectedManagedDiskDetailsResponse(dict):
     """
     A2A protected managed disk details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataPendingAtSourceAgentInMB":
-            suggest = "data_pending_at_source_agent_in_mb"
-        elif key == "dataPendingInStagingStorageAccountInMB":
-            suggest = "data_pending_in_staging_storage_account_in_mb"
-        elif key == "dekKeyVaultArmId":
-            suggest = "dek_key_vault_arm_id"
-        elif key == "diskCapacityInBytes":
-            suggest = "disk_capacity_in_bytes"
-        elif key == "diskId":
-            suggest = "disk_id"
-        elif key == "diskName":
-            suggest = "disk_name"
-        elif key == "diskType":
-            suggest = "disk_type"
-        elif key == "isDiskEncrypted":
-            suggest = "is_disk_encrypted"
-        elif key == "isDiskKeyEncrypted":
-            suggest = "is_disk_key_encrypted"
-        elif key == "kekKeyVaultArmId":
-            suggest = "kek_key_vault_arm_id"
-        elif key == "keyIdentifier":
-            suggest = "key_identifier"
-        elif key == "monitoringJobType":
-            suggest = "monitoring_job_type"
-        elif key == "monitoringPercentageCompletion":
-            suggest = "monitoring_percentage_completion"
-        elif key == "primaryStagingAzureStorageAccountId":
-            suggest = "primary_staging_azure_storage_account_id"
-        elif key == "recoveryReplicaDiskAccountType":
-            suggest = "recovery_replica_disk_account_type"
-        elif key == "recoveryReplicaDiskId":
-            suggest = "recovery_replica_disk_id"
-        elif key == "recoveryResourceGroupId":
-            suggest = "recovery_resource_group_id"
-        elif key == "recoveryTargetDiskAccountType":
-            suggest = "recovery_target_disk_account_type"
-        elif key == "recoveryTargetDiskId":
-            suggest = "recovery_target_disk_id"
-        elif key == "resyncRequired":
-            suggest = "resync_required"
-        elif key == "secretIdentifier":
-            suggest = "secret_identifier"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in A2AProtectedManagedDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        A2AProtectedManagedDiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        A2AProtectedManagedDiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_pending_at_source_agent_in_mb: Optional[float] = None,
                  data_pending_in_staging_storage_account_in_mb: Optional[float] = None,
@@ -814,31 +677,6 @@ class A2AProtectionContainerMappingDetailsResponse(dict):
     """
     A2A provider specific settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "agentAutoUpdateStatus":
-            suggest = "agent_auto_update_status"
-        elif key == "automationAccountArmId":
-            suggest = "automation_account_arm_id"
-        elif key == "jobScheduleName":
-            suggest = "job_schedule_name"
-        elif key == "scheduleName":
-            suggest = "schedule_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in A2AProtectionContainerMappingDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        A2AProtectionContainerMappingDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        A2AProtectionContainerMappingDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  agent_auto_update_status: Optional[str] = None,
@@ -911,85 +749,6 @@ class A2AReplicationDetailsResponse(dict):
     """
     A2A provider specific settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "agentVersion":
-            suggest = "agent_version"
-        elif key == "fabricObjectId":
-            suggest = "fabric_object_id"
-        elif key == "isReplicationAgentUpdateRequired":
-            suggest = "is_replication_agent_update_required"
-        elif key == "lastHeartbeat":
-            suggest = "last_heartbeat"
-        elif key == "lastRpoCalculatedTime":
-            suggest = "last_rpo_calculated_time"
-        elif key == "lifecycleId":
-            suggest = "lifecycle_id"
-        elif key == "managementId":
-            suggest = "management_id"
-        elif key == "monitoringJobType":
-            suggest = "monitoring_job_type"
-        elif key == "monitoringPercentageCompletion":
-            suggest = "monitoring_percentage_completion"
-        elif key == "multiVmGroupCreateOption":
-            suggest = "multi_vm_group_create_option"
-        elif key == "multiVmGroupId":
-            suggest = "multi_vm_group_id"
-        elif key == "multiVmGroupName":
-            suggest = "multi_vm_group_name"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "primaryFabricLocation":
-            suggest = "primary_fabric_location"
-        elif key == "protectedDisks":
-            suggest = "protected_disks"
-        elif key == "protectedManagedDisks":
-            suggest = "protected_managed_disks"
-        elif key == "recoveryAvailabilitySet":
-            suggest = "recovery_availability_set"
-        elif key == "recoveryAzureResourceGroupId":
-            suggest = "recovery_azure_resource_group_id"
-        elif key == "recoveryAzureVMName":
-            suggest = "recovery_azure_vm_name"
-        elif key == "recoveryAzureVMSize":
-            suggest = "recovery_azure_vm_size"
-        elif key == "recoveryBootDiagStorageAccountId":
-            suggest = "recovery_boot_diag_storage_account_id"
-        elif key == "recoveryCloudService":
-            suggest = "recovery_cloud_service"
-        elif key == "recoveryFabricLocation":
-            suggest = "recovery_fabric_location"
-        elif key == "recoveryFabricObjectId":
-            suggest = "recovery_fabric_object_id"
-        elif key == "rpoInSeconds":
-            suggest = "rpo_in_seconds"
-        elif key == "selectedRecoveryAzureNetworkId":
-            suggest = "selected_recovery_azure_network_id"
-        elif key == "testFailoverRecoveryFabricObjectId":
-            suggest = "test_failover_recovery_fabric_object_id"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-        elif key == "vmProtectionState":
-            suggest = "vm_protection_state"
-        elif key == "vmProtectionStateDescription":
-            suggest = "vm_protection_state_description"
-        elif key == "vmSyncedConfigDetails":
-            suggest = "vm_synced_config_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in A2AReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        A2AReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        A2AReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  agent_version: Optional[str] = None,
@@ -1386,25 +1145,6 @@ class AzureFabricSpecificDetailsResponse(dict):
     """
     Azure Fabric Specific Details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "containerIds":
-            suggest = "container_ids"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureFabricSpecificDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureFabricSpecificDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureFabricSpecificDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  container_ids: Optional[Sequence[str]] = None,
@@ -1453,27 +1193,6 @@ class AzureToAzureNetworkMappingSettingsResponse(dict):
     """
     A2A Network Mapping fabric specific settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "primaryFabricLocation":
-            suggest = "primary_fabric_location"
-        elif key == "recoveryFabricLocation":
-            suggest = "recovery_fabric_location"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureToAzureNetworkMappingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureToAzureNetworkMappingSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureToAzureNetworkMappingSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  primary_fabric_location: Optional[str] = None,
@@ -1522,25 +1241,6 @@ class AzureToAzureVmSyncedConfigDetailsResponse(dict):
     """
     Azure to Azure VM synced configuration details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "inputEndpoints":
-            suggest = "input_endpoints"
-        elif key == "roleAssignments":
-            suggest = "role_assignments"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureToAzureVmSyncedConfigDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureToAzureVmSyncedConfigDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureToAzureVmSyncedConfigDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  input_endpoints: Optional[Sequence['outputs.InputEndpointResponse']] = None,
                  role_assignments: Optional[Sequence['outputs.RoleAssignmentResponse']] = None,
@@ -1588,35 +1288,6 @@ class AzureVmDiskDetailsResponse(dict):
     """
     Disk details for E2A provider.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lunId":
-            suggest = "lun_id"
-        elif key == "maxSizeMB":
-            suggest = "max_size_mb"
-        elif key == "targetDiskLocation":
-            suggest = "target_disk_location"
-        elif key == "targetDiskName":
-            suggest = "target_disk_name"
-        elif key == "vhdId":
-            suggest = "vhd_id"
-        elif key == "vhdName":
-            suggest = "vhd_name"
-        elif key == "vhdType":
-            suggest = "vhd_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AzureVmDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AzureVmDiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AzureVmDiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  lun_id: Optional[str] = None,
                  max_size_mb: Optional[str] = None,
@@ -1712,27 +1383,6 @@ class CurrentJobDetailsResponse(dict):
     """
     Current job details of the migration item.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "jobId":
-            suggest = "job_id"
-        elif key == "jobName":
-            suggest = "job_name"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CurrentJobDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CurrentJobDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CurrentJobDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  job_id: Optional[str] = None,
                  job_name: Optional[str] = None,
@@ -1780,27 +1430,6 @@ class CurrentScenarioDetailsResponse(dict):
     """
     Current scenario details of the protected entity.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "jobId":
-            suggest = "job_id"
-        elif key == "scenarioName":
-            suggest = "scenario_name"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CurrentScenarioDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CurrentScenarioDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CurrentScenarioDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  job_id: Optional[str] = None,
                  scenario_name: Optional[str] = None,
@@ -1848,25 +1477,6 @@ class DataStoreResponse(dict):
     """
     The data store details of the MT.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "freeSpace":
-            suggest = "free_space"
-        elif key == "symbolicName":
-            suggest = "symbolic_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DataStoreResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DataStoreResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DataStoreResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  capacity: Optional[str] = None,
                  free_space: Optional[str] = None,
@@ -1938,29 +1548,6 @@ class DiskDetailsResponse(dict):
     """
     On-prem disk details data.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "maxSizeMB":
-            suggest = "max_size_mb"
-        elif key == "vhdId":
-            suggest = "vhd_id"
-        elif key == "vhdName":
-            suggest = "vhd_name"
-        elif key == "vhdType":
-            suggest = "vhd_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  max_size_mb: Optional[float] = None,
                  vhd_id: Optional[str] = None,
@@ -2020,27 +1607,6 @@ class EncryptionDetailsResponse(dict):
     """
     Encryption details for the fabric.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "kekCertExpiryDate":
-            suggest = "kek_cert_expiry_date"
-        elif key == "kekCertThumbprint":
-            suggest = "kek_cert_thumbprint"
-        elif key == "kekState":
-            suggest = "kek_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EncryptionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EncryptionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EncryptionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  kek_cert_expiry_date: Optional[str] = None,
                  kek_cert_thumbprint: Optional[str] = None,
@@ -2088,35 +1654,6 @@ class FabricPropertiesResponse(dict):
     """
     Fabric properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bcdrState":
-            suggest = "bcdr_state"
-        elif key == "customDetails":
-            suggest = "custom_details"
-        elif key == "encryptionDetails":
-            suggest = "encryption_details"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "healthErrorDetails":
-            suggest = "health_error_details"
-        elif key == "internalIdentifier":
-            suggest = "internal_identifier"
-        elif key == "rolloverEncryptionDetails":
-            suggest = "rollover_encryption_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FabricPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FabricPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FabricPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  bcdr_state: Optional[str] = None,
                  custom_details: Optional[Any] = None,
@@ -2224,47 +1761,6 @@ class HealthErrorResponse(dict):
     """
     Health Error
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "creationTimeUtc":
-            suggest = "creation_time_utc"
-        elif key == "entityId":
-            suggest = "entity_id"
-        elif key == "errorCategory":
-            suggest = "error_category"
-        elif key == "errorCode":
-            suggest = "error_code"
-        elif key == "errorLevel":
-            suggest = "error_level"
-        elif key == "errorMessage":
-            suggest = "error_message"
-        elif key == "errorSource":
-            suggest = "error_source"
-        elif key == "errorType":
-            suggest = "error_type"
-        elif key == "innerHealthErrors":
-            suggest = "inner_health_errors"
-        elif key == "possibleCauses":
-            suggest = "possible_causes"
-        elif key == "recommendedAction":
-            suggest = "recommended_action"
-        elif key == "recoveryProviderErrorMessage":
-            suggest = "recovery_provider_error_message"
-        elif key == "summaryMessage":
-            suggest = "summary_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HealthErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HealthErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HealthErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  creation_time_utc: Optional[str] = None,
                  entity_id: Optional[str] = None,
@@ -2432,33 +1928,6 @@ class HyperVReplicaAzurePolicyDetailsResponse(dict):
     """
     Hyper-V Replica Azure specific protection profile details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "activeStorageAccountId":
-            suggest = "active_storage_account_id"
-        elif key == "applicationConsistentSnapshotFrequencyInHours":
-            suggest = "application_consistent_snapshot_frequency_in_hours"
-        elif key == "onlineReplicationStartTime":
-            suggest = "online_replication_start_time"
-        elif key == "recoveryPointHistoryDurationInHours":
-            suggest = "recovery_point_history_duration_in_hours"
-        elif key == "replicationInterval":
-            suggest = "replication_interval"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaAzurePolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaAzurePolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaAzurePolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  active_storage_account_id: Optional[str] = None,
@@ -2555,69 +2024,6 @@ class HyperVReplicaAzureReplicationDetailsResponse(dict):
     """
     Hyper V Replica Azure provider specific settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "azureVmDiskDetails":
-            suggest = "azure_vm_disk_details"
-        elif key == "enableRdpOnTargetOption":
-            suggest = "enable_rdp_on_target_option"
-        elif key == "initialReplicationDetails":
-            suggest = "initial_replication_details"
-        elif key == "lastReplicatedTime":
-            suggest = "last_replicated_time"
-        elif key == "lastRpoCalculatedTime":
-            suggest = "last_rpo_calculated_time"
-        elif key == "licenseType":
-            suggest = "license_type"
-        elif key == "oSDetails":
-            suggest = "o_s_details"
-        elif key == "recoveryAvailabilitySetId":
-            suggest = "recovery_availability_set_id"
-        elif key == "recoveryAzureLogStorageAccountId":
-            suggest = "recovery_azure_log_storage_account_id"
-        elif key == "recoveryAzureResourceGroupId":
-            suggest = "recovery_azure_resource_group_id"
-        elif key == "recoveryAzureStorageAccount":
-            suggest = "recovery_azure_storage_account"
-        elif key == "recoveryAzureVMSize":
-            suggest = "recovery_azure_vm_size"
-        elif key == "recoveryAzureVmName":
-            suggest = "recovery_azure_vm_name"
-        elif key == "rpoInSeconds":
-            suggest = "rpo_in_seconds"
-        elif key == "selectedRecoveryAzureNetworkId":
-            suggest = "selected_recovery_azure_network_id"
-        elif key == "selectedSourceNicId":
-            suggest = "selected_source_nic_id"
-        elif key == "sourceVmCpuCount":
-            suggest = "source_vm_cpu_count"
-        elif key == "sourceVmRamSizeInMB":
-            suggest = "source_vm_ram_size_in_mb"
-        elif key == "useManagedDisks":
-            suggest = "use_managed_disks"
-        elif key == "vmId":
-            suggest = "vm_id"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-        elif key == "vmProtectionState":
-            suggest = "vm_protection_state"
-        elif key == "vmProtectionStateDescription":
-            suggest = "vm_protection_state_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaAzureReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaAzureReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaAzureReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  azure_vm_disk_details: Optional[Sequence['outputs.AzureVmDiskDetailsResponse']] = None,
@@ -2930,41 +2336,6 @@ class HyperVReplicaBasePolicyDetailsResponse(dict):
     """
     Base class for HyperVReplica policy details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "allowedAuthenticationType":
-            suggest = "allowed_authentication_type"
-        elif key == "applicationConsistentSnapshotFrequencyInHours":
-            suggest = "application_consistent_snapshot_frequency_in_hours"
-        elif key == "initialReplicationMethod":
-            suggest = "initial_replication_method"
-        elif key == "offlineReplicationExportPath":
-            suggest = "offline_replication_export_path"
-        elif key == "offlineReplicationImportPath":
-            suggest = "offline_replication_import_path"
-        elif key == "onlineReplicationStartTime":
-            suggest = "online_replication_start_time"
-        elif key == "recoveryPoints":
-            suggest = "recovery_points"
-        elif key == "replicaDeletionOption":
-            suggest = "replica_deletion_option"
-        elif key == "replicationPort":
-            suggest = "replication_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaBasePolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaBasePolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaBasePolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  allowed_authentication_type: Optional[int] = None,
@@ -3109,37 +2480,6 @@ class HyperVReplicaBaseReplicationDetailsResponse(dict):
     """
     Hyper V replica provider specific settings base class.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "initialReplicationDetails":
-            suggest = "initial_replication_details"
-        elif key == "lastReplicatedTime":
-            suggest = "last_replicated_time"
-        elif key == "vMDiskDetails":
-            suggest = "v_m_disk_details"
-        elif key == "vmId":
-            suggest = "vm_id"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-        elif key == "vmProtectionState":
-            suggest = "vm_protection_state"
-        elif key == "vmProtectionStateDescription":
-            suggest = "vm_protection_state_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaBaseReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaBaseReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaBaseReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  initial_replication_details: Optional['outputs.InitialReplicationDetailsResponse'] = None,
@@ -3248,43 +2588,6 @@ class HyperVReplicaBluePolicyDetailsResponse(dict):
     """
     Hyper-V Replica Blue specific protection profile details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "allowedAuthenticationType":
-            suggest = "allowed_authentication_type"
-        elif key == "applicationConsistentSnapshotFrequencyInHours":
-            suggest = "application_consistent_snapshot_frequency_in_hours"
-        elif key == "initialReplicationMethod":
-            suggest = "initial_replication_method"
-        elif key == "offlineReplicationExportPath":
-            suggest = "offline_replication_export_path"
-        elif key == "offlineReplicationImportPath":
-            suggest = "offline_replication_import_path"
-        elif key == "onlineReplicationStartTime":
-            suggest = "online_replication_start_time"
-        elif key == "recoveryPoints":
-            suggest = "recovery_points"
-        elif key == "replicaDeletionOption":
-            suggest = "replica_deletion_option"
-        elif key == "replicationFrequencyInSeconds":
-            suggest = "replication_frequency_in_seconds"
-        elif key == "replicationPort":
-            suggest = "replication_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaBluePolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaBluePolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaBluePolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  allowed_authentication_type: Optional[int] = None,
@@ -3441,37 +2744,6 @@ class HyperVReplicaBlueReplicationDetailsResponse(dict):
     """
     HyperV replica 2012 R2 (Blue) replication details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "initialReplicationDetails":
-            suggest = "initial_replication_details"
-        elif key == "lastReplicatedTime":
-            suggest = "last_replicated_time"
-        elif key == "vMDiskDetails":
-            suggest = "v_m_disk_details"
-        elif key == "vmId":
-            suggest = "vm_id"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-        elif key == "vmProtectionState":
-            suggest = "vm_protection_state"
-        elif key == "vmProtectionStateDescription":
-            suggest = "vm_protection_state_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaBlueReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaBlueReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaBlueReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  initial_replication_details: Optional['outputs.InitialReplicationDetailsResponse'] = None,
@@ -3580,41 +2852,6 @@ class HyperVReplicaPolicyDetailsResponse(dict):
     """
     Hyper-V Replica Blue specific protection profile details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "allowedAuthenticationType":
-            suggest = "allowed_authentication_type"
-        elif key == "applicationConsistentSnapshotFrequencyInHours":
-            suggest = "application_consistent_snapshot_frequency_in_hours"
-        elif key == "initialReplicationMethod":
-            suggest = "initial_replication_method"
-        elif key == "offlineReplicationExportPath":
-            suggest = "offline_replication_export_path"
-        elif key == "offlineReplicationImportPath":
-            suggest = "offline_replication_import_path"
-        elif key == "onlineReplicationStartTime":
-            suggest = "online_replication_start_time"
-        elif key == "recoveryPoints":
-            suggest = "recovery_points"
-        elif key == "replicaDeletionOption":
-            suggest = "replica_deletion_option"
-        elif key == "replicationPort":
-            suggest = "replication_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaPolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaPolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaPolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  allowed_authentication_type: Optional[int] = None,
@@ -3759,37 +2996,6 @@ class HyperVReplicaReplicationDetailsResponse(dict):
     """
     HyperV replica 2012 replication details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "initialReplicationDetails":
-            suggest = "initial_replication_details"
-        elif key == "lastReplicatedTime":
-            suggest = "last_replicated_time"
-        elif key == "vMDiskDetails":
-            suggest = "v_m_disk_details"
-        elif key == "vmId":
-            suggest = "vm_id"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-        elif key == "vmProtectionState":
-            suggest = "vm_protection_state"
-        elif key == "vmProtectionStateDescription":
-            suggest = "vm_protection_state_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVReplicaReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVReplicaReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVReplicaReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  initial_replication_details: Optional['outputs.InitialReplicationDetailsResponse'] = None,
@@ -3898,23 +3104,6 @@ class HyperVSiteDetailsResponse(dict):
     """
     HyperVSite fabric specific details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HyperVSiteDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HyperVSiteDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HyperVSiteDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str):
         """
@@ -3939,29 +3128,6 @@ class IdentityProviderDetailsResponse(dict):
     """
     Identity provider details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "aadAuthority":
-            suggest = "aad_authority"
-        elif key == "applicationId":
-            suggest = "application_id"
-        elif key == "objectId":
-            suggest = "object_id"
-        elif key == "tenantId":
-            suggest = "tenant_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IdentityProviderDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IdentityProviderDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IdentityProviderDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  aad_authority: Optional[str] = None,
                  application_id: Optional[str] = None,
@@ -4033,29 +3199,6 @@ class InMageAgentDetailsResponse(dict):
     """
     The details of the InMage agent.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "agentExpiryDate":
-            suggest = "agent_expiry_date"
-        elif key == "agentUpdateStatus":
-            suggest = "agent_update_status"
-        elif key == "agentVersion":
-            suggest = "agent_version"
-        elif key == "postUpdateRebootStatus":
-            suggest = "post_update_reboot_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMageAgentDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMageAgentDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMageAgentDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  agent_expiry_date: Optional[str] = None,
                  agent_update_status: Optional[str] = None,
@@ -4115,33 +3258,6 @@ class InMageAzureV2PolicyDetailsResponse(dict):
     """
     InMage Azure v2 specific protection profile details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "appConsistentFrequencyInMinutes":
-            suggest = "app_consistent_frequency_in_minutes"
-        elif key == "crashConsistentFrequencyInMinutes":
-            suggest = "crash_consistent_frequency_in_minutes"
-        elif key == "multiVmSyncStatus":
-            suggest = "multi_vm_sync_status"
-        elif key == "recoveryPointHistory":
-            suggest = "recovery_point_history"
-        elif key == "recoveryPointThresholdInMinutes":
-            suggest = "recovery_point_threshold_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMageAzureV2PolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMageAzureV2PolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMageAzureV2PolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  app_consistent_frequency_in_minutes: Optional[int] = None,
@@ -4226,51 +3342,6 @@ class InMageAzureV2ProtectedDiskDetailsResponse(dict):
     """
     InMageAzureV2 protected disk details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskCapacityInBytes":
-            suggest = "disk_capacity_in_bytes"
-        elif key == "diskId":
-            suggest = "disk_id"
-        elif key == "diskName":
-            suggest = "disk_name"
-        elif key == "diskResized":
-            suggest = "disk_resized"
-        elif key == "fileSystemCapacityInBytes":
-            suggest = "file_system_capacity_in_bytes"
-        elif key == "healthErrorCode":
-            suggest = "health_error_code"
-        elif key == "lastRpoCalculatedTime":
-            suggest = "last_rpo_calculated_time"
-        elif key == "protectionStage":
-            suggest = "protection_stage"
-        elif key == "psDataInMegaBytes":
-            suggest = "ps_data_in_mega_bytes"
-        elif key == "resyncDurationInSeconds":
-            suggest = "resync_duration_in_seconds"
-        elif key == "resyncProgressPercentage":
-            suggest = "resync_progress_percentage"
-        elif key == "resyncRequired":
-            suggest = "resync_required"
-        elif key == "rpoInSeconds":
-            suggest = "rpo_in_seconds"
-        elif key == "sourceDataInMegaBytes":
-            suggest = "source_data_in_mega_bytes"
-        elif key == "targetDataInMegaBytes":
-            suggest = "target_data_in_mega_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMageAzureV2ProtectedDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMageAzureV2ProtectedDiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMageAzureV2ProtectedDiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_capacity_in_bytes: Optional[float] = None,
                  disk_id: Optional[str] = None,
@@ -4462,119 +3533,6 @@ class InMageAzureV2ReplicationDetailsResponse(dict):
     """
     InMageAzureV2 provider specific settings
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "agentExpiryDate":
-            suggest = "agent_expiry_date"
-        elif key == "agentVersion":
-            suggest = "agent_version"
-        elif key == "azureVMDiskDetails":
-            suggest = "azure_vm_disk_details"
-        elif key == "compressedDataRateInMB":
-            suggest = "compressed_data_rate_in_mb"
-        elif key == "discoveryType":
-            suggest = "discovery_type"
-        elif key == "diskResized":
-            suggest = "disk_resized"
-        elif key == "enableRdpOnTargetOption":
-            suggest = "enable_rdp_on_target_option"
-        elif key == "infrastructureVmId":
-            suggest = "infrastructure_vm_id"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "isAgentUpdateRequired":
-            suggest = "is_agent_update_required"
-        elif key == "isRebootAfterUpdateRequired":
-            suggest = "is_reboot_after_update_required"
-        elif key == "lastHeartbeat":
-            suggest = "last_heartbeat"
-        elif key == "lastRpoCalculatedTime":
-            suggest = "last_rpo_calculated_time"
-        elif key == "lastUpdateReceivedTime":
-            suggest = "last_update_received_time"
-        elif key == "licenseType":
-            suggest = "license_type"
-        elif key == "masterTargetId":
-            suggest = "master_target_id"
-        elif key == "multiVmGroupId":
-            suggest = "multi_vm_group_id"
-        elif key == "multiVmGroupName":
-            suggest = "multi_vm_group_name"
-        elif key == "multiVmSyncStatus":
-            suggest = "multi_vm_sync_status"
-        elif key == "osDiskId":
-            suggest = "os_disk_id"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "osVersion":
-            suggest = "os_version"
-        elif key == "processServerId":
-            suggest = "process_server_id"
-        elif key == "protectedDisks":
-            suggest = "protected_disks"
-        elif key == "protectionStage":
-            suggest = "protection_stage"
-        elif key == "recoveryAvailabilitySetId":
-            suggest = "recovery_availability_set_id"
-        elif key == "recoveryAzureLogStorageAccountId":
-            suggest = "recovery_azure_log_storage_account_id"
-        elif key == "recoveryAzureResourceGroupId":
-            suggest = "recovery_azure_resource_group_id"
-        elif key == "recoveryAzureStorageAccount":
-            suggest = "recovery_azure_storage_account"
-        elif key == "recoveryAzureVMName":
-            suggest = "recovery_azure_vm_name"
-        elif key == "recoveryAzureVMSize":
-            suggest = "recovery_azure_vm_size"
-        elif key == "replicaId":
-            suggest = "replica_id"
-        elif key == "resyncProgressPercentage":
-            suggest = "resync_progress_percentage"
-        elif key == "rpoInSeconds":
-            suggest = "rpo_in_seconds"
-        elif key == "selectedRecoveryAzureNetworkId":
-            suggest = "selected_recovery_azure_network_id"
-        elif key == "selectedSourceNicId":
-            suggest = "selected_source_nic_id"
-        elif key == "sourceVmCpuCount":
-            suggest = "source_vm_cpu_count"
-        elif key == "sourceVmRamSizeInMB":
-            suggest = "source_vm_ram_size_in_mb"
-        elif key == "targetVmId":
-            suggest = "target_vm_id"
-        elif key == "uncompressedDataRateInMB":
-            suggest = "uncompressed_data_rate_in_mb"
-        elif key == "useManagedDisks":
-            suggest = "use_managed_disks"
-        elif key == "vCenterInfrastructureId":
-            suggest = "v_center_infrastructure_id"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-        elif key == "vhdName":
-            suggest = "vhd_name"
-        elif key == "vmId":
-            suggest = "vm_id"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-        elif key == "vmProtectionState":
-            suggest = "vm_protection_state"
-        elif key == "vmProtectionStateDescription":
-            suggest = "vm_protection_state_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMageAzureV2ReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMageAzureV2ReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMageAzureV2ReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  agent_expiry_date: Optional[str] = None,
@@ -5187,31 +4145,6 @@ class InMageBasePolicyDetailsResponse(dict):
     """
     Base class for the policies of providers using InMage replication.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "appConsistentFrequencyInMinutes":
-            suggest = "app_consistent_frequency_in_minutes"
-        elif key == "multiVmSyncStatus":
-            suggest = "multi_vm_sync_status"
-        elif key == "recoveryPointHistory":
-            suggest = "recovery_point_history"
-        elif key == "recoveryPointThresholdInMinutes":
-            suggest = "recovery_point_threshold_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMageBasePolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMageBasePolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMageBasePolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  app_consistent_frequency_in_minutes: Optional[int] = None,
@@ -5284,31 +4217,6 @@ class InMagePolicyDetailsResponse(dict):
     """
     InMage specific protection profile details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "appConsistentFrequencyInMinutes":
-            suggest = "app_consistent_frequency_in_minutes"
-        elif key == "multiVmSyncStatus":
-            suggest = "multi_vm_sync_status"
-        elif key == "recoveryPointHistory":
-            suggest = "recovery_point_history"
-        elif key == "recoveryPointThresholdInMinutes":
-            suggest = "recovery_point_threshold_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMagePolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMagePolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMagePolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  app_consistent_frequency_in_minutes: Optional[int] = None,
@@ -5381,51 +4289,6 @@ class InMageProtectedDiskDetailsResponse(dict):
     """
     InMage protected disk details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "diskCapacityInBytes":
-            suggest = "disk_capacity_in_bytes"
-        elif key == "diskId":
-            suggest = "disk_id"
-        elif key == "diskName":
-            suggest = "disk_name"
-        elif key == "diskResized":
-            suggest = "disk_resized"
-        elif key == "fileSystemCapacityInBytes":
-            suggest = "file_system_capacity_in_bytes"
-        elif key == "healthErrorCode":
-            suggest = "health_error_code"
-        elif key == "lastRpoCalculatedTime":
-            suggest = "last_rpo_calculated_time"
-        elif key == "protectionStage":
-            suggest = "protection_stage"
-        elif key == "psDataInMB":
-            suggest = "ps_data_in_mb"
-        elif key == "resyncDurationInSeconds":
-            suggest = "resync_duration_in_seconds"
-        elif key == "resyncProgressPercentage":
-            suggest = "resync_progress_percentage"
-        elif key == "resyncRequired":
-            suggest = "resync_required"
-        elif key == "rpoInSeconds":
-            suggest = "rpo_in_seconds"
-        elif key == "sourceDataInMB":
-            suggest = "source_data_in_mb"
-        elif key == "targetDataInMB":
-            suggest = "target_data_in_mb"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMageProtectedDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMageProtectedDiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMageProtectedDiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  disk_capacity_in_bytes: Optional[float] = None,
                  disk_id: Optional[str] = None,
@@ -5617,95 +4480,6 @@ class InMageReplicationDetailsResponse(dict):
     """
     InMage provider specific settings
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "activeSiteType":
-            suggest = "active_site_type"
-        elif key == "agentDetails":
-            suggest = "agent_details"
-        elif key == "azureStorageAccountId":
-            suggest = "azure_storage_account_id"
-        elif key == "compressedDataRateInMB":
-            suggest = "compressed_data_rate_in_mb"
-        elif key == "consistencyPoints":
-            suggest = "consistency_points"
-        elif key == "discoveryType":
-            suggest = "discovery_type"
-        elif key == "diskResized":
-            suggest = "disk_resized"
-        elif key == "infrastructureVmId":
-            suggest = "infrastructure_vm_id"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "lastHeartbeat":
-            suggest = "last_heartbeat"
-        elif key == "lastRpoCalculatedTime":
-            suggest = "last_rpo_calculated_time"
-        elif key == "lastUpdateReceivedTime":
-            suggest = "last_update_received_time"
-        elif key == "masterTargetId":
-            suggest = "master_target_id"
-        elif key == "multiVmGroupId":
-            suggest = "multi_vm_group_id"
-        elif key == "multiVmGroupName":
-            suggest = "multi_vm_group_name"
-        elif key == "multiVmSyncStatus":
-            suggest = "multi_vm_sync_status"
-        elif key == "osDetails":
-            suggest = "os_details"
-        elif key == "osVersion":
-            suggest = "os_version"
-        elif key == "processServerId":
-            suggest = "process_server_id"
-        elif key == "protectedDisks":
-            suggest = "protected_disks"
-        elif key == "protectionStage":
-            suggest = "protection_stage"
-        elif key == "rebootAfterUpdateStatus":
-            suggest = "reboot_after_update_status"
-        elif key == "replicaId":
-            suggest = "replica_id"
-        elif key == "resyncDetails":
-            suggest = "resync_details"
-        elif key == "retentionWindowEnd":
-            suggest = "retention_window_end"
-        elif key == "retentionWindowStart":
-            suggest = "retention_window_start"
-        elif key == "rpoInSeconds":
-            suggest = "rpo_in_seconds"
-        elif key == "sourceVmCpuCount":
-            suggest = "source_vm_cpu_count"
-        elif key == "sourceVmRamSizeInMB":
-            suggest = "source_vm_ram_size_in_mb"
-        elif key == "uncompressedDataRateInMB":
-            suggest = "uncompressed_data_rate_in_mb"
-        elif key == "vCenterInfrastructureId":
-            suggest = "v_center_infrastructure_id"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-        elif key == "vmId":
-            suggest = "vm_id"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-        elif key == "vmProtectionState":
-            suggest = "vm_protection_state"
-        elif key == "vmProtectionStateDescription":
-            suggest = "vm_protection_state_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InMageReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InMageReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InMageReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  active_site_type: Optional[str] = None,
@@ -6174,25 +4948,6 @@ class InitialReplicationDetailsResponse(dict):
     """
     Initial replication details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "initialReplicationProgressPercentage":
-            suggest = "initial_replication_progress_percentage"
-        elif key == "initialReplicationType":
-            suggest = "initial_replication_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InitialReplicationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InitialReplicationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InitialReplicationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  initial_replication_progress_percentage: Optional[str] = None,
                  initial_replication_type: Optional[str] = None):
@@ -6228,45 +4983,6 @@ class InnerHealthErrorResponse(dict):
     """
     Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "creationTimeUtc":
-            suggest = "creation_time_utc"
-        elif key == "entityId":
-            suggest = "entity_id"
-        elif key == "errorCategory":
-            suggest = "error_category"
-        elif key == "errorCode":
-            suggest = "error_code"
-        elif key == "errorLevel":
-            suggest = "error_level"
-        elif key == "errorMessage":
-            suggest = "error_message"
-        elif key == "errorSource":
-            suggest = "error_source"
-        elif key == "errorType":
-            suggest = "error_type"
-        elif key == "possibleCauses":
-            suggest = "possible_causes"
-        elif key == "recommendedAction":
-            suggest = "recommended_action"
-        elif key == "recoveryProviderErrorMessage":
-            suggest = "recovery_provider_error_message"
-        elif key == "summaryMessage":
-            suggest = "summary_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InnerHealthErrorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InnerHealthErrorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InnerHealthErrorResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  creation_time_utc: Optional[str] = None,
                  entity_id: Optional[str] = None,
@@ -6422,27 +5138,6 @@ class InputEndpointResponse(dict):
     """
     Azure VM input endpoint details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endpointName":
-            suggest = "endpoint_name"
-        elif key == "privatePort":
-            suggest = "private_port"
-        elif key == "publicPort":
-            suggest = "public_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InputEndpointResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InputEndpointResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InputEndpointResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  endpoint_name: Optional[str] = None,
                  private_port: Optional[int] = None,
@@ -6502,53 +5197,6 @@ class MasterTargetServerResponse(dict):
     """
     Details of a Master Target Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "agentExpiryDate":
-            suggest = "agent_expiry_date"
-        elif key == "agentVersion":
-            suggest = "agent_version"
-        elif key == "agentVersionDetails":
-            suggest = "agent_version_details"
-        elif key == "dataStores":
-            suggest = "data_stores"
-        elif key == "diskCount":
-            suggest = "disk_count"
-        elif key == "healthErrors":
-            suggest = "health_errors"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "lastHeartbeat":
-            suggest = "last_heartbeat"
-        elif key == "marsAgentExpiryDate":
-            suggest = "mars_agent_expiry_date"
-        elif key == "marsAgentVersion":
-            suggest = "mars_agent_version"
-        elif key == "marsAgentVersionDetails":
-            suggest = "mars_agent_version_details"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "osVersion":
-            suggest = "os_version"
-        elif key == "retentionVolumes":
-            suggest = "retention_volumes"
-        elif key == "validationErrors":
-            suggest = "validation_errors"
-        elif key == "versionStatus":
-            suggest = "version_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MasterTargetServerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MasterTargetServerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MasterTargetServerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  agent_expiry_date: Optional[str] = None,
                  agent_version: Optional[str] = None,
@@ -6776,49 +5424,6 @@ class MigrationItemPropertiesResponse(dict):
     """
     Migration item properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedOperations":
-            suggest = "allowed_operations"
-        elif key == "currentJob":
-            suggest = "current_job"
-        elif key == "eventCorrelationId":
-            suggest = "event_correlation_id"
-        elif key == "healthErrors":
-            suggest = "health_errors"
-        elif key == "lastTestMigrationStatus":
-            suggest = "last_test_migration_status"
-        elif key == "lastTestMigrationTime":
-            suggest = "last_test_migration_time"
-        elif key == "machineName":
-            suggest = "machine_name"
-        elif key == "migrationState":
-            suggest = "migration_state"
-        elif key == "migrationStateDescription":
-            suggest = "migration_state_description"
-        elif key == "policyFriendlyName":
-            suggest = "policy_friendly_name"
-        elif key == "policyId":
-            suggest = "policy_id"
-        elif key == "testMigrateState":
-            suggest = "test_migrate_state"
-        elif key == "testMigrateStateDescription":
-            suggest = "test_migrate_state_description"
-        elif key == "providerSpecificDetails":
-            suggest = "provider_specific_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MigrationItemPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MigrationItemPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MigrationItemPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_operations: Sequence[str],
                  current_job: 'outputs.CurrentJobDetailsResponse',
@@ -6996,25 +5601,6 @@ class MobilityServiceUpdateResponse(dict):
     """
     The Mobility Service update details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "osType":
-            suggest = "os_type"
-        elif key == "rebootStatus":
-            suggest = "reboot_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MobilityServiceUpdateResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MobilityServiceUpdateResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MobilityServiceUpdateResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  os_type: Optional[str] = None,
                  reboot_status: Optional[str] = None,
@@ -7062,37 +5648,6 @@ class NetworkMappingPropertiesResponse(dict):
     """
     Network Mapping Properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fabricSpecificSettings":
-            suggest = "fabric_specific_settings"
-        elif key == "primaryFabricFriendlyName":
-            suggest = "primary_fabric_friendly_name"
-        elif key == "primaryNetworkFriendlyName":
-            suggest = "primary_network_friendly_name"
-        elif key == "primaryNetworkId":
-            suggest = "primary_network_id"
-        elif key == "recoveryFabricArmId":
-            suggest = "recovery_fabric_arm_id"
-        elif key == "recoveryFabricFriendlyName":
-            suggest = "recovery_fabric_friendly_name"
-        elif key == "recoveryNetworkFriendlyName":
-            suggest = "recovery_network_friendly_name"
-        elif key == "recoveryNetworkId":
-            suggest = "recovery_network_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkMappingPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkMappingPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkMappingPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fabric_specific_settings: Optional[Any] = None,
                  primary_fabric_friendly_name: Optional[str] = None,
@@ -7212,33 +5767,6 @@ class OSDetailsResponse(dict):
     """
     Disk Details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "oSMajorVersion":
-            suggest = "o_s_major_version"
-        elif key == "oSMinorVersion":
-            suggest = "o_s_minor_version"
-        elif key == "oSVersion":
-            suggest = "o_s_version"
-        elif key == "osEdition":
-            suggest = "os_edition"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "productType":
-            suggest = "product_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  o_s_major_version: Optional[str] = None,
                  o_s_minor_version: Optional[str] = None,
@@ -7322,27 +5850,6 @@ class OSDiskDetailsResponse(dict):
     """
     Details of the OS Disk.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "osType":
-            suggest = "os_type"
-        elif key == "osVhdId":
-            suggest = "os_vhd_id"
-        elif key == "vhdName":
-            suggest = "vhd_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OSDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OSDiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OSDiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  os_type: Optional[str] = None,
                  os_vhd_id: Optional[str] = None,
@@ -7390,25 +5897,6 @@ class PolicyPropertiesResponse(dict):
     """
     Protection profile custom data details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "providerSpecificDetails":
-            suggest = "provider_specific_details"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PolicyPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PolicyPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PolicyPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  friendly_name: Optional[str] = None,
                  provider_specific_details: Optional[Any] = None):
@@ -7444,75 +5932,6 @@ class ProcessServerResponse(dict):
     """
     Details of the Process Server.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "agentExpiryDate":
-            suggest = "agent_expiry_date"
-        elif key == "agentVersion":
-            suggest = "agent_version"
-        elif key == "agentVersionDetails":
-            suggest = "agent_version_details"
-        elif key == "availableMemoryInBytes":
-            suggest = "available_memory_in_bytes"
-        elif key == "availableSpaceInBytes":
-            suggest = "available_space_in_bytes"
-        elif key == "cpuLoad":
-            suggest = "cpu_load"
-        elif key == "cpuLoadStatus":
-            suggest = "cpu_load_status"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "healthErrors":
-            suggest = "health_errors"
-        elif key == "hostId":
-            suggest = "host_id"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "lastHeartbeat":
-            suggest = "last_heartbeat"
-        elif key == "machineCount":
-            suggest = "machine_count"
-        elif key == "memoryUsageStatus":
-            suggest = "memory_usage_status"
-        elif key == "mobilityServiceUpdates":
-            suggest = "mobility_service_updates"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "osVersion":
-            suggest = "os_version"
-        elif key == "psServiceStatus":
-            suggest = "ps_service_status"
-        elif key == "replicationPairCount":
-            suggest = "replication_pair_count"
-        elif key == "spaceUsageStatus":
-            suggest = "space_usage_status"
-        elif key == "sslCertExpiryDate":
-            suggest = "ssl_cert_expiry_date"
-        elif key == "sslCertExpiryRemainingDays":
-            suggest = "ssl_cert_expiry_remaining_days"
-        elif key == "systemLoad":
-            suggest = "system_load"
-        elif key == "systemLoadStatus":
-            suggest = "system_load_status"
-        elif key == "totalMemoryInBytes":
-            suggest = "total_memory_in_bytes"
-        elif key == "totalSpaceInBytes":
-            suggest = "total_space_in_bytes"
-        elif key == "versionStatus":
-            suggest = "version_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProcessServerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProcessServerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProcessServerResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  agent_expiry_date: Optional[str] = None,
                  agent_version: Optional[str] = None,
@@ -7860,39 +6279,6 @@ class ProtectionContainerMappingPropertiesResponse(dict):
     """
     Protection container mapping properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "healthErrorDetails":
-            suggest = "health_error_details"
-        elif key == "policyFriendlyName":
-            suggest = "policy_friendly_name"
-        elif key == "policyId":
-            suggest = "policy_id"
-        elif key == "providerSpecificDetails":
-            suggest = "provider_specific_details"
-        elif key == "sourceFabricFriendlyName":
-            suggest = "source_fabric_friendly_name"
-        elif key == "sourceProtectionContainerFriendlyName":
-            suggest = "source_protection_container_friendly_name"
-        elif key == "targetFabricFriendlyName":
-            suggest = "target_fabric_friendly_name"
-        elif key == "targetProtectionContainerFriendlyName":
-            suggest = "target_protection_container_friendly_name"
-        elif key == "targetProtectionContainerId":
-            suggest = "target_protection_container_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProtectionContainerMappingPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProtectionContainerMappingPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProtectionContainerMappingPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  health: Optional[str] = None,
                  health_error_details: Optional[Sequence['outputs.HealthErrorResponse']] = None,
@@ -8036,33 +6422,6 @@ class RcmAzureMigrationPolicyDetailsResponse(dict):
     """
     RCM based Azure migration specific policy details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "appConsistentFrequencyInMinutes":
-            suggest = "app_consistent_frequency_in_minutes"
-        elif key == "crashConsistentFrequencyInMinutes":
-            suggest = "crash_consistent_frequency_in_minutes"
-        elif key == "multiVmSyncStatus":
-            suggest = "multi_vm_sync_status"
-        elif key == "recoveryPointHistory":
-            suggest = "recovery_point_history"
-        elif key == "recoveryPointThresholdInMinutes":
-            suggest = "recovery_point_threshold_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RcmAzureMigrationPolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RcmAzureMigrationPolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RcmAzureMigrationPolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  app_consistent_frequency_in_minutes: Optional[int] = None,
@@ -8147,29 +6506,6 @@ class RecoveryPlanActionResponse(dict):
     """
     Recovery plan action details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionName":
-            suggest = "action_name"
-        elif key == "customDetails":
-            suggest = "custom_details"
-        elif key == "failoverDirections":
-            suggest = "failover_directions"
-        elif key == "failoverTypes":
-            suggest = "failover_types"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryPlanActionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryPlanActionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryPlanActionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_name: str,
                  custom_details: Any,
@@ -8225,27 +6561,6 @@ class RecoveryPlanAutomationRunbookActionDetailsResponse(dict):
     """
     Recovery plan Automation runbook action details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fabricLocation":
-            suggest = "fabric_location"
-        elif key == "instanceType":
-            suggest = "instance_type"
-        elif key == "runbookId":
-            suggest = "runbook_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryPlanAutomationRunbookActionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryPlanAutomationRunbookActionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryPlanAutomationRunbookActionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fabric_location: str,
                  instance_type: str,
@@ -8305,29 +6620,6 @@ class RecoveryPlanGroupResponse(dict):
     """
     Recovery plan group details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "groupType":
-            suggest = "group_type"
-        elif key == "endGroupActions":
-            suggest = "end_group_actions"
-        elif key == "replicationProtectedItems":
-            suggest = "replication_protected_items"
-        elif key == "startGroupActions":
-            suggest = "start_group_actions"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryPlanGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryPlanGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryPlanGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  group_type: str,
                  end_group_actions: Optional[Sequence['outputs.RecoveryPlanActionResponse']] = None,
@@ -8386,23 +6678,6 @@ class RecoveryPlanManualActionDetailsResponse(dict):
     """
     Recovery plan manual action details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryPlanManualActionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryPlanManualActionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryPlanManualActionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  description: Optional[str] = None):
@@ -8439,49 +6714,6 @@ class RecoveryPlanPropertiesResponse(dict):
     """
     Recovery plan custom details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedOperations":
-            suggest = "allowed_operations"
-        elif key == "currentScenario":
-            suggest = "current_scenario"
-        elif key == "currentScenarioStatus":
-            suggest = "current_scenario_status"
-        elif key == "currentScenarioStatusDescription":
-            suggest = "current_scenario_status_description"
-        elif key == "failoverDeploymentModel":
-            suggest = "failover_deployment_model"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "lastPlannedFailoverTime":
-            suggest = "last_planned_failover_time"
-        elif key == "lastTestFailoverTime":
-            suggest = "last_test_failover_time"
-        elif key == "lastUnplannedFailoverTime":
-            suggest = "last_unplanned_failover_time"
-        elif key == "primaryFabricFriendlyName":
-            suggest = "primary_fabric_friendly_name"
-        elif key == "primaryFabricId":
-            suggest = "primary_fabric_id"
-        elif key == "recoveryFabricFriendlyName":
-            suggest = "recovery_fabric_friendly_name"
-        elif key == "recoveryFabricId":
-            suggest = "recovery_fabric_id"
-        elif key == "replicationProviders":
-            suggest = "replication_providers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryPlanPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryPlanPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryPlanPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_operations: Optional[Sequence[str]] = None,
                  current_scenario: Optional['outputs.CurrentScenarioDetailsResponse'] = None,
@@ -8673,23 +6905,6 @@ class RecoveryPlanProtectedItemResponse(dict):
     """
     Recovery plan protected item.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "virtualMachineId":
-            suggest = "virtual_machine_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryPlanProtectedItemResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryPlanProtectedItemResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryPlanProtectedItemResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  virtual_machine_id: Optional[str] = None):
@@ -8725,25 +6940,6 @@ class RecoveryPlanScriptActionDetailsResponse(dict):
     """
     Recovery plan script action details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fabricLocation":
-            suggest = "fabric_location"
-        elif key == "instanceType":
-            suggest = "instance_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryPlanScriptActionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryPlanScriptActionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryPlanScriptActionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  fabric_location: str,
                  instance_type: str,
@@ -8802,53 +6998,6 @@ class RecoveryServicesProviderPropertiesResponse(dict):
     """
     Recovery services provider properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allowedScenarios":
-            suggest = "allowed_scenarios"
-        elif key == "authenticationIdentityDetails":
-            suggest = "authentication_identity_details"
-        elif key == "connectionStatus":
-            suggest = "connection_status"
-        elif key == "draIdentifier":
-            suggest = "dra_identifier"
-        elif key == "fabricFriendlyName":
-            suggest = "fabric_friendly_name"
-        elif key == "fabricType":
-            suggest = "fabric_type"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "healthErrorDetails":
-            suggest = "health_error_details"
-        elif key == "lastHeartBeat":
-            suggest = "last_heart_beat"
-        elif key == "protectedItemCount":
-            suggest = "protected_item_count"
-        elif key == "providerVersion":
-            suggest = "provider_version"
-        elif key == "providerVersionDetails":
-            suggest = "provider_version_details"
-        elif key == "providerVersionExpiryDate":
-            suggest = "provider_version_expiry_date"
-        elif key == "providerVersionState":
-            suggest = "provider_version_state"
-        elif key == "resourceAccessIdentityDetails":
-            suggest = "resource_access_identity_details"
-        elif key == "serverVersion":
-            suggest = "server_version"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RecoveryServicesProviderPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RecoveryServicesProviderPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RecoveryServicesProviderPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  allowed_scenarios: Optional[Sequence[str]] = None,
                  authentication_identity_details: Optional['outputs.IdentityProviderDetailsResponse'] = None,
@@ -9052,75 +7201,6 @@ class ReplicationProtectedItemPropertiesResponse(dict):
     """
     Replication protected item custom data details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "activeLocation":
-            suggest = "active_location"
-        elif key == "allowedOperations":
-            suggest = "allowed_operations"
-        elif key == "currentScenario":
-            suggest = "current_scenario"
-        elif key == "failoverHealth":
-            suggest = "failover_health"
-        elif key == "failoverRecoveryPointId":
-            suggest = "failover_recovery_point_id"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "healthErrors":
-            suggest = "health_errors"
-        elif key == "lastSuccessfulFailoverTime":
-            suggest = "last_successful_failover_time"
-        elif key == "lastSuccessfulTestFailoverTime":
-            suggest = "last_successful_test_failover_time"
-        elif key == "policyFriendlyName":
-            suggest = "policy_friendly_name"
-        elif key == "policyId":
-            suggest = "policy_id"
-        elif key == "primaryFabricFriendlyName":
-            suggest = "primary_fabric_friendly_name"
-        elif key == "primaryFabricProvider":
-            suggest = "primary_fabric_provider"
-        elif key == "primaryProtectionContainerFriendlyName":
-            suggest = "primary_protection_container_friendly_name"
-        elif key == "protectableItemId":
-            suggest = "protectable_item_id"
-        elif key == "protectedItemType":
-            suggest = "protected_item_type"
-        elif key == "protectionState":
-            suggest = "protection_state"
-        elif key == "protectionStateDescription":
-            suggest = "protection_state_description"
-        elif key == "providerSpecificDetails":
-            suggest = "provider_specific_details"
-        elif key == "recoveryContainerId":
-            suggest = "recovery_container_id"
-        elif key == "recoveryFabricFriendlyName":
-            suggest = "recovery_fabric_friendly_name"
-        elif key == "recoveryFabricId":
-            suggest = "recovery_fabric_id"
-        elif key == "recoveryProtectionContainerFriendlyName":
-            suggest = "recovery_protection_container_friendly_name"
-        elif key == "recoveryServicesProviderId":
-            suggest = "recovery_services_provider_id"
-        elif key == "replicationHealth":
-            suggest = "replication_health"
-        elif key == "testFailoverState":
-            suggest = "test_failover_state"
-        elif key == "testFailoverStateDescription":
-            suggest = "test_failover_state_description"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ReplicationProtectedItemPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ReplicationProtectedItemPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ReplicationProtectedItemPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  active_location: Optional[str] = None,
                  allowed_operations: Optional[Sequence[str]] = None,
@@ -9456,29 +7536,6 @@ class RetentionVolumeResponse(dict):
     """
     The retention details of the MT.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "capacityInBytes":
-            suggest = "capacity_in_bytes"
-        elif key == "freeSpaceInBytes":
-            suggest = "free_space_in_bytes"
-        elif key == "thresholdPercentage":
-            suggest = "threshold_percentage"
-        elif key == "volumeName":
-            suggest = "volume_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RetentionVolumeResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RetentionVolumeResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RetentionVolumeResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  capacity_in_bytes: Optional[float] = None,
                  free_space_in_bytes: Optional[float] = None,
@@ -9538,25 +7595,6 @@ class RoleAssignmentResponse(dict):
     """
     Azure role assignment details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalId":
-            suggest = "principal_id"
-        elif key == "roleDefinitionId":
-            suggest = "role_definition_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RoleAssignmentResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RoleAssignmentResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RoleAssignmentResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -9628,25 +7666,6 @@ class RunAsAccountResponse(dict):
     """
     CS Accounts Details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accountId":
-            suggest = "account_id"
-        elif key == "accountName":
-            suggest = "account_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RunAsAccountResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RunAsAccountResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RunAsAccountResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  account_id: Optional[str] = None,
                  account_name: Optional[str] = None):
@@ -9682,23 +7701,6 @@ class StorageClassificationMappingPropertiesResponse(dict):
     """
     Storage mapping properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetStorageClassificationId":
-            suggest = "target_storage_classification_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StorageClassificationMappingPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StorageClassificationMappingPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StorageClassificationMappingPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  target_storage_classification_id: Optional[str] = None):
         """
@@ -9722,41 +7724,6 @@ class VCenterPropertiesResponse(dict):
     """
     vCenter properties.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "discoveryStatus":
-            suggest = "discovery_status"
-        elif key == "fabricArmResourceName":
-            suggest = "fabric_arm_resource_name"
-        elif key == "friendlyName":
-            suggest = "friendly_name"
-        elif key == "healthErrors":
-            suggest = "health_errors"
-        elif key == "infrastructureId":
-            suggest = "infrastructure_id"
-        elif key == "internalId":
-            suggest = "internal_id"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "lastHeartbeat":
-            suggest = "last_heartbeat"
-        elif key == "processServerId":
-            suggest = "process_server_id"
-        elif key == "runAsAccountId":
-            suggest = "run_as_account_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VCenterPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VCenterPropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VCenterPropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  discovery_status: Optional[str] = None,
                  fabric_arm_resource_name: Optional[str] = None,
@@ -9900,47 +7867,6 @@ class VMNicDetailsResponse(dict):
     """
     Hyper V VM network details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableAcceleratedNetworkingOnRecovery":
-            suggest = "enable_accelerated_networking_on_recovery"
-        elif key == "ipAddressType":
-            suggest = "ip_address_type"
-        elif key == "nicId":
-            suggest = "nic_id"
-        elif key == "primaryNicStaticIPAddress":
-            suggest = "primary_nic_static_ip_address"
-        elif key == "recoveryNicIpAddressType":
-            suggest = "recovery_nic_ip_address_type"
-        elif key == "recoveryVMNetworkId":
-            suggest = "recovery_vm_network_id"
-        elif key == "recoveryVMSubnetName":
-            suggest = "recovery_vm_subnet_name"
-        elif key == "replicaNicId":
-            suggest = "replica_nic_id"
-        elif key == "replicaNicStaticIPAddress":
-            suggest = "replica_nic_static_ip_address"
-        elif key == "selectionType":
-            suggest = "selection_type"
-        elif key == "sourceNicArmId":
-            suggest = "source_nic_arm_id"
-        elif key == "vMNetworkName":
-            suggest = "v_m_network_name"
-        elif key == "vMSubnetName":
-            suggest = "v_m_subnet_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMNicDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMNicDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMNicDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  enable_accelerated_networking_on_recovery: Optional[bool] = None,
                  ip_address_type: Optional[str] = None,
@@ -10108,75 +8034,6 @@ class VMwareCbtMigrationDetailsResponse(dict):
     """
     VMwareCbt provider specific settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dataMoverRunAsAccountId":
-            suggest = "data_mover_run_as_account_id"
-        elif key == "firmwareType":
-            suggest = "firmware_type"
-        elif key == "initialSeedingProgressPercentage":
-            suggest = "initial_seeding_progress_percentage"
-        elif key == "instanceType":
-            suggest = "instance_type"
-        elif key == "lastRecoveryPointId":
-            suggest = "last_recovery_point_id"
-        elif key == "lastRecoveryPointReceived":
-            suggest = "last_recovery_point_received"
-        elif key == "migrationProgressPercentage":
-            suggest = "migration_progress_percentage"
-        elif key == "migrationRecoveryPointId":
-            suggest = "migration_recovery_point_id"
-        elif key == "osType":
-            suggest = "os_type"
-        elif key == "resyncProgressPercentage":
-            suggest = "resync_progress_percentage"
-        elif key == "resyncRequired":
-            suggest = "resync_required"
-        elif key == "resyncState":
-            suggest = "resync_state"
-        elif key == "snapshotRunAsAccountId":
-            suggest = "snapshot_run_as_account_id"
-        elif key == "targetGeneration":
-            suggest = "target_generation"
-        elif key == "targetLocation":
-            suggest = "target_location"
-        elif key == "vmwareMachineId":
-            suggest = "vmware_machine_id"
-        elif key == "licenseType":
-            suggest = "license_type"
-        elif key == "performAutoResync":
-            suggest = "perform_auto_resync"
-        elif key == "protectedDisks":
-            suggest = "protected_disks"
-        elif key == "targetAvailabilitySetId":
-            suggest = "target_availability_set_id"
-        elif key == "targetAvailabilityZone":
-            suggest = "target_availability_zone"
-        elif key == "targetBootDiagnosticsStorageAccountId":
-            suggest = "target_boot_diagnostics_storage_account_id"
-        elif key == "targetNetworkId":
-            suggest = "target_network_id"
-        elif key == "targetResourceGroupId":
-            suggest = "target_resource_group_id"
-        elif key == "targetVmName":
-            suggest = "target_vm_name"
-        elif key == "targetVmSize":
-            suggest = "target_vm_size"
-        elif key == "vmNics":
-            suggest = "vm_nics"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMwareCbtMigrationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMwareCbtMigrationDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMwareCbtMigrationDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  data_mover_run_as_account_id: str,
                  firmware_type: str,
@@ -10498,39 +8355,6 @@ class VMwareCbtNicDetailsResponse(dict):
     """
     VMwareCbt NIC details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "nicId":
-            suggest = "nic_id"
-        elif key == "sourceIPAddress":
-            suggest = "source_ip_address"
-        elif key == "sourceIPAddressType":
-            suggest = "source_ip_address_type"
-        elif key == "sourceNetworkId":
-            suggest = "source_network_id"
-        elif key == "isPrimaryNic":
-            suggest = "is_primary_nic"
-        elif key == "isSelectedForMigration":
-            suggest = "is_selected_for_migration"
-        elif key == "targetIPAddress":
-            suggest = "target_ip_address"
-        elif key == "targetIPAddressType":
-            suggest = "target_ip_address_type"
-        elif key == "targetSubnetName":
-            suggest = "target_subnet_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMwareCbtNicDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMwareCbtNicDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMwareCbtNicDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  nic_id: str,
                  source_ip_address: str,
@@ -10646,43 +8470,6 @@ class VMwareCbtProtectedDiskDetailsResponse(dict):
     """
     VMwareCbt protected disk details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "capacityInBytes":
-            suggest = "capacity_in_bytes"
-        elif key == "diskEncryptionSetId":
-            suggest = "disk_encryption_set_id"
-        elif key == "diskId":
-            suggest = "disk_id"
-        elif key == "diskName":
-            suggest = "disk_name"
-        elif key == "diskPath":
-            suggest = "disk_path"
-        elif key == "isOSDisk":
-            suggest = "is_os_disk"
-        elif key == "logStorageAccountId":
-            suggest = "log_storage_account_id"
-        elif key == "logStorageAccountSasSecretName":
-            suggest = "log_storage_account_sas_secret_name"
-        elif key == "seedManagedDiskId":
-            suggest = "seed_managed_disk_id"
-        elif key == "targetManagedDiskId":
-            suggest = "target_managed_disk_id"
-        elif key == "diskType":
-            suggest = "disk_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMwareCbtProtectedDiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMwareCbtProtectedDiskDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMwareCbtProtectedDiskDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  capacity_in_bytes: float,
                  disk_encryption_set_id: str,
@@ -10816,35 +8603,6 @@ class VMwareCbtProtectionContainerMappingDetailsResponse(dict):
     """
     VMwareCbt provider specific container mapping details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "keyVaultId":
-            suggest = "key_vault_id"
-        elif key == "keyVaultUri":
-            suggest = "key_vault_uri"
-        elif key == "serviceBusConnectionStringSecretName":
-            suggest = "service_bus_connection_string_secret_name"
-        elif key == "storageAccountId":
-            suggest = "storage_account_id"
-        elif key == "storageAccountSasSecretName":
-            suggest = "storage_account_sas_secret_name"
-        elif key == "targetLocation":
-            suggest = "target_location"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMwareCbtProtectionContainerMappingDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMwareCbtProtectionContainerMappingDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMwareCbtProtectionContainerMappingDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  key_vault_id: str,
@@ -10935,87 +8693,6 @@ class VMwareDetailsResponse(dict):
     """
     Store the fabric details specific to the VMware fabric.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "agentCount":
-            suggest = "agent_count"
-        elif key == "agentExpiryDate":
-            suggest = "agent_expiry_date"
-        elif key == "agentVersion":
-            suggest = "agent_version"
-        elif key == "agentVersionDetails":
-            suggest = "agent_version_details"
-        elif key == "availableMemoryInBytes":
-            suggest = "available_memory_in_bytes"
-        elif key == "availableSpaceInBytes":
-            suggest = "available_space_in_bytes"
-        elif key == "cpuLoad":
-            suggest = "cpu_load"
-        elif key == "cpuLoadStatus":
-            suggest = "cpu_load_status"
-        elif key == "csServiceStatus":
-            suggest = "cs_service_status"
-        elif key == "databaseServerLoad":
-            suggest = "database_server_load"
-        elif key == "databaseServerLoadStatus":
-            suggest = "database_server_load_status"
-        elif key == "hostName":
-            suggest = "host_name"
-        elif key == "ipAddress":
-            suggest = "ip_address"
-        elif key == "lastHeartbeat":
-            suggest = "last_heartbeat"
-        elif key == "masterTargetServers":
-            suggest = "master_target_servers"
-        elif key == "memoryUsageStatus":
-            suggest = "memory_usage_status"
-        elif key == "processServerCount":
-            suggest = "process_server_count"
-        elif key == "processServers":
-            suggest = "process_servers"
-        elif key == "protectedServers":
-            suggest = "protected_servers"
-        elif key == "psTemplateVersion":
-            suggest = "ps_template_version"
-        elif key == "replicationPairCount":
-            suggest = "replication_pair_count"
-        elif key == "runAsAccounts":
-            suggest = "run_as_accounts"
-        elif key == "spaceUsageStatus":
-            suggest = "space_usage_status"
-        elif key == "sslCertExpiryDate":
-            suggest = "ssl_cert_expiry_date"
-        elif key == "sslCertExpiryRemainingDays":
-            suggest = "ssl_cert_expiry_remaining_days"
-        elif key == "systemLoad":
-            suggest = "system_load"
-        elif key == "systemLoadStatus":
-            suggest = "system_load_status"
-        elif key == "totalMemoryInBytes":
-            suggest = "total_memory_in_bytes"
-        elif key == "totalSpaceInBytes":
-            suggest = "total_space_in_bytes"
-        elif key == "versionStatus":
-            suggest = "version_status"
-        elif key == "webLoad":
-            suggest = "web_load"
-        elif key == "webLoadStatus":
-            suggest = "web_load_status"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMwareDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMwareDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMwareDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  agent_count: Optional[str] = None,
@@ -11424,33 +9101,6 @@ class VMwareV2FabricSpecificDetailsResponse(dict):
     """
     VMwareV2 fabric specific details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "migrationSolutionId":
-            suggest = "migration_solution_id"
-        elif key == "physicalSiteId":
-            suggest = "physical_site_id"
-        elif key == "serviceEndpoint":
-            suggest = "service_endpoint"
-        elif key == "serviceResourceId":
-            suggest = "service_resource_id"
-        elif key == "vmwareSiteId":
-            suggest = "vmware_site_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VMwareV2FabricSpecificDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VMwareV2FabricSpecificDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VMwareV2FabricSpecificDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  migration_solution_id: str,
@@ -11530,23 +9180,6 @@ class VersionDetailsResponse(dict):
     """
     Version related details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expiryDate":
-            suggest = "expiry_date"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VersionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VersionDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VersionDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  expiry_date: Optional[str] = None,
                  status: Optional[str] = None,
@@ -11594,23 +9227,6 @@ class VmmDetailsResponse(dict):
     """
     VMM fabric specific details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VmmDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VmmDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VmmDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str):
         """
@@ -11635,23 +9251,6 @@ class VmmToAzureNetworkMappingSettingsResponse(dict):
     """
     E2A Network Mapping fabric specific settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VmmToAzureNetworkMappingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VmmToAzureNetworkMappingSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VmmToAzureNetworkMappingSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str):
         """
@@ -11676,23 +9275,6 @@ class VmmToVmmNetworkMappingSettingsResponse(dict):
     """
     E2E Network Mapping fabric specific settings.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VmmToVmmNetworkMappingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VmmToVmmNetworkMappingSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VmmToVmmNetworkMappingSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str):
         """
@@ -11717,29 +9299,6 @@ class VmwareCbtPolicyDetailsResponse(dict):
     """
     VMware Cbt specific policy details.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "instanceType":
-            suggest = "instance_type"
-        elif key == "appConsistentFrequencyInMinutes":
-            suggest = "app_consistent_frequency_in_minutes"
-        elif key == "crashConsistentFrequencyInMinutes":
-            suggest = "crash_consistent_frequency_in_minutes"
-        elif key == "recoveryPointHistoryInMinutes":
-            suggest = "recovery_point_history_in_minutes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VmwareCbtPolicyDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VmwareCbtPolicyDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VmwareCbtPolicyDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  instance_type: str,
                  app_consistent_frequency_in_minutes: Optional[int] = None,

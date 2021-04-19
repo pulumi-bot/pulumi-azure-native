@@ -24,33 +24,6 @@ class ActionRulePropertiesResponse(dict):
     """
     Action rule properties defining scope, conditions, suppression logic for action rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "createdAt":
-            suggest = "created_at"
-        elif key == "createdBy":
-            suggest = "created_by"
-        elif key == "lastModifiedAt":
-            suggest = "last_modified_at"
-        elif key == "lastModifiedBy":
-            suggest = "last_modified_by"
-        elif key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "suppressionConfig":
-            suggest = "suppression_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionRulePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActionRulePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActionRulePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  created_at: str,
                  created_by: str,
@@ -212,39 +185,6 @@ class ConditionsResponse(dict):
     """
     Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "alertRuleId":
-            suggest = "alert_rule_id"
-        elif key == "applicationInsightsSearchResults":
-            suggest = "application_insights_search_results"
-        elif key == "logAnalyticsSearchResults":
-            suggest = "log_analytics_search_results"
-        elif key == "monitorCondition":
-            suggest = "monitor_condition"
-        elif key == "monitorService":
-            suggest = "monitor_service"
-        elif key == "signalType":
-            suggest = "signal_type"
-        elif key == "targetResource":
-            suggest = "target_resource"
-        elif key == "targetResourceGroup":
-            suggest = "target_resource_group"
-        elif key == "targetResourceType":
-            suggest = "target_resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConditionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConditionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConditionsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  alert_rule_id: Optional['outputs.ConditionResponse'] = None,
                  application_insights_search_results: Optional['outputs.ConditionResponse'] = None,
@@ -423,23 +363,6 @@ class SuppressionConfigResponse(dict):
     """
     Suppression logic for a given action rule
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recurrenceType":
-            suggest = "recurrence_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SuppressionConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SuppressionConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SuppressionConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  recurrence_type: str,
                  schedule: Optional['outputs.SuppressionScheduleResponse'] = None):
@@ -474,31 +397,6 @@ class SuppressionScheduleResponse(dict):
     """
     Schedule for a given suppression configuration.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "endDate":
-            suggest = "end_date"
-        elif key == "endTime":
-            suggest = "end_time"
-        elif key == "recurrenceValues":
-            suggest = "recurrence_values"
-        elif key == "startDate":
-            suggest = "start_date"
-        elif key == "startTime":
-            suggest = "start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SuppressionScheduleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SuppressionScheduleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SuppressionScheduleResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  end_date: Optional[str] = None,
                  end_time: Optional[str] = None,

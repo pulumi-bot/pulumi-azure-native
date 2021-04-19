@@ -22,25 +22,6 @@ class ActionGroupResponse(dict):
     """
     A pointer to an Azure Action Group.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroupId":
-            suggest = "action_group_id"
-        elif key == "webhookProperties":
-            suggest = "webhook_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActionGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActionGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_group_id: str,
                  webhook_properties: Optional[Mapping[str, str]] = None):
@@ -75,23 +56,6 @@ class ActionListResponse(dict):
     """
     A list of Activity Log Alert rule actions.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "actionGroups":
-            suggest = "action_groups"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionListResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActionListResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActionListResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  action_groups: Optional[Sequence['outputs.ActionGroupResponse']] = None):
         """
@@ -115,23 +79,6 @@ class AlertRuleAllOfConditionResponse(dict):
     """
     An Activity Log Alert rule condition that is met when all its member conditions are met.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "allOf":
-            suggest = "all_of"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AlertRuleAllOfConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AlertRuleAllOfConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AlertRuleAllOfConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  all_of: Sequence['outputs.AlertRuleAnyOfOrLeafConditionResponse']):
         """
@@ -160,25 +107,6 @@ class AlertRuleAnyOfOrLeafConditionResponse(dict):
       * __AnyOf Condition -__ must contain __only__ 'anyOf' (which is an array of Leaf Conditions).
       _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "anyOf":
-            suggest = "any_of"
-        elif key == "containsAny":
-            suggest = "contains_any"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AlertRuleAnyOfOrLeafConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AlertRuleAnyOfOrLeafConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AlertRuleAnyOfOrLeafConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  any_of: Optional[Sequence['outputs.AlertRuleLeafConditionResponse']] = None,
                  contains_any: Optional[Sequence[str]] = None,
@@ -248,23 +176,6 @@ class AlertRuleLeafConditionResponse(dict):
     An Activity Log Alert rule condition that is met by comparing the field and value of an Activity Log event.
     This condition must contain 'field' and either 'equals' or 'containsAny'.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "containsAny":
-            suggest = "contains_any"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AlertRuleLeafConditionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AlertRuleLeafConditionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AlertRuleLeafConditionResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  contains_any: Optional[Sequence[str]] = None,
                  equals: Optional[str] = None,

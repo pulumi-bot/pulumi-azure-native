@@ -20,29 +20,6 @@ class ConnectorCollectionErrorInfoResponse(dict):
     """
     Details of any error encountered on last collection attempt
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "errorCode":
-            suggest = "error_code"
-        elif key == "errorInnerMessage":
-            suggest = "error_inner_message"
-        elif key == "errorMessage":
-            suggest = "error_message"
-        elif key == "errorStartTime":
-            suggest = "error_start_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorCollectionErrorInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorCollectionErrorInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorCollectionErrorInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  error_code: str,
                  error_inner_message: str,
@@ -98,27 +75,6 @@ class ConnectorCollectionInfoResponse(dict):
     """
     Collection and ingestion information
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lastChecked":
-            suggest = "last_checked"
-        elif key == "lastUpdated":
-            suggest = "last_updated"
-        elif key == "sourceLastUpdated":
-            suggest = "source_last_updated"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectorCollectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectorCollectionInfoResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectorCollectionInfoResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  last_checked: str,
                  last_updated: str,
