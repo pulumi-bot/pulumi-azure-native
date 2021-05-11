@@ -123,17 +123,40 @@ def get_resource_args_opts(resource_args_type, resource_options_type, *args, **k
     return resource_args, opts
 
 
-# https://github.com/python/cpython/blob/master/Doc/library/importlib.rst#implementing-lazy-imports
+# Temporary: just use pulumi._utilities._lazy_import once everyone upgrades.
 def lazy_import(fullname):
-    module = sys.modules.get(fullname, None)
 
-    if module is not None:
-        return module
+    import pulumi._utils as u
+    f = getattr(u, '_lazy_import', None)
+    if f is None:
+        f = _lazy_import_temp
+
+    return f(fullname)
+
+
+# https://github.com/python/cpython/blob/master/Doc/library/importlib.rst#implementing-lazy-imports
+#
+# Original example extended to support import cycles and registration
+# of sub-modules as attributes.
+def _lazy_import_temp(fullname):
+    m = sys.modules.get(fullname, None)
+    if m is not None:
+        return m
 
     spec = importlib.util.find_spec(fullname)
+
+    m = sys.modules.get(fullname, None)
+    if m is not None:
+        return m
+
     loader = importlib.util.LazyLoader(spec.loader)
     spec.loader = loader
     module = importlib.util.module_from_spec(spec)
+
+    m = sys.modules.get(fullname, None)
+    if m is not None:
+        return m
+
     sys.modules[fullname] = module
     loader.exec_module(module)
     return module
