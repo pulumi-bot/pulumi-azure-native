@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .android_mam_policy_by_name import *
 from .get_android_mam_policy_by_name import *
@@ -15,6 +16,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.intune.v20150114preview as v20150114preview
     import pulumi_azure_native.intune.v20150114privatepreview as v20150114privatepreview
 else:
-    v20150114preview = _utilities.lazy_import('pulumi_azure_native.intune.v20150114preview')
-    v20150114privatepreview = _utilities.lazy_import('pulumi_azure_native.intune.v20150114privatepreview')
+    v20150114preview = _lazy_import('pulumi_azure_native.intune.v20150114preview')
+    v20150114privatepreview = _lazy_import('pulumi_azure_native.intune.v20150114privatepreview')
 

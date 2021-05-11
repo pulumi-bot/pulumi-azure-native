@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_private_endpoint_connection import *
@@ -26,10 +27,10 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.search.v20200801 as v20200801
     import pulumi_azure_native.search.v20200801preview as v20200801preview
 else:
-    v20150228 = _utilities.lazy_import('pulumi_azure_native.search.v20150228')
-    v20150819 = _utilities.lazy_import('pulumi_azure_native.search.v20150819')
-    v20191001preview = _utilities.lazy_import('pulumi_azure_native.search.v20191001preview')
-    v20200313 = _utilities.lazy_import('pulumi_azure_native.search.v20200313')
-    v20200801 = _utilities.lazy_import('pulumi_azure_native.search.v20200801')
-    v20200801preview = _utilities.lazy_import('pulumi_azure_native.search.v20200801preview')
+    v20150228 = _lazy_import('pulumi_azure_native.search.v20150228')
+    v20150819 = _lazy_import('pulumi_azure_native.search.v20150819')
+    v20191001preview = _lazy_import('pulumi_azure_native.search.v20191001preview')
+    v20200313 = _lazy_import('pulumi_azure_native.search.v20200313')
+    v20200801 = _lazy_import('pulumi_azure_native.search.v20200801')
+    v20200801preview = _lazy_import('pulumi_azure_native.search.v20200801preview')
 

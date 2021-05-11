@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_private_endpoint_connection import *
@@ -21,9 +22,9 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.healthcareapis.v20200330 as v20200330
     import pulumi_azure_native.healthcareapis.v20210111 as v20210111
 else:
-    v20180820preview = _utilities.lazy_import('pulumi_azure_native.healthcareapis.v20180820preview')
-    v20190916 = _utilities.lazy_import('pulumi_azure_native.healthcareapis.v20190916')
-    v20200315 = _utilities.lazy_import('pulumi_azure_native.healthcareapis.v20200315')
-    v20200330 = _utilities.lazy_import('pulumi_azure_native.healthcareapis.v20200330')
-    v20210111 = _utilities.lazy_import('pulumi_azure_native.healthcareapis.v20210111')
+    v20180820preview = _lazy_import('pulumi_azure_native.healthcareapis.v20180820preview')
+    v20190916 = _lazy_import('pulumi_azure_native.healthcareapis.v20190916')
+    v20200315 = _lazy_import('pulumi_azure_native.healthcareapis.v20200315')
+    v20200330 = _lazy_import('pulumi_azure_native.healthcareapis.v20200330')
+    v20210111 = _lazy_import('pulumi_azure_native.healthcareapis.v20210111')
 

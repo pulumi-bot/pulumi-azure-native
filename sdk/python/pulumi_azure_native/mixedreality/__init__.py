@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_object_anchors_account import *
@@ -27,10 +28,10 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.mixedreality.v20210101 as v20210101
     import pulumi_azure_native.mixedreality.v20210301preview as v20210301preview
 else:
-    v20190228preview = _utilities.lazy_import('pulumi_azure_native.mixedreality.v20190228preview')
-    v20191202preview = _utilities.lazy_import('pulumi_azure_native.mixedreality.v20191202preview')
-    v20200406preview = _utilities.lazy_import('pulumi_azure_native.mixedreality.v20200406preview')
-    v20200501 = _utilities.lazy_import('pulumi_azure_native.mixedreality.v20200501')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.mixedreality.v20210101')
-    v20210301preview = _utilities.lazy_import('pulumi_azure_native.mixedreality.v20210301preview')
+    v20190228preview = _lazy_import('pulumi_azure_native.mixedreality.v20190228preview')
+    v20191202preview = _lazy_import('pulumi_azure_native.mixedreality.v20191202preview')
+    v20200406preview = _lazy_import('pulumi_azure_native.mixedreality.v20200406preview')
+    v20200501 = _lazy_import('pulumi_azure_native.mixedreality.v20200501')
+    v20210101 = _lazy_import('pulumi_azure_native.mixedreality.v20210101')
+    v20210301preview = _lazy_import('pulumi_azure_native.mixedreality.v20210301preview')
 

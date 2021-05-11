@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .billing_role_assignment_by_billing_account import *
 from .billing_role_assignment_by_department import *
@@ -19,6 +20,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.billing.v20191001preview as v20191001preview
     import pulumi_azure_native.billing.v20200501 as v20200501
 else:
-    v20191001preview = _utilities.lazy_import('pulumi_azure_native.billing.v20191001preview')
-    v20200501 = _utilities.lazy_import('pulumi_azure_native.billing.v20200501')
+    v20191001preview = _lazy_import('pulumi_azure_native.billing.v20191001preview')
+    v20200501 = _lazy_import('pulumi_azure_native.billing.v20200501')
 

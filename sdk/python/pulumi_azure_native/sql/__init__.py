@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .backup_short_term_retention_policy import *
@@ -123,13 +124,13 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.sql.v20200801preview as v20200801preview
     import pulumi_azure_native.sql.v20201101preview as v20201101preview
 else:
-    v20140401 = _utilities.lazy_import('pulumi_azure_native.sql.v20140401')
-    v20150501preview = _utilities.lazy_import('pulumi_azure_native.sql.v20150501preview')
-    v20170301preview = _utilities.lazy_import('pulumi_azure_native.sql.v20170301preview')
-    v20171001preview = _utilities.lazy_import('pulumi_azure_native.sql.v20171001preview')
-    v20180601preview = _utilities.lazy_import('pulumi_azure_native.sql.v20180601preview')
-    v20190601preview = _utilities.lazy_import('pulumi_azure_native.sql.v20190601preview')
-    v20200202preview = _utilities.lazy_import('pulumi_azure_native.sql.v20200202preview')
-    v20200801preview = _utilities.lazy_import('pulumi_azure_native.sql.v20200801preview')
-    v20201101preview = _utilities.lazy_import('pulumi_azure_native.sql.v20201101preview')
+    v20140401 = _lazy_import('pulumi_azure_native.sql.v20140401')
+    v20150501preview = _lazy_import('pulumi_azure_native.sql.v20150501preview')
+    v20170301preview = _lazy_import('pulumi_azure_native.sql.v20170301preview')
+    v20171001preview = _lazy_import('pulumi_azure_native.sql.v20171001preview')
+    v20180601preview = _lazy_import('pulumi_azure_native.sql.v20180601preview')
+    v20190601preview = _lazy_import('pulumi_azure_native.sql.v20190601preview')
+    v20200202preview = _lazy_import('pulumi_azure_native.sql.v20200202preview')
+    v20200801preview = _lazy_import('pulumi_azure_native.sql.v20200801preview')
+    v20201101preview = _lazy_import('pulumi_azure_native.sql.v20201101preview')
 

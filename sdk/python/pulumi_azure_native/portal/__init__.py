@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .console import *
@@ -30,9 +31,9 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.portal.v20190101preview as v20190101preview
     import pulumi_azure_native.portal.v20200901preview as v20200901preview
 else:
-    v20150801preview = _utilities.lazy_import('pulumi_azure_native.portal.v20150801preview')
-    v20181001 = _utilities.lazy_import('pulumi_azure_native.portal.v20181001')
-    v20181001preview = _utilities.lazy_import('pulumi_azure_native.portal.v20181001preview')
-    v20190101preview = _utilities.lazy_import('pulumi_azure_native.portal.v20190101preview')
-    v20200901preview = _utilities.lazy_import('pulumi_azure_native.portal.v20200901preview')
+    v20150801preview = _lazy_import('pulumi_azure_native.portal.v20150801preview')
+    v20181001 = _lazy_import('pulumi_azure_native.portal.v20181001')
+    v20181001preview = _lazy_import('pulumi_azure_native.portal.v20181001preview')
+    v20190101preview = _lazy_import('pulumi_azure_native.portal.v20190101preview')
+    v20200901preview = _lazy_import('pulumi_azure_native.portal.v20200901preview')
 

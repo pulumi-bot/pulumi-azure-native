@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .customer_subscription import *
@@ -24,7 +25,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.azurestack.v20170601 as v20170601
     import pulumi_azure_native.azurestack.v20200601preview as v20200601preview
 else:
-    v20160101 = _utilities.lazy_import('pulumi_azure_native.azurestack.v20160101')
-    v20170601 = _utilities.lazy_import('pulumi_azure_native.azurestack.v20170601')
-    v20200601preview = _utilities.lazy_import('pulumi_azure_native.azurestack.v20200601preview')
+    v20160101 = _lazy_import('pulumi_azure_native.azurestack.v20160101')
+    v20170601 = _lazy_import('pulumi_azure_native.azurestack.v20170601')
+    v20200601preview = _lazy_import('pulumi_azure_native.azurestack.v20200601preview')
 

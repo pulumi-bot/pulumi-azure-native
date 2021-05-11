@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_job import *
@@ -19,7 +20,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.scheduler.v20160101 as v20160101
     import pulumi_azure_native.scheduler.v20160301 as v20160301
 else:
-    v20140801preview = _utilities.lazy_import('pulumi_azure_native.scheduler.v20140801preview')
-    v20160101 = _utilities.lazy_import('pulumi_azure_native.scheduler.v20160101')
-    v20160301 = _utilities.lazy_import('pulumi_azure_native.scheduler.v20160301')
+    v20140801preview = _lazy_import('pulumi_azure_native.scheduler.v20140801preview')
+    v20160101 = _lazy_import('pulumi_azure_native.scheduler.v20160101')
+    v20160301 = _lazy_import('pulumi_azure_native.scheduler.v20160301')
 

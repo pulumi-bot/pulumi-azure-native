@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .application import *
@@ -34,15 +35,15 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.batch.v20200901 as v20200901
     import pulumi_azure_native.batch.v20210101 as v20210101
 else:
-    v20151201 = _utilities.lazy_import('pulumi_azure_native.batch.v20151201')
-    v20170101 = _utilities.lazy_import('pulumi_azure_native.batch.v20170101')
-    v20170501 = _utilities.lazy_import('pulumi_azure_native.batch.v20170501')
-    v20170901 = _utilities.lazy_import('pulumi_azure_native.batch.v20170901')
-    v20181201 = _utilities.lazy_import('pulumi_azure_native.batch.v20181201')
-    v20190401 = _utilities.lazy_import('pulumi_azure_native.batch.v20190401')
-    v20190801 = _utilities.lazy_import('pulumi_azure_native.batch.v20190801')
-    v20200301 = _utilities.lazy_import('pulumi_azure_native.batch.v20200301')
-    v20200501 = _utilities.lazy_import('pulumi_azure_native.batch.v20200501')
-    v20200901 = _utilities.lazy_import('pulumi_azure_native.batch.v20200901')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.batch.v20210101')
+    v20151201 = _lazy_import('pulumi_azure_native.batch.v20151201')
+    v20170101 = _lazy_import('pulumi_azure_native.batch.v20170101')
+    v20170501 = _lazy_import('pulumi_azure_native.batch.v20170501')
+    v20170901 = _lazy_import('pulumi_azure_native.batch.v20170901')
+    v20181201 = _lazy_import('pulumi_azure_native.batch.v20181201')
+    v20190401 = _lazy_import('pulumi_azure_native.batch.v20190401')
+    v20190801 = _lazy_import('pulumi_azure_native.batch.v20190801')
+    v20200301 = _lazy_import('pulumi_azure_native.batch.v20200301')
+    v20200501 = _lazy_import('pulumi_azure_native.batch.v20200501')
+    v20200901 = _lazy_import('pulumi_azure_native.batch.v20200901')
+    v20210101 = _lazy_import('pulumi_azure_native.batch.v20210101')
 

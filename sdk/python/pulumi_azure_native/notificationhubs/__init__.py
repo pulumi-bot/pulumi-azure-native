@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_namespace import *
@@ -25,7 +26,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.notificationhubs.v20160301 as v20160301
     import pulumi_azure_native.notificationhubs.v20170401 as v20170401
 else:
-    v20140901 = _utilities.lazy_import('pulumi_azure_native.notificationhubs.v20140901')
-    v20160301 = _utilities.lazy_import('pulumi_azure_native.notificationhubs.v20160301')
-    v20170401 = _utilities.lazy_import('pulumi_azure_native.notificationhubs.v20170401')
+    v20140901 = _lazy_import('pulumi_azure_native.notificationhubs.v20140901')
+    v20160301 = _lazy_import('pulumi_azure_native.notificationhubs.v20160301')
+    v20170401 = _lazy_import('pulumi_azure_native.notificationhubs.v20170401')
 

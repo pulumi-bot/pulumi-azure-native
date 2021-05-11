@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_private_endpoint_connection import *
@@ -62,20 +63,20 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.recoveryservices.v20210210 as v20210210
     import pulumi_azure_native.recoveryservices.v20210301 as v20210301
 else:
-    v20160601 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20160601')
-    v20160810 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20160810')
-    v20161201 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20161201')
-    v20170701 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20170701')
-    v20180110 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20180110')
-    v20180710 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20180710')
-    v20190513 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20190513')
-    v20190615 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20190615')
-    v20200202 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20200202')
-    v20201001 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20201001')
-    v20201201 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20201201')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20210101')
-    v20210201 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20210201')
-    v20210201preview = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20210201preview')
-    v20210210 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20210210')
-    v20210301 = _utilities.lazy_import('pulumi_azure_native.recoveryservices.v20210301')
+    v20160601 = _lazy_import('pulumi_azure_native.recoveryservices.v20160601')
+    v20160810 = _lazy_import('pulumi_azure_native.recoveryservices.v20160810')
+    v20161201 = _lazy_import('pulumi_azure_native.recoveryservices.v20161201')
+    v20170701 = _lazy_import('pulumi_azure_native.recoveryservices.v20170701')
+    v20180110 = _lazy_import('pulumi_azure_native.recoveryservices.v20180110')
+    v20180710 = _lazy_import('pulumi_azure_native.recoveryservices.v20180710')
+    v20190513 = _lazy_import('pulumi_azure_native.recoveryservices.v20190513')
+    v20190615 = _lazy_import('pulumi_azure_native.recoveryservices.v20190615')
+    v20200202 = _lazy_import('pulumi_azure_native.recoveryservices.v20200202')
+    v20201001 = _lazy_import('pulumi_azure_native.recoveryservices.v20201001')
+    v20201201 = _lazy_import('pulumi_azure_native.recoveryservices.v20201201')
+    v20210101 = _lazy_import('pulumi_azure_native.recoveryservices.v20210101')
+    v20210201 = _lazy_import('pulumi_azure_native.recoveryservices.v20210201')
+    v20210201preview = _lazy_import('pulumi_azure_native.recoveryservices.v20210201preview')
+    v20210210 = _lazy_import('pulumi_azure_native.recoveryservices.v20210210')
+    v20210301 = _lazy_import('pulumi_azure_native.recoveryservices.v20210301')
 

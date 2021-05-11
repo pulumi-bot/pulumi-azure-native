@@ -4,6 +4,7 @@
 
 from ... import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .list_billing_account_invoice_sections_by_create_subscription_permission import *
 from . import outputs

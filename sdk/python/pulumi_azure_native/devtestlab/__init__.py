@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .artifact_source import *
@@ -56,7 +57,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.devtestlab.v20160515 as v20160515
     import pulumi_azure_native.devtestlab.v20180915 as v20180915
 else:
-    v20150521preview = _utilities.lazy_import('pulumi_azure_native.devtestlab.v20150521preview')
-    v20160515 = _utilities.lazy_import('pulumi_azure_native.devtestlab.v20160515')
-    v20180915 = _utilities.lazy_import('pulumi_azure_native.devtestlab.v20180915')
+    v20150521preview = _lazy_import('pulumi_azure_native.devtestlab.v20150521preview')
+    v20160515 = _lazy_import('pulumi_azure_native.devtestlab.v20160515')
+    v20180915 = _lazy_import('pulumi_azure_native.devtestlab.v20180915')
 

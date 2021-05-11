@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .availability_set import *
@@ -84,24 +85,24 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.compute.v20201201 as v20201201
     import pulumi_azure_native.compute.v20210301 as v20210301
 else:
-    v20150615 = _utilities.lazy_import('pulumi_azure_native.compute.v20150615')
-    v20160330 = _utilities.lazy_import('pulumi_azure_native.compute.v20160330')
-    v20160430preview = _utilities.lazy_import('pulumi_azure_native.compute.v20160430preview')
-    v20170330 = _utilities.lazy_import('pulumi_azure_native.compute.v20170330')
-    v20171201 = _utilities.lazy_import('pulumi_azure_native.compute.v20171201')
-    v20180401 = _utilities.lazy_import('pulumi_azure_native.compute.v20180401')
-    v20180601 = _utilities.lazy_import('pulumi_azure_native.compute.v20180601')
-    v20180930 = _utilities.lazy_import('pulumi_azure_native.compute.v20180930')
-    v20181001 = _utilities.lazy_import('pulumi_azure_native.compute.v20181001')
-    v20190301 = _utilities.lazy_import('pulumi_azure_native.compute.v20190301')
-    v20190701 = _utilities.lazy_import('pulumi_azure_native.compute.v20190701')
-    v20191101 = _utilities.lazy_import('pulumi_azure_native.compute.v20191101')
-    v20191201 = _utilities.lazy_import('pulumi_azure_native.compute.v20191201')
-    v20200501 = _utilities.lazy_import('pulumi_azure_native.compute.v20200501')
-    v20200601 = _utilities.lazy_import('pulumi_azure_native.compute.v20200601')
-    v20200630 = _utilities.lazy_import('pulumi_azure_native.compute.v20200630')
-    v20200930 = _utilities.lazy_import('pulumi_azure_native.compute.v20200930')
-    v20201001preview = _utilities.lazy_import('pulumi_azure_native.compute.v20201001preview')
-    v20201201 = _utilities.lazy_import('pulumi_azure_native.compute.v20201201')
-    v20210301 = _utilities.lazy_import('pulumi_azure_native.compute.v20210301')
+    v20150615 = _lazy_import('pulumi_azure_native.compute.v20150615')
+    v20160330 = _lazy_import('pulumi_azure_native.compute.v20160330')
+    v20160430preview = _lazy_import('pulumi_azure_native.compute.v20160430preview')
+    v20170330 = _lazy_import('pulumi_azure_native.compute.v20170330')
+    v20171201 = _lazy_import('pulumi_azure_native.compute.v20171201')
+    v20180401 = _lazy_import('pulumi_azure_native.compute.v20180401')
+    v20180601 = _lazy_import('pulumi_azure_native.compute.v20180601')
+    v20180930 = _lazy_import('pulumi_azure_native.compute.v20180930')
+    v20181001 = _lazy_import('pulumi_azure_native.compute.v20181001')
+    v20190301 = _lazy_import('pulumi_azure_native.compute.v20190301')
+    v20190701 = _lazy_import('pulumi_azure_native.compute.v20190701')
+    v20191101 = _lazy_import('pulumi_azure_native.compute.v20191101')
+    v20191201 = _lazy_import('pulumi_azure_native.compute.v20191201')
+    v20200501 = _lazy_import('pulumi_azure_native.compute.v20200501')
+    v20200601 = _lazy_import('pulumi_azure_native.compute.v20200601')
+    v20200630 = _lazy_import('pulumi_azure_native.compute.v20200630')
+    v20200930 = _lazy_import('pulumi_azure_native.compute.v20200930')
+    v20201001preview = _lazy_import('pulumi_azure_native.compute.v20201001preview')
+    v20201201 = _lazy_import('pulumi_azure_native.compute.v20201201')
+    v20210301 = _lazy_import('pulumi_azure_native.compute.v20210301')
 

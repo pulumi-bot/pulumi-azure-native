@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .azure_ad_metric import *
@@ -21,7 +22,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.aadiam.v20200301preview as v20200301preview
     import pulumi_azure_native.aadiam.v20200701preview as v20200701preview
 else:
-    v20170401 = _utilities.lazy_import('pulumi_azure_native.aadiam.v20170401')
-    v20200301preview = _utilities.lazy_import('pulumi_azure_native.aadiam.v20200301preview')
-    v20200701preview = _utilities.lazy_import('pulumi_azure_native.aadiam.v20200701preview')
+    v20170401 = _lazy_import('pulumi_azure_native.aadiam.v20170401')
+    v20200301preview = _lazy_import('pulumi_azure_native.aadiam.v20200301preview')
+    v20200701preview = _lazy_import('pulumi_azure_native.aadiam.v20200701preview')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .cassandra_cluster import *
@@ -70,21 +71,21 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.documentdb.v20210401preview as v20210401preview
     import pulumi_azure_native.documentdb.v20210415 as v20210415
 else:
-    v20150401 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20150401')
-    v20150408 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20150408')
-    v20151106 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20151106')
-    v20160319 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20160319')
-    v20160331 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20160331')
-    v20190801 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20190801')
-    v20190801preview = _utilities.lazy_import('pulumi_azure_native.documentdb.v20190801preview')
-    v20191212 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20191212')
-    v20200301 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20200301')
-    v20200401 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20200401')
-    v20200601preview = _utilities.lazy_import('pulumi_azure_native.documentdb.v20200601preview')
-    v20200901 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20200901')
-    v20210115 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20210115')
-    v20210301preview = _utilities.lazy_import('pulumi_azure_native.documentdb.v20210301preview')
-    v20210315 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20210315')
-    v20210401preview = _utilities.lazy_import('pulumi_azure_native.documentdb.v20210401preview')
-    v20210415 = _utilities.lazy_import('pulumi_azure_native.documentdb.v20210415')
+    v20150401 = _lazy_import('pulumi_azure_native.documentdb.v20150401')
+    v20150408 = _lazy_import('pulumi_azure_native.documentdb.v20150408')
+    v20151106 = _lazy_import('pulumi_azure_native.documentdb.v20151106')
+    v20160319 = _lazy_import('pulumi_azure_native.documentdb.v20160319')
+    v20160331 = _lazy_import('pulumi_azure_native.documentdb.v20160331')
+    v20190801 = _lazy_import('pulumi_azure_native.documentdb.v20190801')
+    v20190801preview = _lazy_import('pulumi_azure_native.documentdb.v20190801preview')
+    v20191212 = _lazy_import('pulumi_azure_native.documentdb.v20191212')
+    v20200301 = _lazy_import('pulumi_azure_native.documentdb.v20200301')
+    v20200401 = _lazy_import('pulumi_azure_native.documentdb.v20200401')
+    v20200601preview = _lazy_import('pulumi_azure_native.documentdb.v20200601preview')
+    v20200901 = _lazy_import('pulumi_azure_native.documentdb.v20200901')
+    v20210115 = _lazy_import('pulumi_azure_native.documentdb.v20210115')
+    v20210301preview = _lazy_import('pulumi_azure_native.documentdb.v20210301preview')
+    v20210315 = _lazy_import('pulumi_azure_native.documentdb.v20210315')
+    v20210401preview = _lazy_import('pulumi_azure_native.documentdb.v20210401preview')
+    v20210415 = _lazy_import('pulumi_azure_native.documentdb.v20210415')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .extension import *
 from .farm_beats_model import *
@@ -15,5 +16,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.agfoodplatform.v20200512preview as v20200512preview
 else:
-    v20200512preview = _utilities.lazy_import('pulumi_azure_native.agfoodplatform.v20200512preview')
+    v20200512preview = _lazy_import('pulumi_azure_native.agfoodplatform.v20200512preview')
 

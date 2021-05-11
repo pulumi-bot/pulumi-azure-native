@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_registration_assignment import *
 from .get_registration_definition import *
@@ -20,9 +21,9 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.managedservices.v20190901 as v20190901
     import pulumi_azure_native.managedservices.v20200201preview as v20200201preview
 else:
-    v20180601preview = _utilities.lazy_import('pulumi_azure_native.managedservices.v20180601preview')
-    v20190401preview = _utilities.lazy_import('pulumi_azure_native.managedservices.v20190401preview')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.managedservices.v20190601')
-    v20190901 = _utilities.lazy_import('pulumi_azure_native.managedservices.v20190901')
-    v20200201preview = _utilities.lazy_import('pulumi_azure_native.managedservices.v20200201preview')
+    v20180601preview = _lazy_import('pulumi_azure_native.managedservices.v20180601preview')
+    v20190401preview = _lazy_import('pulumi_azure_native.managedservices.v20190401preview')
+    v20190601 = _lazy_import('pulumi_azure_native.managedservices.v20190601')
+    v20190901 = _lazy_import('pulumi_azure_native.managedservices.v20190901')
+    v20200201preview = _lazy_import('pulumi_azure_native.managedservices.v20200201preview')
 

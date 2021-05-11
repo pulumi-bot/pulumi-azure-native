@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .cloud_connector import *
@@ -43,15 +44,15 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.costmanagement.v20200601 as v20200601
     import pulumi_azure_native.costmanagement.v20201201preview as v20201201preview
 else:
-    v20180531 = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20180531')
-    v20180801preview = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20180801preview')
-    v20190101 = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20190101')
-    v20190301preview = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20190301preview')
-    v20190401preview = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20190401preview')
-    v20190901 = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20190901')
-    v20191001 = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20191001')
-    v20191101 = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20191101')
-    v20200301preview = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20200301preview')
-    v20200601 = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20200601')
-    v20201201preview = _utilities.lazy_import('pulumi_azure_native.costmanagement.v20201201preview')
+    v20180531 = _lazy_import('pulumi_azure_native.costmanagement.v20180531')
+    v20180801preview = _lazy_import('pulumi_azure_native.costmanagement.v20180801preview')
+    v20190101 = _lazy_import('pulumi_azure_native.costmanagement.v20190101')
+    v20190301preview = _lazy_import('pulumi_azure_native.costmanagement.v20190301preview')
+    v20190401preview = _lazy_import('pulumi_azure_native.costmanagement.v20190401preview')
+    v20190901 = _lazy_import('pulumi_azure_native.costmanagement.v20190901')
+    v20191001 = _lazy_import('pulumi_azure_native.costmanagement.v20191001')
+    v20191101 = _lazy_import('pulumi_azure_native.costmanagement.v20191101')
+    v20200301preview = _lazy_import('pulumi_azure_native.costmanagement.v20200301preview')
+    v20200601 = _lazy_import('pulumi_azure_native.costmanagement.v20200601')
+    v20201201preview = _lazy_import('pulumi_azure_native.costmanagement.v20201201preview')
 

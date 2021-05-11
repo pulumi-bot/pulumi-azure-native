@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .budget import *
@@ -28,18 +29,18 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.consumption.v20191101 as v20191101
     import pulumi_azure_native.consumption.v20210501 as v20210501
 else:
-    v20171230preview = _utilities.lazy_import('pulumi_azure_native.consumption.v20171230preview')
-    v20180131 = _utilities.lazy_import('pulumi_azure_native.consumption.v20180131')
-    v20180331 = _utilities.lazy_import('pulumi_azure_native.consumption.v20180331')
-    v20180630 = _utilities.lazy_import('pulumi_azure_native.consumption.v20180630')
-    v20180831 = _utilities.lazy_import('pulumi_azure_native.consumption.v20180831')
-    v20181001 = _utilities.lazy_import('pulumi_azure_native.consumption.v20181001')
-    v20190101 = _utilities.lazy_import('pulumi_azure_native.consumption.v20190101')
-    v20190401preview = _utilities.lazy_import('pulumi_azure_native.consumption.v20190401preview')
-    v20190501 = _utilities.lazy_import('pulumi_azure_native.consumption.v20190501')
-    v20190501preview = _utilities.lazy_import('pulumi_azure_native.consumption.v20190501preview')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.consumption.v20190601')
-    v20191001 = _utilities.lazy_import('pulumi_azure_native.consumption.v20191001')
-    v20191101 = _utilities.lazy_import('pulumi_azure_native.consumption.v20191101')
-    v20210501 = _utilities.lazy_import('pulumi_azure_native.consumption.v20210501')
+    v20171230preview = _lazy_import('pulumi_azure_native.consumption.v20171230preview')
+    v20180131 = _lazy_import('pulumi_azure_native.consumption.v20180131')
+    v20180331 = _lazy_import('pulumi_azure_native.consumption.v20180331')
+    v20180630 = _lazy_import('pulumi_azure_native.consumption.v20180630')
+    v20180831 = _lazy_import('pulumi_azure_native.consumption.v20180831')
+    v20181001 = _lazy_import('pulumi_azure_native.consumption.v20181001')
+    v20190101 = _lazy_import('pulumi_azure_native.consumption.v20190101')
+    v20190401preview = _lazy_import('pulumi_azure_native.consumption.v20190401preview')
+    v20190501 = _lazy_import('pulumi_azure_native.consumption.v20190501')
+    v20190501preview = _lazy_import('pulumi_azure_native.consumption.v20190501preview')
+    v20190601 = _lazy_import('pulumi_azure_native.consumption.v20190601')
+    v20191001 = _lazy_import('pulumi_azure_native.consumption.v20191001')
+    v20191101 = _lazy_import('pulumi_azure_native.consumption.v20191101')
+    v20210501 = _lazy_import('pulumi_azure_native.consumption.v20210501')
 

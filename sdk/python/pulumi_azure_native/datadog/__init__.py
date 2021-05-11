@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_monitor import *
@@ -21,6 +22,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.datadog.v20200201preview as v20200201preview
     import pulumi_azure_native.datadog.v20210301 as v20210301
 else:
-    v20200201preview = _utilities.lazy_import('pulumi_azure_native.datadog.v20200201preview')
-    v20210301 = _utilities.lazy_import('pulumi_azure_native.datadog.v20210301')
+    v20200201preview = _lazy_import('pulumi_azure_native.datadog.v20200201preview')
+    v20210301 = _lazy_import('pulumi_azure_native.datadog.v20210301')
 

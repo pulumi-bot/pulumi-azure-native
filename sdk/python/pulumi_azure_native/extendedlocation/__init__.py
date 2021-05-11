@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .custom_location import *
@@ -15,5 +16,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.extendedlocation.v20210315preview as v20210315preview
 else:
-    v20210315preview = _utilities.lazy_import('pulumi_azure_native.extendedlocation.v20210315preview')
+    v20210315preview = _lazy_import('pulumi_azure_native.extendedlocation.v20210315preview')
 

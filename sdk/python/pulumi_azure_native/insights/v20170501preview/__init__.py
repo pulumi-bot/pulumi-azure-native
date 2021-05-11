@@ -4,6 +4,7 @@
 
 from ... import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .diagnostic_setting import *
 from .get_diagnostic_setting import *

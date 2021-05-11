@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .access_policy import *
@@ -23,5 +24,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.videoanalyzer.v20210501preview as v20210501preview
 else:
-    v20210501preview = _utilities.lazy_import('pulumi_azure_native.videoanalyzer.v20210501preview')
+    v20210501preview = _lazy_import('pulumi_azure_native.videoanalyzer.v20210501preview')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .configuration import *
@@ -36,12 +37,12 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.dbformysql.v20200701preview as v20200701preview
     import pulumi_azure_native.dbformysql.v20200701privatepreview as v20200701privatepreview
 else:
-    v20171201 = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20171201')
-    v20171201preview = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20171201preview')
-    v20180601 = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20180601')
-    v20180601privatepreview = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20180601privatepreview')
-    v20200101 = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20200101')
-    v20200101privatepreview = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20200101privatepreview')
-    v20200701preview = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20200701preview')
-    v20200701privatepreview = _utilities.lazy_import('pulumi_azure_native.dbformysql.v20200701privatepreview')
+    v20171201 = _lazy_import('pulumi_azure_native.dbformysql.v20171201')
+    v20171201preview = _lazy_import('pulumi_azure_native.dbformysql.v20171201preview')
+    v20180601 = _lazy_import('pulumi_azure_native.dbformysql.v20180601')
+    v20180601privatepreview = _lazy_import('pulumi_azure_native.dbformysql.v20180601privatepreview')
+    v20200101 = _lazy_import('pulumi_azure_native.dbformysql.v20200101')
+    v20200101privatepreview = _lazy_import('pulumi_azure_native.dbformysql.v20200101privatepreview')
+    v20200701preview = _lazy_import('pulumi_azure_native.dbformysql.v20200701preview')
+    v20200701privatepreview = _lazy_import('pulumi_azure_native.dbformysql.v20200701privatepreview')
 

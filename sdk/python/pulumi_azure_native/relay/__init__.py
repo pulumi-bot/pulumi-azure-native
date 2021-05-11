@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_hybrid_connection import *
@@ -32,7 +33,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.relay.v20170401 as v20170401
     import pulumi_azure_native.relay.v20180101preview as v20180101preview
 else:
-    v20160701 = _utilities.lazy_import('pulumi_azure_native.relay.v20160701')
-    v20170401 = _utilities.lazy_import('pulumi_azure_native.relay.v20170401')
-    v20180101preview = _utilities.lazy_import('pulumi_azure_native.relay.v20180101preview')
+    v20160701 = _lazy_import('pulumi_azure_native.relay.v20160701')
+    v20170401 = _lazy_import('pulumi_azure_native.relay.v20170401')
+    v20180101preview = _lazy_import('pulumi_azure_native.relay.v20180101preview')
 

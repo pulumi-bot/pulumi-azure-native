@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .account import *
 from .channel import *
@@ -18,5 +19,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.engagementfabric.v20180901preview as v20180901preview
 else:
-    v20180901preview = _utilities.lazy_import('pulumi_azure_native.engagementfabric.v20180901preview')
+    v20180901preview = _lazy_import('pulumi_azure_native.engagementfabric.v20180901preview')
 

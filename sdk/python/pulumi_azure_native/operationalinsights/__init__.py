@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .cluster import *
@@ -42,11 +43,11 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.operationalinsights.v20200801 as v20200801
     import pulumi_azure_native.operationalinsights.v20201001 as v20201001
 else:
-    v20150320 = _utilities.lazy_import('pulumi_azure_native.operationalinsights.v20150320')
-    v20151101preview = _utilities.lazy_import('pulumi_azure_native.operationalinsights.v20151101preview')
-    v20190801preview = _utilities.lazy_import('pulumi_azure_native.operationalinsights.v20190801preview')
-    v20190901preview = _utilities.lazy_import('pulumi_azure_native.operationalinsights.v20190901preview')
-    v20200301preview = _utilities.lazy_import('pulumi_azure_native.operationalinsights.v20200301preview')
-    v20200801 = _utilities.lazy_import('pulumi_azure_native.operationalinsights.v20200801')
-    v20201001 = _utilities.lazy_import('pulumi_azure_native.operationalinsights.v20201001')
+    v20150320 = _lazy_import('pulumi_azure_native.operationalinsights.v20150320')
+    v20151101preview = _lazy_import('pulumi_azure_native.operationalinsights.v20151101preview')
+    v20190801preview = _lazy_import('pulumi_azure_native.operationalinsights.v20190801preview')
+    v20190901preview = _lazy_import('pulumi_azure_native.operationalinsights.v20190901preview')
+    v20200301preview = _lazy_import('pulumi_azure_native.operationalinsights.v20200301preview')
+    v20200801 = _lazy_import('pulumi_azure_native.operationalinsights.v20200801')
+    v20201001 = _lazy_import('pulumi_azure_native.operationalinsights.v20201001')
 

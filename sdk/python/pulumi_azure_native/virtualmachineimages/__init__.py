@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_virtual_machine_image_template import *
@@ -18,8 +19,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.virtualmachineimages.v20190501preview as v20190501preview
     import pulumi_azure_native.virtualmachineimages.v20200214 as v20200214
 else:
-    v20180201preview = _utilities.lazy_import('pulumi_azure_native.virtualmachineimages.v20180201preview')
-    v20190201preview = _utilities.lazy_import('pulumi_azure_native.virtualmachineimages.v20190201preview')
-    v20190501preview = _utilities.lazy_import('pulumi_azure_native.virtualmachineimages.v20190501preview')
-    v20200214 = _utilities.lazy_import('pulumi_azure_native.virtualmachineimages.v20200214')
+    v20180201preview = _lazy_import('pulumi_azure_native.virtualmachineimages.v20180201preview')
+    v20190201preview = _lazy_import('pulumi_azure_native.virtualmachineimages.v20190201preview')
+    v20190501preview = _lazy_import('pulumi_azure_native.virtualmachineimages.v20190501preview')
+    v20200214 = _lazy_import('pulumi_azure_native.virtualmachineimages.v20200214')
 

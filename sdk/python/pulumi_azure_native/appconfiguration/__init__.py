@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .configuration_store import *
@@ -26,10 +27,10 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.appconfiguration.v20200701preview as v20200701preview
     import pulumi_azure_native.appconfiguration.v20210301preview as v20210301preview
 else:
-    v20190201preview = _utilities.lazy_import('pulumi_azure_native.appconfiguration.v20190201preview')
-    v20191001 = _utilities.lazy_import('pulumi_azure_native.appconfiguration.v20191001')
-    v20191101preview = _utilities.lazy_import('pulumi_azure_native.appconfiguration.v20191101preview')
-    v20200601 = _utilities.lazy_import('pulumi_azure_native.appconfiguration.v20200601')
-    v20200701preview = _utilities.lazy_import('pulumi_azure_native.appconfiguration.v20200701preview')
-    v20210301preview = _utilities.lazy_import('pulumi_azure_native.appconfiguration.v20210301preview')
+    v20190201preview = _lazy_import('pulumi_azure_native.appconfiguration.v20190201preview')
+    v20191001 = _lazy_import('pulumi_azure_native.appconfiguration.v20191001')
+    v20191101preview = _lazy_import('pulumi_azure_native.appconfiguration.v20191101preview')
+    v20200601 = _lazy_import('pulumi_azure_native.appconfiguration.v20200601')
+    v20200701preview = _lazy_import('pulumi_azure_native.appconfiguration.v20200701preview')
+    v20210301preview = _lazy_import('pulumi_azure_native.appconfiguration.v20210301preview')
 

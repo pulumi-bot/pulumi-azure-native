@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .access_policy import *
@@ -24,8 +25,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.timeseriesinsights.v20180815preview as v20180815preview
     import pulumi_azure_native.timeseriesinsights.v20200515 as v20200515
 else:
-    v20170228preview = _utilities.lazy_import('pulumi_azure_native.timeseriesinsights.v20170228preview')
-    v20171115 = _utilities.lazy_import('pulumi_azure_native.timeseriesinsights.v20171115')
-    v20180815preview = _utilities.lazy_import('pulumi_azure_native.timeseriesinsights.v20180815preview')
-    v20200515 = _utilities.lazy_import('pulumi_azure_native.timeseriesinsights.v20200515')
+    v20170228preview = _lazy_import('pulumi_azure_native.timeseriesinsights.v20170228preview')
+    v20171115 = _lazy_import('pulumi_azure_native.timeseriesinsights.v20171115')
+    v20180815preview = _lazy_import('pulumi_azure_native.timeseriesinsights.v20180815preview')
+    v20200515 = _lazy_import('pulumi_azure_native.timeseriesinsights.v20200515')
 

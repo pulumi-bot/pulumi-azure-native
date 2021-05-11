@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_private_store_offer import *
@@ -15,5 +16,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.marketplace.v20200101 as v20200101
 else:
-    v20200101 = _utilities.lazy_import('pulumi_azure_native.marketplace.v20200101')
+    v20200101 = _lazy_import('pulumi_azure_native.marketplace.v20200101')
 

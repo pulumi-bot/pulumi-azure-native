@@ -4,6 +4,7 @@
 
 from ... import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_guest_diagnostics_settings_association import *
 from .getguest_diagnostics_setting import *

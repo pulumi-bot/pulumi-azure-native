@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .action_rule_by_name import *
@@ -24,10 +25,10 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.alertsmanagement.v20200804preview as v20200804preview
     import pulumi_azure_native.alertsmanagement.v20210401 as v20210401
 else:
-    v20181102privatepreview = _utilities.lazy_import('pulumi_azure_native.alertsmanagement.v20181102privatepreview')
-    v20190301 = _utilities.lazy_import('pulumi_azure_native.alertsmanagement.v20190301')
-    v20190505preview = _utilities.lazy_import('pulumi_azure_native.alertsmanagement.v20190505preview')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.alertsmanagement.v20190601')
-    v20200804preview = _utilities.lazy_import('pulumi_azure_native.alertsmanagement.v20200804preview')
-    v20210401 = _utilities.lazy_import('pulumi_azure_native.alertsmanagement.v20210401')
+    v20181102privatepreview = _lazy_import('pulumi_azure_native.alertsmanagement.v20181102privatepreview')
+    v20190301 = _lazy_import('pulumi_azure_native.alertsmanagement.v20190301')
+    v20190505preview = _lazy_import('pulumi_azure_native.alertsmanagement.v20190505preview')
+    v20190601 = _lazy_import('pulumi_azure_native.alertsmanagement.v20190601')
+    v20200804preview = _lazy_import('pulumi_azure_native.alertsmanagement.v20200804preview')
+    v20210401 = _lazy_import('pulumi_azure_native.alertsmanagement.v20210401')
 

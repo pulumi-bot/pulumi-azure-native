@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .app_service_environment import *
@@ -168,17 +169,17 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.web.v20201001 as v20201001
     import pulumi_azure_native.web.v20201201 as v20201201
 else:
-    v20150801 = _utilities.lazy_import('pulumi_azure_native.web.v20150801')
-    v20150801preview = _utilities.lazy_import('pulumi_azure_native.web.v20150801preview')
-    v20160301 = _utilities.lazy_import('pulumi_azure_native.web.v20160301')
-    v20160601 = _utilities.lazy_import('pulumi_azure_native.web.v20160601')
-    v20160801 = _utilities.lazy_import('pulumi_azure_native.web.v20160801')
-    v20160901 = _utilities.lazy_import('pulumi_azure_native.web.v20160901')
-    v20180201 = _utilities.lazy_import('pulumi_azure_native.web.v20180201')
-    v20181101 = _utilities.lazy_import('pulumi_azure_native.web.v20181101')
-    v20190801 = _utilities.lazy_import('pulumi_azure_native.web.v20190801')
-    v20200601 = _utilities.lazy_import('pulumi_azure_native.web.v20200601')
-    v20200901 = _utilities.lazy_import('pulumi_azure_native.web.v20200901')
-    v20201001 = _utilities.lazy_import('pulumi_azure_native.web.v20201001')
-    v20201201 = _utilities.lazy_import('pulumi_azure_native.web.v20201201')
+    v20150801 = _lazy_import('pulumi_azure_native.web.v20150801')
+    v20150801preview = _lazy_import('pulumi_azure_native.web.v20150801preview')
+    v20160301 = _lazy_import('pulumi_azure_native.web.v20160301')
+    v20160601 = _lazy_import('pulumi_azure_native.web.v20160601')
+    v20160801 = _lazy_import('pulumi_azure_native.web.v20160801')
+    v20160901 = _lazy_import('pulumi_azure_native.web.v20160901')
+    v20180201 = _lazy_import('pulumi_azure_native.web.v20180201')
+    v20181101 = _lazy_import('pulumi_azure_native.web.v20181101')
+    v20190801 = _lazy_import('pulumi_azure_native.web.v20190801')
+    v20200601 = _lazy_import('pulumi_azure_native.web.v20200601')
+    v20200901 = _lazy_import('pulumi_azure_native.web.v20200901')
+    v20201001 = _lazy_import('pulumi_azure_native.web.v20201001')
+    v20201201 = _lazy_import('pulumi_azure_native.web.v20201201')
 

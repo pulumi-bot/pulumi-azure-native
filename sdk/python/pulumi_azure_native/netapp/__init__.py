@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .account import *
@@ -42,20 +43,20 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.netapp.v20201101 as v20201101
     import pulumi_azure_native.netapp.v20201201 as v20201201
 else:
-    v20170815 = _utilities.lazy_import('pulumi_azure_native.netapp.v20170815')
-    v20190501 = _utilities.lazy_import('pulumi_azure_native.netapp.v20190501')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.netapp.v20190601')
-    v20190701 = _utilities.lazy_import('pulumi_azure_native.netapp.v20190701')
-    v20190801 = _utilities.lazy_import('pulumi_azure_native.netapp.v20190801')
-    v20191001 = _utilities.lazy_import('pulumi_azure_native.netapp.v20191001')
-    v20191101 = _utilities.lazy_import('pulumi_azure_native.netapp.v20191101')
-    v20200201 = _utilities.lazy_import('pulumi_azure_native.netapp.v20200201')
-    v20200301 = _utilities.lazy_import('pulumi_azure_native.netapp.v20200301')
-    v20200501 = _utilities.lazy_import('pulumi_azure_native.netapp.v20200501')
-    v20200601 = _utilities.lazy_import('pulumi_azure_native.netapp.v20200601')
-    v20200701 = _utilities.lazy_import('pulumi_azure_native.netapp.v20200701')
-    v20200801 = _utilities.lazy_import('pulumi_azure_native.netapp.v20200801')
-    v20200901 = _utilities.lazy_import('pulumi_azure_native.netapp.v20200901')
-    v20201101 = _utilities.lazy_import('pulumi_azure_native.netapp.v20201101')
-    v20201201 = _utilities.lazy_import('pulumi_azure_native.netapp.v20201201')
+    v20170815 = _lazy_import('pulumi_azure_native.netapp.v20170815')
+    v20190501 = _lazy_import('pulumi_azure_native.netapp.v20190501')
+    v20190601 = _lazy_import('pulumi_azure_native.netapp.v20190601')
+    v20190701 = _lazy_import('pulumi_azure_native.netapp.v20190701')
+    v20190801 = _lazy_import('pulumi_azure_native.netapp.v20190801')
+    v20191001 = _lazy_import('pulumi_azure_native.netapp.v20191001')
+    v20191101 = _lazy_import('pulumi_azure_native.netapp.v20191101')
+    v20200201 = _lazy_import('pulumi_azure_native.netapp.v20200201')
+    v20200301 = _lazy_import('pulumi_azure_native.netapp.v20200301')
+    v20200501 = _lazy_import('pulumi_azure_native.netapp.v20200501')
+    v20200601 = _lazy_import('pulumi_azure_native.netapp.v20200601')
+    v20200701 = _lazy_import('pulumi_azure_native.netapp.v20200701')
+    v20200801 = _lazy_import('pulumi_azure_native.netapp.v20200801')
+    v20200901 = _lazy_import('pulumi_azure_native.netapp.v20200901')
+    v20201101 = _lazy_import('pulumi_azure_native.netapp.v20201101')
+    v20201201 = _lazy_import('pulumi_azure_native.netapp.v20201201')
 

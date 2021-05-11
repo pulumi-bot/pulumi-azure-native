@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .bot import *
@@ -18,8 +19,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.healthbot.v20201208 as v20201208
     import pulumi_azure_native.healthbot.v20201208preview as v20201208preview
 else:
-    v20201020 = _utilities.lazy_import('pulumi_azure_native.healthbot.v20201020')
-    v20201020preview = _utilities.lazy_import('pulumi_azure_native.healthbot.v20201020preview')
-    v20201208 = _utilities.lazy_import('pulumi_azure_native.healthbot.v20201208')
-    v20201208preview = _utilities.lazy_import('pulumi_azure_native.healthbot.v20201208preview')
+    v20201020 = _lazy_import('pulumi_azure_native.healthbot.v20201020')
+    v20201020preview = _lazy_import('pulumi_azure_native.healthbot.v20201020preview')
+    v20201208 = _lazy_import('pulumi_azure_native.healthbot.v20201208')
+    v20201208preview = _lazy_import('pulumi_azure_native.healthbot.v20201208preview')
 

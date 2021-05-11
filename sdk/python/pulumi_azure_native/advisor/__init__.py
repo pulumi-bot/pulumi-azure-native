@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_suppression import *
 from .suppression import *
@@ -15,8 +16,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.advisor.v20170419 as v20170419
     import pulumi_azure_native.advisor.v20200101 as v20200101
 else:
-    v20160712preview = _utilities.lazy_import('pulumi_azure_native.advisor.v20160712preview')
-    v20170331 = _utilities.lazy_import('pulumi_azure_native.advisor.v20170331')
-    v20170419 = _utilities.lazy_import('pulumi_azure_native.advisor.v20170419')
-    v20200101 = _utilities.lazy_import('pulumi_azure_native.advisor.v20200101')
+    v20160712preview = _lazy_import('pulumi_azure_native.advisor.v20160712preview')
+    v20170331 = _lazy_import('pulumi_azure_native.advisor.v20170331')
+    v20170419 = _lazy_import('pulumi_azure_native.advisor.v20170419')
+    v20200101 = _lazy_import('pulumi_azure_native.advisor.v20200101')
 

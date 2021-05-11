@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_support_plan_type import *
 from .support_plan_type import *
@@ -13,6 +14,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.addons.v20170515 as v20170515
     import pulumi_azure_native.addons.v20180301 as v20180301
 else:
-    v20170515 = _utilities.lazy_import('pulumi_azure_native.addons.v20170515')
-    v20180301 = _utilities.lazy_import('pulumi_azure_native.addons.v20180301')
+    v20170515 = _lazy_import('pulumi_azure_native.addons.v20170515')
+    v20180301 = _lazy_import('pulumi_azure_native.addons.v20180301')
 

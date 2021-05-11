@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .app_service_certificate_order import *
@@ -23,11 +24,11 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.certificateregistration.v20201001 as v20201001
     import pulumi_azure_native.certificateregistration.v20201201 as v20201201
 else:
-    v20150801 = _utilities.lazy_import('pulumi_azure_native.certificateregistration.v20150801')
-    v20180201 = _utilities.lazy_import('pulumi_azure_native.certificateregistration.v20180201')
-    v20190801 = _utilities.lazy_import('pulumi_azure_native.certificateregistration.v20190801')
-    v20200601 = _utilities.lazy_import('pulumi_azure_native.certificateregistration.v20200601')
-    v20200901 = _utilities.lazy_import('pulumi_azure_native.certificateregistration.v20200901')
-    v20201001 = _utilities.lazy_import('pulumi_azure_native.certificateregistration.v20201001')
-    v20201201 = _utilities.lazy_import('pulumi_azure_native.certificateregistration.v20201201')
+    v20150801 = _lazy_import('pulumi_azure_native.certificateregistration.v20150801')
+    v20180201 = _lazy_import('pulumi_azure_native.certificateregistration.v20180201')
+    v20190801 = _lazy_import('pulumi_azure_native.certificateregistration.v20190801')
+    v20200601 = _lazy_import('pulumi_azure_native.certificateregistration.v20200601')
+    v20200901 = _lazy_import('pulumi_azure_native.certificateregistration.v20200901')
+    v20201001 = _lazy_import('pulumi_azure_native.certificateregistration.v20201001')
+    v20201201 = _lazy_import('pulumi_azure_native.certificateregistration.v20201201')
 

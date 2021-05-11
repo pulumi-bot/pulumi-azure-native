@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .account import *
 from .data_pool import *
@@ -17,6 +18,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.autonomousdevelopmentplatform.v20200701preview as v20200701preview
     import pulumi_azure_native.autonomousdevelopmentplatform.v20210201preview as v20210201preview
 else:
-    v20200701preview = _utilities.lazy_import('pulumi_azure_native.autonomousdevelopmentplatform.v20200701preview')
-    v20210201preview = _utilities.lazy_import('pulumi_azure_native.autonomousdevelopmentplatform.v20210201preview')
+    v20200701preview = _lazy_import('pulumi_azure_native.autonomousdevelopmentplatform.v20200701preview')
+    v20210201preview = _lazy_import('pulumi_azure_native.autonomousdevelopmentplatform.v20210201preview')
 

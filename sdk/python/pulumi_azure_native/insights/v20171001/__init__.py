@@ -4,5 +4,6 @@
 
 from ... import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .list_ea_subscription_list_migration_date_post import *

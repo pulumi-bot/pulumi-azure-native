@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .app import *
@@ -16,6 +17,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.iotcentral.v20170701privatepreview as v20170701privatepreview
     import pulumi_azure_native.iotcentral.v20180901 as v20180901
 else:
-    v20170701privatepreview = _utilities.lazy_import('pulumi_azure_native.iotcentral.v20170701privatepreview')
-    v20180901 = _utilities.lazy_import('pulumi_azure_native.iotcentral.v20180901')
+    v20170701privatepreview = _lazy_import('pulumi_azure_native.iotcentral.v20170701privatepreview')
+    v20180901 = _lazy_import('pulumi_azure_native.iotcentral.v20180901')
 

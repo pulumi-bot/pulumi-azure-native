@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_web_pub_sub import *
@@ -20,5 +21,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.webpubsub.v20210401preview as v20210401preview
 else:
-    v20210401preview = _utilities.lazy_import('pulumi_azure_native.webpubsub.v20210401preview')
+    v20210401preview = _lazy_import('pulumi_azure_native.webpubsub.v20210401preview')
 

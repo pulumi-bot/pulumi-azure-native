@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_guest_configuration_assignment import *
@@ -20,8 +21,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.guestconfiguration.v20200625 as v20200625
     import pulumi_azure_native.guestconfiguration.v20210125 as v20210125
 else:
-    v20180630preview = _utilities.lazy_import('pulumi_azure_native.guestconfiguration.v20180630preview')
-    v20181120 = _utilities.lazy_import('pulumi_azure_native.guestconfiguration.v20181120')
-    v20200625 = _utilities.lazy_import('pulumi_azure_native.guestconfiguration.v20200625')
-    v20210125 = _utilities.lazy_import('pulumi_azure_native.guestconfiguration.v20210125')
+    v20180630preview = _lazy_import('pulumi_azure_native.guestconfiguration.v20180630preview')
+    v20181120 = _lazy_import('pulumi_azure_native.guestconfiguration.v20181120')
+    v20200625 = _lazy_import('pulumi_azure_native.guestconfiguration.v20200625')
+    v20210125 = _lazy_import('pulumi_azure_native.guestconfiguration.v20210125')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_key import *
@@ -31,11 +32,11 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.keyvault.v20200401preview as v20200401preview
     import pulumi_azure_native.keyvault.v20210401preview as v20210401preview
 else:
-    v20150601 = _utilities.lazy_import('pulumi_azure_native.keyvault.v20150601')
-    v20161001 = _utilities.lazy_import('pulumi_azure_native.keyvault.v20161001')
-    v20180214 = _utilities.lazy_import('pulumi_azure_native.keyvault.v20180214')
-    v20180214preview = _utilities.lazy_import('pulumi_azure_native.keyvault.v20180214preview')
-    v20190901 = _utilities.lazy_import('pulumi_azure_native.keyvault.v20190901')
-    v20200401preview = _utilities.lazy_import('pulumi_azure_native.keyvault.v20200401preview')
-    v20210401preview = _utilities.lazy_import('pulumi_azure_native.keyvault.v20210401preview')
+    v20150601 = _lazy_import('pulumi_azure_native.keyvault.v20150601')
+    v20161001 = _lazy_import('pulumi_azure_native.keyvault.v20161001')
+    v20180214 = _lazy_import('pulumi_azure_native.keyvault.v20180214')
+    v20180214preview = _lazy_import('pulumi_azure_native.keyvault.v20180214preview')
+    v20190901 = _lazy_import('pulumi_azure_native.keyvault.v20190901')
+    v20200401preview = _lazy_import('pulumi_azure_native.keyvault.v20200401preview')
+    v20210401preview = _lazy_import('pulumi_azure_native.keyvault.v20210401preview')
 

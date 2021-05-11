@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_server_details import *
@@ -19,8 +20,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.analysisservices.v20170801 as v20170801
     import pulumi_azure_native.analysisservices.v20170801beta as v20170801beta
 else:
-    v20160516 = _utilities.lazy_import('pulumi_azure_native.analysisservices.v20160516')
-    v20170714 = _utilities.lazy_import('pulumi_azure_native.analysisservices.v20170714')
-    v20170801 = _utilities.lazy_import('pulumi_azure_native.analysisservices.v20170801')
-    v20170801beta = _utilities.lazy_import('pulumi_azure_native.analysisservices.v20170801beta')
+    v20160516 = _lazy_import('pulumi_azure_native.analysisservices.v20160516')
+    v20170714 = _lazy_import('pulumi_azure_native.analysisservices.v20170714')
+    v20170801 = _lazy_import('pulumi_azure_native.analysisservices.v20170801')
+    v20170801beta = _lazy_import('pulumi_azure_native.analysisservices.v20170801beta')
 

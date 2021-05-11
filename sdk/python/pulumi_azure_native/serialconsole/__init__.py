@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_serial_port import *
@@ -13,5 +14,5 @@ from .serial_port import *
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.serialconsole.v20180501 as v20180501
 else:
-    v20180501 = _utilities.lazy_import('pulumi_azure_native.serialconsole.v20180501')
+    v20180501 = _lazy_import('pulumi_azure_native.serialconsole.v20180501')
 

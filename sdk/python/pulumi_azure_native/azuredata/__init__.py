@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_sql_server import *
 from .get_sql_server_registration import *
@@ -16,6 +17,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.azuredata.v20170301preview as v20170301preview
     import pulumi_azure_native.azuredata.v20190724preview as v20190724preview
 else:
-    v20170301preview = _utilities.lazy_import('pulumi_azure_native.azuredata.v20170301preview')
-    v20190724preview = _utilities.lazy_import('pulumi_azure_native.azuredata.v20190724preview')
+    v20170301preview = _lazy_import('pulumi_azure_native.azuredata.v20170301preview')
+    v20190724preview = _lazy_import('pulumi_azure_native.azuredata.v20190724preview')
 

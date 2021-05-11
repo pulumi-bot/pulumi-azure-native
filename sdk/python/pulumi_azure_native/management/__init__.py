@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_entity import *
 from .get_hierarchy_setting import *
@@ -26,12 +27,12 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.management.v20201001 as v20201001
     import pulumi_azure_native.management.v20210401 as v20210401
 else:
-    v20171101preview = _utilities.lazy_import('pulumi_azure_native.management.v20171101preview')
-    v20180101preview = _utilities.lazy_import('pulumi_azure_native.management.v20180101preview')
-    v20180301preview = _utilities.lazy_import('pulumi_azure_native.management.v20180301preview')
-    v20191101 = _utilities.lazy_import('pulumi_azure_native.management.v20191101')
-    v20200201 = _utilities.lazy_import('pulumi_azure_native.management.v20200201')
-    v20200501 = _utilities.lazy_import('pulumi_azure_native.management.v20200501')
-    v20201001 = _utilities.lazy_import('pulumi_azure_native.management.v20201001')
-    v20210401 = _utilities.lazy_import('pulumi_azure_native.management.v20210401')
+    v20171101preview = _lazy_import('pulumi_azure_native.management.v20171101preview')
+    v20180101preview = _lazy_import('pulumi_azure_native.management.v20180101preview')
+    v20180301preview = _lazy_import('pulumi_azure_native.management.v20180301preview')
+    v20191101 = _lazy_import('pulumi_azure_native.management.v20191101')
+    v20200201 = _lazy_import('pulumi_azure_native.management.v20200201')
+    v20200501 = _lazy_import('pulumi_azure_native.management.v20200501')
+    v20201001 = _lazy_import('pulumi_azure_native.management.v20201001')
+    v20210401 = _lazy_import('pulumi_azure_native.management.v20210401')
 

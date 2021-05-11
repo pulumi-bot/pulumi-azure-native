@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .automation_account import *
@@ -55,10 +56,10 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.automation.v20190601 as v20190601
     import pulumi_azure_native.automation.v20200113preview as v20200113preview
 else:
-    v20151031 = _utilities.lazy_import('pulumi_azure_native.automation.v20151031')
-    v20170515preview = _utilities.lazy_import('pulumi_azure_native.automation.v20170515preview')
-    v20180115 = _utilities.lazy_import('pulumi_azure_native.automation.v20180115')
-    v20180630 = _utilities.lazy_import('pulumi_azure_native.automation.v20180630')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.automation.v20190601')
-    v20200113preview = _utilities.lazy_import('pulumi_azure_native.automation.v20200113preview')
+    v20151031 = _lazy_import('pulumi_azure_native.automation.v20151031')
+    v20170515preview = _lazy_import('pulumi_azure_native.automation.v20170515preview')
+    v20180115 = _lazy_import('pulumi_azure_native.automation.v20180115')
+    v20180630 = _lazy_import('pulumi_azure_native.automation.v20180630')
+    v20190601 = _lazy_import('pulumi_azure_native.automation.v20190601')
+    v20200113preview = _lazy_import('pulumi_azure_native.automation.v20200113preview')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_machine import *
@@ -30,12 +31,12 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.hybridcompute.v20210128preview as v20210128preview
     import pulumi_azure_native.hybridcompute.v20210325preview as v20210325preview
 else:
-    v20190318preview = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20190318preview')
-    v20190802preview = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20190802preview')
-    v20191212 = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20191212')
-    v20200730preview = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20200730preview')
-    v20200802 = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20200802')
-    v20200815preview = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20200815preview')
-    v20210128preview = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20210128preview')
-    v20210325preview = _utilities.lazy_import('pulumi_azure_native.hybridcompute.v20210325preview')
+    v20190318preview = _lazy_import('pulumi_azure_native.hybridcompute.v20190318preview')
+    v20190802preview = _lazy_import('pulumi_azure_native.hybridcompute.v20190802preview')
+    v20191212 = _lazy_import('pulumi_azure_native.hybridcompute.v20191212')
+    v20200730preview = _lazy_import('pulumi_azure_native.hybridcompute.v20200730preview')
+    v20200802 = _lazy_import('pulumi_azure_native.hybridcompute.v20200802')
+    v20200815preview = _lazy_import('pulumi_azure_native.hybridcompute.v20200815preview')
+    v20210128preview = _lazy_import('pulumi_azure_native.hybridcompute.v20210128preview')
+    v20210325preview = _lazy_import('pulumi_azure_native.hybridcompute.v20210325preview')
 

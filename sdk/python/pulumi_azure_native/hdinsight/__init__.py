@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .application import *
@@ -19,6 +20,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.hdinsight.v20150301preview as v20150301preview
     import pulumi_azure_native.hdinsight.v20180601preview as v20180601preview
 else:
-    v20150301preview = _utilities.lazy_import('pulumi_azure_native.hdinsight.v20150301preview')
-    v20180601preview = _utilities.lazy_import('pulumi_azure_native.hdinsight.v20180601preview')
+    v20150301preview = _lazy_import('pulumi_azure_native.hdinsight.v20150301preview')
+    v20180601preview = _lazy_import('pulumi_azure_native.hdinsight.v20180601preview')
 

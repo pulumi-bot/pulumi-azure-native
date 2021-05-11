@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_service import *
 from .service import *
@@ -13,6 +14,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.windowsiot.v20180216preview as v20180216preview
     import pulumi_azure_native.windowsiot.v20190601 as v20190601
 else:
-    v20180216preview = _utilities.lazy_import('pulumi_azure_native.windowsiot.v20180216preview')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.windowsiot.v20190601')
+    v20180216preview = _lazy_import('pulumi_azure_native.windowsiot.v20180216preview')
+    v20190601 = _lazy_import('pulumi_azure_native.windowsiot.v20190601')
 

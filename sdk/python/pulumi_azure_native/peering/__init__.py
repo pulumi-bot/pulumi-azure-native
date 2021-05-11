@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_peer_asn import *
@@ -30,10 +31,10 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.peering.v20201001 as v20201001
     import pulumi_azure_native.peering.v20210101 as v20210101
 else:
-    v20190801preview = _utilities.lazy_import('pulumi_azure_native.peering.v20190801preview')
-    v20190901preview = _utilities.lazy_import('pulumi_azure_native.peering.v20190901preview')
-    v20200101preview = _utilities.lazy_import('pulumi_azure_native.peering.v20200101preview')
-    v20200401 = _utilities.lazy_import('pulumi_azure_native.peering.v20200401')
-    v20201001 = _utilities.lazy_import('pulumi_azure_native.peering.v20201001')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.peering.v20210101')
+    v20190801preview = _lazy_import('pulumi_azure_native.peering.v20190801preview')
+    v20190901preview = _lazy_import('pulumi_azure_native.peering.v20190901preview')
+    v20200101preview = _lazy_import('pulumi_azure_native.peering.v20200101preview')
+    v20200401 = _lazy_import('pulumi_azure_native.peering.v20200401')
+    v20201001 = _lazy_import('pulumi_azure_native.peering.v20201001')
+    v20210101 = _lazy_import('pulumi_azure_native.peering.v20210101')
 

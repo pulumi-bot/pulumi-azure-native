@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .extension import *
@@ -20,8 +21,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.kubernetesconfiguration.v20201001preview as v20201001preview
     import pulumi_azure_native.kubernetesconfiguration.v20210301 as v20210301
 else:
-    v20191101preview = _utilities.lazy_import('pulumi_azure_native.kubernetesconfiguration.v20191101preview')
-    v20200701preview = _utilities.lazy_import('pulumi_azure_native.kubernetesconfiguration.v20200701preview')
-    v20201001preview = _utilities.lazy_import('pulumi_azure_native.kubernetesconfiguration.v20201001preview')
-    v20210301 = _utilities.lazy_import('pulumi_azure_native.kubernetesconfiguration.v20210301')
+    v20191101preview = _lazy_import('pulumi_azure_native.kubernetesconfiguration.v20191101preview')
+    v20200701preview = _lazy_import('pulumi_azure_native.kubernetesconfiguration.v20200701preview')
+    v20201001preview = _lazy_import('pulumi_azure_native.kubernetesconfiguration.v20201001preview')
+    v20210301 = _lazy_import('pulumi_azure_native.kubernetesconfiguration.v20210301')
 

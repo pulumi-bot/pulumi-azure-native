@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .attestation_at_resource import *
@@ -33,7 +34,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.policyinsights.v20190701 as v20190701
     import pulumi_azure_native.policyinsights.v20210101 as v20210101
 else:
-    v20180701preview = _utilities.lazy_import('pulumi_azure_native.policyinsights.v20180701preview')
-    v20190701 = _utilities.lazy_import('pulumi_azure_native.policyinsights.v20190701')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.policyinsights.v20210101')
+    v20180701preview = _lazy_import('pulumi_azure_native.policyinsights.v20180701preview')
+    v20190701 = _lazy_import('pulumi_azure_native.policyinsights.v20190701')
+    v20210101 = _lazy_import('pulumi_azure_native.policyinsights.v20210101')
 

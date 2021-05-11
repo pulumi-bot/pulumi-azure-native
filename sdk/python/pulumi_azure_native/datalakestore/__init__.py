@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .account import *
@@ -21,5 +22,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.datalakestore.v20161101 as v20161101
 else:
-    v20161101 = _utilities.lazy_import('pulumi_azure_native.datalakestore.v20161101')
+    v20161101 = _lazy_import('pulumi_azure_native.datalakestore.v20161101')
 

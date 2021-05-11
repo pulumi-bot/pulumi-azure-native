@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .b2_c_tenant import *
@@ -18,6 +19,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.azureactivedirectory.v20190101preview as v20190101preview
     import pulumi_azure_native.azureactivedirectory.v20200501preview as v20200501preview
 else:
-    v20190101preview = _utilities.lazy_import('pulumi_azure_native.azureactivedirectory.v20190101preview')
-    v20200501preview = _utilities.lazy_import('pulumi_azure_native.azureactivedirectory.v20200501preview')
+    v20190101preview = _lazy_import('pulumi_azure_native.azureactivedirectory.v20190101preview')
+    v20200501preview = _lazy_import('pulumi_azure_native.azureactivedirectory.v20200501preview')
 

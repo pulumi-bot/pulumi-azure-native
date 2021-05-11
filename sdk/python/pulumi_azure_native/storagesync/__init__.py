@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .cloud_endpoint import *
@@ -34,14 +35,14 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.storagesync.v20200301 as v20200301
     import pulumi_azure_native.storagesync.v20200901 as v20200901
 else:
-    v20170605preview = _utilities.lazy_import('pulumi_azure_native.storagesync.v20170605preview')
-    v20180402 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20180402')
-    v20180701 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20180701')
-    v20181001 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20181001')
-    v20190201 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20190201')
-    v20190301 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20190301')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20190601')
-    v20191001 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20191001')
-    v20200301 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20200301')
-    v20200901 = _utilities.lazy_import('pulumi_azure_native.storagesync.v20200901')
+    v20170605preview = _lazy_import('pulumi_azure_native.storagesync.v20170605preview')
+    v20180402 = _lazy_import('pulumi_azure_native.storagesync.v20180402')
+    v20180701 = _lazy_import('pulumi_azure_native.storagesync.v20180701')
+    v20181001 = _lazy_import('pulumi_azure_native.storagesync.v20181001')
+    v20190201 = _lazy_import('pulumi_azure_native.storagesync.v20190201')
+    v20190301 = _lazy_import('pulumi_azure_native.storagesync.v20190301')
+    v20190601 = _lazy_import('pulumi_azure_native.storagesync.v20190601')
+    v20191001 = _lazy_import('pulumi_azure_native.storagesync.v20191001')
+    v20200301 = _lazy_import('pulumi_azure_native.storagesync.v20200301')
+    v20200901 = _lazy_import('pulumi_azure_native.storagesync.v20200901')
 

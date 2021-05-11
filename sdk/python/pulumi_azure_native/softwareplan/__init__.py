@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_hybrid_use_benefit import *
 from .hybrid_use_benefit import *
@@ -15,6 +16,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.softwareplan.v20190601preview as v20190601preview
     import pulumi_azure_native.softwareplan.v20191201 as v20191201
 else:
-    v20190601preview = _utilities.lazy_import('pulumi_azure_native.softwareplan.v20190601preview')
-    v20191201 = _utilities.lazy_import('pulumi_azure_native.softwareplan.v20191201')
+    v20190601preview = _lazy_import('pulumi_azure_native.softwareplan.v20190601preview')
+    v20191201 = _lazy_import('pulumi_azure_native.softwareplan.v20191201')
 

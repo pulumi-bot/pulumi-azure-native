@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .data_manager import *
@@ -20,6 +21,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.hybriddata.v20160601 as v20160601
     import pulumi_azure_native.hybriddata.v20190601 as v20190601
 else:
-    v20160601 = _utilities.lazy_import('pulumi_azure_native.hybriddata.v20160601')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.hybriddata.v20190601')
+    v20160601 = _lazy_import('pulumi_azure_native.hybriddata.v20160601')
+    v20190601 = _lazy_import('pulumi_azure_native.hybriddata.v20190601')
 

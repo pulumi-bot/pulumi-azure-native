@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .cache import *
@@ -21,9 +22,9 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.storagecache.v20201001 as v20201001
     import pulumi_azure_native.storagecache.v20210301 as v20210301
 else:
-    v20190801preview = _utilities.lazy_import('pulumi_azure_native.storagecache.v20190801preview')
-    v20191101 = _utilities.lazy_import('pulumi_azure_native.storagecache.v20191101')
-    v20200301 = _utilities.lazy_import('pulumi_azure_native.storagecache.v20200301')
-    v20201001 = _utilities.lazy_import('pulumi_azure_native.storagecache.v20201001')
-    v20210301 = _utilities.lazy_import('pulumi_azure_native.storagecache.v20210301')
+    v20190801preview = _lazy_import('pulumi_azure_native.storagecache.v20190801preview')
+    v20191101 = _lazy_import('pulumi_azure_native.storagecache.v20191101')
+    v20200301 = _lazy_import('pulumi_azure_native.storagecache.v20200301')
+    v20201001 = _lazy_import('pulumi_azure_native.storagecache.v20201001')
+    v20210301 = _lazy_import('pulumi_azure_native.storagecache.v20210301')
 

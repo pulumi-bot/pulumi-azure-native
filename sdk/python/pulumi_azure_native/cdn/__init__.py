@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .afd_custom_domain import *
@@ -55,16 +56,16 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.cdn.v20200415 as v20200415
     import pulumi_azure_native.cdn.v20200901 as v20200901
 else:
-    v20150601 = _utilities.lazy_import('pulumi_azure_native.cdn.v20150601')
-    v20160402 = _utilities.lazy_import('pulumi_azure_native.cdn.v20160402')
-    v20161002 = _utilities.lazy_import('pulumi_azure_native.cdn.v20161002')
-    v20170402 = _utilities.lazy_import('pulumi_azure_native.cdn.v20170402')
-    v20171012 = _utilities.lazy_import('pulumi_azure_native.cdn.v20171012')
-    v20190415 = _utilities.lazy_import('pulumi_azure_native.cdn.v20190415')
-    v20190615 = _utilities.lazy_import('pulumi_azure_native.cdn.v20190615')
-    v20190615preview = _utilities.lazy_import('pulumi_azure_native.cdn.v20190615preview')
-    v20191231 = _utilities.lazy_import('pulumi_azure_native.cdn.v20191231')
-    v20200331 = _utilities.lazy_import('pulumi_azure_native.cdn.v20200331')
-    v20200415 = _utilities.lazy_import('pulumi_azure_native.cdn.v20200415')
-    v20200901 = _utilities.lazy_import('pulumi_azure_native.cdn.v20200901')
+    v20150601 = _lazy_import('pulumi_azure_native.cdn.v20150601')
+    v20160402 = _lazy_import('pulumi_azure_native.cdn.v20160402')
+    v20161002 = _lazy_import('pulumi_azure_native.cdn.v20161002')
+    v20170402 = _lazy_import('pulumi_azure_native.cdn.v20170402')
+    v20171012 = _lazy_import('pulumi_azure_native.cdn.v20171012')
+    v20190415 = _lazy_import('pulumi_azure_native.cdn.v20190415')
+    v20190615 = _lazy_import('pulumi_azure_native.cdn.v20190615')
+    v20190615preview = _lazy_import('pulumi_azure_native.cdn.v20190615preview')
+    v20191231 = _lazy_import('pulumi_azure_native.cdn.v20191231')
+    v20200331 = _lazy_import('pulumi_azure_native.cdn.v20200331')
+    v20200415 = _lazy_import('pulumi_azure_native.cdn.v20200415')
+    v20200901 = _lazy_import('pulumi_azure_native.cdn.v20200901')
 

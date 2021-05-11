@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .commitment_plan import *
@@ -23,8 +24,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.machinelearning.v20170101 as v20170101
     import pulumi_azure_native.machinelearning.v20191001 as v20191001
 else:
-    v20160401 = _utilities.lazy_import('pulumi_azure_native.machinelearning.v20160401')
-    v20160501preview = _utilities.lazy_import('pulumi_azure_native.machinelearning.v20160501preview')
-    v20170101 = _utilities.lazy_import('pulumi_azure_native.machinelearning.v20170101')
-    v20191001 = _utilities.lazy_import('pulumi_azure_native.machinelearning.v20191001')
+    v20160401 = _lazy_import('pulumi_azure_native.machinelearning.v20160401')
+    v20160501preview = _lazy_import('pulumi_azure_native.machinelearning.v20160501preview')
+    v20170101 = _lazy_import('pulumi_azure_native.machinelearning.v20170101')
+    v20191001 = _lazy_import('pulumi_azure_native.machinelearning.v20191001')
 

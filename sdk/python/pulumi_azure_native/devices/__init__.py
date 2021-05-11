@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .certificate import *
@@ -53,27 +54,27 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.devices.v20210201preview as v20210201preview
     import pulumi_azure_native.devices.v20210303preview as v20210303preview
 else:
-    v20160203 = _utilities.lazy_import('pulumi_azure_native.devices.v20160203')
-    v20170119 = _utilities.lazy_import('pulumi_azure_native.devices.v20170119')
-    v20170701 = _utilities.lazy_import('pulumi_azure_native.devices.v20170701')
-    v20170821preview = _utilities.lazy_import('pulumi_azure_native.devices.v20170821preview')
-    v20171115 = _utilities.lazy_import('pulumi_azure_native.devices.v20171115')
-    v20180122 = _utilities.lazy_import('pulumi_azure_native.devices.v20180122')
-    v20180401 = _utilities.lazy_import('pulumi_azure_native.devices.v20180401')
-    v20181201preview = _utilities.lazy_import('pulumi_azure_native.devices.v20181201preview')
-    v20190322 = _utilities.lazy_import('pulumi_azure_native.devices.v20190322')
-    v20190322preview = _utilities.lazy_import('pulumi_azure_native.devices.v20190322preview')
-    v20190701preview = _utilities.lazy_import('pulumi_azure_native.devices.v20190701preview')
-    v20191104 = _utilities.lazy_import('pulumi_azure_native.devices.v20191104')
-    v20200101 = _utilities.lazy_import('pulumi_azure_native.devices.v20200101')
-    v20200301 = _utilities.lazy_import('pulumi_azure_native.devices.v20200301')
-    v20200401 = _utilities.lazy_import('pulumi_azure_native.devices.v20200401')
-    v20200615 = _utilities.lazy_import('pulumi_azure_native.devices.v20200615')
-    v20200710preview = _utilities.lazy_import('pulumi_azure_native.devices.v20200710preview')
-    v20200801 = _utilities.lazy_import('pulumi_azure_native.devices.v20200801')
-    v20200831 = _utilities.lazy_import('pulumi_azure_native.devices.v20200831')
-    v20200831preview = _utilities.lazy_import('pulumi_azure_native.devices.v20200831preview')
-    v20200901preview = _utilities.lazy_import('pulumi_azure_native.devices.v20200901preview')
-    v20210201preview = _utilities.lazy_import('pulumi_azure_native.devices.v20210201preview')
-    v20210303preview = _utilities.lazy_import('pulumi_azure_native.devices.v20210303preview')
+    v20160203 = _lazy_import('pulumi_azure_native.devices.v20160203')
+    v20170119 = _lazy_import('pulumi_azure_native.devices.v20170119')
+    v20170701 = _lazy_import('pulumi_azure_native.devices.v20170701')
+    v20170821preview = _lazy_import('pulumi_azure_native.devices.v20170821preview')
+    v20171115 = _lazy_import('pulumi_azure_native.devices.v20171115')
+    v20180122 = _lazy_import('pulumi_azure_native.devices.v20180122')
+    v20180401 = _lazy_import('pulumi_azure_native.devices.v20180401')
+    v20181201preview = _lazy_import('pulumi_azure_native.devices.v20181201preview')
+    v20190322 = _lazy_import('pulumi_azure_native.devices.v20190322')
+    v20190322preview = _lazy_import('pulumi_azure_native.devices.v20190322preview')
+    v20190701preview = _lazy_import('pulumi_azure_native.devices.v20190701preview')
+    v20191104 = _lazy_import('pulumi_azure_native.devices.v20191104')
+    v20200101 = _lazy_import('pulumi_azure_native.devices.v20200101')
+    v20200301 = _lazy_import('pulumi_azure_native.devices.v20200301')
+    v20200401 = _lazy_import('pulumi_azure_native.devices.v20200401')
+    v20200615 = _lazy_import('pulumi_azure_native.devices.v20200615')
+    v20200710preview = _lazy_import('pulumi_azure_native.devices.v20200710preview')
+    v20200801 = _lazy_import('pulumi_azure_native.devices.v20200801')
+    v20200831 = _lazy_import('pulumi_azure_native.devices.v20200831')
+    v20200831preview = _lazy_import('pulumi_azure_native.devices.v20200831preview')
+    v20200901preview = _lazy_import('pulumi_azure_native.devices.v20200901preview')
+    v20210201preview = _lazy_import('pulumi_azure_native.devices.v20210201preview')
+    v20210303preview = _lazy_import('pulumi_azure_native.devices.v20210303preview')
 

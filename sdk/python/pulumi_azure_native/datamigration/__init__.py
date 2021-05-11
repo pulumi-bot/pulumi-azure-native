@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .file import *
@@ -25,9 +26,9 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.datamigration.v20180419 as v20180419
     import pulumi_azure_native.datamigration.v20180715preview as v20180715preview
 else:
-    v20171115preview = _utilities.lazy_import('pulumi_azure_native.datamigration.v20171115preview')
-    v20180315preview = _utilities.lazy_import('pulumi_azure_native.datamigration.v20180315preview')
-    v20180331preview = _utilities.lazy_import('pulumi_azure_native.datamigration.v20180331preview')
-    v20180419 = _utilities.lazy_import('pulumi_azure_native.datamigration.v20180419')
-    v20180715preview = _utilities.lazy_import('pulumi_azure_native.datamigration.v20180715preview')
+    v20171115preview = _lazy_import('pulumi_azure_native.datamigration.v20171115preview')
+    v20180315preview = _lazy_import('pulumi_azure_native.datamigration.v20180315preview')
+    v20180331preview = _lazy_import('pulumi_azure_native.datamigration.v20180331preview')
+    v20180419 = _lazy_import('pulumi_azure_native.datamigration.v20180419')
+    v20180715preview = _lazy_import('pulumi_azure_native.datamigration.v20180715preview')
 

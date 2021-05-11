@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .controller_details import *
@@ -20,6 +21,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.delegatednetwork.v20200808preview as v20200808preview
     import pulumi_azure_native.delegatednetwork.v20210315 as v20210315
 else:
-    v20200808preview = _utilities.lazy_import('pulumi_azure_native.delegatednetwork.v20200808preview')
-    v20210315 = _utilities.lazy_import('pulumi_azure_native.delegatednetwork.v20210315')
+    v20200808preview = _lazy_import('pulumi_azure_native.delegatednetwork.v20200808preview')
+    v20210315 = _lazy_import('pulumi_azure_native.delegatednetwork.v20210315')
 

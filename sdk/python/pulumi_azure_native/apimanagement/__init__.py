@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .api import *
@@ -120,15 +121,15 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.apimanagement.v20201201 as v20201201
     import pulumi_azure_native.apimanagement.v20210101preview as v20210101preview
 else:
-    v20160707 = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20160707')
-    v20161010 = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20161010')
-    v20170301 = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20170301')
-    v20180101 = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20180101')
-    v20180601preview = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20180601preview')
-    v20190101 = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20190101')
-    v20191201 = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20191201')
-    v20191201preview = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20191201preview')
-    v20200601preview = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20200601preview')
-    v20201201 = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20201201')
-    v20210101preview = _utilities.lazy_import('pulumi_azure_native.apimanagement.v20210101preview')
+    v20160707 = _lazy_import('pulumi_azure_native.apimanagement.v20160707')
+    v20161010 = _lazy_import('pulumi_azure_native.apimanagement.v20161010')
+    v20170301 = _lazy_import('pulumi_azure_native.apimanagement.v20170301')
+    v20180101 = _lazy_import('pulumi_azure_native.apimanagement.v20180101')
+    v20180601preview = _lazy_import('pulumi_azure_native.apimanagement.v20180601preview')
+    v20190101 = _lazy_import('pulumi_azure_native.apimanagement.v20190101')
+    v20191201 = _lazy_import('pulumi_azure_native.apimanagement.v20191201')
+    v20191201preview = _lazy_import('pulumi_azure_native.apimanagement.v20191201preview')
+    v20200601preview = _lazy_import('pulumi_azure_native.apimanagement.v20200601preview')
+    v20201201 = _lazy_import('pulumi_azure_native.apimanagement.v20201201')
+    v20210101preview = _lazy_import('pulumi_azure_native.apimanagement.v20210101preview')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .get_hana_instance import *
@@ -20,6 +21,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.hanaonazure.v20171103preview as v20171103preview
     import pulumi_azure_native.hanaonazure.v20200207preview as v20200207preview
 else:
-    v20171103preview = _utilities.lazy_import('pulumi_azure_native.hanaonazure.v20171103preview')
-    v20200207preview = _utilities.lazy_import('pulumi_azure_native.hanaonazure.v20200207preview')
+    v20171103preview = _lazy_import('pulumi_azure_native.hanaonazure.v20171103preview')
+    v20200207preview = _lazy_import('pulumi_azure_native.hanaonazure.v20200207preview')
 

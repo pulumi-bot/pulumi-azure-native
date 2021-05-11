@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .action import *
@@ -45,7 +46,7 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.securityinsights.v20200101 as v20200101
     import pulumi_azure_native.securityinsights.v20210301preview as v20210301preview
 else:
-    v20190101preview = _utilities.lazy_import('pulumi_azure_native.securityinsights.v20190101preview')
-    v20200101 = _utilities.lazy_import('pulumi_azure_native.securityinsights.v20200101')
-    v20210301preview = _utilities.lazy_import('pulumi_azure_native.securityinsights.v20210301preview')
+    v20190101preview = _lazy_import('pulumi_azure_native.securityinsights.v20190101preview')
+    v20200101 = _lazy_import('pulumi_azure_native.securityinsights.v20200101')
+    v20210301preview = _lazy_import('pulumi_azure_native.securityinsights.v20210301preview')
 

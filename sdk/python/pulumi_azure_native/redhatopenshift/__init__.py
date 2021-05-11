@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from .get_open_shift_cluster import *
 from .list_open_shift_cluster_credentials import *
@@ -15,5 +16,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.redhatopenshift.v20200430 as v20200430
 else:
-    v20200430 = _utilities.lazy_import('pulumi_azure_native.redhatopenshift.v20200430')
+    v20200430 = _lazy_import('pulumi_azure_native.redhatopenshift.v20200430')
 

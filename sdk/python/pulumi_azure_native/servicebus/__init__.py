@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .disaster_recovery_config import *
@@ -49,9 +50,9 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.servicebus.v20180101preview as v20180101preview
     import pulumi_azure_native.servicebus.v20210101preview as v20210101preview
 else:
-    v20140901 = _utilities.lazy_import('pulumi_azure_native.servicebus.v20140901')
-    v20150801 = _utilities.lazy_import('pulumi_azure_native.servicebus.v20150801')
-    v20170401 = _utilities.lazy_import('pulumi_azure_native.servicebus.v20170401')
-    v20180101preview = _utilities.lazy_import('pulumi_azure_native.servicebus.v20180101preview')
-    v20210101preview = _utilities.lazy_import('pulumi_azure_native.servicebus.v20210101preview')
+    v20140901 = _lazy_import('pulumi_azure_native.servicebus.v20140901')
+    v20150801 = _lazy_import('pulumi_azure_native.servicebus.v20150801')
+    v20170401 = _lazy_import('pulumi_azure_native.servicebus.v20170401')
+    v20180101preview = _lazy_import('pulumi_azure_native.servicebus.v20180101preview')
+    v20210101preview = _lazy_import('pulumi_azure_native.servicebus.v20210101preview')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .blob import *
@@ -63,20 +64,20 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.storage.v20210101 as v20210101
     import pulumi_azure_native.storage.v20210201 as v20210201
 else:
-    v20150501preview = _utilities.lazy_import('pulumi_azure_native.storage.v20150501preview')
-    v20150615 = _utilities.lazy_import('pulumi_azure_native.storage.v20150615')
-    v20160101 = _utilities.lazy_import('pulumi_azure_native.storage.v20160101')
-    v20160501 = _utilities.lazy_import('pulumi_azure_native.storage.v20160501')
-    v20161201 = _utilities.lazy_import('pulumi_azure_native.storage.v20161201')
-    v20170601 = _utilities.lazy_import('pulumi_azure_native.storage.v20170601')
-    v20171001 = _utilities.lazy_import('pulumi_azure_native.storage.v20171001')
-    v20180201 = _utilities.lazy_import('pulumi_azure_native.storage.v20180201')
-    v20180301preview = _utilities.lazy_import('pulumi_azure_native.storage.v20180301preview')
-    v20180701 = _utilities.lazy_import('pulumi_azure_native.storage.v20180701')
-    v20181101 = _utilities.lazy_import('pulumi_azure_native.storage.v20181101')
-    v20190401 = _utilities.lazy_import('pulumi_azure_native.storage.v20190401')
-    v20190601 = _utilities.lazy_import('pulumi_azure_native.storage.v20190601')
-    v20200801preview = _utilities.lazy_import('pulumi_azure_native.storage.v20200801preview')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.storage.v20210101')
-    v20210201 = _utilities.lazy_import('pulumi_azure_native.storage.v20210201')
+    v20150501preview = _lazy_import('pulumi_azure_native.storage.v20150501preview')
+    v20150615 = _lazy_import('pulumi_azure_native.storage.v20150615')
+    v20160101 = _lazy_import('pulumi_azure_native.storage.v20160101')
+    v20160501 = _lazy_import('pulumi_azure_native.storage.v20160501')
+    v20161201 = _lazy_import('pulumi_azure_native.storage.v20161201')
+    v20170601 = _lazy_import('pulumi_azure_native.storage.v20170601')
+    v20171001 = _lazy_import('pulumi_azure_native.storage.v20171001')
+    v20180201 = _lazy_import('pulumi_azure_native.storage.v20180201')
+    v20180301preview = _lazy_import('pulumi_azure_native.storage.v20180301preview')
+    v20180701 = _lazy_import('pulumi_azure_native.storage.v20180701')
+    v20181101 = _lazy_import('pulumi_azure_native.storage.v20181101')
+    v20190401 = _lazy_import('pulumi_azure_native.storage.v20190401')
+    v20190601 = _lazy_import('pulumi_azure_native.storage.v20190601')
+    v20200801preview = _lazy_import('pulumi_azure_native.storage.v20200801preview')
+    v20210101 = _lazy_import('pulumi_azure_native.storage.v20210101')
+    v20210201 = _lazy_import('pulumi_azure_native.storage.v20210201')
 

@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .auto_scale_v_core import *
@@ -18,6 +19,6 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.powerbidedicated.v20171001 as v20171001
     import pulumi_azure_native.powerbidedicated.v20210101 as v20210101
 else:
-    v20171001 = _utilities.lazy_import('pulumi_azure_native.powerbidedicated.v20171001')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.powerbidedicated.v20210101')
+    v20171001 = _lazy_import('pulumi_azure_native.powerbidedicated.v20171001')
+    v20210101 = _lazy_import('pulumi_azure_native.powerbidedicated.v20210101')
 

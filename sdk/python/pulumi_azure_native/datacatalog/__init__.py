@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .adc_catalog import *
@@ -15,5 +16,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.datacatalog.v20160330 as v20160330
 else:
-    v20160330 = _utilities.lazy_import('pulumi_azure_native.datacatalog.v20160330')
+    v20160330 = _lazy_import('pulumi_azure_native.datacatalog.v20160330')
 

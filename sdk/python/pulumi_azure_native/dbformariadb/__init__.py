@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .configuration import *
@@ -28,8 +29,8 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.dbformariadb.v20180601privatepreview as v20180601privatepreview
     import pulumi_azure_native.dbformariadb.v20200101privatepreview as v20200101privatepreview
 else:
-    v20180601 = _utilities.lazy_import('pulumi_azure_native.dbformariadb.v20180601')
-    v20180601preview = _utilities.lazy_import('pulumi_azure_native.dbformariadb.v20180601preview')
-    v20180601privatepreview = _utilities.lazy_import('pulumi_azure_native.dbformariadb.v20180601privatepreview')
-    v20200101privatepreview = _utilities.lazy_import('pulumi_azure_native.dbformariadb.v20200101privatepreview')
+    v20180601 = _lazy_import('pulumi_azure_native.dbformariadb.v20180601')
+    v20180601preview = _lazy_import('pulumi_azure_native.dbformariadb.v20180601preview')
+    v20180601privatepreview = _lazy_import('pulumi_azure_native.dbformariadb.v20180601privatepreview')
+    v20200101privatepreview = _lazy_import('pulumi_azure_native.dbformariadb.v20200101privatepreview')
 

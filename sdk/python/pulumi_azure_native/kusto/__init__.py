@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .attached_database_configuration import *
@@ -41,14 +42,14 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.kusto.v20200918 as v20200918
     import pulumi_azure_native.kusto.v20210101 as v20210101
 else:
-    v20170907privatepreview = _utilities.lazy_import('pulumi_azure_native.kusto.v20170907privatepreview')
-    v20180907preview = _utilities.lazy_import('pulumi_azure_native.kusto.v20180907preview')
-    v20190121 = _utilities.lazy_import('pulumi_azure_native.kusto.v20190121')
-    v20190515 = _utilities.lazy_import('pulumi_azure_native.kusto.v20190515')
-    v20190907 = _utilities.lazy_import('pulumi_azure_native.kusto.v20190907')
-    v20191109 = _utilities.lazy_import('pulumi_azure_native.kusto.v20191109')
-    v20200215 = _utilities.lazy_import('pulumi_azure_native.kusto.v20200215')
-    v20200614 = _utilities.lazy_import('pulumi_azure_native.kusto.v20200614')
-    v20200918 = _utilities.lazy_import('pulumi_azure_native.kusto.v20200918')
-    v20210101 = _utilities.lazy_import('pulumi_azure_native.kusto.v20210101')
+    v20170907privatepreview = _lazy_import('pulumi_azure_native.kusto.v20170907privatepreview')
+    v20180907preview = _lazy_import('pulumi_azure_native.kusto.v20180907preview')
+    v20190121 = _lazy_import('pulumi_azure_native.kusto.v20190121')
+    v20190515 = _lazy_import('pulumi_azure_native.kusto.v20190515')
+    v20190907 = _lazy_import('pulumi_azure_native.kusto.v20190907')
+    v20191109 = _lazy_import('pulumi_azure_native.kusto.v20191109')
+    v20200215 = _lazy_import('pulumi_azure_native.kusto.v20200215')
+    v20200614 = _lazy_import('pulumi_azure_native.kusto.v20200614')
+    v20200918 = _lazy_import('pulumi_azure_native.kusto.v20200918')
+    v20210101 = _lazy_import('pulumi_azure_native.kusto.v20210101')
 

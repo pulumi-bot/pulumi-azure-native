@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .account_filter import *
@@ -57,13 +58,13 @@ if typing.TYPE_CHECKING:
     import pulumi_azure_native.media.v20200501 as v20200501
     import pulumi_azure_native.media.v20210501 as v20210501
 else:
-    v20151001 = _utilities.lazy_import('pulumi_azure_native.media.v20151001')
-    v20180330preview = _utilities.lazy_import('pulumi_azure_native.media.v20180330preview')
-    v20180601preview = _utilities.lazy_import('pulumi_azure_native.media.v20180601preview')
-    v20180701 = _utilities.lazy_import('pulumi_azure_native.media.v20180701')
-    v20190501preview = _utilities.lazy_import('pulumi_azure_native.media.v20190501preview')
-    v20190901preview = _utilities.lazy_import('pulumi_azure_native.media.v20190901preview')
-    v20200201preview = _utilities.lazy_import('pulumi_azure_native.media.v20200201preview')
-    v20200501 = _utilities.lazy_import('pulumi_azure_native.media.v20200501')
-    v20210501 = _utilities.lazy_import('pulumi_azure_native.media.v20210501')
+    v20151001 = _lazy_import('pulumi_azure_native.media.v20151001')
+    v20180330preview = _lazy_import('pulumi_azure_native.media.v20180330preview')
+    v20180601preview = _lazy_import('pulumi_azure_native.media.v20180601preview')
+    v20180701 = _lazy_import('pulumi_azure_native.media.v20180701')
+    v20190501preview = _lazy_import('pulumi_azure_native.media.v20190501preview')
+    v20190901preview = _lazy_import('pulumi_azure_native.media.v20190901preview')
+    v20200201preview = _lazy_import('pulumi_azure_native.media.v20200201preview')
+    v20200501 = _lazy_import('pulumi_azure_native.media.v20200501')
+    v20210501 = _lazy_import('pulumi_azure_native.media.v20210501')
 

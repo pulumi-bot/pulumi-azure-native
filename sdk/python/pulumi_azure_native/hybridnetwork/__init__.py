@@ -4,6 +4,7 @@
 
 from .. import _utilities
 import typing
+from pulumi._utils import _lazy_import
 # Export this package's modules as members:
 from ._enums import *
 from .device import *
@@ -24,5 +25,5 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_azure_native.hybridnetwork.v20200101preview as v20200101preview
 else:
-    v20200101preview = _utilities.lazy_import('pulumi_azure_native.hybridnetwork.v20200101preview')
+    v20200101preview = _lazy_import('pulumi_azure_native.hybridnetwork.v20200101preview')
 
