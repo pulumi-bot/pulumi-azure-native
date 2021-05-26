@@ -18,7 +18,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pkg/errors v0.9.1
 	github.com/pulumi/pulumi/pkg/v3 v3.2.1
-	github.com/pulumi/pulumi/sdk/v3 v3.2.1
+	github.com/pulumi/pulumi/sdk/v3 v3.3.1
 	github.com/schollz/progressbar/v3 v3.5.0
 	github.com/sourcegraph/jsonx v0.0.0-20200629203448-1a936bd500cf
 	github.com/stretchr/testify v1.7.0
@@ -27,3 +27,7 @@ require (
 	google.golang.org/grpc v1.34.0
 	modernc.org/sqlite v1.10.0
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => ../../pulumi/pkg
+
+replace github.com/pulumi/pulumi/sdk/v3 => ../../pulumi/sdk
