@@ -321,7 +321,7 @@ class AuthorizationServerArgs:
 class AuthorizationServer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_endpoint: Optional[pulumi.Input[str]] = None,
                  authorization_methods: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationMethod']]]] = None,
@@ -346,7 +346,7 @@ class AuthorizationServer(pulumi.CustomResource):
         """
         External OAuth authorization server settings.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorization_endpoint: OAuth authorization endpoint. See http://tools.ietf.org/html/rfc6749#section-3.2.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizationMethod']]] authorization_methods: HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional.
@@ -371,26 +371,26 @@ class AuthorizationServer(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: AuthorizationServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         External OAuth authorization server settings.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AuthorizationServerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AuthorizationServerArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_endpoint: Optional[pulumi.Input[str]] = None,
                  authorization_methods: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationMethod']]]] = None,
@@ -462,19 +462,19 @@ class AuthorizationServer(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AuthorizationServer, __self__).__init__(
             'azure-native:apimanagement/v20180101:AuthorizationServer',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'AuthorizationServer':
         """
         Get an existing AuthorizationServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -500,7 +500,7 @@ class AuthorizationServer(pulumi.CustomResource):
         __props__.__dict__["token_body_parameters"] = None
         __props__.__dict__["token_endpoint"] = None
         __props__.__dict__["type"] = None
-        return AuthorizationServer(resource_name, opts=opts, __props__=__props__)
+        return AuthorizationServer(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="authorizationEndpoint")

@@ -102,7 +102,7 @@ class ProfileArgs:
 class Profile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  profile_name: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Profile(pulumi.CustomResource):
         """
         CDN profile is a logical grouping of endpoints that share the same settings, such as CDN provider and pricing tier.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Resource location.
         :param pulumi.Input[str] profile_name: Name of the CDN profile which is unique within the resource group.
@@ -124,26 +124,26 @@ class Profile(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         CDN profile is a logical grouping of endpoints that share the same settings, such as CDN provider and pricing tier.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ProfileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  profile_name: Optional[pulumi.Input[str]] = None,
@@ -179,19 +179,19 @@ class Profile(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Profile, __self__).__init__(
             'azure-native:cdn/v20190415:Profile',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'Profile':
         """
         Get an existing Profile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -206,7 +206,7 @@ class Profile(pulumi.CustomResource):
         __props__.__dict__["sku"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["type"] = None
-        return Profile(resource_name, opts=opts, __props__=__props__)
+        return Profile(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

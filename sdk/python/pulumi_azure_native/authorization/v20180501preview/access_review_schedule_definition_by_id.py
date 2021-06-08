@@ -328,7 +328,7 @@ class AccessReviewScheduleDefinitionByIdArgs:
 class AccessReviewScheduleDefinitionById(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_apply_decisions_enabled: Optional[pulumi.Input[bool]] = None,
                  default_decision: Optional[pulumi.Input[Union[str, 'DefaultDecisionType']]] = None,
@@ -353,7 +353,7 @@ class AccessReviewScheduleDefinitionById(pulumi.CustomResource):
         """
         Access Review Schedule Definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_apply_decisions_enabled: Flag to indicate whether auto-apply capability, to automatically change the target object access resource, is enabled. If not enabled, a user must, after the review completes, apply the access review.
         :param pulumi.Input[Union[str, 'DefaultDecisionType']] default_decision: This specifies the behavior for the autoReview feature when an access review completes.
@@ -378,26 +378,26 @@ class AccessReviewScheduleDefinitionById(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[AccessReviewScheduleDefinitionByIdArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Access Review Schedule Definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AccessReviewScheduleDefinitionByIdArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AccessReviewScheduleDefinitionByIdArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_apply_decisions_enabled: Optional[pulumi.Input[bool]] = None,
                  default_decision: Optional[pulumi.Input[Union[str, 'DefaultDecisionType']]] = None,
@@ -462,19 +462,19 @@ class AccessReviewScheduleDefinitionById(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessReviewScheduleDefinitionById, __self__).__init__(
             'azure-native:authorization/v20180501preview:AccessReviewScheduleDefinitionById',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'AccessReviewScheduleDefinitionById':
         """
         Get an existing AccessReviewScheduleDefinitionById resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -509,7 +509,7 @@ class AccessReviewScheduleDefinitionById(pulumi.CustomResource):
         __props__.__dict__["status"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["user_principal_name"] = None
-        return AccessReviewScheduleDefinitionById(resource_name, opts=opts, __props__=__props__)
+        return AccessReviewScheduleDefinitionById(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="autoApplyDecisionsEnabled")

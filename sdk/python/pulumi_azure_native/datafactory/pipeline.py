@@ -214,7 +214,7 @@ class PipelineArgs:
 class Pipeline(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activities: Optional[pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['AppendVariableActivityArgs'], pulumi.InputType['AzureDataExplorerCommandActivityArgs'], pulumi.InputType['AzureFunctionActivityArgs'], pulumi.InputType['AzureMLBatchExecutionActivityArgs'], pulumi.InputType['AzureMLExecutePipelineActivityArgs'], pulumi.InputType['AzureMLUpdateResourceActivityArgs'], pulumi.InputType['ControlActivityArgs'], pulumi.InputType['CopyActivityArgs'], pulumi.InputType['CustomActivityArgs'], pulumi.InputType['DataLakeAnalyticsUSQLActivityArgs'], pulumi.InputType['DatabricksNotebookActivityArgs'], pulumi.InputType['DatabricksSparkJarActivityArgs'], pulumi.InputType['DatabricksSparkPythonActivityArgs'], pulumi.InputType['DeleteActivityArgs'], pulumi.InputType['ExecuteDataFlowActivityArgs'], pulumi.InputType['ExecutePipelineActivityArgs'], pulumi.InputType['ExecuteSSISPackageActivityArgs'], pulumi.InputType['ExecutionActivityArgs'], pulumi.InputType['FilterActivityArgs'], pulumi.InputType['ForEachActivityArgs'], pulumi.InputType['GetMetadataActivityArgs'], pulumi.InputType['HDInsightHiveActivityArgs'], pulumi.InputType['HDInsightMapReduceActivityArgs'], pulumi.InputType['HDInsightPigActivityArgs'], pulumi.InputType['HDInsightSparkActivityArgs'], pulumi.InputType['HDInsightStreamingActivityArgs'], pulumi.InputType['IfConditionActivityArgs'], pulumi.InputType['LookupActivityArgs'], pulumi.InputType['SetVariableActivityArgs'], pulumi.InputType['SqlServerStoredProcedureActivityArgs'], pulumi.InputType['SwitchActivityArgs'], pulumi.InputType['UntilActivityArgs'], pulumi.InputType['ValidationActivityArgs'], pulumi.InputType['WaitActivityArgs'], pulumi.InputType['WebActivityArgs'], pulumi.InputType['WebHookActivityArgs']]]]]] = None,
                  annotations: Optional[pulumi.Input[Sequence[Any]]] = None,
@@ -233,7 +233,7 @@ class Pipeline(pulumi.CustomResource):
         Pipeline resource type.
         API Version: 2018-06-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['AppendVariableActivityArgs'], pulumi.InputType['AzureDataExplorerCommandActivityArgs'], pulumi.InputType['AzureFunctionActivityArgs'], pulumi.InputType['AzureMLBatchExecutionActivityArgs'], pulumi.InputType['AzureMLExecutePipelineActivityArgs'], pulumi.InputType['AzureMLUpdateResourceActivityArgs'], pulumi.InputType['ControlActivityArgs'], pulumi.InputType['CopyActivityArgs'], pulumi.InputType['CustomActivityArgs'], pulumi.InputType['DataLakeAnalyticsUSQLActivityArgs'], pulumi.InputType['DatabricksNotebookActivityArgs'], pulumi.InputType['DatabricksSparkJarActivityArgs'], pulumi.InputType['DatabricksSparkPythonActivityArgs'], pulumi.InputType['DeleteActivityArgs'], pulumi.InputType['ExecuteDataFlowActivityArgs'], pulumi.InputType['ExecutePipelineActivityArgs'], pulumi.InputType['ExecuteSSISPackageActivityArgs'], pulumi.InputType['ExecutionActivityArgs'], pulumi.InputType['FilterActivityArgs'], pulumi.InputType['ForEachActivityArgs'], pulumi.InputType['GetMetadataActivityArgs'], pulumi.InputType['HDInsightHiveActivityArgs'], pulumi.InputType['HDInsightMapReduceActivityArgs'], pulumi.InputType['HDInsightPigActivityArgs'], pulumi.InputType['HDInsightSparkActivityArgs'], pulumi.InputType['HDInsightStreamingActivityArgs'], pulumi.InputType['IfConditionActivityArgs'], pulumi.InputType['LookupActivityArgs'], pulumi.InputType['SetVariableActivityArgs'], pulumi.InputType['SqlServerStoredProcedureActivityArgs'], pulumi.InputType['SwitchActivityArgs'], pulumi.InputType['UntilActivityArgs'], pulumi.InputType['ValidationActivityArgs'], pulumi.InputType['WaitActivityArgs'], pulumi.InputType['WebActivityArgs'], pulumi.InputType['WebHookActivityArgs']]]]] activities: List of activities in pipeline.
         :param pulumi.Input[Sequence[Any]] annotations: List of tags that can be used for describing the Pipeline.
@@ -251,27 +251,27 @@ class Pipeline(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: PipelineArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Pipeline resource type.
         API Version: 2018-06-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param PipelineArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(PipelineArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activities: Optional[pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['AppendVariableActivityArgs'], pulumi.InputType['AzureDataExplorerCommandActivityArgs'], pulumi.InputType['AzureFunctionActivityArgs'], pulumi.InputType['AzureMLBatchExecutionActivityArgs'], pulumi.InputType['AzureMLExecutePipelineActivityArgs'], pulumi.InputType['AzureMLUpdateResourceActivityArgs'], pulumi.InputType['ControlActivityArgs'], pulumi.InputType['CopyActivityArgs'], pulumi.InputType['CustomActivityArgs'], pulumi.InputType['DataLakeAnalyticsUSQLActivityArgs'], pulumi.InputType['DatabricksNotebookActivityArgs'], pulumi.InputType['DatabricksSparkJarActivityArgs'], pulumi.InputType['DatabricksSparkPythonActivityArgs'], pulumi.InputType['DeleteActivityArgs'], pulumi.InputType['ExecuteDataFlowActivityArgs'], pulumi.InputType['ExecutePipelineActivityArgs'], pulumi.InputType['ExecuteSSISPackageActivityArgs'], pulumi.InputType['ExecutionActivityArgs'], pulumi.InputType['FilterActivityArgs'], pulumi.InputType['ForEachActivityArgs'], pulumi.InputType['GetMetadataActivityArgs'], pulumi.InputType['HDInsightHiveActivityArgs'], pulumi.InputType['HDInsightMapReduceActivityArgs'], pulumi.InputType['HDInsightPigActivityArgs'], pulumi.InputType['HDInsightSparkActivityArgs'], pulumi.InputType['HDInsightStreamingActivityArgs'], pulumi.InputType['IfConditionActivityArgs'], pulumi.InputType['LookupActivityArgs'], pulumi.InputType['SetVariableActivityArgs'], pulumi.InputType['SqlServerStoredProcedureActivityArgs'], pulumi.InputType['SwitchActivityArgs'], pulumi.InputType['UntilActivityArgs'], pulumi.InputType['ValidationActivityArgs'], pulumi.InputType['WaitActivityArgs'], pulumi.InputType['WebActivityArgs'], pulumi.InputType['WebHookActivityArgs']]]]]] = None,
                  annotations: Optional[pulumi.Input[Sequence[Any]]] = None,
@@ -320,19 +320,19 @@ class Pipeline(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Pipeline, __self__).__init__(
             'azure-native:datafactory:Pipeline',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -352,7 +352,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["run_dimensions"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["variables"] = None
-        return Pipeline(resource_name, opts=opts, __props__=__props__)
+        return Pipeline(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

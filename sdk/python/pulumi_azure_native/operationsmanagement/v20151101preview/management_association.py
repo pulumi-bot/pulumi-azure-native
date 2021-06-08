@@ -131,59 +131,59 @@ class ManagementAssociationArgs:
 class ManagementAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_association_name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['ManagementAssociationPropertiesArgs']]] = None,
                  provider_name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The container for solution.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Resource location
         :param pulumi.Input[str] management_association_name: User ManagementAssociation Name.
         :param pulumi.Input[pulumi.InputType['ManagementAssociationPropertiesArgs']] properties: Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
         :param pulumi.Input[str] provider_name: Provider name for the parent resource.
         :param pulumi.Input[str] resource_group_name: The name of the resource group to get. The name is case insensitive.
-        :param pulumi.Input[str] resource_name_: Parent resource name.
+        :param pulumi.Input[str] resource_name: Parent resource name.
         :param pulumi.Input[str] resource_type: Resource type for the parent resource
         """
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ManagementAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The container for solution.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ManagementAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ManagementAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_association_name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['ManagementAssociationPropertiesArgs']]] = None,
                  provider_name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -206,9 +206,9 @@ class ManagementAssociation(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
-            if resource_name_ is None and not opts.urn:
-                raise TypeError("Missing required property 'resource_name_'")
-            __props__.__dict__["resource_name"] = resource_name_
+            if resource_name is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_name'")
+            __props__.__dict__["resource_name"] = resource_name
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
             __props__.__dict__["resource_type"] = resource_type
@@ -218,19 +218,19 @@ class ManagementAssociation(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ManagementAssociation, __self__).__init__(
             'azure-native:operationsmanagement/v20151101preview:ManagementAssociation',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'ManagementAssociation':
         """
         Get an existing ManagementAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -242,7 +242,7 @@ class ManagementAssociation(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["properties"] = None
         __props__.__dict__["type"] = None
-        return ManagementAssociation(resource_name, opts=opts, __props__=__props__)
+        return ManagementAssociation(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

@@ -181,7 +181,7 @@ class BlobArgs:
 class Blob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_tier: Optional[pulumi.Input['BlobAccessTier']] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
@@ -197,7 +197,7 @@ class Blob(pulumi.CustomResource):
         """
         Manages a Blob within a Storage Container.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['BlobAccessTier'] access_tier: The access tier of the storage blob.
         :param pulumi.Input[str] account_name: Specifies the storage account in which to create the storage container.
@@ -213,26 +213,26 @@ class Blob(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: BlobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Blob within a Storage Container.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param BlobArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(BlobArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_tier: Optional[pulumi.Input['BlobAccessTier']] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
@@ -278,19 +278,19 @@ class Blob(pulumi.CustomResource):
             __props__.__dict__["url"] = None
         super(Blob, __self__).__init__(
             'azure-native:storage:Blob',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'Blob':
         """
         Get an existing Blob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -305,7 +305,7 @@ class Blob(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["url"] = None
-        return Blob(resource_name, opts=opts, __props__=__props__)
+        return Blob(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accessTier")

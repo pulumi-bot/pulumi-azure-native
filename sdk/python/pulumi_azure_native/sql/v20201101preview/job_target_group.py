@@ -100,7 +100,7 @@ class JobTargetGroupArgs:
 class JobTargetGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  job_agent_name: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTargetArgs']]]]] = None,
@@ -111,7 +111,7 @@ class JobTargetGroup(pulumi.CustomResource):
         """
         A group of job targets.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] job_agent_name: The name of the job agent.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTargetArgs']]]] members: Members of the target group.
@@ -122,26 +122,26 @@ class JobTargetGroup(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: JobTargetGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A group of job targets.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param JobTargetGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(JobTargetGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  job_agent_name: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTargetArgs']]]]] = None,
@@ -179,19 +179,19 @@ class JobTargetGroup(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(JobTargetGroup, __self__).__init__(
             'azure-native:sql/v20201101preview:JobTargetGroup',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'JobTargetGroup':
         """
         Get an existing JobTargetGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -202,7 +202,7 @@ class JobTargetGroup(pulumi.CustomResource):
         __props__.__dict__["members"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["type"] = None
-        return JobTargetGroup(resource_name, opts=opts, __props__=__props__)
+        return JobTargetGroup(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

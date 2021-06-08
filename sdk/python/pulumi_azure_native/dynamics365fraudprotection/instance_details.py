@@ -102,7 +102,7 @@ class InstanceDetailsArgs:
 class InstanceDetails(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  administration: Optional[pulumi.Input[pulumi.InputType['DFPInstanceAdministratorsArgs']]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class InstanceDetails(pulumi.CustomResource):
         Represents an instance of a DFP instance resource.
         API Version: 2021-02-01-preview.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DFPInstanceAdministratorsArgs']] administration: A collection of DFP instance administrators
         :param pulumi.Input[str] instance_name: The name of the DFP instances. It must be a minimum of 3 characters, and a maximum of 63.
@@ -125,27 +125,27 @@ class InstanceDetails(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: InstanceDetailsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an instance of a DFP instance resource.
         API Version: 2021-02-01-preview.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param InstanceDetailsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(InstanceDetailsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  administration: Optional[pulumi.Input[pulumi.InputType['DFPInstanceAdministratorsArgs']]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -179,19 +179,19 @@ class InstanceDetails(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(InstanceDetails, __self__).__init__(
             'azure-native:dynamics365fraudprotection:InstanceDetails',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'InstanceDetails':
         """
         Get an existing InstanceDetails resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -206,7 +206,7 @@ class InstanceDetails(pulumi.CustomResource):
         __props__.__dict__["system_data"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["type"] = None
-        return InstanceDetails(resource_name, opts=opts, __props__=__props__)
+        return InstanceDetails(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

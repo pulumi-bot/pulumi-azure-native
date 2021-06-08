@@ -528,7 +528,7 @@ class SiteAuthSettingsArgs:
 class SiteAuthSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aad_client_id: Optional[pulumi.Input[str]] = None,
                  additional_login_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -561,7 +561,7 @@ class SiteAuthSettings(pulumi.CustomResource):
         """
         Configuration settings for the Azure App Service Authentication / Authorization feature.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_login_params: Gets or sets a list of login parameters to send to the OpenID Connect authorization endpoint when
                            a user logs in. Each parameter must be in the form "key=value".
@@ -634,26 +634,26 @@ class SiteAuthSettings(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: SiteAuthSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Configuration settings for the Azure App Service Authentication / Authorization feature.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param SiteAuthSettingsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(SiteAuthSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aad_client_id: Optional[pulumi.Input[str]] = None,
                  additional_login_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -729,19 +729,19 @@ class SiteAuthSettings(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SiteAuthSettings, __self__).__init__(
             'azure-native:web/v20150801:SiteAuthSettings',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'SiteAuthSettings':
         """
         Get an existing SiteAuthSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -774,7 +774,7 @@ class SiteAuthSettings(pulumi.CustomResource):
         __props__.__dict__["twitter_consumer_key"] = None
         __props__.__dict__["twitter_consumer_secret"] = None
         __props__.__dict__["unauthenticated_client_action"] = None
-        return SiteAuthSettings(resource_name, opts=opts, __props__=__props__)
+        return SiteAuthSettings(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="aadClientId")

@@ -150,7 +150,7 @@ class PrivateLinkServicesForEDMUploadArgs:
 class PrivateLinkServicesForEDMUpload(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  identity: Optional[pulumi.Input[pulumi.InputType['ServicesResourceIdentityArgs']]] = None,
@@ -158,14 +158,14 @@ class PrivateLinkServicesForEDMUpload(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['ServicesPropertiesArgs']]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         The description of the service.
         API Version: 2021-03-08.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: An etag associated with the resource, used for optimistic concurrency when editing it.
         :param pulumi.Input[pulumi.InputType['ServicesResourceIdentityArgs']] identity: Setting indicating whether the service has a managed identity associated with it.
@@ -173,33 +173,33 @@ class PrivateLinkServicesForEDMUpload(pulumi.CustomResource):
         :param pulumi.Input[str] location: The resource location.
         :param pulumi.Input[pulumi.InputType['ServicesPropertiesArgs']] properties: The common properties of a service.
         :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the service instance.
-        :param pulumi.Input[str] resource_name_: The name of the service instance.
+        :param pulumi.Input[str] resource_name: The name of the service instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
         """
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: PrivateLinkServicesForEDMUploadArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The description of the service.
         API Version: 2021-03-08.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param PrivateLinkServicesForEDMUploadArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(PrivateLinkServicesForEDMUploadArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  identity: Optional[pulumi.Input[pulumi.InputType['ServicesResourceIdentityArgs']]] = None,
@@ -207,7 +207,7 @@ class PrivateLinkServicesForEDMUpload(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['ServicesPropertiesArgs']]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
@@ -231,7 +231,7 @@ class PrivateLinkServicesForEDMUpload(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
-            __props__.__dict__["resource_name"] = resource_name_
+            __props__.__dict__["resource_name"] = resource_name
             __props__.__dict__["tags"] = tags
             __props__.__dict__["name"] = None
             __props__.__dict__["system_data"] = None
@@ -240,19 +240,19 @@ class PrivateLinkServicesForEDMUpload(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(PrivateLinkServicesForEDMUpload, __self__).__init__(
             'azure-native:securityandcompliance:privateLinkServicesForEDMUpload',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'PrivateLinkServicesForEDMUpload':
         """
         Get an existing PrivateLinkServicesForEDMUpload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -269,7 +269,7 @@ class PrivateLinkServicesForEDMUpload(pulumi.CustomResource):
         __props__.__dict__["system_data"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["type"] = None
-        return PrivateLinkServicesForEDMUpload(resource_name, opts=opts, __props__=__props__)
+        return PrivateLinkServicesForEDMUpload(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

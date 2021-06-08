@@ -230,7 +230,7 @@ class InboundNatRuleArgs:
 class InboundNatRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_port: Optional[pulumi.Input[int]] = None,
                  enable_floating_ip: Optional[pulumi.Input[bool]] = None,
@@ -249,7 +249,7 @@ class InboundNatRule(pulumi.CustomResource):
         """
         Inbound NAT rule of the load balancer.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] backend_port: The port used for the internal endpoint. Acceptable values range from 1 to 65535.
         :param pulumi.Input[bool] enable_floating_ip: Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
@@ -268,26 +268,26 @@ class InboundNatRule(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: InboundNatRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Inbound NAT rule of the load balancer.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param InboundNatRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(InboundNatRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_port: Optional[pulumi.Input[int]] = None,
                  enable_floating_ip: Optional[pulumi.Input[bool]] = None,
@@ -336,19 +336,19 @@ class InboundNatRule(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(InboundNatRule, __self__).__init__(
             'azure-native:network/v20170601:InboundNatRule',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'InboundNatRule':
         """
         Get an existing InboundNatRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -366,7 +366,7 @@ class InboundNatRule(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["protocol"] = None
         __props__.__dict__["provisioning_state"] = None
-        return InboundNatRule(resource_name, opts=opts, __props__=__props__)
+        return InboundNatRule(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="backendIPConfiguration")

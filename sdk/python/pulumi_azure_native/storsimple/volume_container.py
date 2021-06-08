@@ -164,7 +164,7 @@ class VolumeContainerArgs:
 class VolumeContainer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  band_width_rate_in_mbps: Optional[pulumi.Input[int]] = None,
                  bandwidth_setting_id: Optional[pulumi.Input[str]] = None,
@@ -180,7 +180,7 @@ class VolumeContainer(pulumi.CustomResource):
         The volume container.
         API Version: 2017-06-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] band_width_rate_in_mbps: The bandwidth-rate set on the volume container.
         :param pulumi.Input[str] bandwidth_setting_id: The ID of the bandwidth setting associated with the volume container.
@@ -195,27 +195,27 @@ class VolumeContainer(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: VolumeContainerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The volume container.
         API Version: 2017-06-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param VolumeContainerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(VolumeContainerArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  band_width_rate_in_mbps: Optional[pulumi.Input[int]] = None,
                  bandwidth_setting_id: Optional[pulumi.Input[str]] = None,
@@ -265,19 +265,19 @@ class VolumeContainer(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(VolumeContainer, __self__).__init__(
             'azure-native:storsimple:VolumeContainer',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'VolumeContainer':
         """
         Get an existing VolumeContainer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -296,7 +296,7 @@ class VolumeContainer(pulumi.CustomResource):
         __props__.__dict__["total_cloud_storage_usage_in_bytes"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["volume_count"] = None
-        return VolumeContainer(resource_name, opts=opts, __props__=__props__)
+        return VolumeContainer(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="bandWidthRateInMbps")

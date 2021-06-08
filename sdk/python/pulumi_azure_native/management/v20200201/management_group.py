@@ -87,7 +87,7 @@ class ManagementGroupArgs:
 class ManagementGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  details: Optional[pulumi.Input[pulumi.InputType['CreateManagementGroupDetailsArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class ManagementGroup(pulumi.CustomResource):
         """
         The management group details.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CreateManagementGroupDetailsArgs']] details: The details of a management group used during creation.
         :param pulumi.Input[str] display_name: The friendly name of the management group. If no value is passed then this  field will be set to the groupId.
@@ -107,26 +107,26 @@ class ManagementGroup(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[ManagementGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The management group details.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ManagementGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ManagementGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  details: Optional[pulumi.Input[pulumi.InputType['CreateManagementGroupDetailsArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -157,19 +157,19 @@ class ManagementGroup(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ManagementGroup, __self__).__init__(
             'azure-native:management/v20200201:ManagementGroup',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'ManagementGroup':
         """
         Get an existing ManagementGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -185,7 +185,7 @@ class ManagementGroup(pulumi.CustomResource):
         __props__.__dict__["roles"] = None
         __props__.__dict__["tenant_id"] = None
         __props__.__dict__["type"] = None
-        return ManagementGroup(resource_name, opts=opts, __props__=__props__)
+        return ManagementGroup(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

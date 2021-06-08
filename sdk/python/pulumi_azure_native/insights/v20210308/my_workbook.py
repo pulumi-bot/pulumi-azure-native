@@ -276,7 +276,7 @@ class MyWorkbookArgs:
 class MyWorkbook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -287,7 +287,7 @@ class MyWorkbook(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  serialized_data: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  storage_uri: Optional[pulumi.Input[str]] = None,
@@ -298,7 +298,7 @@ class MyWorkbook(pulumi.CustomResource):
         """
         An Application Insights private workbook definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: Workbook category, as defined by the user at creation time.
         :param pulumi.Input[str] display_name: The user-defined name of the private workbook.
@@ -309,7 +309,7 @@ class MyWorkbook(pulumi.CustomResource):
         :param pulumi.Input[str] location: Resource location
         :param pulumi.Input[str] name: Azure resource name
         :param pulumi.Input[str] resource_group_name: The name of the resource group. The name is case insensitive.
-        :param pulumi.Input[str] resource_name_: The name of the Application Insights component resource.
+        :param pulumi.Input[str] resource_name: The name of the Application Insights component resource.
         :param pulumi.Input[str] serialized_data: Configuration of this particular private workbook. Configuration data is a string containing valid JSON
         :param pulumi.Input[str] source_id: Optional resourceId for a source resource.
         :param pulumi.Input[str] storage_uri: BYOS Storage Account URI
@@ -320,26 +320,26 @@ class MyWorkbook(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: MyWorkbookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An Application Insights private workbook definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param MyWorkbookArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(MyWorkbookArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -350,7 +350,7 @@ class MyWorkbook(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  serialized_data: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  storage_uri: Optional[pulumi.Input[str]] = None,
@@ -384,7 +384,7 @@ class MyWorkbook(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
-            __props__.__dict__["resource_name"] = resource_name_
+            __props__.__dict__["resource_name"] = resource_name
             if serialized_data is None and not opts.urn:
                 raise TypeError("Missing required property 'serialized_data'")
             __props__.__dict__["serialized_data"] = serialized_data
@@ -400,19 +400,19 @@ class MyWorkbook(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MyWorkbook, __self__).__init__(
             'azure-native:insights/v20210308:MyWorkbook',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'MyWorkbook':
         """
         Get an existing MyWorkbook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -436,7 +436,7 @@ class MyWorkbook(pulumi.CustomResource):
         __props__.__dict__["type"] = None
         __props__.__dict__["user_id"] = None
         __props__.__dict__["version"] = None
-        return MyWorkbook(resource_name, opts=opts, __props__=__props__)
+        return MyWorkbook(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

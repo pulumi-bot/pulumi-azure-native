@@ -472,7 +472,7 @@ class WebAppSlotArgs:
 class WebAppSlot(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_affinity_enabled: Optional[pulumi.Input[bool]] = None,
                  client_cert_enabled: Optional[pulumi.Input[bool]] = None,
@@ -505,7 +505,7 @@ class WebAppSlot(pulumi.CustomResource):
         """
         A web app, a mobile app backend, or an API app.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] client_affinity_enabled: <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
         :param pulumi.Input[bool] client_cert_enabled: <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
@@ -543,26 +543,26 @@ class WebAppSlot(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: WebAppSlotArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A web app, a mobile app backend, or an API app.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param WebAppSlotArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(WebAppSlotArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_affinity_enabled: Optional[pulumi.Input[bool]] = None,
                  client_cert_enabled: Optional[pulumi.Input[bool]] = None,
@@ -666,19 +666,19 @@ class WebAppSlot(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WebAppSlot, __self__).__init__(
             'azure-native:web/v20200901:WebAppSlot',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'WebAppSlot':
         """
         Get an existing WebAppSlot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -730,7 +730,7 @@ class WebAppSlot(pulumi.CustomResource):
         __props__.__dict__["traffic_manager_host_names"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["usage_state"] = None
-        return WebAppSlot(resource_name, opts=opts, __props__=__props__)
+        return WebAppSlot(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="availabilityState")

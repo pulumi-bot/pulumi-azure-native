@@ -397,7 +397,7 @@ class ServerBlobAuditingPolicyArgs:
 class ServerBlobAuditingPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_actions_and_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blob_auditing_policy_name: Optional[pulumi.Input[str]] = None,
@@ -416,7 +416,7 @@ class ServerBlobAuditingPolicy(pulumi.CustomResource):
         """
         A server blob auditing policy.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] audit_actions_and_groups: Specifies the Actions-Groups and Actions to audit.
                
@@ -520,26 +520,26 @@ class ServerBlobAuditingPolicy(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ServerBlobAuditingPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A server blob auditing policy.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ServerBlobAuditingPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ServerBlobAuditingPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_actions_and_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blob_auditing_policy_name: Optional[pulumi.Input[str]] = None,
@@ -591,19 +591,19 @@ class ServerBlobAuditingPolicy(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ServerBlobAuditingPolicy, __self__).__init__(
             'azure-native:sql/v20210201preview:ServerBlobAuditingPolicy',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'ServerBlobAuditingPolicy':
         """
         Get an existing ServerBlobAuditingPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -622,7 +622,7 @@ class ServerBlobAuditingPolicy(pulumi.CustomResource):
         __props__.__dict__["storage_account_subscription_id"] = None
         __props__.__dict__["storage_endpoint"] = None
         __props__.__dict__["type"] = None
-        return ServerBlobAuditingPolicy(resource_name, opts=opts, __props__=__props__)
+        return ServerBlobAuditingPolicy(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="auditActionsAndGroups")

@@ -147,7 +147,7 @@ class ApplicationGroupArgs:
 class ApplicationGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_group_name: Optional[pulumi.Input[str]] = None,
                  application_group_type: Optional[pulumi.Input[Union[str, 'ApplicationGroupType']]] = None,
@@ -161,7 +161,7 @@ class ApplicationGroup(pulumi.CustomResource):
         """
         Represents a ApplicationGroup definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_group_name: The name of the application group
         :param pulumi.Input[Union[str, 'ApplicationGroupType']] application_group_type: Resource Type of ApplicationGroup.
@@ -175,26 +175,26 @@ class ApplicationGroup(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ApplicationGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a ApplicationGroup definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ApplicationGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ApplicationGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_group_name: Optional[pulumi.Input[str]] = None,
                  application_group_type: Optional[pulumi.Input[Union[str, 'ApplicationGroupType']]] = None,
@@ -237,19 +237,19 @@ class ApplicationGroup(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ApplicationGroup, __self__).__init__(
             'azure-native:desktopvirtualization/v20191210preview:ApplicationGroup',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'ApplicationGroup':
         """
         Get an existing ApplicationGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -266,7 +266,7 @@ class ApplicationGroup(pulumi.CustomResource):
         __props__.__dict__["tags"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["workspace_arm_path"] = None
-        return ApplicationGroup(resource_name, opts=opts, __props__=__props__)
+        return ApplicationGroup(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="applicationGroupType")

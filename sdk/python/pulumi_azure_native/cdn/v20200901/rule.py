@@ -147,7 +147,7 @@ class RuleArgs:
 class Rule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['DeliveryRuleCacheExpirationActionArgs'], pulumi.InputType['DeliveryRuleCacheKeyQueryStringActionArgs'], pulumi.InputType['DeliveryRuleRequestHeaderActionArgs'], pulumi.InputType['DeliveryRuleResponseHeaderActionArgs'], pulumi.InputType['OriginGroupOverrideActionArgs'], pulumi.InputType['UrlRedirectActionArgs'], pulumi.InputType['UrlRewriteActionArgs'], pulumi.InputType['UrlSigningActionArgs']]]]]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['DeliveryRuleCookiesConditionArgs'], pulumi.InputType['DeliveryRuleHttpVersionConditionArgs'], pulumi.InputType['DeliveryRuleIsDeviceConditionArgs'], pulumi.InputType['DeliveryRulePostArgsConditionArgs'], pulumi.InputType['DeliveryRuleQueryStringConditionArgs'], pulumi.InputType['DeliveryRuleRemoteAddressConditionArgs'], pulumi.InputType['DeliveryRuleRequestBodyConditionArgs'], pulumi.InputType['DeliveryRuleRequestHeaderConditionArgs'], pulumi.InputType['DeliveryRuleRequestMethodConditionArgs'], pulumi.InputType['DeliveryRuleRequestSchemeConditionArgs'], pulumi.InputType['DeliveryRuleRequestUriConditionArgs'], pulumi.InputType['DeliveryRuleUrlFileExtensionConditionArgs'], pulumi.InputType['DeliveryRuleUrlFileNameConditionArgs'], pulumi.InputType['DeliveryRuleUrlPathConditionArgs']]]]]] = None,
@@ -161,7 +161,7 @@ class Rule(pulumi.CustomResource):
         """
         Friendly Rules name mapping to the any Rules or secret related information.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['DeliveryRuleCacheExpirationActionArgs'], pulumi.InputType['DeliveryRuleCacheKeyQueryStringActionArgs'], pulumi.InputType['DeliveryRuleRequestHeaderActionArgs'], pulumi.InputType['DeliveryRuleResponseHeaderActionArgs'], pulumi.InputType['OriginGroupOverrideActionArgs'], pulumi.InputType['UrlRedirectActionArgs'], pulumi.InputType['UrlRewriteActionArgs'], pulumi.InputType['UrlSigningActionArgs']]]]] actions: A list of actions that are executed when all the conditions of a rule are satisfied.
         :param pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['DeliveryRuleCookiesConditionArgs'], pulumi.InputType['DeliveryRuleHttpVersionConditionArgs'], pulumi.InputType['DeliveryRuleIsDeviceConditionArgs'], pulumi.InputType['DeliveryRulePostArgsConditionArgs'], pulumi.InputType['DeliveryRuleQueryStringConditionArgs'], pulumi.InputType['DeliveryRuleRemoteAddressConditionArgs'], pulumi.InputType['DeliveryRuleRequestBodyConditionArgs'], pulumi.InputType['DeliveryRuleRequestHeaderConditionArgs'], pulumi.InputType['DeliveryRuleRequestMethodConditionArgs'], pulumi.InputType['DeliveryRuleRequestSchemeConditionArgs'], pulumi.InputType['DeliveryRuleRequestUriConditionArgs'], pulumi.InputType['DeliveryRuleUrlFileExtensionConditionArgs'], pulumi.InputType['DeliveryRuleUrlFileNameConditionArgs'], pulumi.InputType['DeliveryRuleUrlPathConditionArgs']]]]] conditions: A list of conditions that must be matched for the actions to be executed
@@ -175,26 +175,26 @@ class Rule(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: RuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Friendly Rules name mapping to the any Rules or secret related information.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(RuleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['DeliveryRuleCacheExpirationActionArgs'], pulumi.InputType['DeliveryRuleCacheKeyQueryStringActionArgs'], pulumi.InputType['DeliveryRuleRequestHeaderActionArgs'], pulumi.InputType['DeliveryRuleResponseHeaderActionArgs'], pulumi.InputType['OriginGroupOverrideActionArgs'], pulumi.InputType['UrlRedirectActionArgs'], pulumi.InputType['UrlRewriteActionArgs'], pulumi.InputType['UrlSigningActionArgs']]]]]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union[pulumi.InputType['DeliveryRuleCookiesConditionArgs'], pulumi.InputType['DeliveryRuleHttpVersionConditionArgs'], pulumi.InputType['DeliveryRuleIsDeviceConditionArgs'], pulumi.InputType['DeliveryRulePostArgsConditionArgs'], pulumi.InputType['DeliveryRuleQueryStringConditionArgs'], pulumi.InputType['DeliveryRuleRemoteAddressConditionArgs'], pulumi.InputType['DeliveryRuleRequestBodyConditionArgs'], pulumi.InputType['DeliveryRuleRequestHeaderConditionArgs'], pulumi.InputType['DeliveryRuleRequestMethodConditionArgs'], pulumi.InputType['DeliveryRuleRequestSchemeConditionArgs'], pulumi.InputType['DeliveryRuleRequestUriConditionArgs'], pulumi.InputType['DeliveryRuleUrlFileExtensionConditionArgs'], pulumi.InputType['DeliveryRuleUrlFileNameConditionArgs'], pulumi.InputType['DeliveryRuleUrlPathConditionArgs']]]]]] = None,
@@ -243,19 +243,19 @@ class Rule(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Rule, __self__).__init__(
             'azure-native:cdn/v20200901:Rule',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -272,7 +272,7 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["provisioning_state"] = None
         __props__.__dict__["system_data"] = None
         __props__.__dict__["type"] = None
-        return Rule(resource_name, opts=opts, __props__=__props__)
+        return Rule(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

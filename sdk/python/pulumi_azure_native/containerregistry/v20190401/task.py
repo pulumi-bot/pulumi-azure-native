@@ -230,7 +230,7 @@ class TaskArgs:
 class Task(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_configuration: Optional[pulumi.Input[pulumi.InputType['AgentPropertiesArgs']]] = None,
                  credentials: Optional[pulumi.Input[pulumi.InputType['CredentialsArgs']]] = None,
@@ -250,7 +250,7 @@ class Task(pulumi.CustomResource):
         The task that has the ARM resource and task properties.
         The task will have all information to schedule a run against it.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AgentPropertiesArgs']] agent_configuration: The machine configuration of the run agent.
         :param pulumi.Input[pulumi.InputType['CredentialsArgs']] credentials: The properties that describes a set of credentials that will be used when this run is invoked.
@@ -269,27 +269,27 @@ class Task(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: TaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The task that has the ARM resource and task properties.
         The task will have all information to schedule a run against it.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param TaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(TaskArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_configuration: Optional[pulumi.Input[pulumi.InputType['AgentPropertiesArgs']]] = None,
                  credentials: Optional[pulumi.Input[pulumi.InputType['CredentialsArgs']]] = None,
@@ -347,19 +347,19 @@ class Task(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Task, __self__).__init__(
             'azure-native:containerregistry/v20190401:Task',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'Task':
         """
         Get an existing Task resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -381,7 +381,7 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["timeout"] = None
         __props__.__dict__["trigger"] = None
         __props__.__dict__["type"] = None
-        return Task(resource_name, opts=opts, __props__=__props__)
+        return Task(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="agentConfiguration")

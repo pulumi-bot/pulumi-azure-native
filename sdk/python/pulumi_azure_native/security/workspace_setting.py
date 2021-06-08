@@ -67,7 +67,7 @@ class WorkspaceSettingArgs:
 class WorkspaceSetting(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
@@ -77,7 +77,7 @@ class WorkspaceSetting(pulumi.CustomResource):
         Configures where to store the OMS agent data for workspaces under a scope
         API Version: 2017-08-01-preview.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] scope: All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
         :param pulumi.Input[str] workspace_id: The full Azure ID of the workspace to save the data in
@@ -86,27 +86,27 @@ class WorkspaceSetting(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: WorkspaceSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Configures where to store the OMS agent data for workspaces under a scope
         API Version: 2017-08-01-preview.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param WorkspaceSettingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(WorkspaceSettingArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
@@ -136,19 +136,19 @@ class WorkspaceSetting(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkspaceSetting, __self__).__init__(
             'azure-native:security:WorkspaceSetting',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'WorkspaceSetting':
         """
         Get an existing WorkspaceSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -160,7 +160,7 @@ class WorkspaceSetting(pulumi.CustomResource):
         __props__.__dict__["scope"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["workspace_id"] = None
-        return WorkspaceSetting(resource_name, opts=opts, __props__=__props__)
+        return WorkspaceSetting(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

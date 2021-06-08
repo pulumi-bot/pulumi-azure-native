@@ -228,7 +228,7 @@ class JobDefinitionArgs:
 class JobDefinition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer_secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomerSecretArgs']]]]] = None,
                  data_manager_name: Optional[pulumi.Input[str]] = None,
@@ -247,7 +247,7 @@ class JobDefinition(pulumi.CustomResource):
         """
         Job Definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomerSecretArgs']]]] customer_secrets: List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
         :param pulumi.Input[str] data_manager_name: The name of the DataManager Resource within the specified resource group. DataManager names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
@@ -266,26 +266,26 @@ class JobDefinition(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: JobDefinitionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Job Definition.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param JobDefinitionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(JobDefinitionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer_secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomerSecretArgs']]]]] = None,
                  data_manager_name: Optional[pulumi.Input[str]] = None,
@@ -345,19 +345,19 @@ class JobDefinition(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(JobDefinition, __self__).__init__(
             'azure-native:hybriddata/v20160601:JobDefinition',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'JobDefinition':
         """
         Get an existing JobDefinition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -376,7 +376,7 @@ class JobDefinition(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["user_confirmation"] = None
-        return JobDefinition(resource_name, opts=opts, __props__=__props__)
+        return JobDefinition(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="customerSecrets")

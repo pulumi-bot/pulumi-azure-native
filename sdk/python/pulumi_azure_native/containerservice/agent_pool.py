@@ -582,7 +582,7 @@ class AgentPoolArgs:
 class AgentPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_pool_name: Optional[pulumi.Input[str]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -610,7 +610,7 @@ class AgentPool(pulumi.CustomResource):
                  pod_subnet_id: Optional[pulumi.Input[str]] = None,
                  proximity_placement_group_id: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  scale_set_eviction_policy: Optional[pulumi.Input[Union[str, 'ScaleSetEvictionPolicy']]] = None,
                  scale_set_priority: Optional[pulumi.Input[Union[str, 'ScaleSetPriority']]] = None,
                  spot_max_price: Optional[pulumi.Input[float]] = None,
@@ -624,7 +624,7 @@ class AgentPool(pulumi.CustomResource):
         Agent Pool.
         API Version: 2021-03-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] agent_pool_name: The name of the agent pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
@@ -652,7 +652,7 @@ class AgentPool(pulumi.CustomResource):
         :param pulumi.Input[str] pod_subnet_id: Pod SubnetID specifies the VNet's subnet identifier for pods.
         :param pulumi.Input[str] proximity_placement_group_id: The ID for Proximity Placement Group.
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
-        :param pulumi.Input[str] resource_name_: The name of the managed cluster resource.
+        :param pulumi.Input[str] resource_name: The name of the managed cluster resource.
         :param pulumi.Input[Union[str, 'ScaleSetEvictionPolicy']] scale_set_eviction_policy: ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
         :param pulumi.Input[Union[str, 'ScaleSetPriority']] scale_set_priority: ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
         :param pulumi.Input[float] spot_max_price: SpotMaxPrice to be used to specify the maximum price you are willing to pay in US Dollars. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.
@@ -665,27 +665,27 @@ class AgentPool(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: AgentPoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Agent Pool.
         API Version: 2021-03-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AgentPoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AgentPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_pool_name: Optional[pulumi.Input[str]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -713,7 +713,7 @@ class AgentPool(pulumi.CustomResource):
                  pod_subnet_id: Optional[pulumi.Input[str]] = None,
                  proximity_placement_group_id: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  scale_set_eviction_policy: Optional[pulumi.Input[Union[str, 'ScaleSetEvictionPolicy']]] = None,
                  scale_set_priority: Optional[pulumi.Input[Union[str, 'ScaleSetPriority']]] = None,
                  spot_max_price: Optional[pulumi.Input[float]] = None,
@@ -762,9 +762,9 @@ class AgentPool(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
-            if resource_name_ is None and not opts.urn:
-                raise TypeError("Missing required property 'resource_name_'")
-            __props__.__dict__["resource_name"] = resource_name_
+            if resource_name is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_name'")
+            __props__.__dict__["resource_name"] = resource_name
             __props__.__dict__["scale_set_eviction_policy"] = scale_set_eviction_policy
             __props__.__dict__["scale_set_priority"] = scale_set_priority
             __props__.__dict__["spot_max_price"] = spot_max_price
@@ -781,19 +781,19 @@ class AgentPool(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AgentPool, __self__).__init__(
             'azure-native:containerservice:AgentPool',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'AgentPool':
         """
         Get an existing AgentPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -837,7 +837,7 @@ class AgentPool(pulumi.CustomResource):
         __props__.__dict__["upgrade_settings"] = None
         __props__.__dict__["vm_size"] = None
         __props__.__dict__["vnet_subnet_id"] = None
-        return AgentPool(resource_name, opts=opts, __props__=__props__)
+        return AgentPool(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="availabilityZones")

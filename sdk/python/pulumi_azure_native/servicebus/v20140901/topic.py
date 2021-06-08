@@ -321,7 +321,7 @@ class TopicArgs:
 class Topic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_delete_on_idle: Optional[pulumi.Input[str]] = None,
                  default_message_time_to_live: Optional[pulumi.Input[str]] = None,
@@ -346,7 +346,7 @@ class Topic(pulumi.CustomResource):
         """
         Description of topic resource.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_delete_on_idle: TimeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
         :param pulumi.Input[str] default_message_time_to_live: Default message time to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
@@ -370,26 +370,26 @@ class Topic(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Description of topic resource.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(TopicArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_delete_on_idle: Optional[pulumi.Input[str]] = None,
                  default_message_time_to_live: Optional[pulumi.Input[str]] = None,
@@ -456,19 +456,19 @@ class Topic(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Topic, __self__).__init__(
             'azure-native:servicebus/v20140901:Topic',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -499,7 +499,7 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["support_ordering"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["updated_at"] = None
-        return Topic(resource_name, opts=opts, __props__=__props__)
+        return Topic(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accessedAt")

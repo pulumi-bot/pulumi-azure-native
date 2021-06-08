@@ -150,12 +150,12 @@ class AppArgs:
 class App(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[pulumi.InputType['AppSkuInfoArgs']]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -165,12 +165,12 @@ class App(pulumi.CustomResource):
         The IoT Central application.
         API Version: 2018-09-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name of the application.
         :param pulumi.Input[str] location: The resource location.
         :param pulumi.Input[str] resource_group_name: The name of the resource group that contains the IoT Central application.
-        :param pulumi.Input[str] resource_name_: The ARM resource name of the IoT Central application.
+        :param pulumi.Input[str] resource_name: The ARM resource name of the IoT Central application.
         :param pulumi.Input[pulumi.InputType['AppSkuInfoArgs']] sku: A valid instance SKU.
         :param pulumi.Input[str] subdomain: The subdomain of the application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource tags.
@@ -179,32 +179,32 @@ class App(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: AppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The IoT Central application.
         API Version: 2018-09-01.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AppArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
                  sku: Optional[pulumi.Input[pulumi.InputType['AppSkuInfoArgs']]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -226,7 +226,7 @@ class App(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
-            __props__.__dict__["resource_name"] = resource_name_
+            __props__.__dict__["resource_name"] = resource_name
             if sku is None and not opts.urn:
                 raise TypeError("Missing required property 'sku'")
             __props__.__dict__["sku"] = sku
@@ -240,19 +240,19 @@ class App(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(App, __self__).__init__(
             'azure-native:iotcentral:App',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -269,7 +269,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["tags"] = None
         __props__.__dict__["template"] = None
         __props__.__dict__["type"] = None
-        return App(resource_name, opts=opts, __props__=__props__)
+        return App(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="applicationId")

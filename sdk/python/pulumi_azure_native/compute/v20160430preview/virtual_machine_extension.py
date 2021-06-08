@@ -230,7 +230,7 @@ class VirtualMachineExtensionArgs:
 class VirtualMachineExtension(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
                  force_update_tag: Optional[pulumi.Input[str]] = None,
@@ -249,7 +249,7 @@ class VirtualMachineExtension(pulumi.CustomResource):
         """
         Describes a Virtual Machine Extension.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_upgrade_minor_version: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
         :param pulumi.Input[str] force_update_tag: How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -268,26 +268,26 @@ class VirtualMachineExtension(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: VirtualMachineExtensionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Describes a Virtual Machine Extension.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param VirtualMachineExtensionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(VirtualMachineExtensionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[bool]] = None,
                  force_update_tag: Optional[pulumi.Input[str]] = None,
@@ -337,19 +337,19 @@ class VirtualMachineExtension(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(VirtualMachineExtension, __self__).__init__(
             'azure-native:compute/v20160430preview:VirtualMachineExtension',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'VirtualMachineExtension':
         """
         Get an existing VirtualMachineExtension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -369,7 +369,7 @@ class VirtualMachineExtension(pulumi.CustomResource):
         __props__.__dict__["tags"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["type_handler_version"] = None
-        return VirtualMachineExtension(resource_name, opts=opts, __props__=__props__)
+        return VirtualMachineExtension(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="autoUpgradeMinorVersion")

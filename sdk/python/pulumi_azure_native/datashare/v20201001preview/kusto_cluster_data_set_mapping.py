@@ -130,7 +130,7 @@ class KustoClusterDataSetMappingArgs:
 class KustoClusterDataSetMapping(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  data_set_id: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class KustoClusterDataSetMapping(pulumi.CustomResource):
         """
         A Kusto cluster data set mapping
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the share account.
         :param pulumi.Input[str] data_set_id: The id of the source data set.
@@ -157,26 +157,26 @@ class KustoClusterDataSetMapping(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: KustoClusterDataSetMappingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Kusto cluster data set mapping
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param KustoClusterDataSetMappingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(KustoClusterDataSetMappingArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  data_set_id: Optional[pulumi.Input[str]] = None,
@@ -226,19 +226,19 @@ class KustoClusterDataSetMapping(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(KustoClusterDataSetMapping, __self__).__init__(
             'azure-native:datashare/v20201001preview:KustoClusterDataSetMapping',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None) -> 'KustoClusterDataSetMapping':
         """
         Get an existing KustoClusterDataSetMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -255,7 +255,7 @@ class KustoClusterDataSetMapping(pulumi.CustomResource):
         __props__.__dict__["provisioning_state"] = None
         __props__.__dict__["system_data"] = None
         __props__.__dict__["type"] = None
-        return KustoClusterDataSetMapping(resource_name, opts=opts, __props__=__props__)
+        return KustoClusterDataSetMapping(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="dataSetId")
